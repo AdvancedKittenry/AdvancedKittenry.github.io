@@ -1,0 +1,103 @@
+@import "bootstrap.css";
+@import "bootstrap-responsive.css";
+
+.container-fluid {
+    max-width: 580px;
+    margin: auto;
+    margin-top: 40px;
+}
+
+footer {
+    margin-top: 3em;
+    color: #999;
+    border-top: 1px solid #ddd;
+    padding-top: 18px;
+}
+
+header {
+    margin-top: 1em;
+    margin-bottom: 4em;
+}
+
+header p {
+    color: #777;
+}
+
+h1, h2, h3 {
+    font-weight: normal;
+}
+
+h1 {
+    line-height: 48px;
+}
+
+h2 {
+    line-height: 36px;
+    margin-top: 12px;
+    font-size: 18px;
+}
+
+h3 {
+    font-size: 14px;
+    line-height: 28px;
+    font-weight: bold;
+}
+
+p::after {
+    clear: both;
+    display: block;
+    content: "";
+}
+
+figure {
+    width: 80%;
+    margin: 1em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+figure img {
+    width: 100%;
+}
+
+figcaption {
+    text-align: center;
+    color: #666;
+    margin-top: 0.5em;
+}
+
+ul {
+    margin-left: 0;
+}
+
+nav {
+    margin-top: 28px;
+}
+
+nav ul {
+    margin-left: 1em;
+    list-style: none;
+}
+
+.alert ul {
+    margin-left: 2em;
+}
+
+pre {
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+table code {
+    border: none;
+    background: none;
+    color: inherit;
+    padding: 0;
+}
+
+code, pre {
+  font-family: Menlo, Monaco, Consolas, "Ubuntu Mono", "DejaVu Mono", monospace;
+}
+
+.top-nav {
+    color: #666;
+}
