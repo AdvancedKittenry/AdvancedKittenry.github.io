@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+TMPLDIR=src/templates
 
 ./filter.pl "$1" |                  \
 pandoc                              \
@@ -8,6 +9,6 @@ pandoc                              \
     --standalone                    \
     --mathjax                       \
     --include-before    "$2"        \
-    --include-after     src/templates/after.html  \
-    --include-in-header src/templates/header.html \
+    --include-after     $TMPLDIR/after.html  \
+    --include-in-header $TMPLDIR/header.html \
     --css css/base.css              \

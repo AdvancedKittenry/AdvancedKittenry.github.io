@@ -1,19 +1,25 @@
-SRC=$(wildcard src/*.markdown)
-DEPS=src/templates/header.html src/templates/after.html filter.pl
+SRC=$(shell find src -iname "*.markdown")
+DIRS=$(shell cd src && find . -mindepth 1 -type d \! -path "./templates")
+TMPLDIR=src/templates/
+DEPS=${TMPLDIR}header.html ${TMPLDIR}after.html filter.pl
 HTML=${patsubst src/%,%,${SRC:.markdown=.html}}
 
-all: ${HTML}
+all: ${DIRS} ${HTML}
 
-src/templates/non-index-before.html: src/templates/before.html
+${DIRS}: 
+	./make-dir.sh $@
+
+${TMPLDIR}non-index-before.html: ${TMPLDIR}before.html
 	echo '<div class=\"top-nav\"><a href=\"index.html\">← index</a></div>' | \
 	cat $< - > $@
 
-index.html: src/index.markdown ${DEPS} src/templates/before.html
-	./make-html.sh $< src/templates/before.html > $@
+${HTML}: % : src/${%:.html=.markdown} ${DEPS} ${TMPLDIR}non-index-before.html
+	./make-html.sh src/${*:.html=.markdown} ${TMPLDIR}non-index-before.html > $*
 
-%.html: src/%.markdown ${DEPS} src/templates/non-index-before.html
-	./make-html.sh $< src/templates/non-index-before.html > $@
+#index.html: src/index.markdown ${DEPS} ${TMPLDIR}before.html
+#	./make-html.sh $< ${TMPLDIR}before.html > $@
 
 clean:
-	rm -f *.html
-	rm -f src/templates/non-index-before.html
+	rm -f ${HTML}
+	rmdir ${DIRS}
+	rm -f ${TMPLDIR}non-index-before.html
