@@ -10,7 +10,7 @@ ${DIRS}:
 	./make-dir.sh $@
 
 ${TMPLDIR}non-index-before.html: ${TMPLDIR}before.html
-	echo '<div class=\"top-nav\"><a href=\"index.html\">← index</a></div>' | \
+	echo '<div class="top-nav"><a href="index.html">← index</a></div>' | \
 	cat $< - > $@
 
 ${HTML}: % : src/${%:.html=.markdown} ${DEPS} ${TMPLDIR}non-index-before.html
