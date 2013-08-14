@@ -1,25 +1,22 @@
 SRC=$(shell find src -iname "*.markdown")
 DIRS=$(shell cd src && find . -mindepth 1 -type d \! -path "./templates")
-TMPLDIR=src/templates/
-DEPS=${TMPLDIR}header.html ${TMPLDIR}after.html filter.pl
+INDEXES=${patsubst %,%/navigation.html ,$(DIRS)}
+DEPS=$(wildcard src/templates/*.html) src/templates/navigation.html filter.pl make-html.sh
 HTML=${patsubst src/%,%,${SRC:.markdown=.html}}
 
 all: ${DIRS} ${HTML}
 
-${DIRS}: 
-	./make-dir.sh $@
+${DIRS}:
+	mkdir -p $@
 
-${TMPLDIR}non-index-before.html: ${TMPLDIR}before.html
-	echo '<div class="top-nav"><a href="index.html">← index</a></div>' | \
-	cat $< - > $@
+src/templates/navigation.html: make-navigation.sh make-indexes.py
+	./make-navigation.sh .
 
-${HTML}: % : src/${%:.html=.markdown} ${DEPS} ${TMPLDIR}non-index-before.html
-	./make-html.sh src/${*:.html=.markdown} ${TMPLDIR}non-index-before.html > $*
+${TEMPLATES}:
 
-#index.html: src/index.markdown ${DEPS} ${TMPLDIR}before.html
-#	./make-html.sh $< ${TMPLDIR}before.html > $@
+${HTML}: % : src/${%:.html=.markdown} ${DEPS}
+	./make-html.sh src/${*:.html=.markdown} > $*
 
 clean:
-	rm -f ${HTML}
+	rm -f ${HTML} ${INDEXES}
 	rmdir ${DIRS}
-	rm -f ${TMPLDIR}non-index-before.html
