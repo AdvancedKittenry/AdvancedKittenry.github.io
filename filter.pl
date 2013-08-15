@@ -3,6 +3,7 @@
 BEGIN {
     use v5.12;
     use warnings;
+    use File::Basename;
 
     our %tags = (
         exercise => 'success',
@@ -17,6 +18,8 @@ BEGIN {
     );
 
     my %counts;
+
+    our $basedir = dirname($ARGV[0]);
 }
 
 for my $tag (keys %tags) {
@@ -35,3 +38,5 @@ for my $tag (keys %tags) {
 
     s#</$tag>#\n</section>#;
 }
+
+s{<include +src="([^"]*)" */>} {`$0 $basedir/$1`}e;
