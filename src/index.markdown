@@ -1,10 +1,25 @@
-% Advanced Kittenry
-# Tietokantasovellus-materiaalisivut
+% Tietokantasovellus
 
-## [tutorial]
+## 
 
-A blog engine written in Clojure, studied.
+Tietokantasovellus on tietojenkäsittelytieteen aineopintojen harjoitustyökurssi,
+jolla opetellaan tietokannan käyttöä ja web-sovellusohjelmointia. Kurssin tarkoituksena
 
-[tutorial]: blorg.html "Tutorial"
+* Valitse aiheesi
+* Valitse ohjelmointikielesi
+* Seuraa aikataulua
 
-Testing
+## Viikkoaikataulu
+
+Deadline I
+Deadline II
+Deadline III
+Deadline IV
+Deadline V
+Palautus
+
+## Muuta
+
+* [arvosteluperusteet]
+
+[arvosteluperusteet]: arvosteluperusteet.html
