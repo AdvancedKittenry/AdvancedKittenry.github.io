@@ -41,3 +41,5 @@ for my $tag (keys %tags) {
 
 #Parses include files while leaving title metadata lines beginning with % out
 s{<include +src="([^"]*)" */>} {"\n" . `$0 $basedir/$1` =~ s/^(%[^\n]*)*//rg . "\n";}e;
+#Removes comment tags
+s#<comment>.*?</comment>##;
