@@ -1,40 +1,62 @@
 #!/usr/bin/env python
 import sys
 import re
+from collections import defaultdict
 
 strip_prefix = sys.argv[1]
-files = []
+directories = defaultdict(list)
+
+def parse_title(contents, filename):
+  titleMatch = re.search(r"^%\s*(.*)[^\n]*", contents)
+  if titleMatch:
+    return titleMatch.groups()[0] 
+  else:
+    return re.sub("\.markdown$", "", filename)
+
+def parse_ordering(contents, isIndex):
+  orderMatch = re.search(r"<!-- *order: *([0-9]+) *-->", contents)
+  return int(orderMatch.groups()[0]) if orderMatch else sys.maxint
+
+def get_files(directories, path):
+  directory = sorted(directories[path])
+  files = []
+  for file in directory:
+    files.append(file)
+    curdir = "/".join(['.']+file[4][:-1])
+    if curdir != path:
+      files.extend(get_files(directories, curdir))
+
+  return files
 
 for path in sys.stdin: 
-  path = path[:-1]
-  relativepath = path[len(strip_prefix):]
-  parts = relativepath.split("/")
+  path = path[:-1] #remove newline
+  parts = path[len(strip_prefix):].split("/") #remove prefix and get path directory parts
   filename = parts[-1]
   isIndex = filename.lower() == 'index.markdown'
 
+  directory = ["."]
+  directory.extend(parts[:-1])
   depth = len(parts)
   if isIndex:
+    directory.pop()
     depth -= 1
+  directory = "/".join(directory)
   
   contents = open(path).read()
-    
-  titleMatch = re.search(r"^%\s*(.*)[^\n]*", contents)
-  if titleMatch:
-    title = titleMatch.groups()[0] 
-  else:
-    title = re.sub("\.markdown$", "", filename)
-  
-  if isIndex:
-    ordering = 0
-  else: 
-    orderMatch = re.search(r"<!-- *order: *([0-9]+) *-->", contents)
-    ordering = int(orderMatch.groups()[0]) if orderMatch else sys.maxint
+  title    = parse_title(contents, filename) 
+  ordering = parse_ordering(contents, isIndex) 
 
-  files.append(("/".join(parts[:-1]),ordering,title,filename,depth))
+  directories[directory].append((ordering,title,filename,depth, parts))
 
-files.sort()
+"""
+for d in directories.keys():
+  print '"'+d+'"'
+  for f in directories[d]:
+    print "  "+str(f[2])
+"""
+files = get_files(directories, '')
 
-for (path, ordering, title, filename, depth) in files:
+for (ordering, title, filename, depth, path) in files:
   filename = re.sub(r"\.markdown$", ".html", filename)
-  path += filename if path == "" else "/" + filename
+  path = "/".join(path)
   print "%s* [%s](%s)" % (depth*"\t", title, path)
