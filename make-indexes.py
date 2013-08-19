@@ -57,6 +57,6 @@ for d in directories.keys():
 files = get_files(directories, '')
 
 for (ordering, title, filename, depth, path) in files:
-  filename = re.sub(r"\.markdown$", ".html", filename)
   path = "/".join(path)
+  path = re.sub(r"\.markdown$", ".html", path)
   print "%s* [%s](%s)" % (depth*"\t", title, path)
