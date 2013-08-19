@@ -13,8 +13,8 @@ BEGIN {
 
     our %titles = (
         exercise => "Exercise %n",
-        alert    => "Watch out!",
-        info     => "Hint"
+        alert    => "Pidä mielessä!",
+        info     => "Vinkki"
     );
 
     my %counts;

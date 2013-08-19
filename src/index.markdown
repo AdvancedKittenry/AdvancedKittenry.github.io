@@ -3,7 +3,17 @@
 ## 
 
 Tietokantasovellus on tietojenkäsittelytieteen aineopintojen harjoitustyökurssi,
-jolla opetellaan tietokannan käyttöä ja web-sovellusohjelmointia. Kurssin tarkoituksena
+jossa harjoitellaan tietokantaohjelmointia käytännössä 
+ja opitaan samalla web-sovellusohjelmoinnin perusteet. 
+
+Kurssin tarkoituksena on tuottaa toimiva,
+[käytettävä][kaytettavyys], [siististi koodattu][cleancode] ja 
+[hyvällä arkkitehtuurilla][arkkitehtuuri] rakennettu web-sovellus,
+joka kommunikoi tietokannan kanssa käyttäen SQL-kieltä.
+
+Sovellus toteutetaan Java- tai PHP-kielellä. 
+Myös Ruby ja Python tai muut web-sovelluskielet käyvät, mutta asiasta kannattaa sopia ohjaajan kanssa.
+Muiden kuin hyvin kevyiden web-sovelluskehysten (frameworkkien) käyttäminen vaatii ohjaajan erityisluvan. Tietokanta-abstraktiokerroksia ei myöskään saa käyttää ellei sellaista halua kirjoittaa itse.
 
 * Valitse aiheesi
 * Valitse ohjelmointikielesi
@@ -11,15 +21,17 @@ jolla opetellaan tietokannan käyttöä ja web-sovellusohjelmointia. Kurssin tar
 
 ## Viikkoaikataulu
 
-Deadline I
-Deadline II
-Deadline III
-Deadline IV
-Deadline V
-Palautus
+<include src="aikataulu/index.markdown" />
 
 ## Muuta
 
-* [arvosteluperusteet]
+* [Arvosteluperusteet](arvosteluperusteet.html)
 
-[arvosteluperusteet]: arvosteluperusteet.html
+[kaytettavyys]: kaytettavyys.html
+[arkkitehtuuri]: arkkitehtuuri.html
+[cleancode]: cleancode.html
+[kielivalinta]: ohjelmointikielet/index.html
+<comment>
+[b]: .html
+[c]: .html
+</comment>

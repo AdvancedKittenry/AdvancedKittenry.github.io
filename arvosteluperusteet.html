@@ -23,12 +23,15 @@
 <ul>
 <li><a href="index.html">Tietokantasovellus</a>
 <ul>
-<li><a href="arvosteluperusteet.html">Arvosteluperusteet</a></li>
-<li><a href="kaytettavyys.html">Käytettävyys</a></li>
 <li><a href="aikataulu/index.html">Aikataulu</a>
 <ul>
 <li><a href="aikataulu/viikko1.html">Viikko 1</a></li>
 </ul></li>
+<li><a href="arvosteluperusteet.html">Arvosteluperusteet</a></li>
+<li><a href="dokumentaatio-ohje.html">Dokumentaatio-ohje</a></li>
+<li><a href="kaytettavyys.html">Käytettävyys</a></li>
+<li><a href="ohjelmointikielet/index.html">Ohjelmointikielen valinta</a></li>
+<li><a href="cleancode.html">Ohjelmointityyli</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -38,26 +41,67 @@
 <header>
 <h1 class="title">Arvosteluperusteet</h1>
 </header>
-<!-- order: 10 -->
+<!-- order: xx -->
 
-<section id="koodin-laatu" class="level2">
-<h2>Koodin laatu</h2>
-<p>Koodi on laadukasta</p>
+<p>Työn arvosteluun vaikuttavat aikataulussa pysyminen, koodin laatu, sovelluksen käytettävyys sekä dokumentaatio. Valmiistä työstä voi saada maksimissaan 60 pistettä. Pisteet jakautuvat seuraavasti:</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Osa-alue</th>
+<th style="text-align: center;">Minimipistemäärä</th>
+<th style="text-align: left;">Maksimipistemäärä</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Aikataulun noudattaminen</td>
+<td style="text-align: center;">9</td>
+<td style="text-align: left;">15</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Koodin laatu</td>
+<td style="text-align: center;">15</td>
+<td style="text-align: left;">25</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Käytettävyys</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: left;">10</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Dokumentaatio</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: left;">10</td>
+</tr>
+</tbody>
+</table>
+<section class="alert alert-error"><h3>
+Pidä mielessä!
+</h3>
+<p>Jokaisesta osa-alueesta on saatava vähintään minimipistemäärän verran pisteitä. Varsinkin dokumentointi ja käytettävyys kannattaa hoitaa kuntoon ajoissa.</p>
 </section>
-<section id="käytettävyys" class="level2">
-<h2>Käytettävyys</h2>
+
+<p>Ohessa kunkin osa-alueen vaatimia työn ominaisuuksia.</p>
+<section id="aikataulun-noudattaminen-15-pistettä" class="level2">
+<h2>Aikataulun noudattaminen (15 pistettä)</h2>
+<p>Jokaisesta onnistuneesta aikataulun palautuksesta saa kolme pistettä.</p>
 </section>
-<section id="dokumentaatio" class="level2">
-<h2>Dokumentaatio</h2>
-<ul>
-<li>15p Etenemistarkistuksista</li>
-<li>25p Koodin laadusta</li>
-<li>10p Käytettävyydestä</li>
-<li>10p Dokumentaatiosta</li>
-</ul>
+<section id="koodin-laatu-25-pistettä" class="level2">
+<h2>Koodin laatu (25 pistettä)</h2>
+<p>Koodi on laadukasta ja toimii. Muuttujat, luokat ja metodit on nimetty johdonmukaisesti, eikä koodia toisteta turhaan. SQL-kieltä on käytetty asianmukaisesti, turhia tietokantakyselyjä ei tehdä tai haeta kannasta enempää tietoa kuin on tarpeen.</p>
+</section>
+<section id="käytettävyys-10-pistettä" class="level2">
+<h2>Käytettävyys (10 pistettä)</h2>
+<p>Sovellusta on selkeä, siistin näköinen ja helppo käyttää ja se noudattaa hyväksi todettuja käyttöliittymän suunnitteluperiaatteita. Sovelluksen toiminnot on nimetty johdonmukaisesti ja ne on helppo löytää koko sivuston kattavasta sivunavigaatiosta.</p>
+<p>Sovellus ei koskaan kysy uudestaan tietoja, jotka käyttäjä on jo syöttänyt. Virheellisten tietojen syöttämisestä annetaan käyttäjälle selkeä virheviesti ja mahdollisuus korjata virheelliset tiedot kirjoittamatta kaikkia tietoja uudestaan.</p>
+</section>
+<section id="dokumentaatio-10-pistettä" class="level2">
+<h2>Dokumentaatio (10 pistettä)</h2>
+<p>Sovelluksen kaikki osa-alueet on dokumentoitu kattavasti ja selkokielisesti ja sovellus on helppo asentaa ja ottaa käyttöön annetuilla dokumenteilla. Katso myös <a href="dokumentaatio-ohje.html">dokumenaatio-ohje</a>.</p>
 </section>
 <section id="pisteiden-ja-arvosanan-suhde" class="level2">
 <h2>Pisteiden ja arvosanan suhde</h2>
+<p>Pisteistä määritellään arvosana seuraavan taulukon ja valitun aiheen maksimiarvosanan mukaisesti. Läpipääsyyn työstä on saatava vähintään 30 pistettä eli puolet kaikista pisteistä, tästä ylöspäin arvosana nousee joka viides piste aina aiheen maksimiarvosanaan saakka. Jos valitusta aiheesta on toteutettu vain osa katsotaan maksimiarvosana toteutetun työmäärän mukaisesti.</p>
 <table>
 <thead>
 <tr class="header">
@@ -81,11 +125,15 @@
 </tbody>
 </table>
 </section>
+</div>
+</div>
+</div>
 <footer>
-<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">AdvancedKittenry</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.
+  <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">AdvancedKittenry</span> is licensed under a 
+  <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.
+  <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">
+    <img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png" />
+  </a>
 </footer>
-</div>
-</div>
-</div>
 </body>
 </html>
