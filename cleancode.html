@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <title>Ohjelmointityyli</title>
+  <title>Hyvä ohjelmointityyli</title>
   <style type="text/css">code{white-space: pre;}</style>
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -25,13 +25,60 @@
 <ul>
 <li><a href="aikataulu/index.html">Aikataulu</a>
 <ul>
-<li><a href="aikataulu/viikko1.html">Viikko 1</a></li>
+<li><a href="aikataulu/viikko1/index.html">Viikko 1</a>
+<ul>
+<li><a href="aikataulu/viikko1/aiheet/index.html">Aiheet</a>
+<ul>
+<li><a href="aikataulu/viikko1/aiheet/1.html">1</a></li>
+<li><a href="aikataulu/viikko1/aiheet/10.html">10</a></li>
+<li><a href="aikataulu/viikko1/aiheet/11.html">11</a></li>
+<li><a href="aikataulu/viikko1/aiheet/12.html">12</a></li>
+<li><a href="aikataulu/viikko1/aiheet/13.html">13</a></li>
+<li><a href="aikataulu/viikko1/aiheet/14.html">14</a></li>
+<li><a href="aikataulu/viikko1/aiheet/15.html">15</a></li>
+<li><a href="aikataulu/viikko1/aiheet/16.html">16</a></li>
+<li><a href="aikataulu/viikko1/aiheet/17.html">17</a></li>
+<li><a href="aikataulu/viikko1/aiheet/18.html">18</a></li>
+<li><a href="aikataulu/viikko1/aiheet/19.html">19</a></li>
+<li><a href="aikataulu/viikko1/aiheet/2.html">2</a></li>
+<li><a href="aikataulu/viikko1/aiheet/20.html">20</a></li>
+<li><a href="aikataulu/viikko1/aiheet/3.html">3</a></li>
+<li><a href="aikataulu/viikko1/aiheet/4.html">4</a></li>
+<li><a href="aikataulu/viikko1/aiheet/5.html">5</a></li>
+<li><a href="aikataulu/viikko1/aiheet/6.html">6</a></li>
+<li><a href="aikataulu/viikko1/aiheet/7.html">7</a></li>
+<li><a href="aikataulu/viikko1/aiheet/8.html">8</a></li>
+<li><a href="aikataulu/viikko1/aiheet/9.html">9</a></li>
+</ul></li>
+<li><a href="aikataulu/viikko1/ohjelmointikielet.html">Ohjelmointikielen valinta</a></li>
+<li><a href="aikataulu/viikko1/git-ohje.html">Versionhallinta</a></li>
+</ul></li>
+<li><a href="aikataulu/viikko2/index.html">Viikko 2</a>
+<ul>
+<li><a href="aikataulu/viikko2/istunnot.html">Istunnot</a></li>
+<li><a href="aikataulu/viikko2/listanakyma.html">Listanakyma</a></li>
+<li><a href="aikataulu/viikko2/lomake.html">Lomake</a></li>
+<li><a href="aikataulu/viikko2/template.html">Template</a></li>
+</ul></li>
+<li><a href="aikataulu/viikko3/index.html">Viikko 3</a>
+<ul>
+<li><a href="aikataulu/viikko3/arkkitehtuuri.html">Arkkitehtuuri</a></li>
+<li><a href="aikataulu/viikko3/istunnot.html">Istunnot</a></li>
+<li><a href="aikataulu/viikko3/kaytettavyys.html">Kaytettavyys</a></li>
+</ul></li>
+<li><a href="aikataulu/viikko4/index.html">Viikko 4</a>
+<ul>
+<li><a href="aikataulu/viikko4/injektiot.html">Injektiot</a></li>
+<li><a href="aikataulu/viikko4/mallit.html">Mallit</a></li>
+</ul></li>
+<li><a href="aikataulu/viikko5/index.html">Viikko 5</a></li>
+<li><a href="aikataulu/demo.html">Demotilaisuus</a></li>
+<li><a href="aikataulu/palautus.html">Työn palautus</a></li>
 </ul></li>
 <li><a href="arvosteluperusteet.html">Arvosteluperusteet</a></li>
 <li><a href="dokumentaatio-ohje.html">Dokumentaatio-ohje</a></li>
+<li><a href="cleancode.html">Hyvä ohjelmointityyli</a></li>
 <li><a href="kaytettavyys.html">Käytettävyys</a></li>
-<li><a href="ohjelmointikielet/index.html">Ohjelmointikielen valinta</a></li>
-<li><a href="cleancode.html">Ohjelmointityyli</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -39,23 +86,49 @@
 <div class="row-fluid">
 <div class="span12">
 <header>
-<h1 class="title">Ohjelmointityyli</h1>
+<h1 class="title">Hyvä ohjelmointityyli</h1>
 </header>
-<section id="nimeä-luokat-metodit-attribuutit-parametrit-ja-muuttujat-selkeästi-ja-johdonmukaisesti" class="level2">
-<h2>Nimeä luokat, metodit, attribuutit, parametrit ja muuttujat selkeästi ja johdonmukaisesti</h2>
-<p>Käytä mahdollisimman kuvaavia nimiä kaikkialla Muuttujat, joilla on iso käyttöalue, tulee olla erittäin selkeästi (vaikka pitkästi) nimettyjä. Lyhyen metodin sisäisille muuttujille riittää yleensä lyhyt nimi. Jos metodia käytetään vähän, tulee nimen olla mahdollisimman kuvaava. Jos metodia käytetään useassa kohdassa koodia, voi sen nimi olla lyhyt ja ytimekäs. Älä käytä ääkkösiä Huomaa: tee uudelleennimeäminen NetBeansin Refactor/rename-ominaisuuden avulla, ks kohta refaktorointi</p>
+<p>Hyvää ohjelmakoodia on helppo lukea ja asiat on siinä järjestetty johdonmukaisesti. Pyri siihen, että ohjelmakoodisi toiminta on mahdollista ymmärtää ensi silmäyksellä vielä siinäkin vaiheessa kun koodi on päässyt unohtumaan työmuistista.</p>
+<section id="nimeä-asiat-selkeästi-ja-johdonmukaisesti" class="level2">
+<h2>Nimeä asiat selkeästi ja johdonmukaisesti</h2>
+<ul>
+<li>Koskee luokkia, metodeja, attribuutteja, parametreja, funktioita, tiedostoja, tietokantatauluja ja muuttujia. Siis aivan kaikkea, millä on nimi.</li>
+<li>Käytä mahdollisimman kuvaavia nimiä kaikkialla</li>
+<li>Muuttujat, joilla on iso käyttöalue, tulee olla erittäin selkeästi (vaikka pitkästi) nimettyjä.</li>
+<li>Lyhyen metodin sisäisille muuttujille riittää yleensä lyhyt nimi.</li>
+<li>Jos metodia käytetään vähän, tulee nimen olla mahdollisimman kuvaava.</li>
+<li>Jos metodia käytetään useassa kohdassa koodia, voi sen nimi olla lyhyt ja ytimekäs.</li>
+<li>Älä käytä ääkkösiä, Ei myöskään kannata sekoita eri kieliä, esim. suomea ja englantia.</li>
+</ul>
 </section>
 <section id="ei-pitkiä-metodeja" class="level2">
 <h2>Ei pitkiä metodeja</h2>
-<p>Sovelluslogiikan metodin pituuden tulee ilman erittäin hyvää syytä olla korkeintaan 10 riviä, mieluiten ## Pitkät metodit tulee jakaa useampiin metodeihin. Yksi metodi – yksi pieni tehtävä. (Single Responsibility) Helpottaa myös testaamista Jos metodin voi jakaa useampaan metodiin, niin silloinhan se jo tekee useamman metodin hommat.</p>
+<ul>
+<li>Sovelluslogiikan metodin pituuden tulee ilman erittäin hyvää syytä olla korkeintaan 10 riviä, mieluiten 5.</li>
+<li>Pitkät metodit tulee jakaa useampiin metodeihin.</li>
+<li>Yksi metodi – yksi pieni tehtävä. (Single Responsibility)</li>
+<li>Helpottaa myös testaamista</li>
+<li>Jos metodin voi jakaa useampaan metodiin, niin silloinhan se jo tekee useamman metodin hommat.</li>
+</ul>
 </section>
 <section id="ei-copy-pastea" class="level2">
 <h2>Ei copy-pastea</h2>
-<p>Toistuvan koodin saa lähes aina hävitettyä Tapauksesta riippuen luo metodi tai yliluokka, joka sisältää toistuvan koodin</p>
+<ul>
+<li>Toistuvan koodin saa lähes aina hävitettyä</li>
+<li>Tapauksesta riippuen luo metodi tai yliluokka, joka sisältää toistuvan koodin</li>
+<li>Toistuvien HTML-pätkien tapauksessa kannattaa harkita koodinpätkän siirtämistä omaan tiedostoonsa.</li>
+</ul>
 </section>
 <section id="luokkien-single-responsibility" class="level2">
 <h2>Luokkien Single Responsibility</h2>
-<p>Luokkien tulisi hoitaa vain yhtä asiaa Esimerkiksi tiedoston lukemista tai -kirjoittamista EI tulisi löytyä useasta luokasta Tee oma luokka tiedostojen käsittelylle Eriytä käyttöliittymä ja sovelluslogiikka Kaikki tulostaminen tulisi tapahtua käyttöliittymässä Sovelluslogiikkaan liittyviä laskuja ja tapahtumia ei tehdä käyttöliittymässä Edellinen mahdollistaa helpon siirtymän tekstikäyttöliittymästä graafiseen</p>
+<ul>
+<li>Luokkien ja tiedostojen tulisi hoitaa vain yhtä asiaa</li>
+<li>Esimerkiksi tietokannan avaamista EI tulisi löytyä useasta paikasta</li>
+<li>Tee oma luokka/asetustiedosto tietokannan avaamiselle.</li>
+<li>Eriytä käyttöliittymä ja sovelluslogiikka</li>
+<li>Kaikki HTML tulisi tuottaa käyttöliittymäkoodissa</li>
+<li>Sovelluslogiikkaan liittyviä laskuja ja tietokantakyselyjä ei tehdä käyttöliittymässä</li>
+</ul>
 </section>
 </div>
 </div>

@@ -3,6 +3,8 @@ DIRS=$(shell cd src && find . -mindepth 1 -type d \! -path "./templates")
 DEPS=$(wildcard src/templates/*.html) src/templates/navigation-level-0.html filter.pl make-html.sh
 HTML=${patsubst src/%,%,${SRC:.markdown=.html}}
 
+reverse = $(if $(wordlist 2,2,$(1)),$(call reverse,$(wordlist 2,$(words $(1)),$(1))) $(firstword $(1)),$(1))
+
 all: ${DIRS} ${HTML}
 
 ${DIRS}:
@@ -18,4 +20,4 @@ ${HTML}: % : src/${%:.html=.markdown} ${DEPS}
 
 clean:
 	rm -f ${HTML} src/templates/navigation-level-*.html
-	rmdir ${DIRS}
+	rmdir $(call reverse, ${DIRS} )

@@ -6,12 +6,15 @@ from collections import defaultdict
 strip_prefix = sys.argv[1]
 directories = defaultdict(list)
 
-def parse_title(contents, filename):
+def parse_title(contents, path):
   titleMatch = re.search(r"^%\s*(.*)[^\n]*", contents)
   if titleMatch:
     return titleMatch.groups()[0] 
   else:
-    return re.sub("\.markdown$", "", filename)
+    filename = path[-1]
+    if filename.lower() == 'index.markdown' and len(path) >  1:
+      filename = path[-2]
+    return re.sub("\.markdown$", "", filename).title()
 
 def parse_ordering(contents, isIndex):
   orderMatch = re.search(r"<!-- *order: *([0-9]+) *-->", contents)
@@ -43,7 +46,7 @@ for path in sys.stdin:
   directory = "/".join(directory)
   
   contents = open(path).read()
-  title    = parse_title(contents, filename) 
+  title    = parse_title(contents, parts) 
   ordering = parse_ordering(contents, isIndex) 
 
   directories[directory].append((ordering,title,filename,depth, parts))
