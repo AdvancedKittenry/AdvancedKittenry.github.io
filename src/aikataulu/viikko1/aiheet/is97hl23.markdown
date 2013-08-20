@@ -1,0 +1,28 @@
+Graduaiheet
+-----------
+
+**IS97HL23**
+
+Opiskelija hakee graduaihetta joltakin potentiaaliselta graduohjaajalta.
+Aiheita annettaessa pyritään siihen, ettei samanaikaisesti annettaisi
+samaa aihetta usealle opiskelijalle. Pyritään myös välttämään aiheita,
+joista juuri on tehty tutkielma. Aihe saattaa viipyä valmisteluvaiheessa
+pitkään ja myös valmisteltavina olevista aiheista pitäisi saada tietoa.
+Rakenettavan sovelluksen tehtävänä on helpottaa aiheen hakua ja
+antamista. Opiskelijat  ja opettajat voisivat järjestelmästä tutkia,
+keneltä aiheita saa ja mitä aiheita kukin parhaillaan ohjaa. Samoin
+valmisteilla olevat aiheet saataisiin esiin. Tutkielman tekijätieto
+näkyisi ainakin ohjaajille ja valmiiden töiden osalta kaikille. Aiheita
+ja ohjaajia voisi luokitella aihepiireittäin. \
+ 
+
+Toimintoja \
+a)  Aiheen kirjaus \
+b)  Aiheen varaus opiskelijalle \
+c)  Käynnissä olevien aiheiden luettelo aihepiireittäin \
+d)  Valmisteilla olevien luettelo aihepiireittäin \
+e)  Valmiiden gradujen luettelo \
+f)  Gradun historiatiedot vain ohjaajille \
+g)  Historiamerkinnän teko graduun liittyen \
+  \
+ 

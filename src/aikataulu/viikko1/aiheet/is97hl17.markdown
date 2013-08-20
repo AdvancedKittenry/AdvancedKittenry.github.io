@@ -1,0 +1,38 @@
+Kurssin kotisivu
+----------------
+
+**IS97HL17**
+
+Tktl:n useilla kurseilla on kotisivuja, joilla kerrotaan kurssiin
+liittyviä asioita. Kotisivun organisointi on varsin pulmallinen asia.
+Jos kotisivulla on paljon tavaraa, sivun lukijan voi olla vaikea
+havaita, mitä muutoksia sivulle on tullut.  Tilanteen helpottamiseksi
+voitaisiin rakentaa järjestelmä, jonka avulla sivun sisältö voidaan
+näyttää eri muodoissa. Uudet asiat saisi selville tutkimalla asioita
+niiden kirjausajan perusteella (esim. tll viikolla tulleet tai
+muuttuneet tekstit). Toinen vaihtoehto olisi tutkia asioita normaalisti
+asiaryhmittäin. Sivulle pitisi oletusarvoisesti sislty ylimmn tason
+asiaryhmjakoon perustuva indeksi. Asiaryhmn sislle voidaan mritell
+ainakin yksi taso alaryhmi. Sek asiaryhmien jrjestys sivulla ett
+alaryhmien jrjestys asiaryhmn sisll tytyy pysty mrittelemn. Varsinainen
+sivuille tuleva materiaali liitetn asiaryhmiin tai alaryhmiin. Nihin
+kuhunkin voi liitt otsakkeen, johdannon ja 0-n materiaalielementti.
+Materiaalielementit esitetn halutussa jrjestyksess. Elementtiin voidaan
+liitt attribuutteja, jolla kontrolloidaan tekstin muotoilua
+(sisennykset, tyhjt rivit).Materiaalielementin varsinainen sislt voi
+olla kuva, tietokantaan kirjattu lyhyt teksti tai linkki erilliseen
+tiedostoon.
+
+Opettajalla voi olla monia kursseja ja hän voi liittää näiden sivuille
+saamaa materiaalia. Materiaali pitisi tllin taltioida vain kertaalleen.
+
+Esimerkkin voisi kytt [Informaatiojrjestelmt -kurssin
+kotisivua](http://www.cs.helsinki.fi/~laine/info/k99/).
+
+Toimintoja: \
+a)  Mit uutta \
+b)  Asiaryhmiin perustuva sivu \
+c)  Komponentin lisäys sivulle \
+d)  Komponentin poisto sivulta \
+e)  Aiheryhmn lisys, poisto, muutos \
+ 

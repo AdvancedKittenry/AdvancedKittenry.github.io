@@ -1,0 +1,29 @@
+Harjoitustyn seuranta
+---------------------
+
+**IS98HL1**
+
+Informaatiojrjestelmien harjoitustyt ohjataan henkilkohtaisin ennakkoon
+sovituin ohjauskynnein sek pivystyskyntien avulla. Opiskelijakohtaisesti
+sovitaan karkea yleisaikataulu, jonka puitteissa opiskelijat voivat
+varata ajat henkilkohtaisille ohjauspalavereille. Ajat valitaan niiden
+aikojen joukosta, jotka ohjaaja on laittanut tarjolle. Opiskelijalla on
+ns. 'omaohjaaja', joka hoitaa ennalta sovittavat ohjaustilaisuudet.
+Opiskelija voi pivystysneuvonnassa kytt mys muiden ohjaajien palveluita.
+
+Ohjaajat kirjaavat tiedot jokaisesta ohjauskynnist. Kyntikirjaukseen
+liittyen kirjataan opiskelijatiedon lisksi erilaisia kommentteja.
+Jokaisen ennalta sovitun kynnin yhteydess kirjataan mys opiskelijan
+siihen menness kyttm tyaika.
+
+Tyss laaditaan harjoitustyn seurantaa avustava jrjestelm. Jrjestelm
+tarjoaa palveluja opiskelijoille, ohjaajille ja kurssin vastuuhenkillle.
+Sen toimintoja voisivat olla: \
+a)  ohjaajan ohjausaikojen tarjollepano \
+b)  ohjaajan pivysaikojen kirjaus \
+c)  ohjausajan varaus henkilkohtaiseen palaverin \
+d)  ohjaajien pivystysaikojen selailu \
+e)  luettelo sovituista palavereista (ohjaajalle, opiskelijalle) \
+f)  ohjaustilanteen kirjaus \
+g)  tietyn opiskelijan historia (ohjaajalle) \
+h)  yhteenveto ohjauksesta (kurssin vastuuhenkillle)

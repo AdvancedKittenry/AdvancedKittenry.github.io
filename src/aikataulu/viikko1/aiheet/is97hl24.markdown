@@ -1,0 +1,26 @@
+Kuluttajan tuki Ry
+------------------
+
+**IS97HL24**
+
+Kuluttajan tuki Ry on rakentamassa tietojrjestelm palvelemaan kuluttajia
+hintavertailuissa. Yhdistyksen tarkkailijat selaavat mainoksia ja
+kiertvt liikkeiss sek kirjaavat jrjestelmn kauppaliikkeiden kyttmi
+hintoja. Mys tarjoukset kirjataan. Kuluttaja voi kysell jrjestelmst
+yksittisten tuotteiden hintoja. Vastaukseksi hn saa luettelon
+edullisimmista tuotetta myyvist liikkeist ja niden soveltamista
+hinnoista. Kuluttajalla on mys mahdollisuus rakentaa ostoskori ja
+selvitt sen edullisimmat ostospaikat. Tuotteiden haun helpottamiseksi
+tuotteet jaetaan tuoteryhmiin. Aluksi jrjestelm on avoin kaikille
+kuluttajille ja rahoitetaan valtionavun turvin. Myhemmin kun kuluttajat
+on saatu koukkuun voidaan palvelusta ryhty rahastamaan pient maksua.
+
+Toimintoja \
+a)  Tuotteiden vienti \
+b)  Liikkeiden vienti ja muutokset \
+c)  Hinnoittelutiedon vienti \
+d)  Yksittisen tuotteen edullisuuden selvitys \
+e)  Tuotekorin rakentaminen \
+f)  Tuotekorin edullisuuden selvitys \
+  \
+ 
