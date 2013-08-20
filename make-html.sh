@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 TMPLDIR=src/templates
 
-DIRPREFIX=`dirname $1 | cut -c 5- | sed -e "s/[^\/]\+\/\?/..\//"`
+DIRPREFIX=`dirname $1 | cut -c 5- | sed -e "s/[^\/]\+\/\?/..\//g"`
 LEVEL=$[`dirname $1 | sed -e s/[^\/]*//g | wc -m`-1]
 
 ./filter.pl "$1" |                  \
