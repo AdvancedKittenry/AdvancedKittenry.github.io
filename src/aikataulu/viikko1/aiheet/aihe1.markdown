@@ -1,30 +1,30 @@
-Lkriaseman tyvuorolista
+% Lääkäriaseman työvuorolista
 -----------------------
 
 **IS98JP1**
 
-Tehtvn on laatia jrjestelm, jolla voidaan laatia lkriaseman
-tyvuorolistoja. Lkriaseman henkilst jaetaan kolmeen luokkaan: lkrit,
+Tehtävänä on laatia järjestelmä, jolla voidaan laatia lääkäriaseman
+työvuorolistoja. Lääkäriaseman henkilöstö jaetaan kolmeen luokkaan: lääkärit,
 sairaanhoitajat ja perushoitajat. Mys aseman aukioloajat jaetaan
-tarvittavan henkilstvahvuuden mukaan eri kiirreellisyysluokkiin.
-Jokaiselle kiireellisyysluokalle mritelln minimivahvuus eli kuinka monta
-kunkin henkilstluokan tyntekij tytyy olla tiss. Kuitenkin laskettessa
-minimivahvuutta ylempi voi korvata alemman eli lkri voi olla
-sairaanhoitaja tai perushoitaja, ja sairaanhoitaja voi olla mys
+tarvittavan henkilöstövahvuuden mukaan eri kiirreellisyysluokkiin.
+Jokaiselle kiireellisyysluokalle määritellään minimivahvuus eli kuinka monta
+kunkin henkilöstöluokan tyntekijää tytyy olla töissä. Kuitenkin laskettessa
+minimivahvuutta ylempi voi korvata alemman eli lääkäri voi olla
+sairaanhoitaja tai perushoitaja, ja sairaanhoitaja voi olla myös
 perushoitaja. Jokainen aseman aukiolotunti kuuluu johonkin
 kiireellisyysluokkaan.
 
-Huom. jrjestelm saa hyvksy vain sellaiset tyvuorolistat, jotka tyttvt
-vaaditut henkilstvahvuudet. Lisksi jokaisella tyntekijll on mritelty
-piv- tai viikkotuntimr, jonka ylitykset jrjestelmn tytyy est.
+Huom. järjestelmä saa hyväksyä vain sellaiset tyvuorolistat, jotka täyttävät
+vaaditut henkilöstövahvuudet. Lisäksi jokaisella tyntekijällä on määritelty
+päivä- tai viikkotuntimäärä, jonka ylitykset järjestelmään täytyy estää.
 
 Toimintoja: \
 a)  Kiireellisyysluokkien teko (muutos) \
-b)  Henkilstvahvuuskalenterin teko (ja muutos) \
+b)  Henkilöstövahvuuskalenterin teko (ja muutos) \
 c)  Tyvuorolistan teko (ja muutos) \
-e)  Henkilkohtaisen tyvuorolistan listaus \
-f)  Tyvuorolistan listaus \
-g)  Tyntekijkohtainen tyraportti (tehdyt tunnit tietyll aikavlill) \
-h)  Tyntekijn tekemien tuntien listaus kiireellisyysluokittain \
-i)  Tyvuorolistan ylimiehityksen raportointi \
+e)  Henkilökohtaisen työvuorolistan listaus \
+f)  Työvuorolistan listaus \
+g)  Työntekijkohtainen työraportti (tehdyt tunnit tietyllä aikavälillä) \
+h)  Työntekijän tekemien tuntien listaus kiireellisyysluokittain \
+i)  Työvuorolistan ylimiehityksen raportointi \
  

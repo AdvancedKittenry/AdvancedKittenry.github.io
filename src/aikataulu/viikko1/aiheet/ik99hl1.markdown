@@ -1,4 +1,4 @@
-Tyryhmtiedotus
+% Tyryhmtiedotus
 --------------
 
 **IK99HL1**

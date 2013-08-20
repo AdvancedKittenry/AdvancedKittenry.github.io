@@ -1,4 +1,4 @@
-Lainahakemusten ksittely
+% Lainahakemusten käsittely
 ------------------------
 
 **IS98JP3**

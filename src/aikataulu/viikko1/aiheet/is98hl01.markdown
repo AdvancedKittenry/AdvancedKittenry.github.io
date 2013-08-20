@@ -1,4 +1,4 @@
-Harjoitustyn seuranta
+% Harjoitustyn seuranta
 ---------------------
 
 **IS98HL1**

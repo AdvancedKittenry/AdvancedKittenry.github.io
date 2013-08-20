@@ -1,4 +1,4 @@
-Kurssikysely
+% Kurssikysely
 ------------
 
 **IS97HL12**

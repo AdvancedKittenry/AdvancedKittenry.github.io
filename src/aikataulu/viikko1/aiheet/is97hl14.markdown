@@ -1,4 +1,4 @@
-Kurssitarjonta ja kurssipaikan varaus
+% Kurssitarjonta ja kurssipaikan varaus
 -------------------------------------
 
 **IS97HL14**

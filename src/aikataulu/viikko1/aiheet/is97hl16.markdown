@@ -1,4 +1,4 @@
-Opintoneuvonnan UKK (FAQ = Frequenty Asked Questions)
+% Opintoneuvonnan usein kysytyt kysymykset
 -----------------------------------------------------
 
 **IS97HL16**

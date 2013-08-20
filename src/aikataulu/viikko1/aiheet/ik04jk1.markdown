@@ -1,4 +1,4 @@
-Drinkkiarkisto
+% Drinkkiarkisto
 --------------
 
 **IK04JK1**

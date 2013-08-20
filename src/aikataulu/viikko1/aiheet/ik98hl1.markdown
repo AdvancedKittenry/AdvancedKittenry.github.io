@@ -1,4 +1,4 @@
-Projektin tyaikaseuranta
+% Projektin tyaikaseuranta
 ------------------------
 
 **IK98HL1**

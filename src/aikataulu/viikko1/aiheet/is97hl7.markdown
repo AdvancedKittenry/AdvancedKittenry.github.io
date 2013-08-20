@@ -1,4 +1,4 @@
-Hiihtokisojen tulospalvelu
+% Hiihtokisojen tulospalvelu
 --------------------------
 
 **IS97HL7**

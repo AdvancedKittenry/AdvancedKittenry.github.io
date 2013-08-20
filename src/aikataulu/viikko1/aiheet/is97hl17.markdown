@@ -1,4 +1,4 @@
-Kurssin kotisivu
+% Kurssin kotisivu
 ----------------
 
 **IS97HL17**
