@@ -11,7 +11,7 @@ ruokalajin kohdalla keittokirjassa esitetään raaka-aineet ja niiden
 määrät sekä valmistusohje vaiheittain. Ruokalajiin voi liittyä kuva
 valmiista annoksesta sekä valmistusohjeen vaiheisiin liittyviä kuvia. \
 Raaka-aineista kirjataan nimen lisäksi ravitsemustietoja ja
-yksikköhinta. Ohjeita voi hakea ruokalajin nimen ja raaka-aineen
+yksikkööhinta. Ohjeita voi hakea ruokalajin nimen ja raaka-aineen
 perusteella. Myös luokan perusteella (esim. kala + alkuruoka) voi
 selailla.
 

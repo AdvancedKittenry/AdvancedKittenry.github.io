@@ -3,25 +3,25 @@
 
 **IS98JP3**
 
-Tehtvn on laatia jrjestelm, jolla voidaan hoitaa pankin luotonanto.
-Asiakkaat jttvt lainahakemukset elektroonisten lomakkeiden avulla ja
-saavat mys jrjestelmlt aikanaan automaattisesti ilmoituksen ksittelyn
-tuloksesta. Lainahakemus hyvksytn, jos asiakkaalle ei ole kirjattu
-maksuhiriit ja lainan mr (huomioiden mys asiakkkaan aiemmat luotot) ei
-ylit asiakkaan kolmen vuoden nettopalkkaa. Asiakkaan nettopalkka
+Tehtävänä on laatia järjestelmä, jolla voidaan hoitaa pankin luotonanto.
+Asiakkaat jättävät lainahakemukset elektronisten lomakkeiden avulla ja
+saavat myös järjestelmältä aikanaan automaattisesti ilmoituksen käsittelyn
+tuloksesta. Lainahakemus hyväksytään, jos asiakkaalle ei ole kirjattu
+maksuhäiriöitä ja lainan määrä (huomioiden myös asiakkkaan aiemmat luotot) ei
+ylitä asiakkaan kolmen vuoden nettopalkkaa. Asiakkaan nettopalkka
 arvioidaan asiakkaan tilille (kolmen viimeisen kuukauden aikana)
-tulleiden maksujen avulla. Lainan korko mrytyy pivittin vaihtuvien
+tulleiden maksujen avulla. Lainan korko määrytyy päivittäin vaihtuvien
 viitekorkojen perusteella.
 
-Huom. Eri toimintojen kynnistminen voi olla manuaalinen toimenpide tai
-ne voidaan tehd automaattisiksi laukaisimien avulla.
+Huom. Eri toimintojen käynnistminen voi olla manuaalinen toimenpide tai
+ne voidaan tehdä automaattisiksi laukaisimien avulla.
 
 Toimintoja: \
 a)  Lainahakemuksen vastaanotto. \
-b)  Lainaptsen tiedottaminen asiakkaalle. \
+b)  Lainapäätöksen tiedottaminen asiakkaalle. \
 c)  Asiakkaan vuoden nettopalkan arviointi. \
 e)  Asiakkaan lainatietojen haku. \
-f)  Asiakkaan maksuhiriiden tarkastaminen. \
-g)  Hyvksytyn lainan tietojen talletus. \
-h)  Asiakastietojen lisys, muutos ja selaus. \
+f)  Asiakkaan maksuhäiriöiden tarkastaminen. \
+g)  Hyväksytyn lainan tietojen talletus. \
+h)  Asiakastietojen lisäys, muutos ja selaus. \
  

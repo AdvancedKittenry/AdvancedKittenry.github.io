@@ -1,41 +1,41 @@
-% nestys
+% Äänestys
 ------
 
 **IK98HL2**
 
-Tehtvnsi on laatia jrjestelm, jolla voi hoitaa erilaisia nestyksi, kuten
-'vuoden opettaja', 'vhiten huono euroviisuedustaja', 'miss/mister
-intranet', jne. Jrjestelmn pitisi mahdollistaa varsinainen nestys eli
-se, ett nestj antaa nens jollekin ehdokkaalle. nestys on mahdollista
-vain ennalta mritellyll aikavlill. Usean nen antaminen saman istunnon
-aikana on estettv. nestyst varten on vhintn annettava vaihtoehtojen
-nimet, mutta mys muuta informaatiota vaihtoehdosta pitisi tarvittaessa
-pysty tarjoamaan. nestyksen jrjestjn toiveiden mukaan voidaan nestjille
-nestystilanteessa nytt
+Tehtävänäsi on laatia järjestelmä, jolla voi hoitaa erilaisia äänestyksiä, kuten
+'vuoden opettaja', 'vähiten huono euroviisuedustaja', 'miss/mister
+intranet', jne. järjestelmän pitäisi mahdollistaa varsinainen äänestys eli
+se, että äänestäjä antaa äänensä jollekin ehdokkaalle. äänestys on mahdollista
+vain ennalta määritellyllä aikavälillä. Usean äänen antaminen saman istunnon
+aikana on estettävä. äänestyst varten on vähintään annettava vaihtoehtojen
+nimet, mutta myös muuta informaatiota vaihtoehdosta pitäisi tarvittaessa
+pystyä tarjoamaan. äänestyksen järjestäjän toiveiden mukaan voidaan äänestäjälle
+äänestystilanteessa näyttää
 
--   nykyinen krki,
--   kaikkien ehdokkaiden nimrt tai
--   ei mitn tietoa nestyksen kulusta.
+-   nykyinen kärki,
+-   kaikkien ehdokkaiden äänimäärät tai
+-   ei mitään tietoa äänestyksen kulusta.
 
-nestyksen jrjestjn on kyettv antamaan vaihtoehdot sek nihin liittyvt
-kuvailutiedot. nestyksen aikana ja sen loputtua jrjestjlle tuotetaan
-raportti nestyksen tuloksista. Jrjestj saa halutessaan mys raportin
-siit, miten nestysaktiviteetti on ajan suhteen jakautunut.
+Äänestyksen järjestäjän on kyettävä antamaan vaihtoehdot sekä nihin liittyvät
+kuvailutiedot. Äänestyksen aikana ja sen loputtua jrjestjlle tuotetaan
+raportti äänestyksen tuloksista. Järjestäjä saa halutessaan myös raportin
+siitä, miten äänestysaktiviteetti on ajan suhteen jakautunut.
 
-nestys voidaan toteuttaa anonyymisti, jolloin ei ole mahdollista
-kontrolloida sit nestk joku henkil useampaan kertaan. Toinen mahdollinen
-nestystapa on identifioituihin nestjiin perustuva nestys. Tllin nestjn
-on aluksi annettava oma identifiointitietonsa (annetaan nyt nppilemll,
-kunnollisessa jrjestelmss tss pitisi kytt id-korttia tai vastaavaa).
-Identifioitujen nestjien ollessa kyseess ei jrjestelmn saa tallentaa
-tietoa siit, miten ko. nestj on nestnyt. Sensijaan sen valvomiseksi, ett
-nestj nest vain kerran, voidaan tallentaa tieto, ett hn on nestnyt tai
-milloin hn on nestnyt.
+Äänestys voidaan toteuttaa anonyymisti, jolloin ei ole mahdollista
+kontrolloida sitä äänestääkö joku henkilö useampaan kertaan. Toinen mahdollinen
+äänestystapa on identifioituihin äänestäjiin perustuva äänestys. Tällöin äänestäjän
+on aluksi annettava oma identifiointitietonsa (annetaan nyt näppäilemällä,
+kunnollisessa järjestelmässä tässä pitäisi käyttää id-korttia tai vastaavaa).
+Identifioitujen äänestäjäien ollessa kyseessä ei järjestelmän saa tallentaa
+tietoa siitä, miten ko. äänestäjä on äänestänyt. Sensijaan sen valvomiseksi, että
+äänestäjä äänestää vain kerran, voidaan tallentaa tieto, että hän on äänestnyt tai
+milloin hän on äänestänyt.
 
 Toimintoja: \
-a)  Anonyyminestys \
-b)  Identifioitu nestys \
-c)  nestyksen mrittely \
+a)  Anonyymiäänestys \
+b)  Identifioitu äänestys \
+c)  Äänestyksen määrittely \
 d)  Tulokset \
 e)  Aktiviteettiraportointi \
  

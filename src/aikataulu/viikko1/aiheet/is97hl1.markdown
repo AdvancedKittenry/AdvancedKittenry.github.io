@@ -15,11 +15,11 @@ Turnauksen pelien voitoista pelaajien rankkausarvo kasvaa riippuen
 siitä, mille kierrokselle asti pelaaja pääsee turnauksessa. Pelaaja voi
 saada myös lisäpisteitä siitä, että voittaa selvästi korkeamman
 rakkausarvon omaavan pelaajan. Pistemäärät ovat turnauskohtaisia ja
-riippuvat  turnauksen arvostuksesta. Kerran vuodessa tehdään
+riippuvat  turnauksen arvostuksesta. Kerran vuodessa tehdäään
 rankkauspisteiden nollaus, jossa pelaajien rankkauspisteet lasketaan
 uudelleen niin, että järjestys säilyy, mutta piste-ero kapenee.
 
-Lajin kansainvälinen liitto haluaisi tehdä tosiaikaisen
+Lajin kansainvälinen liitto haluaisi tehdää tosiaikaisen
 maailmanlaajuisen rankkauslistan. Tämä perustuu siihen, että turnauksen
 järjestäjät lähettävät www-lomakkeella turnaustiedot liittoon. Liitto
 päättää sitten turnauksesta arvosta ja siinä jaettavista pisteistä. 

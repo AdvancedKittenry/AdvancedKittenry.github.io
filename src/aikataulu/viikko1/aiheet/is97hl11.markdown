@@ -3,7 +3,7 @@
 
 **IS97HL11**
 
-Liikemies Kinkkinen johtaa palveluyrityst Helsingin Vallilassa. Hänen
+Liikemies Kinkkinen johtaa palveluyritystä Helsingin Vallilassa. Hänen
 talliinsa kuuluu vajaa kymmenen palvelutoimihenkilöä. Kinkkinen on
 ajatellut laajentaa ja tehostaa toimintaansa. Tarkoitus olisi laittaa
 palvelujen esittelyt verkoon ja mahdollistaa palvelujen varaukset verkon
@@ -12,8 +12,8 @@ liikehuoneistossa. Osa palveluista on liikehuoneistoriippuvia.
 Toimihenkilöiden palveluvalikoima vaihtelee. Samoin palvelujen hinnat
 ovat toimihenkilökohtaisia. Asiakas voi varata palvelun verkon
 välityksellä. Varauksen yhteydessä asiakas valitsee ajankohdan, palvelun
-ja toimihenkiln sek voi esittää toivomuksia. Liikehuoneistossa
-palvellaan kerralla vain yht asiakasta. Asiakkaan tietoja ei
+ja toimihenkilön sekä voi esittää toivomuksia. Liikehuoneistossa
+palvellaan kerralla vain yhtä asiakasta. Asiakkaan tietoja ei
 rekisteröidä. Varauksen yhteydessä asiakas saa kuitenkin varausnumeron,
 jonka avulla hän voi perua varauksensa.
 

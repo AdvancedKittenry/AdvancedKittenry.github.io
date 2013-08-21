@@ -3,7 +3,7 @@
 
 **IS97HL3**
 
-Tietojenkäsittelytieteen laitoksen kullakin laboratoriokurssilla tehdään
+Tietojenkäsittelytieteen laitoksen kullakin laboratoriokurssilla tehdäään
 yksi harjoitustyö. Tarjolla on joukko työaiheita, joilla on
 tunnusnumero, nimi ja kuvaus sekä mahdollisesti joitain
 luokittelutekijöitä. Moniin töihin liittyy valinnaisuutta sisällön

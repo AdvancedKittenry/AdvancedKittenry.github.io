@@ -4,11 +4,11 @@
 **IS98JP2**
 
 Tehtävänä on laatia järjestelmä, jolla voidaan hoitaa tukkuliikkeen
-tilaustenksittely, varaston yllpito sekä asiakaslaskutus. Asiakkaat jättävät
+tilaustenkäsittely, varaston ylläpito sekä asiakaslaskutus. Asiakkaat jättävät
 tilaukset elektronisten lomakkeiden avulla ja saavat myös järjestelmältä
 automaattisesti vahvistuksen tai ilmoituksen, miksi tilausta ei voida
 hyvkäsyä. Tilausta ei voida hyväksyä, jos tilattavaa tuotemäärä ei ole
-varastossa tai asiakkaalla on viivstyneitä ja edelleen maksamattomia
+varastossa tai asiakkaalla on viivästyneitä ja edelleen maksamattomia
 laskuja. Jokaiselle varastotuotteelle on määritelty tilauskynnys ja sen
 tultua alitetuksi luodaan automaattisesti varaston täydennystilaus
 tuotteen tuottajalle. Asiakkaalle toimistetuista tuotteista pidetään
@@ -16,7 +16,7 @@ kirjaa. Toimistusten jälkeen asiakkaalle lähetetään lasku. Myös laskujen
 maksuseuranta kuuluu järjestelmän piiriin.
 
 Huom. Eri toimintojen käynnistäminen voi olla manuaalinen toimenpide tai
-ne voidaan tehdä automaattisiksi laukaisimien avulla.
+ne voidaan tehdää automaattisiksi laukaisimien avulla.
 
 Toimintoja: \
 a)  Tilausten vastaanotto. \

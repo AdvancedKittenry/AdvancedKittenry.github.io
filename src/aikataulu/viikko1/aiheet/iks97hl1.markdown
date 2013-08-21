@@ -13,7 +13,7 @@ Internetin välityksellä. Vastuuhenkilö käy tarkastamassa huoneiston ja
 laatii siitä arviointiraportin. Arviointiraportissa arvioidaan
 huoneiston kunto ja kirjataan varustelu. Arvioija voi päätyä myös
 ehdottamaan kunnostustoimenpiteitä ennen huoneiston vuokraamista. Jos
-kunnostustoimenpiteitä tehdään tekee vastuuhenkilö uuden
+kunnostustoimenpiteitä tehdäään tekee vastuuhenkilö uuden
 tarkistuskäynnin ja laatii uuden arviointiraportin. Viimeisimmän
 arvoinnin tulos on vuokralaisehdokkaiden nähtävissä. Ennen huoneiston
 laittamista tarjolle vastuuhenkilö tarkistaa, että vuokranantajalla on
@@ -34,7 +34,7 @@ vuokra ja maksuajat jne. Sekä asiakas että omistaja allekirjoittavat
 sopimuksen. Vuokraaja maksaa varsinaisen välityspalkkion
 vuokrasopimuksen synnyttyä. Myös omistajalta peritään palkkio.
 Vuokrasopimuksen päättyessä suoritetaan myös arviointi. Vuokrasopimuksen
-voimassaollessa asuntoon voidaan tehdä muutoksia, jotka haluttaisiin
+voimassaollessa asuntoon voidaan tehdää muutoksia, jotka haluttaisiin
 myös kirjata täydennyksiksi vastaanottoasiakirjaan. Usein nämä jäävät
 kuitenkin ilmoittamatta  välitykseen.
 

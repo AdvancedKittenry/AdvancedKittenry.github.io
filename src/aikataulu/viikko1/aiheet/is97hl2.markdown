@@ -32,6 +32,6 @@ b)  koiran hyväksymisen \
 c)  koiran tietojen muuttamisen \
 d)  koiratietojen haut ja selailun \
 e)  kilpailutietojen kirjauksen \
-f)  kirpailun tulosten kirjauksen \
+f)  kilpailun tulosten kirjauksen \
 g)  kilpailun tulosten katselun \
  

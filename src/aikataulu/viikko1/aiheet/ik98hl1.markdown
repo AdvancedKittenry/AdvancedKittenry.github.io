@@ -1,23 +1,23 @@
-% Projektin tyaikaseuranta
+% Projektin työaikaseuranta
 ------------------------
 
 **IK98HL1**
 
-Tehtvn on laatia jrjestelm, jolla voidaan seurata projektiin kytetty
-tyaikaa. Jrjestelm on tarkoitus kytt tktl:n
-ohjelmistotuotantoprojekteissa sek laboratoriotiss. Projektipllikk tai
-harjoitustyryhmn ohjaaja saa jrjestelmlt yhteenvetoja kytetyst tyajasta
-viikottain, henkilittin ja tehtvlajeittain. Kukin projektiin osallistuva
-henkil kirjaa jrjestelmn tekemns tytunnit, tylajin ja mahdollisen
-selityksen. Projektin osallistuja saa nhtvkseen tekemns kirjaukset. Hn
-saa esiin mys itseens liittyvt yhteenvetoraportit. Projektipllikk saa
-halutessaan kyttns mys tiedot kunkin tyntekijn yksityiskohtaisista
+Tehtävänä on laatia järjestelmä, jolla voidaan seurata projektiin käytettyä
+työaikaa. Järjestelmää on tarkoitus käyttää tktl:n
+ohjelmistotuotantoprojekteissa sekä laboratoriotöissä. Projektipäällikkö tai
+harjoitustyöryhmän ohjaaja saa järjestelmältä yhteenvetoja käytetystä työajasta
+viikottain, henkilöittäin ja tehtävälajeittain. Kukin projektiin osallistuva
+henkilö kirjaa järjestelmän tekemänsä työtunnit, työlajin ja mahdollisen
+selityksen. Projektin osallistuja saa nähtäväkseen tekemänsä kirjaukset. Hän
+saa esiin myös itseensä liittyvät yhteenvetoraportit. Projektipäällikkö saa
+halutessaan käyttöönsä myös tiedot kunkin työntekijään yksityiskohtaisista
 kirjauksista.
 
 Toimintoja: \
-a)  Tyaikakirjauksen teko \
+a)  Työaikakirjauksen teko \
 b)  Projektin perustaminen \
-c)  Henkiln liittminen projektiin \
-d)  Projektipllikn raportit \
-e)  Yksityiskohtainen tyraportti \
+c)  Henkilön liittäminen projektiin \
+d)  Projektipäällikön raportit \
+e)  Yksityiskohtainen työraportti \
  

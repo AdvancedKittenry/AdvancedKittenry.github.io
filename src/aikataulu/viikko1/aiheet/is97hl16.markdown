@@ -19,8 +19,8 @@ Toimintoja: \
 a)  kysymysten ja vastausten katselu \
 b)  vastausten ajankohdat vanhentuneiden löytämiseksi \
 c)  uusien kysymysten selailu \
-d)  vastauksen vienti jrjestelmn \
+d)  vastauksen vienti järjestelmän \
 e)  Kysymyksen teko järjestelmän kautta (kenelle tahansa
 opintoneuvojalle, jollekin tietylle). \
-f)  Aihepiirien ja niiden jrjestyksen mrittely \
+f)  Aihepiirien ja niiden järjestyksen määrittely \
  

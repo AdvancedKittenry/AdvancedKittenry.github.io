@@ -11,7 +11,7 @@ pitkään ja myös valmisteltavina olevista aiheista pitäisi saada tietoa.
 Rakenettavan sovelluksen tehtävänä on helpottaa aiheen hakua ja
 antamista. Opiskelijat  ja opettajat voisivat järjestelmästä tutkia,
 keneltä aiheita saa ja mitä aiheita kukin parhaillaan ohjaa. Samoin
-valmisteilla olevat aiheet saataisiin esiin. Tutkielman tekijätieto
+valmisteilla olevat aiheet saataisiin esiin. Tutkielman tekijäätieto
 näkyisi ainakin ohjaajille ja valmiiden töiden osalta kaikille. Aiheita
 ja ohjaajia voisi luokitella aihepiireittäin. \
  

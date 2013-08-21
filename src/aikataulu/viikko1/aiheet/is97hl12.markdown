@@ -13,9 +13,9 @@ kysymykset, laitoksen  kursseille yhteiset kysymykset ja kurssikohtaiset
 kysymykset. Osa kysymyksistä on sellaisia, että niihin vastataan
 käyttäen numeroasteikkoa 0-5. Vastaus saattaa olla myös muu
 ennaltamäärättyyn arvojoukkoon kuuluva arvo. Kolmantena tyyppinä ovat
-vapaamuotoista tekstiä sisältävät vastaukset. Kysymyksi pitisi voida
-helposti list, poistaa ja muuttaa. Lomake tuotetaan tietokannan
-perusteella uudelleen aina sit pyydettess. \
+vapaamuotoista tekstiä sisältävät vastaukset. Kysymyksiä pitäisi voida
+helposti lisätä, poistaa ja muuttaa. Lomake tuotetaan tietokannan
+perusteella uudelleen aina sitä pyydettäessä. \
 Kyselyn tuloksia pitäisi voida kysellä milloin tahansa kurssin kuluessa.
 
 Toimintoja \
@@ -26,6 +26,6 @@ c)  Yhteenveto laitoksen kursseista  - vastaajien lukumäärät keskiarvoja
 d)  Yhteenveto laitoksen kursseista tietyn kysymyksen perusteella -
 kurssit järjestykseen \
 e)  Opettajalle yksityiskohtainen raportti kurssin kyselystä \
-f)   Kyselyjen lisys, poisto ja muutos (ei voida tehd kyselyn ollessa
-kynniss) \
+f)   Kyselyjen lisäys, poisto ja muutos (ei voida tehdä kyselyn ollessa
+käynnissä) \
  

@@ -3,27 +3,27 @@
 
 **IK10SS1**
 
-Nykyihmisill on niin paljon erilaisia asioita muistettavana. Kuitenkin
-moniin asioihin keksitty apukeinoja, kuten mm. numeromuistio. Pivn
-askareihin ei ole kuitenkaan kehitetty laajalti kytss olevaa ratkaisua.
-Ossi Opiskelija tarvitsisi itselleen Ossin muistilistan, johon hn voisi
-listata askareitaan muistiin. Hn haluaisi tapahtumien olevan listassa,
-joka olisi loogisessa jrjestyksess askareen trkeyden kanssa. Hnen tulisi
-pysty laittamaan erilaisia trkeysasteita askareille ja luokitella
-askareita eri ryhmiin. Luokat voivat sislt aliluokkia.
+Nykyihmisillä on niin paljon erilaisia asioita muistettavana. Kuitenkin
+moniin asioihin keksitty apukeinoja, kuten mm. numeromuistio. Päivän
+askareihin ei ole kuitenkaan kehitetty laajalti käytössä olevaa ratkaisua.
+Ossi Opiskelija tarvitsisi itselleen Ossin muistilistan, johon hän voisi
+listata askareitaan muistiin. Hän haluaisi tapahtumien olevan listassa,
+joka olisi loogisessa järjestyksessä askareen tärkeyden kanssa. Hänen tulisi
+pystyä laittamaan erilaisia tärkeysasteita askareille ja luokitella
+askareita eri ryhmiin. Luokat voivat sisältää aliluokkia.
 
-Ohjelmiston tehtvi:
+Ohjelmiston tehtäviä:
 
-Askereen lisys ja poisto
+Askereen lisäys ja poisto
 
-Trkeysasteen lisys ja poisto
+Tärkeysasteen lisäys ja poisto
 
-Askareen trkeyttminen lisyksess tai myhemmin
+Askareen tärkeyttäminen lisäyksessä tai myöhemmin
 
-Luokkien lisys ja poisto
+Luokkien lisäys ja poisto
 
 Askareiden luokittelu
 
-Luokat voivat olla siskkisi
+Luokat voivat olla sisäkkäisiä
 
-Vaatii sisnkirjautumisen
+Vaatii sisäänkirjautumisen

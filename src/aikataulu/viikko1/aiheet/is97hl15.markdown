@@ -1,4 +1,4 @@
-% Vaihtarit
+% Tavaranvaihto
 ---------
 
 **IS97HL15**
@@ -10,11 +10,11 @@ Jos tarjontaa tutkiva jäsen kiinnostuu tarjouksesta, hän voi lukita
 tarjouksen. Tarjous pysyy lukittuna kuitenkin vain vuorokauden, joten
 tänä aikana kohteesta kiinnostuneen on sovittava tarjoajan kanssa
 vaihdosta. Tarjoaja voi halutessaan poistaa tarjoukseensa liitetyn
-lukon, kuten mys lukon asettaja.
+lukon, kuten myös lukon asettaja.
 
 Kohteesta kiinnostuneella ei välttämättä ole sellaisia kohteita, joita
-tarjoaja haluaa vaihdossa. Hän voi kuitenkin tehdä vastatarjouksen,
-jossa tarjoaa tilalle jotain muuta. Alkuperäisen tarjouksen tekijä saa
+tarjoaja haluaa vaihdossa. Hän voi kuitenkin tehdää vastatarjouksen,
+jossa tarjoaa tilalle jotain muuta. Alkuperäisen tarjouksen tekijää saa
 näkyviinsä kaikki tarjoukseensa liittyyvät vastatarjoukset.
 Alkuperäisessä tarjouksessa voidaan vaihdossa haluttava kohde jättää
 määrittelemättä, jolloin kiinnostuneiden on aina tehtävä vastatarjous

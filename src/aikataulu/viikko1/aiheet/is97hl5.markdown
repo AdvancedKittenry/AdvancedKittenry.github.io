@@ -9,8 +9,7 @@ Tilaus voi käsittää useita tuotteita. Pizzoja on muutamaa perustyyppiä,
 joita voi täydentää erilaisilla lisukkeilla. Valikoima ja lisukkeet sekä
 niiden hinnat muuttuvat aika ajoin. Pizzojen lisäksi tarjolla on
 muitakin tuotteita.  Tuotteet on luokiteltu tuoteryhmiin. Kaikista
-tuotteista on olemassa tekstikuvaus ja osasta myös kuva, jonka asiakas
-saa näkyviin www:n  kautta tilattaessa. Tuotteen hinta voi vaihdella
+tuotteista on olemassa tekstikuvaus ja osasta myös kuva. Tuotteen hinta voi vaihdella
 esim. vuorokauden eri aikoina. Laskutuksessa käytetään tilausajankohtana
 voimassaolleen hinnaston toimitusajankohdalle kiinittämää hintaa.
 Kuhunkin toimitukseen liittyen laaditaan laskelma, jonka mukaisesti

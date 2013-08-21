@@ -3,32 +3,32 @@
 
 **IK04JK1**
 
-Tehtvn on laatia www-sivulla toimiva drinkinhakulomake. Drinkkireseptit
-kuvaavat cocktaileja ja muita juomasekoituksia. Reseptej voi hakea
-juoman nimeen liittyvll hakusanalla tai jonkin tietyn osa-aineen mukaan.
-Resepteist voi pyyt mys listan aakkosjrjestyksen, ainesosan tai
+Tehtävänä on laatia www-sivulla toimiva drinkinhakulomake. Drinkkireseptit
+kuvaavat cocktaileja ja muita juomasekoituksia. Reseptejä voi hakea
+juoman nimeen liittyvällä hakusanalla tai jonkin tietyn osa-aineen mukaan.
+Resepteistä voi pyytää myös listan aakkosjärjestyksen, ainesosan tai
 juomalajin (alkudrinkki, cocktail, shotti,...) mukaan.
 
-Jrjestelmn kirjaudutaan sisn. Samalla hakusanalla voi saada useita eri
+Järjestelmään kirjaudutaan sisään. Samalla hakusanalla voi saada useita eri
 tuloksia tai samaan juomaan voidaan viitata usealla hakusanalla, koska
-juomasekoitukset voivat kulkea eri nimill eri paikoissa.
+juomasekoitukset voivat kulkea eri nimillä eri paikoissa.
 
-Tavallinen kyttj voi hakea drinkkireseptej kannasta ja ehdottaa uusien
-lismist kantaan.
+Tavallinen kyättäjä voi hakea drinkkireseptejä kannasta ja ehdottaa uusien
+lisäämistä kantaan.
 
-Jrjestelmn yllpitj voi list jrjestelmn reseptej joko kokonaan itse tai
-ehdotettuja hyvksymll. Lisminen voi tapahtua esimerkiksi syttmll tiedot
-lomakkeeseen tai lukemalla resepti (tai useita reseptej) esimerkiksi
-tekstitiedostosta. Jrjestelmn yllpitj voi antaa mys tavallisille
-kyttjille yllpito-oikeudet (ehk vain reseptin lisysoikeuden?).
+Järjestelmän ylläpitäjä voi list järjestelmän reseptejä joko kokonaan itse tai
+ehdotettuja hyvksymällä. Lisääminen voi tapahtua esimerkiksi syöttämällä tiedot
+lomakkeeseen tai lukemalla resepti (tai useita reseptejä) esimerkiksi
+tekstitiedostosta. Järjestelmän ylläpitäjä voi antaa myös tavallisille
+käyttäjille ylläpito-oikeudet (ehkä vain reseptin lisäysoikeuden?).
 
 **Toimintoja:**(toteutettavat valitaan)
 
 -   Reseptin haku
 -   Reseptien selailu
--   Reseptin lisys lomakkeella
--   Reseptien sisnluku tiedostosta
--   Uuden reseptin ehdottaminen / ehdotuksen hyvksyminen
--   Kyttjtunnuksen luominen
+-   Reseptin lisäys lomakkeella
+-   Reseptien sisäänluku tiedostosta
+-   Uuden reseptin ehdottaminen / ehdotuksen hyväksyminen
+-   Käyttäjätunnuksen luominen
 -   ...
 

@@ -3,7 +3,7 @@
 
 **IS97HL22**
 
-Vesistöjen tilaan liittyvää tutkimusta tehdään ympäri vuoden eri
+Vesistöjen tilaan liittyvää tutkimusta tehdäään ympäri vuoden eri
 vesistöistä. Kustakin kohteena olevasta vesistöstä  valitaan joukko
 näytteenottopaikkoja, joiden sijaintitiedot kirjataan tietokantaan.
 Sijaintitietoihin voi liittyä tarkat koordinaatit, mutta kenttätutkijat

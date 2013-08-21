@@ -6,7 +6,7 @@
 Kurssikeskus Opinahjo järjestää maksullisia kursseja eri aihepiireistä.
 Yhteen aihepiiriin liittyen pidetään vuodessa 1-20 kurssia. Sama kurssin
 voidaan vuoden aikana järjestää useaan kertaan. Kursseille voi
-osallistuu keskimäärin 20 opiskelijaa, mutta isoja yli sadankin hengen
+osallistua keskimäärin 20 opiskelijaa, mutta isoja yli sadankin hengen
 kursseja on joskus ohjelmassa. Kustakin kurssista on laadittu esite,
 josta käyvät selville kurssin aika, kurssipaikka kurssin opettajat ja
 kurssin sisältö.

@@ -9,30 +9,30 @@ Jos kotisivulla on paljon tavaraa, sivun lukijan voi olla vaikea
 havaita, mitä muutoksia sivulle on tullut.  Tilanteen helpottamiseksi
 voitaisiin rakentaa järjestelmä, jonka avulla sivun sisältö voidaan
 näyttää eri muodoissa. Uudet asiat saisi selville tutkimalla asioita
-niiden kirjausajan perusteella (esim. tll viikolla tulleet tai
+niiden kirjausajan perusteella (esim. tällä viikolla tulleet tai
 muuttuneet tekstit). Toinen vaihtoehto olisi tutkia asioita normaalisti
-asiaryhmittäin. Sivulle pitisi oletusarvoisesti sislty ylimmn tason
-asiaryhmjakoon perustuva indeksi. Asiaryhmn sislle voidaan mritell
-ainakin yksi taso alaryhmi. Sek asiaryhmien jrjestys sivulla ett
-alaryhmien jrjestys asiaryhmn sisll tytyy pysty mrittelemn. Varsinainen
-sivuille tuleva materiaali liitetn asiaryhmiin tai alaryhmiin. Nihin
-kuhunkin voi liitt otsakkeen, johdannon ja 0-n materiaalielementti.
-Materiaalielementit esitetn halutussa jrjestyksess. Elementtiin voidaan
-liitt attribuutteja, jolla kontrolloidaan tekstin muotoilua
-(sisennykset, tyhjt rivit).Materiaalielementin varsinainen sislt voi
+asiaryhmittäin. Sivulle pitäisi oletusarvoisesti sisältyä ylimmän tason
+asiaryhmäjakoon perustuva indeksi. Asiaryhmään sisälle voidaan määritellä
+ainakin yksi taso alaryhmiä. Sekä asiaryhmien järjestys sivulla että
+alaryhmien järjestys asiaryhmään sisällä täytyy pystyä määrittelemään. Varsinainen
+sivuille tuleva materiaali liitetään asiaryhmiin tai alaryhmiin. Näihin
+kuhunkin voi liittää otsakkeen, johdannon ja 0-n materiaalielementtiä.
+Materiaalielementit esitetään halutussa järjestyksessä. Elementtiin voidaan
+liittää attribuutteja, jolla kontrolloidaan tekstin muotoilua
+(sisennykset, tyhjät rivit).Materiaalielementin varsinainen sisältö voi
 olla kuva, tietokantaan kirjattu lyhyt teksti tai linkki erilliseen
 tiedostoon.
 
 Opettajalla voi olla monia kursseja ja hän voi liittää näiden sivuille
-saamaa materiaalia. Materiaali pitisi tllin taltioida vain kertaalleen.
+samaa materiaalia. Materiaali pitäisi tällöin taltioida vain kertaalleen.
 
-Esimerkkin voisi kytt [Informaatiojrjestelmt -kurssin
+Esimerkkin voisi käyttää [Informaatiojärjestelmät -kurssin
 kotisivua](http://www.cs.helsinki.fi/~laine/info/k99/).
 
 Toimintoja: \
-a)  Mit uutta \
+a)  Mitä uutta? \
 b)  Asiaryhmiin perustuva sivu \
 c)  Komponentin lisäys sivulle \
 d)  Komponentin poisto sivulta \
-e)  Aiheryhmn lisys, poisto, muutos \
+e)  Aiheryhmään lisäys, poisto, muutos \
  

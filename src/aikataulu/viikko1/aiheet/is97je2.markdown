@@ -1,38 +1,38 @@
-% Tyntekijnvuokraus kotitihin
+% Työntekijänvuokraus kotitöihin
 ---------------------------
 
 **IS97JE2**
 
-Tyntekijvuokraus Home-Service haluaa aloittaa tietoverkossa
-ammattitaitoisten tyntekijiden vuokrauspalvelun. Henkilkunnan vahvuus on
-tll hetkell viisi, mutta laajentamistakin on jo mietitty. Tarkoituksena
-on vuokrata tyntekijit pieniin kotitihin, kuten puutarhanhoitoon,
-nurmikon leikkuuseen, lumen luontiin, siskukkien kasteluun, kaupassa
-kyntiin, koirien ja kissojen ulkoiluttamiseen, jne. Mys kodin pienet
-remonttityt kuuluvat osaamisalueeseen.
+Työntekijäävuokraus Home-Service haluaa aloittaa tietoverkossa
+ammattitaitoisten työntekijöiden vuokrauspalvelun. Henkilökunnan vahvuus on
+tällä hetkellä viisi, mutta laajentamistakin on jo mietitty. Tarkoituksena
+on vuokrata työntekijöitä pieniin kotitöihin, kuten puutarhanhoitoon,
+nurmikon leikkuuseen, lumen luontiin, sisäkukkien kasteluun, kaupassa
+käyntiin, koirien ja kissojen ulkoiluttamiseen, jne. Myös kodin pienet
+remonttityöt kuuluvat osaamisalueeseen.
 
-WWW-palvelun kautta on mahdollisuus vuokrata yksi tai useampi tyntekij
-em. tytehtviin arkipivksi klo 8-20 vliseksi ajaksi. Yhden tyn kesto voi
+WWW-palvelun kautta on mahdollisuus vuokrata yksi tai useampi työntekijä
+em. työtehtäviin arkipäivisin klo 8-20 välisenä aikana. Yhden työn kesto voi
 vaihdella 1-3 tuntiin puolen tunnin tarkkuudella. Palvelun varaus on
-tehtv viimeistn edellisen pivn, samoin jos haluaa/joutuu perumaan
-varauksen. Yksi vuokrauspalvelun tyntekijist hoitaa jrjestelmn vaatimat
-yllpitotehtvt.
+tehtävä viimeistään edellisen päivänä, samoin jos haluaa/joutuu perumaan
+varauksen. Yksi vuokrauspalvelun työntekijöistä hoitaa järjestelmän vaatimat
+ylläpitotehtävät.
 
-Jrjestelmn tarkoituksena on tietoverkon kautta tarjota asiakkaille
-mahdollisuus vuokrata kotitihin ammattitaitoista tyvoimaa
+Järjestelmän tarkoituksena on tietoverkon kautta tarjota asiakkaille
+mahdollisuus vuokrata kotitöihin ammattitaitoista tyvoimaa
 kilpailukykyisin hinnoin. Yritys hoitaa asiakkaidensa laskutuksen
-tavanomaiseen tapaan; asiakas maksaa tyntekijlle tysuoritteen
-kteismaksuna tai asiakkaalle lhetetn lasku. Huomionarvoista on, ett
-tyntekij voi kieltyty tehtvst, joka olisi suoritettava yli 10 km:n pss
+tavanomaiseen tapaan; asiakas maksaa työntekijälle työsuoritteen
+käteismaksuna tai asiakkaalle lähetetään lasku. Huomionarvoista on, että
+työntekijä voi kieltytyä tehtävästä, joka olisi suoritettava yli 10 km:n päässä
 Home-Service:n toimipaikasta.
 
 Toimintoja (valitaan): \
-a)  Vuokrauspalvelutarjonnan katselu sislten tuntihinnoittelun \
-b)  Henkil- / yhteystietojen sytt \
-c)  Palvelun ja tyntekijn varaus / peruutus \
+a)  Vuokrauspalvelutarjonnan katselu sisältäen tuntihinnoittelun \
+b)  Henkilö- / yhteystietojen syöttö \
+c)  Palvelun ja työntekijän varaus / peruutus \
 d)  Vapaiden ajankohtien katselu \
-e)  Tyntekijn yllpito \
+e)  Työntekijän ylläpito \
 f)  Varaustilanteen katselu \
-g)  Palvelutarjonnan yllpito \
+g)  Palvelutarjonnan ylläpito \
   \
-Kohdat e, f ja g ovat tarkoitettu yllpidolle!
+Kohdat e, f ja g ovat tarkoitettu ylläpidolle!
