@@ -16,7 +16,7 @@ tmpl = unlines [
 doInclude :: Block -> IO Block
 doInclude cb@(CodeBlock (id, classes, namevals) contents) =
   case lookup "execute" namevals of
-       Just f     -> return . (CodeBlock (id, classes, namevals)) =<< readProcess f [] contents
+       Just f     -> return . Plain . (\d -> [d]) . (Str) =<< readProcess f [] contents
        Nothing    -> return cb
 doInclude x = return x
 
