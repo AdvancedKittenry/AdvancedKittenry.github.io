@@ -7,6 +7,9 @@ reverse = $(if $(wordlist 2,2,$(1)),$(call reverse,$(wordlist 2,$(words $(1)),$(
 
 all: ${DIRS} ${HTML}
 
+inlinescripting: inlinescripting.hs
+	ghc inlinescripting.hs
+
 ${DIRS}:
 	mkdir -p $@
 
@@ -15,9 +18,9 @@ src/templates/navigation-level-0.html: make-navigation.sh make-indexes.py ${DIRS
 
 ${TEMPLATES}:
 
-${HTML}: % : src/${%:.html=.markdown} ${DEPS}
+${HTML}: % : src/${%:.html=.markdown} ${DEPS} inlinescripting
 	./make-html.sh src/${*:.html=.markdown} > $*
 
 clean:
-	rm -f ${HTML} src/templates/navigation-level-*.html
+	rm -f ${HTML} src/templates/navigation-level-*.html inlinescripting inlinescripting.o inlinescripting.hi
 	rmdir $(call reverse, ${DIRS} )

@@ -1,1 +1,4 @@
 *.swp
+inlinescripting
+inlinescripting.hi
+inlinescripting.o

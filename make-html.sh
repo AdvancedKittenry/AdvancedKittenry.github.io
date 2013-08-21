@@ -5,6 +5,7 @@ DIRPREFIX=`dirname $1 | cut -c 5- | sed -e "s/[^\/]\+\/\?/..\//g"`
 LEVEL=$[`dirname $1 | sed -e s/[^\/]*//g | wc -m`-1]
 
 ./filter.pl "$1" |                  \
+./inlinescripting |                 \
 pandoc                              \
     --to html5                      \
     --section-divs                  \
