@@ -1,10 +1,16 @@
 % Työryhmätiedotus
 <!-- Arvosanamaksimi: 5 -->
-<!-- Vaikeustaso: Keskitasoa -->
+<!-- Vaikeustaso: Haastavampi -->
+<comment>
+Kirjautuminen:        On
+3 tietokohdetta:      On
+2 CRUD:ia:            On
+Monesta-moneen-suhde: On
+</comment>
 
 **IK99HL1**
 
-Harjoitustyössä tehdän tiedotusjärjestelmä työryhmäkäyttöön. Käyttäjä
+Harjoitustyössä tehdään tiedotusjärjestelmä työryhmäkäyttöön. Käyttäjä
 voi lukea järjestelmän tallennettuja kirjoituksia ja lisätä tietokantaan
 uusia kirjoituksia, jotka voivat olla myös vastineita aiempiin
 kirjoituksiin. Kirjoituksia voi hakea kirjoittajan nimen tai aiheen tai
@@ -16,13 +22,13 @@ artikkeleihin liitetään tieto henkilöistä jotka ovat lukeneet ne. Tämä tie
 on kaikkien lukijoiden saatavissa.
 
 Järjestelmän ylläpitäjällä on oma liittymä, jonka kautta hän ylläpitää työryhmän
-jäsentietoja, siivoaa kirjoituskantaa ja määrittelee aiheita.
+jäsentietoja, siivoaa kirjoituskantaa ja määrittelee aiheita, joiden perusteella kirjoituksia voi ryhmitellä.
 
-Toimintoja, esim: \
-a)  Kirjoituksen lisääminen \
-b)  Kirjoitusten näyttäminen eri kriteerein \
-c)  Työryhmään jäsenen lisääminen ja poistaminen \
-d)  Vastineen laatiminen \
-e)  Kirjoitusten poistaminen \
-f)  Aiheen määrittely \
- 
+Toimintoja:
+-  kirjautuminen
+-  kirjoituksen lisääminen
+-  kirjoitusten näyttäminen eri kriteerein
+-  työryhmään jäsenen lisääminen, muokkaaminen ja poistaminen
+-  vastineen laatiminen ja muokkaus
+-  kirjoitusten poistaminen
+-  aiheiden määrittely, muokkaus ja poisto

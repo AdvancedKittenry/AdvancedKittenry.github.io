@@ -1,6 +1,12 @@
 % Huutokauppa
 <!-- Arvosanamaksimi: 5 -->
-<!-- Vaikeustaso: Keskitasoa -->
+<!-- Vaikeustaso: Haastavampi -->
+<comment>
+Kirjautuminen:        OK
+3 tietokohdetta:      OK
+2 CRUD:ia:            OK
+Monesta-moneen-suhde: OK
+</comment>
 
 **IS97HL4**
 
@@ -20,12 +26,14 @@ korkein tarjous ja erityisesti huomattavat poikkeamat tarjoushinnassa.
 Tällaisissa tapauksissa meklari varmistaa tarjouksen aitouden. Näin
 tehdäään myös aina ennen kaupan sulkemista. Varmistus voidaan hoitaa
 sähköpostitse. Jos huutokaupan päättyessä viimeisin tarjous ei ollut
-aito myydään tavara edelliselle tarjoajalle, jne. \
-  \
-Toteutettavat osat (valitaan): \
-a)  Tuotetietojen syöttö \
-b)  Tuotetietojen katselu ja tarjouksen teko \
-c)  Meklarin seurantalista \
-d)  Lasku asiakkaalle \
-e)  Kaupan sulkeminen \
+aito myydään tavara edelliselle tarjoajalle, jne.
  
+Toimintoja:
+-  Tuotetietojen syöttö ja muokkaus
+-  Tuoteluokkien muokkaus, lisäys ja poisto
+-  Tuotetietojen katselu ja tarjouksen teko
+-  Kirjautuminen
+-  Tarjouksen tekeminen
+-  Meklarin seurantalista
+-  Lasku asiakkaalle
+-  Kaupan sulkeminen

@@ -1,6 +1,12 @@
 % Hiihtokisojen tulospalvelu
 <!-- Arvosanamaksimi: 5 -->
 <!-- Vaikeustaso: Keskitasoa -->
+<comment>
+Kirjautuminen:        OK
+3 tietokohdetta:      OK
+2 CRUD:ia:            OK
+Monesta-moneen-suhde: OK
+</comment>
 
 **IS97HL7**
 
@@ -15,12 +21,13 @@ kaukana kärjestä, paljonko edellä seuraavasta). Väliaikapisteraporteissa
 pitäisi olla tieto kilpailijoista, jotka eivät ole vielä saapuneet
 väliaikapisteeseen.
 
-Toteutettavia osia: \
-a)  Kilpailijan perustiedot \
-b)  Lähtölistan laatiminen \
-c)  Väliaikapisteen tilanne \
-d)  Lopputulokset \
-e)  Väliajan / loppuajan kirjaus \
-f)  Kilpailijan sijoittuminen matkalla \
-g)  Lähtölistan katselu \
+Toimintoja:
+-  Kilpailijan perustietojen lisäys, muokkaus ja poisto
+-  Kisan luominen ja muokkaus, kilpailijoiden lisäys kisaan
+-  Lähtölistan laatiminen
+-  Väliaikapisteen tilanne
+-  Lopputulokset
+-  Väliajan / loppuajan kirjaus ja kirjaajan kirjautuminen
+-  Kilpailijan sijoittuminen matkalla
+-  Lähtölistan katselu
  

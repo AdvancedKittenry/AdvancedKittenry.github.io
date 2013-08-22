@@ -1,6 +1,12 @@
 % Ostoskassi
 <!-- Arvosanamaksimi: 5 -->
 <!-- Vaikeustaso: Keskitasoa -->
+<comment>
+Kirjautuminen:        On
+3 tietokohdetta:      On
+2 CRUD:ia:            On
+Monesta-moneen-suhde: On
+</comment>
 
 **IK98HL4**
 
@@ -18,10 +24,11 @@ jolla niitä voidaan ylläpitää.
 Tiedot paikkavarauksista saadaan ulkopuoliselta paikanvarausjärjestelmältä
 (eli ne ovat valmiina tietokannassa)
 
-Toimintoja: \
-a)  Tilauksen laatiminen \
-b)  Tilauksen muuttaminen \
-c)  Tilauksen peruutus \
-d)  Lentokohtaiset tilausraportit toimitusta varten \
-e)  Toimitusasiakirja ja lasku \
- 
+Toimintoja:
+-  Kirjautuminen
+-  Tilauksen laatiminen
+-  Tilauksen muuttaminen
+-  Tilauksen peruutus
+-  Lentokohtaiset tilausraportit toimitusta varten
+-  Toimitusasiakirja ja lasku
+-  Tuotetietojen lisäys, muokkas ja poisto

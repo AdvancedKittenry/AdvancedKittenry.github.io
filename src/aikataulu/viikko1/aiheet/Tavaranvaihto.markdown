@@ -1,6 +1,12 @@
 % Tavaranvaihto
 <!-- Arvosanamaksimi: 5 -->
-<!-- Vaikeustaso: Keskitasoa -->
+<!-- Vaikeustaso: Haastavampi -->
+<comment>
+Kirjautuminen:        On
+3 tietokohdetta:      On
+2 CRUD:ia:            On
+Monesta-moneen-suhde: On
+</comment>
 
 **IS97HL15**
 
@@ -23,10 +29,13 @@ eikä tarjousta saa lukittua. Vastatarjousten määrä näkyy kaikille, mutta
 sisältö ei näy. Seuraan kuuluu useiden eri tyyppisten kohteiden
 keräilijöitä.
 
-Toimintoja: \
-a)  Tarjouksen teko \
-b)  Tarjonnan katselu \
-c)  Tarjouksen lukitseminen \
-d)  Vastatarjouksen teko \
-e)  Lukon avaus \
- 
+Toimintoja:
+-  Rekisteröityminen
+-  Kirjautuminen
+-  Tarjouksen teko, muokkaus ja poisto
+-  Tarjonnan katselu
+-  Tarjouksen lukitseminen
+-  Vastatarjouksen teko
+-  Tarjouksen hyväksyminen
+-  Lukon avaus
+-  Käyttäjätilin tietojen muutokset ja poistaminen

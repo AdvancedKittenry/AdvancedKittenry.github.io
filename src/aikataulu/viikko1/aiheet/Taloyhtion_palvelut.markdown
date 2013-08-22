@@ -1,11 +1,17 @@
 % Taloyhtiön palvelut
 <!-- Arvosanamaksimi: 5 -->
-<!-- Vaikeustaso: Keskitasoa -->
+<!-- Vaikeustaso: Haastava -->
+<comment>
+Kirjautuminen:        On
+3 tietokohdetta:      On
+2 CRUD:ia:            On
+Monesta-moneen-suhde: On
+</comment>
 
 **IK98HL3**
 
 Tehtävänäsi on laatia järjestelmä, jolla voidaan varata
-asunto-/kiinteäistöyhtiön yleiskäyttöisiä resursseja kuten saunaa, pesutupaa,
+asunto-/kiinteistöyhtiön yleiskäyttöisiä resursseja kuten saunaa, pesutupaa,
 yms. Yhtiön isännöitsijä määrittelee ajat, joille varauksia voi tehdä.
 Järjestelmän avulla voidaan tehdä sekä kertavarauksia että pysyväisvarauksia.
 Kertavarauksia voi tehdä aikaisintaan 2 viikkoa etukäteen.
@@ -28,12 +34,15 @@ asukkaat. Jokaiseen huoneistoon on toimitettu salasana, jolla varauksen
 tekijä osoittaa käyttoikeutensa. Salasanan voi vaihtaa.
 
 Isännöitsijä saa järjestelmästä yhteenvetoja resurssien käytöstä ja
-maksutilanteesta. Hän voi tuottaa myös laskuja kenelle tahansa.
+maksutilanteesta. Hän voi tuottaa myös laskuja kenelle tahansa ja
+lisätä ja poistaa varattavia aikoja ja tiloja
 
-Toimintoja: \
-a)  Varauksen teko ja peruutus \
-b)  Laskun laatiminen \
-c)  Yhteenveto resurssin käytöstä \
-d)  Yhteenveto maksuista \
-e)  Maksetun laskun kirjaus \
-f)  Salasanan vaihto
+Toimintoja:
+-  Kirjautuminen
+-  Varauksen teko ja peruutus
+-  Laskun laatiminen
+-  Yhteenveto resurssin käytöstä
+-  Yhteenveto maksuista
+-  Maksetun laskun kirjaus
+-  Salasanan vaihto
+-  Isännöitsijän muutostyöt: aikojen ja varattavien tilojen lisäys, poisto ja muokkaus (saattaa perua varauksia)

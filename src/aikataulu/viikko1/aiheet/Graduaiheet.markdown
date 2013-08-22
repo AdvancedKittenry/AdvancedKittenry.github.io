@@ -1,6 +1,12 @@
 % Graduaiheet
 <!-- Arvosanamaksimi: 5 -->
-<!-- Vaikeustaso: Keskitasoa -->
+<!-- Vaikeustaso: Haastava -->
+<comment>
+Kirjautuminen:        OK
+3 tietokohdetta:      OK
+2 CRUD:ia:            OK
+Monesta-moneen-suhde: OK
+</comment>
 
 **IS97HL23**
 
@@ -14,16 +20,16 @@ antamista. Opiskelijat  ja opettajat voisivat järjestelmästä tutkia,
 keneltä aiheita saa ja mitä aiheita kukin parhaillaan ohjaa. Samoin
 valmisteilla olevat aiheet saataisiin esiin. Tutkielman tekijäätieto
 näkyisi ainakin ohjaajille ja valmiiden töiden osalta kaikille. Aiheita
-ja ohjaajia voisi luokitella aihepiireittäin. \
+ja ohjaajia voisi luokitella aihepiireittäin.
  
 
-Toimintoja \
-a)  Aiheen kirjaus \
-b)  Aiheen varaus opiskelijalle \
-c)  Käynnissä olevien aiheiden luettelo aihepiireittäin \
-d)  Valmisteilla olevien luettelo aihepiireittäin \
-e)  Valmiiden gradujen luettelo \
-f)  Gradun historiatiedot vain ohjaajille \
-g)  Historiamerkinnän teko graduun liittyen \
-  \
- 
+Toimintoja
+-  Kirjautuminen
+-  Aiheen kirjaus ja muokkaus
+-  Aiheen poistaminen (vain jos sitä ei ole varattu)
+-  Aiheen varaus opiskelijalle
+-  Käynnissä olevien aiheiden luettelo aihepiireittäin
+-  Valmisteilla olevien luettelo aihepiireittäin
+-  Valmiiden gradujen luettelo
+-  Gradun historiatiedot vain ohjaajille
+-  Historiamerkinnän teko ja korjaus graduun liittyen

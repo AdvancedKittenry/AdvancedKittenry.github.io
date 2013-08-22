@@ -1,6 +1,12 @@
 % Rankkauslista
 <!-- Arvosanamaksimi: 5 -->
-<!-- Vaikeustaso: Keskitasoa -->
+<!-- Vaikeustaso: Haastava -->
+<comment>
+Kirjautuminen:        On
+3 tietokohdetta:      On
+2 CRUD:ia:            On
+Monesta-moneen-suhde: On
+</comment>
 
 **IS97HL1**
 
@@ -23,26 +29,27 @@ uudelleen niin, että järjestys säilyy, mutta piste-ero kapenee.
 Lajin kansainvälinen liitto haluaisi tehdää tosiaikaisen
 maailmanlaajuisen rankkauslistan. Tämä perustuu siihen, että turnauksen
 järjestäjät lähettävät www-lomakkeella turnaustiedot liittoon. Liitto
-päättää sitten turnauksesta arvosta ja siinä jaettavista pisteistä. 
+päättää sitten turnauksen arvosta ja siinä jaettavista pisteistä. 
 Turnauksen arvon määrääminen perustuu toisaalta turnauksessa jaettavien
 palkintojen arvoon ja toisaalta turnaukseen edellisenä vuotena
 osallistuneiden pelaajien rankkauspistesummaan. Paikallinen lajiliitto
 voi www-sivun kautta rekisteröidä pelaajan rankkauslistalle. Turnauksen
-järjestäjä kirjaa turnaustulokset www:n avulla järjestelmään ja
+järjestäjä kirjaa turnaustulokset netissä järjestelmään ja
 järjestelmä päivittää välittömästi pelaajan rankkausarvon. Kuka tahansa
 saa katsoa pelaajien rankkauslistaa. Turnausten järjestäjät saavat
 paikalliselta lajiliitolta tai suoraan kansainväliseltä liitolta
 tunnuksen, joka oikeuttaa heidät syöttämään turnaustiedot järjestelmään.
-\
-  \
-Toimintoja (valitaan toteutettavat) \
-a)  turnauksiin liittyvien hakemusten kirjaus \
-b)  pelaajan rekisteröinti \
-c)  turnaukseen ilmoittautuminen \
-d)  turnaukseen ilmoittautuneiden rakkaus \
-e)  turnaustulosten kirjaus \
-f)  vuotuinen rankkauspistenollaus \
-g)  yleinen rankkaustilanteen katselu \
-h)  lista turnaukseen osallistuneista pelaajista ja heidän
-sijoittumisensa sekä turnauksen rankkauspistesumma \
+
+ 
+Toimintoja:
+-  ylläpidon kirjautuminen
+-  turnauksiin liittyvien hakemusten kirjaus
+-  pelaajan rekisteröinti
+-  pelaajan tietojen muokkaus ja poisto
+-  turnaukseen ilmoittautuminen
+-  turnaukseen ilmoittautuneiden rankkaus
+-  turnaustulosten kirjaus ja korjaus
+-  vuotuinen rankkauspistenollaus
+-  yleinen rankkaustilanteen katselu
+-  lista turnaukseen osallistuneista pelaajista ja heidän sijoittumisensa sekä turnauksen rankkauspistesumma
  

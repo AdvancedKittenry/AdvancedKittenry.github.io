@@ -1,6 +1,12 @@
 % Tutkimusaineiston keräys
-<!-- Arvosanamaksimi: 5 -->
-<!-- Vaikeustaso: Keskitasoa -->
+<!-- Arvosanamaksimi: 4 -->
+<!-- Vaikeustaso: Helpohko -->
+<comment>
+Kirjautuminen:        On
+3 tietokohdetta:      On
+2 CRUD:ia:            ?
+Monesta-moneen-suhde: On
+</comment>
 
 **IS97HL22**
 
@@ -19,12 +25,12 @@ yhden tai useampia näytteitä. Näytteisiin voidaan liittää kuvailutietoa.
 Näytteet lähetetään tutkittavaksi ja mittaustulokset kirjataan
 tietokantaan niiden valmistuttua.
 
-Toimintoja (valitaan toteutettavat) \
-a)  Uuden tutkimuskohteen rekisteröinti \
-b)  Kenttätutkimuksen kirjaus \
-c)  Kohteen historiatietojen katselu \
-d)  Näytteen kirjaus \
-e)  Näytteen analyysin kirjaus \
-f)  Yhteenveto tutkijoiden toiminnasta \
-  \
- 
+Toimintoja:
+-  kirjautuminen:
+-  uuden tutkimuskohteen rekisteröinti ja muokkaus
+-  kenttätutkimuksen kirjaus ja muokkaus
+-  kohteen historiatietojen katselu
+-  näytteen kirjaus ja muokkaus
+-  näytteen analyysin kirjaus
+-  näytteen kommentointi
+-  yhteenveto tutkijoiden toiminnasta

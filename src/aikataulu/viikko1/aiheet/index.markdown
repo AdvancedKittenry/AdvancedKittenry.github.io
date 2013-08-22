@@ -1,11 +1,16 @@
 % Aiheet
 
 Ohessa olevassa listasta löydät tietokantasovelluksen valmiit aihe-ehdotukset
-arvosanamaksimeineen. Vitosen arvosanamaksimiin vaaditaan aiheelta ainakin seuraavat:
+vaikeusasteineen ja arvosanamaksimeineen. Vaikeusasteet ovat suuntaa-antavia,
+todellinen työn laajuus riippuu myös siitä mitä ohjaajan kanssa sovitaan.
+Vitosen arvosanamaksimiin vaaditaan aiheelta ainakin seuraavat:
   
 * Kirjautumisen toteuttaminen
 * Toteutettavia tietokohteita ainakin kolme
+* Vähintään kahteen tietokohteeseen pitää olla toteutettuna täysi [CRUD-nelikko](http://en.wikipedia.org/wiki/Create,_read,_update_and_delete): kohteen luominen, selailu, muokkaus, ja poisto.
 * Järjestelmässä on ainakin yksi monesta-moneen suhde tietokantojen välillä
+
+Parityön aiheeksi kelpaa ainoastaan vitosen arvosanamaksimilla varustettu aihe.
 
 Myös omaa aihetta saa ehdottaa tai toteuttaa aihe-ehdotuksesta oman variaationsa.
 Tälläisestä on sovittava aina erikseen ohjaajan kanssa, mutta 
@@ -65,12 +70,12 @@ cd src/aikataulu/viikko1/aiheet
 
 echo "| Työn nimi | Vaikeustaso | Maksimiarvosana |"
 echo "|-----------|-------------|-----------------|"
-for file in `find -not -name index.markdown -and -iname "*.markdown" -printf "%f\n" | LC_ALL=fi_FI.UTF-8 sort`; do
+for file in `find -not -name index.markdown -and -iname "*.markdown" -printf "%f\n"`; do
   htmlfile=${file%.markdown}.html
   title=`head -n 1 $file | sed -e "s/^ *% *//"`
   maksimiarvosana=`egrep -o "<\!-- Arvosanamaksimi: .* -->" $file | sed -e "s/<\!-- \+\w\+: \+\(.*\) *-->/\1/"`
   vaikeustaso=`egrep -o "<\!-- Vaikeustaso: .* -->" $file | sed -e "s/<\!-- \+\w\+: \+\(.*\) *-->/\1/"`
   echo "| [$title]($htmlfile) | $vaikeustaso | $maksimiarvosana |"
-done
+done | LC_ALL=fi_FI.UTF-8 sort
 
 ~~~~

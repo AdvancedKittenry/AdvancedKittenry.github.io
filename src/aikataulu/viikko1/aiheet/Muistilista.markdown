@@ -1,6 +1,12 @@
 % Muistilista
-<!-- Arvosanamaksimi: 5 -->
-<!-- Vaikeustaso: Keskitasoa -->
+<!-- Arvosanamaksimi: 4 tai 5 -->
+<!-- Vaikeustaso: Helppo -->
+<comment>
+Kirjautuminen:        On
+3 tietokohdetta:      On
+2 CRUD:ia:            On
+Monesta-moneen-suhde: Mahdollinen
+</comment>
 
 **IK10SS1**
 
@@ -11,20 +17,22 @@ Ossi Opiskelija tarvitsisi itselleen Ossin muistilistan, johon hän voisi
 listata askareitaan muistiin. Hän haluaisi tapahtumien olevan listassa,
 joka olisi loogisessa järjestyksessä askareen tärkeyden kanssa. Hänen tulisi
 pystyä laittamaan erilaisia tärkeysasteita askareille ja luokitella
-askareita eri ryhmiin. Luokat voivat sisältää aliluokkia.
+askareita eri ryhmiin. 
 
-Ohjelmiston tehtäviä:
+Hövelinä kaverina Ossi tarjoaa palvelunsa myös
+kavereidensa käyttöön jolloin kullakin kaverilla on oma käyttäjätunnus ja salasana,
+joihin liittyvät omat tärkeysasteensa ja luokkansa.
 
-Askereen lisäys ja poisto
+Luokat voivat sisältää aliluokkia tai yhdellä askareella voi olla monta luokkaa.
+Jommankumman ominaisuuden toteuttaminen tekee arvasanamaksimiksi vitosen, muuten
+työ on nelonen.
 
-Tärkeysasteen lisäys ja poisto
-
-Askareen tärkeyttäminen lisäyksessä tai myöhemmin
-
-Luokkien lisäys ja poisto
-
-Askareiden luokittelu
-
-Luokat voivat olla sisäkkäisiä
-
-Vaatii sisäänkirjautumisen
+Toimintoja:
+-  Kirjautuminen
+-  Askereen lisäys, muokkaus ja poisto
+-  Tärkeysasteen lisäys ja poisto
+-  Askareen tärkeyttäminen lisäyksessä tai myöhemmin
+-  Luokkien lisäys ja poisto
+-  Askareiden luokittelu
+-  Luokat voivat olla sisäkkäisiä
+-  Yhdellä askareella voi olla monta luokkaa

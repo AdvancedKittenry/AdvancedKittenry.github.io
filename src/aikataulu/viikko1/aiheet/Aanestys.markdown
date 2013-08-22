@@ -1,6 +1,12 @@
 % Äänestys
-<!-- Arvosanamaksimi: 5 -->
-<!-- Vaikeustaso: Keskitasoa -->
+<!-- Arvosanamaksimi: 3 tai 5 -->
+<!-- Vaikeustaso: Helppo -->
+<comment>
+Kirjautuminen:        ?
+3 tietokohdetta:      On
+2 CRUD:ia:            ?
+Monesta-moneen-suhde: On
+</comment>
 
 **IK98HL2**
 
@@ -18,8 +24,8 @@ pystyä tarjoamaan. äänestyksen järjestäjän toiveiden mukaan voidaan ääne
 -   kaikkien ehdokkaiden äänimäärät tai
 -   ei mitään tietoa äänestyksen kulusta.
 
-Äänestyksen järjestäjän on kyettävä antamaan vaihtoehdot sekä nihin liittyvät
-kuvailutiedot. Äänestyksen aikana ja sen loputtua jrjestjlle tuotetaan
+Äänestyksen järjestäjän on kyettävä antamaan vaihtoehdot sekä niihin liittyvät
+kuvailutiedot. Äänestyksen aikana ja sen loputtua järjestäjälle tuotetaan
 raportti äänestyksen tuloksista. Järjestäjä saa halutessaan myös raportin
 siitä, miten äänestysaktiviteetti on ajan suhteen jakautunut.
 
@@ -33,10 +39,14 @@ tietoa siitä, miten ko. äänestäjä on äänestänyt. Sensijaan sen valvomise
 äänestäjä äänestää vain kerran, voidaan tallentaa tieto, että hän on äänestnyt tai
 milloin hän on äänestänyt.
 
-Toimintoja: \
-a)  Anonyymiäänestys \
-b)  Identifioitu äänestys \
-c)  Äänestyksen määrittely \
-d)  Tulokset \
-e)  Aktiviteettiraportointi \
+Aiheen maksimiarvosana vaihtelee kolmesta viiteen riippuen siitä toteutetaanko
+kirjautuminen, käyttäjähallinta ja identifioitu äänestys.
+
+Toimintoja:
+-  Anonyymiäänestys
+-  Identifioitu äänestys, kirjautuminen
+-  Äänestyksen luominen, muuttaminen ja poistaminen
+-  Tulokset
+-  Aktiviteettiraportointi
+-  Rekisteröityneiden käyttäjien tietojen muuttaminen ja poisto
  

@@ -1,6 +1,12 @@
 % Projektin työaikaseuranta
-<!-- Arvosanamaksimi: 5 -->
-<!-- Vaikeustaso: Keskitasoa -->
+<!-- Arvosanamaksimi: 3 -->
+<!-- Vaikeustaso: Helpohko -->
+<comment>
+Kirjautuminen:        On
+3 tietokohdetta:      On
+2 CRUD:ia:            Ei
+Monesta-moneen-suhde: Ei
+</comment>
 
 **IK98HL1**
 
@@ -15,10 +21,12 @@ saa esiin myös itseensä liittyvät yhteenvetoraportit. Projektipäällikkö sa
 halutessaan käyttöönsä myös tiedot kunkin työntekijään yksityiskohtaisista
 kirjauksista.
 
-Toimintoja: \
-a)  Työaikakirjauksen teko \
-b)  Projektin perustaminen \
-c)  Henkilön liittäminen projektiin \
-d)  Projektipäällikön raportit \
-e)  Yksityiskohtainen työraportti \
+Toimintoja:
+-  Kirjautuminen
+-  Työaikakirjauksen teko
+-  Projektin perustaminen
+-  Henkilön liittäminen projektiin
+-  Henkilön poistaminen projektista
+-  Projektipäällikön raportit
+-  Yksityiskohtainen työraportti
  

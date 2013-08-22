@@ -1,6 +1,12 @@
 % Parturi-Kampaamo
 <!-- Arvosanamaksimi: 5 -->
-<!-- Vaikeustaso: Keskitasoa -->
+<!-- Vaikeustaso: Haastavampi -->
+<comment>
+Kirjautuminen:        On
+3 tietokohdetta:      On
+2 CRUD:ia:            On
+Monesta-moneen-suhde: On
+</comment>
 
 **IK99HL2**
 
@@ -20,11 +26,13 @@ saavat palveluista kanta-asiakasalennuksen. Myös sellaisten asiakkaiden
 varaukset hyväksytään, jotka eivät halua näin menetellä. Varauksen yhteydessä
 asiakas saa varausnumeron, jonka avulla hän voi perua varauksensa.
 
-Toimintoja: \
-a)  Kampaajan työaikojen kirjaus ja muutokset \
-b)  Kampaamon palvelujen määrittely \
-c)  Kampaajien palveluvalikoiman määrittely ja muutos \
-d)  Varauksen teko ja peruutus \
-e)  Työlistat henkilöstölle \
-f)  Yhteenveto johdolle \
- 
+Toimintoja:
+-  uuden kampaajan palkkaaminen 
+-  kampaajan erottaminen
+-  kampaajan työaikojen kirjaus ja muutokset
+-  kampaamon palvelujen määrittely
+-  kampaajien palveluvalikoiman määrittely ja muutos
+-  varauksen teko ja peruutus
+-  asiakkaan rekisteröityminen ja kirjautuminen
+-  työlistat henkilöstölle
+-  yhteenveto johdolle

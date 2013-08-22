@@ -1,6 +1,12 @@
 % Ystävänvälityspalvelu
 <!-- Arvosanamaksimi: 5 -->
 <!-- Vaikeustaso: Keskitasoa -->
+<comment>
+Kirjautuminen:        On
+3 tietokohdetta:      On
+2 CRUD:ia:            On
+Monesta-moneen-suhde: On
+</comment>
 
 **IS97HL6**
 
@@ -22,12 +28,12 @@ julkinen esite.  Asiakas voi myös antaa PariTELE:lle luvan näyttää
 salaisia esittelysivujaan tietylle toiselle asiakkaalle, joko tietyn
 sivun tai kaikki salaiset sivut.
 
-Toteutettavat osat (valitaan): \
-a)  Asiakkaan rekisteröityminen \
-b)  Esittelysivujen haku ja katselu \
-c)  Viestin lähettäminen \
-d)  Viestien katselu ja salaiset esittelysivut \
-e)  Laskun lähetys asiakkaalle \
-f)  Yleisiä yhteenvetoja järjestelmän käytöstä \
-  \
- 
+Toimintoja:
+-  asiakkaan rekisteröityminen ja kirjautuminen
+-  esittelysivujen haku ja katselu
+-  viestin lähettäminen
+-  viestien katselu 
+-  esittelysivujne luonti, muokkaus ja poisto
+-  käyttäjätietojen muokkaus ja tilin poistaminen
+-  laskun lähetys asiakkaalle
+-  yleisiä yhteenvetoja järjestelmän käytöstä

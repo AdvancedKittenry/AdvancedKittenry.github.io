@@ -1,6 +1,12 @@
 % Vuokra-asuntojen välitys
 <!-- Arvosanamaksimi: 5 -->
-<!-- Vaikeustaso: Keskitasoa -->
+<!-- Vaikeustaso: Haastava! -->
+<comment>
+Kirjautuminen:        On
+3 tietokohdetta:      On
+2 CRUD:ia:            On
+Monesta-moneen-suhde: On
+</comment>
 
 **IKS97HL1**
 
@@ -44,11 +50,13 @@ huoneistoista ja jakaa ne työntekijöille. Välitystoimihenkilöt
 suorittavat tarkistuskäyntejä sekä käyvät näyttämässä huoneistoja. He
 laativat arviointiraportteja ja  vuokrasopimuksia.
 
-Toimintoja: \
-a)  välityspyyntö \
-b)  arvioinnin kirjaus \
-c)  vastuuhenkilön määrääminen \
-d)  tarjonnan katselu \
-e)  asiakkaan rekisteröityminen \
-f)  näyttöajan varaus \
- 
+Toimintoja:
+-  asiakkaan rekisteröityminen ja kirjautuminen
+-  tarjonnan katselu
+-  välityspyyntö
+-  vuokrasopimuksen kirjaaminen
+-  vuokrahuoneiston kirjaaminen ja tietojen muokkaus
+-  arvioinnin kirjaus
+-  vastuuhenkilön määrääminen
+-  näyttöajan varaus
+-  vastuuhenkilöiden kirjaaminen, muokkaus ja poisto (ylläpidolle)

@@ -1,6 +1,12 @@
 % Palvelubisnes
 <!-- Arvosanamaksimi: 5 -->
-<!-- Vaikeustaso: Keskitasoa -->
+<!-- Vaikeustaso: Haastavampi -->
+<comment>
+Kirjautuminen:        On
+3 tietokohdetta:      On
+2 CRUD:ia:            On
+Monesta-moneen-suhde: On
+</comment>
 
 **IS97HL11**
 
@@ -18,11 +24,12 @@ palvellaan kerralla vain yhtä asiakasta. Asiakkaan tietoja ei
 rekisteröidä. Varauksen yhteydessä asiakas saa kuitenkin varausnumeron,
 jonka avulla hän voi perua varauksensa.
 
-Toimintoja: \
-a)  toimihenkilön esitteen teko \
-b)  esitteiden katselu \
-c)  varauksen teko \
-d)  varauksen peruminen \
-e)  työlista toimihenkilölle \
-f)  yhteenveto johdolle \
- 
+Toimintoja:
+-  toimihenkilön esitteen teko ja palveluvalikoiman sekä hintojen muokkaus
+-  toimihenkilön erottaminen
+-  esitteiden katselu
+-  varauksen teko
+-  varauksen peruminen
+-  johdon ja toimihenkilön kirjautuminen
+-  työlista toimihenkilölle
+-  yhteenveto johdolle

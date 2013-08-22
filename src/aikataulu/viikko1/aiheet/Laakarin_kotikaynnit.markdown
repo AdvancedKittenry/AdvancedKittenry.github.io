@@ -1,6 +1,12 @@
 % Lääkärin kotikäynnit
-<!-- Arvosanamaksimi: 5 -->
-<!-- Vaikeustaso: Keskitasoa -->
+<!-- Arvosanamaksimi: 4 -->
+<!-- Vaikeustaso: Helppo -->
+<comment>
+Kirjautuminen:        On
+3 tietokohdetta:      On
+2 CRUD:ia:            ?
+Monesta-moneen-suhde: On
+</comment>
 
 **IS97HL18**
 
@@ -16,10 +22,11 @@ potilaalle hoito-ohjeita tietokantaan, josta potilas näkee ne www-sivun
 kautta. Lääkäri laatii jokaisesta käynnistä raportin joka kirjataan.
 Raportteihin pitää päästä käsiksi lääkärin tai asiakkaan perusteella.
 
-Toimintoja \
-a)  Lääkärin tilaus \
-b)  Asiakkaaksi rekisteröityminen \
-c)  Potilaan historia lääkärille \
-d)  Lääkärin ohjelma \
-e)  Potilasraportointi \
+Toimintoja:
+-  Asiakkaan ja lääkärin kirjautuminen
+-  Lääkärin tilaus
+-  Asiakkaaksi rekisteröityminen
+-  Potilaan historia lääkärille: historian muokkaus ja lisäys
+-  Lääkärin ohjelma
+-  Potilasraportointi
  

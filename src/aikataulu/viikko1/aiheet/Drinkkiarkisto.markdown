@@ -1,6 +1,12 @@
 % Drinkkiarkisto
 <!-- Arvosanamaksimi: 5 -->
-<!-- Vaikeustaso: Keskitasoa -->
+<!-- Vaikeustaso: Haastavampi -->
+<comment>
+Kirjautuminen:        OK
+3 tietokohdetta:      OK
+2 CRUD:ia:            OK
+Monesta-moneen-suhde: OK
+</comment>
 
 **IK04JK1**
 
@@ -23,13 +29,14 @@ lomakkeeseen tai lukemalla resepti (tai useita reseptejä) esimerkiksi
 tekstitiedostosta. Järjestelmän ylläpitäjä voi antaa myös tavallisille
 käyttäjille ylläpito-oikeudet (ehkä vain reseptin lisäysoikeuden?).
 
-**Toimintoja:**(toteutettavat valitaan)
+Toimintoja:
 
+-   Kirjautuminen
 -   Reseptin haku
 -   Reseptien selailu
 -   Reseptin lisäys lomakkeella
 -   Reseptien sisäänluku tiedostosta
 -   Uuden reseptin ehdottaminen / ehdotuksen hyväksyminen
 -   Käyttäjätunnuksen luominen
--   ...
+-   Käyttäjätietojen muutos ja tilin poisto
 

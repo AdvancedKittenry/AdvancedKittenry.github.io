@@ -1,6 +1,12 @@
 % Lainahakemusten käsittely
-<!-- Arvosanamaksimi: 5 -->
-<!-- Vaikeustaso: Keskitasoa -->
+<!-- Arvosanamaksimi: 3 -->
+<!-- Vaikeustaso: Helppo -->
+<comment>
+Kirjautuminen:        On
+3 tietokohdetta:      On
+2 CRUD:ia:            ?, melkein
+Monesta-moneen-suhde: ?
+</comment>
 
 **IS98JP3**
 
@@ -8,21 +14,22 @@ Tehtävänä on laatia järjestelmä, jolla voidaan hoitaa pankin luotonanto.
 Asiakkaat jättävät lainahakemukset elektronisten lomakkeiden avulla ja
 saavat myös järjestelmältä aikanaan automaattisesti ilmoituksen käsittelyn
 tuloksesta. Lainahakemus hyväksytään, jos asiakkaalle ei ole kirjattu
-maksuhäiriöitä ja lainan määrä (huomioiden myös asiakkkaan aiemmat luotot) ei
+maksuhäiriöitä ja lainan määrä (huomioiden myös asiakkaan aiemmat luotot) ei
 ylitä asiakkaan kolmen vuoden nettopalkkaa. Asiakkaan nettopalkka
 arvioidaan asiakkaan tilille (kolmen viimeisen kuukauden aikana)
-tulleiden maksujen avulla. Lainan korko määrytyy päivittäin vaihtuvien
+tulleiden maksujen avulla. Lainan korko määräytyy päivittäin vaihtuvien
 viitekorkojen perusteella.
 
-Huom. Eri toimintojen käynnistminen voi olla manuaalinen toimenpide tai
-ne voidaan tehdä automaattisiksi laukaisimien avulla.
+Huom. Eri toimintojen käynnistäminen voi olla manuaalinen toimenpide tai
+ne voidaan tehdä automaattisiksi laukaisimien avulla. Kysy aiheesta lisää ohjaajalta.
 
-Toimintoja: \
-a)  Lainahakemuksen vastaanotto. \
-b)  Lainapäätöksen tiedottaminen asiakkaalle. \
-c)  Asiakkaan vuoden nettopalkan arviointi. \
-e)  Asiakkaan lainatietojen haku. \
-f)  Asiakkaan maksuhäiriöiden tarkastaminen. \
-g)  Hyväksytyn lainan tietojen talletus. \
-h)  Asiakastietojen lisäys, muutos ja selaus. \
+Toimintoja:
+-  Asiakaspalvelijan ja asiakkaan kirjautuminen
+-  Lainahakemuksen vastaanotto.
+-  Lainapäätöksen tiedottaminen asiakkaalle.
+-  Asiakkaan vuoden nettopalkan arviointi.
+-  Asiakkaan lainatietojen haku.
+-  Asiakkaan maksuhäiriöiden tarkastaminen.
+-  Hyväksytyn lainan tietojen talletus.
+-  Asiakastietojen lisäys, muutos ja selaus.
  

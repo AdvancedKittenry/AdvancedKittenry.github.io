@@ -1,6 +1,12 @@
 % Työntekijänvuokraus kotitöihin
 <!-- Arvosanamaksimi: 5 -->
-<!-- Vaikeustaso: Keskitasoa -->
+<!-- Vaikeustaso: Haastavampi -->
+<comment>
+Kirjautuminen:        On
+3 tietokohdetta:      On
+2 CRUD:ia:            On
+Monesta-moneen-suhde: On
+</comment>
 
 **IS97JE2**
 
@@ -27,13 +33,13 @@ käteismaksuna tai asiakkaalle lähetetään lasku. Huomionarvoista on, että
 työntekijä voi kieltytyä tehtävästä, joka olisi suoritettava yli 10 km:n päässä
 Home-Service:n toimipaikasta.
 
-Toimintoja (valitaan): \
-a)  Vuokrauspalvelutarjonnan katselu sisältäen tuntihinnoittelun \
-b)  Henkilö- / yhteystietojen syöttö \
-c)  Palvelun ja työntekijän varaus / peruutus \
-d)  Vapaiden ajankohtien katselu \
-e)  Työntekijän ylläpito \
-f)  Varaustilanteen katselu \
-g)  Palvelutarjonnan ylläpito \
-  \
-Kohdat e, f ja g ovat tarkoitettu ylläpidolle!
+Toimintoja:
+-  vuokrauspalvelutarjonnan katselu sisältäen tuntihinnoittelun
+-  henkilö- / yhteystietojen syöttö / asiakkaan kirjautuminen
+-  palvelun ja työntekijän varaus / peruutus
+-  vapaiden ajankohtien katselu
+-  ylläpitoon kirjautuminen
+-  työntekijän lisäys, poisto ja muokkaus
+-  työntekijän työtehtävien hallinta
+-  varaustilanteen katselu
+-  palvelutarjonnan ylläpito 

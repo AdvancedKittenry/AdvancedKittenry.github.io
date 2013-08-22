@@ -1,6 +1,12 @@
 % Vedonlyönti
 <!-- Arvosanamaksimi: 5 -->
-<!-- Vaikeustaso: Keskitasoa -->
+<!-- Vaikeustaso: Haastava! -->
+<comment>
+Kirjautuminen:        On
+3 tietokohdetta:      On
+2 CRUD:ia:            On
+Monesta-moneen-suhde: On
+</comment>
 
 **IS97HL21**
 
@@ -23,21 +29,23 @@ vedonlyöntipanoksesta jaetaan voittajille hyvittämällä summa heidän
 pankkitileilleen (ei siis pelitilille). Pelaajille näytetään koko ajan,
 mikä on sen hetkinen jaettava potti ja mitkä ovat eri vaihtoehtojen
 kertoimet. Jos mahdollista pelaajalle näytetään myös tietoja kisan
-osapuolten aiemmista sijoituksista. \
+osapuolten aiemmista sijoituksista.
 Asiakas voi tarjota kohteita vedonlyöntiin. Kohde laitetaan
 ehdokaskohteeksi ja tiedustellaan olisiko muilla asiakkailla
 kiinnostusta lyödä vetoa asiasta. Jos kiinnostusta ilmenee, kohde
 avataan vedonlyöntiin.
 
-Toimintoja \
-a)  Asiakkaaksi rekisteröityminen \
-b)  Kohteen avaus ja kohdetietojen kirjaus \
-c)  Vedon asetus ja sen kuittaus \
-d)  Vedonlyöntikohteen valinta \
-e)  Vedonlyöntikohteen esittely \
-f)  Tilastoja \
-g)  Vedonlyöntikohteen tarjoaminen \
-h)  Ehdokaskohteen kommentointi
+Toimintoja:
+-  Asiakkaaksi rekisteröityminen ja kirjautuminen
+-  Uuden salasanalistan pyyntö
+-  Vedon asetus ja sen kuittaus
+-  Vedonlyöntikohteen valinta
+-  Vedonlyöntikohteen esittely
+-  Tilastoja
+-  Vedonlyöntikohteen tarjoaminen
+-  Ylläpidon kirjautuminen
+-  Ehdokaskohteen kommentointi
+-  Kohteen avaus ja kohdetietojen kirjaus
+-  Kertoimien määritteleminen (voi olla automaattinen)
 
-Tässä voidaan rajoittua, jonkin tietyn tyyppisiin vetoihin. \
- 
+Sovelluksessa voidaan rajoittua vain tietyntyyppisiin vetoihin.

@@ -1,6 +1,12 @@
 % Kurssin kotisivu
-<!-- Arvosanamaksimi: 5 -->
-<!-- Vaikeustaso: Keskitasoa -->
+<!-- Arvosanamaksimi: 4 tai 5 -->
+<!-- Vaikeustaso: Keskitasoa/Haastava -->
+<comment>
+Kirjautuminen:        ?
+3 tietokohdetta:      OK
+2 CRUD:ia:            OK
+Monesta-moneen-suhde: OK
+</comment>
 
 **IS97HL17**
 
@@ -27,13 +33,13 @@ tiedostoon.
 Opettajalla voi olla monia kursseja ja hän voi liittää näiden sivuille
 samaa materiaalia. Materiaali pitäisi tällöin taltioida vain kertaalleen.
 
-Esimerkkin voisi käyttää [Informaatiojärjestelmät -kurssin
+Esimerkkinä voi käyttää entisen [Informaatiojärjestelmät -kurssin
 kotisivua](http://www.cs.helsinki.fi/~laine/info/k99/).
 
-Toimintoja: \
-a)  Mitä uutta? \
-b)  Asiaryhmiin perustuva sivu \
-c)  Komponentin lisäys sivulle \
-d)  Komponentin poisto sivulta \
-e)  Aiheryhmään lisäys, poisto, muutos \
- 
+Toimintoja:
+-  Mitä uutta?
+-  Asiaryhmiin perustuva sivu
+-  Komponentin lisäys sivulle
+-  Komponentin muokkaus, poisto ja järjestyksessä siirto
+-  Aiheryhmään lisäys, poisto, muutos
+-  Kurssien ja vastuuhenkilöiden luominen, poistaminen ja kirjautuminen (valinnainen) 
