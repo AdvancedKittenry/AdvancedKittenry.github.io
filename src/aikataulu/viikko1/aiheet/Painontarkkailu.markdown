@@ -1,5 +1,6 @@
 % Painontarkkailu
----------------
+<!-- Arvosanamaksimi: 5 -->
+<!-- Vaikeustaso: Keskitasoa -->
 
 **IK98HL5**
 

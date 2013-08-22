@@ -1,5 +1,6 @@
 % Vuokra-asuntojen välitys
-----------------------------
+<!-- Arvosanamaksimi: 5 -->
+<!-- Vaikeustaso: Keskitasoa -->
 
 **IKS97HL1**
 

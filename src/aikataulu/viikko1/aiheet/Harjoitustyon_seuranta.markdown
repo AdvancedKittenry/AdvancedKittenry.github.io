@@ -1,5 +1,6 @@
 % Harjoitustyön seuranta
----------------------
+<!-- Arvosanamaksimi: 5 -->
+<!-- Vaikeustaso: Keskitasoa -->
 
 **IS98HL1**
 

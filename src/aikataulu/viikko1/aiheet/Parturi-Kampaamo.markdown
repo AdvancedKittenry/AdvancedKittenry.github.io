@@ -1,5 +1,6 @@
 % Parturi-Kampaamo
-----------------
+<!-- Arvosanamaksimi: 5 -->
+<!-- Vaikeustaso: Keskitasoa -->
 
 **IK99HL2**
 

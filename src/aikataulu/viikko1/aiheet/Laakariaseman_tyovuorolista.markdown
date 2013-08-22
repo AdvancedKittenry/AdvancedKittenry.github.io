@@ -1,5 +1,6 @@
 % Lääkäriaseman työvuorolista
------------------------
+<!-- Arvosanamaksimi: 5 -->
+<!-- Vaikeustaso: Keskitasoa -->
 
 **IS98JP1**
 

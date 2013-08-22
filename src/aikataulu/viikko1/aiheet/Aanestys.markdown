@@ -1,5 +1,6 @@
 % Äänestys
-------
+<!-- Arvosanamaksimi: 5 -->
+<!-- Vaikeustaso: Keskitasoa -->
 
 **IK98HL2**
 

@@ -1,5 +1,6 @@
 % Tukkuliikkeen tilaustenkäsittely
--------------------------------
+<!-- Arvosanamaksimi: 5 -->
+<!-- Vaikeustaso: Keskitasoa -->
 
 **IS98JP2**
 

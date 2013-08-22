@@ -1,5 +1,6 @@
 % Hiihtokisojen tulospalvelu
---------------------------
+<!-- Arvosanamaksimi: 5 -->
+<!-- Vaikeustaso: Keskitasoa -->
 
 **IS97HL7**
 

@@ -1,5 +1,6 @@
 % Usein kysytyt kysymykset
------------------------------------------------------
+<!-- Arvosanamaksimi: 5 -->
+<!-- Vaikeustaso: Keskitasoa -->
 
 **IS97HL16**
 

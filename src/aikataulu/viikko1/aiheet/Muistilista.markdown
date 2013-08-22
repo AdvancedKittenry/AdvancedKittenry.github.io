@@ -1,5 +1,6 @@
 % Muistilista
------------
+<!-- Arvosanamaksimi: 5 -->
+<!-- Vaikeustaso: Keskitasoa -->
 
 **IK10SS1**
 

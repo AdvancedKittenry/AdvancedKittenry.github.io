@@ -1,5 +1,6 @@
 % Kuluttajan tuki Ry
-------------------
+<!-- Arvosanamaksimi: 5 -->
+<!-- Vaikeustaso: Keskitasoa -->
 
 **IS97HL24**
 

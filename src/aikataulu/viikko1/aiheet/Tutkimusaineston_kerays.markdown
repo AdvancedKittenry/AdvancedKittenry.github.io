@@ -1,5 +1,6 @@
 % Tutkimusaineiston keräys
------------------------
+<!-- Arvosanamaksimi: 5 -->
+<!-- Vaikeustaso: Keskitasoa -->
 
 **IS97HL22**
 

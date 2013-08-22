@@ -1,5 +1,6 @@
 % Rankkauslista
--------------
+<!-- Arvosanamaksimi: 5 -->
+<!-- Vaikeustaso: Keskitasoa -->
 
 **IS97HL1**
 

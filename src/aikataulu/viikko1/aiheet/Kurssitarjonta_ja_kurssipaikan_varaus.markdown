@@ -1,5 +1,6 @@
 % Kurssitarjonta ja kurssipaikan varaus
--------------------------------------
+<!-- Arvosanamaksimi: 5 -->
+<!-- Vaikeustaso: Keskitasoa -->
 
 **IS97HL14**
 

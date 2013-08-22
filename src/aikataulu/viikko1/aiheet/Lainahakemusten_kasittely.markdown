@@ -1,5 +1,6 @@
 % Lainahakemusten käsittely
-------------------------
+<!-- Arvosanamaksimi: 5 -->
+<!-- Vaikeustaso: Keskitasoa -->
 
 **IS98JP3**
 

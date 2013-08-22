@@ -63,13 +63,14 @@ Muut
 ~~~~ {execute=bash}
 cd src/aikataulu/viikko1/aiheet
 
-echo "| Työn nimi |  Maksimiarvosana |"
-echo "|-----------|------------------|"
+echo "| Työn nimi | Vaikeustaso | Maksimiarvosana |"
+echo "|-----------|-------------|-----------------|"
 for file in `find -not -name index.markdown -and -iname "*.markdown" -printf "%f\n" | LC_ALL=fi_FI.UTF-8 sort`; do
   htmlfile=${file%.markdown}.html
   title=`head -n 1 $file | sed -e "s/^ *% *//"`
-  maksimiarvosana=5
-  echo "| [$title]($htmlfile) | $maksimiarvosana "
+  maksimiarvosana=`egrep -o "<\!-- Arvosanamaksimi: .* -->" $file | sed -e "s/<\!-- \+\w\+: \+\(.*\) *-->/\1/"`
+  vaikeustaso=`egrep -o "<\!-- Vaikeustaso: .* -->" $file | sed -e "s/<\!-- \+\w\+: \+\(.*\) *-->/\1/"`
+  echo "| [$title]($htmlfile) | $vaikeustaso | $maksimiarvosana |"
 done
 
 ~~~~

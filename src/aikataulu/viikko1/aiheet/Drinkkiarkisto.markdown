@@ -1,5 +1,6 @@
 % Drinkkiarkisto
---------------
+<!-- Arvosanamaksimi: 5 -->
+<!-- Vaikeustaso: Keskitasoa -->
 
 **IK04JK1**
 
