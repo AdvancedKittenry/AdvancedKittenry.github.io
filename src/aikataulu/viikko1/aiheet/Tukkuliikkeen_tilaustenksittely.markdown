@@ -1,4 +1,4 @@
-% Tukkuliikkeen tilaustenksittely
+% Tukkuliikkeen tilaustenkäsittely
 -------------------------------
 
 **IS98JP2**

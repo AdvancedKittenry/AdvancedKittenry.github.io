@@ -21,7 +21,7 @@ päivä- tai viikkotuntimäärä, jonka ylitykset järjestelmään täytyy estä
 Toimintoja: \
 a)  Kiireellisyysluokkien teko (muutos) \
 b)  Henkilööstövahvuuskalenterin teko (ja muutos) \
-c)  Tyvuorolistan teko (ja muutos) \
+c)  Työvuorolistan teko (ja muutos) \
 e)  Henkilöökohtaisen työvuorolistan listaus \
 f)  Työvuorolistan listaus \
 g)  Työntekijäkohtainen työraportti (tehdäyt tunnit tietyllä aikavälillä) \

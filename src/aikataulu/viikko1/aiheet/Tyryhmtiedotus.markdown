@@ -1,4 +1,4 @@
-% Tyryhmtiedotus
+% Työryhmätiedotus
 --------------
 
 **IK99HL1**

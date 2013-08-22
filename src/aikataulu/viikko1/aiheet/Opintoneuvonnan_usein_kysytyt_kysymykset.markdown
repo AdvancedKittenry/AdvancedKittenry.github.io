@@ -1,4 +1,4 @@
-% Opintoneuvonnan usein kysytyt kysymykset
+% Usein kysytyt kysymykset
 -----------------------------------------------------
 
 **IS97HL16**

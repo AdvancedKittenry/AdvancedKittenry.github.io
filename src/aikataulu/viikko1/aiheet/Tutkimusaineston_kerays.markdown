@@ -1,4 +1,4 @@
-% Tutkimusaineston keräys
+% Tutkimusaineiston keräys
 -----------------------
 
 **IS97HL22**

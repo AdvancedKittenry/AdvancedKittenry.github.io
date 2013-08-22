@@ -17,6 +17,8 @@ BEGIN {
         info     => "Vinkki"
     );
 
+    undef $/;
+
     my %counts;
 
     our $basedir = dirname($ARGV[0]);
@@ -33,13 +35,13 @@ for my $tag (keys %tags) {
 
         my $replacement = qq[<section class="alert alert-$class"><h3>$title</h3>];
 
-        s#<$tag>#$replacement#;
+        s#<$tag>#$replacement#g;
     }
 
-    s#</$tag>#\n</section>#;
+    s#</$tag>#\n</section>#g;
 }
 
 #Parses include files while leaving title metadata lines beginning with % out
-s{<include +src="([^"]*)" */>} {"\n" . `$0 $basedir/$1` =~ s/^(%[^\n]*)*//rg . "\n";}e;
+s{<include +src="([^"]*)" */>} {"\n" . `$0 $basedir/$1` =~ s/^(%[^\n]*)*//rg . "\n";}eg;
 #Removes comment tags
-s#<comment>.*?</comment>##;
+s#<comment>.*?</comment>##sg;

@@ -4,9 +4,10 @@ TMPLDIR=src/templates
 TARGET="$2"
 DIRPREFIX=`dirname $1 | cut -c 5- | sed -e "s/[^\/]\+\/\?/..\//g"`
 LEVEL=$[`dirname $1 | sed -e s/[^\/]*//g | wc -m`-1]
+NAVIGATION=$TMPLDIR/navigation-level-${LEVEL}.html
 
 test
-if [[ -f $2 && $1 -ot $2 ]]; then
+if [[ -f $2 && $1 -ot $2 && $NAVIGATION -ot $2 ]]; then
   exit 0
 fi
 
@@ -19,7 +20,7 @@ pandoc                              \
     --standalone                    \
     --mathjax                       \
     --include-before    $TMPLDIR/titlebar.html \
-    --include-before    $TMPLDIR/navigation-level-${LEVEL}.html \
+    --include-before    $NAVIGATION          \
     --include-before    $TMPLDIR/before.html \
     --include-after     $TMPLDIR/after.html  \
     --include-in-header $TMPLDIR/header.html \
