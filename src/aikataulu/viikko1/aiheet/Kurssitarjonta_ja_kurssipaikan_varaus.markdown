@@ -1,6 +1,6 @@
 % Kurssitarjonta ja kurssipaikan varaus
-<!-- Arvosanamaksimi: 3 -->
-<!-- Vaikeustaso: Helppo -->
+<arvosanamaksimi>3</arvosanamaksimi>
+<vaikeustaso>Helppo</vaikeustaso>
 <comment>
 Kirjautuminen:        ?
 3 tietokohdetta:      On
@@ -24,14 +24,15 @@ Tätä varten varaajalle ilmoitetaan tilinumero ja varaukseen liittyvä
 viitenumero ja varausmaksun määrä. Jos varaaja erikseen pyytää laskua
 varausmaksusta, sellainen lähetetään. Varsinainen kurssimaksun laskutus
 ei kuulu tämän järjestelmän piiriin.
- 
+ 
 Toimintoja:
--  Kurssin syöttö ja muokkaus
--  Kurssitarjonnan katselu ja varauksen teko
--  Varauslaskujen kirjoitus - niille jotka ovat sitä pyytäneet tai
+
+-  Kurssin syöttö ja muokkaus
+-  Kurssitarjonnan katselu ja varauksen teko
+-  Varauslaskujen kirjoitus - niille jotka ovat sitä pyytäneet tai
 -vät ole viikon kuluessa vauksesta maksaneet varausmaksua. (valinnainen)
--  Ilmoittautuneiden luettelo
--  Varauksen peruutus yrityksen toimnesta, jos maksua ei ole maksettu
--  Varauksen peruutus asiakkaan toimesta
--  Kurssin peruutus
- 
+-  Ilmoittautuneiden luettelo
+-  Varauksen peruutus yrityksen toimnesta, jos maksua ei ole maksettu
+-  Varauksen peruutus asiakkaan toimesta
+-  Kurssin peruutus
+ 

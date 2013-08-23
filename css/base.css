@@ -137,3 +137,11 @@ table code {
 code, pre {
   font-family: Menlo, Monaco, Consolas, "Ubuntu Mono", "DejaVu Mono", monospace;
 }
+
+.alert.small {
+  margin-bottom: 5px;
+  padding: 5px 35px 5px 10px;
+}
+.alert.small h3 {
+  display: inline;
+}

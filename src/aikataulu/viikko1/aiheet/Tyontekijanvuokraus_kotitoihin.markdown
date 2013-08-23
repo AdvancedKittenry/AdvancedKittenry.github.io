@@ -1,6 +1,6 @@
 % Työntekijänvuokraus kotitöihin
-<!-- Arvosanamaksimi: 5 -->
-<!-- Vaikeustaso: Haastavampi -->
+<arvosanamaksimi>5</arvosanamaksimi>
+<vaikeustaso>Haastavampi</vaikeustaso>
 <comment>
 Kirjautuminen:        On
 3 tietokohdetta:      On
@@ -34,12 +34,13 @@ työntekijä voi kieltytyä tehtävästä, joka olisi suoritettava yli 10 km:n p
 Home-Service:n toimipaikasta.
 
 Toimintoja:
--  vuokrauspalvelutarjonnan katselu sisältäen tuntihinnoittelun
--  henkilö- / yhteystietojen syöttö / asiakkaan kirjautuminen
--  palvelun ja työntekijän varaus / peruutus
--  vapaiden ajankohtien katselu
+
+-  vuokrauspalvelutarjonnan katselu sisältäen tuntihinnoittelun
+-  henkilö- / yhteystietojen syöttö / asiakkaan kirjautuminen
+-  palvelun ja työntekijän varaus / peruutus
+-  vapaiden ajankohtien katselu
 -  ylläpitoon kirjautuminen
--  työntekijän lisäys, poisto ja muokkaus
+-  työntekijän lisäys, poisto ja muokkaus
 -  työntekijän työtehtävien hallinta
--  varaustilanteen katselu
--  palvelutarjonnan ylläpito 
+-  varaustilanteen katselu
+-  palvelutarjonnan ylläpito 

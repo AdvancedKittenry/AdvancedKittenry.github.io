@@ -1,6 +1,6 @@
 % Kurssin kotisivu
-<!-- Arvosanamaksimi: 4 tai 5 -->
-<!-- Vaikeustaso: Keskitasoa/Haastava -->
+<arvosanamaksimi>4 tai 5</arvosanamaksimi>
+<vaikeustaso>Keskitasoa/Haastava</vaikeustaso>
 <comment>
 Kirjautuminen:        ?
 3 tietokohdetta:      OK
@@ -13,7 +13,7 @@ Monesta-moneen-suhde: OK
 Tktl:n useilla kurseilla on kotisivuja, joilla kerrotaan kurssiin
 liittyviä asioita. Kotisivun organisointi on varsin pulmallinen asia.
 Jos kotisivulla on paljon tavaraa, sivun lukijan voi olla vaikea
-havaita, mitä muutoksia sivulle on tullut.  Tilanteen helpottamiseksi
+havaita, mitä muutoksia sivulle on tullut.  Tilanteen helpottamiseksi
 voitaisiin rakentaa järjestelmä, jonka avulla sivun sisältö voidaan
 näyttää eri muodoissa. Uudet asiat saisi selville tutkimalla asioita
 niiden kirjausajan perusteella (esim. tällä viikolla tulleet tai
@@ -37,9 +37,10 @@ Esimerkkinä voi käyttää entisen [Informaatiojärjestelmät -kurssin
 kotisivua](http://www.cs.helsinki.fi/~laine/info/k99/).
 
 Toimintoja:
--  Mitä uutta?
--  Asiaryhmiin perustuva sivu
--  Komponentin lisäys sivulle
--  Komponentin muokkaus, poisto ja järjestyksessä siirto
--  Aiheryhmään lisäys, poisto, muutos
--  Kurssien ja vastuuhenkilöiden luominen, poistaminen ja kirjautuminen (valinnainen) 
+
+-  Mitä uutta?
+-  Asiaryhmiin perustuva sivu
+-  Komponentin lisäys sivulle
+-  Komponentin muokkaus, poisto ja järjestyksessä siirto
+-  Aiheryhmään lisäys, poisto, muutos
+-  Kurssien ja vastuuhenkilöiden luominen, poistaminen ja kirjautuminen (valinnainen) 

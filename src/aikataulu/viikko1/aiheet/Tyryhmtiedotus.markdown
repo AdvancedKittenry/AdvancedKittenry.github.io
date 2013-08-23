@@ -1,6 +1,6 @@
 % Työryhmätiedotus
-<!-- Arvosanamaksimi: 5 -->
-<!-- Vaikeustaso: Haastavampi -->
+<arvosanamaksimi>5</arvosanamaksimi>
+<vaikeustaso>Haastavampi</vaikeustaso>
 <comment>
 Kirjautuminen:        On
 3 tietokohdetta:      On
@@ -25,10 +25,11 @@ Järjestelmän ylläpitäjällä on oma liittymä, jonka kautta hän ylläpitä�
 jäsentietoja, siivoaa kirjoituskantaa ja määrittelee aiheita, joiden perusteella kirjoituksia voi ryhmitellä.
 
 Toimintoja:
+
 -  kirjautuminen
--  kirjoituksen lisääminen
--  kirjoitusten näyttäminen eri kriteerein
--  työryhmään jäsenen lisääminen, muokkaaminen ja poistaminen
--  vastineen laatiminen ja muokkaus
--  kirjoitusten poistaminen
--  aiheiden määrittely, muokkaus ja poisto
+-  kirjoituksen lisääminen
+-  kirjoitusten näyttäminen eri kriteerein
+-  työryhmään jäsenen lisääminen, muokkaaminen ja poistaminen
+-  vastineen laatiminen ja muokkaus
+-  kirjoitusten poistaminen
+-  aiheiden määrittely, muokkaus ja poisto

@@ -1,6 +1,6 @@
 % Painontarkkailu
-<!-- Arvosanamaksimi: 5 -->
-<!-- Vaikeustaso: Vaikeahko -->
+<arvosanamaksimi>5</arvosanamaksimi>
+<vaikeustaso>Vaikeahko</vaikeustaso>
 <comment>
 Kirjautuminen:        On
 3 tietokohdetta:      On
@@ -36,11 +36,12 @@ löytyy esim [Fitness Partners'ien
 laskentaohjelmasta](http://www.primusweb.com/fitnesspartner/jumpsite/calculat.htm).
 
 Toimintoja:
--  saantikysely
--  kulutuskysely
--  rekisteröityminen ja kirjautuminen
--  päiväkirjakirjaus: mitä on syönyt tai miten liikkunut?
--  uuden aktiviteetin, raaka-aineen tai ruuan kirjaus, muokkaus ja poisto
--  uuden ryhmän kirjaus, muokkaus ja poisto
--  kohteen liittäminen ryhmään ja siitä poistaminen
--  kuukausi- ja viikkoraportti
+
+-  saantikysely
+-  kulutuskysely
+-  rekisteröityminen ja kirjautuminen
+-  päiväkirjakirjaus: mitä on syönyt tai miten liikkunut?
+-  uuden aktiviteetin, raaka-aineen tai ruuan kirjaus, muokkaus ja poisto
+-  uuden ryhmän kirjaus, muokkaus ja poisto
+-  kohteen liittäminen ryhmään ja siitä poistaminen
+-  kuukausi- ja viikkoraportti

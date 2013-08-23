@@ -1,6 +1,6 @@
 % Palvelubisnes
-<!-- Arvosanamaksimi: 5 -->
-<!-- Vaikeustaso: Haastavampi -->
+<arvosanamaksimi>5</arvosanamaksimi>
+<vaikeustaso>Haastavampi</vaikeustaso>
 <comment>
 Kirjautuminen:        On
 3 tietokohdetta:      On
@@ -25,11 +25,12 @@ rekisteröidä. Varauksen yhteydessä asiakas saa kuitenkin varausnumeron,
 jonka avulla hän voi perua varauksensa.
 
 Toimintoja:
--  toimihenkilön esitteen teko ja palveluvalikoiman sekä hintojen muokkaus
+
+-  toimihenkilön esitteen teko ja palveluvalikoiman sekä hintojen muokkaus
 -  toimihenkilön erottaminen
--  esitteiden katselu
--  varauksen teko
--  varauksen peruminen
+-  esitteiden katselu
+-  varauksen teko
+-  varauksen peruminen
 -  johdon ja toimihenkilön kirjautuminen
--  työlista toimihenkilölle
--  yhteenveto johdolle
+-  työlista toimihenkilölle
+-  yhteenveto johdolle

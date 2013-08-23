@@ -1,6 +1,6 @@
 % Elektroninen keittokirja
-<!-- Arvosanamaksimi: 4 -->
-<!-- Vaikeustaso: Keskitasoa -->
+<arvosanamaksimi>4</arvosanamaksimi>
+<vaikeustaso>Keskitasoa</vaikeustaso>
 <comment>
 Kirjautuminen:        Ei
 3 tietokohdetta:      OK
@@ -23,11 +23,12 @@ perusteella. Myös luokan perusteella (esim. kala + alkuruoka) voi
 selailla.
 
 Toimintoja:
--  raaka-aineen syöttö ja muutos
--  raaka-aineen poisto (vain mikäli sitä ei käytetä)
--  reseptin kirjaus
+
+-  raaka-aineen syöttö ja muutos
+-  raaka-aineen poisto (vain mikäli sitä ei käytetä)
+-  reseptin kirjaus
 -  reseptin muokkaus ja poisto
--  reseptin haku
--  reseptien katselu
--  ostoslistan teko valitus reseptin tai ateriakokonaisuuden
+-  reseptin haku
+-  reseptien katselu
+-  ostoslistan teko valitus reseptin tai ateriakokonaisuuden
 perusteella

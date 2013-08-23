@@ -1,6 +1,6 @@
 % Lääkäriaseman työvuorolista
-<!-- Arvosanamaksimi: 5 -->
-<!-- Vaikeustaso: Haastava! -->
+<arvosanamaksimi>5</arvosanamaksimi>
+<vaikeustaso>Haastava!</vaikeustaso>
 <comment>
 Kirjautuminen:        ?
 3 tietokohdetta:      On
@@ -26,13 +26,15 @@ vaaditut henkilöstövahvuudet. Lisäksi jokaisella työntekijääällä on mä�
 päivä- tai viikkotuntimäärä, jonka ylitykset järjestelmään täytyy estää.
 
 Toimintoja:
--  Ylläpitäjän kirjautuminen
--  Kiireellisyysluokkien teko (muutos)
--  Henkilöstövahvuuskalenterin teko (ja muutos)
--  Työvuorolistan teko (ja muutos)
--  Henkilöökohtaisen työvuorolistan listaus
--  Työvuorolistan listaus
--  Työntekijäkohtainen työraportti (tehdäyt tunnit tietyllä aikavälillä)
--  Työntekijään tekemien tuntien listaus kiireellisyysluokittain
--  Työvuorolistan ylimiehityksen raportointi
- 
+
+- ylläpitäjän kirjautuminen
+- kiireellisyysluokkien teko (muutos)
+- henkilöstövahvuuskalenterin teko (ja muutos)
+- työvuorolistan teko (ja muutos)
+- henkilöökohtaisen työvuorolistan listaus
+- työvuorolistan listaus
+- työntekijäkohtainen työraportti (tehdäyt tunnit tietyllä aikavälillä)
+- työntekijään tekemien tuntien listaus kiireellisyysluokittain
+- työvuorolistan ylimiehityksen raportointi
+
+

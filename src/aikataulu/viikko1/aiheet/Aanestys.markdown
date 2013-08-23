@@ -1,6 +1,6 @@
 % Äänestys
-<!-- Arvosanamaksimi: 3 tai 5 -->
-<!-- Vaikeustaso: Helppo -->
+<arvosanamaksimi>3 tai 5</arvosanamaksimi>
+<vaikeustaso>Helppo</vaikeustaso>
 <comment>
 Kirjautuminen:        ?
 3 tietokohdetta:      On
@@ -43,10 +43,11 @@ Aiheen maksimiarvosana vaihtelee kolmesta viiteen riippuen siitä toteutetaanko
 kirjautuminen, käyttäjähallinta ja identifioitu äänestys.
 
 Toimintoja:
--  Anonyymiäänestys
--  Identifioitu äänestys, kirjautuminen
--  Äänestyksen luominen, muuttaminen ja poistaminen
--  Tulokset
--  Aktiviteettiraportointi
--  Rekisteröityneiden käyttäjien tietojen muuttaminen ja poisto
- 
+
+-  Anonyymiäänestys
+-  Identifioitu äänestys, kirjautuminen
+-  Äänestyksen luominen, muuttaminen ja poistaminen
+-  Tulokset
+-  Aktiviteettiraportointi
+-  Rekisteröityneiden käyttäjien tietojen muuttaminen ja poisto
+ 

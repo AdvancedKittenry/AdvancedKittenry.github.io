@@ -1,6 +1,6 @@
 % Lääkärin kotikäynnit
-<!-- Arvosanamaksimi: 4 -->
-<!-- Vaikeustaso: Helppo -->
+<arvosanamaksimi>4</arvosanamaksimi>
+<vaikeustaso>Helppo</vaikeustaso>
 <comment>
 Kirjautuminen:        On
 3 tietokohdetta:      On
@@ -10,7 +10,7 @@ Monesta-moneen-suhde: On
 
 **IS97HL18**
 
-Lääkäriasema MediHome välittää lääkäreitä kotikäynneille.  Ensi kertaa
+Lääkäriasema MediHome välittää lääkäreitä kotikäynneille.  Ensi kertaa
 palveluja tilatessaan potilas rekisteröityy asiakkaaksi. Tässä
 yhteydessä hän saa asiakasnumeron, jota hän voi käyttää tarvitessaan
 palveluja seuraavilla kerroilla. Yrityksellä on palveluksessaan noin 10
@@ -23,10 +23,11 @@ kautta. Lääkäri laatii jokaisesta käynnistä raportin joka kirjataan.
 Raportteihin pitää päästä käsiksi lääkärin tai asiakkaan perusteella.
 
 Toimintoja:
+
 -  Asiakkaan ja lääkärin kirjautuminen
--  Lääkärin tilaus
--  Asiakkaaksi rekisteröityminen
--  Potilaan historia lääkärille: historian muokkaus ja lisäys
--  Lääkärin ohjelma
--  Potilasraportointi
- 
+-  Lääkärin tilaus
+-  Asiakkaaksi rekisteröityminen
+-  Potilaan historia lääkärille: historian muokkaus ja lisäys
+-  Lääkärin ohjelma
+-  Potilasraportointi
+ 

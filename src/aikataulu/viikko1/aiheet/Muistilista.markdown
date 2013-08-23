@@ -1,6 +1,6 @@
 % Muistilista
-<!-- Arvosanamaksimi: 4 tai 5 -->
-<!-- Vaikeustaso: Helppo -->
+<arvosanamaksimi>4 tai 5</arvosanamaksimi>
+<vaikeustaso>Helppo</vaikeustaso>
 <comment>
 Kirjautuminen:        On
 3 tietokohdetta:      On
@@ -28,6 +28,7 @@ Jommankumman ominaisuuden toteuttaminen tekee arvasanamaksimiksi vitosen, muuten
 työ on nelonen.
 
 Toimintoja:
+
 -  Kirjautuminen
 -  Askereen lisäys, muokkaus ja poisto
 -  Tärkeysasteen lisäys ja poisto

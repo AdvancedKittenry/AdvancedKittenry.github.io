@@ -1,6 +1,6 @@
 % Projektin työaikaseuranta
-<!-- Arvosanamaksimi: 3 -->
-<!-- Vaikeustaso: Helpohko -->
+<arvosanamaksimi>3</arvosanamaksimi>
+<vaikeustaso>Helpohko</vaikeustaso>
 <comment>
 Kirjautuminen:        On
 3 tietokohdetta:      On
@@ -22,11 +22,12 @@ halutessaan käyttöönsä myös tiedot kunkin työntekijään yksityiskohtaisis
 kirjauksista.
 
 Toimintoja:
+
 -  Kirjautuminen
--  Työaikakirjauksen teko
--  Projektin perustaminen
--  Henkilön liittäminen projektiin
--  Henkilön poistaminen projektista
--  Projektipäällikön raportit
--  Yksityiskohtainen työraportti
- 
+-  Työaikakirjauksen teko
+-  Projektin perustaminen
+-  Henkilön liittäminen projektiin
+-  Henkilön poistaminen projektista
+-  Projektipäällikön raportit
+-  Yksityiskohtainen työraportti
+ 

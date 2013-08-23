@@ -1,6 +1,6 @@
 % Drinkkiarkisto
-<!-- Arvosanamaksimi: 5 -->
-<!-- Vaikeustaso: Haastavampi -->
+<arvosanamaksimi>5</arvosanamaksimi>
+<vaikeustaso>Haastavampi</vaikeustaso>
 <comment>
 Kirjautuminen:        OK
 3 tietokohdetta:      OK
@@ -31,12 +31,13 @@ käyttäjille ylläpito-oikeudet (ehkä vain reseptin lisäysoikeuden?).
 
 Toimintoja:
 
--   Kirjautuminen
--   Reseptin haku
--   Reseptien selailu
--   Reseptin lisäys lomakkeella
--   Reseptien sisäänluku tiedostosta
--   Uuden reseptin ehdottaminen / ehdotuksen hyväksyminen
--   Käyttäjätunnuksen luominen
--   Käyttäjätietojen muutos ja tilin poisto
+
+- Kirjautuminen
+- Reseptin haku
+- Reseptien selailu
+- Reseptin lisäys lomakkeella
+- Reseptien sisäänluku tiedostosta
+- Uuden reseptin ehdottaminen / ehdotuksen hyväksyminen
+- Käyttäjätunnuksen luominen
+- Käyttäjätietojen muutos ja tilin poisto
 

@@ -1,6 +1,6 @@
 % Hiihtokisojen tulospalvelu
-<!-- Arvosanamaksimi: 5 -->
-<!-- Vaikeustaso: Keskitasoa -->
+<arvosanamaksimi>5</arvosanamaksimi>
+<vaikeustaso>Keskitasoa</vaikeustaso>
 <comment>
 Kirjautuminen:        OK
 3 tietokohdetta:      OK
@@ -13,7 +13,7 @@ Monesta-moneen-suhde: OK
 Hiihtokisojen tulospalvelun tehtävänä on välittää kisojen väli- ja
 lopputuloksia tosiaikaisesti. Väli- ja loppuaikatiedot välitetään
 kännykkään kytketyn kannettavan tietokoneen kautta
-tulospalvelutietokantaan.  Tulospalvelutietokannasta saadaan raportteina
+tulospalvelutietokantaan.  Tulospalvelutietokannasta saadaan raportteina
 lähtölista, tilanne halutussa väliaikapisteessä sekä lopputulokset.
 Tietyn kilpailijan osalta pitäisi myös saada selvitys hänen
 sijoittumisestaan eri väliaikapisteissä (montenako hän oli ja kuinka
@@ -22,12 +22,13 @@ pitäisi olla tieto kilpailijoista, jotka eivät ole vielä saapuneet
 väliaikapisteeseen.
 
 Toimintoja:
--  Kilpailijan perustietojen lisäys, muokkaus ja poisto
+
+-  Kilpailijan perustietojen lisäys, muokkaus ja poisto
 -  Kisan luominen ja muokkaus, kilpailijoiden lisäys kisaan
--  Lähtölistan laatiminen
--  Väliaikapisteen tilanne
--  Lopputulokset
--  Väliajan / loppuajan kirjaus ja kirjaajan kirjautuminen
--  Kilpailijan sijoittuminen matkalla
--  Lähtölistan katselu
- 
+-  Lähtölistan laatiminen
+-  Väliaikapisteen tilanne
+-  Lopputulokset
+-  Väliajan / loppuajan kirjaus ja kirjaajan kirjautuminen
+-  Kilpailijan sijoittuminen matkalla
+-  Lähtölistan katselu
+ 

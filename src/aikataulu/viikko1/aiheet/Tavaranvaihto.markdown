@@ -1,6 +1,6 @@
 % Tavaranvaihto
-<!-- Arvosanamaksimi: 5 -->
-<!-- Vaikeustaso: Haastavampi -->
+<arvosanamaksimi>5</arvosanamaksimi>
+<vaikeustaso>Haastavampi</vaikeustaso>
 <comment>
 Kirjautuminen:        On
 3 tietokohdetta:      On
@@ -30,12 +30,13 @@ sisältö ei näy. Seuraan kuuluu useiden eri tyyppisten kohteiden
 keräilijöitä.
 
 Toimintoja:
+
 -  Rekisteröityminen
 -  Kirjautuminen
--  Tarjouksen teko, muokkaus ja poisto
--  Tarjonnan katselu
--  Tarjouksen lukitseminen
--  Vastatarjouksen teko
+-  Tarjouksen teko, muokkaus ja poisto
+-  Tarjonnan katselu
+-  Tarjouksen lukitseminen
+-  Vastatarjouksen teko
 -  Tarjouksen hyväksyminen
--  Lukon avaus
+-  Lukon avaus
 -  Käyttäjätilin tietojen muutokset ja poistaminen

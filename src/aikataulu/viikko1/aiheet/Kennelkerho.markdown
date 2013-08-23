@@ -1,6 +1,6 @@
 % Kennelkerho
-<!-- Arvosanamaksimi: 4 tai 5 -->
-<!-- Vaikeustaso: Haastavampi -->
+<arvosanamaksimi>4 tai 5</arvosanamaksimi>
+<vaikeustaso>Haastavampi</vaikeustaso>
 <comment>
 Kirjautuminen:        OK
 3 tietokohdetta:      OK
@@ -11,7 +11,7 @@ Monesta-moneen-suhde: OK
 **IS97HL2**
 
 Kansallinen kennelkerho ylläpitää rekisteriä, jossa on tietoja
-rotukoirista.  Koirista tallennetaan mm. koiratunnus, koiran nimi
+rotukoirista.  Koirista tallennetaan mm. koiratunnus, koiran nimi
 syntymäaika, sukupuoli, vanhempien tiedot, rotutiedot, omistajan tiedot,
 menestys koiranäyttelyissä ja muita tietoja (astutuskelpoisuus, kuva, ).
 
@@ -33,11 +33,12 @@ kriteerein koirien tietoja. Koiran omistaja voi päivittää joitain
 koiraan liittyvien tietoja. Omistaja voi myös kirjata koiran eronneeksi.
 
 Toimintoja:
--  uuden koiran hakemuksen toimitus
--  koiran hyväksyminen
+
+-  uuden koiran hakemuksen toimitus
+-  koiran hyväksyminen
 -  kirjautuminen
--  koiran tietojen muuttaminen, koiran kirjaaminen eronneeksi
--  koiratietojen haku ja selailu
--  kilpailutietojen kirjaus ja muokkaus
--  kilpailun tulosten kirjaus ja korjaus
--  kilpailun tulosten katselu
+-  koiran tietojen muuttaminen, koiran kirjaaminen eronneeksi
+-  koiratietojen haku ja selailu
+-  kilpailutietojen kirjaus ja muokkaus
+-  kilpailun tulosten kirjaus ja korjaus
+-  kilpailun tulosten katselu

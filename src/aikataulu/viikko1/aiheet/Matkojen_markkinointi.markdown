@@ -1,6 +1,6 @@
 % Matkojen markkinointi
-<!-- Arvosanamaksimi: 3 tai 5 -->
-<!-- Vaikeustaso: Keskitasoa -->
+<arvosanamaksimi>3 tai 5</arvosanamaksimi>
+<vaikeustaso>Keskitasoa</vaikeustaso>
 <comment>
 Kirjautuminen:        ?, voi olla
 3 tietokohdetta:      On
@@ -14,8 +14,8 @@ Matkatoimisto Kaukokaipuu haluaa järjestelmän, jolla se voi esitellä
 matkakohteitaan www:ssä. Järjestelmän pitäisi mahdollistaa myös matkojen
 varaukset. Kustakin matkakohteesta laaditaan esite, jossa näkyy
 tavanomista matkakohteen esittelymateriaalia, joskin dynaamisempana kuin
-normaalissa paperiesitteessä.   Myös majoitusvaihtoehdot esitellään.
-Näiden lisäksi asiakas  saa tiedon kohteesseen liittyvistä vapaista
+normaalissa paperiesitteessä.   Myös majoitusvaihtoehdot esitellään.
+Näiden lisäksi asiakas  saa tiedon kohteesseen liittyvistä vapaista
 paikoista. Asiakas voi kirjata matkaan liittyvän varauksen. Varauksen
 kirjauksen yhteydessä asiakas saa varausnumeron. Tilausvahvistus
 hoidetaan puhelimitse tai postitse.
@@ -25,10 +25,11 @@ tai että asiakkaita ei eritellä erikseen.
 Aiheen arvosanamaksimi on 3 tai 5 riippuen siitä toteutetaanko asiakkaat kirjautuneina vai ei.
 
 Toimintoja:
--  matkakohteen kirjaus, muutokset ja poisto
--  majoitusvaihtoehdon kirjaus, muutokset ja poisto
--  kohteiden valinta ja katselu
--  varauksen teko
--  käsittelemättömien varausten lista
--  tilausvahvistus
+
+-  matkakohteen kirjaus, muutokset ja poisto
+-  majoitusvaihtoehdon kirjaus, muutokset ja poisto
+-  kohteiden valinta ja katselu
+-  varauksen teko
+-  käsittelemättömien varausten lista
+-  tilausvahvistus
 -  asiakastunnuksen luominen ja kirjautuminen (valinnainen)

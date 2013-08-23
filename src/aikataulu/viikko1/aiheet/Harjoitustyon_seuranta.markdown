@@ -1,6 +1,6 @@
 % Harjoitustyön seuranta
-<!-- Arvosanamaksimi: 5 -->
-<!-- Vaikeustaso: Haastava -->
+<arvosanamaksimi>5</arvosanamaksimi>
+<vaikeustaso>Haastava</vaikeustaso>
 <comment>
 Kirjautuminen:        OK
 3 tietokohdetta:      OK
@@ -27,13 +27,14 @@ Työssä laaditaan harjoitustyön seurantaa avustava järjestelmä. Järjestelm�
 tarjoaa palveluja opiskelijoille, ohjaajille ja kurssin vastuuhenkilölle.
 Toimintoja:
 
+
 -  kirjautuminen
--  ohjaajan ohjausaikojen tarjollepano ja muokkaaminen
--  ohjaajan päivytysaikojen kirjaus
--  ohjausajan varaus henkilökohtaiseen palaveriin
--  ohjaajien päivystysaikojen selailu
--  luettelo sovituista palavereista (ohjaajalle, opiskelijalle)
--  ohjaustilanteen kirjaus
--  tietyn opiskelijan historia (ohjaajalle)
--  yhteenveto ohjauksesta (kurssin vastuuhenkilölle)
+-  ohjaajan ohjausaikojen tarjollepano ja muokkaaminen
+-  ohjaajan päivytysaikojen kirjaus
+-  ohjausajan varaus henkilökohtaiseen palaveriin
+-  ohjaajien päivystysaikojen selailu
+-  luettelo sovituista palavereista (ohjaajalle, opiskelijalle)
+-  ohjaustilanteen kirjaus
+-  tietyn opiskelijan historia (ohjaajalle)
+-  yhteenveto ohjauksesta (kurssin vastuuhenkilölle)
 -  ohjaajien ja opiskelijoiden tietojen lisäys, poisto ja muokkaus (kurssin vastuuhenkilölle)

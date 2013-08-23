@@ -1,6 +1,6 @@
 % Kuluttajan tuki Ry
-<!-- Arvosanamaksimi: 5 -->
-<!-- Vaikeustaso: Haastava -->
+<arvosanamaksimi>5</arvosanamaksimi>
+<vaikeustaso>Haastava</vaikeustaso>
 <comment>
 Kirjautuminen:        On
 3 tietokohdetta:      On
@@ -23,10 +23,11 @@ kuluttajille ja rahoitetaan valtionavun turvin. Myöhemmin kun kuluttajat
 on saatu koukkuun voidaan palvelusta ryhtyä rahastamaan pientä maksua.
 
 Toimintoja:
+
 -  ylläpitäjän kirjautuminen
--  tuotteiden vienti
--  liikkeiden vienti, muutokset ja poisto
--  hinnoittelutiedon vienti
--  yksittäisen tuotteen edullisuuden selvitys
--  tuotekorin rakentaminen
--  tuotekorin edullisuuden selvitys
+-  tuotteiden vienti
+-  liikkeiden vienti, muutokset ja poisto
+-  hinnoittelutiedon vienti
+-  yksittäisen tuotteen edullisuuden selvitys
+-  tuotekorin rakentaminen
+-  tuotekorin edullisuuden selvitys

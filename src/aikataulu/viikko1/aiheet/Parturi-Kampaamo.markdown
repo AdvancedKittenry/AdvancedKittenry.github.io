@@ -1,6 +1,6 @@
 % Parturi-Kampaamo
-<!-- Arvosanamaksimi: 5 -->
-<!-- Vaikeustaso: Haastavampi -->
+<arvosanamaksimi>5</arvosanamaksimi>
+<vaikeustaso>Haastavampi</vaikeustaso>
 <comment>
 Kirjautuminen:        On
 3 tietokohdetta:      On
@@ -27,12 +27,13 @@ varaukset hyväksytään, jotka eivät halua näin menetellä. Varauksen yhteyde
 asiakas saa varausnumeron, jonka avulla hän voi perua varauksensa.
 
 Toimintoja:
+
 -  uuden kampaajan palkkaaminen 
 -  kampaajan erottaminen
--  kampaajan työaikojen kirjaus ja muutokset
--  kampaamon palvelujen määrittely
--  kampaajien palveluvalikoiman määrittely ja muutos
--  varauksen teko ja peruutus
+-  kampaajan työaikojen kirjaus ja muutokset
+-  kampaamon palvelujen määrittely
+-  kampaajien palveluvalikoiman määrittely ja muutos
+-  varauksen teko ja peruutus
 -  asiakkaan rekisteröityminen ja kirjautuminen
--  työlistat henkilöstölle
--  yhteenveto johdolle
+-  työlistat henkilöstölle
+-  yhteenveto johdolle

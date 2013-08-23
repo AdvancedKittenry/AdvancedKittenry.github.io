@@ -1,6 +1,6 @@
 % Lainahakemusten käsittely
-<!-- Arvosanamaksimi: 3 -->
-<!-- Vaikeustaso: Helppo -->
+<arvosanamaksimi>3</arvosanamaksimi>
+<vaikeustaso>Helppo</vaikeustaso>
 <comment>
 Kirjautuminen:        On
 3 tietokohdetta:      On
@@ -24,12 +24,13 @@ Huom. Eri toimintojen käynnistäminen voi olla manuaalinen toimenpide tai
 ne voidaan tehdä automaattisiksi laukaisimien avulla. Kysy aiheesta lisää ohjaajalta.
 
 Toimintoja:
+
 -  Asiakaspalvelijan ja asiakkaan kirjautuminen
--  Lainahakemuksen vastaanotto.
--  Lainapäätöksen tiedottaminen asiakkaalle.
--  Asiakkaan vuoden nettopalkan arviointi.
--  Asiakkaan lainatietojen haku.
--  Asiakkaan maksuhäiriöiden tarkastaminen.
--  Hyväksytyn lainan tietojen talletus.
--  Asiakastietojen lisäys, muutos ja selaus.
- 
+-  Lainahakemuksen vastaanotto.
+-  Lainapäätöksen tiedottaminen asiakkaalle.
+-  Asiakkaan vuoden nettopalkan arviointi.
+-  Asiakkaan lainatietojen haku.
+-  Asiakkaan maksuhäiriöiden tarkastaminen.
+-  Hyväksytyn lainan tietojen talletus.
+-  Asiakastietojen lisäys, muutos ja selaus.
+ 

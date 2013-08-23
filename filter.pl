@@ -8,13 +8,17 @@ BEGIN {
     our %tags = (
         exercise => 'success',
         alert    => 'error',
-        info     => 'info'
+        info     => 'info',
+        arvosanamaksimi => "heading small",
+        vaikeustaso => "heading small"
     );
 
     our %titles = (
         exercise => "Exercise %n",
         alert    => "Pidä mielessä!",
-        info     => "Vinkki"
+        info     => "Vinkki",
+        arvosanamaksimi => "Arvosanamaksimi: ",
+        vaikeustaso => "Vaikeustaso: "
     );
 
     undef $/;

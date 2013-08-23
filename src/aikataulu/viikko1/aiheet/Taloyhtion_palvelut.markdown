@@ -1,6 +1,6 @@
 % Taloyhtiön palvelut
-<!-- Arvosanamaksimi: 5 -->
-<!-- Vaikeustaso: Haastava -->
+<arvosanamaksimi>5</arvosanamaksimi>
+<vaikeustaso>Haastava</vaikeustaso>
 <comment>
 Kirjautuminen:        On
 3 tietokohdetta:      On
@@ -38,11 +38,12 @@ maksutilanteesta. Hän voi tuottaa myös laskuja kenelle tahansa ja
 lisätä ja poistaa varattavia aikoja ja tiloja
 
 Toimintoja:
+
 -  Kirjautuminen
--  Varauksen teko ja peruutus
--  Laskun laatiminen
--  Yhteenveto resurssin käytöstä
--  Yhteenveto maksuista
--  Maksetun laskun kirjaus
--  Salasanan vaihto
+-  Varauksen teko ja peruutus
+-  Laskun laatiminen
+-  Yhteenveto resurssin käytöstä
+-  Yhteenveto maksuista
+-  Maksetun laskun kirjaus
+-  Salasanan vaihto
 -  Isännöitsijän muutostyöt: aikojen ja varattavien tilojen lisäys, poisto ja muokkaus (saattaa perua varauksia)

@@ -1,6 +1,6 @@
 % Tukkuliikkeen tilaustenkäsittely
-<!-- Arvosanamaksimi: 5 -->
-<!-- Vaikeustaso: Haastavampi -->
+<arvosanamaksimi>5</arvosanamaksimi>
+<vaikeustaso>Haastavampi</vaikeustaso>
 <comment>
 Kirjautuminen:        On
 3 tietokohdetta:      On
@@ -26,14 +26,15 @@ Huom. Eri toimintojen käynnistäminen voi olla manuaalinen toimenpide tai
 ne voidaan tehdää automaattisiksi laukaisimien avulla. Kysy aiheesta lisää ohjaajalta.
 
 Toimintoja:
+
 -  asiakkaan ja ylläpidon kirjautuminen
--  tilausten vastaanotto
--  tuotteen lisäys/poisto varastosta
+-  tilausten vastaanotto
+-  tuotteen lisäys/poisto varastosta
 -  tuotteen muokkaus
--  asiakkaan luottokelpoisuuden tarkastus
--  laskun tuottaminen
--  karhujen tuottaminen
+-  asiakkaan luottokelpoisuuden tarkastus
+-  laskun tuottaminen
+-  karhujen tuottaminen
 -  maksujen vastaanottaminen
--  varaston selaus
--  asiakastietojen lisäys, muutos, poisto ja selaus
- 
+-  varaston selaus
+-  asiakastietojen lisäys, muutos, poisto ja selaus
+ 

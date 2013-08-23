@@ -1,6 +1,6 @@
 % Ostoskassi
-<!-- Arvosanamaksimi: 5 -->
-<!-- Vaikeustaso: Keskitasoa -->
+<arvosanamaksimi>5</arvosanamaksimi>
+<vaikeustaso>Keskitasoa</vaikeustaso>
 <comment>
 Kirjautuminen:        On
 3 tietokohdetta:      On
@@ -25,10 +25,11 @@ Tiedot paikkavarauksista saadaan ulkopuoliselta paikanvarausjärjestelmältä
 (eli ne ovat valmiina tietokannassa)
 
 Toimintoja:
+
 -  Kirjautuminen
--  Tilauksen laatiminen
--  Tilauksen muuttaminen
--  Tilauksen peruutus
--  Lentokohtaiset tilausraportit toimitusta varten
--  Toimitusasiakirja ja lasku
+-  Tilauksen laatiminen
+-  Tilauksen muuttaminen
+-  Tilauksen peruutus
+-  Lentokohtaiset tilausraportit toimitusta varten
+-  Toimitusasiakirja ja lasku
 -  Tuotetietojen lisäys, muokkas ja poisto

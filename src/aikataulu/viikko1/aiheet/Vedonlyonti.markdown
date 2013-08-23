@@ -1,6 +1,6 @@
 % Vedonlyönti
-<!-- Arvosanamaksimi: 5 -->
-<!-- Vaikeustaso: Haastava! -->
+<arvosanamaksimi>5</arvosanamaksimi>
+<vaikeustaso>Haastava!</vaikeustaso>
 <comment>
 Kirjautuminen:        On
 3 tietokohdetta:      On
@@ -36,16 +36,17 @@ kiinnostusta lyödä vetoa asiasta. Jos kiinnostusta ilmenee, kohde
 avataan vedonlyöntiin.
 
 Toimintoja:
--  Asiakkaaksi rekisteröityminen ja kirjautuminen
+
+-  Asiakkaaksi rekisteröityminen ja kirjautuminen
 -  Uuden salasanalistan pyyntö
--  Vedon asetus ja sen kuittaus
--  Vedonlyöntikohteen valinta
--  Vedonlyöntikohteen esittely
--  Tilastoja
--  Vedonlyöntikohteen tarjoaminen
+-  Vedon asetus ja sen kuittaus
+-  Vedonlyöntikohteen valinta
+-  Vedonlyöntikohteen esittely
+-  Tilastoja
+-  Vedonlyöntikohteen tarjoaminen
 -  Ylläpidon kirjautuminen
--  Ehdokaskohteen kommentointi
--  Kohteen avaus ja kohdetietojen kirjaus
+-  Ehdokaskohteen kommentointi
+-  Kohteen avaus ja kohdetietojen kirjaus
 -  Kertoimien määritteleminen (voi olla automaattinen)
 
 Sovelluksessa voidaan rajoittua vain tietyntyyppisiin vetoihin.
