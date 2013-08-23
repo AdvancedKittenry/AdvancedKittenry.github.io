@@ -20,9 +20,10 @@ pandoc                              \
     --standalone                    \
     --mathjax                       \
     --include-before    $TMPLDIR/titlebar.html \
-    --include-before    $NAVIGATION          \
-    --include-before    $TMPLDIR/before.html \
-    --include-after     $TMPLDIR/after.html  \
-    --include-in-header $TMPLDIR/header.html \
-    --css ${DIRPREFIX}css/base.css              \
+    --include-before    $NAVIGATION            \
+    --include-before    $TMPLDIR/before.html   \
+    --include-after     $TMPLDIR/after.html    \
+    --include-in-header $TMPLDIR/header.html   \
+    --css ${DIRPREFIX}css/base.css             \
+    | ./make-current-selected.pl $2            \
     > "$2"

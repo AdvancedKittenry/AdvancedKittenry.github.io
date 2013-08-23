@@ -31,6 +31,47 @@ header p {
     color: #777;
 }
 
+nav {
+    float: left;
+    margin-top: 28px;
+}
+
+nav ul {
+    margin-left: 1em;
+    list-style: none;
+}
+
+.treeview .hitarea {
+  background: 0 -16px url(../images/nav.gif);
+  height: 16px;
+  width: 16px;
+  margin-left: -16px;
+  float: left;
+  cursor: pointer;
+}
+.treeview .expandable-hitarea { 
+  background-position: 0 0;
+}
+.treeview .selected > .hitarea { 
+  background-position: 0 -48px;
+}
+.treeview .selected > .expandable-hitarea { 
+  background-position: 0 -32px;
+}
+/* fix for IE6 */
+* html .hitarea {
+  display: inline;
+  float:none;
+}
+
+nav .selected > :link {
+  font-weight: bold;
+  color: black;
+}
+nav .selected:hover {
+  text-decoration: none;
+}
+
 h1, h2, h3 {
     font-weight: normal;
 }
@@ -78,16 +119,6 @@ figcaption {
     margin-left: 0;
 } */
 
-nav {
-    float: left;
-    margin-top: 28px;
-}
-
-nav ul {
-    margin-left: 1em;
-    list-style: none;
-}
-
 .alert ul {
     margin-left: 2em;
 }
@@ -105,8 +136,4 @@ table code {
 
 code, pre {
   font-family: Menlo, Monaco, Consolas, "Ubuntu Mono", "DejaVu Mono", monospace;
-}
-
-.top-nav {
-    color: #666;
 }

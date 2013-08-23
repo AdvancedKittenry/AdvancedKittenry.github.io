@@ -1,6 +1,6 @@
 SRC=$(shell find src -iname "*.markdown")
 DIRS=$(shell cd src && find . -mindepth 1 -type d \! -path "./templates")
-DEPS=$(wildcard src/templates/*.html) src/templates/navigation-level-0.html filter.pl make-html.sh
+DEPS=$(wildcard src/templates/*.html) src/templates/navigation-level-0.html filter.pl make-html.sh make-current-selected.pl
 HTML=${patsubst src/%,%,${SRC:.markdown=.html}}
 
 reverse = $(if $(wordlist 2,2,$(1)),$(call reverse,$(wordlist 2,$(words $(1)),$(1))) $(firstword $(1)),$(1))
