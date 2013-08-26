@@ -9,7 +9,8 @@
 
 .titlebar h1,
 .container-fluid {
-    max-width: 640px;
+    width: 640px;
+    max-width: 50%;
     margin: auto;
     /* margin-top: 40px; */
 }
@@ -33,7 +34,8 @@ header p {
 
 nav {
     float: left;
-    margin-top: 28px;
+    max-width: 25%;
+    padding-top: 28px;
 }
 
 nav ul {
@@ -66,9 +68,8 @@ nav ul {
 
 nav .selected > :link {
   font-weight: bold;
-  color: black;
 }
-nav .selected:hover {
+nav .selected > :hover {
   text-decoration: none;
 }
 

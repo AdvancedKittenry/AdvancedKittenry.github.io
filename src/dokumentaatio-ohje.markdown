@@ -1,4 +1,5 @@
 %Dokumentaatio-ohje
+<!-- addHeaderNavigation -->
 
 Kurssilla määritellään, suunnitellaan ja toteutetaan pieni www-alustalle toteutettava tietokantajärjestelmä.  
 Tämä dokumentti antaa suuntaa harjoitustyöltä odotettavasta dokumentaatiosta.  
@@ -106,7 +107,6 @@ käyttötapauksia. Käyttötapaukset kannattaa esittää käyttäjittäin ryhmit
 Järjestelmän tietosisältö kuvataan käsitekaavion avulla. Käsitekaavio on järjestelmään säilöttävälle tiedolle käsitetason malli, jonka perusteella johdetaan toteutustason relaatiotietokantakaavio.
 
 ####Esimerkki  
-<img src="information_diagram.png">  
 ![Tietosisältökaavio]({{imgdir}}dokumentaatio-ohje/information_diagram.png)
 
 Kaavion lisäksi täytyy kuhunkin tietokohteeseen liittää selitys, jossa määritellään kyseinen kohde. 

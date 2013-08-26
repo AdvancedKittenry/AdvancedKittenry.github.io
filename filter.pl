@@ -67,3 +67,4 @@ for my $dir (keys %dirs) {
 s{<include +src="([^"]*)" */>} {"\n" . `$0 $basedir/$1` =~ s/^(%[^\n]*)*//rg . "\n";}eg;
 #Removes comment tags
 s#<comment>.*?</comment>##sg;
+s#<!-- addHeaderNavigation -->#<script>addSectionLinks = true; </script>#sg;

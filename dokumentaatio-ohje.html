@@ -13,8 +13,10 @@
   <!--[if lt IE 9]>
   <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
   <script src="http://advancedkittenry.github.io/javascript/jquery.treeview.js"></script>
+  <script src="http://advancedkittenry.github.io/javascript/jquery.scrollTo.js"></script>
+  <script src="http://advancedkittenry.github.io/javascript/jquery.nav.js"></script>
   <script src="http://advancedkittenry.github.io/javascript/navi.js"></script>
 </head>
 <body>
@@ -105,6 +107,8 @@
 <header>
 <h1 class="title">Dokumentaatio-ohje</h1>
 </header>
+<script>addHeaderLinks = true; </script>
+
 <p>Kurssilla määritellään, suunnitellaan ja toteutetaan pieni www-alustalle toteutettava tietokantajärjestelmä.<br>Tämä dokumentti antaa suuntaa harjoitustyöltä odotettavasta dokumentaatiosta.<br>Dokumentissa tulee olla selkeä kappalejako, kansilehti ja sisällysluettelo. Tekstin tulee olla kieliasultaan selkeää. Dokumentaatio tulisi palauttaa mieluiten yhtenä pdf-tiedostona joka kuvaa koko järjestelmän, tarvittaessa kuvat voi palauttaa irrallisina.</p>
 <section id="johdanto" class="level2">
 <h2>1. Johdanto</h2>
@@ -183,7 +187,9 @@ Aktivoinnin voisi kytkeä myös esimerkiksi jäsenmaksun maksamiseen.</code></pr
 <p>Järjestelmän tietosisältö kuvataan käsitekaavion avulla. Käsitekaavio on järjestelmään säilöttävälle tiedolle käsitetason malli, jonka perusteella johdetaan toteutustason relaatiotietokantakaavio.</p>
 <section id="esimerkki-2" class="level4">
 <h4>Esimerkki</h4>
-<p><img src="information_diagram.png"><br><img src="images/dokumentaatio-ohje/information_diagram.png" alt="Tietosisältökaavio"></p>
+<figure>
+<img src="images/dokumentaatio-ohje/information_diagram.png" alt="Tietosisältökaavio"><figcaption>Tietosisältökaavio</figcaption>
+</figure>
 <p>Kaavion lisäksi täytyy kuhunkin tietokohteeseen liittää selitys, jossa määritellään kyseinen kohde. Attribuutit täytyy kuvailla ellei merkitys ole nimen perusteella itsestään selvä. Jos attribuutilla on koodiarvoja tai rajattu arvojoukko, on arvojen merkitys myös selitettävä. Myös yhteydet täytyy määritellä. Alla on esimerkkinä yhden tietokohteen määrittely.</p>
 </section>
 <section id="esimerkki-3" class="level4">
