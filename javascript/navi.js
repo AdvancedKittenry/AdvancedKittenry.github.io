@@ -11,6 +11,7 @@ $(document).ready(function(){
     var hasLinks = false;
     $('section.level2').each(function() {
       var title = $(this).find('h2').html();
+      title = title.replace(/^\d+\.? */, ""); //Remove ordinal numering
       var link = url+"#"+$(this).attr('id');
       links.append($('<li><a href="'+link+'">'+title+'</a></li>'));
       hasLinks = true;
