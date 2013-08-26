@@ -30,7 +30,7 @@ BEGIN {
     if (length($curdir) > 0) {
       $curdir = $curdir . "/";
     }
-    my $rootdir = $curdir =~ s#[^/]+#..#r;
+    my $rootdir = $curdir =~ s#[^/]+#..#rg;
 
     our %dirs = (
       curdir => $curdir,
