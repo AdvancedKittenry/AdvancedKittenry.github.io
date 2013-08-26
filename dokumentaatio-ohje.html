@@ -105,7 +105,189 @@
 <header>
 <h1 class="title">Dokumentaatio-ohje</h1>
 </header>
+<p>Kurssilla määritellään, suunnitellaan ja toteutetaan pieni www-alustalle toteutettava tietokantajärjestelmä.<br>Tämä dokumentti antaa suuntaa harjoitustyöltä odotettavasta dokumentaatiosta.<br>Dokumentissa tulee olla selkeä kappalejako, kansilehti ja sisällysluettelo. Tekstin tulee olla kieliasultaan selkeää. Dokumentaatio tulisi palauttaa mieluiten yhtenä pdf-tiedostona joka kuvaa koko järjestelmän, tarvittaessa kuvat voi palauttaa irrallisina.</p>
+<section id="johdanto" class="level2">
+<h2>1. Johdanto</h2>
+<ul>
+<li>Järjestelmän tarkoitus</li>
+<li>Tiivis kuvaus siitä mistä on kyse.</li>
+<li>Millaisen toiminnan tukemiseen järjestelmä on tarkoitettu.</li>
+<li>Mitkä ovat järjestelmän tavoitteet.</li>
+<li>Nämä tiedot saa yleensä tehtäväkuvauksesta, kirjoita kuitenkin omin sanoin.</li>
+<li>Toteutus-/toimintaympäristö</li>
+<li>Missä ympäristössä työ toteutetaan.</li>
+<li>Täytyykö web-sovelluksen alustajärjestelmän tukea jotain tiettyä ohjelmointikieltä. (esim. Java, Ruby, PHP..?)
+<ul>
+<li>Jos edellytetään jotain sovelluskehystä tulisi sekin mainita.</li>
+</ul></li>
+<li>Täytyykö käyttäjän selaimen tukea jotain tiettyä ohjelmointikieltä (esim. javascript?).</li>
+<li>Edellyttääkö ohjelmisto jonkun tietyn tietokannan käyttöä vai voiko sitä vaihtaa helposti.</li>
+</ul>
+</section>
+<section id="yleiskuva-järjestelmästä" class="level2">
+<h2>2. Yleiskuva järjestelmästä</h2>
+<section id="käyttötapauskaavio-tai-sidosryhmäkaavio" class="level3">
+<h3>Käyttötapauskaavio tai sidosryhmäkaavio</h3>
+<p>Molemmat kaaviot näyttävät järjestelmän sidosryhmät ja miten ne liittyvät järjestelmään. Tällä kurssilla kehitettävissä järjestelmissä sidosryhminä ovat enimmäkseen järjestelmän käyttäjäryhmät. Muita mahdollisia sidosryhmiä olisi esimerkiksi toiset järjestelmät. Harjoitustyössä käyttäjäryhmien tulisi osaltaan näkyä kyseisille ryhmille suunnattuina toiminnallisuuksia.</p>
+<p>Käyttötapauskaaviossa käyttötapaukset kuvataan järjestelmän sisällä ja sidosryhmien yhteydet järjestelmään esitetään yhteyksinä käyttötapauksiin. Kaavion kuvaa järjestelmästä voisi kuvailla esimerkiksi “Tällaisia asioita järjestelmässä voi tehdä, ja nämä ryhmät tekevät näitä asioita”.</p>
+<p>Sidosryhmäkaaviossa sidosryhmien yhteys järjestelmään kuvataan nuolina sidosryhmästä kohti palveluntarjoajaa. Kunkin sidosryhmän karkean tason käyttötapaukset ilmaistaan yhteyden tyyppinä.</p>
+<p>Kaavioiden lisäksi käyttäjäryhmät sekä tärkeimmät käyttötapaukset kuvaillaan erikseen myös tekstinä. Kurssin tavoitteisiin riittää, että toinen kaavioista on mukana.</p>
+<section id="esimerkit" class="level4">
+<h4>Esimerkit</h4>
+<section id="käyttötapauskaavio" class="level5">
+<h5>Käyttötapauskaavio</h5>
+<figure>
+<img src="images/dokumentaatio-ohje/usecase_diagram.png" alt="Käyttötapauskaavio"><figcaption>Käyttötapauskaavio</figcaption>
+</figure>
+</section>
+<section id="sidosryhmäkaavio" class="level5">
+<h5>Sidosryhmäkaavio</h5>
+<figure>
+<img src="images/dokumentaatio-ohje/sidos3.gif" alt="Sidosryhmäkaavio"><figcaption>Sidosryhmäkaavio</figcaption>
+</figure>
+</section>
+</section>
+</section>
+<section id="käyttäjäryhmät" class="level3">
+<h3>Käyttäjäryhmät</h3>
+<p>Annetaan lyhyt kuvaus järjestelmän sidosryhminä toimivista käyttäjäryhmistä.</p>
+<section id="esimerkki" class="level4">
+<h4>Esimerkki</h4>
+<p>Jokamies Jokamiehellä tarkoitetaan ketä tahansa, joka Internetin välityksellä tulee lukemaan KatonAlle yhtiön www-sivuja. Kaikki muut sidosryhmät kuuluvat myös tähän sidosryhmään.</p>
+<p>Asiakas Asiakas on rekisteröitynyt käyttäjä.</p>
+<p>Vuokranantaja Vuokranantaja on rekisteröitynyt henkilö, joka on antanut asunnon KatonAlle yhtiölle välitettäväksi.</p>
+<p>Työntekijä Työntekijä on KatonAlle yhtiön palveluksessa oleva henkilö.</p>
+<p>Johto Johdolla tarkoitetaan työntekijöitä, joiden tehtävänä on tehtävien anto ja asioista päättäminen.</p>
+</section>
+</section>
+</section>
+<section id="käyttötapaukset" class="level2">
+<h2>3. Käyttötapaukset</h2>
+<p>Käyttötapauksella tarkoitetaan järjestelmän avulla hoidettavaa tavoitteellista tehtäväkokonaisuutta. Esimerkiksi tilauksen kirjaus, tilauksen peruutus ja laskun tulostus ovat tehtäväkokonaisuuksia, joita on luonnollista mallintaa käyttötapauksina. Kustakin käyttötapauksesta kuvataan sen sisältö: mitä käyttötapauksessa tehdään. Raporttien kohdalta kerrotaan, mitä tietoja raporttiin sisältyy.</p>
+<p>Käyttötapausten avulla määritellään, mitä järjestelmällä tehdään. Voit luonnostella käyttötapauksia esimerkkitapausten avulla. Esimerkkitapauksessa toiminnan kohde on kiinnitetty. Esimerkiksi ‘ilmoittautuminen Informaatiojärjestelmät kurssin harjoitusryhmään 3’ on esimerkkitapaus käyttötapauksesta ‘luentokurssille ilmoittautuminen’. Voit esittää esimerkkitapauksia myös dokumentissa havainnollistaaksesi käyttötapauksia. Käyttötapaukset kannattaa esittää käyttäjittäin ryhmiteltynä tärkeysjärjestyksessä.</p>
+<section id="esimerkki-1" class="level4">
+<h4>Esimerkki</h4>
+<p>Jokamiehen käyttötapaukset</p>
+<p>Yritysinfon lukeminen: Kuka tahansa voi käydä lukemassa yrityksen mainos- ja yleistietoja mm. työntekijöiden puhelinnumerot ja toimistojen sijainnit.</p>
+<p>Asuntotilanteen yleiskuvan selvittäminen: Käyttäjälle näytetään, minkä tyyppisiä asuntoja kullakin alueella kyselyn suoritushetkellä on tarjolla vuokralle ja kuinka monta näitä on tarjolla. Esimerkki: Millaisia asuntoja on tarjolla Kruunuhaassa?</p>
+<p>Rekisteröityminen asiakkaaksi: Rekisteröitymisessä käyttäjä ilmoittautuu yrityksen asiakkaaksi päästen näin yrityksen muiden asiakaspalveluiden käyttäjäksi ja asiakastiedotteiden saajaksi.</p>
+<pre><code>Jokamiehestä tulee asiakas. Hän antaa henkilötietonsa ja saa asiakastunnuksen, 
+joka on avain asiakkaille tarkoitettuihin palveluihin. 
 
+Prototyypissä asiakastunnus aktivoituu heti. 
+Aktivoinnin voisi kytkeä myös esimerkiksi jäsenmaksun maksamiseen.</code></pre>
+</section>
+</section>
+<section id="järjestelmän-tietosisältö" class="level2">
+<h2>4. Järjestelmän tietosisältö</h2>
+<p>Järjestelmän tietosisältö kuvataan käsitekaavion avulla. Käsitekaavio on järjestelmään säilöttävälle tiedolle käsitetason malli, jonka perusteella johdetaan toteutustason relaatiotietokantakaavio.</p>
+<section id="esimerkki-2" class="level4">
+<h4>Esimerkki</h4>
+<p><img src="information_diagram.png"><br><img src="images/dokumentaatio-ohje/information_diagram.png" alt="Tietosisältökaavio"></p>
+<p>Kaavion lisäksi täytyy kuhunkin tietokohteeseen liittää selitys, jossa määritellään kyseinen kohde. Attribuutit täytyy kuvailla ellei merkitys ole nimen perusteella itsestään selvä. Jos attribuutilla on koodiarvoja tai rajattu arvojoukko, on arvojen merkitys myös selitettävä. Myös yhteydet täytyy määritellä. Alla on esimerkkinä yhden tietokohteen määrittely.</p>
+</section>
+<section id="esimerkki-3" class="level4">
+<h4>Esimerkki</h4>
+<blockquote>
+<p><strong>Tietokohde: Huoneisto</strong></p>
+<table>
+<col style="width: 18%" /><col style="width: 25%" /><col style="width: 38%" /><thead>
+<tr class="header">
+<th style="text-align: left;">Attribuutti</th>
+<th style="text-align: left;">Arvojoukko</th>
+<th style="text-align: left;">Kuvailu</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Osoite</td>
+<td style="text-align: left;">Merkkijono, max. 120 merkkiä</td>
+<td style="text-align: left;">Asunnon katuosoite muodossa Paratiisitie 13, Ankkalinna, Calisota, Yhdysvallat</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Pinta-ala</td>
+<td style="text-align: left;">Desimaaliluku</td>
+<td style="text-align: left;">Asunnon pinta-ala neliömetreinä</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Hintapyyntö</td>
+<td style="text-align: left;">Desimaaliluku</td>
+<td style="text-align: left;">Myyjän hintapyyntö euroina.</td>
+</tr>
+</tbody>
+</table>
+<p>Huoneisto, joka on annettu myytäväksi, mutta joka ei vielä ole katalogissa voi olla kuulumatta yhdellekään virkailijalle. Kukin huoneisto voi olla kerralla vain yhden virkailijan hoidettavana. Yhdellä virkailijalla voi kuitenkin olla hoidettavanaan useita huoneistoja. Huoneistoon voidaan liittää myös varustelukuvauksia. Huoneistoa koskevista kuvauksista kulloinkin huomioidaan vain viimeisimpänä lisätty. Yksi varustelukuvaus voi kuvata vain yhtä huoneistoa. Huoneiston varustelukuvaus voi olla huoneistoa hoitavan tai jonkun muun virkailijan kirjoittama.</p>
+</blockquote>
+<p>Jos haluat varmistua siitä, että tietosisältömallisi ja käyttötapauksesi sopivat yhteen ja mallit ovat kattavia voit laatia riippuvuusmatriisin kuvaamaan tietokohteiden käsittelyä käyttötapauksissa. Riippuvuusmatriisin sarakkeina ovat kohdetyypit ja yhteydet. Riveinä ovat käyttötapaukset. Kuhunkin sarakkeeseen merkitään, mitä käyttötapauksessa tehdään ko. luokan kohteille (C=create, R=read, D=delete, U=update). Jokaisen käyttötapauksen täytyy käsitellä jotain kohdetta. Tietokohteelle täytyy mahdollistaa riittävät käsittelyoperaatiot käyttötapausten kautta.</p>
+</section>
+</section>
+<section id="relaatiotietokantakaavio" class="level2">
+<h2>5. Relaatiotietokantakaavio</h2>
+<p>Relaatiotietokantakaavio on teknisempi dokumentti, jossa tiedon säilömiseen käytettävän tietokannan rakenne esitetään kaaviokuvana ja SQL:n create table lauseina. Kaavioon täytyy sisältyä taulujen välisten viiteyhteyksien ja avainten määritykset. Jos relaatiokaaviossa on attribuutteja, jotka eivät esiinny käsitemallissa tai jonkin käsitemallin attribuutti on karsittu tai sen muotoa on muutettu on tästä erikseen mainittava. Yleissääntönä on, että relaatiotietokantakaavion tulee olla yhteensopiva käsitemallin kanssa.</p>
+<p>Create table -lauseet voi antaa liitteenä, jolloin niitä ei tarvitse kirjoittaa dokumentin sekaan.</p>
+<p>Alla on esimerkki kaaviokuvasta. Nuolten tulisi lähteä vierasavainten kohdalta, pk = primary key, fk = foreign key.<br>Huomaa kuitenkin taulun varuste vieras pariavain (huoneisto,laatimisaika) on kuvattu yhdellä nuolella.</p>
+<p><img src="images/dokumentaatio-ohje/relaatiokaavio.gif" alt="Relaatiokaavio"> Muunnossäännöt käsitemallista relaatiomalliin löytyvät Tietokantojen perusteet kurssin materiaalista.</p>
+</section>
+<section id="järjestelmän-yleisrakenne" class="level2">
+<h2>6. Järjestelmän yleisrakenne</h2>
+<p>Tämän kappaleen tarkoitus on kertoa lyhyesti mistä jotakin toimintoa kannattaa ohjelmakoodissa etsiä. Järjestelmän yleinen hakemistorakenne esitetään selostamalla yleisellä tasolla lyhyesti mihin tarkoitukseen tarkoitettuja tiedostoja projektin hakemistot sisältävät, mihin mahdollisesti käytetyt kirjastot ja apuluokat on sijoitettu ja mitä erilaisia ohjelmakoodikomponentteja projektista löytyy (Esim. html-näkymä, apuluokka, tietokantaluokka, kontrolleri). Mikäli järjestelmällä on erillinen asetuksista vastaava tiedosto, kerrotaan sen sijainti samoin kuin mahdolliset tiedostojen nimeämiseen liittyvät käytännöt.</p>
+<section id="esimerkki-mvc-mallin-mukaisesta-php-projektista" class="level4">
+<h4>Esimerkki MVC-mallin mukaisesta php-projektista</h4>
+<blockquote>
+<p>Tietokantasovellusta tehdessä on noudatettu MVC-mallia. Kontrollerit, näkymät ja mallit<br>sijaitsevat hakemistoissa controllers, views- ja models. Käytetyt apukirjastot on sijoitettu<br>hakemistoon lib ja asetukset ovat tiedostossa settings.php.<br><br>Ylläpidon sivuista vastaavissa tiedostoissa on kaikissa admin-etuliite. Kaikki tiedostonimet on<br>kirjoitettu pienellä.</p>
+</blockquote>
+</section>
+</section>
+<section id="järjestelmän-komponentit" class="level2">
+<h2>7. Järjestelmän komponentit</h2>
+<p>Kustakin ohjelman komponentista laaditaan erillinen kuvaus, jossa esitetään komponentin ymmärtämisen kannalta oleelliset asiat. Kuvaus on suunnattu henkilölle, joka mahdollisesti joskus joutuisi ylläpitämään ohjelmistoa.</p>
+<p>Jokaisen komponentin osalta esitetään sen nimi ja kuvaus siitä, mitä se tekee ts. mikä sen tarkoitus on. Komponentit voidaan esitellä esim. ryhmiteltyinä html-sivuihin, servletteihin ja apuluokkiin. Lisäksi voi omana osionaan luetella sovelluksessa mahdollisesti käytettävät kuva-, ääni- yms. tiedostot. Mikäli sovelluksessa on käytetty jotain kirjastoa, kuten jQuery, tulee eritellä mitkä ovat omia ja mitkä kirjaston komponentteja, käytetyistä kirjastokomponenteista tulee kertoa mihin niitä käyttää.</p>
+<section id="esimerkki-4" class="level4">
+<h4>Esimerkki</h4>
+<blockquote>
+<p>index.php<br> Sovelluksen etusivu. Sisältää kentät sisäänkirjautumista varten, linkin rekisteröitymissivulle ja lyhyen,<br> mutta kuvailevan kertomuksen järjestelmästä ja sen viimeaikaisesta kehityksestä. Viimeaikaisesta kehityksestä<br> kertovan kentän sisältö täytetään uutissyötteestä dynaamisesti. Sivu tarjoaa myös pikahakukentän, jonka sisältö<br> lähetetään asuntohaku.php:n käsiteltäväksi.<br><br>asuntohaku.php<br> Tarjoaa hakulomakkeen asuntojen hakua varten ja luettelon hakutuloksista. Hakulomake mahdollistaa hakujen<br> tekemisen avainsanan, paikkakunnan ja hintahaarukan perusteella.<br><br>resources/dbConnection.php<br> Tiedosto, jonka avulla tietokantayhteyden saa avatuksi helposti.<br> Tietokantaa tarvitsevat komponentit käynnistävät tämän tarpeen mukaan.<br><br>resources/dbSearchFunctions.php<br> Tarjoaa kokoelman funktioita, jotka tekevät tietokantaan kyselyitä ja palauttavat kyselyiden tuloksia eri muodoissa.<br> Tämän kokoelman funktiot keskittyvät erilaisiin asuntotietoihin liittyviin hakuihin ja eivät muuta mitään tietokannassa.<br><br>…<br><br>resources/header.html<br> Jokaisen generoitavan sivun alkuun liitettävä otsaketiedosto, jossa html-sivun yleiset määrittelyt.<br> Asettaa sivujen otsikoksi “KatonAlle Oy” ja kertoo merkistökoodauksen olevan UTF-8.<br><br>resources/footer.html<br> Jokaisen generoitavan sivun loppuun liitettävä tiedosto. Liittää sivun pohjalle sivun ylläpitäjän sähköpostiosoitteen ja lopettaa sivun.<br><br>resources/lib/jokuKirjasto/*<br> Käyttämäni kirjaston jokuKirjasto komponentit löytyvät täältä. Seuraavaksi yksilöin sen komponenttien joukosta ne,<br> joita olen käyttänyt.<br><br>resources/lib/jokuKirjasto/lomakkeentarkastuskomponentti.js<br> Olen käyttänyt tätä komponenttia web-lomakkeiden sähköpostikenttien muodon tarkastukseen.<br><br>…</p>
+</blockquote>
+<p>Tämän lisäksi ohjelmakoodin tulee olla dokumentoitua (kommentit / javadoc / phpdoc tms.) ja käyttää havainnollisia nimiä muuttujille ja funktioille/metodeille. Ohjelmiston tulee olla jaettuna komponentteihin järkevästi, siten että turhalta toistolta vältytään. Komponentteihin liittyvät yleistiedot on hyvä kirjoittaa myös ohjelmakoodin alkuun yleiskommentiksi, jolloin ne voi vain kerätä ohjelmakoodista dokumenttiin. Ohjelmakoodit sijoitetaan dokumentin liitteiksi.</p>
+</section>
+</section>
+<section id="käyttöliittymä" class="level2">
+<h2>8. Käyttöliittymä</h2>
+<p>Käyttöliittymän näkymien välisiä yhteyksiä on luontevaa esittää kaavioina. Seuraavassa kuvassa on esimerkki tällaisesta kaaviosta.<br><img src="images/dokumentaatio-ohje/sivurakenne.jpg" alt="Sivurakennekaavio"></p>
+<p>Käyttötapausten ja käyttöliittymäkomponenttien välisiä yhteyksiä voi kuvailla tekstimuodossa. Tätä vaatimusta lieventää, jos sivut on nimetty kuvaavasti ja käyttötapauksille tarkoitetut polut rakenteessa ovat intuitiiviset. Sivukohtaisen julkisuusmäärittelyn dokumentoiminen ei ole välttämätöntä, jos esim. asianmukaisen siirtymän kohdalla kertoo, että tästä pääsee eteenpäin vain tunnistettu käyttäjä. Mikäli sivustolla on navigaatiopalkki, jonka johdosta kirjautunut käyttäjä pääsee mistä vain mihin vain, kannattaa tämä mainita sanallisesti kaavion yhteydessä ja merkitä kaavioon vain sellaiset yhteydet, jotka olisivat olemassa ilman navigaatiopalkkiakin.</p>
+</section>
+<section id="asennustiedot" class="level2">
+<h2>9. Asennustiedot</h2>
+<p>Lyhyehkö ohje, jonka tarkoituksena on toisaalta kertoa, miten sovellus on nyt asennettu ja toisaalta miten sen saisi asennettua uuteen ympäristöön. Servlettien sijoittelu riippuu servlettiympäristöstä, joten sitä ei tarvitse määritellä. Asennusohjeesta tulisi käydä myös ilmi, minne käytettävän tietokannan asetukset (käytettävä tietokanta, käyttäjätunnus, salasana) tulee ohjelmistoa asentaessa määritellä.</p>
+</section>
+<section id="käynnistys--käyttöohje" class="level2">
+<h2>10. Käynnistys- / käyttöohje</h2>
+<p>Tyypillisesti tässä riittää kertoa missä osoitteessa harjoitustyö on asennettuna ja millä voi kirjautua sisään.</p>
+<p>Perusoletuksena on, että järjestelmän käyttäjä osaa käsitellä WWW-sivuja selaimella. Tähän liittyviä ohjeita ei siten tarvitse antaa. WWW-sovelluksen tulisi olla helppokäyttöinen ja intuitiivinen. Sivujen pitäisi itsessään sisältää riittävästi sivun käyttöön tarvittavaa informaatiota. Jos sivut ovat tällaisia, riittää antaa ohjelman käynnistykseen tarvittava URL. Jos käyttöön liittyy joitain yleisiä toimintajärjestykseen liittyviä asioita, ne voidaan kertoa tässä yhteydessä.<br>Näiden tietojen tulisi löytyä myös tuotettavan järjestelmän sivuilta.</p>
+<p>Muista kertoa ohjaajalle mahdolliset testaustunnukset ja salasanat.</p>
+</section>
+<section id="testaus-tunnetut-bugit-ja-puutteet-jatkokehitysideat" class="level2">
+<h2>11. Testaus, tunnetut bugit ja puutteet &amp; jatkokehitysideat</h2>
+<p>Miten olet testannut ohjelmaa? Kuinka laajasti testaus on toteutettu?</p>
+<p>Mitä puutteita tai bugeja ohjelmassa on? Mitä lisäominaisuuksia ohjelmaan voisi lisätä?</p>
+</section>
+<section id="omat-kokemukset" class="level2">
+<h2>12. Omat kokemukset</h2>
+<p>Mikä oli tietokantasovelluksen teossa helppoa? Mikä vaikeaa? Mitä opit? Muu vapaa sana.</p>
+</section>
+<section id="liitteet" class="level2">
+<h2>13. Liitteet</h2>
+<p>Dokumentin liitteinä annetaan:</p>
+<ul>
+<li>Ohjelmakoodit</li>
+<li>Tietokannan määrittelevät create table lauseet, jos ne eivät ole mukana dokumentin tekstiosuudessa</li>
+<li>Jos sovelluskehys on luonut tietokannan automaattisesti esim. oliorakenteen pohjalta, tämä ei ole tarpeen.
+<ul>
+<li>(Jos et tiedä mikä sovelluskehys on, et ole käyttänyt sellaista.)</li>
+</ul></li>
+<li>Tehtäväkuvaus, jos valmis aihe.</li>
+<li>Linkki kuvaukseen liiteluettelossa riittää.</li>
+</ul>
+</section>
 </div>
 </div>
 </div>
