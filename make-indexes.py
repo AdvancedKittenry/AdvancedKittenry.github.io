@@ -20,6 +20,10 @@ def parse_ordering(contents, isIndex):
   orderMatch = re.search(r"<!-- *order: *([0-9]+) *-->", contents)
   return int(orderMatch.groups()[0]) if orderMatch else sys.maxint
 
+def isHidden(contents):
+  hiddenMatch = re.search(r"<!-- *hidden! *-->", contents)
+  return bool(hiddenMatch)
+
 def get_files(directories, path):
   directory = sorted(directories[path])
   files = []
@@ -46,6 +50,8 @@ for path in sys.stdin:
   directory = "/".join(directory)
   
   contents = open(path).read()
+  if isHidden(contents):
+    continue
   title    = parse_title(contents, parts) 
   ordering = parse_ordering(contents, isIndex) 
 
