@@ -26,12 +26,9 @@ Muiden kuin hyvin kevyiden web-sovelluskehysten (frameworkkien) käyttäminen va
 ## Muuta
 
 * [Arvosteluperusteet](arvosteluperusteet.html)
+* [Dokumentointiohje](dokumentaatio-ohje.html)
 
 [kaytettavyys]: kaytettavyys.html
 [arkkitehtuuri]: arkkitehtuuri.html
 [cleancode]: cleancode.html
 [kielivalinta]: ohjelmointikielet/index.html
-<comment>
-[b]: .html
-[c]: .html
-</comment>

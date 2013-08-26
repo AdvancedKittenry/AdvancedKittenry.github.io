@@ -3,10 +3,12 @@
 BEGIN {
     use v5.12;
     use warnings;
+    use Encode;
+    use JSON;
     use File::Basename;
+    undef $/;
 
-    our %tags = (
-        exercise => 'success',
+    our %tags = ( 
         alert    => 'error',
         info     => 'info',
         arvosanamaksimi => "heading small",
@@ -14,18 +16,15 @@ BEGIN {
     );
 
     our %titles = (
-        exercise => "Exercise %n",
         alert    => "Pidä mielessä!",
         info     => "Vinkki",
         arvosanamaksimi => "Arvosanamaksimi: ",
         vaikeustaso => "Vaikeustaso: "
     );
 
-    undef $/;
-
     my %counts;
-    our $basedir = dirname($ARGV[0]);
 
+    our $basedir = dirname($ARGV[0]);
     my $curdir = $basedir =~ s#^src/?##r;
     if (length($curdir) > 0) {
       $curdir = $curdir . "/";
@@ -38,22 +37,23 @@ BEGIN {
       imgdir => $rootdir."images/",
       myimgdir => $rootdir."images/".$curdir
     );
+    
+    my $input_file = "course_instances.json";
+    my $json_text = do {
+      open(my $json_fh, "<", $input_file)
+        or die("Can't open \$filename\": $!\n");
+      local $/;
+      <$json_fh>
+    };
+    $json_text = decode_json(encode('UTF-8', $json_text)) || die "Cannot decode couse instance data!";
+    our %coursekeywords = %{${$json_text}{'default'}};
 }
 
 for my $tag (keys %tags) {
     my $class = $tags{$tag};
     my $title = $titles{$tag};
-
-    if (/<$tag>/) {
-        my $count = ($counts{$tag} ||= 1)++;
-
-        $title =~ s/%n/$count/;
-
-        my $replacement = qq[<section class="alert alert-$class"><h3>$title</h3>];
-
-        s#<$tag>#$replacement#g;
-    }
-
+    my $replacement = qq[<section class="alert alert-$class"><h3>$title</h3>];
+    s#<$tag>#$replacement#g;
     s#</$tag>#\n</section>#g;
 }
 
@@ -61,6 +61,12 @@ for my $dir (keys %dirs) {
     my $dirval = $dirs{$dir};
 
     s#{{$dir}}#$dirval#g;
+}
+
+for my $coursekeyword (keys %coursekeywords) {
+    my $coursekeywordval = $coursekeywords{$coursekeyword};
+
+    s#{{$coursekeyword}}#<span class="coursekeyword $coursekeyword">$coursekeywordval</span>#g;
 }
 
 #Parses include files while leaving title metadata lines beginning with % out
