@@ -24,8 +24,20 @@ BEGIN {
     undef $/;
 
     my %counts;
-
     our $basedir = dirname($ARGV[0]);
+
+    my $curdir = $basedir =~ s#^src/?##r;
+    if (length($curdir) > 0) {
+      $curdir = $curdir . "/";
+    }
+    my $rootdir = $curdir =~ s#[^/]+#..#r;
+
+    our %dirs = (
+      curdir => $curdir,
+      rootdir => $rootdir,
+      imgdir => $rootdir."images/",
+      myimgdir => $rootdir."images/".$curdir
+    );
 }
 
 for my $tag (keys %tags) {
@@ -43,6 +55,12 @@ for my $tag (keys %tags) {
     }
 
     s#</$tag>#\n</section>#g;
+}
+
+for my $dir (keys %dirs) {
+    my $dirval = $dirs{$dir};
+
+    s#{{$dir}}#$dirval#g;
 }
 
 #Parses include files while leaving title metadata lines beginning with % out
