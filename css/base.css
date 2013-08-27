@@ -40,6 +40,22 @@ nav ul {
     padding-left: 0;
     list-style: none;
 }
+@media (max-width: 992px) {
+  nav > ul > li > a {
+    font-size: 120%;
+  }
+  nav > ul > li > ul li {
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 16px;
+  }
+  nav > ul > li > ul li.collapsable {
+    display: block;
+  }
+  nav > ul > li > ul ul {
+    display: block;
+  }
+}
 
 .treeview .hitarea {
   background: 0 -16px url(../images/nav.gif);
