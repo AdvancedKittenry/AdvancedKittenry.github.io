@@ -121,6 +121,16 @@ figcaption {
 .alert ul {
     margin-left: 2em;
 }
+.alert h3 {
+    margin-top: 0;
+}
+.alert.small {
+  margin-bottom: 5px;
+  padding: 5px 35px 5px 10px;
+}
+.alert.small h3 {
+  display: inline;
+}
 
 pre {
     font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
@@ -137,17 +147,13 @@ code, pre {
   font-family: Menlo, Monaco, Consolas, "Ubuntu Mono", "DejaVu Mono", monospace;
 }
 
-.alert.small {
-  margin-bottom: 5px;
-  padding: 5px 35px 5px 10px;
-}
-.alert.small h3 {
-  display: inline;
-}
 
 .nav-tabs + .panel {
   border-radius: 0px 0px 4px 4px;
   border-top: 0;
+}
+.nav-tabs + .tab-content {
+  margin-top: 1em;
 }
 .nav-tabs a:focus {
   outline: 0;

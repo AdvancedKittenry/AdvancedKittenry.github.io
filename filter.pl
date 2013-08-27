@@ -9,10 +9,10 @@ BEGIN {
     undef $/;
 
     our %tags = ( 
-        alert    => 'error',
+        alert    => 'danger',
         info     => 'info',
-        arvosanamaksimi => "heading small",
-        vaikeustaso => "heading small"
+        arvosanamaksimi => "info small",
+        vaikeustaso => "info small"
     );
 
     our %titles = (
@@ -51,7 +51,8 @@ BEGIN {
     my $tabBoxCount = 0;
     sub parseTabs {
       $tabBoxCount++;
-      my $data = $1;
+      my $data = shift;
+      my $boxes = shift;
       my $tab = 0;
       my @tabs = ();
       my @contents = ();
@@ -71,13 +72,12 @@ BEGIN {
       
       my $tabHTML = join("\n",@tabs); 
       my $contentHTML = join("\n",@contents);
-      #. $tabBoxCount;
-      "<ul class='nav nav-tabs nav-justified'>
-$tabHTML
-</ul>
-<div class='panel panel-default'><div class='panel-body'><div class='tab-content'>
-$contentHTML
-</div></div></div>";
+      $contentHTML = "<div class='tab-content'>$contentHTML</div>";
+      if ($boxes == 1) {
+        $contentHTML = "<box>$contentHTML</box>";
+      }
+
+      return "<ul class='nav nav-tabs nav-justified'>$tabHTML</ul>$contentHTML";
     }
 
 }
@@ -102,7 +102,9 @@ for my $coursekeyword (keys %coursekeywords) {
     s#{{$coursekeyword}}#<span class="coursekeyword $coursekeyword">$coursekeywordval</span>#g;
 }
 
-s{<tabs>\s(.*)<\/tabs>} {parseTabs $1}esg;
+s{<tabs nobox=['"]true['"]>\s(.*?)<\/tabs>} {parseTabs $1, 0}esg;
+s{<tabs>\s(.*?)<\/tabs>} {parseTabs $1, 1}esg;
+
 my $collapsibleCount = 0;
 s{<collapsible title=['"]([^'"]*)['"]>(.*?)<\/collapsible>} {
   $collapsibleCount++;
@@ -115,6 +117,9 @@ s{<expandable title=['"]([^'"]*)['"]>(.*?)<\/expandable>} {
   "<button type='button' class='btn-link expandable collapsed' data-toggle='collapse' data-target='#expandable_$expandableCount'>$1</button>
   <div id='expandable_$expandableCount' class='collapse'>$2</div>";
   }esg;
+s{<box type=['"]([^'"]*)['"]>}{<div class='panel panel-\1'><div class='panel-body'>}g;
+s{<box>}{<div class='panel panel-default'><div class='panel-body'>}g;
+s{</box>}{</div></div>}g;
 
 #Parses include files while leaving title metadata lines beginning with % out
 s{<include +src="([^"]*)" */>} {"\n" . `$0 $basedir/$1` =~ s/^(%[^\n]*)*//rg . "\n";}eg;
