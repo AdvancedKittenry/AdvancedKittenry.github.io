@@ -6,11 +6,6 @@ DIRPREFIX=`dirname $1 | cut -c 5- | sed -e "s/[^\/]\+\/\?/..\//g"`
 LEVEL=$[`dirname $1 | sed -e s/[^\/]*//g | wc -m`-1]
 NAVIGATION=$TMPLDIR/navigation-level-${LEVEL}.html
 
-test
-if [[ -f $2 && $1 -ot $2 && $NAVIGATION -ot $2 ]]; then
-  exit 0
-fi
-
 ./filter.pl "$1" |                  \
 ./inlinescripting |                 \
 pandoc                              \
@@ -25,5 +20,5 @@ pandoc                              \
     --include-after     $TMPLDIR/after.html    \
     --include-in-header $TMPLDIR/header.html   \
     --css ${DIRPREFIX}css/base.css             \
-    | ./make-current-selected.pl $2            \
+    | ./fix-styles.pl $2                       \
     > "$2"

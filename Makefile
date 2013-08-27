@@ -1,6 +1,6 @@
 SRC=$(shell find src -iname "*.markdown")
 DIRS=$(shell cd src && find . -mindepth 1 -type d \! -path "./templates")
-DEPS=$(wildcard src/templates/*.html) src/templates/navigation-level-0.html filter.pl make-html.sh make-current-selected.pl
+DEPS=$(wildcard src/templates/*.html) src/templates/navigation-level-0.html filter.pl make-html.sh fix-styles.pl inlinescripting
 HTML=${patsubst src/%,%,${SRC:.markdown=.html}}
 
 reverse = $(if $(wordlist 2,2,$(1)),$(call reverse,$(wordlist 2,$(words $(1)),$(1))) $(firstword $(1)),$(1))
@@ -18,7 +18,7 @@ src/templates/navigation-level-0.html: make-navigation.sh make-indexes.py ${DIRS
 
 ${TEMPLATES}:
 
-${HTML}: %.html : src/%.markdown $@ ${DEPS} inlinescripting
+${HTML}: %.html : src/%.markdown $@ ${DEPS}
 	./make-html.sh src/$*.markdown $*.html
 
 clean:

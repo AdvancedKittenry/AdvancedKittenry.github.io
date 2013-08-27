@@ -25,6 +25,8 @@ Muiden kuin hyvin kevyiden web-sovelluskehysten (frameworkkien) käyttäminen va
 
 ## Muuta
 
+Kurssilla on irc-kanava #tsoha2013@Ircnet. Sieltä saa usein hyviä neuvoja kurssilla oleville ongelmille.
+
 * [Arvosteluperusteet](arvosteluperusteet.html)
 * [Dokumentointiohje](dokumentaatio-ohje.html)
 

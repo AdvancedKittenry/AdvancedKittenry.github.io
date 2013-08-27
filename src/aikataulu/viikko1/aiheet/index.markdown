@@ -16,6 +16,8 @@ Myös omaa aihetta saa ehdottaa tai toteuttaa aihe-ehdotuksesta oman variaations
 Tälläisestä on sovittava aina erikseen ohjaajan kanssa, mutta 
 kunhan laajuus on sopiva omalle aiheelle ei ole yleensä mitään estettä.
 
+Kun olet valinnut aiheesi, aloita dokumentaation tuottaminen kirjoittamalla [johdantoluku]({{rootdir}}dokumentaatio-ohje.html), jossa kerrot aiheestasi.
+
 <comment>
 * Oma aihe
 * Ryhmittely?

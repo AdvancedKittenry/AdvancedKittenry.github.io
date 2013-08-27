@@ -3,7 +3,7 @@
 
 Kurssilla määritellään, suunnitellaan ja toteutetaan pieni www-alustalle toteutettava tietokantajärjestelmä.  
 Tämä dokumentti antaa suuntaa harjoitustyöltä odotettavasta dokumentaatiosta.  
-Dokumentissa tulee olla selkeä kappalejako, kansilehti ja sisällysluettelo. Tekstin tulee olla kieliasultaan selkeää. Dokumentaatio tulisi palauttaa mieluiten yhtenä pdf-tiedostona joka kuvaa koko järjestelmän, tarvittaessa kuvat voi palauttaa irrallisina.
+Dokumentissa tulee olla selkeä kappalejako, kansilehti ja sisällysluettelo. Tekstin tulee olla kieliasultaan selkeää. Dokumentaatio tulisi palauttaa mieluiten **yhtenä pdf-tiedostona** joka kuvaa koko järjestelmän, tarvittaessa kuvat voi palauttaa irrallisina.
 
 ##1. Johdanto
 

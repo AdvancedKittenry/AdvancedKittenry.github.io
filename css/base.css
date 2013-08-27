@@ -1,5 +1,4 @@
 @import "bootstrap.css";
-@import "bootstrap-responsive.css";
 
 .titlebar {
     color: white;
@@ -7,12 +6,9 @@
     padding: 10px 0;
 }
 
-.titlebar h1,
-.container-fluid {
-    width: 640px;
-    max-width: 50%;
-    margin: auto;
-    /* margin-top: 40px; */
+.titlebar h1 {
+    font-size: 20px;
+    line-height: 22px;
 }
 
 footer {
@@ -32,14 +28,16 @@ header p {
     color: #777;
 }
 
+.navcontainer {
+    padding-top: 18px;
+}
 nav {
-    float: left;
-    max-width: 25%;
-    padding-top: 28px;
+    padding-top: 10px;
 }
 
 nav ul {
     margin-left: 1em;
+    padding-left: 0;
     list-style: none;
 }
 

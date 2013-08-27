@@ -39,28 +39,44 @@ $(document).ready(function(){
 
   // Stick the #nav to the top of the window
   var nav = $('nav');
+  var footer = $('footer');
+  var content = $('#content');
   var navHomeY = nav.offset().top;
   var isFixed = false;
   var $w = $(window);
-  $w.scroll(function() {
+
+  function checkNavi() {
       var scrollTop = $w.scrollTop();
-      var shouldBeFixed = scrollTop > navHomeY;
-      if (shouldBeFixed && !isFixed) {
+      var shouldBeFixed = (scrollTop > navHomeY) && 
+        (nav.outerHeight() < content.outerHeight()); 
+      if (shouldBeFixed) {
+          if (!isFixed) {
+              nav.css({
+                  position: 'fixed',
+                  top: offset + "px",
+                  left: nav.offset().left,
+                  width: nav.width()
+              });
+              isFixed = true;
+          }
+          //Calculate if the navi bottom is hitting the page bottom
+          var footerMargin = footer.css('margin-top').replace("px", "") * 1;
+          var offset = Math.min(footer.offset().top - (scrollTop + nav.outerHeight() + footerMargin), 0);
+          console.log(offset);
           nav.css({
-              position: 'fixed',
-              top: 0,
-              left: nav.offset().left,
-              width: nav.width()
+              top: offset + "px",
           });
-          isFixed = true;
       }
       else if (!shouldBeFixed && isFixed)
       {
           nav.css({
-              position: 'static'
+            position: 'static',
           });
           isFixed = false;
       }
-  });
+  }
+  $w.scroll(checkNavi);
+  $w.resize(checkNavi);
+  nav.resize(checkNavi);
 
 });

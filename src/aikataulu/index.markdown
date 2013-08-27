@@ -1,6 +1,6 @@
 % Aikataulu
 
-Kurssi alkaa aloitusluennolla
+Kurssi alkaa **pakollisella** aloitusluennolla {{aloitusluentopvm}}.
 
 Tällä kurssilla on käytössä viikottaiset palautukset.
 Jokainen ajoissa tehty palautus on kolmen pisteen arvoinen.
@@ -19,6 +19,6 @@ ja siitä eteenpäin [versionhallinnan]({{rootdir}}aikataulu/viikko1/git-ohje.ht
 | [Viikko III]({{rootdir}}aikataulu/viikko3/index.html)   | {{deadline3}} klo 23:00        |
 | [Viikko IV]({{rootdir}}aikataulu/viikko4/index.html)    | {{deadline4}} klo 23:00        |
 | [Viikko V]({{rootdir}}aikataulu/viikko5/index.html)     | {{deadline5}} klo 23:00        |
-| [Demotilaisuus]({{rootdir}}aikataulu/demo.html)         | {{demodeadline}} |
-| [Palautus]({{rootdir}}aikataulu/palautus.html)          | {{palautusdeadline}} |
+| [Demotilaisuus]({{rootdir}}aikataulu/demo.html)         | {{demodeadline}}               |
+| [Palautus]({{rootdir}}aikataulu/palautus.html)          | {{palautusdeadline}}           |
 
