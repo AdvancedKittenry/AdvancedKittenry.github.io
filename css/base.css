@@ -36,8 +36,8 @@ nav {
 }
 
 nav ul {
-    margin-left: 1em;
-    padding-left: 0;
+    padding-left: 1em;
+    margin-left: 0;
     list-style: none;
 }
 @media (max-width: 992px) {
