@@ -102,27 +102,29 @@ for my $coursekeyword (keys %coursekeywords) {
     s#{{$coursekeyword}}#<span class="coursekeyword $coursekeyword">$coursekeywordval</span>#g;
 }
 
-s{<tabs nobox=['"]true['"]>\s(.*?)<\/tabs>} {parseTabs $1, 0}esg;
+s#<comment>.*?</comment>##sg;
+s{<tabs nobox=['"]true['"]>\s(.*?)<\/tabs>} {parseTabs($1, 0)."<hr/>" }esg;
 s{<tabs>\s(.*?)<\/tabs>} {parseTabs $1, 1}esg;
 
 my $collapsibleCount = 0;
-s{<collapsible title=['"]([^'"]*)['"]>(.*?)<\/collapsible>} {
+s{<collapsible title=['"]([^'"]*)['"]>} {
   $collapsibleCount++;
   "<button type='button' class='btn-link expandable' data-toggle='collapse' data-target='#collapsible_$collapsibleCount'>$1</button>
-  <div id='collapsible_$collapsibleCount' class='collapse in'>$2</div>";
+  <div id='collapsible_$collapsibleCount' class='collapse in'>";
   }esg;
 my $expandableCount = 0;
-s{<expandable title=['"]([^'"]*)['"]>(.*?)<\/expandable>} {
+s{<expandable title=['"]([^'"]*)['"]>} {
   $expandableCount++;
   "<button type='button' class='btn-link expandable collapsed' data-toggle='collapse' data-target='#expandable_$expandableCount'>$1</button>
-  <div id='expandable_$expandableCount' class='collapse'>$2</div>";
+  <div id='expandable_$expandableCount' class='collapse'>";
   }esg;
 s{<box type=['"]([^'"]*)['"]>}{<div class='panel panel-\1'><div class='panel-body'>}g;
+s#<\/(collapsible|expandable)>#</div>#g;
+
 s{<box>}{<div class='panel panel-default'><div class='panel-body'>}g;
 s{</box>}{</div></div>}g;
 
 #Parses include files while leaving title metadata lines beginning with % out
 s{<include +src="([^"]*)" */>} {"\n" . `$0 $basedir/$1` =~ s/^(%[^\n]*)*//rg . "\n";}eg;
 #Removes comment tags
-s#<comment>.*?</comment>##sg;
 s#<!-- addHeaderNavigation -->#<script>addSectionLinks = true; </script>#sg;

@@ -1,22 +1,25 @@
 % Widget testground
 <!-- hidden! -->
 
+This page serves to somewhat document all the technical abilities of
+the engine behind these pages.
+
+<comment>
+This text will dissapear.
+</comment>
+
+## Tabs
+
 <tabs nobox="true">
-<tab title="PHP">
-~~~~ {.php .numberLines}
-<?php
-  echo "test";
-?>
-~~~~
+<tab title="Directories">
+curdir is "{{curdir}}"\
+rootdir is "{{rootdir}}"\
+imgdir is "{{imgdir}}"\
+myimgdir is "{{myimgdir}}"\
+
 </tab>
-<tab title="Java">
-~~~~ {.java .numberLines}
-class M {
-  public static void main(String[] args) {
-    System.out.println("test");
-  }
-}
-~~~~
+<tab title="Stuff">
+<box>Huh?</box>
 </tab>
 </tabs>
 
@@ -39,6 +42,8 @@ class M {
 </tab>
 </tabs>
 
+## Expanding stuff
+
 <expandable title="Open me">
 ~~~~ {.java .numberLines}
 class M {
@@ -50,11 +55,27 @@ class M {
 </expandable>
 
 <collapsible title="Close me">
-~~~~ {.java .numberLines}
-class M {
-  public static void main(String[] args) {
-    System.out.println("test");
-  }
-}
-~~~~
+<box>
+<alert>Alert</alert>
+<info>Alert</info>
+<arvosanamaksimi>5</arvosanamaksimi>
+<vaikeustaso>Huima</vaikeustaso>
 </collapsible>
+</box>
+
+# Contents of index.markdown
+<include src="index.markdown" />
+
+## Demo of course instance replacements
+
+"{\{deadline1}}" turns to "{{deadline1}}".
+
+| Tilaisuus                                               | Deadline |
+|---------------------------------------------------------|--------------------------------|
+| [Viikko I]({{rootdir}}aikataulu/viikko1/index.html)     | {{deadline1}} klo 23:00        |
+| [Viikko II]({{rootdir}}aikataulu/viikko2/index.html)    | {{deadline2}} klo 23:00        |
+| [Viikko III]({{rootdir}}aikataulu/viikko3/index.html)   | {{deadline3}} klo 23:00        |
+| [Viikko IV]({{rootdir}}aikataulu/viikko4/index.html)    | {{deadline4}} klo 23:00        |
+| [Viikko V]({{rootdir}}aikataulu/viikko5/index.html)     | {{deadline5}} klo 23:00        |
+| [Demotilaisuus]({{rootdir}}aikataulu/demo.html)         | {{demodeadline}}               |
+| [Palautus]({{rootdir}}aikataulu/palautus.html)          | {{palautusdeadline}}           |
