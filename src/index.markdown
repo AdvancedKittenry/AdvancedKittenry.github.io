@@ -15,10 +15,6 @@ Sovellus toteutetaan Java- tai PHP-kielellä.
 Myös Ruby ja Python tai muut web-sovelluskielet käyvät, mutta asiasta kannattaa sopia ohjaajan kanssa.
 Muiden kuin hyvin kevyiden web-sovelluskehysten (frameworkkien) käyttäminen vaatii ohjaajan erityisluvan. Tietokanta-abstraktiokerroksia ei myöskään saa käyttää ellei sellaista halua kirjoittaa itse.
 
-* Valitse aiheesi
-* Valitse ohjelmointikielesi
-* Seuraa aikataulua
-
 ## Viikkoaikataulu
 
 <include src="aikataulu/index.markdown" />
@@ -26,6 +22,8 @@ Muiden kuin hyvin kevyiden web-sovelluskehysten (frameworkkien) käyttäminen va
 ## Muuta
 
 Kurssilla on irc-kanava #tsoha2013@Ircnet. Sieltä saa usein hyviä neuvoja kurssilla oleville ongelmille.
+
+Hyödyllisiä sivuja:
 
 * [Arvosteluperusteet](arvosteluperusteet.html)
 * [Dokumentointiohje](dokumentaatio-ohje.html)
