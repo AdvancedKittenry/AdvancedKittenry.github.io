@@ -2,11 +2,11 @@
   "default": {
     "instancename": "Syksy 2013, periodi I",
     "aloitusluentopvm": "ti 3.9",
-    "deadline1": "pe 6.9",
-    "deadline2": "pe 13.9",
-    "deadline3": "pe 20.9",
-    "deadline4": "pe 27.9",
-    "deadline5": "pe 4.10",
+    "deadline1": "pe 6.9 klo 23:00",
+    "deadline2": "pe 13.9 klo 23:00",
+    "deadline3": "pe 20.9 klo 23:00",
+    "deadline4": "pe 27.9 klo 23:00",
+    "deadline5": "pe 4.10 klo 23:00",
     "demodeadline": "ajankohta selviää myöhemmin",
     "palautusdeadline": "ajankohta selviää myöhemmin"
   }

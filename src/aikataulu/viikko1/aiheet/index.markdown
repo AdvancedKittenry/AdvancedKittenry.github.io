@@ -1,4 +1,5 @@
 % Aiheet
+<!-- order: 2 -->
 
 Ohessa olevassa listasta löydät tietokantasovelluksen valmiit aihe-ehdotukset
 vaikeusasteineen ja arvosanamaksimeineen. Vaikeusasteet ovat suuntaa-antavia,
@@ -15,8 +16,11 @@ Parityön aiheeksi kelpaa ainoastaan vitosen arvosanamaksimilla varustettu aihe.
 Myös omaa aihetta saa ehdottaa tai toteuttaa aihe-ehdotuksesta oman variaationsa.
 Tälläisestä on sovittava aina erikseen ohjaajan kanssa, mutta 
 kunhan laajuus on sopiva omalle aiheelle ei ole yleensä mitään estettä.
+Ota oma aiheesi esille mielellään jo heti aloitusluennon jälkeen.
 
-Kun olet valinnut aiheesi, aloita dokumentaation tuottaminen kirjoittamalla [johdantoluku]({{rootdir}}dokumentaatio-ohje.html), jossa kerrot aiheestasi.
+<ohje>
+Kun olet valinnut aiheesi, valitse [ohjelmointikieli](../ohjelmointikielet.html), jota haluat käyttää.
+</ohje>
 
 <comment>
 * Oma aihe

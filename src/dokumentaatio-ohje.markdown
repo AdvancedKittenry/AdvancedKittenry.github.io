@@ -7,6 +7,9 @@ Dokumentissa tulee olla selkeä kappalejako, kansilehti ja sisällysluettelo. Te
 
 ##1. Johdanto
 
+Johdantoon kirjoitetaan lyhyt, ytimekäs kuvaus siitä, mikä on työn aihe, mitä työllä kuuluisi pystyä tekemään
+ja mitä tekniikoita siinä käytetään.
+
 - Järjestelmän tarkoitus
   - Tiivis kuvaus siitä mistä on kyse.
   - Millaisen toiminnan tukemiseen järjestelmä on tarkoitettu.

@@ -1,6 +1,8 @@
 % Viikko 2
-
 <!-- order: 1 -->
+
+<deadline>{{deadline2}}</deadline>
+
 * Yleisnäkymän suunnittelu ja luonti
   * Tähän jotain inspaavia linkkejä
   * Etusivun suunnittelu

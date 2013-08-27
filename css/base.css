@@ -177,3 +177,19 @@ button.expandable:focus {
 button.expandable.collapsed { 
   background-position: -4px 0;
 }
+
+.green {
+  color: green;
+}
+.yellow {
+  color: yellow;
+}
+.red {
+  color: red;
+}
+.blue {
+  color: blue;
+}
+.orange {
+  color: orange;
+}

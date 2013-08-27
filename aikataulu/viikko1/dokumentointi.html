@@ -3,30 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <title>Ohjelmointikielen valinta</title>
+  <title>Dokumentaation aloittaminen</title>
   <style type="text/css">code{white-space: pre;}</style>
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
-  <style type="text/css">
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; }
-code > span.dt { color: #902000; }
-code > span.dv { color: #40a070; }
-code > span.bn { color: #40a070; }
-code > span.fl { color: #40a070; }
-code > span.ch { color: #4070a0; }
-code > span.st { color: #4070a0; }
-code > span.co { color: #60a0b0; font-style: italic; }
-code > span.ot { color: #007020; }
-code > span.al { color: #ff0000; font-weight: bold; }
-code > span.fu { color: #06287e; }
-code > span.er { color: #ff0000; font-weight: bold; }
-  </style>
   <link rel="stylesheet" href="../../css/base.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!--[if lt IE 9]>
@@ -96,8 +77,8 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li><a href="../../aikataulu/viikko1/aiheet/Ystavanvalityspalvelu.html">Ystävänvälityspalvelu</a></li>
 <li><a href="../../aikataulu/viikko1/aiheet/Aanestys.html">Äänestys</a></li>
 </ul></li>
-<li class="selected"><a href="../../aikataulu/viikko1/ohjelmointikielet.html">Ohjelmointikielen valinta</a></li>
-<li><a href="../../aikataulu/viikko1/dokumentointi.html">Dokumentaation aloittaminen</a></li>
+<li><a href="../../aikataulu/viikko1/ohjelmointikielet.html">Ohjelmointikielen valinta</a></li>
+<li class="selected"><a href="../../aikataulu/viikko1/dokumentointi.html">Dokumentaation aloittaminen</a></li>
 <li><a href="../../aikataulu/viikko1/git-ohje.html">Versionhallinta</a></li>
 </ul></li>
 <li><a href="../../aikataulu/viikko2/index.html">Viikko 2</a>
@@ -132,123 +113,11 @@ code > span.er { color: #ff0000; font-weight: bold; }
 </div>
 <div class="col-md-6" id="content">
 <header>
-<h1 class="title">Ohjelmointikielen valinta</h1>
+<h1 class="title">Dokumentaation aloittaminen</h1>
 </header>
-<!-- order: 3 -->
+<!-- order: 4 -->
 
-<p>Tietokantasovellukset kirjoitetaan yleensä joko Javalla tai PHP:llä. Nämä ovat myös tällä hetkellä laitoksen palvelimella tuetut kielet ja niillä tekemiseen pyritään kirjoittamaan ajantasaista dokumentaatiota. Tämä sivu käsittelee lähinnä näitä kahta kieltä. Sovelluksen voi halutesaan kirjoittaa myös Pythonilla tai Rubyllä, kunhan sopii asiasta ohjaajan kanssa. Mitään kovin raskaita web-kirjastoja ei tällöinkään saa käyttä. Esim. Ruby on Rails ei käy.</p>
-<section id="java-ja-php" class="level2">
-<h2>Java ja PHP</h2>
-<p>Perussyntaksiltaan PHP ja Java ovat aika samanlaisia, sillä molemmat ovat perineet syntaksinsa C-tyyppisiltä kieliltä. PHP on tosin perinyt perliltä tavan käyttää dollaria <code>$muuttujien</code> nimissä. Esimerkiksi luokka Kahvikuppi määriteltäisiin näissä kielissä seuraavasti:</p>
-<div class="row">
-<div class="col-md-6">
-<p><strong>PHP</strong></p>
-<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>
-
-<span class="kw">class</span> Kahvikuppi {
-
-  <span class="co">/* Luokkamuuttujat */</span>
-  <span class="kw">private</span> <span class="kw">$tekstiKyljessa</span><span class="ot">;</span>
-  <span class="kw">private</span> <span class="kw">$tayttoaste</span> = <span class="dv">0</span><span class="ot">;</span>
-  
-  <span class="co">/* Konstruktori */</span>
-  <span class="kw">function</span> <span class="fu">__construct</span><span class="ot">(</span><span class="kw">$teksti</span><span class="ot">)</span> {
-    <span class="kw">$this</span>-&gt;tekstiKyljessa = <span class="kw">$teksti</span><span class="ot">;</span>
-  }
-  
-  <span class="co">/* Metodeja */</span>
-  <span class="kw">function</span> kaadaKahvia<span class="ot">(</span><span class="kw">$maara</span><span class="ot">)</span> {
-    <span class="kw">$this</span>-&gt;tayttoaste += <span class="kw">$maara</span><span class="ot">;</span>
-    <span class="kw">if</span> <span class="ot">(</span><span class="kw">$this</span>-&gt;tayttoaste &gt; <span class="dv">100</span><span class="ot">)</span> {
-      <span class="kw">throw</span> <span class="kw">new</span> <span class="kw">Exception</span><span class="ot">(</span><span class="st">&quot;Kahvikuppi valui yli&quot;</span><span class="ot">);</span>
-    }
-  }
-  <span class="kw">function</span> juoTyhjaksi<span class="ot">()</span> {
-    <span class="kw">$this</span>-&gt;tayttoaste = <span class="dv">0</span><span class="ot">;</span>
-  }
-  <span class="kw">function</span> getKahvinMaara<span class="ot">()</span> {
-    <span class="kw">return</span> <span class="kw">$this</span>-&gt;tayttoaste<span class="ot">;</span>
-  }
-}</code></pre>
-</div>
-<div class="col-md-6">
-<p><strong>Java</strong></p>
-<pre class="sourceCode java"><code class="sourceCode java">
-
-<span class="kw">class</span> Kahvikuppi {
-  
-  <span class="co">/* Luokkamuuttujat */</span>
-  <span class="kw">private</span> String tekstiKyljessa
-  <span class="kw">private</span> <span class="dt">int</span> tayttoaste = <span class="dv">0</span>;
-
-  <span class="co">/* Konstruktori */</span>
-  <span class="fu">Kahvikuppi</span>(String teksti) { 
-    <span class="kw">this</span>.<span class="fu">tekstiKyljessa</span> = teksti;
-  }
-  
-  <span class="co">/* Metodeja */</span>
-  <span class="dt">void</span> <span class="fu">kaadaKahvia</span>(<span class="dt">int</span> maara) {
-    tayttoaste += $maara;
-    <span class="kw">if</span> (tayttoaste &gt; <span class="dv">100</span>) {
-      <span class="kw">throw</span> <span class="kw">new</span> Exception(<span class="st">&quot;Kahvikuppi valui yli&quot;</span>);
-    }
-  }
-  <span class="dt">void</span> <span class="fu">juoTyhjaksi</span>() {
-    tayttoaste = <span class="dv">0</span>;
-  }
-  <span class="dt">int</span> <span class="fu">getKahvinMaara</span>() {
-    <span class="kw">return</span> tayttoaste;
-  }
-}</code></pre>
-</div>
-</div>
-
-<section class="alert alert-danger"><h3>
-Pidä mielessä!
-</h3>
-Tämän kirjoittaminen on vielä kesken
-</section>
-
-</section>
-<section id="yhteenveto" class="level2">
-<h2>Yhteenveto</h2>
-<table class="table table-striped table-bordered">
-<thead>
-<tr class="header">
-<th style="text-align: left;">Ominaisuus</th>
-<th style="text-align: left;">Java</th>
-<th style="text-align: left;">PHP</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Ajotapa</td>
-<td style="text-align: left;">Käännetään ennen ajoa</td>
-<td style="text-align: left;">Tulkitaan ajonaikaisesti</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Tyyppijärjestelmä</td>
-<td style="text-align: left;">Vahva tyypitys</td>
-<td style="text-align: left;">Heikko tyypitys</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Paradigma</td>
-<td style="text-align: left;">Olio-ohjelmointi</td>
-<td style="text-align: left;">Monia paradigmoja</td>
-</tr>
-</tbody>
-</table>
-<p>Voit tutustua myös Sami Saadan tekemiin esimerkkisovelluksiin <a href="https://github.com/tsoha-syksy2012/ostoslista-esimerkki/tree/php-raaka">PHP</a> ja <a href="https://github.com/tsoha-syksy2012/ostoslista-esimerkki/tree/java-servlet">Java-kielellä</a>. Bonuksena samasta aiheesta on olemassa myös hyvin tiivis <a href="https://github.com/tsoha-syksy2012/ostoslista-esimerkki/tree/ruby_sinatra_sequel">Ruby-toteutus</a> Sinatra-kehyksellä tehtynä.</p>
-<section class="alert alert-success"><h3>
-Ohje:
-</h3>
-<p>Kun olet valinnut aiheesi ja mieleisen ohjelmointikielen, aloita <a href="dokumentointi.html">dokumentaation</a> tuottaminen.</p>
-</section>
-
-
-
-
-</section>
+<p>Avaa mieleisesi tekstinkäsittelyohjelma ja tutustu <a href="../../dokumentaatio-ohje.html">dokumentaatio-ohjeen</a> avulla miten tuotetaan dokumentaation kolme ensimmäistä lukua Johdanto, Yleiskuva järjestelmästä ja Käyttötapaukset.</p>
 </div>
 </div> 
 </div> 

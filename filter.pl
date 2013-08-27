@@ -11,6 +11,8 @@ BEGIN {
     our %tags = ( 
         alert    => 'danger',
         info     => 'info',
+        ohje     => 'success',
+        deadline => "warning small",
         arvosanamaksimi => "info small",
         vaikeustaso => "info small"
     );
@@ -18,8 +20,10 @@ BEGIN {
     our %titles = (
         alert    => "Pidä mielessä!",
         info     => "Vinkki",
+        ohje     => 'Ohje:',
+        deadline => "Deadline: ",
         arvosanamaksimi => "Arvosanamaksimi: ",
-        vaikeustaso => "Vaikeustaso: "
+        vaikeustaso => "Vaikeustaso: ",
     );
 
     my %counts;
@@ -123,6 +127,16 @@ s#<\/(collapsible|expandable)>#</div>#g;
 
 s{<box>}{<div class='panel panel-default'><div class='panel-body'>}g;
 s{</box>}{</div></div>}g;
+s{<sidebyside>}{<div class="row">}g;
+
+s{<column>}{<div class="col-md-6">}g;
+s{<column size=["'](\d+)["']>}{<div class="col-md-\1">}g;
+s{</(sidebyside|column)>}{</div>}g;
+
+s#<(glyphicon-[a-z-]*)\s*\/>#<span class="glyphicon \1"></span>#g;
+s#<(glyphicon-[a-z-]*)\s+color=['"](\w+)['"]\/\s*>#<span style="color: \2" class="glyphicon \1"></span>#g;
+s#<(green|blue|yellow|red|orange)>#<span class="\1">#g;
+s#<\/(green|blue|yellow|red|orange)>#<\/span>#g;
 
 #Parses include files while leaving title metadata lines beginning with % out
 s{<include +src="([^"]*)" */>} {"\n" . `$0 $basedir/$1` =~ s/^(%[^\n]*)*//rg . "\n";}eg;
