@@ -48,7 +48,8 @@ $(document).ready(function(){
   function checkNavi() {
       var scrollTop = $w.scrollTop();
       var shouldBeFixed = (scrollTop > navHomeY) && 
-        (nav.outerHeight() < content.outerHeight()); 
+        (nav.outerHeight() < content.outerHeight()) &&
+        $w.width() > 992; 
       if (shouldBeFixed) {
           if (!isFixed) {
               nav.css({
