@@ -1,4 +1,5 @@
-% Ohjelmointikielen valinta
+% Widget testground
+<!-- Hidden! -->
 
 <tabs>
 <tab title="PHP">
@@ -19,7 +20,7 @@ class M {
 </tab>
 </tabs>
 
-<expandable title="Test">
+<expandable title="Open me">
 ~~~~ {.java .numberLines}
 class M {
   public static void main(String[] args) {
@@ -29,9 +30,12 @@ class M {
 ~~~~
 </expandable>
 
-<comment>
-TODO:
-lyhyet kuvaukset
-  wikipedia
-esimerkkisovellukset
-</comment>
+<collapsible title="Close me">
+~~~~ {.java .numberLines}
+class M {
+  public static void main(String[] args) {
+    System.out.println("test");
+  }
+}
+~~~~
+</collapsible>

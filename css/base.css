@@ -144,3 +144,30 @@ code, pre {
 .alert.small h3 {
   display: inline;
 }
+
+.nav-tabs + .panel {
+  border-radius: 0px 0px 4px 4px;
+  border-top: 0;
+}
+.nav-tabs a:focus {
+  outline: 0;
+}
+button.expandable {
+  background: -4px -16px url(../images/nav.gif) no-repeat;
+  padding-left: 12px;
+  width: 100%;
+  text-align: left;
+  margin-bottom: 2px;
+}
+button.expandable:hover,
+button.expandable:focus {
+  background-color: #EFEFEF;
+  border-radius: 4px 4px 4px 4px;
+  text-decoration: none;
+}
+button.expandable:focus {
+  background-color: #F8F8F8;
+}
+button.expandable.collapsed { 
+  background-position: -4px 0;
+}

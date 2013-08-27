@@ -3,11 +3,30 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <title>Käytettävyys</title>
+  <title>Widget testground</title>
   <style type="text/css">code{white-space: pre;}</style>
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
   <link rel="stylesheet" href="css/base.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!--[if lt IE 9]>
@@ -105,35 +124,82 @@
 <li><a href="arvosteluperusteet.html">Arvosteluperusteet</a></li>
 <li><a href="dokumentaatio-ohje.html">Dokumentaatio-ohje</a></li>
 <li><a href="cleancode.html">Hyvä ohjelmointityyli</a></li>
-<li class="selected"><a href="kaytettavyys.html">Käytettävyys</a></li>
+<li><a href="kaytettavyys.html">Käytettävyys</a></li>
 </ul></li>
 </ul>
 </nav>
 </div>
 <div class="col-md-6" id="content">
 <header>
-<h1 class="title">Käytettävyys</h1>
+<h1 class="title">Widget testground</h1>
 </header>
-<!-- order: xx -->
+<!-- Hidden! -->
 
-<p>Tällä sivulla ei tällä hetkellä ole vielä paljoa sisältöä. Ohessa kuitenkin hyvä muistilista sovelluksen käytettävyyden suunnitteluun ja tekemiseen.</p>
-<section id="asioita-joita-kannattaa-miettiä" class="level2">
-<h2>Asioita joita kannattaa miettiä</h2>
-<ul>
-<li>Onko sovelluksessa helppo löytää kaikki toiminnot? Monellako klikkauksella niihin pääsee käsiksi? Klikkausten ja navigoinnin vaatimaa sivulatausten määrää kannattaa yrittää minimoida.</li>
-<li>Näkeekö käyttäjä helposti missä on sivuilla?</li>
-<li>Onko sovellus käytettävä myös virhetilanteissa? Pääseekö virhesivulta helposti eteenpäin ja kertooko se selkeästi mikä meni pieleen?</li>
-<li>Antaako sovellus syöttää virheellisesti syötetyn lomakkeen tiedot ilman että käyttäjän tarvitsee täyttää lomaketta kokonaan uudestaan?</li>
-<li>Ovatko toiminnot ja konseptit sovelluksessa nimetty selkeästi? Ymmärtääkö niitä käyttäessä samantien mitä pitää tehdä?</li>
+<ul class='nav nav-tabs nav-justified'>
+<li class='active'>
+<a href='#tab_1_0' data-toggle='tab'>PHP</a>
+</li>
+<li>
+<a href='#tab_1_1' data-toggle='tab'>Java</a>
+</li>
 </ul>
-</section>
-<section id="linkkejä" class="level2">
-<h2>Linkkejä</h2>
-<ul>
-<li>Mainio nettikäyttöliittymäkirjasto <a href="http://getbootstrap.com/">Bootstrap</a> ja <a href="http://getbootstrap.com/getting-started/#examples">esimerkkejä</a> sen käytöstä</li>
-<li><a href="http://www.cs.helsinki.fi/u/laine/tikas/material/jsskali.pdf">Laineen kattavampi käytettävyysohje</a></li>
-</ul>
-</section>
+<div class='panel panel-default'><div class='panel-body'><div class='tab-content'>
+<div class='tab-pane active' id='tab_1_0' >
+<table class="sourceCode php numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+</pre></td><td class="sourceCode"><pre><code class="sourceCode php"><span class="kw">&lt;?php</span>
+  <span class="fu">echo</span> <span class="st">&quot;test&quot;</span><span class="ot">;</span>
+<span class="kw">?&gt;</span></code></pre></td></tr></table>
+</div>
+<div class='tab-pane' id='tab_1_1' >
+<table class="sourceCode java numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+4
+5
+</pre></td><td class="sourceCode"><pre><code class="sourceCode java"><span class="kw">class</span> M {
+  <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span>(String[] args) {
+    System.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;test&quot;</span>);
+  }
+}</code></pre></td></tr></table>
+</div>
+</div></div></div>
+
+<button type='button' class='btn-link expandable collapsed' data-toggle='collapse' data-target='#expandable_1'>
+Open me
+</button>
+  <div id='expandable_1' class='collapse'>
+<table class="sourceCode java numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+4
+5
+</pre></td><td class="sourceCode"><pre><code class="sourceCode java"><span class="kw">class</span> M {
+  <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span>(String[] args) {
+    System.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;test&quot;</span>);
+  }
+}</code></pre></td></tr></table>
+</div>
+
+<button type='button' class='btn-link expandable' data-toggle='collapse' data-target='#collapsible_1'>
+Close me
+</button>
+  <div id='collapsible_1' class='collapse in'>
+<table class="sourceCode java numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+4
+5
+</pre></td><td class="sourceCode"><pre><code class="sourceCode java"><span class="kw">class</span> M {
+  <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span>(String[] args) {
+    System.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;test&quot;</span>);
+  }
+}</code></pre></td></tr></table>
+</div>
+
+
+
 </div>
 </div> 
 </div> 
