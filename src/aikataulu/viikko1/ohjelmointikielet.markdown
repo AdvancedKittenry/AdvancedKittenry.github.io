@@ -132,13 +132,11 @@ Voit tutustua myös Sami Saadan tekemiin esimerkkisovelluksiin
 Bonuksena samasta aiheesta on olemassa myös hyvin tiivis 
 [Ruby-toteutus](https://github.com/tsoha-syksy2012/ostoslista-esimerkki/tree/ruby_sinatra_sequel) Sinatra-kehyksellä tehtynä.
 
-<comment>
-TODO:
-lyhyet kuvaukset
-  wikipedia
-esimerkkisovellukset
-</comment>
+Linkkejä: 
 
-<ohje>
-Kun olet valinnut aiheesi ja mieleisen ohjelmointikielen, aloita [dokumentaation](dokumentointi.html) tuottaminen.
-</ohje>
+* [Javan EE dokumentaatio](http://docs.oracle.com/javaee/)
+* [PHP:n dokumentaatio](http://www.php.net/manual/en/)
+
+<next>
+Kun olet valinnut aiheesi ja mieleisen ohjelmointikielen, vilkaise [tietokannan valitsemista](tietokannat.html).
+</next>

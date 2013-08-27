@@ -27,3 +27,7 @@ Viestiksi laita github-repositoriosi osoite tai jos haluat
 pitää repositoriotasi jossain muualla kirjoita
 asianmukaiset ohjeet git-repositoriosi kloonaamiseen.
 Kaiken muun palautukseen liittyvän informaation tulee löytyä repositoriosta.
+
+<last>
+  Sähköpostin lähetettyäsi olet suorittanut [1. viikon tehtävät](index.html).
+</last>

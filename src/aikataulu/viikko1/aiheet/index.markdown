@@ -18,9 +18,9 @@ Tälläisestä on sovittava aina erikseen ohjaajan kanssa, mutta
 kunhan laajuus on sopiva omalle aiheelle ei ole yleensä mitään estettä.
 Ota oma aiheesi esille mielellään jo heti aloitusluennon jälkeen.
 
-<ohje>
+<next>
 Kun olet valinnut aiheesi, valitse [ohjelmointikieli](../ohjelmointikielet.html), jota haluat käyttää.
-</ohje>
+</next>
 
 <comment>
 * Oma aihe

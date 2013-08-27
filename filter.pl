@@ -12,6 +12,8 @@ BEGIN {
         alert    => 'danger',
         info     => 'info',
         ohje     => 'success',
+        next     => 'success small',
+        last     => 'info small',
         deadline => "warning small",
         arvosanamaksimi => "info small",
         vaikeustaso => "info small"
@@ -21,6 +23,8 @@ BEGIN {
         alert    => "Pidä mielessä!",
         info     => "Vinkki",
         ohje     => 'Ohje:',
+        next     => 'Seuraavaksi:',
+        last     => 'Valmista!',
         deadline => "Deadline: ",
         arvosanamaksimi => "Arvosanamaksimi: ",
         vaikeustaso => "Vaikeustaso: ",
