@@ -62,7 +62,6 @@ $(document).ready(function(){
           //Calculate if the navi bottom is hitting the page bottom
           var footerMargin = footer.css('margin-top').replace("px", "") * 1;
           var offset = Math.min(footer.offset().top - (scrollTop + nav.outerHeight() + footerMargin), 0);
-          console.log(offset);
           nav.css({
               top: offset + "px",
           });
