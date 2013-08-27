@@ -13,88 +13,117 @@ Esim. Ruby on Rails ei käy.
 ## Java ja PHP
 
 Perussyntaksiltaan PHP ja Java ovat aika samanlaisia, sillä
-molemmat ovat perineet syntaksinsa C-tyyppisiltä kieliltä.
-PHP on tosin perinyt perliltä tavan käyttää dollaria <code>$muuttujien</code> nimissä.
+molemmat ovat perineet syntaksinsa C-kieleltä.
+PHP on tosin lainannut perliltä tavan käyttää dollaria <code>$muuttujien</code> nimien edessä.
 Esimerkiksi luokka Kahvikuppi määriteltäisiin näissä kielissä seuraavasti:
 
 <sidebyside>
 <column>
 **PHP**
 
-~~~~ {.php}
-<?php
-
-class Kahvikuppi {
-
-  /* Luokkamuuttujat */
-  private $tekstiKyljessa;
-  private $tayttoaste = 0;
-  
-  /* Konstruktori */
-  function __construct($teksti) {
-    $this->tekstiKyljessa = $teksti;
-  }
-  
-  /* Metodeja */
-  function kaadaKahvia($maara) {
-    $this->tayttoaste += $maara;
-    if ($this->tayttoaste > 100) {
-      throw new Exception("Kahvikuppi valui yli");
-    }
-  }
-  function juoTyhjaksi() {
-    $this->tayttoaste = 0;
-  }
-  function getKahvinMaara() {
-    return $this->tayttoaste;
-  }
-}
-~~~~
+~~~~php<include src="esimerkit/kahvikuppi.php" />~~~~
 </column>
 <column>
 **Java**
 
-~~~~ {.java}
-
-
-class Kahvikuppi {
-  
-  /* Luokkamuuttujat */
-  private String tekstiKyljessa
-  private int tayttoaste = 0;
-
-  /* Konstruktori */
-  Kahvikuppi(String teksti) { 
-    this.tekstiKyljessa = teksti;
-  }
-  
-  /* Metodeja */
-  void kaadaKahvia(int maara) {
-    tayttoaste += $maara;
-    if (tayttoaste > 100) {
-      throw new Exception("Kahvikuppi valui yli");
-    }
-  }
-  void juoTyhjaksi() {
-    tayttoaste = 0;
-  }
-  int getKahvinMaara() {
-    return tayttoaste;
-  }
-}
-~~~~
+~~~~java<include src="esimerkit/Kahvikuppi.java" />~~~~
 </column>
 </sidebyside>
 
-<alert>Tämän kirjoittaminen on vielä kesken</alert>
+Kuten esimerkeistä voi huomata, kielet ovat normaalissa olio-ohjelmoinnissa melko samanlaisia.
+Suurin osa eroista on merkintätapaeroja, mutta eräs tärkeä ero esimerkistä näkyy. 
+PHP:ssä ei koskaan määritetä muuttujalle tyyppiä, kuten Javassa tehdään.
+PHP:ssä muuttujaan voi sijoittaa minkätyyppistä dataa tahansa
+ja tietotyyppi voi jopa vaihdella ajon aikana.
+Muuttujia ei PHP:ssä myöskään tarvitse esitellä mitenkään.
+Esimerkkejä:
+
+<sidebyside>
+<column>
+**PHP**
+
+~~~~php<include src="esimerkit/tyyppisekoilua.php" />~~~~
+</column>
+<column>
+**Java**
+
+~~~~java<include src="esimerkit/tyyppisekoilua.java" />~~~~
+</column>
+</sidebyside>
+
+Javaa koodatessa joutuu kirjoittamaan hieman enemmän, mutta PHP:llä saattaa varsinkin aluksi tehdä tyyppivirheitä, jotka huomaa vasta ajonaikana.
+
+### HTML:n käyttö
+
+Toinen huomionarvoinen seikka PHP:tä kirjoittaessa on kielen käyttämät _\<?php-tägit_, jotka aloittavat PHP-koodin.
+Niiden ulkopuolella olevan tekstin PHP oletuksena tulostaa sellaisenaan. 
+Tämä tekeee PHP:n käyttämisestä yksinkertaisten nettisivujen tekemiseen erittäin helppoa:
+
+**helloworld.php**
+
+~~~~php<include src="esimerkit/helloworld.php" />~~~~
+
+Yllä oleva sivu toimii sellaisenaan, kun osoittaa selaimensa osoitteeseen, jossa helloworld.php-tiedosto sijaitsee.
+Esim. <code>sivusto.fi/php-sovelluksen/osoite/helloworld.php</code>.
+Javalla vastaavan tekeminen on hieman monimutkaisempaa ja vaatii Servlet-luokan ja template-tiedoston:
+
+**src/java/servlets/HelloWorldServlet.java**
+
+~~~~java<include src="esimerkit/HelloWorldServlet.java" />~~~~
+
+**web/helloworld.jsp**
+
+~~~~html<include src="esimerkit/helloworld.jsp" />~~~~
+
+Ylläoleva ohjelma käynnistyy melkolailla php-esimerkin tapaan osoitteessa <code>sivusto.fi/java-sovelluksen/osoite/HelloWorld</code>.
+Tässä käytetty JSP-tiedostoformaatti on Javan-vastaus PHP:n suoraviivaiselle tavalle käsitellä HTML:n tulostusta ja
+sitä on varsin yksinkertaista käyttää.
+
+Itse java-ohjelmakoodi sensijaan on aika monimutkaista ja käyttää taustalla suurta määrää
+Javan kirjastoja. Tätä ei kovin moni jaksaisi kirjoittaa, siksi ylläolevasta koodista suurin osa 
+onkin Netbeansin autogeneroimaa, eikä kaikkea onneksi tarvitsee kirjoittaa itse.
+
+PHP on kielenä optimoitu nopeaan nettisivustojen kasaamiseen. Suuremmilla sivustoilla ja monimutkaisempia kehyksiä käytettäessä
+PHP-koodikin alkaa muistuttaa ylläolevaa java-koodia ja pitenee ja monimutkaistuu merkittävästi.
+Yleisenä nyrkkisääntönä kuitenkin on, että pienikokoisempiin web-projekteihin - esimerkiksi tietokantasovelluksiin -
+java-koodia joutuu kirjoittamaan enemmän kuin vastaaviin PHP:llä tehtyihin sovelluksiin.
+
+### Tietokannan käyttö
+
+Sekä PHP että Java hoitavat tietokannan käytön oliopohjaisesti tavalla, 
+joka mahdollistaa kielen sisäisten muuttujien upottamisen SQL-lausekkeisiin helposti
+ja tietoturvallisesti.
+
+<sidebyside>
+<column>
+**PHP**
+
+~~~~php<include src="esimerkit/tietokanta.php" />~~~~
+</column>
+<column>
+**Java**
+
+~~~~java<include src="esimerkit/Tietokanta.java" />~~~~
+</column>
+</sidebyside>
+
+PHP on tässäkin tapauksessa merkittävästi vähäsanaisempi. Taitava koodari lyhentää ylläolevasta
+esimerkistä toistuvat koodinpätkät kuitenkin yleiskäyttöisiin metodeihin, jolloin lopullisessa käytössä
+eri kielten tapa käsitellä tietokantaa on lähestulkoon yhtä monisanainen. Lisäksi Javan versiossa 7
+resurssien sulkemisesta on [tehty automaattisempaa](http://stackoverflow.com/questions/9260159/java-7-automatic-resource-management-jdbc).
+Valitettavasti tosin laitoksen palvelimilla oleva versio ei ole vielä ajan tasalla.
 
 ## Yhteenveto
+
+Kumpaa sitten kannattaa käyttää? Sitä mikä tuntuu kotoisimmalta ja luonnollisemmalta.
+Tätänykyä suurin osa valitsee PHP:n sen keveyden takia, mutta kumpaankin kieleen
+on tarjolla varsin mallikkaat välineistöt tietokantasovelluksen tekemiseen.
 
 Ominaisuus                       Java                          PHP
 -------------------------------- ----------------------------- --------------------------------
 Ajotapa                          Käännetään ennen ajoa         Tulkitaan ajonaikaisesti
 Tyyppijärjestelmä                Vahva tyypitys                Heikko tyypitys
-Paradigma                        Olio-ohjelmointi              Monia paradigmoja
+HTML:n tuottaminen               JSP-kielellä                  Suoraan PHP-koodin sisällä
 -------------------------------- ----------------------------- --------------------------------
 
 Voit tutustua myös Sami Saadan tekemiin esimerkkisovelluksiin 

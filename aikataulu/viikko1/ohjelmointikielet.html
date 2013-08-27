@@ -130,7 +130,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 </ul>
 </nav>
 </div>
-<div class="col-md-6" id="content">
+<div class="col-md-9" id="content">
 <header>
 <h1 class="title">Ohjelmointikielen valinta</h1>
 </header>
@@ -139,7 +139,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <p>Tietokantasovellukset kirjoitetaan yleensä joko Javalla tai PHP:llä. Nämä ovat myös tällä hetkellä laitoksen palvelimella tuetut kielet ja niillä tekemiseen pyritään kirjoittamaan ajantasaista dokumentaatiota. Tämä sivu käsittelee lähinnä näitä kahta kieltä. Sovelluksen voi halutesaan kirjoittaa myös Pythonilla tai Rubyllä, kunhan sopii asiasta ohjaajan kanssa. Mitään kovin raskaita web-kirjastoja ei tällöinkään saa käyttä. Esim. Ruby on Rails ei käy.</p>
 <section id="java-ja-php" class="level2">
 <h2>Java ja PHP</h2>
-<p>Perussyntaksiltaan PHP ja Java ovat aika samanlaisia, sillä molemmat ovat perineet syntaksinsa C-tyyppisiltä kieliltä. PHP on tosin perinyt perliltä tavan käyttää dollaria <code>$muuttujien</code> nimissä. Esimerkiksi luokka Kahvikuppi määriteltäisiin näissä kielissä seuraavasti:</p>
+<p>Perussyntaksiltaan PHP ja Java ovat aika samanlaisia, sillä molemmat ovat perineet syntaksinsa C-kieleltä. PHP on tosin lainannut perliltä tavan käyttää dollaria <code>$muuttujien</code> nimien edessä. Esimerkiksi luokka Kahvikuppi määriteltäisiin näissä kielissä seuraavasti:</p>
 <div class="row">
 <div class="col-md-6">
 <p><strong>PHP</strong></p>
@@ -203,15 +203,163 @@ code > span.er { color: #ff0000; font-weight: bold; }
 </div>
 </div>
 
-<section class="alert alert-danger"><h3>
-Pidä mielessä!
-</h3>
-Tämän kirjoittaminen on vielä kesken
-</section>
+<p>Kuten esimerkeistä voi huomata, kielet ovat normaalissa olio-ohjelmoinnissa melko samanlaisia. Suurin osa eroista on merkintätapaeroja, mutta eräs tärkeä ero esimerkistä näkyy. PHP:ssä ei koskaan määritetä muuttujalle tyyppiä, kuten Javassa tehdään. PHP:ssä muuttujaan voi sijoittaa minkätyyppistä dataa tahansa ja tietotyyppi voi jopa vaihdella ajon aikana. Muuttujia ei PHP:ssä myöskään tarvitse esitellä mitenkään. Esimerkkejä:</p>
+<div class="row">
+<div class="col-md-6">
+<p><strong>PHP</strong></p>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>
+<span class="kw">$luku</span> = <span class="dv">42</span><span class="ot">;</span>
+<span class="kw">$nimi</span> = <span class="st">&quot;Pertti&quot;</span><span class="ot">;</span>
+<span class="kw">$kuppi</span> = <span class="kw">new</span> Kahvikuppi<span class="ot">(</span><span class="st">&quot;Pertin kuppi&quot;</span><span class="ot">);</span>
 
+<span class="co">//PHP:ssä tämäkin on mahdollista,</span>
+<span class="co">//mutta ei suositeltavaa:</span>
+<span class="kw">$luku</span> = <span class="kw">$nimi</span><span class="ot">;</span>
+
+<span class="co">//Seuraavakaan ei vielä kaada ohjelmaa.</span>
+<span class="co">//Muuttuja $luku saa arvokseen null</span>
+<span class="kw">$luku</span> = <span class="kw">$nemi</span><span class="ot">;</span></code></pre>
+</div>
+<div class="col-md-6">
+<p><strong>Java</strong></p>
+<pre class="sourceCode java"><code class="sourceCode java">
+<span class="dt">int</span> luku = <span class="dv">42</span>;
+String nimi = <span class="st">&quot;Pertti&quot;</span>;
+Kahvikuppi kuppi = <span class="kw">new</span> <span class="fu">Kahvikuppi</span>(<span class="st">&quot;Pertin kuppi&quot;</span>);
+
+<span class="co">//Seuraavaa riviä on mahdotonta</span>
+<span class="co">//saada kääntymään:</span>
+luku = nimi;
+
+<span class="co">//Tämäkään ei käänny. Muuttujaa</span>
+<span class="co">//nemi ei ole esitelty!</span>
+luku = nemi;</code></pre>
+</div>
+</div>
+
+<p>Javaa koodatessa joutuu kirjoittamaan hieman enemmän, mutta PHP:llä saattaa varsinkin aluksi tehdä tyyppivirheitä, jotka huomaa vasta ajonaikana.</p>
+<section id="htmln-käyttö" class="level3">
+<h3>HTML:n käyttö</h3>
+<p>Toinen huomionarvoinen seikka PHP:tä kirjoittaessa on kielen käyttämät <em>&lt;?php-tägit</em>, jotka aloittavat PHP-koodin. Niiden ulkopuolella olevan tekstin PHP oletuksena tulostaa sellaisenaan. Tämä tekeee PHP:n käyttämisestä yksinkertaisten nettisivujen tekemiseen erittäin helppoa:</p>
+<p><strong>helloworld.php</strong></p>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>
+  <span class="fu">header</span><span class="ot">(</span><span class="st">&quot;Content-type: text/html;charset=UTF-8&quot;</span><span class="ot">);</span>
+  <span class="kw">$pagetitle</span> =  <span class="st">&quot;Hello World!&quot;</span><span class="ot">;</span>
+<span class="kw">?&gt;</span>&lt;!DOCTYPE HTML&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;<span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$pagetitle</span><span class="ot">;</span> <span class="kw">?&gt;</span>&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;<span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$pagetitle</span><span class="ot">;</span> <span class="kw">?&gt;</span>&lt;/h1&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p>Yllä oleva sivu toimii sellaisenaan, kun osoittaa selaimensa osoitteeseen, jossa helloworld.php-tiedosto sijaitsee. Esim. <code>sivusto.fi/php-sovelluksen/osoite/helloworld.php</code>. Javalla vastaavan tekeminen on hieman monimutkaisempaa ja vaatii Servlet-luokan ja template-tiedoston:</p>
+<p><strong>src/java/servlets/HelloWorldServlet.java</strong></p>
+<pre class="sourceCode java"><code class="sourceCode java"><span class="kw">package servlets;</span>
+
+<span class="kw">import java.io.IOException;</span>
+<span class="kw">import javax.servlet.RequestDispatcher;</span>
+<span class="kw">import javax.servlet.ServletException;</span>
+<span class="kw">import javax.servlet.annotation.WebServlet;</span>
+<span class="kw">import javax.servlet.http.HttpServlet;</span>
+<span class="kw">import javax.servlet.http.HttpServletRequest;</span>
+<span class="kw">import javax.servlet.http.HttpServletResponse;</span>
+
+<span class="fu">@WebServlet</span>(name = <span class="st">&quot;HelloWorldServlet&quot;</span>, urlPatterns = {<span class="st">&quot;/HelloWorld&quot;</span>})
+<span class="kw">public</span> <span class="kw">class</span> HelloWorldServlet <span class="kw">extends</span> HttpServlet {
+
+    <span class="fu">@Override</span>
+    <span class="kw">protected</span> <span class="dt">void</span> <span class="fu">doGet</span>(HttpServletRequest request, HttpServletResponse response)
+            <span class="kw">throws</span> ServletException, IOException {
+        response.<span class="fu">setContentType</span>(<span class="st">&quot;text/html;charset=UTF-8&quot;</span>);
+        request.<span class="fu">setAttribute</span>(<span class="st">&quot;title&quot;</span>, <span class="st">&quot;Hello world!&quot;</span>);
+        
+        RequestDispatcher dispatcher = request.<span class="fu">getRequestDispatcher</span>(<span class="st">&quot;helloworld.jsp&quot;</span>);
+        dispatcher.<span class="fu">forward</span>(request, response);
+    }
+
+}</code></pre>
+<p><strong>web/helloworld.jsp</strong></p>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="er">&lt;</span>%@page contentType=&quot;text/html&quot; pageEncoding=&quot;UTF-8&quot;%&gt;
+<span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span>
+<span class="kw">&lt;html&gt;</span>
+  <span class="kw">&lt;head&gt;</span>
+    <span class="kw">&lt;title&gt;</span>${title}<span class="kw">&lt;/title&gt;</span>
+  <span class="kw">&lt;/head&gt;</span>
+  <span class="kw">&lt;body&gt;</span>
+    <span class="kw">&lt;h1&gt;</span>${title}<span class="kw">&lt;/h1&gt;</span>
+  <span class="kw">&lt;/body&gt;</span>
+<span class="kw">&lt;/html&gt;</span></code></pre>
+<p>Ylläoleva ohjelma käynnistyy melkolailla php-esimerkin tapaan osoitteessa <code>sivusto.fi/java-sovelluksen/osoite/HelloWorld</code>. Tässä käytetty JSP-tiedostoformaatti on Javan-vastaus PHP:n suoraviivaiselle tavalle käsitellä HTML:n tulostusta ja sitä on varsin yksinkertaista käyttää.</p>
+<p>Itse java-ohjelmakoodi sensijaan on aika monimutkaista ja käyttää taustalla suurta määrää Javan kirjastoja. Tätä ei kovin moni jaksaisi kirjoittaa, siksi ylläolevasta koodista suurin osa onkin Netbeansin autogeneroimaa, eikä kaikkea onneksi tarvitsee kirjoittaa itse.</p>
+<p>PHP on kielenä optimoitu nopeaan nettisivustojen kasaamiseen. Suuremmilla sivustoilla ja monimutkaisempia kehyksiä käytettäessä PHP-koodikin alkaa muistuttaa ylläolevaa java-koodia ja pitenee ja monimutkaistuu merkittävästi. Yleisenä nyrkkisääntönä kuitenkin on, että pienikokoisempiin web-projekteihin - esimerkiksi tietokantasovelluksiin - java-koodia joutuu kirjoittamaan enemmän kuin vastaaviin PHP:llä tehtyihin sovelluksiin.</p>
+</section>
+<section id="tietokannan-käyttö" class="level3">
+<h3>Tietokannan käyttö</h3>
+<p>Sekä PHP että Java hoitavat tietokannan käytön oliopohjaisesti tavalla, joka mahdollistaa kielen sisäisten muuttujien upottamisen SQL-lausekkeisiin helposti ja tietoturvallisesti.</p>
+<div class="row">
+<div class="col-md-6">
+<p><strong>PHP</strong></p>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>
+  <span class="co">//Otetaan yhteys mysql-tietokantaan</span>
+  <span class="kw">$yhteys</span> = <span class="kw">new</span> <span class="kw">PDO</span><span class="ot">(</span><span class="st">&quot;mysql:host=localhost;dbname=tsohakanta&quot;</span><span class="ot">,</span> <span class="st">&quot;kayttaja&quot;</span><span class="ot">,</span> <span class="st">&quot;salasana&quot;</span><span class="ot">);</span>
+
+  <span class="co">//Suoritetaan sql-kysely. Haetaan täysi-ikäiset Lehtoset tietokannasta</span>
+  <span class="kw">$sql</span> = <span class="st">&quot;SELECT id, nimi, osoite FROM kayttajat WHERE ika &gt;= ? and sukunimi = ?&quot;</span><span class="ot">;</span>
+  <span class="kw">$kysely</span> = <span class="kw">$yhteys</span>-&gt;prepare<span class="ot">(</span><span class="kw">$sql</span><span class="ot">);</span>
+  <span class="kw">$tulokset</span> = <span class="kw">$kysely</span>-&gt;execute<span class="ot">(</span><span class="fu">array</span><span class="ot">(</span><span class="dv">18</span><span class="ot">,</span><span class="st">&quot;Lehtonen&quot;</span><span class="ot">));</span>
+
+  <span class="co">//Tulostetaan tietoja löydetyistä käyttäjistä</span>
+  <span class="kw">while</span><span class="ot">(</span><span class="kw">$rivi</span> = <span class="kw">$tulokset</span>-&gt;fetchObject<span class="ot">())</span> {
+    <span class="fu">echo</span> <span class="st">&quot;Käyttäjän </span><span class="kw">$rivi</span><span class="st">-&gt;etunimi </span><span class="kw">$rivi</span><span class="st">-&gt;sukunimi ikä on </span><span class="kw">$rivi</span><span class="st">-&gt;ika&quot;</span><span class="ot">;</span>
+  }
+
+  <span class="co">//PHP sulkee yhteydet ja resurssit automaattisesti</span>
+  <span class="co">//suorituksen päätteeksi</span></code></pre>
+</div>
+<div class="col-md-6">
+<p><strong>Java</strong></p>
+<pre class="sourceCode java"><code class="sourceCode java">Connection yhteys = <span class="kw">null</span>;
+PreparedStatement kysely = <span class="kw">null</span>;
+ResultSet tulokset = <span class="kw">null</span>;
+
+<span class="kw">try</span> {
+  <span class="co">//Etsitään mysql-ajuri ja otetaan yhteys tietokantaan</span>
+  Class.<span class="fu">forName</span>(<span class="st">&quot;com.mysql.jdbc.Driver&quot;</span>);
+  yhteys = DriverManager.<span class="fu">getConnection</span>(<span class="st">&quot;jdbc:mysql://localhost/tsohakanta?user=kayttaja&amp;password=salasana&quot;</span>);
+  
+  <span class="co">//Suoritetaan sql-kysely. Haetaan täysi-ikäiset Lehtoset tietokannasta</span>
+  String sql = <span class="st">&quot;SELECT etunimi, sukunimi, ika FROM kayttajat WHERE ika &gt;= ? and sukunimi = ?&quot;</span>;
+  kysely = yhteys.<span class="fu">prepareStatement</span>(sql);
+  kysely.<span class="fu">setInteger</span>(<span class="dv">1</span>, <span class="dv">18</span>);
+  kysely.<span class="fu">setString</span>(<span class="dv">2</span>, <span class="st">&quot;Lehtonen&quot;</span>);
+  tulokset = preparedStatement.<span class="fu">executeQuery</span>();
+
+  <span class="co">//Tulostetaan tietoja löydetyistä käyttäjistä</span>
+  <span class="kw">while</span>(tulokset.<span class="fu">next</span>()) {
+    String nimi = tulokset.<span class="fu">getString</span>(<span class="dv">1</span>) + <span class="st">&quot; &quot;</span> +tulokset.<span class="fu">getString</span>(<span class="dv">2</span>);
+    <span class="dt">int</span> ika = tulokset.<span class="fu">getString</span>(<span class="dv">3</span>);
+    System.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;Käyttäjän &quot;</span>+nimi+<span class="st">&quot; ikä on &quot;</span>+ika);
+  }
+
+} <span class="kw">catch</span> (Exception e) {
+  <span class="kw">throw</span> e;
+} <span class="kw">finally</span> {
+  <span class="co">//Suljetaan lopulta kaikki avatut resurssit</span>
+  <span class="kw">try</span> { tulokset.<span class="fu">close</span>(); } <span class="kw">catch</span> (Exception e) {  }
+  <span class="kw">try</span> { kysely.<span class="fu">close</span>(); } <span class="kw">catch</span> (Exception e) {  }
+  <span class="kw">try</span> { yhteys.<span class="fu">close</span>(); } <span class="kw">catch</span> (Exception e) {  }
+}</code></pre>
+</div>
+</div>
+
+<p>PHP on tässäkin tapauksessa merkittävästi vähäsanaisempi. Taitava koodari lyhentää ylläolevasta esimerkistä toistuvat koodinpätkät kuitenkin yleiskäyttöisiin metodeihin, jolloin lopullisessa käytössä eri kielten tapa käsitellä tietokantaa on lähestulkoon yhtä monisanainen. Lisäksi Javan versiossa 7 resurssien sulkemisesta on <a href="http://stackoverflow.com/questions/9260159/java-7-automatic-resource-management-jdbc">tehty automaattisempaa</a>. Valitettavasti tosin laitoksen palvelimilla oleva versio ei ole vielä ajan tasalla.</p>
+</section>
 </section>
 <section id="yhteenveto" class="level2">
 <h2>Yhteenveto</h2>
+<p>Kumpaa sitten kannattaa käyttää? Sitä mikä tuntuu kotoisimmalta ja luonnollisemmalta. Tätänykyä suurin osa valitsee PHP:n sen keveyden takia, mutta kumpaankin kieleen on tarjolla varsin mallikkaat välineistöt tietokantasovelluksen tekemiseen.</p>
 <table class="table table-striped table-bordered">
 <thead>
 <tr class="header">
@@ -232,9 +380,9 @@ Tämän kirjoittaminen on vielä kesken
 <td style="text-align: left;">Heikko tyypitys</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Paradigma</td>
-<td style="text-align: left;">Olio-ohjelmointi</td>
-<td style="text-align: left;">Monia paradigmoja</td>
+<td style="text-align: left;">HTML:n tuottaminen</td>
+<td style="text-align: left;">JSP-kielellä</td>
+<td style="text-align: left;">Suoraan PHP-koodin sisällä</td>
 </tr>
 </tbody>
 </table>
