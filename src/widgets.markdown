@@ -19,7 +19,12 @@ myimgdir is "{{myimgdir}}"\
 
 </tab>
 <tab title="Stuff">
-<box>Huh?</box>
+# Random stuff
+<box>
+Huh?
+</box>
+
+## Headers work too, but sections are lost
 </tab>
 </tabs>
 
@@ -60,11 +65,16 @@ class M {
 <info>Alert</info>
 <arvosanamaksimi>5</arvosanamaksimi>
 <vaikeustaso>Huima</vaikeustaso>
+</box>
 </collapsible>
+
+<expandable title="Contents of index.markdown">
+
+<box>
+<include src="index.markdown" />
 </box>
 
-# Contents of index.markdown
-<include src="index.markdown" />
+</expandable>
 
 ## Demo of course instance replacements
 

@@ -55,6 +55,9 @@ BEGIN {
     };
     $json_text = decode_json(encode('UTF-8', $json_text)) || die "Cannot decode couse instance data!";
     our %coursekeywords = %{${$json_text}{'default'}};
+
+    our $startbox = "\n<!-- start box -->\nREMOVETHIS\n\n";
+    our $endbox   = "\n<!-- end box -->";
     
     my $tabBoxCount = 0;
     sub parseTabs {
@@ -69,9 +72,10 @@ BEGIN {
 
       while ($data =~ /<tab\s+title=['"](\w*)['"]\s*>(.*?)<\/tab>\s*/sg) {
         my $id = "tab_$tabBoxCount"."_$tab";
+        my $content = "$startbox$2$endbox";
 
         push @tabs, "<li$tabclass><a href='#$id' data-toggle='tab'>$1</a></li>";
-        push @contents, "<div class='tab-pane$contentclass' id='$id' >$2</div>";
+        push @contents, "<section class='tab-pane$contentclass' id='$id' >$content</section>";
         $tabclass = "";
         $contentclass = "";
 
@@ -80,7 +84,7 @@ BEGIN {
       
       my $tabHTML = join("\n",@tabs); 
       my $contentHTML = join("\n",@contents);
-      $contentHTML = "<div class='tab-content'>$contentHTML</div>";
+      $contentHTML = "<div class='tab-content'>\n$contentHTML\n</div>";
       if ($boxes == 1) {
         $contentHTML = "<box>$contentHTML</box>";
       }
@@ -111,6 +115,11 @@ for my $coursekeyword (keys %coursekeywords) {
 }
 
 s#<comment>.*?</comment>##sg;
+
+#Parses include files while leaving title metadata lines beginning with % out
+s{<include +src="([^"]*)" */>} {"\n" . `$0 $basedir/$1` =~ s/^(%[^\n]*)*//rg . "\n";}eg;
+
+#Parse tabs and other dynamic expandable content
 s{<tabs nobox=['"]true['"]>\s(.*?)<\/tabs>} {parseTabs($1, 0)."<hr/>" }esg;
 s{<tabs>\s(.*?)<\/tabs>} {parseTabs $1, 1}esg;
 
@@ -118,16 +127,34 @@ my $collapsibleCount = 0;
 s{<collapsible title=['"]([^'"]*)['"]>} {
   $collapsibleCount++;
   "<button type='button' class='btn-link expandable' data-toggle='collapse' data-target='#collapsible_$collapsibleCount'>$1</button>
-  <div id='collapsible_$collapsibleCount' class='collapse in'>";
+  <div id='collapsible_$collapsibleCount' class='collapse in'><section>$startbox";
   }esg;
 my $expandableCount = 0;
 s{<expandable title=['"]([^'"]*)['"]>} {
   $expandableCount++;
   "<button type='button' class='btn-link expandable collapsed' data-toggle='collapse' data-target='#expandable_$expandableCount'>$1</button>
-  <div id='expandable_$expandableCount' class='collapse'>";
+  <div id='expandable_$expandableCount' class='collapse'><section>$startbox";
   }esg;
 s{<box type=['"]([^'"]*)['"]>}{<div class='panel panel-\1'><div class='panel-body'>}g;
-s#<\/(collapsible|expandable)>#</div>#g;
+s#<\/(collapsible|expandable)>#$endbox</section></div>#g;
+
+# Now we put the contents of all boxes into blockquotes.
+# If we don't do this, Pandoc will screw up it's section tags.
+my $boxlevel = 0;
+s{(.*?\n)}{
+  $line = $1;
+  $line2 = $1;
+  if ($1 =~ /^\<\!-- end box -->/) {
+    $boxlevel--;
+    my $indent = "> "x$boxlevel;
+    $line = "\n$indent\nREMOVETHIS\n$indent\n$indent$line";
+  }
+  $line = ("> "x$boxlevel). $line; 
+  if ($1 =~ /^\<\!-- start box -->/) {
+    $boxlevel++;
+  }
+  $line;
+}eg;
 
 s{<box>}{<div class='panel panel-default'><div class='panel-body'>}g;
 s{</box>}{</div></div>}g;
@@ -142,7 +169,5 @@ s#<(glyphicon-[a-z-]*)\s+color=['"](\w+)['"]\/\s*>#<span style="color: \2" class
 s#<(green|blue|yellow|red|orange)>#<span class="\1">#g;
 s#<\/(green|blue|yellow|red|orange)>#<\/span>#g;
 
-#Parses include files while leaving title metadata lines beginning with % out
-s{<include +src="([^"]*)" */>} {"\n" . `$0 $basedir/$1` =~ s/^(%[^\n]*)*//rg . "\n";}eg;
 #Removes comment tags
 s#<!-- addHeaderNavigation -->#<script>addSectionLinks = true; </script>#sg;
