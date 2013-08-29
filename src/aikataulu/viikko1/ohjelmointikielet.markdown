@@ -5,10 +5,15 @@ Tietokantasovellukset kirjoitetaan yleensä joko Javalla tai PHP:llä.
 Nämä ovat myös tällä hetkellä laitoksen palvelimella tuetut kielet
 ja niillä tekemiseen pyritään kirjoittamaan ajantasaista dokumentaatiota.
 Tämä sivu käsittelee lähinnä näitä kahta kieltä. 
-Sovelluksen voi halutesaan kirjoittaa myös Pythonilla tai Rubyllä, 
+Sovelluksen voi halutesaan kirjoittaa myös esim. Pythonilla tai Rubyllä, 
 kunhan sopii asiasta ohjaajan kanssa. 
-Mitään kovin raskaita web-kirjastoja ei tällöinkään saa käyttä.
-Esim. Ruby on Rails ei käy.
+Mitään kovin raskaita web-kirjastoja ei tällöinkään saa käyttää.
+Esim. Ruby on Rails ei käy. 
+
+Miettiessäsi jotain tuettujen kielien ulkopuolista kieltä, 
+pitäydy mielummin kielissä ja kirjastoissa,
+jotka osaat jo ja joille on olemassa hyvä dokumentaatio. 
+Liian esoteerisillä välineillä tehdyillä töillä on usein tapana jäädä kesken.
 
 ## Java ja PHP
 
