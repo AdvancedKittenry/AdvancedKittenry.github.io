@@ -68,9 +68,11 @@ nav ul {
 .treeview .expandable-hitarea { 
   background-position: 0 0;
 }
-.treeview .selected > .hitarea { 
+.treeview .selected > .hitarea,
+.treeview .hitarea:hover { 
   background-position: 0 -48px;
 }
+.treeview .expandable-hitarea:hover,
 .treeview .selected > .expandable-hitarea { 
   background-position: 0 -32px;
 }
