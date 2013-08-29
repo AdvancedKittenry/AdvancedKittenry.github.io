@@ -15,6 +15,8 @@ Sovellus toteutetaan Java- tai PHP-kielellä.
 Myös Ruby ja Python tai muut web-sovelluskielet käyvät, mutta asiasta kannattaa sopia ohjaajan kanssa.
 Muiden kuin hyvin kevyiden web-sovelluskehysten (frameworkkien) käyttäminen vaatii ohjaajan erityisluvan. Tietokanta-abstraktiokerroksia ei myöskään saa käyttää ellei sellaista halua kirjoittaa itse.
 
+Opiskelija voi ilmoittautua uutena opiskelijana kurssille vain yhteen kertaan. Kurssin keskeyttänyt opiskelija joutuu myöhemmin hakemaan suoritusmahdollisuutta ilmoittautumalla keskeyttäjien jonoon.
+
 ## Viikkoaikataulu
 
 <include src="aikataulu/index.markdown" />

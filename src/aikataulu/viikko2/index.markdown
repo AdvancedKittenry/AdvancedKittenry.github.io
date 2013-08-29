@@ -5,11 +5,11 @@
 
 <deadline>{{deadline2}}</deadline>
 
-Toisella viikolla tulee olla tehtynä seuraavat asiat:
+Toinen viikko on suunnitteluviikko. Sinulla tulee olla tehtynä seuraavat asiat:
 
 * [Yleisnäkymän suunnittelu ja luonti](template.html)
-* [Listanäkymä](listanakyma.html)
-* [Muokkaus- ja lisäysnäkymä](lomake.html)
+* [Listanäkymän suunnittelu](listanakyma.html)
+* [Muokkaus- ja lisäysnäkymien suunnittelu](lomake.html)
 * [Tietokannan suunnittelu](tietokanta.html)
 * [Tietokannan ja users-palvelimen nettisivutilan pystytys](tekniikka.html)
 
