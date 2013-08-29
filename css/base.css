@@ -209,3 +209,23 @@ button.expandable.collapsed {
 .orange {
   color: orange;
 }
+
+.wip {
+  border-color: #b17565;
+  border-radius: 2px;
+  background: #fcde11;
+  margin: 5px 0px 10px;
+}
+
+header + .wip {
+  margin-top: -1em;
+}
+.panel.wip > .panel-body {
+  padding-left: 95px;
+  background: 15px 15px url(../images/warningsign.png) no-repeat;
+}
+.wip h3 {
+  font-variant: small-caps;
+  margin-top: 0px;
+  font-size: 22px;
+}

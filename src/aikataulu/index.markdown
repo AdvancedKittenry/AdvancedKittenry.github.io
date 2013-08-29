@@ -13,12 +13,17 @@ ja siitä eteenpäin [versionhallinnan]({{rootdir}}aikataulu/viikko1/git-ohje.ht
 ### Deadlinet
 
 | Tilaisuus                                               | Deadline |
-|---------------------------------------------------------|--------------------------------|
-| [Viikko I]({{rootdir}}aikataulu/viikko1/index.html)     | {{deadline1}}                  |
-| [Viikko II]({{rootdir}}aikataulu/viikko2/index.html)    | {{deadline2}}                  |
-| [Viikko III]({{rootdir}}aikataulu/viikko3/index.html)   | {{deadline3}}                  |
-| [Viikko IV]({{rootdir}}aikataulu/viikko4/index.html)    | {{deadline4}}                  |
-| [Viikko V]({{rootdir}}aikataulu/viikko5/index.html)     | {{deadline5}}                  |
-| [Demotilaisuus]({{rootdir}}aikataulu/demo.html)         | {{demodeadline}}               |
-| [Palautus]({{rootdir}}aikataulu/palautus.html)          | {{palautusdeadline}}           |
+|---------------------------------------------------------|-----------------------|
+| [Viikko I]({{rootdir}}aikataulu/viikko1/index.html)     | {{deadline1}}         |
+| [Viikko II]({{rootdir}}aikataulu/viikko2/index.html)    | {{deadline2}}         |
+| Viikko III (Työn alla)                                  | {{deadline3}}         |
+| Viikko IV (Työn alla)                                   | {{deadline4}}         |
+| Viikko V (Työn alla)                                    | {{deadline5}}         |
+| [Demotilaisuus]({{rootdir}}aikataulu/demo.html)         | {{demodeadline}}      |
+| [Palautus]({{rootdir}}aikataulu/palautus.html)          | {{palautusdeadline}}  |
 
+<comment>
+| [Viikko III]({{rootdir}}aikataulu/viikko3/index.html)   | {{deadline3}}         |
+| [Viikko IV]({{rootdir}}aikataulu/viikko4/index.html)    | {{deadline4}}         |
+| [Viikko V]({{rootdir}}aikataulu/viikko5/index.html)     | {{deadline5}}         |
+</comment>
