@@ -86,7 +86,7 @@ sitä on varsin yksinkertaista käyttää.
 
 Itse Java-ohjelmakoodi sensijaan on aika monimutkaista ja käyttää taustalla suurta määrää
 Javan kirjastoja. Tätä ei kovin moni jaksaisi kirjoittaa, siksi ylläolevasta koodista suurin osa 
-onkin NetBeansin autogeneroimaa, eikä kaikkea onneksi tarvitsee kirjoittaa itse.
+onkin NetBeansin autogeneroimaa, eikä kaikkea onneksi tarvitse kirjoittaa itse.
 
 PHP on kielenä optimoitu nopeaan nettisivustojen kasaamiseen. Suuremmilla sivustoilla ja monimutkaisempia kehyksiä käytettäessä
 PHP-koodikin alkaa muistuttaa yllä olevaa Java-koodia ja pitenee ja monimutkaistuu merkittävästi.

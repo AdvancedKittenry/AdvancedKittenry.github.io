@@ -127,11 +127,11 @@ code > span.er { color: #ff0000; font-weight: bold; }
 </header>
 <!-- order: 3 -->
 
-<p>Tietokantasovellukset kirjoitetaan yleensä joko Javalla tai PHP:llä. Nämä ovat myös tällä hetkellä laitoksen palvelimella tuetut kielet ja niillä tekemiseen pyritään kirjoittamaan ajantasaista dokumentaatiota. Tämä sivu käsittelee lähinnä näitä kahta kieltä. Sovelluksen voi halutesaan kirjoittaa myös esim. Pythonilla tai Rubyllä, kunhan sopii asiasta ohjaajan kanssa. Mitään kovin raskaita web-kirjastoja ei tällöinkään saa käyttää. Esim. Ruby on Rails ei käy.</p>
+<p>Tietokantasovellukset kirjoitetaan yleensä joko Javalla tai PHP:llä. Nämä ovat myös tällä hetkellä laitoksen palvelimella tuetut kielet ja niillä tekemiseen pyritään kirjoittamaan ajantasaista dokumentaatiota. Tämä sivu käsittelee lähinnä näitä kahta kieltä. Sovelluksen voi halutessaan kirjoittaa myös esim. Pythonilla tai Rubyllä, kunhan sopii asiasta ohjaajan kanssa. Mitään kovin raskaita web-kirjastoja ei tällöinkään saa käyttää. Esim. Ruby on Rails ei käy.</p>
 <p>Miettiessäsi jotain tuettujen kielien ulkopuolista kieltä, pitäydy mielummin kielissä ja kirjastoissa, jotka osaat jo ja joille on olemassa hyvä dokumentaatio. Liian esoteerisillä välineillä tehdyillä töillä on usein tapana jäädä kesken.</p>
 <section id="java-ja-php" class="level2">
 <h2>Java ja PHP</h2>
-<p>Perussyntaksiltaan PHP ja Java ovat aika samanlaisia, sillä molemmat ovat perineet syntaksinsa C-kieleltä. PHP on tosin lainannut perliltä tavan käyttää dollaria <code>$muuttujien</code> nimien edessä. Esimerkiksi luokka Kahvikuppi määriteltäisiin näissä kielissä seuraavasti:</p>
+<p>Perussyntaksiltaan PHP ja Java ovat aika samanlaisia, sillä molemmat ovat perineet syntaksinsa C-kieleltä. PHP on tosin lainannut Perliltä tavan käyttää dollaria <code>$muuttujien</code> nimien edessä. Esimerkiksi luokka Kahvikuppi määriteltäisiin näissä kielissä seuraavasti:</p>
 <div class="row">
 <div class="col-md-6">
 <p><strong>PHP</strong></p>
@@ -229,10 +229,10 @@ luku = nemi;</code></pre>
 </div>
 </div>
 
-<p>Javaa koodatessa joutuu kirjoittamaan hieman enemmän, mutta PHP:llä saattaa varsinkin aluksi tehdä tyyppivirheitä, jotka huomaa vasta ajonaikana.</p>
+<p>Javaa koodatessa joutuu kirjoittamaan hieman enemmän, mutta PHP:llä saattaa varsinkin aluksi tehdä tyyppivirheitä, jotka huomaa vasta ajon aikana.</p>
 <section id="htmln-käyttö" class="level3">
 <h3>HTML:n käyttö</h3>
-<p>Toinen huomionarvoinen seikka PHP:tä kirjoittaessa on kielen käyttämät <em>&lt;?php-tägit</em>, jotka aloittavat PHP-koodin. Niiden ulkopuolella olevan tekstin PHP oletuksena tulostaa sellaisenaan. Tämä tekeee PHP:n käyttämisestä yksinkertaisten nettisivujen tekemiseen erittäin helppoa:</p>
+<p>Toinen huomionarvoinen seikka PHP:tä kirjoittaessa on kielen käyttämät <em>&lt;?php-tägit</em>, jotka aloittavat PHP-koodin. Niiden ulkopuolella olevan tekstin PHP oletuksena tulostaa sellaisenaan. Tämä tekee PHP:n käyttämisestä yksinkertaisten nettisivujen tekemiseen erittäin helppoa:</p>
 <p><strong>helloworld.php</strong></p>
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>
   <span class="fu">header</span><span class="ot">(</span><span class="st">&quot;Content-type: text/html;charset=UTF-8&quot;</span><span class="ot">);</span>
@@ -283,9 +283,9 @@ luku = nemi;</code></pre>
     <span class="kw">&lt;h1&gt;</span>${title}<span class="kw">&lt;/h1&gt;</span>
   <span class="kw">&lt;/body&gt;</span>
 <span class="kw">&lt;/html&gt;</span></code></pre>
-<p>Ylläoleva ohjelma käynnistyy melkolailla php-esimerkin tapaan osoitteessa <code>sivusto.fi/java-sovelluksen/osoite/HelloWorld</code>. Tässä käytetty JSP-tiedostoformaatti on Javan-vastaus PHP:n suoraviivaiselle tavalle käsitellä HTML:n tulostusta ja sitä on varsin yksinkertaista käyttää.</p>
-<p>Itse java-ohjelmakoodi sensijaan on aika monimutkaista ja käyttää taustalla suurta määrää Javan kirjastoja. Tätä ei kovin moni jaksaisi kirjoittaa, siksi ylläolevasta koodista suurin osa onkin Netbeansin autogeneroimaa, eikä kaikkea onneksi tarvitsee kirjoittaa itse.</p>
-<p>PHP on kielenä optimoitu nopeaan nettisivustojen kasaamiseen. Suuremmilla sivustoilla ja monimutkaisempia kehyksiä käytettäessä PHP-koodikin alkaa muistuttaa ylläolevaa java-koodia ja pitenee ja monimutkaistuu merkittävästi. Yleisenä nyrkkisääntönä kuitenkin on, että pienikokoisempiin web-projekteihin - esimerkiksi tietokantasovelluksiin - java-koodia joutuu kirjoittamaan enemmän kuin vastaaviin PHP:llä tehtyihin sovelluksiin.</p>
+<p>Ylläoleva ohjelma käynnistyy melko lailla PHP-esimerkin tapaan osoitteessa <code>sivusto.fi/java-sovelluksen/osoite/HelloWorld</code>. Tässä käytetty JSP-tiedostoformaatti on Javan-vastaus PHP:n suoraviivaiselle tavalle käsitellä HTML:n tulostusta ja sitä on varsin yksinkertaista käyttää.</p>
+<p>Itse Java-ohjelmakoodi sensijaan on aika monimutkaista ja käyttää taustalla suurta määrää Javan kirjastoja. Tätä ei kovin moni jaksaisi kirjoittaa, siksi ylläolevasta koodista suurin osa onkin NetBeansin autogeneroimaa, eikä kaikkea onneksi tarvitse kirjoittaa itse.</p>
+<p>PHP on kielenä optimoitu nopeaan nettisivustojen kasaamiseen. Suuremmilla sivustoilla ja monimutkaisempia kehyksiä käytettäessä PHP-koodikin alkaa muistuttaa yllä olevaa Java-koodia ja pitenee ja monimutkaistuu merkittävästi. Yleisenä nyrkkisääntönä kuitenkin on, että pienikokoisempiin web-projekteihin - esimerkiksi tietokantasovelluksiin - Java-koodia joutuu kirjoittamaan enemmän kuin vastaaviin PHP:llä tehtyihin sovelluksiin.</p>
 </section>
 <section id="tietokannan-käyttö" class="level3">
 <h3>Tietokannan käyttö</h3>
@@ -346,12 +346,12 @@ ResultSet tulokset = <span class="kw">null</span>;
 </div>
 </div>
 
-<p>PHP on tässäkin tapauksessa merkittävästi vähäsanaisempi. Taitava koodari lyhentää ylläolevasta esimerkistä toistuvat koodinpätkät kuitenkin yleiskäyttöisiin metodeihin, jolloin lopullisessa käytössä eri kielten tapa käsitellä tietokantaa on lähestulkoon yhtä monisanainen. Lisäksi Javan versiossa 7 resurssien sulkemisesta on <a href="http://stackoverflow.com/questions/9260159/java-7-automatic-resource-management-jdbc">tehty automaattisempaa</a>. Valitettavasti tosin laitoksen palvelimilla oleva versio ei ole vielä ajan tasalla.</p>
+<p>PHP on tässäkin tapauksessa merkittävästi vähäsanaisempi. Taitava koodari lyhentää yllä olevasta esimerkistä toistuvat koodinpätkät kuitenkin yleiskäyttöisiin metodeihin, jolloin lopullisessa käytössä eri kielten tapa käsitellä tietokantaa on lähestulkoon yhtä monisanainen. Lisäksi Javan versiossa 7 resurssien sulkemisesta on <a href="http://stackoverflow.com/questions/9260159/java-7-automatic-resource-management-jdbc">tehty automaattisempaa</a>. Valitettavasti tosin laitoksen palvelimilla oleva versio ei ole vielä ajan tasalla.</p>
 </section>
 </section>
 <section id="yhteenveto" class="level2">
 <h2>Yhteenveto</h2>
-<p>Kumpaa sitten kannattaa käyttää? Sitä mikä tuntuu kotoisimmalta ja luonnollisemmalta. Tätänykyä suurin osa valitsee PHP:n sen keveyden takia, mutta kumpaankin kieleen on tarjolla varsin mallikkaat välineistöt tietokantasovelluksen tekemiseen.</p>
+<p>Kumpaa sitten kannattaa käyttää? Sitä mikä tuntuu kotoisimmalta ja luonnollisemmalta. Tätä nykyä suurin osa valitsee PHP:n sen keveyden takia, mutta kumpaankin kieleen on tarjolla varsin mallikkaat välineistöt tietokantasovelluksen tekemiseen.</p>
 <table class="table table-striped table-bordered">
 <thead>
 <tr class="header">
