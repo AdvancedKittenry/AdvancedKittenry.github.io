@@ -10,5 +10,5 @@ MySQL on hieman yleisempi työmaailmassa, PostgreSQL taas on hieman edistyneempi
 Mikäli sinulla ei ole ennestään syytä valita jompaakumpaa, suositeltavaa on valita PostgreSQL.
 
 <next>
-Kun olet valinnut aiheen ja haluamasi toteutustekniikat siirry [dokumentaation](dokumentointi.html) tuottaminen.
+Kun olet valinnut aiheen ja haluamasi toteutustekniikat siirry [dokumentaation](dokumentointi.html) tuottamiseen.
 </next>
