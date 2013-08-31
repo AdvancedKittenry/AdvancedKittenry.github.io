@@ -5,7 +5,7 @@ Tietokantasovellukset kirjoitetaan yleensä joko Javalla tai PHP:llä.
 Nämä ovat myös tällä hetkellä laitoksen palvelimella tuetut kielet
 ja niillä tekemiseen pyritään kirjoittamaan ajantasaista dokumentaatiota.
 Tämä sivu käsittelee lähinnä näitä kahta kieltä. 
-Sovelluksen voi halutesaan kirjoittaa myös esim. Pythonilla tai Rubyllä, 
+Sovelluksen voi halutessaan kirjoittaa myös esim. Pythonilla tai Rubyllä, 
 kunhan sopii asiasta ohjaajan kanssa. 
 Mitään kovin raskaita web-kirjastoja ei tällöinkään saa käyttää.
 Esim. Ruby on Rails ei käy. 
@@ -19,7 +19,7 @@ Liian esoteerisillä välineillä tehdyillä töillä on usein tapana jäädä k
 
 Perussyntaksiltaan PHP ja Java ovat aika samanlaisia, sillä
 molemmat ovat perineet syntaksinsa C-kieleltä.
-PHP on tosin lainannut perliltä tavan käyttää dollaria <code>$muuttujien</code> nimien edessä.
+PHP on tosin lainannut Perliltä tavan käyttää dollaria <code>$muuttujien</code> nimien edessä.
 Esimerkiksi luokka Kahvikuppi määriteltäisiin näissä kielissä seuraavasti:
 
 <sidebyside>
@@ -56,13 +56,13 @@ Esimerkkejä:
 </column>
 </sidebyside>
 
-Javaa koodatessa joutuu kirjoittamaan hieman enemmän, mutta PHP:llä saattaa varsinkin aluksi tehdä tyyppivirheitä, jotka huomaa vasta ajonaikana.
+Javaa koodatessa joutuu kirjoittamaan hieman enemmän, mutta PHP:llä saattaa varsinkin aluksi tehdä tyyppivirheitä, jotka huomaa vasta ajon aikana.
 
 ### HTML:n käyttö
 
 Toinen huomionarvoinen seikka PHP:tä kirjoittaessa on kielen käyttämät _\<?php-tägit_, jotka aloittavat PHP-koodin.
 Niiden ulkopuolella olevan tekstin PHP oletuksena tulostaa sellaisenaan. 
-Tämä tekeee PHP:n käyttämisestä yksinkertaisten nettisivujen tekemiseen erittäin helppoa:
+Tämä tekee PHP:n käyttämisestä yksinkertaisten nettisivujen tekemiseen erittäin helppoa:
 
 **helloworld.php**
 
@@ -80,18 +80,18 @@ Javalla vastaavan tekeminen on hieman monimutkaisempaa ja vaatii Servlet-luokan 
 
 ~~~~html<include src="esimerkit/helloworld.jsp" />~~~~
 
-Ylläoleva ohjelma käynnistyy melkolailla php-esimerkin tapaan osoitteessa <code>sivusto.fi/java-sovelluksen/osoite/HelloWorld</code>.
+Ylläoleva ohjelma käynnistyy melko lailla PHP-esimerkin tapaan osoitteessa <code>sivusto.fi/java-sovelluksen/osoite/HelloWorld</code>.
 Tässä käytetty JSP-tiedostoformaatti on Javan-vastaus PHP:n suoraviivaiselle tavalle käsitellä HTML:n tulostusta ja
 sitä on varsin yksinkertaista käyttää.
 
-Itse java-ohjelmakoodi sensijaan on aika monimutkaista ja käyttää taustalla suurta määrää
+Itse Java-ohjelmakoodi sensijaan on aika monimutkaista ja käyttää taustalla suurta määrää
 Javan kirjastoja. Tätä ei kovin moni jaksaisi kirjoittaa, siksi ylläolevasta koodista suurin osa 
-onkin Netbeansin autogeneroimaa, eikä kaikkea onneksi tarvitsee kirjoittaa itse.
+onkin NetBeansin autogeneroimaa, eikä kaikkea onneksi tarvitsee kirjoittaa itse.
 
 PHP on kielenä optimoitu nopeaan nettisivustojen kasaamiseen. Suuremmilla sivustoilla ja monimutkaisempia kehyksiä käytettäessä
-PHP-koodikin alkaa muistuttaa ylläolevaa java-koodia ja pitenee ja monimutkaistuu merkittävästi.
+PHP-koodikin alkaa muistuttaa yllä olevaa Java-koodia ja pitenee ja monimutkaistuu merkittävästi.
 Yleisenä nyrkkisääntönä kuitenkin on, että pienikokoisempiin web-projekteihin - esimerkiksi tietokantasovelluksiin -
-java-koodia joutuu kirjoittamaan enemmän kuin vastaaviin PHP:llä tehtyihin sovelluksiin.
+Java-koodia joutuu kirjoittamaan enemmän kuin vastaaviin PHP:llä tehtyihin sovelluksiin.
 
 ### Tietokannan käyttö
 
@@ -112,7 +112,7 @@ ja tietoturvallisesti.
 </column>
 </sidebyside>
 
-PHP on tässäkin tapauksessa merkittävästi vähäsanaisempi. Taitava koodari lyhentää ylläolevasta
+PHP on tässäkin tapauksessa merkittävästi vähäsanaisempi. Taitava koodari lyhentää yllä olevasta
 esimerkistä toistuvat koodinpätkät kuitenkin yleiskäyttöisiin metodeihin, jolloin lopullisessa käytössä
 eri kielten tapa käsitellä tietokantaa on lähestulkoon yhtä monisanainen. Lisäksi Javan versiossa 7
 resurssien sulkemisesta on [tehty automaattisempaa](http://stackoverflow.com/questions/9260159/java-7-automatic-resource-management-jdbc).
@@ -121,7 +121,7 @@ Valitettavasti tosin laitoksen palvelimilla oleva versio ei ole vielä ajan tasa
 ## Yhteenveto
 
 Kumpaa sitten kannattaa käyttää? Sitä mikä tuntuu kotoisimmalta ja luonnollisemmalta.
-Tätänykyä suurin osa valitsee PHP:n sen keveyden takia, mutta kumpaankin kieleen
+Tätä nykyä suurin osa valitsee PHP:n sen keveyden takia, mutta kumpaankin kieleen
 on tarjolla varsin mallikkaat välineistöt tietokantasovelluksen tekemiseen.
 
 Ominaisuus                       Java                          PHP
