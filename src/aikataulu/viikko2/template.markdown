@@ -1,12 +1,6 @@
 % Yleisnäkymän suunnittelu
 <!-- order: 1 -->
 
-Toisen viikon työt aloitetaan suunnittelemalla työhön
-tulevat sivut, jonka jälkeen niistä toteutetaan 
-oikean näköiset, mutta epätoiminnalliset raakaversiot HTML:llä.
-Näitä harjoituksia on yleensä paras tulla tekemään pajaan,
-jolloin ohjaaja voi antaa vinkkejä niiden tekemisessä.
-
 Aloita suunnittelu lukemalla valitsemasi aihekuvaus
 ja miettimällä millaisiin sivuihin sovelluksesi
 voisi jakautua. 
@@ -60,7 +54,7 @@ ellei niiden käytössä ole erityisen rutinoitunut.
 
 Kissalistan tapauksessa alustava suunnitelma voisi näyttää vaikkapa tältä:
 
-![Sivukartta]({{myimgdir}}sivukartta.png)
+![Alustava sivukartta]({{myimgdir}}sivukartta.png)
 
 Kuten kuvasta huomaa, suunnitelman ei tarvitse tässä vaiheessa olla
 erityisen siisti, riittää että sen perusteella tietää
@@ -97,5 +91,5 @@ näyttää useimmiten tältä:
 </comment>
 
 <ohje>
-Tehtyäsi yleisnäkymän ja etusivun on aika suunnitella [listanäkymiä](listanakyma.html).
+Tehtyäsi sivukartan, yleisnäkymän ja etusivun on aika suunnitella [listanäkymiä](listanakyma.html).
 </ohje>

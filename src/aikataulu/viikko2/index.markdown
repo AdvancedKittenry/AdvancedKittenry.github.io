@@ -5,7 +5,13 @@
 
 <deadline>{{deadline2}}</deadline>
 
-Toinen viikko on suunnitteluviikko. Sinulla tulee olla tehtynä seuraavat asiat:
+Toisen viikon työt aloitetaan suunnittelemalla työhön
+tulevat sivut, jonka jälkeen niistä toteutetaan 
+oikean näköiset, mutta epätoiminnalliset raakaversiot HTML:llä.
+Näitä harjoituksia on yleensä paras tulla tekemään pajaan,
+jolloin ohjaaja voi antaa vinkkejä niiden tekemisessä.
+
+Sinulla tulee olla tehtynä seuraavat asiat:
 
 * [Yleisnäkymän ja käyttöliittymän suunnittelu](template.html)
 * [Listanäkymien suunnittelu](listanakyma.html)
