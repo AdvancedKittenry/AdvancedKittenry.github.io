@@ -10,7 +10,7 @@ BEGIN {
 
     our %tags = ( 
         alert    => 'danger',
-        info     => 'info',
+        info     => 'warning',
         ohje     => 'success',
         next     => 'success small',
         last     => 'info small',

@@ -7,8 +7,8 @@
 
 Toinen viikko on suunnitteluviikko. Sinulla tulee olla tehtynä seuraavat asiat:
 
-* [Yleisnäkymän suunnittelu](template.html)
-* [Listanäkymän suunnittelu](listanakyma.html)
+* [Yleisnäkymän ja käyttöliittymän suunnittelu](template.html)
+* [Listanäkymien suunnittelu](listanakyma.html)
 * [Muokkaus- ja lisäysnäkymien suunnittelu](lomake.html)
 * [Suunnitelmien toteuttaminen HTML:llä](html-versioiden-luonti.html)
 * [Tietokannan suunnittelu](tietokanta.html)
