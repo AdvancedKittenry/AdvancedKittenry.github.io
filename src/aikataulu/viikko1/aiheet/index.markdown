@@ -9,7 +9,7 @@ Vitosen arvosanamaksimiin vaaditaan aiheelta ainakin seuraavat:
 * Kirjautumisen toteuttaminen
 * Toteutettavia tietokohteita ainakin kolme
 * Vähintään kahteen tietokohteeseen pitää olla toteutettuna täysi [CRUD-nelikko](http://en.wikipedia.org/wiki/Create,_read,_update_and_delete): kohteen luominen, selailu, muokkaus, ja poisto.
-* Järjestelmässä on ainakin yksi monesta-moneen suhde tietokantojen välillä
+* Järjestelmässä on ainakin yksi monesta-moneen suhde tietokantataulujen välillä
 
 Parityön aiheeksi kelpaa ainoastaan vitosen arvosanamaksimilla varustettu aihe.
 
