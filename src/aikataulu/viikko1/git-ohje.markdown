@@ -4,7 +4,7 @@
 Tietokantasovellus-kurssilla käytetään versionhallintana git:iä ja
 oletuksena repositoriot sijoitetaan github.com-palveluun. Jos et ole 
 aikaisemmin käyttänyt git:iä niin verestä muistiasi
-ohjelmoinnin harjoitustyön [git-ohjeella](https://github.com/tahuomo/Javalabra-2013/wiki/Git-ohje).
+ohjelmoinnin harjoitustyön [git-ohjeella](https://github.com/javaLabra/Javalabra2013-1/wiki/Git-ohje).
 
 Ohjeita noudattamalla luo itsellesi tietokantasovellusta varten oma repositorio.
 Luo siihen kansio nimeltä <code>doc</code> ja sijoita siihen kaikki
