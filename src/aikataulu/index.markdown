@@ -9,8 +9,17 @@ Paja-ajat sijoittuvat  ohjausryhmälle ilmoitettuun kokoontumisaikaan. Opiskelij
 
 {{paja-ajat-intro}}
 
-~~~~ {execute=bash}
-AJAT={{paja-ajat-times}
+~~~~ {execute=python}
+ajat={{{paja-ajat-data}}}
+
+print "|Aika|Huone|Ohjaaja|"
+print "|----|-----|-------|"
+
+for (aika,ohjaaja,huone) in ajat:
+  print "|%s|%s|%s|" % (aika, huone, ohjaaja)
+
+print "\n\n"
+
 ~~~~
 
 ### Palautukset

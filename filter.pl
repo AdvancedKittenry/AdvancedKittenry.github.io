@@ -53,6 +53,7 @@ BEGIN {
       local $/;
       <$json_fh>
     };
+    $json_text =~ s#\\\n#\\n#gs;
     $json_text = decode_json(encode('UTF-8', $json_text)) || die "Cannot decode couse instance data!";
     our %coursekeywords = %{${$json_text}{'default'}};
 
@@ -114,6 +115,7 @@ for my $dir (keys %dirs) {
 for my $coursekeyword (keys %coursekeywords) {
     my $coursekeywordval = $coursekeywords{$coursekeyword};
 
+    s#{{{$coursekeyword}}}#$coursekeywordval#g;
     s#{{$coursekeyword}}#<span class="coursekeyword $coursekeyword">$coursekeywordval</span>#g;
 }
 
