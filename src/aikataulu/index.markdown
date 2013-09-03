@@ -23,15 +23,17 @@ Viikottaisten palautusten deadline on aina kunkin viikon perjantaina klo 23:00. 
 Palautukset suoritetaan ensimmäisellä viikolla ohjaajalle sähköpostitse
 ja siitä eteenpäin [versionhallinnan]({{rootdir}}aikataulu/viikko1/git-ohje.html) kautta.
 
+Viikkojen 3-5 materiaali on vielä työn alla. Sivut aukeavat sitä mukaa kun ohjeet valmistuvat.
+
 ### Deadlinet
 
 | Tilaisuus              | Työaihe                                                                | Deadline |
 |------------------------|------------------------------------------------------------------------|-----------------------|
 | [Viikko I][viikko1]    | Aiheen ja toteutustekniikkojen valinta, alustava dokumentointi         | {{deadline1}}         |
-| [Viikko II][viikko2]   | Sovelluksen suunnittelu, koodausympäristön alustava pystytys           | {{deadline2}}         |
-| Viikko III (Työn alla) | Koodauksen alku, sovellusarkkitehtuuri, lomakkeet ja kirjautuminen     | {{deadline3}}         |
-| Viikko IV (Työn alla)  | Syvennytään tietokantaohjelmointiin                                    | {{deadline4}}         |
-| Viikko V (Työn alla)   | Viimeistely, dokumentaatio valmiiksi                                   | {{deadline5}}         |
+| [Viikko II][viikko2]   | Sovelluksen suunnittelu, työympäristön pystytys                        | {{deadline2}}         |
+| Viikko III             | Koodauksen alku, sovellusarkkitehtuuri, lomakkeet ja kirjautuminen     | {{deadline3}}         |
+| Viikko IV              | Syvennytään tietokantaohjelmointiin                                    | {{deadline4}}         |
+| Viikko V               | Viimeistely, dokumentaatio valmiiksi                                   | {{deadline5}}         |
 | [Demotilaisuus][demo]  | Esitellään työtä ja sen koodia muille opiskelijoille                   | {{demodeadline}}      |
 | [Palautus][palautus]   | Valmis työ palautetaan ohjaajalle                                      | {{palautusdeadline}}  |
 
