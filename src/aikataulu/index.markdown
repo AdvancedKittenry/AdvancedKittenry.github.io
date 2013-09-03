@@ -25,15 +25,15 @@ ja siitä eteenpäin [versionhallinnan]({{rootdir}}aikataulu/viikko1/git-ohje.ht
 
 ### Deadlinet
 
-| Tilaisuus              | Viikon aihe                                                            | Deadline |
+| Tilaisuus              | Työaihe                                                                | Deadline |
 |------------------------|------------------------------------------------------------------------|-----------------------|
 | [Viikko I][viikko1]    | Aiheen ja toteutustekniikkojen valinta, alustava dokumentointi         | {{deadline1}}         |
 | [Viikko II][viikko2]   | Sovelluksen suunnittelu, koodausympäristön alustava pystytys           | {{deadline2}}         |
 | Viikko III (Työn alla) | Koodauksen alku, sovellusarkkitehtuuri, lomakkeet ja kirjautuminen     | {{deadline3}}         |
 | Viikko IV (Työn alla)  | Syvennytään tietokantaohjelmointiin                                    | {{deadline4}}         |
 | Viikko V (Työn alla)   | Viimeistely, dokumentaatio valmiiksi                                   | {{deadline5}}         |
-| [Demotilaisuus][demo]  |                                                                        | {{demodeadline}}      |
-| [Palautus][palautus]   |                                                                        | {{palautusdeadline}}  |
+| [Demotilaisuus][demo]  | Esitellään työtä ja sen koodia muille opiskelijoille                   | {{demodeadline}}      |
+| [Palautus][palautus]   | Valmis työ palautetaan ohjaajalle                                      | {{palautusdeadline}}  |
 
 <comment>
 | [Viikko III][viikko3]  |                                                                        | {{deadline3}}         |
