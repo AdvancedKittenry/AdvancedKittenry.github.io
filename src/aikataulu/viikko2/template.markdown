@@ -85,11 +85,6 @@ näyttää useimmiten tältä:
 
 ![Kirjautumislomake]({{myimgdir}}kirjautuminen.png)
 
-<comment>
-    * Etusivun suunnittelu
-    * Tätä kannattaa tulla tekemään pajaan
-</comment>
-
 <ohje>
-Tehtyäsi sivukartan, yleisnäkymän ja etusivun on aika suunnitella [listanäkymiä](listanakyma.html).
+Tehtyäsi sivukartan, yleisnäkymän ja etusivun lähde suunnittelemaan [listanäkymiä](listanakyma.html).
 </ohje>

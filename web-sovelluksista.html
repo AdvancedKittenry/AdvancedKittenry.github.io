@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <title>Tietokantasovellusohjeita tekemässä mukana olleet</title>
+  <title>Web-sovelluksien toiminta</title>
   <style type="text/css">code{white-space: pre;}</style>
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -98,25 +98,50 @@
 <li><a href="dokumentaatio-ohje.html">Dokumentaatio-ohje</a></li>
 <li><a href="cleancode.html">Hyvä ohjelmointityyli</a></li>
 <li><a href="kaytettavyys.html">Käytettävyys</a></li>
-<li><a href="web-sovelluksista.html">Web-sovelluksien toiminta</a></li>
+<li class="selected"><a href="web-sovelluksista.html">Web-sovelluksien toiminta</a></li>
 </ul></li>
 </ul>
 </nav>
 </div>
 <div class="col-md-6" id="content">
 <header>
-<h1 class="title">Tietokantasovellusohjeita tekemässä mukana olleet</h1>
+<h1 class="title">Web-sovelluksien toiminta</h1>
 </header>
-<!-- hidden! -->
+<script>addSectionLinks = true; </script>
 
-<p>Tämän projektin laittoi alulle ja materiaalit kokosi David Consuegra.</p>
-<p>Materiaaleja tuottamassa mukana olleet myös:</p>
-<ul>
-<li>Sami Saada</li>
-<li>Neo Lehtola</li>
-<li>Lauri Suomalainen</li>
-</ul>
-<p>Keskeneräisillä sivuilla käytetty <a href="http://www.fotopedia.com/items/roytheboy-PQI7mhl7dt8">liikennemerkkigrafiikka</a> on muokattu <a href="http://www.fotopedia.com/users/roytheboy">Roy Higsonin</a> ottamasta kuvasta.</p>
+<p>Web-sovellusohjelmointi eroaa normaalista sovellusohjelmoinnista monellakin saralla. Tällä sivulla selostetaan tärkeimmät termit ja eroavaisuudet.</p>
+<section id="asiakkaat-ja-palvelimet" class="level2">
+<h2>Asiakkaat ja palvelimet</h2>
+<p>Web-sovelluksien toiminta on aina jakautunut vähintään kahteen eri paikkaan: ohjelman käyttäjän tietokoneessa pyörivä <em>selainohjelmaan</em>, joka osaa näyttää HTML-kielellä tehtyjä verkkosivuja sekä verkon takana olevaan <em>palvelimeen</em>, joka tuottaa ja lähettää pyynnöstä verkkosivun sisällön selaimelle.</p>
+<figure>
+<img src="images/asiakas-palvelinmalli.gif" alt="Palvelin ja asiakas"><figcaption>Palvelin ja asiakas</figcaption>
+</figure>
+<p>Palvelimien sisälläkin ohjelman suoritus jakautuu lähes aina osiin. Sivuja tuottavat ohjelmat pyörivät jonkin HTTP-palvelimen, esimerkiksi <a href="http://httpd.apache.org/">Apachen</a> tai <a href="http://tomcat.apache.org/">Tomcatin</a> alaisuudessa. Tietojen säilytykseen taas käytetään erillistä tietokantapalvelinta, vaikkapa <a href="http://www.postgresql.org/">PostgreSQL:ää</a>.</p>
+</section>
+<section id="aineistopyynnöt" class="level2">
+<h2>Aineistopyynnöt</h2>
+<p>Palvelimella pyörivän ohjelman suoritus alkaa selaimen tekemästä <em><a href="http://fi.wikipedia.org/wiki/HTTP">HTTP-protokollalla</a></em> tekemästä <em>aineistopyynnöstä</em> (engl. <em>request</em>). Tämä tapahtuu joko manuaalisesti linkin klikkauksen, lomakkeen lähettämisen, tai selaimen osoitekentän käytön seurauksena, tai automaattisesti esim. sivulla olevan kuvan hakemisen muodossa.</p>
+<p>Jokainen aineistopyyntö esitetään <em><a href="http://fi.wikipedia.org/wiki/URL">URL (Universal Resource Locator)</a> –muodossa</em>. Esim. http://cs.helsinki.fi/opiskelu hakee laitoksemme sivuilta kurssilistan. Pyynnöillä voidaan hakea joko staattisia tiedostoja, esim. html-tiedostoja tai kuvia, tai dynaamista sisältöä, jotka tuottaa jokin ohjelma. Suurin osa tietokantasovelluksessa tuotettavista sivuista on näitä dynaamisia sivuja.</p>
+<section id="get-ja-post" class="level3">
+<h3>GET ja POST</h3>
+<p>Aineistopyyntöjen mukana voi kulkea kolmenlaista tietoa: selain voi lähettää palvelimelle <em>evästeitä</em>, minkä lisäksi aineistopyynnöt jakautuvat kahteen tyyppiin: <em>GET- ja POST-pyyntöihin</em>.</p>
+<p>GET-pyynnöt ovat yleisempiä ja niiden mukana välitetään vain evästeet ja osoitteeseen kirjoitetut <em>GET-parametrit</em>, jotka kirjoitetaan osoitteeseen tiedostonimen perään seuraavaan tapaan <code>http://sivusto.fi/index.php?parametri=arvo&amp;toinenParametri=43</code>. POST-pyynnöt lähetetään yleensä lomakkeita lähettäessä ja niissä käytettävät <em>POST-parametrit</em> upotetaan piilotettuna aineistopyynnön otsakkeiden sisään (itseasiassa hyvin samaan tapaan kuin evästeet). Myös POST-pyynnöissä voi käyttää GET-parametreja, joskin se on harvinaisempaa.</p>
+<p>Semanttisesti pyynnöt eroavat siten, että GET-pyyntö katsotaan pyynnöksi näyttää jotain tietoa, kun taas POST-pyynnöillä yleensä muutetaan jotakin, esim. kirjoitetaan tietokantaan. Selaimet esimerkiksi kysyvät refresh-nappia painaneelta käyttäjältä haluaako hän varmasti ladata sivun uudestaan, mikäli kysessä on POST-pyyntö, sillä yleensä pyynnön tekemiä muokkauksia ei haluta toistaa.</p>
+<figure>
+<img src="images/aineistopyynto.gif" alt="Tyypillinen aineistopyyntö"><figcaption>Tyypillinen aineistopyyntö</figcaption>
+</figure>
+<p>Sen jälkeen, kun pyynnön vaatima sivu tai muu resurssi on löydetty tai tuotettu palvelimella olevalla ohjelmalla, lähetetään se selaimelle yleensä html-koodina. Selain tulkitsee tästä koodista, sekä mahdollisesti mukana tulevista kuvista ja css-määrittelyistä sen miltä sivun kuuluisi näyttää. Selain myös suorittaa mahdolliset sivujen mukana tulevat javascript-ohjelmat, ja vastaanottaa ja tallentaa palvelimen lähettämät evästeet.</p>
+</section>
+<section id="tilatiedon-hallinta-ja-samanaikaiset-aineistopyynnöt" class="level3">
+<h3>Tilatiedon hallinta ja samanaikaiset aineistopyynnöt</h3>
+<p>Viimeinen huomionarvoinen puoli web-ohjelmoinnissa on se, että kukin palvelupyyntö on teknisesti täysin erillinen muista palvelupyynnöistä. Lisäksi palvelupyyntöjä voi tulla useita samanaikaisesti useammiltakin käyttäjiltä.</p>
+<p>Näiden pyyntöjen vastauksia tuottavat ohjelmat ajetaan joka pyynnölle erikseen, eivätkä ohjelmien suoritukseen liittyvät muuttujat ja tietorakenteet säästy suorituskerrasta toiseen ellei niitä erikseen tallennetta käyttäen evästeitä, <em>istuntoja</em> tai tietokantaa, joissa tieto säilyy.</p>
+<p>Nykyään lähes kaikki web-sovellukset tallentavat evästeitä käyttäen vähintään jonkin istuntotunnuksen, jolla käyttäjä voidaan identifioida aineistopyyntöjen välillä. Istuntotunnuksen perusteella voidaan järjestää pääsy palvelimen säilyttämiin istuntokohtaisiin tietoihin. Joskus käytetään myös lomakkeisiin upotettuja piilokenttiä joidenkin tilatietojen välittämiseen.</p>
+<figure>
+<img src="images/kaksi-aineistopyyntoa.gif" alt="Useiden aineistopyyntöjen kanssakäyti"><figcaption>Useiden aineistopyyntöjen kanssakäyti</figcaption>
+</figure>
+</section>
+</section>
 </div>
 </div> 
 </div> 
