@@ -24,6 +24,8 @@ Ohessa kunkin osa-alueen vaatimia työn ominaisuuksia.
 ## Aikataulun noudattaminen (15 pistettä)
 
 Jokaisesta onnistuneesta aikataulun palautuksesta saa kolme pistettä. 
+Myöhästyneistä palautuksista ei saa pisteitä ja yli kahdesta myöhästymisestä
+lentää ulos kurssilta.
 
 ## Koodin laatu (25 pistettä)
 Koodi on laadukasta ja toimii. Muuttujat, luokat ja metodit on nimetty johdonmukaisesti, 
