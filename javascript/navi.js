@@ -1,25 +1,33 @@
 $(document).ready(function(){
 
   if (typeof(addSectionLinks) !== 'undefined' && addSectionLinks) {
-    var currentLink = $('li.selected');
-    var mainlink = currentLink.children('a');
-    var links = $('<ul></ul>');
     var url = document.location.href;
+    //Strip the fragment identifier or hashtag from the url
     url = url.substring(0, (url.indexOf("#") == -1) ? url.length : url.indexOf("#"));
-    url = url.substring(url.lastIndexOf("/") + 1, url.length);
 
-    var hasLinks = false;
-    $('section.level2').each(function() {
-      var title = $(this).find('h2').html();
-      title = title.replace(/^\d+\.? */, ""); //Remove ordinal numering
-      var link = url+"#"+$(this).attr('id');
-      links.append($('<li><a href="'+link+'">'+title+'</a></li>'));
-      hasLinks = true;
-    });
+    function findLinks(where, level) {
+      var hasLinks = false;
+      var links = $('<ul></ul>');
+      where.find('section.level'+level).each(function() {
+        var title = $(this).find('h'+level).html();
+        title = title.replace(/^\d+\.? */, ""); //Remove ordinal numering
+        var link = url+"#"+$(this).attr('id');
+        var listItem = $('<li class="open"><a href="'+link+'">'+title+'</a></li>');
+        var subLinks = findLinks($(this), level+1);
+        if (subLinks) listItem.append(subLinks);
+        links.append(listItem);
+        hasLinks = true;
+      });
+      if (!hasLinks) return null;
+      else return links;
+    }
 
-    if (hasLinks) {
+    var links = findLinks($('#content'), 2);
+
+    if (links) {
+      var currentLink = $('li.selected');
       currentLink.append(links).addClass('open');
-      mainlink.click(function() {
+      currentLink.children('a').click(function() {
         $.scrollTo('0%', 1000, {axis:'y'} );
         links.find('a').removeClass('selected');
         return false;
@@ -30,7 +38,8 @@ $(document).ready(function(){
       });
     }
   }
-  
+
+  /* Make the navigation expandable */
   $("nav > ul > li > ul").treeview({
     animated: "fast",
     persist: "location",

@@ -204,8 +204,10 @@
 				deserialize();
 				break;
 			case "location":
-				var current = this.find("a").filter(function() {
-					return this.href.toLowerCase() == location.href.toLowerCase();
+        var current = this.find("a").filter(function() {
+          var linkUrl = this.href.replace(/index.html(#.*)?$/,'');
+          var curUrl = location.href.replace(/index.html(#.*)?$/,'');
+					return linkUrl.toLowerCase() == curUrl.toLowerCase();
 				});
 				if ( current.length ) {
 					// TODO update the open/closed classes
