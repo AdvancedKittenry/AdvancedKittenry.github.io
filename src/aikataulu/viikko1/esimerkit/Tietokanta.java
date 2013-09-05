@@ -5,7 +5,7 @@ ResultSet tulokset = null;
 try {
   //Etsitään mysql-ajuri ja otetaan yhteys tietokantaan
   Class.forName("com.mysql.jdbc.Driver");
-  yhteys = DriverManager.getConnection("jdbc:mysql://localhost/tsohakanta?user=kayttaja&password=salasana");
+  yhteys = DriverManager.getConnection("jdbc:mysql://localhost/tietokannan_nimi?user=kayttaja&password=salasana");
   
   //Suoritetaan sql-kysely. Haetaan täysi-ikäiset Lehtoset tietokannasta
   String sql = "SELECT etunimi, sukunimi, ika FROM kayttajat WHERE ika >= ? and sukunimi = ?";

@@ -1,6 +1,6 @@
 <?php
   //Otetaan yhteys mysql-tietokantaan
-  $yhteys = new PDO("mysql:host=localhost;dbname=tsohakanta", "kayttaja", "salasana");
+  $yhteys = new PDO("mysql:host=localhost;dbname=tietokannan_nimi", "kayttaja", "salasana");
 
   //Suoritetaan sql-kysely. Haetaan täysi-ikäiset Lehtoset tietokannasta
   $sql = "SELECT id, nimi, osoite FROM kayttajat WHERE ika >= ? and sukunimi = ?";

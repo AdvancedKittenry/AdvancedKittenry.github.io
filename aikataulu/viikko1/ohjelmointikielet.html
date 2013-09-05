@@ -296,7 +296,7 @@ luku = nemi;</code></pre>
 <p><strong>PHP</strong></p>
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>
   <span class="co">//Otetaan yhteys mysql-tietokantaan</span>
-  <span class="kw">$yhteys</span> = <span class="kw">new</span> <span class="kw">PDO</span><span class="ot">(</span><span class="st">&quot;mysql:host=localhost;dbname=tsohakanta&quot;</span><span class="ot">,</span> <span class="st">&quot;kayttaja&quot;</span><span class="ot">,</span> <span class="st">&quot;salasana&quot;</span><span class="ot">);</span>
+  <span class="kw">$yhteys</span> = <span class="kw">new</span> <span class="kw">PDO</span><span class="ot">(</span><span class="st">&quot;mysql:host=localhost;dbname=tietokannan_nimi&quot;</span><span class="ot">,</span> <span class="st">&quot;kayttaja&quot;</span><span class="ot">,</span> <span class="st">&quot;salasana&quot;</span><span class="ot">);</span>
 
   <span class="co">//Suoritetaan sql-kysely. Haetaan täysi-ikäiset Lehtoset tietokannasta</span>
   <span class="kw">$sql</span> = <span class="st">&quot;SELECT id, nimi, osoite FROM kayttajat WHERE ika &gt;= ? and sukunimi = ?&quot;</span><span class="ot">;</span>
@@ -320,7 +320,7 @@ ResultSet tulokset = <span class="kw">null</span>;
 <span class="kw">try</span> {
   <span class="co">//Etsitään mysql-ajuri ja otetaan yhteys tietokantaan</span>
   Class.<span class="fu">forName</span>(<span class="st">&quot;com.mysql.jdbc.Driver&quot;</span>);
-  yhteys = DriverManager.<span class="fu">getConnection</span>(<span class="st">&quot;jdbc:mysql://localhost/tsohakanta?user=kayttaja&amp;password=salasana&quot;</span>);
+  yhteys = DriverManager.<span class="fu">getConnection</span>(<span class="st">&quot;jdbc:mysql://localhost/tietokannan_nimi?user=kayttaja&amp;password=salasana&quot;</span>);
   
   <span class="co">//Suoritetaan sql-kysely. Haetaan täysi-ikäiset Lehtoset tietokannasta</span>
   String sql = <span class="st">&quot;SELECT etunimi, sukunimi, ika FROM kayttajat WHERE ika &gt;= ? and sukunimi = ?&quot;</span>;
