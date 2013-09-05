@@ -1,7 +1,7 @@
 % Arvosteluperusteet
 <!-- order: xx -->
 
-Työn arvosteluun vaikuttavat aikataulussa pysyminen, koodin laatu, sovelluksen
+Työn arvosteluun vaikuttavat valittu aihe, aikataulussa pysyminen, koodin laatu, sovelluksen
 käytettävyys sekä dokumentaatio.
 Valmiistä työstä voi saada maksimissaan 60 pistettä. 
 Pisteet jakautuvat seuraavasti:
@@ -60,3 +60,10 @@ Pisteet    30  35  40  45  50
 ---------  --- --- --- --- ---
 Arvosana   1   2   3   4   5
 
+Työstä ei voi saada maksimiarvosanaa suurempaa arvosanaa!
+Vitosen arvosanamaksimiin vaaditaan työltä ainakin seuraavat:
+  
+* Kirjautumisen toteuttaminen
+* Toteutettavia tietokohteita ainakin kolme
+* Vähintään kahteen tietokohteeseen pitää olla toteutettuna täysi [CRUD-nelikko](http://en.wikipedia.org/wiki/Create,_read,_update_and_delete): kohteen luominen, selailu, muokkaus, ja poisto.
+* Järjestelmässä on ainakin yksi monesta-moneen suhde tietokantataulujen välillä
