@@ -331,8 +331,8 @@ ResultSet tulokset = <span class="kw">null</span>;
 
   <span class="co">//Tulostetaan tietoja löydetyistä käyttäjistä</span>
   <span class="kw">while</span>(tulokset.<span class="fu">next</span>()) {
-    String nimi = tulokset.<span class="fu">getString</span>(<span class="dv">1</span>) + <span class="st">&quot; &quot;</span> +tulokset.<span class="fu">getString</span>(<span class="dv">2</span>);
-    <span class="dt">int</span> ika = tulokset.<span class="fu">getString</span>(<span class="dv">3</span>);
+    String nimi = tulokset.<span class="fu">getString</span>(<span class="st">&quot;etunimi&quot;</span>) + <span class="st">&quot; &quot;</span> +tulokset.<span class="fu">getString</span>(<span class="st">&quot;sukunimi&quot;</span>);
+    <span class="dt">int</span> ika = tulokset.<span class="fu">getString</span>(<span class="st">&quot;ika&quot;</span>);
     System.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;Käyttäjän &quot;</span>+nimi+<span class="st">&quot; ikä on &quot;</span>+ika);
   }
 

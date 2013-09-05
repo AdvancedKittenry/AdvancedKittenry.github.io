@@ -16,8 +16,8 @@ try {
 
   //Tulostetaan tietoja löydetyistä käyttäjistä
   while(tulokset.next()) {
-    String nimi = tulokset.getString(1) + " " +tulokset.getString(2);
-    int ika = tulokset.getString(3);
+    String nimi = tulokset.getString("etunimi") + " " +tulokset.getString("sukunimi");
+    int ika = tulokset.getString("ika");
     System.out.println("Käyttäjän "+nimi+" ikä on "+ika);
   }
 
