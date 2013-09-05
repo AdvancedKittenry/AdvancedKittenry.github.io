@@ -25,8 +25,8 @@ järjestelmään omilla tunnuksillaan, joita kartanonomistaja hallinnoi.
 </box>
 
 Keskimääräinen tietokantasovellus jakautuu 
-suurinpiirtein neljäntyyppisin sivuihin: etusivuihin, listauksiin,
-lomakesivuihin ja kirjautumiseen liittyviin sivuihin. 
+suurinpiirtein viidentyyppisin sivuihin: etusivuihin, listauksiin,
+dynaamisiin tietosivuihin, lomakesivuihin ja kirjautumiseen liittyviin sivuihin. 
 Näistä joko kirjautuminen tai etusivu on se sivu, jonka
 sovelluksen käyttäjä ensimmäiseksi näkee.
 Etusivut esittelevät sovellusta, kertovat sen toiminnasta
@@ -34,9 +34,9 @@ ja antavat käyttäjälle ohjeita sovelluksen käyttöön.
 Ne liittyvät usein saumattomasti listauksiin, jotka
 näyttävät listan jostain sovelluksen tietokohteesta. Tässä
 tapauksessa esimerkiksi kissoista tai palveluskunnasta.
-Listauksesta taas pääsee erilaisille lomakesivuille,
-jolla pystyy lisäämään tai muokkaamaan jonkin tietokohteen 
-tietoja eli vaikkapa yksittäistä kissaa.
+Listauksesta taas päästään yleensä suoraan erilaisille tieto- ja lomakesivuille,
+jolla pystyy katselemaan, lisäämään tai muokkaamaan jonkin tietokohteen 
+tietoja eli vaikkapa muokkaamaan yksittäisen kissan kuvausta.
 
 Nämä mielessä pitäen lähde rakentamaan eri sivuista
 ja toiminnoista karkeaa sivukarttaa, joka on dokumentaation
