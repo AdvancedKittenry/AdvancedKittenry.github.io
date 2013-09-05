@@ -110,7 +110,7 @@ käyttötapauksia. Käyttötapaukset kannattaa esittää käyttäjittäin ryhmit
 Järjestelmän tietosisältö kuvataan käsitekaavion avulla. Käsitekaavio on järjestelmään säilöttävälle tiedolle käsitetason malli, jonka perusteella johdetaan toteutustason relaatiotietokantakaavio.
 
 ####Esimerkki  
-![Tietosisältökaavio]({{imgdir}}dokumentaatio-ohje/information_diagram.png)
+![Käsitekaavio]({{imgdir}}dokumentaatio-ohje/information_diagram.png)
 
 Kaavion lisäksi täytyy kuhunkin tietokohteeseen liittää selitys, jossa määritellään kyseinen kohde. 
 Attribuutit täytyy kuvailla ellei merkitys ole nimen perusteella itsestään selvä. 
@@ -150,7 +150,7 @@ Create table -lauseet voi antaa liitteenä, jolloin niitä ei tarvitse kirjoitta
 Alla on esimerkki kaaviokuvasta. Nuolten tulisi lähteä vierasavainten kohdalta, pk = primary key, fk = foreign key.  
 Huomaa kuitenkin taulun varuste vieras pariavain (huoneisto,laatimisaika) on kuvattu yhdellä nuolella.  
 
-![Relaatiokaavio]({{imgdir}}dokumentaatio-ohje/relaatiokaavio.gif)
+![Relaatiotietokantakaavio]({{imgdir}}dokumentaatio-ohje/relaatiokaavio.gif)
 Muunnossäännöt käsitemallista relaatiomalliin löytyvät Tietokantojen perusteet kurssin materiaalista.
 
 ##6. Järjestelmän yleisrakenne

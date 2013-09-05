@@ -65,7 +65,12 @@ sivuilla esiintyviä toimintoja, jotka eivät tarvitse omaa sivua
 Lopullisen siistin version voi huoletta jättää myöhemmäksi, 
 sillä yleensä suunnitelmat kuitenkin muuttuvat työn edetessä.
 
-Kun sivukartta on tehty, lähde suunnittelemaan alustavasti etusivua
+Kun sivukartta on tehty, ota siitä kuva kännykkäkamerallasi
+ja sijoita se repositoriosi doc-kansioon nimellä <code>sivukartta.jpg</code> (tiedostopäätteellä ei ole niin väliä).
+Voit halutessasi myös skannata sen tai 
+tehdä valmiin version jollain diagrammiohjelmalla. 
+
+Lähde sitten suunnittelemaan alustavasti etusivua
 ja yleistä sivujen käyttöliittymää.
 Tee samalla luonnos siitä millaisia yleisiä navigaatioelementtejä
 sovelluksesi sivuille tulisi.
