@@ -1,7 +1,5 @@
 % Tietokantasovellus
 
-## 
-
 Tietokantasovellus on tietojenkäsittelytieteen aineopintojen harjoitustyökurssi,
 jossa harjoitellaan tietokantaohjelmointia käytännössä 
 ja opitaan samalla web-sovellusohjelmoinnin perusteet. 
