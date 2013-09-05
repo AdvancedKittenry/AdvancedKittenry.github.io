@@ -3,8 +3,9 @@
 
 Tämän projektin laittoi alulle ja materiaalit kokosi David Consuegra.
 
-Materiaaleja tuottamassa mukana olleet myös:
+Projektin lähdemateriaaleja tuottamassa mukana ovat olleet myös:
 
+* Harri Laine
 * Sami Saada
 * Neo Lehtola
 * Lauri Suomalainen
