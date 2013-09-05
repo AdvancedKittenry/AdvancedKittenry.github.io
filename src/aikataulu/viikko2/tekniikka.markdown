@@ -4,3 +4,7 @@
 <wip />
   
 * wanna-x
+
+<last>
+Varmista vielä, että olet laittanut [tietokantasuunnitelman](tietokanta.html) ja [HTML-demoversion](html-versioiden-luonti.markdown) repositorioosi!
+</last>

@@ -85,6 +85,6 @@ näyttää useimmiten tältä:
 
 ![Kirjautumislomake]({{myimgdir}}kirjautuminen.png)
 
-<ohje>
+<next>
 Tehtyäsi sivukartan, yleisnäkymän ja etusivun lähde suunnittelemaan [listanäkymiä](listanakyma.html).
-</ohje>
+</next>

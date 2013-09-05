@@ -17,7 +17,7 @@ Sinulla tulee olla tehtynä seuraavat asiat:
 * [Listanäkymien suunnittelu](listanakyma.html)
 * [Muokkaus- ja lisäysnäkymien suunnittelu](lomake.html)
 * [Suunnitelmien toteuttaminen HTML:llä](html-versioiden-luonti.html)
-* [Tietokannan suunnittelu](tietokanta.html)
+* [Tietokannan suunnittelu (järjestelmän tietosisältö ja relaatiotietokantakaavio)](tietokanta.html)
 * [Tietokannan ja users-palvelimen nettisivutilan pystytys](tekniikka.html)
 
 <ohje>
