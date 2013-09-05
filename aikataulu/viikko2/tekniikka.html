@@ -109,24 +109,19 @@
 </header>
 <!-- order: 6 -->
 
-
-<div class="wip panel">
-  <div class="panel-body">
-    <h3>
-Work in progress
-</h3>
-    
-Tämän sivun sisältö on vielä työn alla ja saattaa muuttua kurssin edetessä.
-</div>
-</div>
-
-
-
+<p>Nämä ohjeet ovat vielä hieman kesken. Paremman puutteessa voit selailla alkuperäistä ohjenivaskaa:</p>
 <ul>
-<li>wanna-x</li>
+<li><a href="http://www.cs.helsinki.fi/u/laine/tikas/php_ohje.html">PHP HY/TKTL ympäristössä</a></li>
+<li><a href="http://www.cs.helsinki.fi/u/ahslaaks/tsoha/tkanta.html">PHP ja tietokanta</a></li>
+<li><a href="http://www.cs.helsinki.fi/u/laine/tikas/material/servlet_ohje.html">Servlettien käyttö Tietokantasovellusten harjoitustyössä</a></li>
+<li><a href="http://www.cs.helsinki.fi/u/laine/tikas/material/tietokannat.html">Tietokannat Helsingin yliopiston tietojenkäsittelytieteen laitoksella</a> (vanhentunut, elä käytä oraclea)</li>
 </ul>
 <section id="tietokannan-alustustiedostojen-luominen" class="level2">
 <h2>Tietokannan alustustiedostojen luominen</h2>
+<p>Muistele Tietokantojen perusteet -kurssilla oppimaasi SQL-kieltä ja tutustu valitsemasi tietokannan dokumentaatioon. Luo sitten repositorioosi sql-kansio ja sijoita siihen kolme sql-tiedostoa: <code>create-tables.sql</code>, <code>drop-tables.sql</code> ja <code>add-test-data.sql</code>. Sijoita näihin järjestyksessä tietokantasi create table -lauseet, drop table -lauseet, ja mahdollinen testidata.</p>
+<p>SQL-lauseiden sijoittaminen tiedostoihin mahdollistaa kannan helpon pystyttämisen ja alasajon. Voit ajaa sql-tiedostoon kantaan usersilla, käyttämällä unixin <em>putkitusta</em>. Esimeriksi PostgreSQL:llä tämä tapahtuu seuraavasti:</p>
+<pre><code>psql &lt; sql/create-tables.sql</code></pre>
+<p>Yllä oleva komento suorittaa tiedoston sisältämät SQL-lauseet tietokannassa. MySQL-versio on samantapainen, mutta komentona on psql:n sijasta mysql, minkä lisäksi mysql kysyy sinulta salasanaa.</p>
 </section>
 <section id="palautus" class="level2">
 <h2>Palautus</h2>
