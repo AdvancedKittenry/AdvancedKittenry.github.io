@@ -30,6 +30,14 @@ Tähän ohjeita.
 
 </comment>
 
+Tähän tulossa lyhyet ohjeet siitä, miten selkeällä HTML:llä ja CSS:llä
+sekä [Bootstrapilla](http://getbootstrap.com/) saa aikaan siistit sivut.
+
+Hyviä HTML-referenssejä:
+
+* [HTML Dogin tutoriaalit](http://www.htmldog.com/) (HTML ja CSS) ovat lupsakoita ja perusteellisia. Suositellaan selattavaksi sivuja tehdessä! Tutoriaaleissa tehdään XHTML-sivuja, mutta ne on helppo soveltaa HTML5-sivuiksi (korvaa alun pitkä DOCTYPE lyhyellä HTML5-doctypellä).
+* W3-konsortion sivuilta löydät alkuperäiset, kattavat standardit: [HTML5](http://www.w3.org/TR/html5/) ja [CSS(3)](http://www.w3.org/TR/CSS/) sekä aika hyvän [tutoriaali- ja referenssisivun](http://w3schools.com/html/html5_intro.asp).
+
 <next>
 Siirry suunnittelemaan sovelluksesi [tietokantaa](tietokanta.html), 
 tai mikäli teit sen jo pystytä aikaansaannoksesi 
