@@ -2,6 +2,7 @@
   "default": {
     "instancename": "Syksy 2013, periodi I",
     "aloitusluentopvm": "ti 3.9 klo 16 luokassa C222",
+    "instructoremail": "consuegr@cs.helsinki.fi",
     "deadline1": "pe 6.9 klo 23:00",
     "deadline2": "pe 13.9 klo 23:00",
     "deadline3": "pe 20.9 klo 23:00",
