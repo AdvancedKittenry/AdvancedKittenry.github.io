@@ -24,6 +24,7 @@ doc/
 ~~~~
 
 Kun olet tehnyt kaikki viikon tehtävät, lähetä ohjaajallesi sähköposti 
+osoitteeseen [{{{instructoremail}}}]( mailto:{{{instructoremail}}} )
 otsikolla "Tietokantasovelluksen git-repositorio - Erkki Esimerkki",
 missä keksityn esimerkkinimen tilalla omasi.
 Viestiksi laita github-repositoriosi www-osoite tai jos haluat
