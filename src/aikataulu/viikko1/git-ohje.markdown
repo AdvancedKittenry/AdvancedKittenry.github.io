@@ -23,7 +23,7 @@ doc/
 Kun olet tehnyt kaikki viikon tehtävät, lähetä ohjaajallesi sähköposti 
 otsikolla "Tietokantasovelluksen git-repositorio - Erkki Esimerkki",
 missä keksityn esimerkkinimen tilalla omasi.
-Viestiksi laita github-repositoriosi osoite tai jos haluat
+Viestiksi laita github-repositoriosi www-osoite tai jos haluat
 pitää repositoriotasi jossain muualla kirjoita
 asianmukaiset ohjeet git-repositoriosi kloonaamiseen.
 Kaiken muun palautukseen liittyvän informaation tulee löytyä repositoriosta.

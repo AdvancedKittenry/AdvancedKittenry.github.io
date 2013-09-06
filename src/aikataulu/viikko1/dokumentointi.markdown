@@ -12,6 +12,7 @@ Kirjoita johdantoon kuvaus valitsemastasi aiheesta ja ohjelmointikielestä, sek�
 Mieti sen jälkeen mitä käyttötapauksia työssäsi voisi olla. Aihekuvauksissa annetut toimintolistat ovat hyvä lähtökohta,
 joskaan nämä listat eivät ole täydellisiä. Nimeä eri sidosryhmät ja piirrä näistä kaikista kaavio. 
 Lopuksi tallenna työsi pdf-tiedostoksi nimellä <code>dokumentaatio.pdf</code>. 
+Tiedostolla on tässä vaiheessa pituutta noin muutama sivu plus mahdolliset kansilehdet ja sisällysluettelot.
 
 <next>
 Kirjoitettuasi dokumentin kolme ensimmäistä kappaletta olet valmis luomaan työllesi [git-repositorion](git-ohje.html).

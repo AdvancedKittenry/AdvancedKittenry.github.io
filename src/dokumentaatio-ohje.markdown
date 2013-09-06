@@ -16,11 +16,11 @@ ja mitä tekniikoita siinä käytetään.
   - Mitkä ovat järjestelmän tavoitteet.
   - Nämä tiedot saa yleensä tehtäväkuvauksesta, kirjoita kuitenkin omin sanoin.
 - Toteutus-/toimintaympäristö
-  - Missä ympäristössä työ toteutetaan.
+  - Missä ympäristössä työ toteutetaan (yleensä laitoksen users-palvelimella Tomcat- tai Apache-palvelimen alla)
   - Täytyykö web-sovelluksen alustajärjestelmän tukea jotain tiettyä ohjelmointikieltä. (esim. Java, Ruby, PHP..?)
     - Jos edellytetään jotain sovelluskehystä tulisi sekin mainita.
   - Täytyykö käyttäjän selaimen tukea jotain tiettyä ohjelmointikieltä (esim. javascript?).
-  - Edellyttääkö ohjelmisto jonkun tietyn tietokannan käyttöä vai voiko sitä vaihtaa helposti.
+  - Edellyttääkö ohjelmisto jonkun tietyn tietokannan käyttöä vai voiko sitä vaihtaa helposti. Useimmat työt toimivat vain yhdellä kannalla.
 
 
 ##2. Yleiskuva järjestelmästä
