@@ -11,9 +11,8 @@ Luo siihen kansio nimeltä <code>doc</code> ja sijoita siihen kaikki
 tähän mennessä tekemäsi dokumentaatio. Voit sijoittaa kansioon kaikki
 tarvitsemasi dokumentaatioon liittyvät tiedostot kunhan pidät huolen
 siitä, että siellä on tietokantasovelluksen [päädokumentti]({{rootdir}}dokumentaatio-ohje.html)
-nimellä <code>dokumentaatio.pdf</code>. 
-Laita dokumentaation luomiseen käyttämäsi lähdetiedosto, esim. odt- tai tex-tiedosto
-myös tähän samaan kansioon. Näin se pysyy versionhallinnassa mukana.
+nimellä <code>dokumentaatio.pdf</code>. Tuo PDF-tiedosto on se, jonka ohjaajasi lukee, 
+mutta on hyvä pitää lähdetiedostotkin versionhallinnassa.
 
 Ensimmäisen viikon palautuksen kansiorakenne näyttää siis todennäköisimmin seuraavanalaiselta:
 
