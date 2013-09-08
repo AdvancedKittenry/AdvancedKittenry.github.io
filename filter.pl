@@ -37,13 +37,12 @@ BEGIN {
     if (length($curdir) > 0) {
       $curdir = $curdir . "/";
     }
-    my $rootdir = $curdir =~ s#[^/]+#..#rg;
+    our $rootdir = $curdir =~ s#[^/]+#..#rg;
 
     our %dirs = (
       curdir => $curdir,
-      rootdir => $rootdir,
-      imgdir => $rootdir."images/",
-      myimgdir => $rootdir."images/".$curdir
+      imgdir => "{{rootdir}}images/",
+      myimgdir => "{{rootdir}}images/".$curdir
     );
     
     my $input_file = "course_instances.json";
@@ -120,7 +119,15 @@ for my $coursekeyword (keys %coursekeywords) {
 }
 
 #Parses include files while leaving title metadata lines beginning with % out
-s{<include +src="([^"]*)" */>} {"\n" . `$0 $basedir/$1` =~ s/^(%[^\n]*)*//rg . "\n";}eg;
+my $include_program = $0 =~ s/filter.pl$/filter-included.pl/r;
+s{<include +src="([^"]*)" */>} {"\n" . `$include_program $basedir/$1` =~ s/^(%[^\n]*)*//rg . "\n";}eg;
+
+if ($0 =~ m/filter.pl/) {
+  # We only do the rootdir substitution after we know better
+  # that is, after any including is done.
+  # This is to take into account possible includes in other directories
+  s#{{rootdir}}#$rootdir#g;
+} 
 
 #Parse tabs and other dynamic expandable content
 s{<tabs nobox=['"]true['"]>\s(.*?)<\/tabs>} {parseTabs($1, 0)."<hr/>" }esg;
