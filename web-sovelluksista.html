@@ -114,7 +114,7 @@
 <h2>Asiakkaat ja palvelimet</h2>
 <p>Web-sovelluksien toiminta on aina jakautunut vähintään kahteen eri paikkaan: ohjelman käyttäjän tietokoneessa pyörivä <em>selainohjelmaan</em>, joka osaa näyttää HTML-kielellä tehtyjä verkkosivuja sekä verkon takana olevaan <em>palvelimeen</em>, joka tuottaa ja lähettää pyynnöstä verkkosivun sisällön selaimelle.</p>
 <figure>
-<img src="images/asiakas-palvelinmalli.gif" alt="Palvelin ja asiakas"><figcaption>Palvelin ja asiakas</figcaption>
+<img src="images/asiakas-palvelinmalli.gif" alt="Palvelin ja asiakas" /><figcaption>Palvelin ja asiakas</figcaption>
 </figure>
 <p>Palvelimien sisälläkin ohjelman suoritus jakautuu lähes aina osiin. Sivuja tuottavat ohjelmat pyörivät jonkin HTTP-palvelimen, esimerkiksi <a href="http://httpd.apache.org/">Apachen</a> tai <a href="http://tomcat.apache.org/">Tomcatin</a> alaisuudessa. Tietojen säilytykseen taas käytetään erillistä tietokantapalvelinta, vaikkapa <a href="http://www.postgresql.org/">PostgreSQL:ää</a>.</p>
 </section>
@@ -128,7 +128,7 @@
 <p>GET-pyynnöt ovat yleisempiä ja niiden mukana välitetään vain evästeet ja osoitteeseen kirjoitetut <em>GET-parametrit</em>, jotka kirjoitetaan osoitteeseen tiedostonimen perään seuraavaan tapaan <code>http://sivusto.fi/index.php?parametri=arvo&amp;toinenParametri=43</code>. POST-pyynnöt lähetetään yleensä lomakkeita lähettäessä ja niissä käytettävät <em>POST-parametrit</em> upotetaan piilotettuna aineistopyynnön otsakkeiden sisään (itseasiassa hyvin samaan tapaan kuin evästeet). Myös POST-pyynnöissä voi käyttää GET-parametreja, joskin se on harvinaisempaa.</p>
 <p>Semanttisesti pyynnöt eroavat siten, että GET-pyyntö katsotaan pyynnöksi näyttää jotain tietoa, kun taas POST-pyynnöillä yleensä muutetaan jotakin, esim. kirjoitetaan tietokantaan. Selaimet esimerkiksi kysyvät refresh-nappia painaneelta käyttäjältä haluaako hän varmasti ladata sivun uudestaan, mikäli kysessä on POST-pyyntö, sillä yleensä pyynnön tekemiä muokkauksia ei haluta toistaa.</p>
 <figure>
-<img src="images/aineistopyynto.gif" alt="Tyypillinen aineistopyyntö"><figcaption>Tyypillinen aineistopyyntö</figcaption>
+<img src="images/aineistopyynto.gif" alt="Tyypillinen aineistopyyntö" /><figcaption>Tyypillinen aineistopyyntö</figcaption>
 </figure>
 <p>Sen jälkeen, kun pyynnön vaatima sivu tai muu resurssi on löydetty tai tuotettu palvelimella olevalla ohjelmalla, lähetetään se selaimelle yleensä html-koodina. Selain tulkitsee tästä koodista, sekä mahdollisesti mukana tulevista kuvista ja css-määrittelyistä sen miltä sivun kuuluisi näyttää. Selain myös suorittaa mahdolliset sivujen mukana tulevat javascript-ohjelmat, ja vastaanottaa ja tallentaa palvelimen lähettämät evästeet.</p>
 </section>
@@ -138,7 +138,7 @@
 <p>Näiden pyyntöjen vastauksia tuottavat ohjelmat ajetaan joka pyynnölle erikseen, eivätkä ohjelmien suoritukseen liittyvät muuttujat ja tietorakenteet säästy suorituskerrasta toiseen ellei niitä erikseen tallennetta käyttäen evästeitä, <em>istuntoja</em> tai tietokantaa, joissa tieto säilyy.</p>
 <p>Nykyään lähes kaikki web-sovellukset tallentavat evästeitä käyttäen vähintään jonkin istuntotunnuksen, jolla käyttäjä voidaan identifioida aineistopyyntöjen välillä. Istuntotunnuksen perusteella voidaan järjestää pääsy palvelimen säilyttämiin istuntokohtaisiin tietoihin. Joskus käytetään myös lomakkeisiin upotettuja piilokenttiä joidenkin tilatietojen välittämiseen.</p>
 <figure>
-<img src="images/kaksi-aineistopyyntoa.gif" alt="Useiden aineistopyyntöjen kanssakäyti"><figcaption>Useiden aineistopyyntöjen kanssakäyti</figcaption>
+<img src="images/kaksi-aineistopyyntoa.gif" alt="Useiden aineistopyyntöjen kanssakäyti" /><figcaption>Useiden aineistopyyntöjen kanssakäyti</figcaption>
 </figure>
 </section>
 </section>

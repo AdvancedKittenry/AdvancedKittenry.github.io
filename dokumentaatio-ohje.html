@@ -109,7 +109,7 @@
 </header>
 <script>addSectionLinks = true; </script>
 
-<p>Kurssilla määritellään, suunnitellaan ja toteutetaan pieni www-alustalle toteutettava tietokantajärjestelmä.<br>Tämä dokumentti antaa suuntaa harjoitustyöltä odotettavasta dokumentaatiosta.<br>Dokumentissa tulee olla selkeä kappalejako, kansilehti ja sisällysluettelo. Tekstin tulee olla kieliasultaan selkeää. Dokumentaatio tulisi palauttaa mieluiten <strong>yhtenä pdf-tiedostona</strong> joka kuvaa koko järjestelmän, tarvittaessa kuvat voi palauttaa irrallisina.</p>
+<p>Kurssilla määritellään, suunnitellaan ja toteutetaan pieni www-alustalle toteutettava tietokantajärjestelmä.<br />Tämä dokumentti antaa suuntaa harjoitustyöltä odotettavasta dokumentaatiosta.<br />Dokumentissa tulee olla selkeä kappalejako, kansilehti ja sisällysluettelo. Tekstin tulee olla kieliasultaan selkeää. Dokumentaatio tulisi palauttaa mieluiten <strong>yhtenä pdf-tiedostona</strong> joka kuvaa koko järjestelmän, tarvittaessa kuvat voi palauttaa irrallisina.</p>
 <section id="johdanto" class="level2">
 <h2>1. Johdanto</h2>
 <p>Johdantoon kirjoitetaan lyhyt, ytimekäs kuvaus siitä, mikä on työn aihe, mitä työllä kuuluisi pystyä tekemään ja mitä tekniikoita siinä käytetään.</p>
@@ -142,13 +142,13 @@
 <section id="käyttötapauskaavio" class="level5">
 <h5>Käyttötapauskaavio</h5>
 <figure>
-<img src="images/dokumentaatio-ohje/usecase_diagram.png" alt="Käyttötapauskaavio"><figcaption>Käyttötapauskaavio</figcaption>
+<img src="images/dokumentaatio-ohje/usecase_diagram.png" alt="Käyttötapauskaavio" /><figcaption>Käyttötapauskaavio</figcaption>
 </figure>
 </section>
 <section id="sidosryhmäkaavio" class="level5">
 <h5>Sidosryhmäkaavio</h5>
 <figure>
-<img src="images/dokumentaatio-ohje/sidos3.gif" alt="Sidosryhmäkaavio"><figcaption>Sidosryhmäkaavio</figcaption>
+<img src="images/dokumentaatio-ohje/sidos3.gif" alt="Sidosryhmäkaavio" /><figcaption>Sidosryhmäkaavio</figcaption>
 </figure>
 </section>
 </section>
@@ -189,7 +189,7 @@ Aktivoinnin voisi kytkeä myös esimerkiksi jäsenmaksun maksamiseen.</code></pr
 <section id="esimerkki-2" class="level4">
 <h4>Esimerkki</h4>
 <figure>
-<img src="images/dokumentaatio-ohje/information_diagram.png" alt="Käsitekaavio"><figcaption>Käsitekaavio</figcaption>
+<img src="images/dokumentaatio-ohje/information_diagram.png" alt="Käsitekaavio" /><figcaption>Käsitekaavio</figcaption>
 </figure>
 <p>Kaavion lisäksi täytyy kuhunkin tietokohteeseen liittää selitys, jossa määritellään kyseinen kohde. Attribuutit täytyy kuvailla ellei merkitys ole nimen perusteella itsestään selvä. Jos attribuutilla on koodiarvoja tai rajattu arvojoukko, on arvojen merkitys myös selitettävä. Myös yhteydet täytyy määritellä. Alla on esimerkkinä yhden tietokohteen määrittely.</p>
 </section>
@@ -232,8 +232,8 @@ Aktivoinnin voisi kytkeä myös esimerkiksi jäsenmaksun maksamiseen.</code></pr
 <h2>5. Relaatiotietokantakaavio</h2>
 <p>Relaatiotietokantakaavio on teknisempi dokumentti, jossa tiedon säilömiseen käytettävän tietokannan rakenne esitetään kaaviokuvana ja SQL:n create table lauseina. Kaavioon täytyy sisältyä taulujen välisten viiteyhteyksien ja avainten määritykset. Jos relaatiokaaviossa on attribuutteja, jotka eivät esiinny käsitemallissa tai jonkin käsitemallin attribuutti on karsittu tai sen muotoa on muutettu on tästä erikseen mainittava. Yleissääntönä on, että relaatiotietokantakaavion tulee olla yhteensopiva käsitemallin kanssa.</p>
 <p>Create table -lauseet voi antaa liitteenä, jolloin niitä ei tarvitse kirjoittaa dokumentin sekaan.</p>
-<p>Alla on esimerkki kaaviokuvasta. Nuolten tulisi lähteä vierasavainten kohdalta, pk = primary key, fk = foreign key.<br>Huomaa kuitenkin taulun varuste vieras pariavain (huoneisto,laatimisaika) on kuvattu yhdellä nuolella.</p>
-<p><img src="images/dokumentaatio-ohje/relaatiokaavio.gif" alt="Relaatiotietokantakaavio"> Muunnossäännöt käsitemallista relaatiomalliin löytyvät Tietokantojen perusteet kurssin materiaalista.</p>
+<p>Alla on esimerkki kaaviokuvasta. Nuolten tulisi lähteä vierasavainten kohdalta, pk = primary key, fk = foreign key.<br />Huomaa kuitenkin taulun varuste vieras pariavain (huoneisto,laatimisaika) on kuvattu yhdellä nuolella.</p>
+<p><img src="images/dokumentaatio-ohje/relaatiokaavio.gif" alt="Relaatiotietokantakaavio" /> Muunnossäännöt käsitemallista relaatiomalliin löytyvät Tietokantojen perusteet kurssin materiaalista.</p>
 </section>
 <section id="järjestelmän-yleisrakenne" class="level2">
 <h2>6. Järjestelmän yleisrakenne</h2>
@@ -241,7 +241,7 @@ Aktivoinnin voisi kytkeä myös esimerkiksi jäsenmaksun maksamiseen.</code></pr
 <section id="esimerkki-mvc-mallin-mukaisesta-php-projektista" class="level4">
 <h4>Esimerkki MVC-mallin mukaisesta php-projektista</h4>
 <blockquote>
-<p>Tietokantasovellusta tehdessä on noudatettu MVC-mallia. Kontrollerit, näkymät ja mallit<br>sijaitsevat hakemistoissa controllers, views- ja models. Käytetyt apukirjastot on sijoitettu<br>hakemistoon lib ja asetukset ovat tiedostossa settings.php.<br><br>Ylläpidon sivuista vastaavissa tiedostoissa on kaikissa admin-etuliite. Kaikki tiedostonimet on<br>kirjoitettu pienellä.</p>
+<p>Tietokantasovellusta tehdessä on noudatettu MVC-mallia. Kontrollerit, näkymät ja mallit<br />sijaitsevat hakemistoissa controllers, views- ja models. Käytetyt apukirjastot on sijoitettu<br />hakemistoon lib ja asetukset ovat tiedostossa settings.php.<br /><br />Ylläpidon sivuista vastaavissa tiedostoissa on kaikissa admin-etuliite. Kaikki tiedostonimet on<br />kirjoitettu pienellä.</p>
 </blockquote>
 </section>
 </section>
@@ -252,14 +252,14 @@ Aktivoinnin voisi kytkeä myös esimerkiksi jäsenmaksun maksamiseen.</code></pr
 <section id="esimerkki-4" class="level4">
 <h4>Esimerkki</h4>
 <blockquote>
-<p>index.php<br> Sovelluksen etusivu. Sisältää kentät sisäänkirjautumista varten, linkin rekisteröitymissivulle ja lyhyen,<br> mutta kuvailevan kertomuksen järjestelmästä ja sen viimeaikaisesta kehityksestä. Viimeaikaisesta kehityksestä<br> kertovan kentän sisältö täytetään uutissyötteestä dynaamisesti. Sivu tarjoaa myös pikahakukentän, jonka sisältö<br> lähetetään asuntohaku.php:n käsiteltäväksi.<br><br>asuntohaku.php<br> Tarjoaa hakulomakkeen asuntojen hakua varten ja luettelon hakutuloksista. Hakulomake mahdollistaa hakujen<br> tekemisen avainsanan, paikkakunnan ja hintahaarukan perusteella.<br><br>resources/dbConnection.php<br> Tiedosto, jonka avulla tietokantayhteyden saa avatuksi helposti.<br> Tietokantaa tarvitsevat komponentit käynnistävät tämän tarpeen mukaan.<br><br>resources/dbSearchFunctions.php<br> Tarjoaa kokoelman funktioita, jotka tekevät tietokantaan kyselyitä ja palauttavat kyselyiden tuloksia eri muodoissa.<br> Tämän kokoelman funktiot keskittyvät erilaisiin asuntotietoihin liittyviin hakuihin ja eivät muuta mitään tietokannassa.<br><br>…<br><br>resources/header.html<br> Jokaisen generoitavan sivun alkuun liitettävä otsaketiedosto, jossa html-sivun yleiset määrittelyt.<br> Asettaa sivujen otsikoksi “KatonAlle Oy” ja kertoo merkistökoodauksen olevan UTF-8.<br><br>resources/footer.html<br> Jokaisen generoitavan sivun loppuun liitettävä tiedosto. Liittää sivun pohjalle sivun ylläpitäjän sähköpostiosoitteen ja lopettaa sivun.<br><br>resources/lib/jokuKirjasto/*<br> Käyttämäni kirjaston jokuKirjasto komponentit löytyvät täältä. Seuraavaksi yksilöin sen komponenttien joukosta ne,<br> joita olen käyttänyt.<br><br>resources/lib/jokuKirjasto/lomakkeentarkastuskomponentti.js<br> Olen käyttänyt tätä komponenttia web-lomakkeiden sähköpostikenttien muodon tarkastukseen.<br><br>…</p>
+<p>index.php<br /> Sovelluksen etusivu. Sisältää kentät sisäänkirjautumista varten, linkin rekisteröitymissivulle ja lyhyen,<br /> mutta kuvailevan kertomuksen järjestelmästä ja sen viimeaikaisesta kehityksestä. Viimeaikaisesta kehityksestä<br /> kertovan kentän sisältö täytetään uutissyötteestä dynaamisesti. Sivu tarjoaa myös pikahakukentän, jonka sisältö<br /> lähetetään asuntohaku.php:n käsiteltäväksi.<br /><br />asuntohaku.php<br /> Tarjoaa hakulomakkeen asuntojen hakua varten ja luettelon hakutuloksista. Hakulomake mahdollistaa hakujen<br /> tekemisen avainsanan, paikkakunnan ja hintahaarukan perusteella.<br /><br />resources/dbConnection.php<br /> Tiedosto, jonka avulla tietokantayhteyden saa avatuksi helposti.<br /> Tietokantaa tarvitsevat komponentit käynnistävät tämän tarpeen mukaan.<br /><br />resources/dbSearchFunctions.php<br /> Tarjoaa kokoelman funktioita, jotka tekevät tietokantaan kyselyitä ja palauttavat kyselyiden tuloksia eri muodoissa.<br /> Tämän kokoelman funktiot keskittyvät erilaisiin asuntotietoihin liittyviin hakuihin ja eivät muuta mitään tietokannassa.<br /><br />…<br /><br />resources/header.html<br /> Jokaisen generoitavan sivun alkuun liitettävä otsaketiedosto, jossa html-sivun yleiset määrittelyt.<br /> Asettaa sivujen otsikoksi “KatonAlle Oy” ja kertoo merkistökoodauksen olevan UTF-8.<br /><br />resources/footer.html<br /> Jokaisen generoitavan sivun loppuun liitettävä tiedosto. Liittää sivun pohjalle sivun ylläpitäjän sähköpostiosoitteen ja lopettaa sivun.<br /><br />resources/lib/jokuKirjasto/*<br /> Käyttämäni kirjaston jokuKirjasto komponentit löytyvät täältä. Seuraavaksi yksilöin sen komponenttien joukosta ne,<br /> joita olen käyttänyt.<br /><br />resources/lib/jokuKirjasto/lomakkeentarkastuskomponentti.js<br /> Olen käyttänyt tätä komponenttia web-lomakkeiden sähköpostikenttien muodon tarkastukseen.<br /><br />…</p>
 </blockquote>
 <p>Tämän lisäksi ohjelmakoodin tulee olla dokumentoitua (kommentit / javadoc / phpdoc tms.) ja käyttää havainnollisia nimiä muuttujille ja funktioille/metodeille. Ohjelmiston tulee olla jaettuna komponentteihin järkevästi, siten että turhalta toistolta vältytään. Komponentteihin liittyvät yleistiedot on hyvä kirjoittaa myös ohjelmakoodin alkuun yleiskommentiksi, jolloin ne voi vain kerätä ohjelmakoodista dokumenttiin. Ohjelmakoodit sijoitetaan dokumentin liitteiksi.</p>
 </section>
 </section>
 <section id="käyttöliittymä" class="level2">
 <h2>8. Käyttöliittymä</h2>
-<p>Käyttöliittymän näkymien välisiä yhteyksiä on luontevaa esittää kaavioina. Seuraavassa kuvassa on esimerkki tällaisesta kaaviosta.<br><img src="images/dokumentaatio-ohje/sivurakenne.jpg" alt="Sivurakennekaavio"></p>
+<p>Käyttöliittymän näkymien välisiä yhteyksiä on luontevaa esittää kaavioina. Seuraavassa kuvassa on esimerkki tällaisesta kaaviosta.<br /><img src="images/dokumentaatio-ohje/sivurakenne.jpg" alt="Sivurakennekaavio" /></p>
 <p>Käyttötapausten ja käyttöliittymäkomponenttien välisiä yhteyksiä voi kuvailla tekstimuodossa. Tätä vaatimusta lieventää, jos sivut on nimetty kuvaavasti ja käyttötapauksille tarkoitetut polut rakenteessa ovat intuitiiviset. Sivukohtaisen julkisuusmäärittelyn dokumentoiminen ei ole välttämätöntä, jos esim. asianmukaisen siirtymän kohdalla kertoo, että tästä pääsee eteenpäin vain tunnistettu käyttäjä. Mikäli sivustolla on navigaatiopalkki, jonka johdosta kirjautunut käyttäjä pääsee mistä vain mihin vain, kannattaa tämä mainita sanallisesti kaavion yhteydessä ja merkitä kaavioon vain sellaiset yhteydet, jotka olisivat olemassa ilman navigaatiopalkkiakin.</p>
 </section>
 <section id="asennustiedot" class="level2">
@@ -269,7 +269,7 @@ Aktivoinnin voisi kytkeä myös esimerkiksi jäsenmaksun maksamiseen.</code></pr
 <section id="käynnistys--käyttöohje" class="level2">
 <h2>10. Käynnistys- / käyttöohje</h2>
 <p>Tyypillisesti tässä riittää kertoa missä osoitteessa harjoitustyö on asennettuna ja millä voi kirjautua sisään.</p>
-<p>Perusoletuksena on, että järjestelmän käyttäjä osaa käsitellä WWW-sivuja selaimella. Tähän liittyviä ohjeita ei siten tarvitse antaa. WWW-sovelluksen tulisi olla helppokäyttöinen ja intuitiivinen. Sivujen pitäisi itsessään sisältää riittävästi sivun käyttöön tarvittavaa informaatiota. Jos sivut ovat tällaisia, riittää antaa ohjelman käynnistykseen tarvittava URL. Jos käyttöön liittyy joitain yleisiä toimintajärjestykseen liittyviä asioita, ne voidaan kertoa tässä yhteydessä.<br>Näiden tietojen tulisi löytyä myös tuotettavan järjestelmän sivuilta.</p>
+<p>Perusoletuksena on, että järjestelmän käyttäjä osaa käsitellä WWW-sivuja selaimella. Tähän liittyviä ohjeita ei siten tarvitse antaa. WWW-sovelluksen tulisi olla helppokäyttöinen ja intuitiivinen. Sivujen pitäisi itsessään sisältää riittävästi sivun käyttöön tarvittavaa informaatiota. Jos sivut ovat tällaisia, riittää antaa ohjelman käynnistykseen tarvittava URL. Jos käyttöön liittyy joitain yleisiä toimintajärjestykseen liittyviä asioita, ne voidaan kertoa tässä yhteydessä.<br />Näiden tietojen tulisi löytyä myös tuotettavan järjestelmän sivuilta.</p>
 <p>Muista kertoa ohjaajalle mahdolliset testaustunnukset ja salasanat.</p>
 </section>
 <section id="testaus-tunnetut-bugit-ja-puutteet-jatkokehitysideat" class="level2">

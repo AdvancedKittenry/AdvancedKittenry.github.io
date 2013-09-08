@@ -17,4 +17,8 @@ s#$removethis\s+<\/blockquote>\s+<\!-- end box -->##g;
 s#<\/blockquote>\s+$removethis\s+<\!-- end box -->##g;
 s#<\!-- start box -->\s+<blockquote>\s+$removethis##g;
 
+#Fix img and br tag differences made by different versions of pandoc
+s#<img ((\s*\w+=["'][^"']*["'])*\s*)>#<img \1 \/>#g;
+s#<br>#<br \/>#g;
+
 print;
