@@ -122,7 +122,149 @@ Tämän sivun sisältö on vielä työn alla ja saattaa muuttua kurssin edetess�
 
 
 
-<p>Tässä vaiheessa työtä siirrytään suunnittelusta käytäntöön ja luodaan suunnitelluista sivuista oikean näköiset, mutta vielä staattiset HTML-versiot. Viimeistään tässä vaiheessa työlle kannattaa luoda NetBeans-projekti. Netbeansia ei ole pakko käyttää, mutta etenkin Javalla koodatessa sen koodingenerointi- ja refaktorointiominaisuuksista on paljon iloa.</p>
+<p>Tässä vaiheessa työtä siirrytään suunnittelusta käytäntöön ja luodaan suunnitelluista sivuista oikean näköiset, mutta vielä staattiset HTML-versiot.</p>
+<section id="netbeans-projektin-luonti" class="level2">
+<h2>NetBeans-projektin luonti</h2>
+<p>Viimeistään tässä vaiheessa työlle kannattaa luoda NetBeans-projekti. NetBeansia ei ole pakko käyttää, mutta etenkin Javalla koodatessa sen koodingenerointi- ja refaktorointiominaisuuksista on paljon iloa. Mikäli haluat ottaa NetBeansin käyttöön, klikkaa alla olevista linkeistä auki NetBeans-ohjeita. Ohjeet on testattu toimiviksi laitoksen Linux-ympäristössä NetBeansin versiolla 7.2.</p>
+<p>Jos ohjeita seuratessa NetBeans kysyy sinulta keyringin salasanaa, joka on vaihtunut, etkä tiedä mitä tehdä avaa vielä kolmas ohjelaatikko. Tämä on hyvin yleinen ongelma laitoksen ympäristöissä, joissa salasanoja on vaihdettava usein.</p>
+<button type='button' class='btn-link expandable collapsed' data-toggle='collapse' data-target='#expandable_1'>
+Web-tuen asentaminen
+</button>
+  <div id='expandable_1' class='collapse'><section>
+
+<div class='panel panel-default'><div class='panel-body'>
+<p>Mikäli et ole ladannut itsellesi web-tuen sisältävää NetBeansia joudut tässä vaiheessa asentaaman NetBeansiisii käyttämäsi kielen web-tuen.</p>
+<p>Tämä on melko helppoa, etsi <code>Tools</code>-valikosta kohta <code>Plugins</code> ja avaa se. Tarkista välilehdeltä <code>Installed</code>, onko Java Web and EE tai PHP jo asennettuna. Jos on, riittää että aktivoit sen.</p>
+<figure>
+<img src="../../images/aikataulu/viikko2/netbeans/activate-plugins.png" alt="Laajennosten aktivoiminen" /><figcaption>Laajennosten aktivoiminen</figcaption>
+</figure>
+<p>Mikäli laajennokset eivät ole jo asennettuina, joudut etsimään ne <code>Available Plugins</code>-välilehden listasta ja asentamaan ne sieltä. Javan tapauksessa etsi käsiisi laajennos Java EE Base, joka on kategoriassa Java Web and EE. PHP-tukea varten riittää asentaa laajennos nimeltä PHP.</p>
+<p>Saatat joutua ottamaan NetBeansin Update Centereitä käyttöön <code>Settings</code>-välilehdeltä käsin ja päivittämään laajennosten listan, että saat oikeat vaihtoehdot näkyviin.</p>
+</div></div>
+
+
+</section></div>
+
+
+<button type='button' class='btn-link expandable collapsed' data-toggle='collapse' data-target='#expandable_2'>
+NetBeans-projektin pystytys Java-projektille
+</button>
+  <div id='expandable_2' class='collapse'><section>
+
+<div class='panel panel-default'><div class='panel-body'>
+
+<p>Luo NetBeansiin uusi projekti Kategoriasta Java Web. Valitse Web Application.</p>
+<figure>
+<img src="../../images/aikataulu/viikko2/netbeans/java1-project.png" alt="Uusi projekti" /><figcaption>Uusi projekti</figcaption>
+</figure>
+<p>Nimeä uusi projekti haluamallasi tavalla. Sijoita se sellaiseen paikkaan josta löydät sen tiedostot, mutta <strong>älä</strong> kuitenkaan <em>samaan paikkaan git-repositoriosi</em> kanssa! NetBeans ei nimittäin anna luoda projektia kansioon, jossa on jo tiedostoja, mutta luonnin jälkeen projektin voi siirtää repositorioon.</p>
+<figure>
+<img src="../../images/aikataulu/viikko2/netbeans/java2.png" alt="Projektin tiedot" /><figcaption>Projektin tiedot</figcaption>
+</figure>
+<p>Tässä vaihessa lomake kysyy sinulta mitä palvelinta haluat käyttää. Mikäli sinulla on jo Apache käytössä, valitse se. Todennäköisesti listassa ei ole mitään valintaa, jolloin sinun pitää valita <code>Add</code>. Valitse palvelimeksi Apache Tomcat.</p>
+<figure>
+<img src="../../images/aikataulu/viikko2/netbeans/java3-addserver.png" />
+</figure>
+<p>Tässä vaiheessa NetBeans haluaa tietää mihin Tomcat on asennettuna, joten sinun pitää ladat se. Tomcat 6 löytyy sivuilta <a href="http://tomcat.apache.org/download-60.cgi">http://tomcat.apache.org/download-60.cgi</a> löytyvän Binary Distributions-kohdan “Core” alta. Sekä zip että tar.gz-pakkaus käy hyvin.</p>
+<p>Kun olet ladannut tomcatin, luo ensiksi palvelinta varten oma kansio “palvelimet”, jonka jälkeen ladattu tomcat-paketti puretaan kansioon. Nyt sinulla on kansiossa ~/palvelimet/apache-tomcat-xxx asennettuna tomcatin xxx-versio. Oletamme tästä eteenpäin, että versio on 6.0.32. Muuta vielä palvelimen käynnistys- ja sammutusskriptit siten, että niitä voidaan käyttää. Käynnistysskriptit löytyvät bin-kansiosta, ja ovat .sh-päätteisiä (.bat-päätteisiä Windows-ympäristöissä).</p>
+<pre><code>~$ cd palvelimet/apache-tomcat-6.0.32/bin
+~/palvelimet/apache-tomcat-6.0.32/bin$ chmod 700 *.sh</code></pre>
+<p>Hienoa! Nyt Tomcatin pitäisi olla käyttövalmis. Lisätään se NetBeansiin! Tomcat-asetuksissa voit asettaa “manager”-roolin käyttäjätunnukseksi ja salasanaksi esimerkiksi “manager”.</p>
+<p>NetBeans saattaa tässä vaiheessa pyytää sinulta Gnomen avainnipun salasanaa, jos et saa avainnippua toimimaan, katso kolmas ohjelaatikko.</p>
+<figure>
+<img src="../../images/aikataulu/viikko2/netbeans/java4-configure-apache.png" alt="Apachen konfiguraatio" /><figcaption>Apachen konfiguraatio</figcaption>
+</figure>
+<p>Aseta palvelimen asetuksissa Java EE:n versioksi 5.</p>
+<figure>
+<img src="../../images/aikataulu/viikko2/netbeans/java5.png" alt="Palvelimen asetukset" /><figcaption>Palvelimen asetukset</figcaption>
+</figure>
+<p>Nyt voit klikkailla Next-nappia kunnes projekti on luotu:</p>
+<figure>
+<img src="../../images/aikataulu/viikko2/netbeans/java6-readyToCompile.png" alt="Projekti valmiina ajoon" /><figcaption>Projekti valmiina ajoon</figcaption>
+</figure>
+<p>Koeta ajaa projektisi Run Project-napista. Saatat saada eteesi hyvin kryptisen virheilmoituksen ainakin laitoksen koneilla:</p>
+<figure>
+<img src="../../images/aikataulu/viikko2/netbeans/java7-virhe.png" alt="Kryptinen virheilmoitus" /><figcaption>Kryptinen virheilmoitus</figcaption>
+</figure>
+<p>Ohjeen kirjoittaja sai projektinsa toimimaan avaamalla <code>Tools</code>-valikosta valinta <ocde>Ant Library Manager</code> ja säätämällä kirjaston CopyLibs Task ominaisuuksia.</p>
+<p>Mikäli saat virheen laitoksen koneilla, lisää Classpathiin osoite <code>/opt/netbeans-7.2/java/ant/extra</code>. Tämän jälkeen NetBeans mystisesti löytää kirjastonsa.</p>
+<figure>
+<img src="../../images/aikataulu/viikko2/netbeans/java8-tools-antLibraryManager.png" alt="Kirjaston polkujen oikeat asetukset" /><figcaption>Kirjaston polkujen oikeat asetukset</figcaption>
+</figure>
+<p>Tämän jälkeen projektin ajamisen tulisi toimia ja ajaessa avautua iloinen selainikkuna:</p>
+<figure>
+<img src="../../images/aikataulu/viikko2/netbeans/java-final.png" alt="Uusi projekti ensi kertaa ajossa" /><figcaption>Uusi projekti ensi kertaa ajossa</figcaption>
+</figure>
+<p>Mikäli et jostain syystä saa projektia toimimaan, ota viipymättä yhteyttä ohjaajasi.</p>
+<p>Saatuasi projektin kerran toimimaan, sulje se NetBeansisin näkymästä sulkematta kuitenkaan NetBeansia. Etsi tämän jälkeen projektisi tiedostojärjestelmästä ja siirrä kaikki sen kansiossa olevat tiedostot omaan repositorioosi. Jos et ole sitä jo aiemmin tehnyt, luo repositorioosi myös tiedosto <code>.gitignore</code> ja laita siihen ainakin seuraavat rivit:</p>
+<pre><code>build
+dist
+nbproject/private</code></pre>
+<p>Näin versionhallintaan ei päästetä NetBeansiin koodia kääntäessä generoimia tiedostoja. Lisää nyt repositorioosi kaikki uudet tiedostot, joita et juuri ignoroinut. Nyt voit avata repositoriosi NetBeansillä uudestaan ja aloittaa koodauksen.</p>
+</div></div>
+
+
+</section></div>
+<button type='button' class='btn-link expandable collapsed' data-toggle='collapse' data-target='#expandable_3'>
+NetBeans-projektin pystytys PHP-projektille
+</button>
+  <div id='expandable_3' class='collapse'><section>
+
+<div class='panel panel-default'><div class='panel-body'>
+
+<p>Luo NetBeansiin uusi projekti Kategoriasta PHP. Valitse PHP Application.</p>
+<figure>
+<img src="../../images/aikataulu/viikko2/netbeans/php1-project.png" />
+</figure>
+<p>Nimeä projektisi ja osoita valinta Source Folder git-repositorioosi. NetBeans kertoo että kansiossa on tiedostoja, mutta se ei haittaa.</p>
+<figure>
+<img src="../../images/aikataulu/viikko2/netbeans/php2.png" />
+</figure>
+<p>Konfiguroi seuraavassa ikkunassa projektisi tyypiksi “Remote Web Site (FTP, SFTP)”. Laita kohtaan Project URL osoite <code>http://kayttajatunnuksesi.users.cs.helsinki.fi</code> ja kohtaan Upload Directory polku <code>/htdocs</code> Paina sen jälkeen Remote Connections -kohdassa olevaa <code>Manage</code>-nappia</p>
+<figure>
+<img src="../../images/aikataulu/viikko2/netbeans/php2.5-config.png" />
+</figure>
+<p>NetBeans kysyy heti uuden yhteyden tietoja, anna yhteydelle nimi Users ja laita tyypiksi SFTP.</p>
+<figure>
+<img src="../../images/aikataulu/viikko2/netbeans/php3-connection.png" />
+</figure>
+<p>Nyt NetBeans antaa täyttää yhteyden tarkemmat tiedot. Laita Host Name -kohtaan osoite <code>users.cs.helsinki.fi</code> käyttäjätunnukseksi ja salasanaksi cs-tunnuksesi käyttäjätunnus ja salasanaa ja kohtaan Initial Directory teksti </code>/home/kayttajatunnuksesi</code> omalla käyttäjätunnuksellasi toki. Paina sen jälkeen nappia Test Connection ja jos yhteys toimii tallenna yhteyden tiedot.</p>
+<p>NetBeans saattaa tässä vaiheessa pyytää sinulta Gnomen avainnipun salasanaa, jos et saa avainnippua toimimaan, katso kolmas ohjelaatikko.</p>
+<figure>
+<img src="../../images/aikataulu/viikko2/netbeans/php4-connectiondetails.png" />
+</figure>
+<p>Klikkaa Next -nappia kunnes saat projektin luotua.</p>
+<figure>
+<img src="../../images/aikataulu/viikko2/netbeans/php-final.png" />
+</figure>
+<p>Kun ajat projektin, NetBeans lähettää tiedostosi laitoksen users-palvelimelle, jossa on PHP:tä pyörittävä palvelin asennettuna sekä avaa selaimen projektisi etusivulle. Joudut vielä aktivoimaan tämän palvelintilan ennenkuin sivut toimivat. Tee se seuraamalla <a href="http://www.cs.helsinki.fi/u/laine/tikas/php_ohje.html">näitä ohjeita</a>.</p>
+<p>Aktivoituasi usersin PHP-tilan voit aloittaa koodaukseen tutustumisen index.php:n parissa.</p>
+</div></div>
+
+
+</section></div>
+
+<button type='button' class='btn-link expandable collapsed' data-toggle='collapse' data-target='#expandable_4'>
+Ubuntun oletusavainnipun nollaus
+</button>
+  <div id='expandable_4' class='collapse'><section>
+
+<div class='panel panel-default'><div class='panel-body'>
+
+<p>Jos ohjeita seuratessa NetBeans kysyy sinulta keyringin salasanaa, ja kertoo että kirjautumissalasanan vaihtumisen takia ei enää pääse avainnippunu käsiksi, etsi käsiisi valikoista ohjelma nimeltä “Passwords and Keys”, joka näyttää tältä:</p>
+<figure>
+<img src="../../images/aikataulu/viikko2/netbeans/passwords-and-keys.png" alt="Avainnippujen hallintaohjelma" /><figcaption>Avainnippujen hallintaohjelma</figcaption>
+</figure>
+<p>Avainnippu, johon NetBeans yrittää päästä käsiiksi on yleensä se ainut avainnippu Passwords-tabin alla. Klikkaamalla sitä hiiren oikealla napilla saat esiin valikon, josta voit vaihtaa sen salasanan, mikäli tiedät mikä vanha salasana avainnippuun käy.</p>
+<p>Yleensä tässä vaiheessa on helpompi vain poistaa koko avainnippu, jolloin toki menettää kaikki tallennetut salasanansa, mutta mikäli luet näitä ohjeita, et todennäköisesti pääse niihin käsiksi muutenkaan. NetBeans ei nipun poistamisesta kaadu, vaan ainoastaan pyrkii luomaan uuden nipun, joka tällä kertaa myös toimii asianmukaisesti.</p>
+</div></div>
+
+
+</section></div>
+
+</section>
+<section id="html-sivujen-luonti" class="level2">
+<h2>HTML-sivujen luonti</h2>
 <p>Tähän tulossa lyhyet ohjeet siitä, miten selkeällä HTML:llä ja CSS:llä sekä <a href="http://getbootstrap.com/">Bootstrapilla</a> saa aikaan siistit sivut.</p>
 <p>Hyviä HTML-referenssejä:</p>
 <ul>
@@ -137,6 +279,8 @@ Seuraavaksi:
 
 
 
+
+</section>
 </div>
 </div> 
 </div> 

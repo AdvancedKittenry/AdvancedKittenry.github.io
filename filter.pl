@@ -95,7 +95,7 @@ BEGIN {
 }
 
 s#<comment>.*?</comment>##sg;
-s#<wip *\/>#<include src="{{rootdir}}templates/wip.html" />#sg;
+s#<wip *\/>#<include src="${rootdir}templates/wip.html" />#sg;
 
 for my $tag (keys %tags) {
     my $class = $tags{$tag};
