@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <title>Listanäkymän suunnittelu</title>
+  <title>Käyttöliittymän suunnittelu</title>
   <style type="text/css">code{white-space: pre;}</style>
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -84,12 +84,11 @@
 </ul></li>
 <li><a href="../../aikataulu/viikko2/index.html">Viikko 2</a>
 <ul>
-<li><a href="../../aikataulu/viikko2/template.html">Yleisnäkymän suunnittelu</a></li>
-<li class="selected"><a href="../../aikataulu/viikko2/listanakyma.html">Listanäkymän suunnittelu</a></li>
-<li><a href="../../aikataulu/viikko2/lomake.html">Muokkaus- ja tietonäkymät</a></li>
-<li><a href="../../aikataulu/viikko2/html-versioiden-luonti.html">HTML-versioiden luominen</a></li>
-<li><a href="../../aikataulu/viikko2/tietokanta.html">Tietokannan suunnittelu</a></li>
 <li><a href="../../aikataulu/viikko2/tekniikka.html">Tietokantojen ja palvelimien käyttöönotto</a></li>
+<li class="selected"><a href="../../aikataulu/viikko2/suunnittelu.html">Käyttöliittymän suunnittelu</a></li>
+<li><a href="../../aikataulu/viikko2/tietokanta.html">Tietokannan suunnittelu</a></li>
+<li><a href="../../aikataulu/viikko2/netbeans.html">NetBeansin käyttöönotto</a></li>
+<li><a href="../../aikataulu/viikko2/html-versioiden-luonti.html">HTML-versioiden luominen</a></li>
 </ul></li>
 <li><a href="../../aikataulu/demo.html">Demotilaisuus</a></li>
 <li><a href="../../aikataulu/palautus.html">Työn palautus</a></li>
@@ -105,10 +104,48 @@
 </div>
 <div class="col-md-6" id="content">
 <header>
-<h1 class="title">Listanäkymän suunnittelu</h1>
+<h1 class="title">Käyttöliittymän suunnittelu</h1>
 </header>
 <!-- order: 2 -->
+<script>addSectionLinks = true; </script>
 
+<p>Aloita suunnittelu lukemalla valitsemasi aihekuvaus ja miettimällä millaisiin sivuihin sovelluksesi voisi jakautua. Otetaan esimerkiksi kuvitteellinen aihe “Kissatädin kissalista”, jonka aihekuvaus on seuraava:</p>
+<div class='panel panel-default'><div class='panel-body'>
+<p>Eerika Svinhufvud harrastaa kissojen keräilyä. Hänellä on kartanossaan 127 kissaa ja kuuden hengen palveluskunta, mutta heillä on jo pitkään ollut vaikeuksia koordinoida sitä kuka ruokkii minkäkin kissan. Ratkaisuksi Eerika haluaa ottaa käyttöön järjestelmän, jossa olisi jokaisen hänen kissansa tiedot, sekä tieto siitä koska kukin kissa on viimeksi ruokittu.</p>
+<p>Järjestelmällä olisi myös tieto jokaisen kissan roduista ja rotujen ominaisuuksista, sekä tieto siitä onko jokin kissoista lainassa jollakin ompeluseuran rouvista.</p>
+Lisäksi, jotta tiedettäisiin kuka on ruokkinut minkäkin karvakasan, kukin palveluskunnan jäsen järjestelmään kirjautuisi järjestelmään omilla tunnuksillaan, joita kartanonomistaja hallinnoi.
+</div></div>
+
+<section id="käyttöliittymäkaavio" class="level2">
+<h2>Käyttöliittymäkaavio</h2>
+<p>Keskimääräinen tietokantasovellus jakautuu suurinpiirtein viidentyyppisin sivuihin: etusivuihin, listauksiin, dynaamisiin tietosivuihin, lomakesivuihin ja kirjautumiseen liittyviin sivuihin. Näistä joko kirjautuminen tai etusivu on se sivu, jonka sovelluksen käyttäjä ensimmäiseksi näkee. Etusivut esittelevät sovellusta, kertovat sen toiminnasta ja antavat käyttäjälle ohjeita sovelluksen käyttöön. Ne liittyvät usein saumattomasti listauksiin, jotka näyttävät listan jostain sovelluksen tietokohteesta. Tässä tapauksessa esimerkiksi kissoista tai palveluskunnasta. Listauksesta taas päästään yleensä suoraan erilaisille tieto- ja lomakesivuille, jolla pystyy katselemaan, lisäämään tai muokkaamaan jonkin tietokohteen tietoja eli vaikkapa muokkaamaan yksittäisen kissan kuvausta.</p>
+<p>Nämä mielessä pitäen lähde rakentamaan eri sivuista ja toiminnoista karkeaa sivukarttaa, joka on dokumentaation <a href="../../dokumentaatio-ohje.html#k%C3%A4ytt%C3%B6liittym%C3%A4">käyttöliittymäkaavion</a> karkea luonnos. Suunnitelmaan kannattaa hahmotella mitä sivuja sovelluksessa on, mille sivuille niiltä pääsee ja mitkä sivuista olisi luonnollista sijoittaa sovelluksen <em>päävalikkoon</em>, eli niihin linkkeihin, jotka ovat jokaisella sivulla näkyvissä.</p>
+<section class="alert alert-warning"><h3>
+Vinkki
+</h3>
+<p>Suunnittelemiseen kannattaa käyttää <em>paperia ja kynää</em>, <em>valkotaulua</em> tai jotain muuta välinettä, jolla luonnosteleminen on nopeaa. Suunnitteluvaiheessa kaikenlaiset kaavio-ohjelmistot yleensä vain hidastavat ajattelua, ellei niiden käytössä ole erityisen rutinoitunut.</p>
+</section>
+
+<p>Kissalistan tapauksessa alustava suunnitelma voisi näyttää vaikkapa tältä:</p>
+<figure>
+<img src="../../images/aikataulu/viikko2/sivukartta.png" alt="Alustava sivukartta" /><figcaption>Alustava sivukartta</figcaption>
+</figure>
+<p>Kuten kuvasta huomaa, suunnitelman ei tarvitse tässä vaiheessa olla erityisen siisti, riittää että sen perusteella tietää mitä sivuja haluaa toteuttaa. Tässä kuvassa esimerkiksi on vielä sekaisin sivuja ja sivuilla esiintyviä toimintoja, jotka eivät tarvitse omaa sivua (esim. eri kohteiden poistot ja tallennukset). Lopullisen siistin version voi huoletta jättää myöhemmäksi, sillä yleensä suunnitelmat kuitenkin muuttuvat työn edetessä.</p>
+<p>Kun sivukartta on tehty, ota siitä kuva kännykkäkamerallasi ja sijoita se repositoriosi doc-kansioon nimellä <code>sivukartta.jpg</code> (tiedostopäätteellä ei ole niin väliä). Voit halutessasi myös skannata sen tai tehdä valmiin version jollain diagrammiohjelmalla.</p>
+</section>
+<section id="etusivu-ja-yleisnäkymä-template" class="level2">
+<h2>Etusivu ja yleisnäkymä (template)</h2>
+<p>Lähde suunnittelemaan alustavasti etusivua ja yleistä sivujen käyttöliittymää. Tee samalla luonnos siitä millaisia yleisiä navigaatioelementtejä sovelluksesi sivuille tulisi. Pohdi myös haluatko sijoittaa jo etusivulle jonkun listauksen. Esimerkiksi kissalistan etusivulle tulee suoraan lista kissoista, sekä kaksiosainen navigaatioyläpalkki, jossa on linkit tärkeimpiin tietokohteisiin ja uloskirjautumiseen:</p>
+<figure>
+<img src="../../images/aikataulu/viikko2/etusivu.png" alt="Kissalistan etusivu" /><figcaption>Kissalistan etusivu</figcaption>
+</figure>
+<p>Kun on kerran piirtänyt joka sivulla olevan navigaation, voi sen jättää muista piirroksista pois. Navigaation on kuitenkin tultava lopullisessa sovelluksessa joka sivulle. Ainoana poikkeuksena toimii kirjautumissivu, joka näyttää useimmiten tältä:</p>
+<figure>
+<img src="../../images/aikataulu/viikko2/kirjautuminen.png" alt="Kirjautumislomake" /><figcaption>Kirjautumislomake</figcaption>
+</figure>
+</section>
+<section id="listanäkymän-suunnittelu" class="level2">
+<h2>Listanäkymän suunnittelu</h2>
 <p>Tietokohteen listausta suunnitellessa tärkeintä ovat helppous ja selkeys. Yksinkertaisimmillaan listaus voi olla pelkkä lista listattavien asioiden nimiä, koodeja tai muita vastaavia tunnisteita, josta nimeä klikkaamalla pääsee käsiksi lisätietoihin. Usein on kuitenkin hyvä listata sovelluksen toiminnan kannalta olennaisimmat tiedot (joskus peräti kaikki tiedot) listaukseen, jolloin tietoa on helppo ja nopea löytää. Liikaa tietoa ei kuitenkaan yhteen näkymään kannata ahtaa, sillä se vaikeuttaa olennaisten asioiden löytämistä.</p>
 <p>Mikäli lista on hyvin pitkä, näytetään tarvittaessa siitä vain osa ja mahdollistetaan loppuosan selailu <em>sivunavigaation</em> avulla. Myös hakutoimintojen liittämistä sovellukseen kannattaa harkita, varsinkin jos lista on pitkä ja sivutettu. Lyhyemmissä listoissa voidaan turvautua selaimen hakutoimintoon. Myös listan näyttäminen aakkosjärjestyksessä helpottaa siitä hakemista.</p>
 <figure>
@@ -116,14 +153,30 @@
 </figure>
 <p>Listaa suunnitellessa kannattaa muistaa, että listalla on käytännössä kaksi käyttötarkoitusta: tiedon ylimalkaisen selailun mahdollistaminen ja pääsy yksittäistä kohdetta käsitteleville tieto- ja muokkaussivuille. Yleensä listan kohdetta klikkaamalla pääsee joko tarkastelemaan sivua, jolla on siitä lisätietoja tai suoraan muokkaamaan sitä lomakkeella. Lisätiedot ja lomakkeeet ovat yleensä omalla sivullaaan, mutta joskus on pätevää myös upottaa se suoraan listauksen sisään, mahdollisesti niin, että se näytetään dynaamisesti javascriptillä.</p>
 <p>Myös erilaiset yleisesti käytetyt toiminnot esim. asioiden poistaminen, aktivoiminen tai sulkeminen, tai vaikka kissojen syöttäminen saattaa olla järkevä laittaa listalle suoraan erilaisten nappien muodossa. Samaan tapaan uuden kohteen lisääminen listaan on yleensä luontevaa laittaa listan yhteyteen joko erillisenä linkkinä tai nappina, tai lomakkeena listan ohessa.</p>
+</section>
+<section id="muokkaus--ja-tietonäkymät" class="level2">
+<h2>Muokkaus- ja tietonäkymät</h2>
+<p>Muokkaus- ja tietonäkymissä näkyy kaikki johonkin yksittäiseen tietokohteeseen, esimerkiksi kissaan, liittyvä informaatio yhdellä selkeällä sivulla. Sivutyyppien ero on siinä, että tietosivu vain näyttää sisältöä antamatta suoraa mahdollisuutta muokata sitä, muokkaussivut taas koostuvat yleensä lomakkeista ja toimintonapeista, joilla kohdetta voi muokata.</p>
+<p>Yleensä nämä sivut on myös jollain tapaa linkitetty toisiinsa, joskin joskus linkitys näkyy vain mikäli senhetkisellä käyttäjällä on oikeus muokata kyseessä olevaa tietoa.</p>
+<p>Kissalistan tapauksessa suunnittelija ei ole nähnyt yksittäisen kissan tietosivulle tarvetta, mutta muokkaussivu on tehty:</p>
+<figure>
+<img src="../../images/aikataulu/viikko2/kissalomake.png" alt="Kissan tietojen muokkaus- ja syöttölomake" /><figcaption>Kissan tietojen muokkaus- ja syöttölomake</figcaption>
+</figure>
+<p>Varsinaisen päämuokkauslomakkeen ohessa sivulla on kasa muita toimintoja. Sivulta löytyvät erillinen kommentointiosio ja napit kissan poistamiseen, lainaamiseen sekä uuden kuvan laittamiseen. Näistä toiminnoista avautuvat sivut ovat yleensä keveämpiä yhden lomakkeen sivuja:</p>
+<figure>
+<img src="../../images/aikataulu/viikko2/misc.png" alt="Muutamia muokkauksen alitoimintoja" /><figcaption>Muutamia muokkauksen alitoimintoja</figcaption>
+</figure>
+<p>Yleensäottaen jonkin tiedon lisäämis ja muokkaamissivut ovat melko samanlaisia pienillä variaatioilla. Voit halutessasi suunnitella erikseen lisäysnäkymän tai piirtää suunnitelmastasi hybridin, joka tulee toimimaan sekä lisäys- että muokkausnäkymän pohjana.</p>
 <section class="alert alert-success small"><h3>
 Seuraavaksi:
 </h3>
-<p>Listanäkymien jälkeen on aika suunnitella <a href="lomake.html">muokkaus- ja tietonäkymät</a>.</p>
+<p>Kun olet suunnitellut mielestäsi toimivan käyttöliittymän, suunnittele työllesi <a href="tietokanta.html">tietokanta ja dokumentoi se</a>.</p>
 </section>
 
 
 
+
+</section>
 </div>
 </div> 
 </div> 

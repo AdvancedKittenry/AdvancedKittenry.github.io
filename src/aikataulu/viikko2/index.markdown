@@ -13,15 +13,16 @@ jolloin ohjaaja voi antaa vinkkejä niiden tekemisessä.
 
 Sinulla tulee olla tehtynä seuraavat asiat:
 
-* [Yleisnäkymän ja käyttöliittymän suunnittelu](template.html)
-* [Listanäkymien suunnittelu](listanakyma.html)
-* [Muokkaus- ja lisäysnäkymien suunnittelu](lomake.html)
-* [Suunnitelmien toteuttaminen HTML:llä](html-versioiden-luonti.html)
-* [Tietokannan suunnittelu (järjestelmän tietosisältö ja relaatiotietokantakaavio)](tietokanta.html)
 * [Tietokannan ja users-palvelimen nettisivutilan pystytys](tekniikka.html)
+* [Käyttöliittymän suunnittelu](suunnittelu.html)
+    * Alustava [käyttöliittymäkaavio](suunnittelu.html#k%C3%A4ytt%C3%B6liittym%C3%A4kaavio)
+* [Tietokannan suunnittelu](tietokanta.html) ja dokumentointi
+    * [Järjestelmän tietosisältö]({{rootdir}}dokumentaatio-ohje.html#j%C3%A4rjestelm%C3%A4n-tietosis%C3%A4lt%C3%B6)
+    * [Relaatiotietokantakaavio]({{rootdir}}dokumentaatio-ohje.html#relaatiotietokantakaavio)
+* [HTML-demoversio sovelluksesta](html-versioiden-luonti.html)
 
 <ohje>
-Aloita [yleisnäkymän suunnittelusta](template.html) ja seuraa vihreitä ohjelaatikoita.
+Aloita ottamalla [laitoksen tietokanta- ja web-palvelimet käyttöön](tekniikka.html) ja jatka siitä seuraten vihreitä ohjelaatikoita.
 
 Tehtyäsi kaiken varmista, että kaikki tekemäsi muutokset näkyvät github-repositoriossasi.
 </ohje>

@@ -38,18 +38,19 @@ Kunkin sidosryhmän karkean tason käyttötapaukset ilmaistaan yhteyden tyyppin�
 Kaavioiden lisäksi käyttäjäryhmät sekä tärkeimmät käyttötapaukset kuvaillaan erikseen myös tekstinä.
 Kurssin tavoitteisiin riittää, että toinen kaavioista on mukana.
 
-####Esimerkit
+**Esimerkit**
 
-#####Käyttötapauskaavio  
+####Käyttötapauskaavio  
 ![Käyttötapauskaavio]({{imgdir}}dokumentaatio-ohje/usecase_diagram.png)
 
-#####Sidosryhmäkaavio  
+####Sidosryhmäkaavio  
 ![Sidosryhmäkaavio]({{imgdir}}dokumentaatio-ohje/sidos3.gif)
 
 ###Käyttäjäryhmät
 Annetaan lyhyt kuvaus järjestelmän sidosryhminä toimivista käyttäjäryhmistä.
 
-####Esimerkki
+**Esimerkki**
+
   Jokamies
     Jokamiehellä tarkoitetaan ketä tahansa, joka Internetin välityksellä tulee lukemaan KatonAlle yhtiön www-sivuja. 
     Kaikki muut sidosryhmät kuuluvat myös tähän sidosryhmään.

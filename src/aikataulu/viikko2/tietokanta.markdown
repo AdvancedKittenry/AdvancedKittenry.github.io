@@ -1,8 +1,9 @@
 % Tietokannan suunnittelu
-<!-- order: 5 -->
+<!-- order: 3 -->
 
 Suunniteltuasi sovelluksen ulkoasua, uppoa tietokantataulujen
-maailmaan. Tee sovelluksellesi alustava käsitekaavio erittelemällä
+maailmaan. 
+Tee sovelluksellesi alustava käsitekaavio erittelemällä
 tekemiltäsi sivuilta ja aihekuvauksesta kaikki tietokohteet
 sekä niiden väliset riippuvuudet yhdellä kaaviolla:
 
@@ -65,7 +66,26 @@ repositoriosi dokumentaatiotiedostoon.
 Lisää myös kaavioiden tuottamiseen käyttämäsi lähdetiedostot
 repositoriosi doc-kansioon niin ne pysyvät tallessa muutosten varalta.
 
+## Tietokannan alustustiedostojen luominen
+
+Muistele Tietokantojen perusteet -kurssilla oppimaasi SQL-kieltä ja tutustu valitsemasi tietokannan dokumentaatioon.
+Luo sitten repositorioosi sql-kansio ja sijoita siihen kolme sql-tiedostoa:
+<code>create-tables.sql</code>, <code>drop-tables.sql</code> ja <code>add-test-data.sql</code>.
+Kirjoita näihin tiedostoihin tietokantasi alustavat create table -lauseet, drop table -lauseet, ja testidatan (oletuskäyttäjätunnusten yms.) luominen.
+
+SQL-lauseiden sijoittaminen tiedostoihin mahdollistaa kannan helpon
+pystyttämisen ja alasajon. 
+Voit ajaa sql-tiedostoon kantaan kirjautumalla usersille
+ja käyttämällä unixin _putkitusta_. Esimeriksi PostgreSQL:llä tämä tapahtuu seuraavasti:
+
+~~~~
+psql < sql/create-tables.sql
+~~~~
+
+Yllä oleva komento suorittaa tiedoston sisältämät SQL-lauseet
+tietokannassa. MySQL-versio on samantapainen, mutta komentona on psql:n
+sijasta mysql, minkä lisäksi mysql kysyy sinulta salasanaa.
+
 <next>
-Suunniteltuasi kaiken tee suunnitelmistasi demoversiot [HTML:llä ja CSS:llä](html-versioiden-luonti.html) tai mikäli teit sen jo, 
-pystytä aikaansaannoksesi [users-palvelimelle](tekniikka.html).
+Suunniteltuasi kaiken tee suunnitelmistasi demoversiot [HTML:llä ja CSS:llä](html-versioiden-luonti.html).
 </next>
