@@ -16,7 +16,7 @@ Luo sitten repositorioosi sql-kansio ja sijoita siihen kolme sql-tiedostoa:
 <code>create-tables.sql</code>, <code>drop-tables.sql</code> ja <code>add-test-data.sql</code>. Sijoita näihin järjestyksessä tietokantasi create table -lauseet, drop table -lauseet, ja mahdollinen testidata.
 
 SQL-lauseiden sijoittaminen tiedostoihin mahdollistaa kannan helpon
-pystyttämisen ja alasajon. Voit ajaa sql-tiedostoon kantaan usersilla, 
+pystyttämisen ja alasajon. Voit ajaa sql-tiedostoon kantaan usersilla
 käyttämällä unixin _putkitusta_. Esimeriksi PostgreSQL:llä tämä tapahtuu seuraavasti:
 
 ~~~~
