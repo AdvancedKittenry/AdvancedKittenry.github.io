@@ -82,9 +82,25 @@ ja käyttämällä unixin _putkitusta_. Esimeriksi PostgreSQL:llä tämä tapaht
 psql < sql/create-tables.sql
 ~~~~
 
+
 Yllä oleva komento suorittaa tiedoston sisältämät SQL-lauseet
 tietokannassa. MySQL-versio on samantapainen, mutta komentona on psql:n
 sijasta mysql, minkä lisäksi mysql kysyy sinulta salasanaa.
+
+Mikäli haluaa resetoida koko tietokantansa voi ajaa seuraavat kolme komentoa peräkkäin:
+
+~~~~
+psql < sql/drop-tables.sql
+psql < sql/create-tables.sql
+psql < sql/add-test-data.sql
+~~~~
+
+Tiedostossa <code>drop-tables.sql</code> kannattaa käyttää pudotuskäskystä
+muotoa <code>DROP TABLE IF EXISTS taulun_nimi</code>. 
+Näin tietokantataulun puuttuminen ei katkaise komentosarjaa. 
+Viiteavaimien takia joudut myös yleensä kirjoittamaan pudotuskäskyt päinvastaisessa
+järjestyksessä luontilauseisiin nähden. Muuten viite-eheystarkistukset eivät välttämättä anna ajaa kantaa alas.
+
 
 <next>
 Suunniteltuasi kaiken tee suunnitelmistasi demoversiot [HTML:llä ja CSS:llä](html-versioiden-luonti.html).

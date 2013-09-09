@@ -8,6 +8,25 @@
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
   <link rel="stylesheet" href="../../css/base.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!--[if lt IE 9]>
@@ -107,15 +126,40 @@
 <h1 class="title">Tietokantojen ja palvelimien käyttöönotto</h1>
 </header>
 <!-- order: 1 -->
+<script>addSectionLinks = true; </script>
 
-<p>Nämä ohjeet ovat vielä hieman kesken. Paremman puutteessa voit selailla alkuperäistä ohjenivaskaa:</p>
+<p>Ota käyttöösi users-palvelimen Java- tai PHP-tuki, sekä käyttämäsi tietokanta. Ensiksi sinun pitää kirjautua laitoksen tietokantasovelluspalvelimelle SSH:llä. Käytä Windowsissa <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html">Puttyä</a> ja muissa käyttäjärjestelmissä päätettä ja ssh-ohjelmaa. Ohjelma kysyy cs-tunnuksesi salasanaa ja päästää sinut sisälle palvelimeen.</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">ssh</span> kayttajatunnuksesi@users.cs.helsinki.fi</code></pre>
+<p>Laitoksen koneilla toimii myös lyhyempi ja kätevämpi muoto:</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">ssh</span> users</code></pre>
+<p>Kun olet päässyt sisään aktivoi valitsemasi ohjelmointikielen tuki.</p>
+<section id="java-tuki" class="level2">
+<h2>Java-tuki</h2>
 <ul>
-<li><a href="http://www.cs.helsinki.fi/u/laine/tikas/php_ohje.html">PHP HY/TKTL ympäristössä</a></li>
-<li><a href="http://www.cs.helsinki.fi/u/ahslaaks/tsoha/tkanta.html">PHP ja tietokanta</a></li>
 <li><a href="http://www.cs.helsinki.fi/u/laine/tikas/material/servlet_ohje.html">Servlettien käyttö Tietokantasovellusten harjoitustyössä</a></li>
+</ul>
+</section>
+<section id="php-tuki" class="level2">
+<h2>PHP-tuki</h2>
+<p>PHP sivut sijoitetaan users-koneen käyttäjän htdocs hakemistoon tai sen alihakemistoon. Hakemiston htdocs saa luotua komentoskriptillä komennolla <code>wanna-htdocs</code>.</p>
+<p>PHP sivut ajetaan käyttäjän oikeuksin, eikä niille tarvita mitään erityisiä luku- tai suoritusoikeuksia. Kuitenkin, jos php-sivuilla on viittauksia kuviin tai muihin tähän hakemistoon tai sen alihakemistoihin sijoitettuihin resursseihin kuten tyylitiedostoihin tai javascript koodiin, on näille annettava laaja lukuoikeus ja hakemistoille läpikulkuoikeus. Myös staattisille tavallisille html-sivuille on annettava maailmalle lukuoikeus. Seuraava komento varmistaa riittävät oikeudet sekä koodihakemistoille, että niissä oleville tiedostoille:</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">chmod</span> -R a+X <span class="ot">$HOME</span> <span class="ot">$HOME</span>/htdocs</code></pre>
+<p>Mikäli sinulla on jo tiedostoja tässä hakemistossa, saat niille lukuoikeudet komennolla:</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">chmod</span> -R a+r <span class="ot">$HOME</span>/htdocs/*</code></pre>
+<p>Siinä vaiheessa kun sivut ovat pystyssä htdocs-kansiossa olevaan PHP-tiedostoon <code>sivu.php</code> viitataan osoitteella: <em>http://käyttäjätunnuksesi.users.cs.helsinki.fi/sivu.php</em></p>
+<p>Esimerkiksi <em>http://laine.users.cs.helsinki.fi/lahja/lahjax.php</em> osoittaa php-tiedostoon <em>/home/laine/htdocs/lahja/lahjax.php</em></p>
+<section id="virheilmoitukset" class="level3">
+<h3>Virheilmoitukset</h3>
+<p>PHP:n virheilmoitukset kirjautuvat tiedostoon <code>/home/userlogs/käyttäjätunnuksesi.error</code>. Uusimmat virheet löytyvät tiedoston lopusta. Kätevä tapa seurata PHP:n tuottamia virheviestejä on ajaa komento:</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">tail</span> -f /home/userlogs/<span class="ot">$USER</span>.error</code></pre>
+<p>Komento näyttää viimeiset kymmenen virheviestiä ja jää komentoriville seuraamaan virheviestejä näyttäen aina viimeisimmät. Kommenon pystyy sulkemaan painamalla Ctrl+C:tä.</p>
+</section>
+</section>
+<section id="postgresql" class="level2">
+<h2>PostgreSQL</h2>
+<ul>
 <li><a href="http://www.cs.helsinki.fi/u/laine/tikas/material/tietokannat.html">Tietokannat Helsingin yliopiston tietojenkäsittelytieteen laitoksella</a> (vanhentunut, elä käytä oraclea)</li>
 </ul>
-<p>Ota käyttöösi users-palvelimen Java- tai PHP-tuki, sekä käyttämäsi tietokanta.</p>
 <section class="alert alert-success small"><h3>
 Seuraavaksi:
 </h3>
@@ -124,6 +168,8 @@ Seuraavaksi:
 
 
 
+
+</section>
 </div>
 </div> 
 </div> 

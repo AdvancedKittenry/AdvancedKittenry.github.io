@@ -13,12 +13,16 @@ jolloin ohjaaja voi antaa vinkkejä niiden tekemisessä.
 
 Sinulla tulee olla tehtynä seuraavat asiat:
 
-* [Tietokannan ja users-palvelimen nettisivutilan pystytys](tekniikka.html)
+* [Tietokannan ja laitoksen users-palvelimen nettisivutilan pystytys](tekniikka.html)
 * [Käyttöliittymän suunnittelu](suunnittelu.html)
-    * Alustava [käyttöliittymäkaavio](suunnittelu.html#k%C3%A4ytt%C3%B6liittym%C3%A4kaavio)
+    * Alustava [käyttöliittymäkaavio](suunnittelu.html#k%C3%A4ytt%C3%B6liittym%C3%A4kaavio) 
 * [Tietokannan suunnittelu](tietokanta.html) ja dokumentointi
     * [Järjestelmän tietosisältö]({{rootdir}}dokumentaatio-ohje.html#j%C3%A4rjestelm%C3%A4n-tietosis%C3%A4lt%C3%B6)
     * [Relaatiotietokantakaavio]({{rootdir}}dokumentaatio-ohje.html#relaatiotietokantakaavio)
+    * Tiedostot sovelluksen tietokannan taulujen luomiseen ja alasajoon 
+        * <code>sql/create-tables.sql</code>
+        * <code>sql/drop-tables.sql</code>
+        * <code>sql/add-test-data.sql</code>
 * [HTML-demoversio sovelluksesta](html-versioiden-luonti.html)
 
 <ohje>

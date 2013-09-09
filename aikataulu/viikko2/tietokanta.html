@@ -182,6 +182,11 @@ Siistimpi käsitekaavioversio (avaa tästä)
 <p>SQL-lauseiden sijoittaminen tiedostoihin mahdollistaa kannan helpon pystyttämisen ja alasajon. Voit ajaa sql-tiedostoon kantaan kirjautumalla usersille ja käyttämällä unixin <em>putkitusta</em>. Esimeriksi PostgreSQL:llä tämä tapahtuu seuraavasti:</p>
 <pre><code>psql &lt; sql/create-tables.sql</code></pre>
 <p>Yllä oleva komento suorittaa tiedoston sisältämät SQL-lauseet tietokannassa. MySQL-versio on samantapainen, mutta komentona on psql:n sijasta mysql, minkä lisäksi mysql kysyy sinulta salasanaa.</p>
+<p>Mikäli haluaa resetoida koko tietokantansa voi ajaa seuraavat kolme komentoa peräkkäin:</p>
+<pre><code>psql &lt; sql/drop-tables.sql
+psql &lt; sql/create-tables.sql
+psql &lt; sql/add-test-data.sql</code></pre>
+<p>Tiedostossa <code>drop-tables.sql</code> kannattaa käyttää pudotuskäskystä muotoa <code>DROP TABLE IF EXISTS taulun_nimi</code>. Näin tietokantataulun puuttuminen ei katkaise komentosarjaa. Viiteavaimien takia joudut myös yleensä kirjoittamaan pudotuskäskyt päinvastaisessa järjestyksessä luontilauseisiin nähden. Muuten viite-eheystarkistukset eivät välttämättä anna ajaa kantaa alas.</p>
 <section class="alert alert-success small"><h3>
 Seuraavaksi:
 </h3>
