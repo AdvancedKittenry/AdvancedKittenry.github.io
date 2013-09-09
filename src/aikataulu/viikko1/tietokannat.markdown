@@ -9,6 +9,10 @@ MySQL on hieman yleisempi työmaailmassa, PostgreSQL taas on hieman edistyneempi
 
 Mikäli sinulla ei ole ennestään syytä valita jompaakumpaa, suositeltavaa on valita PostgreSQL.
 
+<info>
+MySql-tietokantaa ei pysty etäkäyttämään kovin helposti laitoksen tietokantasovelluspalvelimen ulkopuolelta, joten sitä on parasta käyttää ainoastaan, jos saat myös lokaaliin koodausympäristöösi MySql-tietokannan asennettua tai jos käytät esimerkiksi NetBeansia siirtääksesi PHP-sovelluksesi automaattisesti laitoksen palvelimelle, joka kerta kun testaat sitä.
+</info>
+
 <next>
 Kun olet valinnut aiheen ja haluamasi toteutustekniikat siirry [dokumentaation](dokumentointi.html) tuottamiseen.
 </next>

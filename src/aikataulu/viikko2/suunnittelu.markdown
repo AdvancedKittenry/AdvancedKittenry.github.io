@@ -48,12 +48,12 @@ Suunnitelmaan kannattaa hahmotella mitä sivuja sovelluksessa on,
 mille sivuille niiltä pääsee ja mitkä sivuista olisi luonnollista sijoittaa
 sovelluksen _päävalikkoon_, eli niihin linkkeihin, jotka ovat jokaisella sivulla näkyvissä.
 
-<info>
+<vinkki>
 Suunnittelemiseen kannattaa käyttää _paperia ja kynää_, _valkotaulua_
 tai jotain muuta välinettä, jolla luonnosteleminen on nopeaa.
 Suunnitteluvaiheessa kaikenlaiset kaavio-ohjelmistot yleensä vain hidastavat ajattelua, 
 ellei niiden käytössä ole erityisen rutinoitunut. 
-</info>
+</vinkki>
 
 Kissalistan tapauksessa alustava suunnitelma voisi näyttää vaikkapa tältä:
 

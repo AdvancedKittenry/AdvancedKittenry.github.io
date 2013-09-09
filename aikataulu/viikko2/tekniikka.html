@@ -153,12 +153,55 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <p>PHP:n virheilmoitukset kirjautuvat tiedostoon <code>/home/userlogs/käyttäjätunnuksesi.error</code>. Uusimmat virheet löytyvät tiedoston lopusta. Kätevä tapa seurata PHP:n tuottamia virheviestejä on ajaa komento:</p>
 <pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">tail</span> -f /home/userlogs/<span class="ot">$USER</span>.error</code></pre>
 <p>Komento näyttää viimeiset kymmenen virheviestiä ja jää komentoriville seuraamaan virheviestejä näyttäen aina viimeisimmät. Kommenon pystyy sulkemaan painamalla Ctrl+C:tä.</p>
+<p>Virheloki saattaa ajoittain täyttyä seuraavanlaisista virheviesteistä:</p>
+<pre><code>[Mon Sep 09 16:58:56 2013] [error] [client 128.214.137.101] File does not exist: /home/consuegr/htdocs/favicon.ico</code></pre>
+<p>Virheistä pääsee halutessaan eroon laittamalla sovellukselleen <a href="http://fi.wikipedia.org/wiki/Favicon">favicon.ico:n</a>.</p>
 </section>
 </section>
 <section id="postgresql" class="level2">
 <h2>PostgreSQL</h2>
+<p>PostgreSQL-kannan saat käyttöösi koneessa users.cs.helsinki.fi skriptillä <code>wanna-postgres</code>. Ohjelma luo käyttäjätunnuksen ja arpoo salasanan ja kannan käyttöön tarvittavat porttinumerot ja hoitaa muut ympäristöasetukset. Kun tunnus on luotu voi kantaa käsitellä käyttäen komentotulkkia <code>psql</code>. Tulkki ei kysy salasanaa, vaan siirtyy suoraan tietokantakomentoriville.</p>
+<p>Testaa tulkkia luomalla kantaan muutama testitaulu. Tulkkia käyttäessä kannattaa varoa, ettei jätä lainausmerkkejä auki:</p>
+<pre><code>consuegr=&gt; select * from test where t1 = &#39;asdasd;
+consuegr&#39;&gt; 
+consuegr&#39;&gt; quit
+consuegr&#39;&gt; &#39;
+consuegr-&gt; ;
+ t1 
+ ----
+ (0 rows)</code></pre>
+<p>Huomaa kuinka käyttäjänimen jälkeen tuleva merkki vaihtuu sen mukaan mitä merkkiä tietokantatulkki odottaa seuraavaksi.</p>
+<section class="alert alert-info"><h3>
+Lisätietoa
+</h3>
+<p>Usersilla tietokantayhteyden luomiseen tarvittava uusin PostgreSQL-ajuri löytyy tiedostosta <code>/usr/local/pgsql-7.4/jdbc.jar</code>. Ohjelmassa tarvittava ajuriluokan nimi on org.postgresql.Driver. Tietokantayhteyteen tarvittava yhteystunnus on <code>jdbc:postgresql://localhost/username</code>.</p>
+<p>PHP:n PDO:lle riittää</p>
+</section>
+
+</section>
+<section id="mysql" class="level2">
+<h2>MySql</h2>
+<p>MySql-kannan saat käyttöösi koneessa users.cs.helsinki.fi skriptillä <code>wanna-mysql</code>. Ohjelma kysyy sinulta uuden tietokannan pääkäyttäjän salasanaa. Pistä se johonkin ylös, sillä sitä ei tallenneta mihinkään siltä varalta että unohdat sen! Ohjelma myös käynnistää tietokannan. Voit kirjautua sen komentotulkkiin komennolla</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">mysql</span> -u root -p</code></pre>
+<p>Usersin MySql-tietokannat eivät ole julkisia, vaan ne ajetaan käyttäjäkohtaisina prosesseina palvelimella. Tietokannan käynnistyksestä ja sammuttamisesta huolehdit sinä. Voit manuaalisesti käynnistää ja sammuttaa tietokantaasi komennoilla <code>start-mysql</code> ja <code>stop-mysql</code>. Sammuttaminen kysyy sinulta pääkäyttäjän salasanan.</p>
+<p>Tätä tietokantaa ei pysty etäkäyttämään kovin helposti palvelimen ulkopuolelta, joten sitä on parasta käyttää ainoastaan, jos saat myös lokaaliin koodausympäristöösi MySql-tietokannan asennettua tai jos käytät esimerkiksi NetBeansia siirtääksesi PHP-sovelluksesi automaattisesti Users-palvelimelle.</p>
+<p>MySql:ään pätevät samat lainausmerkkejä koskevat huomiot kuin PostgreSQL:ään ylempänä.</p>
+<section class="alert alert-info"><h3>
+Lisätietoa
+</h3>
+<p>Voit testata mysql-tietokantayhteyttä seuraavanlaisella lyhyellä PHP-tiedostolla:</p>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>
+<span class="kw">$p</span> = <span class="kw">new</span> <span class="kw">PDO</span><span class="ot">(</span><span class="st">&#39;mysql:unix_socket=/home/consuegr/mysql/socket;dbname=test&#39;</span><span class="ot">,</span><span class="st">&#39;root&#39;</span><span class="ot">,</span> <span class="st">&#39;salasana&#39;</span><span class="ot">);</span>
+<span class="fu">var_dump</span><span class="ot">(</span><span class="kw">$p</span><span class="ot">);</span>
+<span class="kw">?&gt;</span>
+OK</code></pre>
+</section>
+
+</section>
+<section id="lisäluettavaa" class="level2">
+<h2>Lisäluettavaa</h2>
 <ul>
-<li><a href="http://www.cs.helsinki.fi/u/laine/tikas/material/tietokannat.html">Tietokannat Helsingin yliopiston tietojenkäsittelytieteen laitoksella</a> (vanhentunut, elä käytä oraclea)</li>
+<li><a href="http://users.cs.helsinki.fi/README.users.cs.helsinki.fi.txt">Users-palvelimen tiivis ohjetiedosto</a></li>
 </ul>
 <section class="alert alert-success small"><h3>
 Seuraavaksi:
