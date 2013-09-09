@@ -194,6 +194,13 @@ Joudut vielä aktivoimaan tämän palvelintilan ennenkuin
 sivut toimivat.
 Tee se seuraamalla [näitä ohjeita](http://www.cs.helsinki.fi/u/laine/tikas/php_ohje.html).
 
+Viimeistään tässä vaiheessa, luo repositorioosi tiedosto
+<code>.gitignore</code> ja laita siihen ainakin seuraava rivi:
+
+~~~
+nbproject/private
+~~~
+
 Aktivoituasi usersin PHP-tilan voit aloittaa koodaukseen tutustumisen index.php:n parissa.
 
 </box>
