@@ -1,9 +1,6 @@
 $(document).ready(function(){
 
   if (typeof(addSectionLinks) !== 'undefined' && addSectionLinks) {
-    var url = document.location.href;
-    //Strip the fragment identifier or hashtag from the url
-    url = url.substring(0, (url.indexOf("#") == -1) ? url.length : url.indexOf("#"));
 
     function findLinks(where, level) {
       var hasLinks = false;
@@ -11,7 +8,7 @@ $(document).ready(function(){
       where.find('section.level'+level).each(function() {
         var title = $(this).find('h'+level).html();
         title = title.replace(/^\d+\.? */, ""); //Remove ordinal numering
-        var link = url+"#"+$(this).attr('id');
+        var link = "#"+$(this).attr('id');
         var listItem = $('<li class="open"><a href="'+link+'">'+title+'</a></li>');
         var subLinks = findLinks($(this), level+1);
         if (subLinks) listItem.append(subLinks);
