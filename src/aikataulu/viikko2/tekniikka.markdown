@@ -104,7 +104,13 @@ Usersilla tietokantayhteyden luomiseen tarvittava uusin PostgreSQL-ajuri löytyy
 Ohjelmassa tarvittava ajuriluokan nimi on org.postgresql.Driver. 
 Tietokantayhteyteen tarvittava yhteystunnus on <code>jdbc:postgresql://localhost/username</code>. 
 
-PHP:n PDO:lle riittää 
+PHP:n PDO:lle riittää seuraava hyvin yksinkertainen koodi:
+
+~~~php
+<?php $yhteys = new PDO('psql:'); ?>
+?>
+~~~
+
 </info>
 
 ## MySql

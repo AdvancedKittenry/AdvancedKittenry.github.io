@@ -173,7 +173,9 @@ consuegr-&gt; ;
 Lisätietoa
 </h3>
 <p>Usersilla tietokantayhteyden luomiseen tarvittava uusin PostgreSQL-ajuri löytyy tiedostosta <code>/usr/local/pgsql-7.4/jdbc.jar</code>. Ohjelmassa tarvittava ajuriluokan nimi on org.postgresql.Driver. Tietokantayhteyteen tarvittava yhteystunnus on <code>jdbc:postgresql://localhost/username</code>.</p>
-<p>PHP:n PDO:lle riittää</p>
+<p>PHP:n PDO:lle riittää seuraava hyvin yksinkertainen koodi:</p>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span> <span class="kw">$yhteys</span> = <span class="kw">new</span> <span class="kw">PDO</span><span class="ot">(</span><span class="st">&#39;psql:&#39;</span><span class="ot">);</span> <span class="kw">?&gt;</span>
+<span class="kw">?&gt;</span></code></pre>
 </section>
 
 </section>
