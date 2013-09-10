@@ -10,6 +10,8 @@ the engine behind these pages.
 This text will dissapear.
 </comment>
 
+asdadad `asdadsad` asdadad
+
 ## Tabs
 
 <tabs nobox="true">
@@ -59,6 +61,13 @@ class M {
   }
 }
 ~~~~
+
+~~~~ {execute="ls /proc/self" type="code"}
+~~~~
+
+~~~~ {execute="ls /proc/self" type="plain"}
+~~~~
+
 </expandable>
 
 <collapsible title="Close me">
