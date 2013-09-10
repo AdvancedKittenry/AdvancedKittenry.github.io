@@ -13,12 +13,29 @@ tmpl = unlines [
   "$include-after$$endfor$"
   ]
 
-doInclude :: Block -> IO Block
-doInclude cb@(CodeBlock (id, classes, namevals) contents) =
-  case lookup "execute" namevals of
-       Just f     -> return . Plain . (\d -> [d]) . (Str) =<< readProcess f [] contents
-       Nothing    -> return cb
-doInclude x = return x
+doInclude :: [Block] -> IO [Block]
+doInclude (cb@(CodeBlock (id, classes, namevals) contents):xs) =
+  do rst <- doInclude xs
+     case lookup "execute" namevals of
+          Just f -> 
+            do txt <- readProcess f [] contents
+               case lookup "type" namevals of
+                    Just "plainText" -> 
+                      return (makePlain txt : rst)
+                    Just "block" -> 
+                      return (makeBlock txt : rst)
+                    Nothing -> 
+                      return ((blocks $ readMarkdown def txt) ++ rst)
+               where makePlain = Plain . (\d -> [d]) . (Str)
+                     makeBlock = CodeBlock attrs 
+                     attrs = (id, classes, n)
+                        where n = Prelude.filter notExecute namevals
+                              notExecute (a,b) = a /= "execute"
+                     blocks p@(Pandoc _ b) = b
+          Nothing -> return (cb : rst)
+doInclude (x:xs) =do rst <- doInclude xs
+                     return (x:rst)
+doInclude [] = return []
 
 main :: IO ()
 main = getContents >>= bottomUpM doInclude . readMarkdown def{
