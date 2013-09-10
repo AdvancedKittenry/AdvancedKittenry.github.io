@@ -8,6 +8,25 @@
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
   <link rel="stylesheet" href="../../css/base.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!--[if lt IE 9]>
@@ -123,11 +142,201 @@ Tämän sivun sisältö on vielä työn alla ja saattaa muuttua kurssin edetess�
 
 <p>Tässä vaiheessa työtä siirrytään suunnittelusta käytäntöön ja luodaan suunnitelluista sivuista oikean näköiset, mutta vielä staattiset HTML-versiot.</p>
 <p>Viimeistään tässä vaiheessa työlle kannattaa luoda NetBeans-projekti. NetBeansia ei ole pakko käyttää, mutta etenkin Javalla koodatessa sen koodingenerointi- ja refaktorointiominaisuuksista on paljon iloa. Pääset NetBeans-ohjeisiin <a href="netbeans.html">tästä</a>.</p>
-<section id="html-sivujen-luonti" class="level2">
-<h2>HTML-sivujen luonti</h2>
-<p>Tähän tulossa lyhyet ohjeet siitä, miten selkeällä HTML:llä ja CSS:llä sekä <a href="http://getbootstrap.com/">Bootstrapilla</a> saa aikaan siistit sivut.</p>
-<p>Hyviä HTML-referenssejä:</p>
+<section id="sivujen-luonti" class="level2">
+<h2>Sivujen luonti</h2>
+<p>Luo repositorioosi kansio <code>html-demo</code> ja lähde rakentamaan sinne HTML-versiota työstäsi. Javalla ohjelmoivat voivat testauksen helpottamiseksi sijoittaa HTML-tiedostonsa kansioon <code>web/html-demo</code>. Sijoita kaikki tässä vaiheessa tekemäsi HTML-tiedostot tuohon kansioon.</p>
+<section id="html-sivun-luonti-netbeansillä" class="level3">
+<h3>HTML-sivun luonti NetBeansillä</h3>
+<p>NetBeansin käyttäjät voivat luoda HTML-tiedostoja projektiinsa seuraavasti:</p>
 <ul>
+<li>Javalla koodatessa:
+<ul>
+<li>Valitse uuden tiedoston ikkunasta Web-&gt;HTML</li>
+<li>Voit halutessasi valita tyypiksi myös Web-&gt;JSP</li>
+</ul></li>
+<li>PHP:llä koodatessa:
+<ul>
+<li>Valitse uuden tiedoston ikkunasta Other-&gt;HTML</li>
+<li>Voit halutessasi valita tyypiksi myös PHP-&gt;PHP Web Page</li>
+</ul></li>
+</ul>
+<p>Poista kummassakin tapauksessa NetBeansin alkuun lisäämä Template-kommentti. Ota kommentin luominen pois päältä valitsemalla valikosta <code>Tools-&gt;Templates</code>. Avaa listassa kohdan <em>Licenses</em> alla oleva tiedosto <code>Default License</code> ja tyhjennä sen sisältö.</p>
+</section>
+<section id="html-ja-css" class="level3">
+<h3>HTML ja CSS</h3>
+<p>Mikäli loit tiedostosi NetBeansillä näyttää se tältä:</p>
+<pre class="sourceCode HTML"><code class="sourceCode html"><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span>
+<span class="kw">&lt;html&gt;</span>
+    <span class="kw">&lt;head&gt;</span>
+        <span class="kw">&lt;title&gt;&lt;/title&gt;</span>
+        <span class="kw">&lt;meta</span><span class="ot"> http-equiv=</span><span class="st">&quot;Content-Type&quot;</span><span class="ot"> content=</span><span class="st">&quot;text/html; charset=UTF-8&quot;</span><span class="kw">&gt;</span>
+    <span class="kw">&lt;/head&gt;</span>
+    <span class="kw">&lt;body&gt;</span>
+        <span class="kw">&lt;div&gt;</span>TODO write content<span class="kw">&lt;/div&gt;</span>
+    <span class="kw">&lt;/body&gt;</span>
+<span class="kw">&lt;/html&gt;</span></code></pre>
+<p>Tehdään sivusta vähän nätimpi CSS:llä. Lataa twitterin mainio <a href="http://getbootstrap.com/">Bootstrap-kirjasto</a> ja pura paketin sisältä dist kansion sisältö projektisi juureen tai Javalla <code>web</code>-kansioon. Tarkoituksena on, että bootstrapin <code>css</code>, <code>fonts</code> ja <code>js</code>-kansiot sijoittuvat samaan kansioon kuin edellä luomasi <code>html-demo</code>-kansio.</p>
+<p>Tämän jälkeen luo <code>css</code>-kansioon vielä oma tyylitiedostosi <code>main.css</code>. (NetBeansillä tyylitiedoston luonti löytyy kategoriasta <em>Other</em> nimellä <em>Cascading Style Sheet</em>). Tähän tiedostoon voit sijoittaa omat projektikohtaiset tyylimääritelmäsi. Älä sijoita tiedostoon vielä mitään.</p>
+<p>Lisätään CSS-tiedostoihin linkit laittamalla HTML-tiedoston head-tägin sisään:</p>
+<pre class="sourceCode HTML"><code class="sourceCode html"><span class="kw">&lt;link</span><span class="ot"> href=</span><span class="st">&quot;../css/bootstrap.css&quot;</span><span class="ot"> rel=</span><span class="st">&quot;stylesheet&quot;</span><span class="kw">&gt;</span>
+<span class="kw">&lt;link</span><span class="ot"> href=</span><span class="st">&quot;../css/bootstrap-theme.css&quot;</span><span class="ot"> rel=</span><span class="st">&quot;stylesheet&quot;</span><span class="kw">&gt;</span>
+<span class="kw">&lt;link</span><span class="ot"> href=</span><span class="st">&quot;../css/main.css&quot;</span><span class="ot"> rel=</span><span class="st">&quot;stylesheet&quot;</span><span class="kw">&gt;</span></code></pre>
+<p>Nyt voimme käyttää Bootstrapin kirjastoja erilaisten käyttöliittymäkomponenttien luomiseen. Alla esimerkkejä.</p>
+<ul class='nav nav-tabs nav-justified'><li class='active'>
+<a href='#tab_1_0' data-toggle='tab'>Tabinavigaatio</a>
+</li>
+<li>
+<a href='#tab_1_1' data-toggle='tab'>Sivunavigaatio</a>
+</li>
+<li>
+<a href='#tab_1_2' data-toggle='tab'>Listaus</a>
+</li>
+<li>
+<a href='#tab_1_3' data-toggle='tab'>Lomake</a>
+</li></ul><div class='panel panel-default'><div class='panel-body'><div class='tab-content'>
+<section class='tab-pane active' id='tab_1_0' >
+
+<pre id="html" type="block"><code>&lt;body&gt;
+  &lt;ul class=&quot;nav nav-tabs&quot;&gt;
+    &lt;li class=&quot;active&quot;&gt;&lt;a href=&quot;#&quot;&gt;Kissalista&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Kissarodut&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Palveluskunta&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;div class=&quot;container&quot;&gt;
+    &lt;h1&gt;Koe&lt;/h1&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Aivan&lt;/li&gt;
+      &lt;li&gt;normaali&lt;/li&gt;
+      &lt;li&gt;lista&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/body&gt;</code></pre>
+<iframe src="../../src/aikataulu/viikko2/esimerkit/tabit.html" ></iframe>
+
+
+
+</section>
+<section class='tab-pane' id='tab_1_1' >
+
+<pre id="html" type="block"><code>&lt;body&gt;
+  &lt;div class=&quot;container&quot;&gt;
+    &lt;div class=&quot;row&quot;&gt;
+      &lt;div class=&quot;col-md-3&quot;&gt;
+        &lt;h2&gt;Navigaatio&lt;/h2&gt;
+        &lt;div class=&quot;panel panel-default&quot;&gt;
+          &lt;ul class=&quot;nav&quot;&gt;
+            &lt;li class=&quot;active&quot;&gt;&lt;a href=&quot;#&quot;&gt;Kissalista&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Kissarodut&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Palveluskunta&lt;/a&gt;&lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;col-md-6&quot;&gt;
+        &lt;h1&gt;Sisältö&lt;/h1&gt;
+        &lt;p&gt;
+          Lorem ipsum...
+        &lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/body&gt;</code></pre>
+<iframe src="../../src/aikataulu/viikko2/esimerkit/sivunavi.html" ></iframe>
+
+
+
+</section>
+<section class='tab-pane' id='tab_1_2' >
+
+<pre id="html" type="block"><code>&lt;body&gt;
+  &lt;div class=&quot;container&quot;&gt;
+    &lt;h1&gt;Lista-esimerkki&lt;/h1&gt;
+    &lt;table class=&quot;table table-striped&quot;&gt;
+      &lt;thead&gt;
+        &lt;tr&gt;
+          &lt;th&gt;#&lt;/th&gt;
+          &lt;th&gt;Kissan nimi&lt;/th&gt;
+          &lt;th&gt;Rotu&lt;/th&gt;
+          &lt;th&gt;Viimeksi ruokittu&lt;/th&gt;
+        &lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;
+          &lt;td&gt;1&lt;/td&gt;
+          &lt;td&gt;Jaana&lt;/td&gt;
+          &lt;td&gt;Siamilainen&lt;/td&gt;
+          &lt;td&gt;13:43&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td&gt;2&lt;/td&gt;
+          &lt;td&gt;Jacob&lt;/td&gt;
+          &lt;td&gt;Persialainen&lt;/td&gt;
+          &lt;td&gt;10:23&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td&gt;3&lt;/td&gt;
+          &lt;td&gt;Liila&lt;/td&gt;
+          &lt;td&gt;Juustopurilaisennoutaja&lt;/td&gt;
+          &lt;td&gt;18:01&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  &lt;/div&gt;
+&lt;/body&gt;</code></pre>
+<iframe src="../../src/aikataulu/viikko2/esimerkit/table.html" ></iframe>
+
+
+
+</section>
+<section class='tab-pane' id='tab_1_3' >
+
+<pre id="html" type="block"><code>&lt;body&gt;
+  &lt;div class=&quot;container&quot;&gt;
+    &lt;h1&gt;Lomake-esimerkki&lt;/h1&gt;
+    &lt;form class=&quot;form-horizontal&quot; role=&quot;form&quot; action=&quot;lomake.html&quot; method=&quot;POST&quot;&gt;
+      &lt;div class=&quot;form-group&quot;&gt;
+        &lt;label for=&quot;inputEmail1&quot; class=&quot;col-md-2 control-label&quot;&gt;Sähköposti&lt;/label&gt;
+        &lt;div class=&quot;col-md-10&quot;&gt;
+          &lt;input type=&quot;email&quot; class=&quot;form-control&quot; id=&quot;inputEmail1&quot; placeholder=&quot;Email&quot;&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;form-group&quot;&gt;
+        &lt;label for=&quot;inputPassword1&quot; class=&quot;col-md-2 control-label&quot;&gt;Salasana&lt;/label&gt;
+        &lt;div class=&quot;col-md-10&quot;&gt;
+          &lt;input type=&quot;password&quot; class=&quot;form-control&quot; id=&quot;inputPassword1&quot; placeholder=&quot;Password&quot;&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;form-group&quot;&gt;
+        &lt;div class=&quot;col-md-offset-2 col-md-10&quot;&gt;
+          &lt;div class=&quot;checkbox&quot;&gt;
+            &lt;label&gt;
+              &lt;input type=&quot;checkbox&quot;&gt; Muista kirjautuminen
+            &lt;/label&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;form-group&quot;&gt;
+        &lt;div class=&quot;col-md-offset-2 col-md-10&quot;&gt;
+          &lt;button type=&quot;submit&quot; class=&quot;btn btn-default&quot;&gt;Kirjaudu sisään&lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/form&gt;
+  &lt;/div&gt;
+&lt;/body&gt;</code></pre>
+<iframe src="../../src/aikataulu/viikko2/esimerkit/lomake.html" ></iframe>
+
+
+
+</section>
+</div></div></div>
+
+<p>Nämä esimerkit ovat tietenkin vielä melko harmaita. Kannattaa tutustua CSS-kieleen ja laittaa omaan tyylitiedostoon määrittelyjä, jotka tekevät asioista värikkäämpiä. Voit halutessasi tutustua myös näiden ohjeiden lähdekoodiin.</p>
+<p>Tee nyt näitä ohjeita ja esimerkkejä mukaillen itsellesi kokonaiset demosivut, joissa jokaisella sivulla on käytetty samaa yleistä ulkoasua.</p>
+</section>
+</section>
+<section id="linkkejä" class="level2">
+<h2>Linkkejä</h2>
+<ul>
+<li><a href="http://getbootstrap.com/">Twitter Bootstrap</a></li>
 <li><a href="http://www.htmldog.com/">HTML Dogin tutoriaalit</a> (HTML ja CSS) ovat lupsakoita ja perusteellisia. Suositellaan selattavaksi sivuja tehdessä! Tutoriaaleissa tehdään XHTML-sivuja, mutta ne on helppo soveltaa HTML5-sivuiksi (korvaa alun pitkä DOCTYPE lyhyellä HTML5-doctypellä).</li>
 <li>W3-konsortion sivuilta löydät alkuperäiset, kattavat standardit: <a href="http://www.w3.org/TR/html5/">HTML5</a> ja <a href="http://www.w3.org/TR/CSS/">CSS(3)</a> sekä aika hyvän <a href="http://w3schools.com/html/html5_intro.asp">tutoriaali- ja referenssisivun</a>.</li>
 </ul>
@@ -140,13 +349,16 @@ Tämän sivun sisältö on vielä työn alla ja saattaa muuttua kurssin edetess�
   relaatiotietokantakaavio.dia
   sivukartta.png
   tietosisältökaavio.dia
-html/
-  index.html
-  ...
 sql/
   create-tables.sql
   drop-tables.sql
-  add-test-data.sql</code></pre>
+  add-test-data.sql
+html-demo/
+  index.html
+  kissalista.html
+  muokkaakissaa.html
+  ...</code></pre>
+<p>NetBeansia käyttävillä on projektissaa todennäköisesti huomattavasti enemmän tiedostoja. Se ei haittaa.</p>
 <section class="alert alert-info small"><h3>
 Valmista!
 </h3>

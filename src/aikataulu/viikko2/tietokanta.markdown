@@ -1,6 +1,14 @@
 % Tietokannan suunnittelu
 <!-- order: 3 -->
 
+<summary>
+* Suunnittele tietokantasi
+* [Luo tiedostot tietokannan taulujen luomiseen ja alasajoon](#tietokannan-alustustiedostojen-luominen)
+    * <code>sql/create-tables.sql</code>
+    * <code>sql/drop-tables.sql</code>
+    * <code>sql/add-test-data.sql</code>
+</summary>
+
 Suunniteltuasi sovelluksen ulkoasua, uppoa tietokantataulujen
 maailmaan. 
 Tee sovelluksellesi alustava käsitekaavio erittelemällä

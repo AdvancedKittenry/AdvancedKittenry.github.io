@@ -17,11 +17,12 @@ Laitoksen koneilla toimii myös lyhyempi ja kätevämpi muoto:
 ssh users
 ~~~~
 
-Kun olet päässyt sisään aktivoi valitsemasi ohjelmointikielen tuki.
+Kun olet päässyt sisään aktivoi valitsemasi ohjelmointikielen ja tietokannan tuki.
 
 ## Java-tuki
 
-* [Servlettien käyttö Tietokantasovellusten harjoitustyössä](http://www.cs.helsinki.fi/u/laine/tikas/material/servlet_ohje.html) 
+Lue sivu [Servlettien käyttö Tietokantasovellusten harjoitustyössä](http://www.cs.helsinki.fi/u/laine/tikas/material/servlet_ohje.html)
+ja noudata sen ohjeita.
 
 ## PHP-tuki
 

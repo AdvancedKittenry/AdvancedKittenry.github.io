@@ -225,3 +225,14 @@ header + .wip {
   margin-top: 0px;
   font-size: 22px;
 }
+
+.alert-info code {
+  color: #DB603A;
+  background-color: #F9F9F2;
+}
+
+iframe {
+  width: 100%;
+  min-height: 300px;
+  border: 1px solid black;
+}

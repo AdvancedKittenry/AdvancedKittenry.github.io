@@ -11,6 +11,7 @@ BEGIN {
     our %tags = ( 
         alert    => 'danger',
         info     => 'info',
+        summary  => 'info',
         vinkki   => 'warning',
         ohje     => 'success',
         next     => 'success small',
@@ -23,6 +24,7 @@ BEGIN {
     our %titles = (
         alert    => "Pidä mielessä!",
         info     => "Lisätietoa",
+        summary  => "Tiivistelmä:",
         vinkki   => "Vinkki",
         ohje     => 'Ohje:',
         next     => 'Seuraavaksi:',

@@ -2,6 +2,13 @@
 <!-- order: 2 -->
 <!-- addHeaderNavigation -->
 
+<summary>
+* Luo aihekuvauksen perusteella alustava [käyttöliittymäkaavio](#k%C3%A4ytt%C3%B6liittym%C3%A4kaavio)
+* Suunnittele sovelluksen yleinen näkymä ja päävalikko
+    * Näiden kuuluu näkyä joka sivulla!
+* Suunnittele listaus-, tieto- ja lomakesivut ohjeiden mukaisesti
+</summary>
+
 Aloita suunnittelu lukemalla valitsemasi aihekuvaus
 ja miettimällä millaisiin sivuihin sovelluksesi
 voisi jakautua. 
