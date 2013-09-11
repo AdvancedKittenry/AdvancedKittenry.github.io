@@ -76,7 +76,7 @@ Lopullisen siistin version voi huoletta jättää myöhemmäksi,
 sillä yleensä suunnitelmat kuitenkin muuttuvat työn edetessä.
 
 Kun sivukartta on tehty, ota siitä kuva kännykkäkamerallasi
-ja sijoita se repositoriosi doc-kansioon nimellä <code>sivukartta.jpg</code> (tiedostopäätteellä ei ole niin väliä).
+ja sijoita se repositoriosi doc-kansioon nimellä `sivukartta.jpg` (tiedostopäätteellä ei ole niin väliä).
 Voit halutessasi myös skannata sen tai 
 tehdä valmiin version jollain diagrammiohjelmalla. 
 

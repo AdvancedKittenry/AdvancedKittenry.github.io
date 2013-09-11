@@ -27,7 +27,7 @@ ja noudata sen ohjeita.
 ## PHP-tuki
 
 PHP sivut sijoitetaan users-koneen käyttäjän htdocs hakemistoon tai sen alihakemistoon. 
-Hakemiston htdocs saa luotua komentoskriptillä komennolla <code>wanna-htdocs</code>.
+Hakemiston htdocs saa luotua komentoskriptillä komennolla `wanna-htdocs`.
 
 PHP sivut ajetaan käyttäjän oikeuksin, eikä niille tarvita mitään erityisiä
 luku- tai suoritusoikeuksia. Kuitenkin, jos php-sivuilla on viittauksia kuviin
@@ -48,14 +48,14 @@ Mikäli sinulla on jo tiedostoja tässä hakemistossa, saat niille lukuoikeudet 
 chmod -R a+r $HOME/htdocs/*
 ~~~~
 
-Siinä vaiheessa kun sivut ovat pystyssä htdocs-kansiossa olevaan PHP-tiedostoon <code>sivu.php</code> viitataan osoitteella:
+Siinä vaiheessa kun sivut ovat pystyssä htdocs-kansiossa olevaan PHP-tiedostoon `sivu.php` viitataan osoitteella:
 _http://käyttäjätunnuksesi.users.cs.helsinki.fi/sivu.php_
 
 Esimerkiksi _http://laine.users.cs.helsinki.fi/lahja/lahjax.php_ osoittaa php-tiedostoon _/home/laine/htdocs/lahja/lahjax.php_
 
 ### Virheilmoitukset
 PHP:n virheilmoitukset kirjautuvat tiedostoon 
-<code>/home/userlogs/käyttäjätunnuksesi.error</code>.
+`/home/userlogs/käyttäjätunnuksesi.error`.
 Uusimmat virheet löytyvät tiedoston lopusta. Kätevä tapa seurata PHP:n tuottamia virheviestejä on ajaa komento:
 
 ~~~~bash
@@ -77,9 +77,9 @@ Virheistä pääsee halutessaan eroon laittamalla sovellukselleen [favicon.ico:n
 ## PostgreSQL
 
 PostgreSQL-kannan saat käyttöösi koneessa users.cs.helsinki.fi
-skriptillä <code>wanna-postgres</code>. 
+skriptillä `wanna-postgres`. 
 Ohjelma luo käyttäjätunnuksen ja arpoo salasanan ja kannan käyttöön tarvittavat porttinumerot ja hoitaa muut ympäristöasetukset.
-Kun tunnus on luotu voi kantaa käsitellä käyttäen komentotulkkia <code>psql</code>. 
+Kun tunnus on luotu voi kantaa käsitellä käyttäen komentotulkkia `psql`. 
 Tulkki ei kysy salasanaa, vaan siirtyy suoraan tietokantakomentoriville.
 
 Testaa tulkkia luomalla kantaan muutama testitaulu.
@@ -100,9 +100,9 @@ consuegr-> ;
 Huomaa kuinka käyttäjänimen jälkeen tuleva merkki vaihtuu sen mukaan mitä merkkiä tietokantatulkki odottaa seuraavaksi.
 
 <info>
-Usersilla tietokantayhteyden luomiseen tarvittava uusin PostgreSQL-ajuri löytyy tiedostosta <code>/usr/local/pgsql-7.4/jdbc.jar</code>.
+Usersilla tietokantayhteyden luomiseen tarvittava uusin PostgreSQL-ajuri löytyy tiedostosta `/usr/local/pgsql-7.4/jdbc.jar`.
 Ohjelmassa tarvittava ajuriluokan nimi on org.postgresql.Driver. 
-Tietokantayhteyteen tarvittava yhteystunnus on <code>jdbc:postgresql://localhost/username</code>. 
+Tietokantayhteyteen tarvittava yhteystunnus on `jdbc:postgresql://localhost/username`. 
 
 PHP:n PDO:lle riittää seuraava hyvin yksinkertainen koodi:
 
@@ -116,7 +116,7 @@ PHP:n PDO:lle riittää seuraava hyvin yksinkertainen koodi:
 ## MySql
 
 MySql-kannan saat käyttöösi koneessa users.cs.helsinki.fi
-skriptillä <code>wanna-mysql</code>. 
+skriptillä `wanna-mysql`. 
 Ohjelma kysyy sinulta uuden tietokannan pääkäyttäjän salasanaa.
 Pistä se johonkin ylös, sillä sitä ei tallenneta mihinkään siltä varalta että unohdat sen!
 Ohjelma myös käynnistää tietokannan. Voit kirjautua sen komentotulkkiin komennolla
@@ -127,7 +127,7 @@ mysql -u root -p
 
 Usersin MySql-tietokannat eivät ole julkisia, vaan ne ajetaan käyttäjäkohtaisina prosesseina palvelimella.
 Tietokannan käynnistyksestä ja sammuttamisesta huolehdit sinä.
-Voit manuaalisesti käynnistää ja sammuttaa tietokantaasi komennoilla <code>start-mysql</code> ja <code>stop-mysql</code>.
+Voit manuaalisesti käynnistää ja sammuttaa tietokantaasi komennoilla `start-mysql` ja `stop-mysql`.
 Sammuttaminen kysyy sinulta pääkäyttäjän salasanan.
 
 Tätä tietokantaa ei pysty etäkäyttämään kovin helposti palvelimen ulkopuolelta, joten sitä on parasta käyttää ainoastaan,

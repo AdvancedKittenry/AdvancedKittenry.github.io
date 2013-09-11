@@ -7,11 +7,11 @@ aikaisemmin käyttänyt git:iä niin verestä muistiasi
 ohjelmoinnin harjoitustyön [git-ohjeella](https://github.com/javaLabra/Javalabra2013-1/wiki/Git-ohje).
 
 Ohjeita noudattamalla luo itsellesi tietokantasovellusta varten oma repositorio.
-Luo siihen kansio nimeltä <code>doc</code> ja sijoita siihen kaikki
+Luo siihen kansio nimeltä `doc` ja sijoita siihen kaikki
 tähän mennessä tekemäsi dokumentaatio. Voit sijoittaa kansioon kaikki
 tarvitsemasi dokumentaatioon liittyvät tiedostot kunhan pidät huolen
 siitä, että siellä on tietokantasovelluksen [päädokumentti]({{rootdir}}dokumentaatio-ohje.html)
-nimellä <code>dokumentaatio.pdf</code>. Tuo PDF-tiedosto on se, jonka ohjaajasi lukee, 
+nimellä `dokumentaatio.pdf`. Tuo PDF-tiedosto on se, jonka ohjaajasi lukee, 
 mutta on hyvä pitää lähdetiedostotkin versionhallinnassa.
 
 Ensimmäisen viikon palautuksen kansiorakenne näyttää siis todennäköisimmin seuraavanalaiselta:

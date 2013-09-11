@@ -1,8 +1,6 @@
 % HTML-versioiden luominen
 <!-- order: 5 -->
 
-<wip />
-
 Tässä vaiheessa työtä siirrytään suunnittelusta käytäntöön
 ja luodaan suunnitelluista sivuista oikean näköiset, mutta
 vielä staattiset HTML-versiot.
@@ -14,8 +12,8 @@ Pääset NetBeans-ohjeisiin [tästä](netbeans.html).
 
 ## Sivujen luonti
 
-Luo repositorioosi kansio <code>html-demo</code> ja lähde rakentamaan sinne HTML-versiota työstäsi. 
-Javalla ohjelmoivat voivat testauksen helpottamiseksi sijoittaa HTML-tiedostonsa kansioon <code>web/html-demo</code>.
+Luo repositorioosi kansio `html-demo` ja lähde rakentamaan sinne HTML-versiota työstäsi. 
+Javalla ohjelmoivat voivat testauksen helpottamiseksi sijoittaa HTML-tiedostonsa kansioon `web/html-demo`.
 Sijoita kaikki tässä vaiheessa tekemäsi HTML-tiedostot tuohon kansioon.
 
 ### HTML-sivun luonti NetBeansillä
@@ -30,8 +28,8 @@ NetBeansin käyttäjät voivat luoda HTML-tiedostoja projektiinsa seuraavasti:
     * Voit halutessasi valita tyypiksi myös PHP->PHP Web Page
 
 Poista kummassakin tapauksessa NetBeansin alkuun lisäämä Template-kommentti.
-Ota kommentin luominen pois päältä valitsemalla valikosta <code>Tools->Templates</code>.
-Avaa listassa kohdan _Licenses_ alla oleva tiedosto <code>Default License</code> ja tyhjennä sen sisältö.
+Ota kommentin luominen pois päältä valitsemalla valikosta `Tools->Templates`.
+Avaa listassa kohdan _Licenses_ alla oleva tiedosto `Default License` ja tyhjennä sen sisältö.
 
 ### HTML ja CSS
 
@@ -51,11 +49,11 @@ Mikäli loit tiedostosi NetBeansillä näyttää se tältä:
 ~~~~
 
 Tehdään sivusta vähän nätimpi CSS:llä. Lataa twitterin mainio [Bootstrap-kirjasto](http://getbootstrap.com/)
-ja pura paketin sisältä dist kansion sisältö projektisi juureen tai Javalla <code>web</code>-kansioon.
-Tarkoituksena on, että bootstrapin <code>css</code>, <code>fonts</code> ja <code>js</code>-kansiot
-sijoittuvat samaan kansioon kuin edellä luomasi <code>html-demo</code>-kansio. 
+ja pura paketin sisältä dist kansion sisältö projektisi juureen tai Javalla `web`-kansioon.
+Tarkoituksena on, että bootstrapin `css`, `fonts` ja `js`-kansiot
+sijoittuvat samaan kansioon kuin edellä luomasi `html-demo`-kansio. 
 
-Tämän jälkeen luo <code>css</code>-kansioon vielä oma tyylitiedostosi <code>main.css</code>. (NetBeansillä tyylitiedoston luonti löytyy kategoriasta _Other_ nimellä _Cascading Style Sheet_). Tähän tiedostoon voit sijoittaa omat projektikohtaiset tyylimääritelmäsi. Älä sijoita tiedostoon vielä mitään.
+Tämän jälkeen luo `css`-kansioon vielä oma tyylitiedostosi `main.css`. (NetBeansillä tyylitiedoston luonti löytyy kategoriasta _Other_ nimellä _Cascading Style Sheet_). Tähän tiedostoon voit sijoittaa omat projektikohtaiset tyylimääritelmäsi. Älä sijoita tiedostoon vielä mitään.
 
 Lisätään CSS-tiedostoihin linkit laittamalla HTML-tiedoston head-tägin sisään:
 
@@ -66,42 +64,68 @@ Lisätään CSS-tiedostoihin linkit laittamalla HTML-tiedoston head-tägin sisä
 ~~~
 
 Nyt voimme käyttää Bootstrapin kirjastoja erilaisten käyttöliittymäkomponenttien luomiseen. Alla esimerkkejä.
+Lisää Bootstrap-esimerkkejä voi katsoa Bootstrapin sivujen [CSS](http://getbootstrap.com/css/)- ja [Components](http://getbootstrap.com/components/)-osioista.
 
 <tabs>
 <tab title="Tabinavigaatio">
+
+Käyttämällä luokkia `nav` ja `nav-tabs` saadaan tavallinen ul-elementti toimimaan [tabinavigaationa](http://getbootstrap.com/components/#nav).
+
+<iframe src="{{rootdir}}src/{{curdir}}esimerkit/tabit.html" ></iframe>
+
+Esimerkin lähdekoodi:
 
 ~~~~ {#html execute=bash type=block}
 ./extract-tag.pl body src/{{curdir}}esimerkit/tabit.html
 ~~~~
 
-<iframe src="{{rootdir}}src/{{curdir}}esimerkit/tabit.html" ></iframe>
-
 </tab>
 <tab title="Sivunavigaatio">
+
+Luokilla `row` ja `col-md-<leveys>` varustetuilla div-elementeillä on mahdollista laittaa 
+käyttöliittymäelementtejä helposti vierekkäin. Bonuksena elementit limittyvät
+päällekkäisiksi jos sivulta loppuu tila. Bootstrapin Grid-järjestelmästä lisää [täältä](http://getbootstrap.com/css/#grid).
+
+Huomaam myös kätevä `panel`-luokka, jolla saa helposti aikaan nättejä [laatikoita](http://getbootstrap.com/components/#panels).
+
+<iframe src="{{rootdir}}src/{{curdir}}esimerkit/sivunavi.html" ></iframe>
+
+Esimerkin lähdekoodi:
 
 ~~~~ {#html execute=bash type=block}
 ./extract-tag.pl body src/{{curdir}}esimerkit/sivunavi.html | sed -e s/-xs-/-md-/g 
 ~~~~
 
-<iframe src="{{rootdir}}src/{{curdir}}esimerkit/sivunavi.html" ></iframe>
-
 </tab>
 <tab title="Listaus">
+
+Useimmat listaukset kannattaa tehdä HTML-taulukoilla. 
+Bootstrapissa on hyvät oletustyylit tätä varten luokilla `table` ja `table-striped`.
+[Muitakin käteviä tyylejä](http://getbootstrap.com/css/#tables) löytyy.
+
+Listauksessa on myös käytetty hyväksi Bootstrapin tukea [napeille](http://getbootstrap.com/css/#buttons) ja [Glyphicon-kuvakkeille](http://getbootstrap.com/components/#glyphicons).
+
+<iframe src="{{rootdir}}src/{{curdir}}esimerkit/table.html" ></iframe>
+
+Esimerkin lähdekoodi:
 
 ~~~~ {#html execute=bash type=block}
 ./extract-tag.pl body src/{{curdir}}esimerkit/table.html | sed -e s/-xs-/-md-/g 
 ~~~~
 
-<iframe src="{{rootdir}}src/{{curdir}}esimerkit/table.html" ></iframe>
-
 </tab>
 <tab title="Lomake">
+
+Bootstrap tukee lomakkeiden tyylittelyyn samankaltaisia [rivi- ja sarakeluokkia](http://getbootstrap.com/css/#forms-horizontal) kuin yleiseen asetteluunkin.
+Myös [monia muita tapoja](http://getbootstrap.com/css/#forms) tyylitellä lomakkeita löytyy.
+
+<iframe src="{{rootdir}}src/{{curdir}}esimerkit/lomake.html" ></iframe>
+
+Esimerkin lähdekoodi:
 
 ~~~~ {#html execute=bash type=block}
 ./extract-tag.pl body src/{{curdir}}esimerkit/lomake.html | sed -e s/-xs-/-md-/g 
 ~~~~
-
-<iframe src="{{rootdir}}src/{{curdir}}esimerkit/lomake.html" ></iframe>
 
 </tab>
 </tabs>

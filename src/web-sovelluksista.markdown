@@ -42,7 +42,7 @@ aineistopyynnöt jakautuvat kahteen tyyppiin: _GET- ja POST-pyyntöihin_.
 
 GET-pyynnöt ovat yleisempiä ja niiden mukana välitetään vain evästeet
 ja osoitteeseen kirjoitetut _GET-parametrit_, jotka kirjoitetaan osoitteeseen tiedostonimen
-perään seuraavaan tapaan <code>http://sivusto.fi/index.php?parametri=arvo&toinenParametri=43</code>.
+perään seuraavaan tapaan `http://sivusto.fi/index.php?parametri=arvo&toinenParametri=43`.
 POST-pyynnöt lähetetään yleensä lomakkeita lähettäessä ja niissä käytettävät _POST-parametrit_
 upotetaan piilotettuna aineistopyynnön otsakkeiden sisään (itseasiassa hyvin samaan tapaan kuin evästeet).
 Myös POST-pyynnöissä voi käyttää GET-parametreja, joskin se on harvinaisempaa.

@@ -1,8 +1,6 @@
 % Viikko 2
 <!-- order: 1 -->
 
-<wip />
-
 <deadline>{{deadline2}}</deadline>
 
 Toisen viikon työt aloitetaan suunnittelemalla työhön
@@ -20,9 +18,9 @@ Sinulla tulee olla tehtynä seuraavat asiat:
     * [Järjestelmän tietosisältö]({{rootdir}}dokumentaatio-ohje.html#j%C3%A4rjestelm%C3%A4n-tietosis%C3%A4lt%C3%B6)
     * [Relaatiotietokantakaavio]({{rootdir}}dokumentaatio-ohje.html#relaatiotietokantakaavio)
     * Tiedostot sovelluksen tietokannan taulujen luomiseen ja alasajoon 
-        * <code>sql/create-tables.sql</code>
-        * <code>sql/drop-tables.sql</code>
-        * <code>sql/add-test-data.sql</code>
+        * `sql/create-tables.sql`
+        * `sql/drop-tables.sql`
+        * `sql/add-test-data.sql`
 * [HTML-demoversio sovelluksesta](html-versioiden-luonti.html)
 
 <ohje>

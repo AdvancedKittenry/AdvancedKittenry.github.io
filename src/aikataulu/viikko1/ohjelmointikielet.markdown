@@ -19,7 +19,7 @@ Liian esoteerisillä välineillä tehdyillä töillä on usein tapana jäädä k
 
 Perussyntaksiltaan PHP ja Java ovat aika samanlaisia, sillä
 molemmat ovat perineet syntaksinsa C-kieleltä.
-PHP on tosin lainannut Perliltä tavan käyttää dollaria <code>$muuttujien</code> nimien edessä.
+PHP on tosin lainannut Perliltä tavan käyttää dollaria `$muuttujien` nimien edessä.
 Esimerkiksi luokka Kahvikuppi määriteltäisiin näissä kielissä seuraavasti:
 
 <sidebyside>
@@ -69,7 +69,7 @@ Tämä tekee PHP:n käyttämisestä yksinkertaisten nettisivujen tekemiseen erit
 ~~~~php<include src="esimerkit/helloworld.php" />~~~~
 
 Yllä oleva sivu toimii sellaisenaan, kun osoittaa selaimensa osoitteeseen, jossa helloworld.php-tiedosto sijaitsee.
-Esim. <code>sivusto.fi/php-sovelluksen/osoite/helloworld.php</code>.
+Esim. `sivusto.fi/php-sovelluksen/osoite/helloworld.php`.
 Javalla vastaavan tekeminen on hieman monimutkaisempaa ja vaatii Servlet-luokan ja template-tiedoston:
 
 **src/java/servlets/HelloWorldServlet.java**
@@ -80,7 +80,7 @@ Javalla vastaavan tekeminen on hieman monimutkaisempaa ja vaatii Servlet-luokan 
 
 ~~~~html<include src="esimerkit/helloworld.jsp" />~~~~
 
-Ylläoleva ohjelma käynnistyy melko lailla PHP-esimerkin tapaan osoitteessa <code>sivusto.fi/java-sovelluksen/osoite/HelloWorld</code>.
+Ylläoleva ohjelma käynnistyy melko lailla PHP-esimerkin tapaan osoitteessa `sivusto.fi/java-sovelluksen/osoite/HelloWorld`.
 Tässä käytetty JSP-tiedostoformaatti on Javan-vastaus PHP:n suoraviivaiselle tavalle käsitellä HTML:n tulostusta ja
 sitä on varsin yksinkertaista käyttää.
 

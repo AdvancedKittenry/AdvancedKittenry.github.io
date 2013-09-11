@@ -15,18 +15,18 @@ Tämä on hyvin yleinen ongelma laitoksen ympäristöissä, joissa salasanoja on
 Mikäli et ole ladannut itsellesi web-tuen sisältävää NetBeansia
 joudut tässä vaiheessa asentaaman NetBeansiisii käyttämäsi kielen web-tuen.
 
-Tämä on melko helppoa, etsi <code>Tools</code>-valikosta kohta <code>Plugins</code> ja avaa se.
-Tarkista välilehdeltä <code>Installed</code>, onko Java Web and EE tai PHP jo asennettuna.
+Tämä on melko helppoa, etsi `Tools`-valikosta kohta `Plugins` ja avaa se.
+Tarkista välilehdeltä `Installed`, onko Java Web and EE tai PHP jo asennettuna.
 Jos on, riittää että aktivoit sen. 
 
 ![Laajennosten aktivoiminen]({{myimgdir}}netbeans/activate-plugins.png)
 
-Mikäli laajennokset eivät ole jo asennettuina, joudut etsimään ne <code>Available Plugins</code>-välilehden listasta
+Mikäli laajennokset eivät ole jo asennettuina, joudut etsimään ne `Available Plugins`-välilehden listasta
 ja asentamaan ne sieltä. 
 Javan tapauksessa etsi käsiisi laajennos Java EE Base, joka on kategoriassa Java Web and EE.
 PHP-tukea varten riittää asentaa laajennos nimeltä PHP.
 
-Saatat joutua ottamaan NetBeansin Update Centereitä käyttöön <code>Settings</code>-välilehdeltä käsin ja 
+Saatat joutua ottamaan NetBeansin Update Centereitä käyttöön `Settings`-välilehdeltä käsin ja 
 päivittämään laajennosten listan, että saat oikeat vaihtoehdot näkyviin. 
 
 </box>
@@ -51,7 +51,7 @@ mutta luonnin jälkeen projektin voi siirtää repositorioon.
 
 Tässä vaihessa lomake kysyy sinulta mitä palvelinta
 haluat käyttää. Mikäli sinulla on jo Apache käytössä, valitse se.
-Todennäköisesti listassa ei ole mitään valintaa, jolloin sinun pitää valita <code>Add</code>.
+Todennäköisesti listassa ei ole mitään valintaa, jolloin sinun pitää valita `Add`.
 Valitse palvelimeksi Apache Tomcat.
 
 ![]({{myimgdir}}netbeans/java3-addserver.png)
@@ -93,12 +93,12 @@ ainakin laitoksen koneilla:
 ![Kryptinen virheilmoitus]({{myimgdir}}netbeans/java7-virhe.png)
 
 Ohjeen kirjoittaja sai projektinsa toimimaan
-avaamalla <code>Tools</code>-valikosta 
-valinta <ocde>Ant Library Manager</code> ja
+avaamalla `Tools`-valikosta 
+valinta `Ant Library Manager` ja
 säätämällä kirjaston CopyLibs Task ominaisuuksia.
 
 Mikäli saat virheen laitoksen koneilla, lisää Classpathiin
-osoite <code>/opt/netbeans-7.2/java/ant/extra</code>.
+osoite `/opt/netbeans-7.2/java/ant/extra`.
 Tämän jälkeen NetBeans mystisesti löytää kirjastonsa.
 
 ![Kirjaston polkujen oikeat asetukset]({{myimgdir}}netbeans/java8-tools-antLibraryManager.png)
@@ -117,7 +117,7 @@ Etsi tämän jälkeen projektisi tiedostojärjestelmästä
 ja siirrä kaikki sen kansiossa olevat tiedostot 
 omaan repositorioosi. 
 Jos et ole sitä jo aiemmin tehnyt, luo repositorioosi myös tiedosto
-<code>.gitignore</code> ja laita siihen ainakin seuraavat rivit:
+`.gitignore` ja laita siihen ainakin seuraavat rivit:
 
 ~~~
 build
@@ -149,10 +149,10 @@ on tiedostoja, mutta se ei haittaa.
 Konfiguroi seuraavassa ikkunassa projektisi
 tyypiksi "Remote Web Site (FTP, SFTP)".
 Laita kohtaan Project URL osoite
-<code>http://kayttajatunnuksesi.users.cs.helsinki.fi</code>
+`http://kayttajatunnuksesi.users.cs.helsinki.fi`
 ja kohtaan Upload Directory polku
-<code>/htdocs</code>
-Paina sen jälkeen Remote Connections -kohdassa olevaa <code>Manage</code>-nappia
+`/htdocs`
+Paina sen jälkeen Remote Connections -kohdassa olevaa `Manage`-nappia
 
 ![]({{myimgdir}}netbeans/php2.5-config.png)
 
@@ -162,9 +162,9 @@ Users ja laita tyypiksi SFTP.
 ![]({{myimgdir}}netbeans/php3-connection.png)
 
 Nyt NetBeans antaa täyttää yhteyden tarkemmat tiedot.
-Laita Host Name -kohtaan osoite <code>users.cs.helsinki.fi</code>
+Laita Host Name -kohtaan osoite `users.cs.helsinki.fi`
 käyttäjätunnukseksi ja salasanaksi cs-tunnuksesi käyttäjätunnus ja salasanaa
-ja kohtaan Initial Directory teksti </code>/home/kayttajatunnuksesi</code>
+ja kohtaan Initial Directory teksti `/home/kayttajatunnuksesi`
 omalla käyttäjätunnuksellasi toki. 
 Paina sen jälkeen nappia Test Connection ja jos yhteys toimii tallenna yhteyden tiedot.
 
@@ -184,7 +184,7 @@ sivut toimivat.
 Tee se seuraamalla [näitä ohjeita](http://www.cs.helsinki.fi/u/laine/tikas/php_ohje.html).
 
 Viimeistään tässä vaiheessa, luo repositorioosi tiedosto
-<code>.gitignore</code> ja laita siihen ainakin seuraava rivi:
+`.gitignore` ja laita siihen ainakin seuraava rivi:
 
 ~~~
 nbproject/private
