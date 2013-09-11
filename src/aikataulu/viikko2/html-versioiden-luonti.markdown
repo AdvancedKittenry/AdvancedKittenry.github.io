@@ -14,8 +14,8 @@ Pääset NetBeans-ohjeisiin [tästä](netbeans.html).
 
 ## Sivujen luonti
 
-Luo repositorioosi kansio <code>html-demo</code> ja lähde rakentamaan sinne HTML-versiota työstäsi. 
-Javalla ohjelmoivat voivat testauksen helpottamiseksi sijoittaa HTML-tiedostonsa kansioon <code>web/html-demo</code>.
+Luo repositorioosi kansio `html-demo` ja lähde rakentamaan sinne HTML-versiota työstäsi. 
+Javalla ohjelmoivat voivat testauksen helpottamiseksi sijoittaa HTML-tiedostonsa kansioon `web/html-demo`.
 Sijoita kaikki tässä vaiheessa tekemäsi HTML-tiedostot tuohon kansioon.
 
 ### HTML-sivun luonti NetBeansillä
@@ -30,8 +30,8 @@ NetBeansin käyttäjät voivat luoda HTML-tiedostoja projektiinsa seuraavasti:
     * Voit halutessasi valita tyypiksi myös PHP->PHP Web Page
 
 Poista kummassakin tapauksessa NetBeansin alkuun lisäämä Template-kommentti.
-Ota kommentin luominen pois päältä valitsemalla valikosta <code>Tools->Templates</code>.
-Avaa listassa kohdan _Licenses_ alla oleva tiedosto <code>Default License</code> ja tyhjennä sen sisältö.
+Ota kommentin luominen pois päältä valitsemalla valikosta `Tools->Templates`.
+Avaa listassa kohdan _Licenses_ alla oleva tiedosto `Default License` ja tyhjennä sen sisältö.
 
 ### HTML ja CSS
 
@@ -51,11 +51,11 @@ Mikäli loit tiedostosi NetBeansillä näyttää se tältä:
 ~~~~
 
 Tehdään sivusta vähän nätimpi CSS:llä. Lataa twitterin mainio [Bootstrap-kirjasto](http://getbootstrap.com/)
-ja pura paketin sisältä dist kansion sisältö projektisi juureen tai Javalla <code>web</code>-kansioon.
-Tarkoituksena on, että bootstrapin <code>css</code>, <code>fonts</code> ja <code>js</code>-kansiot
-sijoittuvat samaan kansioon kuin edellä luomasi <code>html-demo</code>-kansio. 
+ja pura paketin sisältä dist kansion sisältö projektisi juureen tai Javalla `web`-kansioon.
+Tarkoituksena on, että bootstrapin `css`, `fonts` ja `js`-kansiot
+sijoittuvat samaan kansioon kuin edellä luomasi `html-demo`-kansio. 
 
-Tämän jälkeen luo <code>css</code>-kansioon vielä oma tyylitiedostosi <code>main.css</code>. (NetBeansillä tyylitiedoston luonti löytyy kategoriasta _Other_ nimellä _Cascading Style Sheet_). Tähän tiedostoon voit sijoittaa omat projektikohtaiset tyylimääritelmäsi. Älä sijoita tiedostoon vielä mitään.
+Tämän jälkeen luo `css`-kansioon vielä oma tyylitiedostosi `main.css`. (NetBeansillä tyylitiedoston luonti löytyy kategoriasta _Other_ nimellä _Cascading Style Sheet_). Tähän tiedostoon voit sijoittaa omat projektikohtaiset tyylimääritelmäsi. Älä sijoita tiedostoon vielä mitään.
 
 Lisätään CSS-tiedostoihin linkit laittamalla HTML-tiedoston head-tägin sisään:
 

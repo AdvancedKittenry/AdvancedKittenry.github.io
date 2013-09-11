@@ -4,9 +4,9 @@
 <summary>
 * Suunnittele tietokantasi
 * [Luo tiedostot tietokannan taulujen luomiseen ja alasajoon](#tietokannan-alustustiedostojen-luominen)
-    * <code>sql/create-tables.sql</code>
-    * <code>sql/drop-tables.sql</code>
-    * <code>sql/add-test-data.sql</code>
+    * `sql/create-tables.sql`
+    * `sql/drop-tables.sql`
+    * `sql/add-test-data.sql`
 </summary>
 
 Suunniteltuasi sovelluksen ulkoasua, uppoa tietokantataulujen
@@ -78,7 +78,7 @@ repositoriosi doc-kansioon niin ne pysyvät tallessa muutosten varalta.
 
 Muistele Tietokantojen perusteet -kurssilla oppimaasi SQL-kieltä ja tutustu valitsemasi tietokannan dokumentaatioon.
 Luo sitten repositorioosi sql-kansio ja sijoita siihen kolme sql-tiedostoa:
-<code>create-tables.sql</code>, <code>drop-tables.sql</code> ja <code>add-test-data.sql</code>.
+`create-tables.sql`, `drop-tables.sql` ja `add-test-data.sql`.
 Kirjoita näihin tiedostoihin tietokantasi alustavat create table -lauseet, drop table -lauseet, ja testidatan (oletuskäyttäjätunnusten yms.) luominen.
 
 SQL-lauseiden sijoittaminen tiedostoihin mahdollistaa kannan helpon
@@ -103,8 +103,8 @@ psql < sql/create-tables.sql
 psql < sql/add-test-data.sql
 ~~~~
 
-Tiedostossa <code>drop-tables.sql</code> kannattaa käyttää pudotuskäskystä
-muotoa <code>DROP TABLE IF EXISTS taulun_nimi</code>. 
+Tiedostossa `drop-tables.sql` kannattaa käyttää pudotuskäskystä
+muotoa `DROP TABLE IF EXISTS taulun_nimi`. 
 Näin tietokantataulun puuttuminen ei katkaise komentosarjaa. 
 Viiteavaimien takia joudut myös yleensä kirjoittamaan pudotuskäskyt päinvastaisessa
 järjestyksessä luontilauseisiin nähden. Muuten viite-eheystarkistukset eivät välttämättä anna ajaa kantaa alas.
