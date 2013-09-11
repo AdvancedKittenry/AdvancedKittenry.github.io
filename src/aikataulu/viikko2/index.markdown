@@ -1,8 +1,6 @@
 % Viikko 2
 <!-- order: 1 -->
 
-<wip />
-
 <deadline>{{deadline2}}</deadline>
 
 Toisen viikon työt aloitetaan suunnittelemalla työhön

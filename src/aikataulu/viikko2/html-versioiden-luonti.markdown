@@ -1,8 +1,6 @@
 % HTML-versioiden luominen
 <!-- order: 5 -->
 
-<wip />
-
 Tässä vaiheessa työtä siirrytään suunnittelusta käytäntöön
 ja luodaan suunnitelluista sivuista oikean näköiset, mutta
 vielä staattiset HTML-versiot.
