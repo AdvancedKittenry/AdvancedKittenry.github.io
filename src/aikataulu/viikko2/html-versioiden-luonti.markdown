@@ -66,42 +66,68 @@ Lisätään CSS-tiedostoihin linkit laittamalla HTML-tiedoston head-tägin sisä
 ~~~
 
 Nyt voimme käyttää Bootstrapin kirjastoja erilaisten käyttöliittymäkomponenttien luomiseen. Alla esimerkkejä.
+Lisää Bootstrap-esimerkkejä voi katsoa Bootstrapin sivujen [CSS](http://getbootstrap.com/css/)- ja [Components](http://getbootstrap.com/components/)-osioista.
 
 <tabs>
 <tab title="Tabinavigaatio">
+
+Käyttämällä luokkia `nav` ja `nav-tabs` saadaan tavallinen ul-elementti toimimaan [tabinavigaationa](http://getbootstrap.com/components/#nav).
+
+<iframe src="{{rootdir}}src/{{curdir}}esimerkit/tabit.html" ></iframe>
+
+Esimerkin lähdekoodi:
 
 ~~~~ {#html execute=bash type=block}
 ./extract-tag.pl body src/{{curdir}}esimerkit/tabit.html
 ~~~~
 
-<iframe src="{{rootdir}}src/{{curdir}}esimerkit/tabit.html" ></iframe>
-
 </tab>
 <tab title="Sivunavigaatio">
+
+Luokilla `row` ja `col-md-<leveys>` varustetuilla div-elementeillä on mahdollista laittaa 
+käyttöliittymäelementtejä helposti vierekkäin. Bonuksena elementit limittyvät
+päällekkäisiksi jos sivulta loppuu tila. Bootstrapin Grid-järjestelmästä lisää [täältä](http://getbootstrap.com/css/#grid).
+
+Huomaam myös kätevä `panel`-luokka, jolla saa helposti aikaan nättejä [laatikoita](http://getbootstrap.com/components/#panels).
+
+<iframe src="{{rootdir}}src/{{curdir}}esimerkit/sivunavi.html" ></iframe>
+
+Esimerkin lähdekoodi:
 
 ~~~~ {#html execute=bash type=block}
 ./extract-tag.pl body src/{{curdir}}esimerkit/sivunavi.html | sed -e s/-xs-/-md-/g 
 ~~~~
 
-<iframe src="{{rootdir}}src/{{curdir}}esimerkit/sivunavi.html" ></iframe>
-
 </tab>
 <tab title="Listaus">
+
+Useimmat listaukset kannattaa tehdä HTML-taulukoilla. 
+Bootstrapissa on hyvät oletustyylit tätä varten luokilla `table` ja `table-striped`.
+[Muitakin käteviä tyylejä](http://getbootstrap.com/css/#tables) löytyy.
+
+Listauksessa on myös käytetty hyväksi Bootstrapin tukea [napeille](http://getbootstrap.com/css/#buttons) ja [Glyphicon-kuvakkeille](http://getbootstrap.com/components/#glyphicons).
+
+<iframe src="{{rootdir}}src/{{curdir}}esimerkit/table.html" ></iframe>
+
+Esimerkin lähdekoodi:
 
 ~~~~ {#html execute=bash type=block}
 ./extract-tag.pl body src/{{curdir}}esimerkit/table.html | sed -e s/-xs-/-md-/g 
 ~~~~
 
-<iframe src="{{rootdir}}src/{{curdir}}esimerkit/table.html" ></iframe>
-
 </tab>
 <tab title="Lomake">
+
+Bootstrap tukee lomakkeiden tyylittelyyn samankaltaisia [rivi- ja sarakeluokkia](http://getbootstrap.com/css/#forms-horizontal) kuin yleiseen asetteluunkin.
+Myös [monia muita tapoja](http://getbootstrap.com/css/#forms) tyylitellä lomakkeita löytyy.
+
+<iframe src="{{rootdir}}src/{{curdir}}esimerkit/lomake.html" ></iframe>
+
+Esimerkin lähdekoodi:
 
 ~~~~ {#html execute=bash type=block}
 ./extract-tag.pl body src/{{curdir}}esimerkit/lomake.html | sed -e s/-xs-/-md-/g 
 ~~~~
-
-<iframe src="{{rootdir}}src/{{curdir}}esimerkit/lomake.html" ></iframe>
 
 </tab>
 </tabs>
