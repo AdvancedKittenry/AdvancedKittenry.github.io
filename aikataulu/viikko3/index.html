@@ -90,6 +90,10 @@
 <li><a href="../../aikataulu/viikko2/netbeans.html">NetBeansin käyttöönotto</a></li>
 <li><a href="../../aikataulu/viikko2/html-versioiden-luonti.html">HTML-versioiden luominen</a></li>
 </ul></li>
+<li class="selected"><a href="../../aikataulu/viikko3/index.html">Viikko 3</a>
+<ul>
+<li><a href="../../aikataulu/viikko3/arkkitehtuuri.html">Arkkitehtuuriohje</a></li>
+</ul></li>
 <li><a href="../../aikataulu/demo.html">Demotilaisuus</a></li>
 <li><a href="../../aikataulu/palautus.html">Työn palautus</a></li>
 </ul></li>
@@ -107,7 +111,6 @@
 <h1 class="title">Viikko 3</h1>
 </header>
 <!-- order: 1 -->
-<!-- hidden! -->
 
 <section class="alert alert-warning small"><h3>
 Deadline:
@@ -115,18 +118,47 @@ Deadline:
 <span class="coursekeyword deadline3">pe 20.9 klo 23:00</span>
 </section>
 
+<p>Kolmannen viikon pääteemana on aloittaa hyvän arkkitehtuurin mukainen koodaaminen ja toteuttaa kirjautuminen.</p>
+<div class="wip panel">
+  <div class="panel-body">
+    <h3>
+Work in progress
+</h3>
+    
+Tämän sivun sisältö on vielä työn alla ja saattaa muuttua kurssin edetessä.
+</div>
+</div>
+
+
+
+<p>Palautuspäivämäärään mennessä työn on täytettävä seuraavat vaatimukset:</p>
 <ul>
-<li>Yleistä arkkitehtuurista</li>
-<li>Template-tiedostojen käyttö (php, java)</li>
-<li>Mallien kirjoittaminen</li>
-<li>Yksinkertainen lomakekäsittelijä</li>
-<li>Istunnot, kirjautuminen ja virhetilanteet</li>
-<li>Käytettävyys</li>
+<li>Työssä on noudatettu <a href="arkkitehtuuri.html">arkkitehtuuriohjeen MVC-kolmijakoa</a></li>
+<li>Toteutettu yleinen luokka perusasioihin
+<ul>
+<li>Osaa näyttää näkymän niin, että siihen haetaan erillisestä näkymätiedostosta sovelluksen käyttöliittymä ja navigaatio.</li>
+<li>Osaa ohjata selaimen toiselle sivulle (HTTP redirect)</li>
+<li>Tarjoaa tavan näyttää käyttäjälle virheilmoituksia, jotka näytetään automaattisesti sivuilla, jos jokin menee pieleen.</li>
+</ul></li>
+<li>Sovellukseen kirjautuminen toimii
+<ul>
+<li>Käyttää valitsemasi kielen istuntotukea kirjautumisen muistamiseen</li>
+<li>Ei tarvitse käyttää vielä tietokantaa</li>
+<li>Antaa käyttäjälle virheilmoituksen jos kirjautuminen ei onnistu</li>
+<li>Ohjaa jollekin näkymäsivulle (esim. etusivu), kun kirjautuminen onnistuu
+<ul>
+<li>Näkymäsivu ei päästä käyttäjää sisään/näyttää erilaiselta jos käyttäjä ei ole kirjautunut.</li>
+</ul></li>
+</ul></li>
+<li>Mikäli sovelluksessa ei ole lainkaan kirjautumistoimintoja, tee alustava versio jostain lisäys- ja muokkauslomakkeesta.</li>
 </ul>
 <section class="alert alert-success"><h3>
 Ohje:
 </h3>
-<p>Aloita <a href="404.html">tästä</a> ja seuraa vihreitä ohjelaatikoita.</p>
+<p>Aloita lukemalla <a href="arkkitehtuuri.html">arkkitehtuuriohje</a>.</p>
+<p>Ohjeiden jälkeen ei valitettavasti ole vielä sisältöä siitä miten ohjelmat kannatta toteuttaa, mutta sitä on tulossa lisää lähipäivien aikana.</p>
+<!-- ja seuraa vihreitä ohjelaatikoita. -->
+
 <p>Tehtyäsi kaiken varmista, että kaikki tekemäsi muutokset näkyvät GitHub-repositoriossasi.</p>
 </section>
 

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <title></title>
+  <title>Arkkitehtuuriohje</title>
   <style type="text/css">code{white-space: pre;}</style>
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -90,6 +90,10 @@
 <li><a href="../../aikataulu/viikko2/netbeans.html">NetBeansin käyttöönotto</a></li>
 <li><a href="../../aikataulu/viikko2/html-versioiden-luonti.html">HTML-versioiden luominen</a></li>
 </ul></li>
+<li><a href="../../aikataulu/viikko3/index.html">Viikko 3</a>
+<ul>
+<li class="selected"><a href="../../aikataulu/viikko3/arkkitehtuuri.html">Arkkitehtuuriohje</a></li>
+</ul></li>
 <li><a href="../../aikataulu/demo.html">Demotilaisuus</a></li>
 <li><a href="../../aikataulu/palautus.html">Työn palautus</a></li>
 </ul></li>
@@ -103,18 +107,59 @@
 </nav>
 </div>
 <div class="col-md-6" id="content">
-<p>Toiminta palvelimessa:</p>
-<ul>
-<li>Pyynnön vastaanotto</li>
-<li>Käyttöoikeuden tarkistus (&amp; istunnon tilan selvitys)</li>
-<li>Pyyntöparametrien purkaminen</li>
-<li>Palvelun valinta parametrien perusteella</li>
-<li>Palvelun suoritus / datan haku</li>
-<li>Palautteen sisällön määrittely</li>
-<li>Istunnon tilan tallennus</li>
-<li>Palautteen valmistelu asiakkaalle</li>
-<li>Palautesivun muotoilu</li>
-</ul>
+<header>
+<h1 class="title">Arkkitehtuuriohje</h1>
+</header>
+<p>Tällä kurssilla pyritään kevyeen <a href="http://fi.wikipedia.org/wiki/MVC-arkkitehtuuri">MVC-mallin</a> mukaiseen koodiarkkitehtuuriin.</p>
+<p>Käytännössä tämä tarkoittaa sitä, että koodi jaetaan kolmeen osaan: <em>näkymiin</em>, <em>käsittelijöihin</em> ja <em>malleihin</em> (engl. views, controllers ja models).</p>
+<section id="koodin-sijoittelu-tiedostojärjestelmään" class="level2">
+<h2>Koodin sijoittelu tiedostojärjestelmään</h2>
+<p>Eri osioiden koodit sijoitetaan käytetystä kielestä eri paikkaan. Ohjaajien toiveet sijoittelusta ovat alla:</p>
+<ul class='nav nav-tabs nav-justified'><li class='active'>
+<a href='#tab_1_0' data-toggle='tab'>PHP-esimerkkisijoittelu</a>
+</li>
+<li>
+<a href='#tab_1_1' data-toggle='tab'>Java-esimerkkisijoittelu</a>
+</li></ul><div class='panel panel-default'><div class='panel-body'><div class='tab-content'>
+<section class='tab-pane active' id='tab_1_0' >
+
+<p>PHP:tä käytettäessä sijoita mallit ja näkymät omiin kansioihinsa. Kontrollerit voit halutessasi jättää projektin juureen tai sijoittaa nekin omaan kansioonsa. Kansioiden nimet voi halutessaan suomentaa.</p>
+<pre><code>views/
+  userlist.php
+models/
+  user.php
+users.php (Käyttäjänhallinnan käsittelijä)</code></pre>
+</section>
+<section class='tab-pane' id='tab_1_1' >
+
+<p>Javaa käytettäessä sijoita mallit ja käsittelijät - Javan tapauksessa Servletit - omiin paketteihinsa projektin yhteisen paketin alle src-kansioon. Näkymät - eli yleensä jsp-tiedostot - menevät omaan kansioonsa joka on oletuksena nimeltään web.</p>
+<pre><code>src/
+  Paketti/
+    Models/
+      User.java
+    Servlets/
+      UserServlet.java
+web/
+  user.jsp</code></pre>
+</section>
+</div></div></div>
+
+</section>
+<section id="mallit" class="level2">
+<h2>Mallit</h2>
+<p>Mallit sisältävät järjestelmän tiedon tallentamisen, ylläpidon ja käsittelyyn liittyviä toimintoja. Ne toteutetaan yleensä keräämällä eri asioihin ja tietokohteisiin liittyviä toimintoja luokiksi.</p>
+<p>Esimerkiksi käyttäjille on hyvä olla oma luokkansa, joka sisältää ainakin samat kentät kuin käyttäjien tietokantataulu, ja jossa on metodit joilla voi hakea, lisätä, muokata ja poistaa käyttäjiä. Usein voi olla järkevää tehdä malleja myös abstraktimmeille asioille kuten käyttäjän kirjautumiselle.</p>
+</section>
+<section id="näkymät" class="level2">
+<h2>Näkymät</h2>
+<p>Näkymä määrittää käyttöliittymän ulkoasun ja tietojen näytön esityksen käyttöliittymässä. Tietokantasovelluksen tapauksessa käytetään erilaisia template-tiedostoja. Javalla käytetään JSP-tiedostoja, PHP:llä tavallisia php-tiedostoja. Kummassakin on lähinnä HTML-koodia, jonka seassa on hieman ohjelmakoodia.</p>
+<p>Yleensä on tapana myös tehdä muutama näkymätiedosto, joissa määritellään kaikille sovelluksen sivuille yhteisiä elementtejä.</p>
+</section>
+<section id="kontrollerit" class="level2">
+<h2>Kontrollerit</h2>
+<p>Käsittelijä eli kontrolleri tai ohjain vastaanottaa käyttäjältä tulevat HTTP-pyynnöt ja käsittelee niisssä tulevan informaation perusteella mallia sekä tuottaa jonkin näkymän vastauksena pyyntöön.</p>
+<p>Web-sovelluksessa käsittelijöitä on tyypillisesti kahdentyyppisiä: <em>näkymiä näyttäviä käsittelijöitä</em> ja <em>lomakekäsitteliöitä</em>. Näkymiä näyttävät käsittelijät yksinkertaisesti näyttävät jonkin näkymän, johon on yleensä haettu mallin avulla tietokannasta sisältöä. Lomakekäsittelijät sensijaan keskittyvät nimensä mukaan vastaanottamaan käyttäjän lähettämiä lomakkeita tai muita erilaisia toimintoja. Ne tekevät yleensä malleja käyttämällä muutoksia tietokantaan ja ohjaavat selaimen tämän jälkeen johonkin näkymään mahdollisen virheilmoituksen kera.</p>
+</section>
 </div>
 </div> 
 </div> 

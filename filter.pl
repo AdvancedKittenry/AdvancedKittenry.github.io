@@ -74,7 +74,7 @@ BEGIN {
       my $tabclass = " class='active'";
       my $contentclass = " active";
 
-      while ($data =~ /<tab\s+title=['"](\w*)['"]\s*>(.*?)<\/tab>\s*/sg) {
+      while ($data =~ /<tab\s+title=['"]([^'"]*)['"]\s*>(.*?)<\/tab>\s*/sg) {
         my $id = "tab_$tabBoxCount"."_$tab";
         my $content = "$startbox$2$endbox";
 

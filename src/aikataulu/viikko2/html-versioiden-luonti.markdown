@@ -1,5 +1,6 @@
 % HTML-versioiden luominen
 <!-- order: 5 -->
+<!-- addHeaderNavigation -->
 
 Tässä vaiheessa työtä siirrytään suunnittelusta käytäntöön
 ja luodaan suunnitelluista sivuista oikean näköiset, mutta
@@ -55,13 +56,24 @@ sijoittuvat samaan kansioon kuin edellä luomasi `html-demo`-kansio.
 
 Tämän jälkeen luo `css`-kansioon vielä oma tyylitiedostosi `main.css`. (NetBeansillä tyylitiedoston luonti löytyy kategoriasta _Other_ nimellä _Cascading Style Sheet_). Tähän tiedostoon voit sijoittaa omat projektikohtaiset tyylimääritelmäsi. Älä sijoita tiedostoon vielä mitään.
 
-Lisätään CSS-tiedostoihin linkit laittamalla HTML-tiedoston head-tägin sisään:
+Lisätään CSS-tiedostoihin linkit laittamalla HTML-tiedoston head-tägin sisään ja
+katso miten CSS muuttaa sivun ulkoasua hieman.
 
 ~~~HTML
 <link href="../css/bootstrap.css" rel="stylesheet">
 <link href="../css/bootstrap-theme.css" rel="stylesheet">
 <link href="../css/main.css" rel="stylesheet">
 ~~~
+
+<alert>
+Yllä oleva määritelmä hakee CSS-tiedostot luomasi `html-demo`-kansion _yläkansiossa_ olevasta `css`-kansiosta. (Kaksi pistettä tarkoittaa hakemistopoluissa aina ylähakemistoa.)
+
+Mikäli sivusi eivät näytä oikein tyylitellyiltä johtuu se todennäköisesti siitä, 
+että CSS-tiedostoja haetaan väärästä paikasta.
+Tarkista että linkit osoittavat sinne, missä tiedostot oikeasti ovat.
+</alert>
+
+### Bootstrap-esimerkkejä
 
 Nyt voimme käyttää Bootstrapin kirjastoja erilaisten käyttöliittymäkomponenttien luomiseen. Alla esimerkkejä.
 Lisää Bootstrap-esimerkkejä voi katsoa Bootstrapin sivujen [CSS](http://getbootstrap.com/css/)- ja [Components](http://getbootstrap.com/components/)-osioista.
@@ -150,19 +162,26 @@ Tästä saadun kokemuksen pohjalta muut sivut on helpompi tehdä valmiiksi.
 Lopulta palautuksesi kansiorakenteen pitäisi näyttää suurinpiirtein tältä:
 
 ~~~~
+css/
+  bootstrap.css
+  ...
 doc/
   dokumentaatio.pdf
   relaatiotietokantakaavio.dia
   sivukartta.png
   tietosisältökaavio.dia
-sql/
-  create-tables.sql
-  drop-tables.sql
-  add-test-data.sql
+fonts/
+  ...
 html-demo/
   index.html
   kissalista.html
   muokkaakissaa.html
+js/
+  ...
+sql/
+  create-tables.sql
+  drop-tables.sql
+  add-test-data.sql
   ...
 .gitignore
 ~~~~
