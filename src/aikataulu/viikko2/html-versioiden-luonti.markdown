@@ -135,7 +135,9 @@ omaan tyylitiedostoon määrittelyjä, jotka tekevät asioista värikkäämpiä.
 Voit halutessasi tutustua myös näiden ohjeiden lähdekoodiin.
 
 Tee nyt näitä ohjeita ja esimerkkejä mukaillen itsellesi kokonaiset demosivut, joissa jokaisella sivulla on käytetty samaa
-yleistä ulkoasua.
+yleistä ulkoasua. 
+Tekeminen kannattaa aloittaa yleisestä sivunavigaatiosta ja valita joku päätietokohde johon liittyvät sivut tekee valmiiksi ensin.
+Tästä saadun kokemuksen pohjalta muut sivut on helpompi tehdä valmiiksi.
 
 ## Linkkejä
 
@@ -162,6 +164,7 @@ html-demo/
   kissalista.html
   muokkaakissaa.html
   ...
+.gitignore
 ~~~~
 
 NetBeansia käyttävillä on projektissaa todennäköisesti huomattavasti enemmän tiedostoja.

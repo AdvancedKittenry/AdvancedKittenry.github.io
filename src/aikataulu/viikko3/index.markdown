@@ -11,6 +11,19 @@
 * Istunnot, kirjautuminen ja virhetilanteet
   * Käytettävyys
 
+<comment>
+TODO:
+* Laita melkein kaikki eri kielille spesifeihin tiedostoihin
+* Java
+    * Welcome pages
+    * Kansiot: models, servlets
+    * Abstrakti emäservlet
+* PHP
+    * Kansiot: models, views, mihin hittoon controllerit laitetaan?
+    * ???
+    * Profit
+</comment>
+
 <ohje>
 Aloita [tästä](404.html) ja seuraa vihreitä ohjelaatikoita.
 
