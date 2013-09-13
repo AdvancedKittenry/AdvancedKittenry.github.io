@@ -29,6 +29,6 @@ Hyödyllisiä sivuja:
 * [Dokumentointiohje](dokumentaatio-ohje.html)
 
 [kaytettavyys]: kaytettavyys.html
-[arkkitehtuuri]: arkkitehtuuri.html
+[arkkitehtuuri]: aikataulu/viikko3/arkkitehtuuri.html
 [cleancode]: cleancode.html
 [kielivalinta]: ohjelmointikielet/index.html

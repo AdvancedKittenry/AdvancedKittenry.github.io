@@ -90,6 +90,10 @@
 <li class="selected"><a href="../../aikataulu/viikko2/netbeans.html">NetBeansin käyttöönotto</a></li>
 <li><a href="../../aikataulu/viikko2/html-versioiden-luonti.html">HTML-versioiden luominen</a></li>
 </ul></li>
+<li><a href="../../aikataulu/viikko3/index.html">Viikko 3</a>
+<ul>
+<li><a href="../../aikataulu/viikko3/arkkitehtuuri.html">Arkkitehtuuriohje</a></li>
+</ul></li>
 <li><a href="../../aikataulu/demo.html">Demotilaisuus</a></li>
 <li><a href="../../aikataulu/palautus.html">Työn palautus</a></li>
 </ul></li>
@@ -179,7 +183,23 @@ NetBeans-projektin pystytys Java-projektille
 <img src="../../images/aikataulu/viikko2/netbeans/java-final.png" alt="Uusi projekti ensi kertaa ajossa" /><figcaption>Uusi projekti ensi kertaa ajossa</figcaption>
 </figure>
 <p>Mikäli et jostain syystä saa projektia toimimaan, ota viipymättä yhteyttä ohjaajasi.</p>
-<p>Saatuasi projektin kerran toimimaan, sulje se NetBeansisin näkymästä sulkematta kuitenkaan NetBeansia. Etsi tämän jälkeen projektisi tiedostojärjestelmästä ja siirrä kaikki sen kansiossa olevat tiedostot omaan repositorioosi. Jos et ole sitä jo aiemmin tehnyt, luo repositorioosi myös tiedosto <code>.gitignore</code> ja laita siihen ainakin seuraavat rivit:</p>
+<p>Saatuasi projektin kerran toimimaan on aika lisätä se git-repositorioon. Tämä tapahtuu suoraviivaisesti siirtämällä sen tiedostot repositorion juurikansioon. Sulje kuitenkin ennen siirtoa projekti NetBeansin näkymästä ettei NetBeans mene siirrosta sekaisin. Etsi tämän jälkeen projektisi tiedostojärjestelmästä ja siirrä kaikki sen kansiossa olevat tiedostot omaan repositorioosi. Voit tämän jälkeen avata projektisi NetBeansillä suoraan git-repositoriosi kansion avaamalla.</p>
+<p>Siirron jälkeen repositoriosi sisältö on suurinpiirtein seuraava:</p>
+<pre><code>build/
+  ... Projektin käännetyt luokat yms. ...
+doc/
+  ... Oma dokumentaatiosi ...
+nbproject/
+  ... NetBeansin projektitiedostoja ...
+src/
+  ... lähdekooditiedostoja ...
+web/
+  META-INF
+  WEB-INF
+  index.jsp
+  ... näkymätiedostoja ...
+build.xml</code></pre>
+<p>Osa näistä tiedostoista on käännösprosessin ja NetBeansin automaattisesti luomia ja niitä emme halua versionhallintaan. Siispä, jos et ole sitä jo aiemmin tehnyt, luo repositoriosi <em>juurikansioon</em> myös tiedosto <code>.gitignore</code> ja laita siihen ainakin seuraavat rivit:</p>
 <pre><code>build
 dist
 nbproject/private</code></pre>
@@ -221,7 +241,7 @@ NetBeans-projektin pystytys PHP-projektille
 <img src="../../images/aikataulu/viikko2/netbeans/php-final.png" />
 </figure>
 <p>Kun ajat projektin, NetBeans lähettää tiedostosi laitoksen users-palvelimelle, jossa on PHP:tä pyörittävä palvelin asennettuna sekä avaa selaimen projektisi etusivulle. Joudut vielä aktivoimaan tämän palvelintilan ennenkuin sivut toimivat. Tee se seuraamalla <a href="http://www.cs.helsinki.fi/u/laine/tikas/php_ohje.html">näitä ohjeita</a>.</p>
-<p>Viimeistään tässä vaiheessa, luo repositorioosi tiedosto <code>.gitignore</code> ja laita siihen ainakin seuraava rivi:</p>
+<p>Viimeistään tässä vaiheessa, luo repositoriosi <em>juurikansioon</em> tiedosto <code>.gitignore</code> ja laita siihen ainakin seuraava rivi:</p>
 <pre><code>nbproject/private</code></pre>
 <p>Aktivoituasi usersin PHP-tilan voit aloittaa koodaukseen tutustumisen index.php:n parissa.</p>
 </div></div>

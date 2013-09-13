@@ -109,6 +109,10 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li><a href="../../aikataulu/viikko2/netbeans.html">NetBeansin käyttöönotto</a></li>
 <li class="selected"><a href="../../aikataulu/viikko2/html-versioiden-luonti.html">HTML-versioiden luominen</a></li>
 </ul></li>
+<li><a href="../../aikataulu/viikko3/index.html">Viikko 3</a>
+<ul>
+<li><a href="../../aikataulu/viikko3/arkkitehtuuri.html">Arkkitehtuuriohje</a></li>
+</ul></li>
 <li><a href="../../aikataulu/demo.html">Demotilaisuus</a></li>
 <li><a href="../../aikataulu/palautus.html">Työn palautus</a></li>
 </ul></li>
@@ -126,6 +130,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <h1 class="title">HTML-versioiden luominen</h1>
 </header>
 <!-- order: 5 -->
+<script>addSectionLinks = true; </script>
 
 <p>Tässä vaiheessa työtä siirrytään suunnittelusta käytäntöön ja luodaan suunnitelluista sivuista oikean näköiset, mutta vielä staattiset HTML-versiot.</p>
 <p>Viimeistään tässä vaiheessa työlle kannattaa luoda NetBeans-projekti. NetBeansia ei ole pakko käyttää, mutta etenkin Javalla koodatessa sen koodingenerointi- ja refaktorointiominaisuuksista on paljon iloa. Pääset NetBeans-ohjeisiin <a href="netbeans.html">tästä</a>.</p>
@@ -164,10 +169,20 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <span class="kw">&lt;/html&gt;</span></code></pre>
 <p>Tehdään sivusta vähän nätimpi CSS:llä. Lataa twitterin mainio <a href="http://getbootstrap.com/">Bootstrap-kirjasto</a> ja pura paketin sisältä dist kansion sisältö projektisi juureen tai Javalla <code>web</code>-kansioon. Tarkoituksena on, että bootstrapin <code>css</code>, <code>fonts</code> ja <code>js</code>-kansiot sijoittuvat samaan kansioon kuin edellä luomasi <code>html-demo</code>-kansio.</p>
 <p>Tämän jälkeen luo <code>css</code>-kansioon vielä oma tyylitiedostosi <code>main.css</code>. (NetBeansillä tyylitiedoston luonti löytyy kategoriasta <em>Other</em> nimellä <em>Cascading Style Sheet</em>). Tähän tiedostoon voit sijoittaa omat projektikohtaiset tyylimääritelmäsi. Älä sijoita tiedostoon vielä mitään.</p>
-<p>Lisätään CSS-tiedostoihin linkit laittamalla HTML-tiedoston head-tägin sisään:</p>
+<p>Lisätään CSS-tiedostoihin linkit laittamalla HTML-tiedoston head-tägin sisään ja katso miten CSS muuttaa sivun ulkoasua hieman.</p>
 <pre class="sourceCode HTML"><code class="sourceCode html"><span class="kw">&lt;link</span><span class="ot"> href=</span><span class="st">&quot;../css/bootstrap.css&quot;</span><span class="ot"> rel=</span><span class="st">&quot;stylesheet&quot;</span><span class="kw">&gt;</span>
 <span class="kw">&lt;link</span><span class="ot"> href=</span><span class="st">&quot;../css/bootstrap-theme.css&quot;</span><span class="ot"> rel=</span><span class="st">&quot;stylesheet&quot;</span><span class="kw">&gt;</span>
 <span class="kw">&lt;link</span><span class="ot"> href=</span><span class="st">&quot;../css/main.css&quot;</span><span class="ot"> rel=</span><span class="st">&quot;stylesheet&quot;</span><span class="kw">&gt;</span></code></pre>
+<section class="alert alert-danger"><h3>
+Pidä mielessä!
+</h3>
+<p>Yllä oleva määritelmä hakee CSS-tiedostot luomasi <code>html-demo</code>-kansion <em>yläkansiossa</em> olevasta <code>css</code>-kansiosta. (Kaksi pistettä tarkoittaa hakemistopoluissa aina ylähakemistoa.)</p>
+<p>Mikäli sivusi eivät näytä oikein tyylitellyiltä johtuu se todennäköisesti siitä, että CSS-tiedostoja haetaan väärästä paikasta. Tarkista että linkit osoittavat sinne, missä tiedostot oikeasti ovat.</p>
+</section>
+
+</section>
+<section id="bootstrap-esimerkkejä" class="level3">
+<h3>Bootstrap-esimerkkejä</h3>
 <p>Nyt voimme käyttää Bootstrapin kirjastoja erilaisten käyttöliittymäkomponenttien luomiseen. Alla esimerkkejä. Lisää Bootstrap-esimerkkejä voi katsoa Bootstrapin sivujen <a href="http://getbootstrap.com/css/">CSS</a>- ja <a href="http://getbootstrap.com/components/">Components</a>-osioista.</p>
 <ul class='nav nav-tabs nav-justified'><li class='active'>
 <a href='#tab_1_0' data-toggle='tab'>Tabinavigaatio</a>
@@ -323,7 +338,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 </div></div></div>
 
 <p>Nämä esimerkit ovat tietenkin vielä melko harmaita. Kannattaa tutustua CSS-kieleen ja laittaa omaan tyylitiedostoon määrittelyjä, jotka tekevät asioista värikkäämpiä. Voit halutessasi tutustua myös näiden ohjeiden lähdekoodiin.</p>
-<p>Tee nyt näitä ohjeita ja esimerkkejä mukaillen itsellesi kokonaiset demosivut, joissa jokaisella sivulla on käytetty samaa yleistä ulkoasua.</p>
+<p>Tee nyt näitä ohjeita ja esimerkkejä mukaillen itsellesi kokonaiset demosivut, joissa jokaisella sivulla on käytetty samaa yleistä ulkoasua. Tekeminen kannattaa aloittaa yleisestä sivunavigaatiosta ja valita joku päätietokohde johon liittyvät sivut tekee valmiiksi ensin. Tästä saadun kokemuksen pohjalta muut sivut on helpompi tehdä valmiiksi.</p>
 </section>
 </section>
 <section id="linkkejä" class="level2">
@@ -337,20 +352,28 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <section id="palautus" class="level2">
 <h2>Palautus</h2>
 <p>Lopulta palautuksesi kansiorakenteen pitäisi näyttää suurinpiirtein tältä:</p>
-<pre><code>doc/
+<pre><code>css/
+  bootstrap.css
+  ...
+doc/
   dokumentaatio.pdf
   relaatiotietokantakaavio.dia
   sivukartta.png
   tietosisältökaavio.dia
-sql/
-  create-tables.sql
-  drop-tables.sql
-  add-test-data.sql
+fonts/
+  ...
 html-demo/
   index.html
   kissalista.html
   muokkaakissaa.html
-  ...</code></pre>
+js/
+  ...
+sql/
+  create-tables.sql
+  drop-tables.sql
+  add-test-data.sql
+  ...
+.gitignore</code></pre>
 <p>NetBeansia käyttävillä on projektissaa todennäköisesti huomattavasti enemmän tiedostoja. Se ei haittaa.</p>
 <section class="alert alert-info small"><h3>
 Valmista!

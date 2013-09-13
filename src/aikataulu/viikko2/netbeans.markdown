@@ -111,12 +111,37 @@ ja ajaessa avautua iloinen selainikkuna:
 Mikäli et jostain syystä saa projektia toimimaan,
 ota viipymättä yhteyttä ohjaajasi.
 
-Saatuasi projektin kerran toimimaan, sulje se NetBeansisin näkymästä
-sulkematta kuitenkaan NetBeansia. 
+Saatuasi projektin kerran toimimaan on aika lisätä se git-repositorioon.
+Tämä tapahtuu suoraviivaisesti siirtämällä sen tiedostot 
+repositorion juurikansioon.
+Sulje kuitenkin ennen siirtoa projekti NetBeansin näkymästä ettei NetBeans mene siirrosta sekaisin.
 Etsi tämän jälkeen projektisi tiedostojärjestelmästä
 ja siirrä kaikki sen kansiossa olevat tiedostot 
 omaan repositorioosi. 
-Jos et ole sitä jo aiemmin tehnyt, luo repositorioosi myös tiedosto
+Voit tämän jälkeen avata projektisi NetBeansillä
+suoraan git-repositoriosi kansion avaamalla.
+
+Siirron jälkeen repositoriosi sisältö on suurinpiirtein seuraava:
+
+~~~
+build/
+  ... Projektin käännetyt luokat yms. ...
+doc/
+  ... Oma dokumentaatiosi ...
+nbproject/
+  ... NetBeansin projektitiedostoja ...
+src/
+  ... lähdekooditiedostoja ...
+web/
+  META-INF
+  WEB-INF
+  index.jsp
+  ... näkymätiedostoja ...
+build.xml
+~~~
+
+Osa näistä tiedostoista on käännösprosessin ja NetBeansin automaattisesti luomia ja niitä emme halua versionhallintaan.
+Siispä, jos et ole sitä jo aiemmin tehnyt, luo repositoriosi _juurikansioon_ myös tiedosto
 `.gitignore` ja laita siihen ainakin seuraavat rivit:
 
 ~~~
@@ -183,7 +208,7 @@ Joudut vielä aktivoimaan tämän palvelintilan ennenkuin
 sivut toimivat.
 Tee se seuraamalla [näitä ohjeita](http://www.cs.helsinki.fi/u/laine/tikas/php_ohje.html).
 
-Viimeistään tässä vaiheessa, luo repositorioosi tiedosto
+Viimeistään tässä vaiheessa, luo repositoriosi _juurikansioon_ tiedosto
 `.gitignore` ja laita siihen ainakin seuraava rivi:
 
 ~~~
