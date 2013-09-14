@@ -17,6 +17,7 @@ Palautuspäivämäärään mennessä työn on täytettävä seuraavat vaatimukse
       erillisestä näkymätiedostosta sovelluksen käyttöliittymä ja navigaatio.
     * Osaa ohjata selaimen toiselle sivulle (HTTP redirect)
     * Tarjoaa tavan näyttää käyttäjälle virheilmoituksia, jotka näytetään automaattisesti sivuilla, jos jokin menee pieleen.
+    * PHP:n tapauksessa sallittua toteuttaa myös erillisinä funktioina ilman emoluokkaa.
 * Sovellukseen kirjautuminen toimii
     * Käyttää valitsemasi kielen istuntotukea kirjautumisen muistamiseen
     * Ei tarvitse käyttää vielä tietokantaa
