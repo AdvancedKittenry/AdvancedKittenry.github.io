@@ -12,6 +12,7 @@ jolloin ohjaaja voi antaa vinkkejä niiden tekemisessä.
 Sinulla tulee olla tehtynä seuraavat asiat:
 
 * [Tietokannan ja laitoksen users-palvelimen nettisivutilan pystytys](tekniikka.html)
+    * Dokumentaation käyttöohje-kappaleessa maininta nettisivutilan osoitteesta
 * [Käyttöliittymän suunnittelu](suunnittelu.html)
     * Alustava [käyttöliittymäkaavio](suunnittelu.html#k%C3%A4ytt%C3%B6liittym%C3%A4kaavio) 
 * [Tietokannan suunnittelu](tietokanta.html) ja dokumentointi

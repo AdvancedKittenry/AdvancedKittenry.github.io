@@ -22,7 +22,10 @@ Kun olet päässyt sisään aktivoi valitsemasi ohjelmointikielen ja tietokannan
 ## Java-tuki
 
 Lue sivu [Servlettien käyttö Tietokantasovellusten harjoitustyössä](http://www.cs.helsinki.fi/u/laine/tikas/material/servlet_ohje.html)
-ja noudata sen ohjeita.
+ja noudata sen ohjeita. 
+Liitä tämän jälkeen dokumentaatiosi [Käynnistys- / käyttöohje -kappaleeseen]({{rootdir}}dokumentaatio-ohje.html#käynnistys--käyttöohje) 
+sovelluksesi nettiosoite usersilla (tai muulla palvelimella, mikäli haluat käyttää sellaista).
+Kappaleeseen ei tässä vaiheessa tarvitse kirjoittaa muuta sisältöä.
 
 ## PHP-tuki
 
@@ -52,6 +55,10 @@ Siinä vaiheessa kun sivut ovat pystyssä htdocs-kansiossa olevaan PHP-tiedostoo
 _http://käyttäjätunnuksesi.users.cs.helsinki.fi/sivu.php_
 
 Esimerkiksi _http://laine.users.cs.helsinki.fi/lahja/lahjax.php_ osoittaa php-tiedostoon _/home/laine/htdocs/lahja/lahjax.php_
+
+Liitä PHP-tuen pystytyksen jälkeen dokumentaatiosi [Käynnistys- / käyttöohje -kappaleeseen]({{rootdir}}dokumentaatio-ohje.html#käynnistys--käyttöohje) 
+sovelluksesi nettiosoite usersilla (tai muulla palvelimella, mikäli haluat käyttää sellaista).
+Kappaleeseen ei tässä vaiheessa tarvitse kirjoittaa muuta sisältöä.
 
 ### Virheilmoitukset
 PHP:n virheilmoitukset kirjautuvat tiedostoon 
