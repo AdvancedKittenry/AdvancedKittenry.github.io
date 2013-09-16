@@ -93,6 +93,12 @@
 <li><a href="../../aikataulu/viikko3/index.html">Viikko 3</a>
 <ul>
 <li class="selected"><a href="../../aikataulu/viikko3/arkkitehtuuri.html">Arkkitehtuuriohje</a></li>
+<li><a href="../../aikataulu/viikko3/java/index.html">Kirjautuminen Javalla</a>
+<ul>
+<li><a href="../../aikataulu/viikko3/java/rakenne.html">Sovelluksen rakenne ja servletit</a></li>
+<li><a href="../../aikataulu/viikko3/java/lomakkeet.html">Lomakkeiden käyttö ja vastaanottaminen</a></li>
+<li><a href="../../aikataulu/viikko3/java/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
+</ul></li>
 </ul></li>
 <li><a href="../../aikataulu/demo.html">Demotilaisuus</a></li>
 <li><a href="../../aikataulu/palautus.html">Työn palautus</a></li>
@@ -155,8 +161,8 @@ web/
 <p>Näkymä määrittää käyttöliittymän ulkoasun ja tietojen näytön esityksen käyttöliittymässä. Tietokantasovelluksen tapauksessa käytetään erilaisia template-tiedostoja. Javalla käytetään JSP-tiedostoja, PHP:llä tavallisia php-tiedostoja. Kummassakin on lähinnä HTML-koodia, jonka seassa on hieman ohjelmakoodia.</p>
 <p>Yleensä on tapana myös tehdä muutama näkymätiedosto, joissa määritellään kaikille sovelluksen sivuille yhteisiä elementtejä.</p>
 </section>
-<section id="kontrollerit" class="level2">
-<h2>Kontrollerit</h2>
+<section id="käsittelijät" class="level2">
+<h2>Käsittelijät</h2>
 <p>Käsittelijä eli kontrolleri tai ohjain vastaanottaa käyttäjältä tulevat HTTP-pyynnöt ja käsittelee niisssä tulevan informaation perusteella mallia sekä tuottaa jonkin näkymän vastauksena pyyntöön.</p>
 <p>Web-sovelluksessa käsittelijöitä on tyypillisesti kahdentyyppisiä: <em>näkymiä näyttäviä käsittelijöitä</em> ja <em>lomakekäsitteliöitä</em>. Näkymiä näyttävät käsittelijät yksinkertaisesti näyttävät jonkin näkymän, johon on yleensä haettu mallin avulla tietokannasta sisältöä. Lomakekäsittelijät sensijaan keskittyvät nimensä mukaan vastaanottamaan käyttäjän lähettämiä lomakkeita tai muita erilaisia toimintoja. Ne tekevät yleensä malleja käyttämällä muutoksia tietokantaan ja ohjaavat selaimen tämän jälkeen johonkin näkymään mahdollisen virheilmoituksen kera.</p>
 </section>

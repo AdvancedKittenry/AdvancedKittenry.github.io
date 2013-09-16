@@ -12,12 +12,13 @@ ja toteuttaa kirjautuminen.
 Palautuspäivämäärään mennessä työn on täytettävä seuraavat vaatimukset:
 
 * Työssä on noudatettu [arkkitehtuuriohjeen MVC-kolmijakoa](arkkitehtuuri.html)
-* Toteutettu yleinen luokka perusasioihin
-    * Osaa näyttää näkymän niin, että siihen haetaan 
-      erillisestä näkymätiedostosta sovelluksen käyttöliittymä ja navigaatio.
-    * Osaa ohjata selaimen toiselle sivulle (HTTP redirect)
-    * Tarjoaa tavan näyttää käyttäjälle virheilmoituksia, jotka näytetään automaattisesti sivuilla, jos jokin menee pieleen.
-    * PHP:n tapauksessa sallittua toteuttaa myös erillisinä funktioina ilman emoluokkaa.
+* Sivuille on luotu erillinen sivupohjatiedosto, joka sisältää jokaiselle sivulle tulevat asiat.
+    * Java:lla helpointa käyttää [JSP-tägikirjastoa](java/rakenne.html#template-pohjatiedoston-k%C3%A4ytt%C3%B6)
+    * PHP:lle tulossa oma ohje, joka perustuu [include-funktion](http://php.net/manual/en/function.include.php) käyttöön
+* Yleisesti käytetyt toiminnot koottu yhteen luokkaan tai tiedostoon
+    * Näkymän näyttäminen sivupohjan kanssa yhdellä funktiokutsulla
+    * Selaimen ohjaus toiselle sivulle (HTTP redirect, toteuttaminen vapaaehtoinen)
+    * Virheilmoitusten näyttäminen käyttäjälle.
 * Sovellukseen kirjautuminen toimii
     * Käyttää valitsemasi kielen istuntotukea kirjautumisen muistamiseen
     * Ei tarvitse käyttää vielä tietokantaa

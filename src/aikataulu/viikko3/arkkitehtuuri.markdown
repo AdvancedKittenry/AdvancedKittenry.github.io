@@ -75,7 +75,7 @@ jonka seassa on hieman ohjelmakoodia.
 Yleensä on tapana myös tehdä muutama näkymätiedosto,
 joissa määritellään kaikille sovelluksen sivuille yhteisiä elementtejä.
 
-## Kontrollerit
+## Käsittelijät
 
 Käsittelijä eli kontrolleri tai ohjain vastaanottaa 
 käyttäjältä tulevat HTTP-pyynnöt 

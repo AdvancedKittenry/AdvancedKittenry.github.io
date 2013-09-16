@@ -93,6 +93,12 @@
 <li class="selected"><a href="../../aikataulu/viikko3/index.html">Viikko 3</a>
 <ul>
 <li><a href="../../aikataulu/viikko3/arkkitehtuuri.html">Arkkitehtuuriohje</a></li>
+<li><a href="../../aikataulu/viikko3/java/index.html">Kirjautuminen Javalla</a>
+<ul>
+<li><a href="../../aikataulu/viikko3/java/rakenne.html">Sovelluksen rakenne ja servletit</a></li>
+<li><a href="../../aikataulu/viikko3/java/lomakkeet.html">Lomakkeiden käyttö ja vastaanottaminen</a></li>
+<li><a href="../../aikataulu/viikko3/java/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
+</ul></li>
 </ul></li>
 <li><a href="../../aikataulu/demo.html">Demotilaisuus</a></li>
 <li><a href="../../aikataulu/palautus.html">Työn palautus</a></li>
@@ -134,12 +140,16 @@ Tämän sivun sisältö on vielä työn alla ja saattaa muuttua kurssin edetess�
 <p>Palautuspäivämäärään mennessä työn on täytettävä seuraavat vaatimukset:</p>
 <ul>
 <li>Työssä on noudatettu <a href="arkkitehtuuri.html">arkkitehtuuriohjeen MVC-kolmijakoa</a></li>
-<li>Toteutettu yleinen luokka perusasioihin
+<li>Sivuille on luotu erillinen sivupohjatiedosto, joka sisältää jokaiselle sivulle tulevat asiat.
 <ul>
-<li>Osaa näyttää näkymän niin, että siihen haetaan erillisestä näkymätiedostosta sovelluksen käyttöliittymä ja navigaatio.</li>
-<li>Osaa ohjata selaimen toiselle sivulle (HTTP redirect)</li>
-<li>Tarjoaa tavan näyttää käyttäjälle virheilmoituksia, jotka näytetään automaattisesti sivuilla, jos jokin menee pieleen.</li>
-<li>PHP:n tapauksessa sallittua toteuttaa myös erillisinä funktioina ilman emoluokkaa.</li>
+<li>Java:lla helpointa käyttää <a href="java/rakenne.html#template-pohjatiedoston-k%C3%A4ytt%C3%B6">JSP-tägikirjastoa</a></li>
+<li>PHP:lle tulossa oma ohje, joka perustuu <a href="http://php.net/manual/en/function.include.php">include-funktion</a> käyttöön</li>
+</ul></li>
+<li>Yleisesti käytetyt toiminnot koottu yhteen luokkaan tai tiedostoon
+<ul>
+<li>Näkymän näyttäminen sivupohjan kanssa yhdellä funktiokutsulla</li>
+<li>Selaimen ohjaus toiselle sivulle (HTTP redirect, toteuttaminen vapaaehtoinen)</li>
+<li>Virheilmoitusten näyttäminen käyttäjälle.</li>
 </ul></li>
 <li>Sovellukseen kirjautuminen toimii
 <ul>
