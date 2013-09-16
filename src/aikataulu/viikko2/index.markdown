@@ -23,6 +23,7 @@ Sinulla tulee olla tehtynä seuraavat asiat:
         * `sql/drop-tables.sql`
         * `sql/add-test-data.sql`
 * [HTML-demoversio sovelluksesta](html-versioiden-luonti.html)
+* Kaikki uusi dokumentaatio koottuna yhteen `dokumentaatio.pdf`-tiedostoon. Ohjaajasi ei halua arvuutella mistä tiedostosta dokumentaatio löytyy.
 
 <ohje>
 Aloita ottamalla [laitoksen tietokanta- ja web-palvelimet käyttöön](tekniikka.html) ja jatka siitä seuraten vihreitä ohjelaatikoita.

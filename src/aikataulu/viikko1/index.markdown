@@ -12,6 +12,7 @@ Ensimmäisellä viikolla tulee olla tehtynä seuraavat asiat:
   [käyttötapauksien]({{rootdir}}dokumentaatio-ohje.html#k%C3%A4ytt%C3%B6tapaukset) ja
   [järjestelmän yleiskuvan]({{rootdir}}dokumentaatio-ohje.html#yleiskuva-j%C3%A4rjestelm%C3%A4st%C3%A4) kuvailulla.
 * [Versionhallinnan pystytys](git-ohje.html)
+      * Laita dokumentaatiosi repositorioosi
 
 <ohje>
 Aloita [aiheen valinnasta](aiheet/index.html) ja seuraa vihreitä ohjelaatikoita.
