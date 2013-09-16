@@ -93,6 +93,13 @@ Ne tekevät yleensä malleja käyttämällä muutoksia tietokantaan
 ja ohjaavat selaimen tämän jälkeen johonkin näkymään mahdollisen 
 virheilmoituksen kera.
 
+<next>
+Nyt mikäli koodaat Javalla, seuraa kirjautumisen teon [Java-ohjetta](java/index.html).
+
+Tässä ei valitettavasti ole vielä sisältöä siitä miten 
+ohjelmat kannatta toteuttaa PHP:llä, mutta sitä on tulossa lisää lähipäivien aikana.
+</next>
+
 <comment>
 Toiminta palvelimessa:
 

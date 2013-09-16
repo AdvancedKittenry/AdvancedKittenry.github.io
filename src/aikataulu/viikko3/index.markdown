@@ -55,7 +55,7 @@ TODO:
 Aloita lukemalla [arkkitehtuuriohje](arkkitehtuuri.html).
 
 Ohjeiden jälkeen ei valitettavasti ole vielä sisältöä siitä miten 
-ohjelmat kannatta toteuttaa, mutta sitä on tulossa lisää lähipäivien aikana.
+ohjelmat kannatta toteuttaa PHP:llä, mutta sitä on tulossa lisää lähipäivien aikana.
 
 <!-- ja seuraa vihreitä ohjelaatikoita. -->
 
