@@ -96,25 +96,29 @@ ja kutsuu metodia forward.
 
 ~~~~java<include src="esimerkit/RequestDispatcher.java" />~~~~
 
+Viimeistään tässä vaiheessa joutunet lisäämään muutaman importin servlettiisi. 
+Näissä esimerkeissä niitä ei tulla erikseen luettelemaan, mutta esim.
+NetBeans osaa lisätä ne varsin kätevästi tiedoston alkuun, kunhan klikkailee sen antamia virhepalluroita.
+
+### Muuttujien käyttö
+
 JSP-koodiin on mahdollista sijoittaa muuttujia ja mm. ehtolausekkeita.
 esimerkiksi virheviestin näyttämisen voi toteuttaa seuraavasti:
-
-**SivuXServlet.java:**
 
 Asetetaan `processRequest`-metodissa aineistopyyntöä mallintavalle `HttpServletRequest`-oliolle _attribuutti_, joka sisältää viestin.
 
 ~~~~java
 protected void processRequest(HttpServletRequest request, HttpServletResponse response) {
   response.setContentType("text/html;charset=UTF-8");
-
+  
+  /* Asetetaan virheviesti */
   request.setAttribute("virheViesti", "Sinulla ei ole ainuttakaan kissaa!");  
 
+  /* Näytetään JSP-sivu sivux.jsp */
   RequestDispatcher dispatcher = request.getRequestDispatcher("sivux.jsp");
   dispatcher.forward(request, response);
 }
 ~~~~
-
-**sivux.jsp**
 
 JSP-sivulla on mahdollista näyttää pyyntöön asetettuja
 attribuutteja suoraan syntaksilla `${attribuutin_nimi}`.
@@ -126,6 +130,10 @@ laittamalla tiedoston alkuun taglib-referenssin:
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 ~~~~
 
+Saatat joutua lisäämään projektiisi JSTL-kirjaston, että viite toimisi.
+Tämä tapahtuu NetBeansissä avaamalla valikosta projektin ominaisuusikkuna kohdasta `File->Project Properties`.
+Paina _Libraries_-kategoriassa nappia _Add Library_ ja lisää listasta projektiin kirjasto nimeltä `JSTL 1.1`.
+
 Tämän jälkeen voimme näyttää virheviestin ehtolausekkeen avulla:
 
 ~~~~jsp
@@ -136,6 +144,8 @@ Tämän jälkeen voimme näyttää virheviestin ehtolausekkeen avulla:
 
 Yllä oleva koodi näyttää virheviestin ja siihen liittyvän div-elementin
 vain jos attribuutti `virheViesti` on asetettu. 
+
+### Listojen läpikäynti
 
 Attribuutteihin voidaan laittaa käytännössä mitä tahansa olioita:
 
@@ -161,6 +171,8 @@ Yllä olevan kissalistan voi näyttää seuraavanlaisella silmukalla:
 
 Yllä oleva komento `${kissa.nimi}` kutsuu käsiteltävän Kissa-olion
 `getNimi`-metodia, ja tulostaa sen palauttaman arvon.
+
+### Toisen tiedoston sisällön upottaminen koodiin
 
 Myös muita tiedostoja on mahdollista sisällyttää
 yhteen JSP-tiedostoon. 
@@ -202,12 +214,16 @@ määritellylle tägille
 annetaan muuttuja `pageTitle` 
 ja sisältönä yksi h1-elementti.
 
+**helloworld.jsp**
+
 ~~~~jsp<include src="esimerkit/templated.jsp" />~~~~
 
 Tägitiedosto sijoittaa annetut tiedot 
 sen mukaan mitä tägitiedostossa käsketään.
 Esimerkiksi kissalistan pohjatägitiedosto sijoittaa
 tägin sisällön navigaatioelementin viereen käyttäen Bootstrap-kirjastoa:
+
+**pohja.tag**
 
 ~~~~jsp<include src="esimerkit/template.tag" />~~~~
 
@@ -231,11 +247,14 @@ useampia alkavat tietyt toiminnot toistua luokasta toiseen.
 Hyvänä esimerkkinä JSP-sivun näyttämiseen tarvittu koodinpätkä,
 virheilmoitusten lähettäminen näkymälle näkyviin, ja kirjautumisen tarkistaminen.
 
-Tee servleteillesi yläluokka, josta perit kaikki tulevat servlettisi.
+Tee itsellesi uusi luokka, ja lähde rakentamaan siihen yleisiä toiminnallisuuksia omina metodeinaan.
 Laita siihen ensimmäiseksi metodi, jolla saat näytettyä JSP-sivun. 
 Kehittele myös tapa näyttää sivupohjassasi sovelluksen virheitä
 ja tee metodi joka aktivoi tuon tavan. 
 Useimmiten tähän kannattaa käyttää `setAttribute`-metodia ja jotain sovittua attribuuttia, jonka arvo näytetään virheviestinä.
+
+Voit halutessasi myös laittaa uuden luokkasi perimään HttpServletin ja periyttää kaikki muut servlettisi siitä.
+Näin luokkasi metodit ovat kaikissa projektisi servlet-luokissa suoraan käytettävissä.
 
 ## Mallien luominen
 
