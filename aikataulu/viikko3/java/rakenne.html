@@ -253,6 +253,9 @@ Tiivistelmä:
 <p>JSP-sivulla on mahdollista näyttää pyyntöön asetettuja attribuutteja suoraan syntaksilla <code>${attribuutin_nimi}</code>. Myös erilaisia koodirakenteita kuten ehtolausekkeita voi käyttää ottamalla käyttöön <em>JSTL-tägikirjaston</em> laittamalla tiedoston alkuun taglib-referenssin:</p>
 <pre class="sourceCode jsp"><code class="sourceCode jsp">&lt;%@ taglib<span class="ot"> prefix</span>=<span class="st">&quot;c&quot;</span><span class="ot"> uri</span>=<span class="st">&quot;http://java.sun.com/jsp/jstl/core&quot;</span><span class="ot"> </span>%&gt;</code></pre>
 <p>Saatat joutua lisäämään projektiisi JSTL-kirjaston, että viite toimisi. Tämä tapahtuu NetBeansissä avaamalla valikosta projektin ominaisuusikkuna kohdasta <code>File-&gt;Project Properties</code>. Paina <em>Libraries</em>-kategoriassa nappia <em>Add Library</em> ja lisää listasta projektiin kirjasto nimeltä <code>JSTL 1.1</code>.</p>
+<figure>
+<img src="../../../images/aikataulu/viikko3/java/jstl.png" alt="JSTL 1.1 -kirjaston lisääminen projektiin" /><figcaption>JSTL 1.1 -kirjaston lisääminen projektiin</figcaption>
+</figure>
 <p>Tämän jälkeen voimme näyttää virheviestin ehtolausekkeen avulla:</p>
 <pre class="sourceCode jsp"><code class="sourceCode jsp"><span class="kw">&lt;c:if</span><span class="ot"> test</span>=<span class="dt">&quot;</span>${virheViesti != <span class="kw">null</span>}<span class="dt">&quot;</span><span class="kw">&gt;</span>
   &lt;div<span class="ot"> class</span>=<span class="dt">&quot;alert alert-danger&quot;</span>&gt;Virhe! ${virheViesti}&lt;/div&gt;

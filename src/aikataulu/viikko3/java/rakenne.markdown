@@ -134,6 +134,8 @@ Saatat joutua lisäämään projektiisi JSTL-kirjaston, että viite toimisi.
 Tämä tapahtuu NetBeansissä avaamalla valikosta projektin ominaisuusikkuna kohdasta `File->Project Properties`.
 Paina _Libraries_-kategoriassa nappia _Add Library_ ja lisää listasta projektiin kirjasto nimeltä `JSTL 1.1`.
 
+![JSTL 1.1 -kirjaston lisääminen projektiin]({{myimgdir}}jstl.png)
+
 Tämän jälkeen voimme näyttää virheviestin ehtolausekkeen avulla:
 
 ~~~~jsp
