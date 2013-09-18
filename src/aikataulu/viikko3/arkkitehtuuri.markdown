@@ -94,10 +94,8 @@ ja ohjaavat selaimen tämän jälkeen johonkin näkymään mahdollisen
 virheilmoituksen kera.
 
 <next>
-Nyt mikäli koodaat Javalla, seuraa kirjautumisen teon [Java-ohjetta](java/index.html).
-
-Tässä ei valitettavasti ole vielä sisältöä siitä miten 
-ohjelmat kannatta toteuttaa PHP:llä, mutta sitä on tulossa lisää lähipäivien aikana.
+Nyt mikäli koodaat Javalla, seuraa kirjautumisen teon [Java-ohjetta](java/index.html).\
+PHP:llä koodaaville taas on oma vastaava [PHP-ohjeensa](java/index.html).
 </next>
 
 <comment>

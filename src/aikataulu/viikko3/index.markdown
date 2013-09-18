@@ -53,11 +53,7 @@ TODO:
 
 <ohje>
 Aloita lukemalla [arkkitehtuuriohje](arkkitehtuuri.html).
-
-Ohjeiden jälkeen ei valitettavasti ole vielä sisältöä siitä miten 
-ohjelmat kannatta toteuttaa PHP:llä, mutta sitä on tulossa lisää lähipäivien aikana.
-
-<!-- ja seuraa vihreitä ohjelaatikoita. -->
+ja seuraa vihreitä ohjelaatikoita.
 
 Tehtyäsi kaiken varmista, että kaikki tekemäsi muutokset näkyvät GitHub-repositoriossasi.
 </ohje>

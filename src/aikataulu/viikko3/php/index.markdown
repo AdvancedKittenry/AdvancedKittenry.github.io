@@ -12,6 +12,5 @@ Näillä sivuilla käydään yksityiskohtaisemmin läpi kirjautumisen toteuttami
 </comment>
 
 <ohje>
-Aloita tutustumalla [siihen miten ](rakenne.html) ja
-toteuta itsellesi yksinkertainen PHP-sivu.
+Aloita tutustumalla [sovelluksen yleiseen rakenteen toteuttamiseen](rakenne.html).
 </ohje>
