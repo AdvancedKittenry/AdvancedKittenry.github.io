@@ -230,6 +230,9 @@ header + .wip {
   color: #DB603A;
   background-color: #F9F9F2;
 }
+.alert-info pre code {
+  background-color: inherit;
+}
 
 iframe {
   width: 100%;
