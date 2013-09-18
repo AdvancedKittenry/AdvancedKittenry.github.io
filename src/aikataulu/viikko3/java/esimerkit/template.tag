@@ -15,9 +15,6 @@
     <body>
         <div class="navbar navbar-default">
             <div class="container">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="#">Kissalista</a>
-                </div>
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="Lista">Lista</a></li>
                     <li><a href="Logout">Kirjaudu ulos</a></li>

@@ -4,14 +4,14 @@
 
 <summary>
 
-* Tee koodia varten oma pakettisi. Esim. `Kissalista`
+* Tee koodia varten oma pakettisi. Esim. `Kissalista`.
 * Luo ensin itsellesi servlet-luokka.
-    * Sijoita kaikki servletit omaan pakettiinsa. Esim. `Kissalista.Servlets`
+    * Sijoita kaikki servletit omaan pakettiinsa. Esim. `Kissalista.Servlets`.
 * Laita sitten servlettisi käyttämään HTML:n tulostukseen JSP-tiedostoa.
 * Tee JSP-tägitiedosto, ja laita JSP-sivusi HTML-runko siihen. Ota tägitiedostosi käyttöön servlettisi JSP-tiedosssa.
-* Tee sovelluksesi servleteille yläluokka, johon voi sijoittaa yleiskäyttöisiä toimintoja
-* Tee käyttäjien käsittelyä varten alustava malliluokka
-    * Sijoita kaikki mallit omaan pakettiinsa. Esim. `Kissalista.Models`
+* Tee sovelluksesi servleteille yläluokka, johon voi sijoittaa yleiskäyttöisiä toimintoja.
+* Tee käyttäjien käsittelyä varten alustava malliluokka.
+    * Sijoita kaikki mallit omaan pakettiinsa. Esim. `Kissalista.Models`.
 
 </summary>
 
@@ -261,7 +261,7 @@ Näin luokkasi metodit ovat kaikissa projektisi servlet-luokissa suoraan käytet
 ## Mallien luominen
 
 Sijoita projektin mallit omaan pakettiinsa samaan tapaan kuin servletit.
-Tämän viikon töihin tarvitset käytännössä vain yhden mallin,
+Tämän viikon töihin tarvitset käytännössä vain yhden malliluokan,
 joka kuvaa käyttäjää. 
 Sijoita malliisi kentät käyttäjäsi tietokantataulun kenttiä varten
 ja luo kentille getterit ja setterit sekä halutessasi konstruktori, joka ottaa kenttien arvot vastaan.

@@ -118,6 +118,10 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li><a href="../../../aikataulu/viikko3/java/lomakkeet.html">Lomakkeiden käyttö ja vastaanottaminen</a></li>
 <li><a href="../../../aikataulu/viikko3/java/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
 </ul></li>
+<li><a href="../../../aikataulu/viikko3/php/index.html">Kirjautuminen PHP:llä</a>
+<ul>
+<li><a href="../../../aikataulu/viikko3/php/rakenne.html">Mihin eri tiedostot kannattaa laittaa?</a></li>
+</ul></li>
 </ul></li>
 <li><a href="../../../aikataulu/demo.html">Demotilaisuus</a></li>
 <li><a href="../../../aikataulu/palautus.html">Työn palautus</a></li>
@@ -143,17 +147,17 @@ Tiivistelmä:
 </h3>
 
 <ul>
-<li>Tee koodia varten oma pakettisi. Esim. <code>Kissalista</code></li>
+<li>Tee koodia varten oma pakettisi. Esim. <code>Kissalista</code>.</li>
 <li>Luo ensin itsellesi servlet-luokka.
 <ul>
-<li>Sijoita kaikki servletit omaan pakettiinsa. Esim. <code>Kissalista.Servlets</code></li>
+<li>Sijoita kaikki servletit omaan pakettiinsa. Esim. <code>Kissalista.Servlets</code>.</li>
 </ul></li>
 <li>Laita sitten servlettisi käyttämään HTML:n tulostukseen JSP-tiedostoa.</li>
 <li>Tee JSP-tägitiedosto, ja laita JSP-sivusi HTML-runko siihen. Ota tägitiedostosi käyttöön servlettisi JSP-tiedosssa.</li>
-<li>Tee sovelluksesi servleteille yläluokka, johon voi sijoittaa yleiskäyttöisiä toimintoja</li>
-<li>Tee käyttäjien käsittelyä varten alustava malliluokka
+<li>Tee sovelluksesi servleteille yläluokka, johon voi sijoittaa yleiskäyttöisiä toimintoja.</li>
+<li>Tee käyttäjien käsittelyä varten alustava malliluokka.
 <ul>
-<li>Sijoita kaikki mallit omaan pakettiinsa. Esim. <code>Kissalista.Models</code></li>
+<li>Sijoita kaikki mallit omaan pakettiinsa. Esim. <code>Kissalista.Models</code>.</li>
 </ul></li>
 </ul>
 </section>
@@ -319,9 +323,6 @@ request.<span class="fu">setAttribute</span>(<span class="st">&quot;kissat&quot;
     &lt;body&gt;
         &lt;div<span class="ot"> class</span>=<span class="dt">&quot;navbar navbar-default&quot;</span>&gt;
             &lt;div<span class="ot"> class</span>=<span class="dt">&quot;container&quot;</span>&gt;
-                &lt;div<span class="ot"> class</span>=<span class="dt">&quot;navbar-header&quot;</span>&gt;
-                    &lt;a<span class="ot"> class</span>=<span class="dt">&quot;navbar-brand&quot;</span><span class="ot"> href</span>=<span class="dt">&quot;#&quot;</span>&gt;Kissalista&lt;/a&gt;
-                &lt;/div&gt;
                 &lt;ul<span class="ot"> class</span>=<span class="dt">&quot;nav navbar-nav&quot;</span>&gt;
                     &lt;li<span class="ot"> class</span>=<span class="dt">&quot;active&quot;</span>&gt;&lt;a<span class="ot"> href</span>=<span class="dt">&quot;Lista&quot;</span>&gt;Lista&lt;/a&gt;&lt;/li&gt;
                     &lt;li&gt;&lt;a<span class="ot"> href</span>=<span class="dt">&quot;Logout&quot;</span>&gt;Kirjaudu ulos&lt;/a&gt;&lt;/li&gt;
@@ -353,7 +354,7 @@ request.<span class="fu">setAttribute</span>(<span class="st">&quot;kissat&quot;
 </section>
 <section id="mallien-luominen" class="level2">
 <h2>Mallien luominen</h2>
-<p>Sijoita projektin mallit omaan pakettiinsa samaan tapaan kuin servletit. Tämän viikon töihin tarvitset käytännössä vain yhden mallin, joka kuvaa käyttäjää. Sijoita malliisi kentät käyttäjäsi tietokantataulun kenttiä varten ja luo kentille getterit ja setterit sekä halutessasi konstruktori, joka ottaa kenttien arvot vastaan.</p>
+<p>Sijoita projektin mallit omaan pakettiinsa samaan tapaan kuin servletit. Tämän viikon töihin tarvitset käytännössä vain yhden malliluokan, joka kuvaa käyttäjää. Sijoita malliisi kentät käyttäjäsi tietokantataulun kenttiä varten ja luo kentille getterit ja setterit sekä halutessasi konstruktori, joka ottaa kenttien arvot vastaan.</p>
 <section class="alert alert-success small"><h3>
 Seuraavaksi:
 </h3>

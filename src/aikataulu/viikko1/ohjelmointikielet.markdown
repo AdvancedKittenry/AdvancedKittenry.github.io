@@ -56,6 +56,8 @@ Esimerkkejä:
 </column>
 </sidebyside>
 
+Aiheesta lisää informaatiota [PHP:n manuaalissa](http://www.php.net/manual/en/language.types.type-juggling.php)
+
 Javaa koodatessa joutuu kirjoittamaan hieman enemmän, mutta PHP:llä saattaa varsinkin aluksi tehdä tyyppivirheitä, jotka huomaa vasta ajon aikana.
 
 ### HTML:n käyttö
