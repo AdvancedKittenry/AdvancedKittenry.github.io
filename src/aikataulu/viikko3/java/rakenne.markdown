@@ -6,7 +6,7 @@
 
 * Tee koodia varten oma pakettisi. Esim. `Kissalista`.
 * Luo ensin itsellesi servlet-luokka.
-    * Sijoita kaikki servletit omaan pakettiinsa. Esim. `Kissalista.Servlets`.
+    * Sijoita servlet-luokkasi omaan pakettiinsa. Esim. `Kissalista.Servlets`. Jatkossa samaan pakettiin tulevat kaikki muutkin servletit.
 * Laita sitten servlettisi käyttämään HTML:n tulostukseen JSP-tiedostoa.
 * Tee JSP-tägitiedosto, ja laita JSP-sivusi HTML-runko siihen. Ota tägitiedostosi käyttöön servlettisi JSP-tiedosssa.
 * Tee sovelluksesi servleteille yläluokka, johon voi sijoittaa yleiskäyttöisiä toimintoja.
