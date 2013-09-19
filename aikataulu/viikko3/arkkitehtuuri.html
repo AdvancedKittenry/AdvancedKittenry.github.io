@@ -135,12 +135,16 @@
 </li></ul><div class='panel panel-default'><div class='panel-body'><div class='tab-content'>
 <section class='tab-pane active' id='tab_1_0' >
 
-<p>PHP:tä käytettäessä sijoita mallit ja näkymät omiin kansioihinsa. Kontrollerit voit halutessasi jättää projektin juureen tai sijoittaa nekin omaan kansioonsa. Kansioiden nimet voi halutessaan suomentaa.</p>
+<p>PHP:tä käytettäessä sijoita kaikki yleiskäyttöinen koodi ja näkymät omaan kansioonsa. Käsittelijät taas sijoitetaan projektin juureen. Näkymät sijoitetaan kansioon <code>views</code>. Yleiskäyttöisen koodin kansion voi nimetä kuvaavasti esim. <code>libs</code>. Luo malleille oma <code>models</code>-kansio yleiskäyttöisen koodin alle.</p>
+<p>Kansioiden nimet voi halutessaan suomentaa.</p>
 <pre><code>views/
   userlist.php
-models/
-  user.php
-users.php (Käyttäjänhallinnan käsittelijä)</code></pre>
+libs/
+  models/
+    user.php
+  utilities.php (Yleiskäyttöisiä funktioita)
+users.php (Käyttäjänhallinnan käsittelijä)
+~~~</code></pre>
 </section>
 <section class='tab-pane' id='tab_1_1' >
 

@@ -12,6 +12,10 @@
 * Tee käyttäjien käsittelyä varten alustava malliluokka.
     * Sijoita kaikki mallit omaan kansioonsa. Esim. `libs/models`.
 
+Projektissa pitäisi tällöin olla seuraavanlainen kansiorakenne:
+
+~~~~<include src="kansiorakenne.txt" />~~~~
+
 </summary>
 
 PHP on historialtaan ja luonteeltaan selkeä [skriptikieli](http://fi.wikipedia.org/wiki/Komentosarjakieli). 
@@ -40,7 +44,7 @@ käyttäjälle halutun vastauksen aineistopyyntöön.
 Tiiviimmillään ja rumimmillaan tämä näkyy vieläkin ikävän yleisenä _spagettikoodina_,
 jossa sovelluksen kaikki kolme osaa: käsittelijä, näkymä ja malli
 ovat sulassa sovussa ja sekasotkussa samassa tiedostossa. 
-Lopputulos on usein sekava ja vaikea muuttaa, varsinkin suuremmissa sovelluksissa.
+Lopputulos on vähänkään monimutkaisemmissa sovelluksissa sekava ja vaikea muuttaa.
 
 **spagettikoodi.php**
 
@@ -48,9 +52,13 @@ Lopputulos on usein sekava ja vaikea muuttaa, varsinkin suuremmissa sovelluksiss
 
 Tällä kurssilla pyrimme hieman selkeämpään [arkkitehtuuriin](../arkkitehtuuri.html),
 jossa mallit ja näkymät määritellään omissa tiedostoissaan.
+
 Tämä ei kuitenkaan varsinaisesti estä käyttämästä PHP:n suoraviivaista luonnetta
-siihen, että käytämme varsinaisissa käsittelijätiedostoissa
-melko suoraa tyyliä. Esimerkkinä kuvitteellisen kissalistan käsittelijä:
+siihen, että jätämme varsinaiset käsittelijät paljaaksi koodiksi,
+joka vain suoraan kutsuu erilaisia kirjastoja ja näyttää lopulta näkymän.
+Kutsumme tästä lähtien näitä käsittelijätiedostoja yksinkertaisesti sivuiksi.
+
+Esimerkkinä kuvitteellisen kissalistan sivu:
 
 **kissalista.php**
 
@@ -74,52 +82,160 @@ Nämä funktiot sisällyttävät parametrina annetun tiedostonimen php-koodin ny
 tiedoston suoritukseen siihen kohtaan, jossa include-suoritetaan.
 Tällöin sisällytetyssä tiedostossa näkyvät samat muuttujat, kuin sen sisällyttäneessä tiedostossa.
 
-Kokeile tätä. Luo projektiisi views-kansio, 
-johon jatkossa sijoitat kaikki sovelluksesi näkymät
-ja kopioi sinne jokin html-demosi tiedostoista php-tiedostopäätteellä.
+<info>
+Ero `include`:n ja `require`:n välillä on se, että
+require ei anna skriptin suorituksen jatkua, mikäli 
+haettua tiedostoa ei löydy. 
 
-Tee sitten lyhyt käsittelijätiedosto projektisi juurikansioon ja 
-laita sen sisällöksi 
-seuraava koodinpätkä:
+Funktioista on olemassa 
+myös versiot `include_once` ja `require_once`, jotka 
+varmistavat ettei samaa tiedostoa sisällytetä kahdesti.
+Käytä näitä versioita sisällyttäessäsi yleiskäyttöistä kirjastokoodia (tiedostot `libs`-kansiosta).
+</info>
+
+Kokeile includea. Luo projektiisi views-kansio
+ja kopioi sinne html-demosi kirjautumislomake php-tiedostopäätteellä.
+
+Luo sitten sivu `login.php` tai suomeksi `kirjautuminen.php` projektisi juurikansioon ja 
+laita sen sisällöksi seuraavanlainen koodinpätkä:
 
 **testikasittelija.php**
 
 ~~~php
 <?php 
-  require 'views/nakyma.php';
+  require 'views/login.php';
 ~~~
 
-Kun tämä käsittelijätiedosto ajetaan, palautuu käyttäjän selaimelle
-näkymäkansiossa olevan tiedoston sisältö. Mutta ei siinä vielä kaikki.
+Kokeile avata tämä sivu selaimella.
+Jos teet työtä usersilla URL on todennäköisesti 
+[http://tunnuksesi.users.cs.helsinki.fi/login.php](http://tunnuksesi.users.cs.helsinki.fi/login.php).
+
+Selaimeesi pitäisi tulla sama kirjautumislomake kuin aikaisemminkin. 
+Tämä on vielä melko tylsää, mutta jatketaan tekemällä näkymien tekemisestä helpompaa.
+
+## Template-pohjatiedoston käyttö
+
+Käytännössä suurin osa ohjelmaasi tulevista sivuista
+tulee sisältämään samanlaisen HTML-rungon,
+johon sisältyvät sivunavigaatio sekä 
+head-tägin sisältämät otsakkeet ja tyylitiedostolinkit.
+
+Tämän rungon koodia ei turhaan kannata toistaa, 
+vaan se kannattaa sijoittaa omaan uudelleenkäytettävään tiedostoonsa.
+
+PHP:llä tälläisille uudelleenkäytettävät HTML-pohjille
+ei ole mitään yleisesti käytettyä standarditoteutusta.
+Yleensä ne toteutetaan jonkinlaisella näkymäluokalla.
+
+Eräs suhteellisen yksinkertainen tapa on toteuttaa pohja siten
+että sijoitetaan pohjatiedostoon kaikki sivujen sisällön 
+ympärillä pyörivä HTML-koodi ja laitetaan itse sisällön paikalle koodi:
+
+~~~php
+<?php require $sivu; ?>
+~~~
+
+Nyt pohjan ja näkymätiedoston yhdessä käyttämiseen riittää, että tallennetaan näkymätiedoston nimi 
+näkymää käyttävässä sivussa muuttujaan `$sivu` ja sisällytetään
+pohjatiedosto `require`-funktiolla.
+
+~~~php
+<?php
+  
+  $sivu = 'login.php';
+  requre 'views/pohja.php';
+~~~
+
+Käytännössä ylläoleva koodi on melko virhealtis muuttujanimien vaihdoksille ja kirjoitusvirheille,
+joten se kannattaa sijoittaa funktioksi johonkin yksittäiseen paikkaan.
+Tee itsellesi `libs`-kansioon tiedosto tälläisiä yleisiä funktioita varten
+ja laita sinne sisällytyksemme funktioversio:
+
+~~~php
+<?php
+  
+  function naytaNakyma($sivu) {
+    require 'views/pohja.php';
+    exit();
+  }
+~~~
+
+Kutsumme näkymän näyttämisen jälkeen PHP:n suorituksen lopettavaa  [exit-funktiota](http://www.php.net/manual/en/function.exit.php),
+sillä mallin näyttämisen jälkeen emme käytännössä koskaan halua suorittaa sivun koodia loppuun.
+Tästä on hyötyä tapauksissa, jossa haluamme kutsua funktiota ennen kuin sivun koodi on suoritettu loppuun.
+Esimerkiksi silloin kun tapahtui jokin virhe ja haluamme näyttää virheviestin.
+
+Tätä funktiota käyttäen riittää kirjoittaa tavalliselle sivulle:
+
+~~~php
+<?php
+  require_once 'libs/common.php';
+
+  naytaNakyma('login.php');
+~~~
+
+Seuraavaksi selvitämme miten voimme välittää näkymällemme tietoa.
 
 ### Muuttujien käyttö
 
-Käsittelijöiden ja näkymien välillä on mahdollista välittää muuttujia ja käyttää näkymissä mm. ehtolausekkeita.
-esimerkiksi virheviestin näyttämisen voi toteuttaa seuraavasti:
+Useimmat sovelluksemme näkymistä ovat 
+hieman elävämpiä kuin yksinkertainen kirjautumislomake,
+ja muuttuvat sen mukaan mitä tietokannasta löytyy.
+
+Tätä varten haluamme pystyä välittämään tietoa käsittelijöiden 
+ja näkymien välillä. Tämä onnistuu helpoiten laittamalla
+`naytaNakyma`-funktioon toinen parametri ja hieman lisää koodia.
+
+~~~php
+<?php
+  
+  /* Näyttää näkymätiedoston ja lähettää sille muuttujat */
+  function naytaNakyma($sivu, $data = array()) {
+    $data = (object)$data;
+    require 'views/pohja.php';
+    die();
+  }
+~~~
+
+Ylimääräinen parametrimme on oletuksena tyhjä array,
+ja koodin kutsuja voi sijoittaa sinne minkälaisen
+assosiaatiotaulun haluaa. 
+Funktion ensimmäinen rivi muuntaa array-tietotyypin
+luokattomaksi olioksi, sillä olioiden kenttien käyttösyntaksi on huomattavasti miellyttävämpi.
+
+Käyttäminen on yksinkertaista.
+Voimme esimerkiksi asettaa näkymälle lähetettävän virheviestin näin:
 
 ~~~~php
 <?php 
-  /* Haetaan omia yleiskäyttöisiä funktioita kirjastosta */
-  require_once 'libs/common.php';
-
-  if (kissavirhetilanne()) {
-    /* Asetetaan virheviesti */
-    $virheViesti = "Et voi ruokkia kissaa, joka on syönyt alle kolme tuntia sitten!"
-  }
-
-  /* Näytetään näkymä */
-  require 'views/nakyma.php';
+  naytaNakyma('kissat.php', array(
+    'virheViesti' => "Et voi ruokkia kissaa, joka on syönyt alle kolme tuntia sitten!"
+  ));
 }
 ~~~~
 
-näkymätiedostossa on nyt mahdollista näyttää käsittelijässä asetettuja
-muuttujia suoraan syntaksilla `<?php echo $attribuutin_nimi; ?>`.
-Myös erilaisia koodirakenteita kuten ehtolausekkeita
-voi käyttää:
+Jolloin näkymässä voimme kirjoittaa HTML-koodin sekaan:
+
+~~~php
+<?php echo $data->virheViesti; ?>
+~~~
+
+<info>
+
+Vastaava koodinpätkä array-tietorakenteella on:
+
+~~~php
+<?php echo $data['virheViesti']; ?>
+~~~
+
+Tämä on ainakin ohjeiden kirjoittajan mielestä ikävä kirjoittaa monta kertaa.
+</info>
+
+Näkymissä voi käyttää myös erilaisia koodirakenteita kuten ehtolausekkeita:
 
 ~~~~php
-<?php if (!empty($virheViesti)): ?>
-  <div class="alert alert-danger">Virhe! <?php echo $virheViesti; ?></div>
+<?php if (!empty($data->virheViesti)): ?>
+  <div class="alert alert-danger">Virhe! <?php echo $data->virheViesti; ?></div>
 <?php endif; ?>
 ~~~~
 
@@ -183,105 +299,21 @@ Oletetaan että käsittelijä on asettanut muuttujaan `$kissat` listan nimiä:
 
 ~~~php
 <?php
-  $kissat = array("Matleena", "Iiris", "Inari");
+  naytaNakyma('kissalista.php', array(
+    'kissat' => array("Matleena", "Iiris", "Inari");
+  ));
 ~~~
 
 Nyt jos tämä muuttuja on käytettävissä näkymätiedostossa, voimme näyttää nimet näin:
 
 ~~~php
-<?php foreach($kissat as $kissa): ?>
+<?php foreach($data->kissat as $kissa): ?>
 <div class="kissa">
   Kissan nimi on
   <?php echo $kissa; ?>
 </div>
 <?php endforeach; ?>
 ~~~
-
-## Template-pohjatiedoston käyttö
-
-Käytännössä suurin osa ohjelmaasi tulevista sivuista
-tulee sisältämään samanlaisen HTML-rungon,
-johon sisältyvät sivunavigaatio sekä 
-head-tägin sisältämät otsakkeet ja tyylitiedostolinkit.
-
-Tämän rungon koodia ei turhaan kannata toistaa, 
-vaan se kannattaa sijoittaa omaan uudelleenkäytettävään tiedostoonsa.
-
-PHP:llä tälläisille uudelleenkäytettävät HTML-pohjille
-ei ole mitään yleisesti käytettyä standarditoteutusta.
-Yleensä ne toteutetaan jonkinlaisella näkymäluokalla.
-
-Eräs suhteellisen yksinkertainen tapa on toteuttaa pohja näkymäluokan
-ja pohjana toimivan tiedoston yhteistyönä,
-siten että näkymäluokka sisällyttää pohjan, joka kutsuu
-sopivassa kohdassa näkymäluokan metodia, joka sisällyttää
-taas varsinaisen sisällön oikeaan kohtaan pohjassa.
-
-Alla on esitetty esimerkkitoteutus, jota saa käyttää työssään.
-Se koostuu neljästä tiedostosta, joista kaksi 
-`libs/view.php` ja `views/template.php` käyttävät 
-kaikki sovelluksen sivut, kun taas kaksi jälkimmäistä
-tiedostoa: näkymätiedosto `views/helloworld.php` ja käsittelijä `hello.php` kuuluvat vain yhteen sivuun.
-
-**Näkymäluokka libs/view.php**
-
-~~~~php<include src="esimerkit/view.php" />~~~~
-
-**Yleinen HTML-runkotiedosto views/template.php**
-
-~~~~php<include src="esimerkit/template.php" />~~~~
-
-**Näkymätiedosto views/helloworld.php**
-
-~~~~php<include src="esimerkit/view_using_template.php" />~~~~
-
-
-**Käsittelijä: hello.php**
-
-Käsittelijässä kaikki aiemmat kolme tiedostoa yhdistetään
-niin että lopputuloksena on Hello World! -otsikolla ja rungossa olevalla
-HTML-koodilla varustettu kissalista:
-
-~~~php
-<?php 
-  /* Haetaan omia yleiskäyttöisiä funktioita kirjastosta */
-  require_once 'libs/common.php';
-  
-  //Luodaan näkymäluokasta olio, joka osaa näyttää näkymätiedoston
-  $view = new View('helloworld.php');
-  //Oliolle on mahdollista asettaa mielivaltaisia attribuuteja, jotka näkyvät näkymätiedostossa $this-muuttujan attribuutteina.
-  $view->title = "Hello World!";
-  $view->kissat = array("Mirri", "Mauku", "Minni");
-  //Viimeinen komento näyttää olion
-  $view->display();
-~~~
-
-------- 
-
-Eräs toinen ratkaisu on jakaa runkotiedosto kahteen
-osaan: sivukohtaista sisältöä edeltävään ja seuraavaan osaan.
-Osat voi sijoittaa eri tiedostoihin, mistä ne voi
-include-funktiolla sisällyttää. Esimerkki tästä löytyy 
-mm. [Sami Saadan ostoslista-esimerkkisovellukesta](https://github.com/tsoha-syksy2012/ostoslista-esimerkki/blob/php-raaka/listat.php).
-
-----------
-
-Ota käyttöön mieleisesi ratkaisu näkymän esittämiseen haluamallasi rungolla.
-
-<comment>
-
-## Usein toistuvan koodin sijoittelu
-
-Siinä vaiheessa kun sivuja alkaa tulla projektiin
-useampia alkavat tietyt toiminnot toistua luokasta toiseen.
-Hyvänä esimerkkinä ovat irheilmoitusten lähettäminen näkymälle näkyviin, ja kirjautumisen tarkistaminen.
-
-Tee itsellesi uusi luokka, ja lähde rakentamaan siihen yleisiä toiminnallisuuksia omina metodeinaan.
-
-Kehittele tapa näyttää sivupohjassasi sovelluksen virheitä
-ja tee metodi joka aktivoi tuon tavan. 
-
-</comment>
 
 ## Etusivut
 

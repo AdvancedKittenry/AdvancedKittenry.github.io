@@ -157,10 +157,17 @@ Salasana: <span class="kw">&lt;input</span><span class="ot"> type=</span><span c
 <p>Lähetetyn lomakkeen parametreja voidaan käsitellä hakemalla ne PHP:n <a href="http://php.net/manual/en/language.variables.superglobals.php">superglobaaleista muuttujista</a> <code>$_GET</code> ja <code>$_POST</code>. Ne ovat PHP:n automaattisesti määrittämiä muuttujia, jotka ovat näkyvissä kaikissa funktioissa ja metodeissa automaattisesti. Niiden sisältönä on array, johon on laitettu sivun lomakkeelta vastaanottamat GET- ja POST-parametrit.</p>
 <p>Hyvin yksinkertainen kirjautuminen voitaisiin näitä muuttujia käyttäen toteuttaa suurinpiirtein seuraavasti:</p>
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>
-
+  
+  <span class="co">//Tarkistetaan että vaaditut kentät on täytetty:</span>
   <span class="kw">if</span> <span class="ot">(</span><span class="fu">empty</span><span class="ot">(</span><span class="kw">$_POST</span><span class="ot">[</span><span class="st">&quot;username&quot;</span><span class="ot">]))</span> {
+    naytaNakymä<span class="ot">(</span><span class="st">&quot;login&quot;</span><span class="ot">,</span> <span class="fu">array</span><span class="ot">(</span>
+      <span class="st">&#39;virhe&#39;</span> =&gt; <span class="st">&quot;Kirjautuminen epäonnistui! Antamasi käyttäjänimi on tyhjä.&quot;</span><span class="ot">,</span>
+    <span class="ot">));</span>
   }
   <span class="kw">if</span> <span class="ot">(</span><span class="fu">empty</span><span class="ot">(</span><span class="kw">$_POST</span><span class="ot">[</span><span class="st">&quot;password&quot;</span><span class="ot">]))</span> {
+    naytaNakymä<span class="ot">(</span><span class="st">&quot;login&quot;</span><span class="ot">,</span> <span class="fu">array</span><span class="ot">(</span>
+      <span class="st">&#39;virhe&#39;</span> =&gt; <span class="st">&quot;Kirjautuminen epäonnistui! Antamasi salasana on tyhjä.&quot;</span><span class="ot">,</span>
+    <span class="ot">));</span>
   }
   
   <span class="kw">$salasana</span> = <span class="kw">$_POST</span><span class="ot">[</span><span class="st">&quot;password&quot;</span><span class="ot">];</span>
@@ -174,10 +181,12 @@ Salasana: <span class="kw">&lt;input</span><span class="ot"> type=</span><span c
     <span class="co">/* Väärän tunnuksen syöttänyt saa eteensä lomakkeen ja virheen.</span>
 <span class="co">     * Tässä käytetään omalta yläluokalta perittyjä yleiskäyttöisiä metodeja.</span>
 <span class="co">     */</span>
-    asetaVirhe<span class="ot">(</span><span class="st">&quot;Kirjautuminen ei onnistunut. Käyttäjää ei löytynyt&quot;</span><span class="ot">,</span> request<span class="ot">);</span>
-    naytaJSP<span class="ot">(</span><span class="st">&quot;login.php&quot;</span><span class="ot">,</span> request<span class="ot">,</span> response<span class="ot">);</span>
+    naytaJSP<span class="ot">(</span><span class="st">&quot;login.php&quot;</span><span class="ot">,</span> <span class="fu">array</span><span class="ot">(</span>
+      <span class="st">&#39;virhe&#39;</span> =&gt; <span class="st">&quot;Kirjautuminen ei onnistunut. Käyttäjää ei löytynyt&quot;</span><span class="ot">,</span> request<span class="ot">;</span>
+    <span class="ot">));</span>
   }</code></pre>
-<p>Koodissa kannattaa huomata kutsu <code>header('Location: kissalista.php');</code>. <a href="http://php.net/manual/en/function.header.php">header-funktio</a> lähettää käyttäjän selaimelle HTTP-otsakkeen. Otsakkeita voi käyttää monenlaisiin tarkoituksiin, mutta yleisimmin käytetään otsaketta “Location”, joka lähettää käyttäjän selaimen kaksoispisteen jälkeen kirjoitettuun osoitteesen. Tämä on kätevä tapa ohjata käyttäjä jonkin toisen sivun luo. Voit halutessasi tehdä siitäkin oman apufunktion aiemmin tekemääsi yleiskäyttöiseen kirjastotiedostoon.</p>
+<p>Koodissa kannattaa huomata kutsu <code>header('Location: kissalista.php');</code>. <a href="http://php.net/manual/en/function.header.php">header-funktio</a> lähettää käyttäjän selaimelle HTTP-otsakkeen. Otsakkeita voi käyttää monenlaisiin tarkoituksiin, mutta yleisimmin käytetään otsaketta “Location”, joka lähettää käyttäjän selaimen kaksoispisteen jälkeen kirjoitettuun osoitteesen. Tämä on kätevä tapa ohjata käyttäjä jonkin toisen sivun luo.</p>
+<p>Voit tehdä siitäkin oman apufunktion aiemmin tekemääsi yleiskäyttöiseen kirjastotiedostoon. Myös koodin alussa oleva muuttujien olemassaolon varmistamisesta huolehtiva koodi on hyvä kandidaatti yleiskäyttöisen funktion sisällöksi.</p>
 <section class="alert alert-danger"><h3>
 Pidä mielessä!
 </h3>
@@ -189,7 +198,7 @@ sillä ne on lähetettävä ennen sivun sisältöä.
  
 
 </section></p>
-<p>Toteuta ylläolevan kaltainen tarkastus omaan kirjautumissivuusi. Voit tehdä tarkistuksen joko niin, että se toimii samassa tiedostossa kuin kirjautumislomake tai tehdä lomakkeen vastaanottolle oman tiedoston. Tee myös aiemmin tekemääsi käyttäjää mallintavaan luokkaan staattinen metodi käyttäjän hakemiseen käyttäjätunnuksella ja salasanalla. Käytä tätä metodia kirjautumisen tarkistamisen toteuttamiseen.</p>
+<p>Toteuta ylläolevan kaltainen tarkastus omaan tiedostoonsa, esim. <code>doLogin.php</code> tai <code>kirjaudu.php</code>. Tee myös aiemmin tekemääsi käyttäjää mallintavaan luokkaan staattinen metodi käyttäjän hakemiseen käyttäjätunnuksella ja salasanalla. Käytä tätä metodia kirjautumisen tarkistamisen toteuttamiseen.</p>
 <p>Itse metodin ei vielä tässä vaiheessa tarvitse olla allaolevaa logiikkaa monimutkaisempi:</p>
 <p><strong>Ote tiedostosta libs/models/kayttaja.php:</strong></p>
 <pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="dt">static</span> function <span class="fu">getKayttaja</span>($kayttaja, $salasana) {

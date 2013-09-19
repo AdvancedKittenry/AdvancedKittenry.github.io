@@ -1,7 +1,5 @@
 % Kirjautuminen PHP:llä
 
-<wip />
-
 Näillä sivuilla käydään yksityiskohtaisemmin läpi kirjautumisen toteuttamiseen välttämättömät asiat PHP-kielellä.
 
 * [Mihin eri sovelluksen osat kannattaa laittaa?](rakenne.html) 

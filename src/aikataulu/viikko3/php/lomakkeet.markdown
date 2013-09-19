@@ -38,10 +38,17 @@ Hyvin yksinkertainen kirjautuminen voitaisiin näitä muuttujia käyttäen toteu
 
 ~~~php
 <?php
-
+  
+  //Tarkistetaan että vaaditut kentät on täytetty:
   if (empty($_POST["username"])) {
+    naytaNakymä("login", array(
+      'virhe' => "Kirjautuminen epäonnistui! Antamasi käyttäjänimi on tyhjä.",
+    ));
   }
   if (empty($_POST["password"])) {
+    naytaNakymä("login", array(
+      'virhe' => "Kirjautuminen epäonnistui! Antamasi salasana on tyhjä.",
+    ));
   }
   
   $salasana = $_POST["password"];
@@ -55,8 +62,9 @@ Hyvin yksinkertainen kirjautuminen voitaisiin näitä muuttujia käyttäen toteu
     /* Väärän tunnuksen syöttänyt saa eteensä lomakkeen ja virheen.
      * Tässä käytetään omalta yläluokalta perittyjä yleiskäyttöisiä metodeja.
      */
-    asetaVirhe("Kirjautuminen ei onnistunut. Käyttäjää ei löytynyt", request);
-    naytaJSP("login.php", request, response);
+    naytaJSP("login.php", array(
+      'virhe' => "Kirjautuminen ei onnistunut. Käyttäjää ei löytynyt", request;
+    ));
   }
 ~~~
 
@@ -66,7 +74,10 @@ lähettää käyttäjän selaimelle HTTP-otsakkeen.
 Otsakkeita voi käyttää monenlaisiin tarkoituksiin, mutta yleisimmin käytetään otsaketta "Location", 
 joka lähettää käyttäjän selaimen kaksoispisteen jälkeen kirjoitettuun osoitteesen.
 Tämä on kätevä tapa ohjata käyttäjä jonkin toisen sivun luo.
-Voit halutessasi tehdä siitäkin oman apufunktion aiemmin tekemääsi yleiskäyttöiseen kirjastotiedostoon.
+
+Voit tehdä siitäkin oman apufunktion aiemmin tekemääsi yleiskäyttöiseen kirjastotiedostoon.
+Myös koodin alussa oleva muuttujien olemassaolon varmistamisesta huolehtiva koodi
+on hyvä kandidaatti yleiskäyttöisen funktion sisällöksi.
 
 <alert>
 
@@ -78,9 +89,7 @@ sillä ne on lähetettävä ennen sivun sisältöä.
  
 </alert>
 
-Toteuta ylläolevan kaltainen tarkastus omaan kirjautumissivuusi.
-Voit tehdä tarkistuksen joko niin, että se toimii samassa tiedostossa kuin kirjautumislomake tai tehdä
-lomakkeen vastaanottolle oman tiedoston. 
+Toteuta ylläolevan kaltainen tarkastus omaan tiedostoonsa, esim. `doLogin.php` tai `kirjaudu.php`.
 Tee myös aiemmin tekemääsi käyttäjää mallintavaan luokkaan staattinen metodi
 käyttäjän hakemiseen käyttäjätunnuksella ja salasanalla. Käytä tätä
 metodia kirjautumisen tarkistamisen toteuttamiseen. 

@@ -13,6 +13,10 @@
 * Tee käyttäjien käsittelyä varten alustava malliluokka.
     * Sijoita kaikki mallit omaan pakettiinsa. Esim. `Kissalista.Models`.
 
+Projektissa pitäisi tällöin olla seuraavanlainen kansiorakenne:
+
+~~~~<include src="kansiorakenne.txt" />~~~~
+
 </summary>
 
 Tietokantasovellukset Javalla kannattaa jakaa 

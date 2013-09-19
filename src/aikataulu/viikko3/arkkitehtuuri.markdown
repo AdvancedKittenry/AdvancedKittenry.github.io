@@ -16,19 +16,16 @@ Ohjaajien toiveet sijoittelusta ovat alla:
 <tabs>
 <tab title="PHP-esimerkkisijoittelu">
 
-PHP:tä käytettäessä sijoita mallit 
-ja näkymät omiin kansioihinsa.
-Kontrollerit voit halutessasi jättää
-projektin juureen tai sijoittaa nekin omaan
-kansioonsa. Kansioiden nimet voi halutessaan suomentaa.
+PHP:tä käytettäessä sijoita kaikki yleiskäyttöinen koodi 
+ja näkymät omaan kansioonsa.
+Käsittelijät taas sijoitetaan projektin juureen.
+Näkymät sijoitetaan kansioon `views`.
+Yleiskäyttöisen koodin kansion voi nimetä kuvaavasti
+esim. `libs`. Luo malleille oma `models`-kansio yleiskäyttöisen koodin alle.
 
-~~~
-views/
-  userlist.php
-models/
-  user.php
-users.php (Käyttäjänhallinnan käsittelijä)
-~~~
+Kansioiden nimet voi halutessaan suomentaa.
+
+~~~~<include src="php/kansiorakenne.txt" />~~~~
 
 </tab>
 <tab title="Java-esimerkkisijoittelu">
@@ -39,16 +36,7 @@ projektin yhteisen paketin alle src-kansioon.
 Näkymät - eli yleensä jsp-tiedostot - menevät omaan kansioonsa 
 joka on oletuksena nimeltään web.
 
-~~~
-src/
-  Paketti/
-    Models/
-      User.java
-    Servlets/
-      UserServlet.java
-web/
-  user.jsp
-~~~
+~~~~<include src="java/kansiorakenne.txt" />~~~~
 
 </tab>
 </tabs>

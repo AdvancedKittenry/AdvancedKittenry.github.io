@@ -1,0 +1,8 @@
+src/
+  Paketti/
+    Models/
+      User.java
+    Servlets/
+      UserServlet.java
+web/
+  user.jsp

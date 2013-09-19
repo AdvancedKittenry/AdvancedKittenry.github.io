@@ -162,6 +162,15 @@ Tiivistelmä:
 <li>Sijoita kaikki mallit omaan pakettiinsa. Esim. <code>Kissalista.Models</code>.</li>
 </ul></li>
 </ul>
+<p>Projektissa pitäisi tällöin olla seuraavanlainen kansiorakenne:</p>
+<pre><code>src/
+  Paketti/
+    Models/
+      User.java
+    Servlets/
+      UserServlet.java
+web/
+  user.jsp</code></pre>
 </section>
 
 <p>Tietokantasovellukset Javalla kannattaa jakaa <a href="../arkkitehtuuri.html">arkkitehtuuriohjeen</a> mukaisesti malleihin, käsittelijöihin ja näkymiin. Keskitymme ensiksi käsittelijöihin ja näkymiin.</p>

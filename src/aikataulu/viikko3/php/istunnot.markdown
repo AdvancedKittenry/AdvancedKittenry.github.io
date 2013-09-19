@@ -78,8 +78,13 @@ uloskirjautumisen toteuttamiseksi riittää poistaa istuntoon tallennetut
 tiedot kirjautumisesta. Tämän jälkeen käyttäjä ei enää pääse sivuille sisään.
 
 ~~~php
-//Kirjaudutaan ulos
-session.removeAttribute("kirjautunutKayttaja");
+<?php
+  //Kirjaudutaan ulos
+  unset(session["kirjautunutKayttaja"]);
+
+  //Yleensä kannattaa ulkos kirjautumisen jälkeen ohjata käyttäjä kirjautumissivulle
+  header('Location: kirjautuminen.php');
+?>
 ~~~
 
 <last>
