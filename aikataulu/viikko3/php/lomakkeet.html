@@ -3,11 +3,30 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <title>Kurssikysely</title>
+  <title>Lomakkeiden käyttö ja vastaanottaminen</title>
   <style type="text/css">code{white-space: pre;}</style>
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
   <link rel="stylesheet" href="../../../css/base.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!--[if lt IE 9]>
@@ -49,7 +68,7 @@
 <li><a href="../../../aikataulu/viikko1/aiheet/Huutokauppa.html">Huutokauppa</a></li>
 <li><a href="../../../aikataulu/viikko1/aiheet/Kennelkerho.html">Kennelkerho</a></li>
 <li><a href="../../../aikataulu/viikko1/aiheet/Kuluttajan_tuki_Ry.html">Kuluttajan tuki Ry</a></li>
-<li class="selected"><a href="../../../aikataulu/viikko1/aiheet/Kurssikysely.html">Kurssikysely</a></li>
+<li><a href="../../../aikataulu/viikko1/aiheet/Kurssikysely.html">Kurssikysely</a></li>
 <li><a href="../../../aikataulu/viikko1/aiheet/Kurssin_kotisivu.html">Kurssin kotisivu</a></li>
 <li><a href="../../../aikataulu/viikko1/aiheet/Kurssitarjonta_ja_kurssipaikan_varaus.html">Kurssitarjonta ja kurssipaikan varaus</a></li>
 <li><a href="../../../aikataulu/viikko1/aiheet/Lainahakemusten_kasittely.html">Lainahakemusten käsittely</a></li>
@@ -102,7 +121,7 @@
 <li><a href="../../../aikataulu/viikko3/php/index.html">Kirjautuminen PHP:llä</a>
 <ul>
 <li><a href="../../../aikataulu/viikko3/php/rakenne.html">Mihin eri tiedostot kannattaa laittaa?</a></li>
-<li><a href="../../../aikataulu/viikko3/php/lomakkeet.html">Lomakkeiden käyttö ja vastaanottaminen</a></li>
+<li class="selected"><a href="../../../aikataulu/viikko3/php/lomakkeet.html">Lomakkeiden käyttö ja vastaanottaminen</a></li>
 <li><a href="../../../aikataulu/viikko3/php/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
 </ul></li>
 </ul></li>
@@ -120,33 +139,81 @@
 </div>
 <div class="col-md-6" id="content">
 <header>
-<h1 class="title">Kurssikysely</h1>
+<h1 class="title">Lomakkeiden käyttö ja vastaanottaminen</h1>
 </header>
-<section class="alert alert-info small"><h3>
-Arvosanamaksimi:
+<!-- order: 2 -->
+
+<p>Seuraavaksi tee sivu, joka näyttää html-demoon tekemäsi kirjautumislomakkeen näkymänään. Voit laittaa sivun esim. osoitteeseen <code>/kirjautuminen.php</code> tai <code>/login.php</code>.</p>
+<p>Laitetaan seuraavaksi tämä sivu ottamaan kirjautuminen myös vastaan.</p>
+<section id="lomakkeiden-vastaanottaminen" class="level2">
+<h2>Lomakkeiden vastaanottaminen</h2>
+<p>Oletetaan, että kirjautumisnäkymässä on suurinpiirtein allaolevan tapainen lomake.</p>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;form</span><span class="ot"> action=</span><span class="st">&quot;login&quot;</span><span class="ot"> method=</span><span class="st">&quot;POST&quot;</span><span class="kw">&gt;</span>
+Käyttäjänimi: <span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;text&quot;</span><span class="ot"> name=</span><span class="st">&quot;username&quot;</span> <span class="kw">/&gt;</span>
+Salasana: <span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;password&quot;</span><span class="ot"> name=</span><span class="st">&quot;password&quot;</span> <span class="kw">/&gt;</span>
+<span class="kw">&lt;button</span><span class="ot"> type=</span><span class="st">&quot;submit&quot;</span><span class="kw">&gt;</span>Kirjaudu<span class="kw">&lt;/button&gt;</span>
+<span class="kw">&lt;/form&gt;</span></code></pre>
+<p>HTML-kertauksena: <code>form</code>-elementin <code>action</code>-attribuutti määrittää mihin osoitteeseen lomakkeen tiedot lähetetään, <code>method</code> sensijaan kertoo lähetetäänkö tiedot GET- vai POST-parametreina. Jokaisen <code>input</code>-elementin sisältö lähetetään parametrina, joka tunnistetaan <code>name</code>-attribuutissa annetulla nimellä.</p>
+<p>Lähetetyn lomakkeen parametreja voidaan käsitellä hakemalla ne PHP:n <a href="http://php.net/manual/en/language.variables.superglobals.php">superglobaaleista muuttujista</a> <code>$_GET</code> ja <code>$_POST</code>. Ne ovat PHP:n automaattisesti määrittämiä muuttujia, jotka ovat näkyvissä kaikissa funktioissa ja metodeissa automaattisesti. Niiden sisältönä on array, johon on laitettu sivun lomakkeelta vastaanottamat GET- ja POST-parametrit.</p>
+<p>Hyvin yksinkertainen kirjautuminen voitaisiin näitä muuttujia käyttäen toteuttaa suurinpiirtein seuraavasti:</p>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>
+
+  <span class="kw">if</span> <span class="ot">(</span><span class="fu">empty</span><span class="ot">(</span><span class="kw">$_POST</span><span class="ot">[</span><span class="st">&quot;username&quot;</span><span class="ot">]))</span> {
+  }
+  <span class="kw">if</span> <span class="ot">(</span><span class="fu">empty</span><span class="ot">(</span><span class="kw">$_POST</span><span class="ot">[</span><span class="st">&quot;password&quot;</span><span class="ot">]))</span> {
+  }
+  
+  <span class="kw">$salasana</span> = <span class="kw">$_POST</span><span class="ot">[</span><span class="st">&quot;password&quot;</span><span class="ot">];</span>
+  <span class="kw">$kayttaja</span> = <span class="kw">$_POST</span><span class="ot">[</span><span class="st">&quot;username&quot;</span><span class="ot">];</span>
+  
+  <span class="co">/* Tarkistetaan mallilta onko parametrina saatu oikeat tunnukset */</span>
+  <span class="kw">if</span> <span class="ot">(</span>Kayttaja::getKayttaja<span class="ot">(</span><span class="kw">$kayttaja</span><span class="ot">,</span> <span class="kw">$salasana</span><span class="ot">)</span> != <span class="kw">null</span><span class="ot">)</span> {
+    <span class="co">/* Jos tunnus on oikea, ohjataan käyttäjä sopivalla HTTP-otsakkeella kissalistaan. */</span>
+    <span class="fu">header</span><span class="ot">(</span><span class="st">&#39;Location: kissalista.php&#39;</span><span class="ot">);</span>
+  } <span class="kw">else</span> {
+    <span class="co">/* Väärän tunnuksen syöttänyt saa eteensä lomakkeen ja virheen.</span>
+<span class="co">     * Tässä käytetään omalta yläluokalta perittyjä yleiskäyttöisiä metodeja.</span>
+<span class="co">     */</span>
+    asetaVirhe<span class="ot">(</span><span class="st">&quot;Kirjautuminen ei onnistunut. Käyttäjää ei löytynyt&quot;</span><span class="ot">,</span> request<span class="ot">);</span>
+    naytaJSP<span class="ot">(</span><span class="st">&quot;login.php&quot;</span><span class="ot">,</span> request<span class="ot">,</span> response<span class="ot">);</span>
+  }</code></pre>
+<p>Koodissa kannattaa huomata kutsu <code>header('Location: kissalista.php');</code>. <a href="http://php.net/manual/en/function.header.php">header-funktio</a> lähettää käyttäjän selaimelle HTTP-otsakkeen. Otsakkeita voi käyttää monenlaisiin tarkoituksiin, mutta yleisimmin käytetään otsaketta “Location”, joka lähettää käyttäjän selaimen kaksoispisteen jälkeen kirjoitettuun osoitteesen. Tämä on kätevä tapa ohjata käyttäjä jonkin toisen sivun luo. Voit halutessasi tehdä siitäkin oman apufunktion aiemmin tekemääsi yleiskäyttöiseen kirjastotiedostoon.</p>
+<section class="alert alert-danger"><h3>
+Pidä mielessä!
 </h3>
-5
-</section>
-<section class="alert alert-info small"><h3>
-Vaikeustaso:
+
+<p>PHP:llä kannattaa varoa lisäämästä tiedostojensa alkuun välilyöntejä ja rivinvaihtoja ennen <?php-tägiä. PHP tulkitsee nämä merkit
+sivun sisällöksi, joka pitää lähettää selaimelle. 
+Tämä estää kaikkien HTTP-otsakkeiden lähettämisen, 
+sillä ne on lähetettävä ennen sivun sisältöä.
+ 
+
+</section></p>
+<p>Toteuta ylläolevan kaltainen tarkastus omaan kirjautumissivuusi. Voit tehdä tarkistuksen joko niin, että se toimii samassa tiedostossa kuin kirjautumislomake tai tehdä lomakkeen vastaanottolle oman tiedoston. Tee myös aiemmin tekemääsi käyttäjää mallintavaan luokkaan staattinen metodi käyttäjän hakemiseen käyttäjätunnuksella ja salasanalla. Käytä tätä metodia kirjautumisen tarkistamisen toteuttamiseen.</p>
+<p>Itse metodin ei vielä tässä vaiheessa tarvitse olla allaolevaa logiikkaa monimutkaisempi:</p>
+<p><strong>Ote tiedostosta libs/models/kayttaja.php:</strong></p>
+<pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="dt">static</span> function <span class="fu">getKayttaja</span>($kayttaja, $salasana) {
+  $oikeaSalasana = <span class="st">&quot;kala&quot;</span>;
+  $oikeaKayttaja = <span class="st">&quot;admin&quot;</span>;
+
+  <span class="kw">if</span> (oikeaKayttaja == kayttaja &amp;&amp; oikeaSalasana == salasana) {
+    <span class="kw">return</span> <span class="kw">new</span> <span class="fu">Kayttaja</span>();
+  }
+
+  <span class="kw">return</span> <span class="kw">null</span>;
+}</code></pre>
+<p>Varmista, että kirjautumislomake näyttää käyttäjälle järkevän virheviestin mikäli kirjautuminen ei onnistu.</p>
+<section class="alert alert-success small"><h3>
+Seuraavaksi:
 </h3>
-Keskitasoa
+
+<p>Seuraavaksi käytämme istuntoja <a href="istunnot.html">kirjautumisen tallentamiseen sivulatausten välillä</a>.</p>
 </section>
 
 
-<p><strong>IS97HL12</strong></p>
-<p>Kurssikyselyssä kurssille osallistujat voivat esittää mielipiteensä kurssista. Kurssikyselyjärjestelmä haluttaisiin toteuttaa yliopiston tiedekunnan laajuisena. Kurssikyselyn yksityiskohtaiset tulokset on tarkoitettu kurssin opettajalle. Kurssin järjestävä laitos voi saada yhteenvetotietoja vastauksista. Kysymykset jakautuvat kolmeen luokkaan: kaikille kursseille yhteiset kysymykset, laitoksen kursseille yhteiset kysymykset ja kurssikohtaiset kysymykset. Osa kysymyksistä on sellaisia, että niihin vastataan käyttäen numeroasteikkoa 0-5. Vastaus saattaa olla myös muu ennaltamäärättyyn arvojoukkoon kuuluva arvo. Kolmantena tyyppinä ovat vapaamuotoista tekstiä sisältävät vastaukset. Kysymyksiä pitäisi voida helposti lisätä, poistaa ja muuttaa. Lomake tuotetaan tietokannan perusteella uudelleen aina sitä pyydettäessä. Kyselyn tuloksia pitäisi voida kysellä milloin tahansa kurssin kuluessa.</p>
-<p>Toimintoja:</p>
-<ul>
-<li>kirjautuminen</li>
-<li>kyselylomakkeen tuottaminen</li>
-<li>yhteenveto kurssista - vastaajien lukumäärät ja keskiarvoja</li>
-<li>yhteenveto laitoksen kursseista  - vastaajien lukumäärät keskiarvoja</li>
-<li>yhteenveto laitoksen kursseista tietyn kysymyksen perusteella - kurssit järjestykseen</li>
-<li>opettajalle yksityiskohtainen raportti kurssin kyselystä</li>
-<li>kurssien lisäys, poisto ja muutos</li>
-<li>kyselyjen lisäys, poisto ja muutos (ei voida tehdä kyselyn ollessa käynnissä)</li>
-</ul>
+
+
+</section>
 </div>
 </div> 
 </div> 

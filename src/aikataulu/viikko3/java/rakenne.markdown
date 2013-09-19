@@ -28,7 +28,7 @@ _käsittelijöitä_.
 
 Jokainen Servlet-luokka on sidottu johonkin URL-osoitteeseen,
 johon ohjattu aineistopyyntö aktivoi sen.
-Sitomiset on käyttämässämme java-ympäristön versiossa
+Sitomiset on käyttämässämme Java-ympäristön versiossa
 määritelty XML-pohjaisesti tiedostossa `web/WEB-INF/web.xml`.
 Tiedoston muokkaus on hieman monimutkaista, mutta esimerkiksi
 NetBeans osaa muokata tämän tiedoston määrityksiä

@@ -19,6 +19,7 @@ Palautuspäivämäärään mennessä työn on täytettävä seuraavat vaatimukse
     * Näkymän näyttäminen sivupohjan kanssa yhdellä funktiokutsulla
     * Selaimen ohjaus toiselle sivulle (HTTP redirect, toteuttaminen vapaaehtoinen)
     * Virheilmoitusten näyttäminen käyttäjälle.
+    * PHP:llä `session_start`-funktion kutsuminen kannattaa sijoittaa tähän tiedostoon.
 * Sovellukseen kirjautuminen toimii
     * Käyttää valitsemasi kielen istuntotukea kirjautumisen muistamiseen
     * Ei tarvitse käyttää vielä tietokantaa
