@@ -174,9 +174,11 @@ on tiedostoja, mutta se ei haittaa.
 Konfiguroi seuraavassa ikkunassa projektisi
 tyypiksi "Remote Web Site (FTP, SFTP)".
 Laita kohtaan Project URL osoite
-`http://kayttajatunnuksesi.users.cs.helsinki.fi`
-ja kohtaan Upload Directory polku
+`http://kayttajatunnuksesi.users.cs.helsinki.fi`,
+kohtaan Upload Directory polku
 `/htdocs`
+ja kohtaan Upload Files
+`On save`
 Paina sen jälkeen Remote Connections -kohdassa olevaa `Manage`-nappia
 
 ![]({{myimgdir}}netbeans/php2.5-config.png)

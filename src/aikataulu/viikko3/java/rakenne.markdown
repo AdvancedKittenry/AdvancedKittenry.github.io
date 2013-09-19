@@ -270,6 +270,9 @@ joka kuvaa käyttäjää.
 Sijoita malliisi kentät käyttäjäsi tietokantataulun kenttiä varten
 ja luo kentille getterit ja setterit sekä halutessasi konstruktori, joka ottaa kenttien arvot vastaan.
 
+Myöhemmin työn edetessä teemme tähän luokkaan staattisia metodeja, 
+jotka osaavat hakea näihin olioihin sisältöä tietokannasta.
+
 <next>
 Seuraavaksi otamme käyttäjämallin ja servletit käyttöön
 [yksinkertaisen kirjautumisen](lomakkeet.html) toteuttamiseen.

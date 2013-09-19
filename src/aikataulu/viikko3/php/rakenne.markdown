@@ -333,6 +333,9 @@ Tee mallitiedostoosi luokka, joka vastaa käyttäjää.
 Sijoita luokkaan kentät käyttäjäsi tietokantataulun kenttiä varten
 ja luo kentille getterit ja setterit sekä halutessasi konstruktori, joka ottaa kenttien arvot vastaan.
 
+Myöhemmin työn edetessä teemme tähän luokkaan staattisia metodeja, 
+jotka osaavat hakea näihin olioihin sisältöä tietokannasta.
+
 Esimerkkinä mallikoodille voit käyttää ensimmäisen viikon ohjelmointikielioppaan Kahvikuppia:
 
 ~~~php<include src="../../viikko1/esimerkit/kahvikuppi.php" />~~~
