@@ -167,13 +167,14 @@ Salasana: <span class="kw">&lt;input</span><span class="ot"> type=</span><span c
     <span class="co">/* Väärän tunnuksen syöttänyt saa eteensä lomakkeen ja virheen.</span>
 <span class="co">     * Tässä käytetään omalta yläluokalta perittyjä yleiskäyttöisiä metodeja.</span>
 <span class="co">     */</span>
-    <span class="fu">asetaVirhe</span>(<span class="st">&quot;Kirjautuminen ei onnistunut. Käyttäjää ei löytynyt&quot;</span>);
-    <span class="fu">naytaJSP</span>(<span class="st">&quot;login.jsp&quot;</span>);
+    <span class="fu">asetaVirhe</span>(<span class="st">&quot;Kirjautuminen ei onnistunut. Käyttäjää ei löytynyt&quot;</span>, request);
+    <span class="fu">naytaJSP</span>(<span class="st">&quot;login.jsp&quot;</span>, request, response);
   }
 }</code></pre>
 <p>Koodissa kannattaa huomata kutsu <code>response.sendRedirect(&quot;kissalista&quot;);</code>. <code>HttpServletResponse</code>-olion <a href="http://docs.oracle.com/javaee/6/api/javax/servlet/http/HttpServletResponse.html#sendRedirect(java.lang.String)">sendRedirect-metodi</a> lähettää käyttäjän selaimen parametrina annettuun osoitteesen. Tämä on kätevä tapa ohjata käyttäjä jonkin toisen servletin luo. Voit halutessasi tehdä siitäkin metodin aiemmin tekemääsi servlet-yläluokkaan.</p>
 <p>Toteuta ylläolevan kaltainen tarkastus omaan kirjautumisservlettiisi. Voit tehdä tarkistuksen joko niin, että se toimii samassa servletissä tai tehdä kirjautumislomakkeen vastaanottolle oman servletin. Tee myös aiemmin tekemääsi käyttäjää mallintavaan luokkaan metodi käyttäjän hakemiseen käyttäjätunnuksella ja salasanalla. Käytä tätä metodia kirjautumisen toteuttamiseen.</p>
 <p>Itse metodin ei vielä tässä vaiheessa tarvitse olla allaolevaa logiikkaa monimutkaisempi:</p>
+<p><strong>Ote tiedostosta Kayttajat.java:</strong></p>
 <pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="dt">static</span> Kayttaja <span class="fu">getKayttaja</span>(String kayttaja, String salasana) {
   String oikeaSalasana = <span class="st">&quot;kala&quot;</span>;
   String oikeaKayttaja = <span class="st">&quot;admin&quot;</span>;

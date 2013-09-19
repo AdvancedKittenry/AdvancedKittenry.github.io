@@ -47,8 +47,8 @@ protected void processRequest(HttpServletRequest request, HttpServletResponse re
     /* Väärän tunnuksen syöttänyt saa eteensä lomakkeen ja virheen.
      * Tässä käytetään omalta yläluokalta perittyjä yleiskäyttöisiä metodeja.
      */
-    asetaVirhe("Kirjautuminen ei onnistunut. Käyttäjää ei löytynyt");
-    naytaJSP("login.jsp");
+    asetaVirhe("Kirjautuminen ei onnistunut. Käyttäjää ei löytynyt", request);
+    naytaJSP("login.jsp", request, response);
   }
 }
 ~~~
@@ -68,6 +68,8 @@ käyttäjän hakemiseen käyttäjätunnuksella ja salasanalla. Käytä tätä
 metodia kirjautumisen toteuttamiseen. 
 
 Itse metodin ei vielä tässä vaiheessa tarvitse olla allaolevaa logiikkaa monimutkaisempi:
+
+**Ote tiedostosta Kayttajat.java:**
 
 ~~~java
 public static Kayttaja getKayttaja(String kayttaja, String salasana) {
