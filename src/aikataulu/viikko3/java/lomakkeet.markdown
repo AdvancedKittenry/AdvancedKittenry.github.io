@@ -70,7 +70,7 @@ metodia kirjautumisen toteuttamiseen.
 Itse metodin ei vielä tässä vaiheessa tarvitse olla allaolevaa logiikkaa monimutkaisempi:
 
 ~~~java
-Kayttaja getKayttaja(String kayttaja, String salasana) {
+public static Kayttaja getKayttaja(String kayttaja, String salasana) {
   String oikeaSalasana = "kala";
   String oikeaKayttaja = "admin";
 
