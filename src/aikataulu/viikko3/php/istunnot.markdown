@@ -54,9 +54,11 @@ jotta kaikki varmasti toimii.
 </alert>
 
 <alert>
+
 Myöskään istunnot eivät toimi kunnolla, mikäli PHP on ehtinyt lähettää
 selaimelle jotain sisältöä. Kannattaa siis varoa 
-ylimääräisiä välilyöntejä ennen <?php-tägiä tämänkin takia.
+ylimääräisiä välilyöntejä ennen &lt;?php-tägiä tämänkin takia.
+
 </alert>
 
 ## Kirjautumisen tarkistaminen
