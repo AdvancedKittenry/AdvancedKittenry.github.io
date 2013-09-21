@@ -7,8 +7,6 @@ Kolmannen viikon pääteemana on aloittaa
 hyvän arkkitehtuurin mukainen koodaaminen
 ja toteuttaa kirjautuminen.
 
-<wip />
-
 Palautuspäivämäärään mennessä työn on täytettävä seuraavat vaatimukset:
 
 * Työssä on noudatettu [arkkitehtuuriohjeen MVC-kolmijakoa](arkkitehtuuri.html)

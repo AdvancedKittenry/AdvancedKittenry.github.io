@@ -106,6 +106,7 @@
 <li><a href="../../aikataulu/viikko3/php/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
 </ul></li>
 </ul></li>
+<li class="selected"><a href="../../aikataulu/viikko4/index.html">Viikko 4</a></li>
 <li><a href="../../aikataulu/demo.html">Demotilaisuus</a></li>
 <li><a href="../../aikataulu/palautus.html">Työn palautus</a></li>
 </ul></li>
@@ -123,7 +124,6 @@
 <h1 class="title">Viikko 4</h1>
 </header>
 <!-- order: 1 -->
-<!-- hidden! -->
 
 <section class="alert alert-warning small"><h3>
 Deadline:
@@ -131,20 +131,34 @@ Deadline:
 <span class="coursekeyword deadline4">pe 27.9 klo 23:00</span>
 </section>
 
+
+
+<p>Palautuspäivämäärään mennessä työn on täytettävä seuraavat vaatimukset:</p>
 <ul>
-<li>SQL-injektiot ja hyvä sql-koodi</li>
-<li>XSS-injektiot</li>
-<li>Mallien kirjoittaminen, osa 2</li>
+<li>Tietokantayhteys toimii, ja sen luonti on sijoitettu omaan metodiinsa/funktioonsa.</li>
+<li>Luotu ainakin yksi malliluokka, joka:
+<ol type="1">
+<li>Sisältää staattisia metodeja, jotka hakevat kannasta eri kriteerein rivejä olioiksi. (Esim. kissalistan hakutoiminto, yksittäisen kissan hakeminen id-numerolla yms.)</li>
+<li>Sisältää metodin, joka lisää olion kantaan (INSERT-lause).</li>
+<li>Sisältää metodin, joka päivittää olion tiedot kantaan (UPDATE-lause).</li>
+<li>Sisältää metodin joka poistaa olion kannasta, voidaan toteuttaa myös staattinen metodi, joka poistaa hakuehdolla rivejä taulusta.</li>
+</ol></li>
+<li>Käytetty SQL-koodi on turvallinen, eikä tarjoa mahdollisuuksia SQL-injektioille.</li>
+<li>Luotu sivut, jossa edellä mainittuja malliluokan toimintoja käytetään hyväksi. Käytettävyyden pitää olla kohdallaan:
+<ul>
+<li>Sivuilla selkeät virheilmoitukset kaikista virhetilanteista ja lomakkeiden syöttövirheistä.</li>
+<li>Lomakkeen käsittelijä ohjaa takaisin lomakesivulle, mikäli lomake on virheellisesti täytetty.
+<ul>
+<li>Lomakesivulla tällöin näkyvissä ne tiedot, jotka käyttäjä siihen syötti.</li>
+<li>Väärin syötetyt tiedot kerrotaan virheilmoituksin.</li>
+</ul></li>
+<li>Tiedot näkyvät sivuilla oikein myös silloin kun käyttäjä on syöttänyt niiden sekaan HTML:ää, lainausmerkkejä yms.
+<ul>
+<li>PHP:ssä <a href="http://www.php.net/manual/en/function.htmlspecialchars.php">htmlspecialchars-funktio</a> auttaa: <code>&lt;?php echo htmlspecialchars($muuttuja); ?&gt;</code></li>
+<li>Javassa voi käyttää <a href="http://docs.oracle.com/javaee/5/jstl/1.1/docs/tlddocs/">out-tägiä</a>: <code>&lt;c:out value=&quot;${muuttuja}&quot;/&gt;</code></li>
+</ul></li>
+</ul></li>
 </ul>
-<section class="alert alert-success"><h3>
-Ohje:
-</h3>
-<p>Aloita <a href="404.html">tästä</a> ja seuraa vihreitä ohjelaatikoita.</p>
-<p>Tehtyäsi kaiken varmista, että kaikki tekemäsi muutokset näkyvät GitHub-repositoriossasi.</p>
-</section>
-
-
-
 </div>
 </div> 
 </div> 
