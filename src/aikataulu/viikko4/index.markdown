@@ -37,7 +37,7 @@ Työaiheet neljännellä viikolla lyhyesti:
 * Käytetyn SQL-koodin pitää olla turvallista niin, ettei se tarjoa mahdollisuuksia SQL-injektioille.
     * Tähän käytetään PDO:n ja javan JDBC:n prepared statements -tukia.
     * Kyselyihin upotetaan parametreja laittamalla SQL-komentojen sekaan kysymysmerkkejä, joiden sisällön voi täyttää ohjelmallisesti.
-        * [Lyhyt esimerkki](../viikko1/ohjelmointikielet.html#tietokannan-käyttö)
+        * [Lyhyt esimerkki PDO:n ja JDBC:n käytöstä](../viikko1/ohjelmointikielet.html#tietokannan-käyttö)
 
 **Lomakkeiden ja sivujen toteuttaminen**
 
