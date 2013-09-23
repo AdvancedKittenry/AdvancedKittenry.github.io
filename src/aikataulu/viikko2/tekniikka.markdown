@@ -3,8 +3,15 @@
 <!-- addHeaderNavigation -->
 
 Ota käyttöösi users-palvelimen Java- tai PHP-tuki, sekä käyttämäsi tietokanta.
+
+## SSH-yhteydet
+
+[putty]: http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html
+
 Ensiksi sinun pitää kirjautua laitoksen tietokantasovelluspalvelimelle 
-SSH:llä. Käytä Windowsissa [Puttyä](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) ja muissa käyttäjärjestelmissä päätettä ja ssh-ohjelmaa.
+SSH:llä. Käytä Windowsissa [Puttyä][putty] ja muissa käyttäjärjestelmissä komentoriviä ja ssh-ohjelmaa.
+
+Ssh-ohjelma toimii kirjoittamalla alla esitetyn tapainen komento komentoriville.
 Ohjelma kysyy cs-tunnuksesi salasanaa ja päästää sinut sisälle palvelimeen.
 
 ~~~~bash
@@ -17,9 +24,23 @@ Laitoksen koneilla toimii myös lyhyempi ja kätevämpi muoto:
 ssh users
 ~~~~
 
-Kun olet päässyt sisään aktivoi valitsemasi ohjelmointikielen ja tietokannan tuki.
+### SSH-yhteydet Windowsilla
 
-## Java-tuki
+Windowsin oma komentorivi on senverran kömpelö, että SSH-yhteyksiä varten on 
+kehitetty oma komentoriviohjelmansa [Putty][putty].
+Yhteyden saa aikaan kuvan mukaisella tavalla. 
+Luotu yhteys kannattaa tallentaa
+kirjoittamalla Saved sessions-tekstin alla olevaan kenttään yhteydelle nimi
+ja painamalla Save-nappia. Yhteys tallentuu kentän alla olevaan listaan,
+josta sen voi helposti avata kaksoisklikkaamalla sitä.
+
+![users-palvelimen yhteyden luominen]({{imgdir}}aikataulu/viikko2/putty-users.png)
+
+## Ohjelmointikielten ja tietokantojen aktivointi
+
+Kun olet päässyt käyttämälläsi ssh-ohjelmalla sisään aktivoi valitsemasi ohjelmointikielen ja tietokannan tuki.
+
+### Java-tuki
 
 Lue sivu [Servlettien käyttö Tietokantasovellusten harjoitustyössä](http://www.cs.helsinki.fi/u/laine/tikas/material/servlet_ohje.html)
 ja noudata sen ohjeita. 
@@ -27,7 +48,7 @@ Liitä tämän jälkeen dokumentaatiosi [Käynnistys- / käyttöohje -kappaleese
 sovelluksesi nettiosoite usersilla (tai muulla palvelimella, mikäli haluat käyttää sellaista).
 Kappaleeseen ei tässä vaiheessa tarvitse kirjoittaa muuta sisältöä.
 
-## PHP-tuki
+### PHP-tuki
 
 PHP sivut sijoitetaan users-koneen käyttäjän htdocs hakemistoon tai sen alihakemistoon. 
 Hakemiston htdocs saa luotua komentoskriptillä komennolla `wanna-htdocs`.
@@ -60,7 +81,7 @@ Liitä PHP-tuen pystytyksen jälkeen dokumentaatiosi [Käynnistys- / käyttöohj
 sovelluksesi nettiosoite usersilla (tai muulla palvelimella, mikäli haluat käyttää sellaista).
 Kappaleeseen ei tässä vaiheessa tarvitse kirjoittaa muuta sisältöä.
 
-### Virheilmoitukset
+#### Virheilmoitukset
 PHP:n virheilmoitukset kirjautuvat tiedostoon 
 `/home/userlogs/käyttäjätunnuksesi.error`.
 Uusimmat virheet löytyvät tiedoston lopusta. Kätevä tapa seurata PHP:n tuottamia virheviestejä on ajaa komento:
@@ -81,7 +102,7 @@ Virheloki saattaa ajoittain täyttyä seuraavanlaisista virheviesteistä:
 
 Virheistä pääsee halutessaan eroon laittamalla sovellukselleen [favicon.ico:n](http://fi.wikipedia.org/wiki/Favicon).
 
-## PostgreSQL
+### PostgreSQL
 
 PostgreSQL-kannan saat käyttöösi koneessa users.cs.helsinki.fi
 skriptillä `wanna-postgres`. 
@@ -120,7 +141,7 @@ PHP:n PDO:lle riittää seuraava hyvin yksinkertainen koodi:
 
 </info>
 
-## MySql
+### MySql
 
 MySql-kannan saat käyttöösi koneessa users.cs.helsinki.fi
 skriptillä `wanna-mysql`. 

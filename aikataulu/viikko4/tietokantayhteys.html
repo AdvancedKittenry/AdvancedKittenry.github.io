@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <title></title>
+  <title>Tietokantayhteyden pystytys</title>
   <style type="text/css">code{white-space: pre;}</style>
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -106,6 +106,7 @@
 <li><a href="../../aikataulu/viikko3/php/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
 </ul></li>
 </ul></li>
+<li><a href="../../aikataulu/viikko4/index.html">Viikko 4</a></li>
 <li><a href="../../aikataulu/demo.html">Demotilaisuus</a></li>
 <li><a href="../../aikataulu/palautus.html">Työn palautus</a></li>
 </ul></li>
@@ -119,7 +120,27 @@
 </nav>
 </div>
 <div class="col-md-6" id="content">
+<header>
+<h1 class="title">Tietokantayhteyden pystytys</h1>
+</header>
+<!-- hidden! -->
 
+
+<section id="java-ja-ssh-tunnelointi" class="level2">
+<h2>Java ja SSH-tunnelointi</h2>
+<p>Seuraava komento pystyttää SSH-tunnelin users-palvelimelle välittäen kaiken liikenteen tietokantapalvelimen portissa 5432 omalle koneellesi:</p>
+<pre class="ssh"><code>ssh -L 5432:localhost:5432 tunnus@users.cs.helsinki.fi</code></pre>
+<section id="windows-ja-putty" class="level3">
+<h3>Windows ja Putty</h3>
+<p>Windowsilla käytetään putty-ohjelmaa, jolle annetaan seuraavan näköiset asetukset:</p>
+<figure>
+<img src="../../images/aikataulu/viikko2/putty-users.png" alt="users-palvelimen yhteyden luominen" /><figcaption>users-palvelimen yhteyden luominen</figcaption>
+</figure>
+<figure>
+<img src="../../images/aikataulu/viikko4/users-tunneli.png" alt="SSH-tunnelien määritteleminen putty-ohjelmalla" /><figcaption>SSH-tunnelien määritteleminen putty-ohjelmalla</figcaption>
+</figure>
+</section>
+</section>
 </div>
 </div> 
 </div> 
