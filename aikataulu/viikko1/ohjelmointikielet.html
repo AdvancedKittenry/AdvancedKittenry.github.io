@@ -337,14 +337,14 @@ ResultSet tulokset = <span class="kw">null</span>;
 <span class="kw">try</span> {
   <span class="co">//Etsitään mysql-ajuri ja otetaan yhteys tietokantaan</span>
   Class.<span class="fu">forName</span>(<span class="st">&quot;com.mysql.jdbc.Driver&quot;</span>);
-  yhteys = DriverManager.<span class="fu">getConnection</span>(<span class="st">&quot;jdbc:mysql://localhost/tietokannan_nimi?user=kayttaja&amp;password=salasana&quot;</span>);
+  yhteys = DriverManager.<span class="fu">getConnection</span>(<span class="st">&quot;jdbc:mysql://localhost/tietokannan_nimi&quot;</span>,<span class="st">&quot;kayttajatunnus&quot;</span>, <span class="st">&quot;salasana&quot;</span>);
   
   <span class="co">//Suoritetaan sql-kysely. Haetaan täysi-ikäiset Lehtoset tietokannasta</span>
   String sql = <span class="st">&quot;SELECT etunimi, sukunimi, ika FROM kayttajat WHERE ika &gt;= ? and sukunimi = ?&quot;</span>;
   kysely = yhteys.<span class="fu">prepareStatement</span>(sql);
   kysely.<span class="fu">setInteger</span>(<span class="dv">1</span>, <span class="dv">18</span>);
   kysely.<span class="fu">setString</span>(<span class="dv">2</span>, <span class="st">&quot;Lehtonen&quot;</span>);
-  tulokset = preparedStatement.<span class="fu">executeQuery</span>();
+  tulokset = kysely.<span class="fu">executeQuery</span>();
 
   <span class="co">//Tulostetaan tietoja löydetyistä käyttäjistä</span>
   <span class="kw">while</span>(tulokset.<span class="fu">next</span>()) {

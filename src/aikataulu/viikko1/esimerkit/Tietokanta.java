@@ -5,14 +5,14 @@ ResultSet tulokset = null;
 try {
   //Etsitään mysql-ajuri ja otetaan yhteys tietokantaan
   Class.forName("com.mysql.jdbc.Driver");
-  yhteys = DriverManager.getConnection("jdbc:mysql://localhost/tietokannan_nimi?user=kayttaja&password=salasana");
+  yhteys = DriverManager.getConnection("jdbc:mysql://localhost/tietokannan_nimi","kayttajatunnus", "salasana");
   
   //Suoritetaan sql-kysely. Haetaan täysi-ikäiset Lehtoset tietokannasta
   String sql = "SELECT etunimi, sukunimi, ika FROM kayttajat WHERE ika >= ? and sukunimi = ?";
   kysely = yhteys.prepareStatement(sql);
   kysely.setInteger(1, 18);
   kysely.setString(2, "Lehtonen");
-  tulokset = preparedStatement.executeQuery();
+  tulokset = kysely.executeQuery();
 
   //Tulostetaan tietoja löydetyistä käyttäjistä
   while(tulokset.next()) {
