@@ -21,4 +21,8 @@ s#<\!-- start box -->\s+<blockquote>\s+$removethis##g;
 s#<img ((\s*\w+=["'][^"']*["'])*\s*)>#<img \1 \/>#g;
 s#<br>#<br \/>#g;
 
+#Commenting is implemented twice: before and after the pandoc execution
+s#<comment>.*?</comment>##sg;
+s#&lt;inline-php-hack&gt;.*?&lt;/inline-php-hack&gt;\n##sg;
+
 print;

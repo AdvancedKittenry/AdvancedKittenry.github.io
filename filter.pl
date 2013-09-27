@@ -98,6 +98,7 @@ BEGIN {
 
 }
 
+#Commenting is implemented twice: before and after the pandoc exection
 s#<comment>.*?</comment>##sg;
 s#<wip *\/>#<include src="${rootdir}templates/wip.html" />#sg;
 
@@ -182,6 +183,9 @@ s#<(glyphicon-[a-z-]*)\s*\/>#<span class="glyphicon \1"></span>#g;
 s#<(glyphicon-[a-z-]*)\s+color=['"](\w+)['"]\/\s*>#<span style="color: \2" class="glyphicon \1"></span>#g;
 s#<(green|blue|yellow|red|orange)>#<span class="\1">#g;
 s#<\/(green|blue|yellow|red|orange)>#<\/span>#g;
+
+#A hack to enable syntax hilighting of inline php code
+s#(~~~+)inlinephp\n#\1php\n<inline-php-hack><?php </inline-php-hack>\n#g;
 
 #Removes comment tags
 s#<!-- addHeaderNavigation -->#<script>addSectionLinks = true; </script>#sg;
