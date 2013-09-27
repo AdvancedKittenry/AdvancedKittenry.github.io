@@ -1,4 +1,4 @@
-SRC=$(shell find src -iname "*.markdown")
+SRC=$(shell find src -iname "*.markdown" -exec ls -t {} + )
 DIRS=$(shell cd src && find . -mindepth 1 -type d \! -path "./templates")
 DEPS=$(wildcard src/templates/*.html) src/templates/navigation-level-0.html filter.pl make-html.sh fix-styles.pl inlinescripting
 HTML=${patsubst src/%,%,${SRC:.markdown=.html}}
