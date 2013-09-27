@@ -125,7 +125,13 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li><a href="../../../aikataulu/viikko3/php/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
 </ul></li>
 </ul></li>
-<li><a href="../../../aikataulu/viikko4/index.html">Viikko 4</a></li>
+<li><a href="../../../aikataulu/viikko4/index.html">Viikko 4</a>
+<ul>
+<li><a href="../../../aikataulu/viikko4/tietokantayhteys.html">Tietokantayhteyden pystytys</a></li>
+<li><a href="../../../aikataulu/viikko4/ssh-tunnelit.html">SSH-tunnelointi</a></li>
+<li><a href="../../../aikataulu/viikko4/mallit.html">Mallit ja tietokanta</a></li>
+<li><a href="../../../aikataulu/viikko4/nakymat.html">Tietokohteen sivujen toteuttaminen</a></li>
+</ul></li>
 <li><a href="../../../aikataulu/demo.html">Demotilaisuus</a></li>
 <li><a href="../../../aikataulu/palautus.html">Työn palautus</a></li>
 </ul></li>
@@ -183,7 +189,7 @@ users.php (Käyttäjänhallinnan käsittelijä)
 <p><strong>spagettikoodi.php</strong></p>
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>
   <span class="kw">include</span> <span class="st">&#39;tietokantayhteys.php&#39;</span><span class="ot">;</span>
-  <span class="kw">$yhteys</span> = <span class="kw">new</span> <span class="kw">PDO</span><span class="ot">(</span><span class="st">&#39;psql:&#39;</span><span class="ot">);</span>
+  <span class="kw">$yhteys</span> = <span class="kw">new</span> <span class="kw">PDO</span><span class="ot">(</span><span class="st">&#39;pgsql:&#39;</span><span class="ot">);</span>
   <span class="kw">$nimi</span> = <span class="st">&#39;Matti&#39;</span><span class="ot">;</span>
 <span class="kw">?&gt;</span>&lt;!DOCTYPE html&gt;
 &lt;html&gt;

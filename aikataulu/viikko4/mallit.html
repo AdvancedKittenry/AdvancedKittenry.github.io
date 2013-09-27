@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <title>Viikko 3</title>
+  <title>Mallit ja tietokanta</title>
   <style type="text/css">code{white-space: pre;}</style>
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -90,7 +90,7 @@
 <li><a href="../../aikataulu/viikko2/netbeans.html">NetBeansin käyttöönotto</a></li>
 <li><a href="../../aikataulu/viikko2/html-versioiden-luonti.html">HTML-versioiden luominen</a></li>
 </ul></li>
-<li class="selected"><a href="../../aikataulu/viikko3/index.html">Viikko 3</a>
+<li><a href="../../aikataulu/viikko3/index.html">Viikko 3</a>
 <ul>
 <li><a href="../../aikataulu/viikko3/arkkitehtuuri.html">Arkkitehtuuriohje</a></li>
 <li><a href="../../aikataulu/viikko3/java/index.html">Kirjautuminen Javalla</a>
@@ -110,7 +110,7 @@
 <ul>
 <li><a href="../../aikataulu/viikko4/tietokantayhteys.html">Tietokantayhteyden pystytys</a></li>
 <li><a href="../../aikataulu/viikko4/ssh-tunnelit.html">SSH-tunnelointi</a></li>
-<li><a href="../../aikataulu/viikko4/mallit.html">Mallit ja tietokanta</a></li>
+<li class="selected"><a href="../../aikataulu/viikko4/mallit.html">Mallit ja tietokanta</a></li>
 <li><a href="../../aikataulu/viikko4/nakymat.html">Tietokohteen sivujen toteuttaminen</a></li>
 </ul></li>
 <li><a href="../../aikataulu/demo.html">Demotilaisuus</a></li>
@@ -127,49 +127,57 @@
 </div>
 <div class="col-md-6" id="content">
 <header>
-<h1 class="title">Viikko 3</h1>
+<h1 class="title">Mallit ja tietokanta</h1>
 </header>
-<!-- order: 1 -->
+<!-- order: 3 -->
 
-<section class="alert alert-warning small"><h3>
-Deadline:
+
+<div class="wip panel">
+  <div class="panel-body">
+    <h3>
+Work in progress
 </h3>
-<span class="coursekeyword deadline3">pe 20.9 klo 23:00</span>
-</section>
+    
+Tämän sivun sisältö on vielä työn alla ja saattaa muuttua kurssin edetessä.
+</div>
+</div>
 
-<p>Kolmannen viikon pääteemana on aloittaa hyvän arkkitehtuurin mukainen koodaaminen ja toteuttaa kirjautuminen.</p>
-<p>Palautuspäivämäärään mennessä työn on täytettävä seuraavat vaatimukset:</p>
+
+
 <ul>
-<li>Työssä on noudatettu <a href="arkkitehtuuri.html">arkkitehtuuriohjeen MVC-kolmijakoa</a></li>
-<li>Sivuille on luotu erillinen sivupohjatiedosto, joka sisältää jokaiselle sivulle tulevat asiat.
+<li>Käytännössä jokaista tietokohdetta vastaa yksi malliluokka.
 <ul>
-<li>Java:lla helpointa käyttää <a href="java/rakenne.html#template-pohjatiedoston-k%C3%A4ytt%C3%B6">JSP-tägikirjastoa</a></li>
-<li>PHP:lle tulossa oma ohje, joka perustuu <a href="http://php.net/manual/en/function.include.php">include-funktion</a> käyttöön</li>
-</ul></li>
-<li>Yleisesti käytetyt toiminnot koottu yhteen luokkaan tai tiedostoon
+<li>Puhtaille välitauluille harvemmin tarvitaan omaa luokkaansa, vaan niiden toiminnot hoidetaan tietokohteiden kautta.</li>
+<li>Luokka sisältää tarvittavat metodit.</li>
+<li>Käytetään sekä instanssimetodeja, että staattisia metodeja.
 <ul>
-<li>Näkymän näyttäminen sivupohjan kanssa yhdellä funktiokutsulla</li>
-<li>Selaimen ohjaus toiselle sivulle (HTTP redirect, toteuttaminen vapaaehtoinen)</li>
-<li>Virheilmoitusten näyttäminen käyttäjälle.</li>
-<li>PHP:llä <code>session_start</code>-funktion kutsuminen kannattaa sijoittaa tähän tiedostoon.</li>
-</ul></li>
-<li>Sovellukseen kirjautuminen toimii
+<li>Instanssimetodit käsittelevät yksittäiseen taulun riviin liittyvää tietoa.</li>
+<li>Staattiset metodit hakevat kannasta olioita sekä päivittävät tai poistavat kannasta useita olioita kerralla.</li>
+<li>Oliolla kannattaa yleensä olla metodi, jolla se osaa syöttää itsensä kantaan (INSERT-lause).
 <ul>
-<li>Käyttää valitsemasi kielen istuntotukea kirjautumisen muistamiseen</li>
-<li>Ei tarvitse käyttää vielä tietokantaa</li>
-<li>Antaa käyttäjälle virheilmoituksen jos kirjautuminen ei onnistu</li>
-<li>Ohjaa jollekin näkymäsivulle (esim. etusivu), kun kirjautuminen onnistuu
+<li>Autogeneroituja id-numeroita (esim. PostgreSQL:n <a href="http://www.postgresql.org/docs/9.2/static/datatype-numeric.html#DATATYPE-SERIAL">SERIAL-tietotyyppi</a>) varten olemassa omat rajapintansa:
 <ul>
-<li>Näkymäsivu ei päästä käyttäjää sisään/näyttää erilaiselta jos käyttäjä ei ole kirjautunut.</li>
+<li>PHP:llä PDO:n <a href="http://php.net/manual/en/pdo.lastinsertid.php">lastInsertId-metodi</a>.</li>
+<li>Javalle olemassa <a href="http://www.technicalkeeda.com/details/how-to-get-mysql-auto-increment-key-value-using-java-jdbc">vastaava tekniikka</a>.</li>
+<li>SERIAL-tyyppiä käytettäessä INSERT-lauseeseen ei laiteta id-avaimelle lainkaan arvoa, jolloin kanta laittaa kenttään seuraavan vapaan arvon.</li>
 </ul></li>
 </ul></li>
-<li>Mikäli sovelluksessa ei ole lainkaan kirjautumistoimintoja, tee alustava versio jostain lisäys- ja muokkauslomakkeesta.</li>
+<li>Päivittämiseen tarvitaan vastaavaa metodia, joka ajaa UPDATE-lauseen, samoin poistamiselle on tarpeen DELETE-lauseen ajava instanssimetodi.</li>
+</ul></li>
+</ul></li>
+<li>Käytetyn SQL-koodin pitää olla turvallista niin, ettei se tarjoa mahdollisuuksia SQL-injektioille.
+<ul>
+<li>Tähän käytetään PDO:n ja javan JDBC:n prepared statements -tukia.</li>
+<li>Kyselyihin upotetaan parametreja laittamalla SQL-komentojen sekaan kysymysmerkkejä, joiden sisällön voi täyttää ohjelmallisesti.
+<ul>
+<li><a href="../viikko1/ohjelmointikielet.html#tietokannan-käyttö">Lyhyt esimerkki PDO:n ja JDBC:n käytöstä</a></li>
+</ul></li>
+</ul></li>
 </ul>
-<section class="alert alert-success"><h3>
-Ohje:
+<section class="alert alert-success small"><h3>
+Seuraavaksi:
 </h3>
-<p>Aloita lukemalla <a href="arkkitehtuuri.html">arkkitehtuuriohje</a>. ja seuraa vihreitä ohjelaatikoita.</p>
-<p>Tehtyäsi kaiken varmista, että kaikki tekemäsi muutokset näkyvät GitHub-repositoriossasi.</p>
+<p>Kun malli on toteutettu, sitä voi käyttää <a href="nakymat.html">näkymissä</a>.</p>
 </section>
 
 

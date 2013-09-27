@@ -1,6 +1,6 @@
 <?php
   include 'tietokantayhteys.php';
-  $yhteys = new PDO('psql:');
+  $yhteys = new PDO('pgsql:');
   $nimi = 'Matti';
 ?><!DOCTYPE html>
 <html>

@@ -4,6 +4,37 @@
 This page serves to somewhat document all the technical abilities of
 the engine behind these pages.
 
+<sidebyside>
+<column>
+
+**alert**
+<alert>alert</alert>
+**info**
+<info>info</info>
+**summary**
+<summary>summary</summary>
+**vinkki**
+<vinkki>vinkki</vinkki>
+
+</column>
+<column>
+
+**ohje**
+<ohje>ohje</ohje>
+**next**
+<next>next</next>
+**last**
+<last>last</last>
+**deadline**
+<deadline>deadline</deadline>
+**arvosanamaksimi**
+<arvosanamaksimi>arvosanamaksimi</arvosanamaksimi>
+**vaikeustaso**
+<vaikeustaso>vaikeustaso</vaikeustaso>
+
+</column>
+</sidebyside>
+
 <wip/>
 
 <comment>

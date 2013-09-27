@@ -8,6 +8,25 @@
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
   <link rel="stylesheet" href="../../css/base.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!--[if lt IE 9]>
@@ -106,7 +125,13 @@
 <li><a href="../../aikataulu/viikko3/php/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
 </ul></li>
 </ul></li>
-<li><a href="../../aikataulu/viikko4/index.html">Viikko 4</a></li>
+<li><a href="../../aikataulu/viikko4/index.html">Viikko 4</a>
+<ul>
+<li class="selected"><a href="../../aikataulu/viikko4/tietokantayhteys.html">Tietokantayhteyden pystytys</a></li>
+<li><a href="../../aikataulu/viikko4/ssh-tunnelit.html">SSH-tunnelointi</a></li>
+<li><a href="../../aikataulu/viikko4/mallit.html">Mallit ja tietokanta</a></li>
+<li><a href="../../aikataulu/viikko4/nakymat.html">Tietokohteen sivujen toteuttaminen</a></li>
+</ul></li>
 <li><a href="../../aikataulu/demo.html">Demotilaisuus</a></li>
 <li><a href="../../aikataulu/palautus.html">Työn palautus</a></li>
 </ul></li>
@@ -123,23 +148,152 @@
 <header>
 <h1 class="title">Tietokantayhteyden pystytys</h1>
 </header>
-<!-- hidden! -->
+<!-- order: 1 -->
 
-
-<section id="java-ja-ssh-tunnelointi" class="level2">
-<h2>Java ja SSH-tunnelointi</h2>
-<p>Seuraava komento pystyttää SSH-tunnelin users-palvelimelle välittäen kaiken liikenteen tietokantapalvelimen portissa 5432 omalle koneellesi:</p>
-<pre class="ssh"><code>ssh -L 5432:localhost:5432 tunnus@users.cs.helsinki.fi</code></pre>
-<section id="windows-ja-putty" class="level3">
-<h3>Windows ja Putty</h3>
-<p>Windowsilla käytetään putty-ohjelmaa, jolle annetaan seuraavan näköiset asetukset:</p>
-<figure>
-<img src="../../images/aikataulu/viikko2/putty-users.png" alt="users-palvelimen yhteyden luominen" /><figcaption>users-palvelimen yhteyden luominen</figcaption>
-</figure>
-<figure>
-<img src="../../images/aikataulu/viikko4/users-tunneli.png" alt="SSH-tunnelien määritteleminen putty-ohjelmalla" /><figcaption>SSH-tunnelien määritteleminen putty-ohjelmalla</figcaption>
-</figure>
+<section class="alert alert-info"><h3>
+Tiivistelmä:
+</h3>
+<ul>
+<li>Varmista että aikaisemmin kirjoittamasi SQL-lauseet toimivat siten tietokantataulusi ovat nyt pystyssä kannassa.</li>
+<li>Tietokantayhteyden luonti.
+<ul>
+<li>Luominen pitää sijoittaa omaan tiedostoonsa/luokkaansa, josta muut tiedostot sitä käyttävät.</li>
+<li>Java-kielen NetBeans-ohjeita käyttäneille tarpeen on myös: <a href="ssh-tunnelit.html">PostgreSQL-ssh-tunnelin luonti</a>. Sama pätee kaikkiin projekteihin, joissa käytetään users:in tietokantaa etänä.</li>
+<li>Tietokantaa kannattaa tässä vaiheessa testata jollain hyvin yksinkertaisella testikoodilla.</li>
+</ul></li>
+<li>Javalla tietokantayhteydet pitää vielä sulkea aineistopyynnön käsittelyn lopuksi
+<ul>
+<li>Tätä varten kannattaa tehdä oma metodi</li>
+<li>Kutsu metodia servletistä käsin vasta sitten, kun kaikki tietokantakutsut on tehty.
+<ul>
+<li>Tietokantayhteyttä ei kannata avata ja sulkea monta kertaa per aineistopyyntö. Yhteyksien availu ja sulkeminen on usein varsin hidasta.</li>
+</ul></li>
+<li>PHP:llä asiasta ei tarvitse huolehtia, sillä kieli sulkee yhteyden automaattisesti skriptin suorituksen lopuksi.</li>
+</ul></li>
+</ul>
 </section>
+
+<p>Seuraavaksi pyrimme luomaan tietokantaan yhteyden ja lyhyen testiohjelman, jolla sitä voi testata. Sekä Javalla että PHP:llä tietokantayhteyksiä edustaa erillinen luokka, jonka olio muodostetaan kutsumalla sopivaa metodia/konstruktoria. Kummallekin annetaan merkkijonona tietokantayhteyttä kuvaava osoite, jonka perusteella yhteys muodostetaan.</p>
+<section class="alert alert-danger"><h3>
+Pidä mielessä!
+</h3>
+<p>Viimeistään tässä vaiheessa kannattaa varmistaa, että kirjoittamasi SQL-tiedostot saa ajettua tietokantaan virheettä.</p>
+</section>
+
+<p>Alla esimerkit tietokantayhteyden muodostamisesta Javalla ja PHP:llä tilanteessa, jossa tietokantapalvelin on samalla koneella eli osoitteessa <code>localhost</code>. Mikäli tietokantapalvelin on toisella tietokoneella, laita <code>localhost</code>:in tilalle koneen osoite.</p>
+<p>Users.cs.helsinki.fi-palvelimen kanssa tämä ei tosin valitettavasti onnistu, sillä tietokantapalvelin on palomuurin takana. Joudut tällöin käyttämään <a href="ssh-tunnelit.html">ssh-tunnelia</a></p>
+<p>Jos olet noudattanut kurssin NetBeans-ohjetta Java-kielellä, tutustu <a href="ssh-tunnelit.html">ssh-tunnelin</a> muodostamiseen nyt. Et saa kantaan yhteyttä ilman sitä (ellet asenna omaa palvelinta).</p>
+<ul class='nav nav-tabs nav-justified'><li class='active'>
+<a href='#tab_1_0' data-toggle='tab'>Java ja JDBC</a>
+</li>
+<li>
+<a href='#tab_1_1' data-toggle='tab'>PHP ja PDO</a>
+</li></ul><div class='panel panel-default'><div class='panel-body'><div class='tab-content'>
+<section class='tab-pane active' id='tab_1_0' >
+
+<p>Yhteyden avaaminen:</p>
+<pre class="sourceCode java"><code class="sourceCode java">Connection yhteys = <span class="kw">null</span>;
+<span class="dt">final</span> String tunnus = <span class="st">&quot;kayttajatunnuksesi&quot;</span>;
+<span class="dt">final</span> String salasana = <span class="st">&quot;psql-salasana&quot;</span>;
+
+<span class="kw">try</span> {
+  <span class="co">//Etsitään mysql-ajuri ja otetaan yhteys tietokantaan</span>
+  Class.<span class="fu">forName</span>(<span class="st">&quot;jdbc:postgresql://localhost:5432/&quot;</span>);
+  yhteys = DriverManager.<span class="fu">getConnection</span>(<span class="st">&quot;jdbc:postgresql://localhost:5432/&quot;</span>+tunnus,tunnus,salasana);
+} <span class="kw">catch</span> (Exception e) {
+  <span class="kw">throw</span> e;
+} </code></pre>
+<p>Kun olet suorittanut kaikki haluamasi SQL-kyselyt, yhteys pitää sulkea:</p>
+<pre class="sourceCode java"><code class="sourceCode java"><span class="kw">try</span> { yhteys.<span class="fu">close</span>(); } <span class="kw">catch</span> (Exception e) {  }</code></pre>
+</section>
+<section class='tab-pane' id='tab_1_1' >
+
+<p>Yhteyden avaaminen:</p>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="co">//Yleinen muoto</span>
+<span class="kw">$tunnus</span> = <span class="st">&quot;kayttajatunnuksesi&quot;</span><span class="ot">;</span>
+<span class="kw">$salasana</span>= <span class="st">&quot;psql-salasana&quot;</span><span class="ot">;</span>
+<span class="kw">$yhteys</span> = <span class="kw">new</span> <span class="kw">PDO</span><span class="ot">(</span><span class="st">&quot;pgsql:host=localhost;port=5432;dbname=</span><span class="kw">$tunnus</span><span class="st">&quot;</span><span class="ot">,</span> <span class="kw">$tunnus</span><span class="ot">,</span> <span class="kw">$salasana</span><span class="ot">);</span>
+<span class="co">//Seuravaa komento pyytää PDO:ta tuottamaan poikkeuksen aina kun jossain on virhe.</span>
+<span class="co">//Kannattaa käyttää, oletuksena luokka ei raportoi virhetiloja juuri mitenkään!</span>
+<span class="kw">$yhteys</span>-&gt;setAttribute<span class="ot">(</span><span class="kw">PDO</span>::<span class="kw">ATTR_ERRMODE</span><span class="ot">,</span><span class="kw">PDO</span>::<span class="kw">ERRMODE_EXCEPTION</span><span class="ot">);</span></code></pre>
+<p>Koodatessa PostgreSQL:llä users-palvelimella voidaan käyttää myös lyhyempää yhteysosoitetta:</p>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="co">//Lyhyempi muoto, joka mm. toimii usersin sisällä</span>
+<span class="kw">$yhteys</span> = <span class="kw">new</span> <span class="kw">PDO</span><span class="ot">(</span><span class="st">&quot;pgsql:&quot;</span><span class="ot">);</span>
+<span class="kw">$yhteys</span>-&gt;setAttribute<span class="ot">(</span><span class="kw">PDO</span>::<span class="kw">ATTR_ERRMODE</span><span class="ot">,</span><span class="kw">PDO</span>::<span class="kw">ERRMODE_EXCEPTION</span><span class="ot">);</span></code></pre>
+</section>
+</div></div></div>
+
+<p>Tee itsellesi testiluokka/tiedosto, johon sijoitat sellaisenaan tietokannan muodostamisen. Koeta ajaa tiedostosi ja katso muodostuuko yhteys.</p>
+<p>Tietokannan nopeaan testaamisen voi käyttää esim. seuraavanlaista koodia:</p>
+<div class="row">
+<div class="col-md-6">
+<p><strong>Java</strong></p>
+<pre class="sourceCode java"><code class="sourceCode java">PreparedStatement kysely;
+ResultSet tulokset;
+
+String sql = <span class="st">&quot;SELECT 1 as one&quot;</span>;
+kysely = yhteys.<span class="fu">prepareStatement</span>(sql);
+tulokset = kysely.<span class="fu">executeQuery</span>();
+
+<span class="kw">if</span>(tulokset.<span class="fu">next</span>()) {
+  <span class="dt">int</span> ykkonen = tulokset.<span class="fu">getInt</span>(<span class="st">&quot;one&quot;</span>);
+  System.<span class="fu">out</span>.<span class="fu">println</span>(ykkonen);
+}
+
+tulokset.<span class="fu">close</span>(); kysely.<span class="fu">close</span>();</code></pre>
+<p>Voit käyttää System.out:in sijaan JSP:tä ja sopivia attribuutteja. Koodin pitäisi tulostaa seuraava teksti:</p>
+<pre><code>1</code></pre>
+</div>
+<div class="col-md-6">
+<p><strong>PHP</strong></p>
+<pre class="sourceCode php"><code class="sourceCode php">
+
+
+<span class="kw">$sql</span> = <span class="st">&quot;select 1 as one&quot;</span><span class="ot">;</span>
+<span class="kw">$kysely</span> = <span class="kw">$yhteys</span>-&gt;prepare<span class="ot">(</span><span class="kw">$sql</span><span class="ot">);</span>
+
+
+<span class="kw">if</span> <span class="ot">(</span><span class="kw">$kysely</span>-&gt;execute<span class="ot">())</span> {
+  <span class="kw">$ykkonen</span> = <span class="kw">$kysely</span>-&gt;fetchColumn<span class="ot">();</span>
+  <span class="fu">var_dump</span><span class="ot">(</span><span class="kw">$ykkonen</span><span class="ot">);</span>
+}</code></pre>
+<p>Koodin pitäisi tulostaa seuraava teksti debug-koodaukseen tarkoitettua <a href="http://php.net/manual/en/function.var-dump.php">var_dump</a>-funktiota käyttäen:</p>
+<pre><code>int(1)</code></pre>
+</div>
+</div>
+
+<p>Kun olet saanut saanut yhteyden toimimaan ja palauttamaan kannasta tietoa, laita se omaan tiedostoonsa ja luokkaansa, johon lisäät staattisen kentän yhteyttä varten ja metodin, joka palauttaa yhteyden. Metodin tulee luoda yhteys ensimmäisellä kutsuntakerrallaan.</p>
+<p>PHP:llä voidaan käyttää myös funktiota, jossa on funktion sisäinen <a href="http://php.net/manual/en/language.variables.scope.php#language.variables.scope.static">staattinen muuttuja</a>:</p>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">function</span> annaYhteys<span class="ot">()</span> {
+  <span class="kw">static</span> <span class="kw">$yhteys</span> = <span class="kw">null</span><span class="ot">;</span> <span class="co">//Muuttuja, jonka sisältö säilyy annaYhteys-kutsujen välillä.</span>
+
+  <span class="kw">if</span> <span class="ot">(</span><span class="kw">$yhteys</span> === <span class="kw">null</span><span class="ot">)</span> { 
+    <span class="co">//Tämä koodi suoritetaan vain kerran, sillä seuraavilla </span>
+    <span class="co">//funktion suorituskerroilla $yhteys-muuttujassa on sisältöä.</span>
+    <span class="kw">$yhteys</span> = <span class="kw">new</span> <span class="kw">PDO</span><span class="ot">(</span><span class="st">&#39;pgsql:&#39;</span><span class="ot">);</span>
+  }
+
+  <span class="kw">return</span> <span class="kw">$yhteys</span><span class="ot">;</span>
+}
+
+<span class="co">//Funktiota voi käyttää näin</span>
+<span class="kw">$kysely</span> = annaYhteys<span class="ot">()</span>-&gt;prepare<span class="ot">(</span><span class="st">&quot;SELECT 1&quot;</span><span class="ot">);</span></code></pre>
+<p>Pääasia on, että yhteys luodaan vain kerran, sillä sen luominen on verraten hidasta. Javalla sinun kannattaa tehdä luokkaasi myös metodi, joka sulkee yhteyden.</p>
+<section id="java-ja-tietokanta-ajurin-lisääminen" class="level2">
+<h2>Java ja tietokanta-ajurin lisääminen</h2>
+<p>Java-koodarit huomio! Joudut todennäköisimmin tässä vaiheessa lisäämään projektiisi PostgreSQL-kannan ajurikirjaston. NetBeansia käyttäessäsi tämä hoituu samasta kohtaa, kuin JSTL-kirjaston lisääminen: avaa valikosta <code>File-&gt;Project Properties</code>, paina <em>Libraries</em>-kategoriassa nappia <em>Add Library</em> ja lisää listasta projektiin kirjasto nimeltä <code>PostgreSQL JDBC Driver</code>.</p>
+<figure>
+<img src="../../images/aikataulu/viikko4/postgres-ajuri.png" alt="PostgreSQL-ajurin asennus" /><figcaption>PostgreSQL-ajurin asennus</figcaption>
+</figure>
+<section class="alert alert-success small"><h3>
+Seuraavaksi:
+</h3>
+<p>Seuravaaksi laitamme malliluokan <a href="mallit.markdown">käyttämään tietokantaa</a>.</p>
+</section>
+
+
+
+
 </section>
 </div>
 </div> 

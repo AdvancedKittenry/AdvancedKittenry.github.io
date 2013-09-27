@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <title>Viikko 3</title>
+  <title>SSH-tunnelointi</title>
   <style type="text/css">code{white-space: pre;}</style>
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -90,7 +90,7 @@
 <li><a href="../../aikataulu/viikko2/netbeans.html">NetBeansin käyttöönotto</a></li>
 <li><a href="../../aikataulu/viikko2/html-versioiden-luonti.html">HTML-versioiden luominen</a></li>
 </ul></li>
-<li class="selected"><a href="../../aikataulu/viikko3/index.html">Viikko 3</a>
+<li><a href="../../aikataulu/viikko3/index.html">Viikko 3</a>
 <ul>
 <li><a href="../../aikataulu/viikko3/arkkitehtuuri.html">Arkkitehtuuriohje</a></li>
 <li><a href="../../aikataulu/viikko3/java/index.html">Kirjautuminen Javalla</a>
@@ -109,7 +109,7 @@
 <li><a href="../../aikataulu/viikko4/index.html">Viikko 4</a>
 <ul>
 <li><a href="../../aikataulu/viikko4/tietokantayhteys.html">Tietokantayhteyden pystytys</a></li>
-<li><a href="../../aikataulu/viikko4/ssh-tunnelit.html">SSH-tunnelointi</a></li>
+<li class="selected"><a href="../../aikataulu/viikko4/ssh-tunnelit.html">SSH-tunnelointi</a></li>
 <li><a href="../../aikataulu/viikko4/mallit.html">Mallit ja tietokanta</a></li>
 <li><a href="../../aikataulu/viikko4/nakymat.html">Tietokohteen sivujen toteuttaminen</a></li>
 </ul></li>
@@ -127,53 +127,30 @@
 </div>
 <div class="col-md-6" id="content">
 <header>
-<h1 class="title">Viikko 3</h1>
+<h1 class="title">SSH-tunnelointi</h1>
 </header>
-<!-- order: 1 -->
+<!-- order: 2 -->
 
-<section class="alert alert-warning small"><h3>
-Deadline:
+<p>Jos haluat käyttää users-palvelimen tietokantaa, etkä pystytä ohjelmaasi suoraan users-palvelimelle, joudut tekemään palvelimen palomuuriin reiän tietokantayhtettä varten. Tähän nk. ssh-tunneli on paras ja tietoturvallisin vaihtoehto.</p>
+<p>Seuraava komento pystyttää SSH-tunnelin users-palvelimelle välittäen kaiken liikenteen tietokantapalvelimen portissa 5432 omalle koneellesi:</p>
+<pre class="ssh"><code>ssh -L 5432:localhost:5432 tunnus@users.cs.helsinki.fi</code></pre>
+<p>Komento kirjautuu usersille normaalisti, mutta ohjaa samalla portin 5432 palvelimelta omalle koneellesi. Jätä tämä komento pyörimään taustalle reitittämään tietokantayhteyksiä.</p>
+<section class="alert alert-danger"><h3>
+Pidä mielessä!
 </h3>
-<span class="coursekeyword deadline3">pe 20.9 klo 23:00</span>
+<p>Jos tietokantayhteytesi eivät yhtäkkiä toimikaan, kannattaa tarkistaa, että ssh-tunneli on pystyssä.</p>
 </section>
 
-<p>Kolmannen viikon pääteemana on aloittaa hyvän arkkitehtuurin mukainen koodaaminen ja toteuttaa kirjautuminen.</p>
-<p>Palautuspäivämäärään mennessä työn on täytettävä seuraavat vaatimukset:</p>
-<ul>
-<li>Työssä on noudatettu <a href="arkkitehtuuri.html">arkkitehtuuriohjeen MVC-kolmijakoa</a></li>
-<li>Sivuille on luotu erillinen sivupohjatiedosto, joka sisältää jokaiselle sivulle tulevat asiat.
-<ul>
-<li>Java:lla helpointa käyttää <a href="java/rakenne.html#template-pohjatiedoston-k%C3%A4ytt%C3%B6">JSP-tägikirjastoa</a></li>
-<li>PHP:lle tulossa oma ohje, joka perustuu <a href="http://php.net/manual/en/function.include.php">include-funktion</a> käyttöön</li>
-</ul></li>
-<li>Yleisesti käytetyt toiminnot koottu yhteen luokkaan tai tiedostoon
-<ul>
-<li>Näkymän näyttäminen sivupohjan kanssa yhdellä funktiokutsulla</li>
-<li>Selaimen ohjaus toiselle sivulle (HTTP redirect, toteuttaminen vapaaehtoinen)</li>
-<li>Virheilmoitusten näyttäminen käyttäjälle.</li>
-<li>PHP:llä <code>session_start</code>-funktion kutsuminen kannattaa sijoittaa tähän tiedostoon.</li>
-</ul></li>
-<li>Sovellukseen kirjautuminen toimii
-<ul>
-<li>Käyttää valitsemasi kielen istuntotukea kirjautumisen muistamiseen</li>
-<li>Ei tarvitse käyttää vielä tietokantaa</li>
-<li>Antaa käyttäjälle virheilmoituksen jos kirjautuminen ei onnistu</li>
-<li>Ohjaa jollekin näkymäsivulle (esim. etusivu), kun kirjautuminen onnistuu
-<ul>
-<li>Näkymäsivu ei päästä käyttäjää sisään/näyttää erilaiselta jos käyttäjä ei ole kirjautunut.</li>
-</ul></li>
-</ul></li>
-<li>Mikäli sovelluksessa ei ole lainkaan kirjautumistoimintoja, tee alustava versio jostain lisäys- ja muokkauslomakkeesta.</li>
-</ul>
-<section class="alert alert-success"><h3>
-Ohje:
-</h3>
-<p>Aloita lukemalla <a href="arkkitehtuuri.html">arkkitehtuuriohje</a>. ja seuraa vihreitä ohjelaatikoita.</p>
-<p>Tehtyäsi kaiken varmista, että kaikki tekemäsi muutokset näkyvät GitHub-repositoriossasi.</p>
+<section id="windows-ja-putty" class="level2">
+<h2>Windows ja Putty</h2>
+<p>Windowsilla käytetään putty-ohjelmaa, jolle annetaan seuraavan näköiset asetukset:</p>
+<figure>
+<img src="../../images/aikataulu/viikko2/putty-users.png" alt="users-palvelimen yhteyden luominen" /><figcaption>users-palvelimen yhteyden luominen</figcaption>
+</figure>
+<figure>
+<img src="../../images/aikataulu/viikko4/users-tunneli.png" alt="SSH-tunnelien määritteleminen putty-ohjelmalla" /><figcaption>SSH-tunnelien määritteleminen putty-ohjelmalla</figcaption>
+</figure>
 </section>
-
-
-
 </div>
 </div> 
 </div> 

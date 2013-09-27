@@ -106,7 +106,13 @@
 <li><a href="../../aikataulu/viikko3/php/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
 </ul></li>
 </ul></li>
-<li class="selected"><a href="../../aikataulu/viikko4/index.html">Viikko 4</a></li>
+<li class="selected"><a href="../../aikataulu/viikko4/index.html">Viikko 4</a>
+<ul>
+<li><a href="../../aikataulu/viikko4/tietokantayhteys.html">Tietokantayhteyden pystytys</a></li>
+<li><a href="../../aikataulu/viikko4/ssh-tunnelit.html">SSH-tunnelointi</a></li>
+<li><a href="../../aikataulu/viikko4/mallit.html">Mallit ja tietokanta</a></li>
+<li><a href="../../aikataulu/viikko4/nakymat.html">Tietokohteen sivujen toteuttaminen</a></li>
+</ul></li>
 <li><a href="../../aikataulu/demo.html">Demotilaisuus</a></li>
 <li><a href="../../aikataulu/palautus.html">Työn palautus</a></li>
 </ul></li>
@@ -132,84 +138,10 @@ Deadline:
 </section>
 
 <p>Työaiheet neljännellä viikolla lyhyesti:</p>
-<p><strong>Tietokannan kokeilu ja yhteydenotto</strong></p>
 <ul>
-<li>Varmista että aikaisemmin kirjoittamasi sql-lauseet toimivat siten tietokantataulusi ovat nyt pystyssä kannassa.</li>
-<li>Tietokantayhteyden luonti.
-<ul>
-<li>Luominen pitää sijoittaa omaan tiedostoonsa/luokkaansa, josta muut tiedostot sitä käyttävät.</li>
-<li>Javalle NetBeans-ohjeita käyttäneille hyödyllistä on myös: <a href="http://www.postgresql.org/docs/8.2/static/ssh-tunnels.html">PostgreSQL-ssh-tunnelin luonti</a>.
-<ul>
-<li>Windowsilla ssh-tunnelin saa aikaan Puttyllä.</li>
-</ul></li>
-<li>Tietokantaa kannattaa tässä vaiheessa testata jollain hyvin yksinkertaisella testikoodilla.</li>
-</ul></li>
-<li>Javalla tietokantayhteydet pitää vielä sulkea aineistopyynnön käsittelyn lopuksi
-<ul>
-<li>Tätä varten kannattaa tehdä oma metodi</li>
-<li>Kutsu metodia servletistä käsin vasta sitten, kun kaikki tietokantakutsut on tehty.
-<ul>
-<li>Tietokantayhteyttä ei kannata avata ja sulkea monta kertaa per aineistopyyntö. Yhteyksien availu ja sulkeminen on usein varsin hidasta.</li>
-</ul></li>
-<li>PHP:llä asiasta ei tarvitse huolehtia, sillä kieli sulkee yhteyden automaattisesti skriptin suorituksen lopuksi.</li>
-</ul></li>
-</ul>
-<p><strong>Tietokantaa käyttävän mallin luominen</strong></p>
-<ul>
-<li>Käytännössä jokaista tietokohdetta vastaa yksi malliluokka.
-<ul>
-<li>Puhtaille välitauluille harvemmin tarvitaan omaa luokkaansa, vaan niiden toiminnot hoidetaan tietokohteiden kautta.</li>
-<li>Luokka sisältää tarvittavat metodit.</li>
-<li>Käytetään sekä instanssimetodeja, että staattisia metodeja.
-<ul>
-<li>Instanssimetodit käsittelevät yksittäiseen taulun riviin liittyvää tietoa.</li>
-<li>Staattiset metodit hakevat kannasta olioita sekä päivittävät tai poistavat kannasta useita olioita kerralla.</li>
-<li>Oliolla kannattaa yleensä olla metodi, jolla se osaa syöttää itsensä kantaan (INSERT-lause).
-<ul>
-<li>Autogeneroituja id-numeroita (esim. PostgreSQL:n <a href="http://www.postgresql.org/docs/9.2/static/datatype-numeric.html#DATATYPE-SERIAL">SERIAL-tietotyyppi</a>) varten olemassa omat rajapintansa:
-<ul>
-<li>PHP:llä PDO:n <a href="http://php.net/manual/en/pdo.lastinsertid.php">lastInsertId-metodi</a>.</li>
-<li>Javalle olemassa <a href="http://www.technicalkeeda.com/details/how-to-get-mysql-auto-increment-key-value-using-java-jdbc">vastaava tekniikka</a>.</li>
-<li>SERIAL-tyyppiä käytettäessä INSERT-lauseeseen ei laiteta id-avaimelle lainkaan arvoa, jolloin kanta laittaa kenttään seuraavan vapaan arvon.</li>
-</ul></li>
-</ul></li>
-<li>Päivittämiseen tarvitaan vastaavaa metodia, joka ajaa UPDATE-lauseen, samoin poistamiselle on tarpeen DELETE-lauseen ajava instanssimetodi.</li>
-</ul></li>
-</ul></li>
-<li>Käytetyn SQL-koodin pitää olla turvallista niin, ettei se tarjoa mahdollisuuksia SQL-injektioille.
-<ul>
-<li>Tähän käytetään PDO:n ja javan JDBC:n prepared statements -tukia.</li>
-<li>Kyselyihin upotetaan parametreja laittamalla SQL-komentojen sekaan kysymysmerkkejä, joiden sisällön voi täyttää ohjelmallisesti.
-<ul>
-<li><a href="../viikko1/ohjelmointikielet.html#tietokannan-käyttö">Lyhyt esimerkki PDO:n ja JDBC:n käytöstä</a></li>
-</ul></li>
-</ul></li>
-</ul>
-<p><strong>Lomakkeiden ja sivujen toteuttaminen</strong></p>
-<ul>
-<li>Lisäys- ja muokkauslomakkeet kannattaa toteuttaa samalla tai ainakin hyvin samanlaisella koodilla.</li>
-<li>Muokkaustoiminnot kannattaa toteuttaa niin, että sivun käsittelijä ottaa muokattavan tietokohteen id:n tai muun avaimen GET-parametrina ja näyttää sen perusteella oikean kohteen.
-<ul>
-<li>Poisto ym. vastaavat toiminnot toimivat käytännössä samoin. Usein niiden aktivointii kannattaa tosin käyttää lomakkeisiin upotettuja nappeja ja POST-metodia.</li>
-</ul></li>
-<li>Muokkauslomake koodataan näyttämään GET-parametrin määrittämän olion tiedot valmiina kentissä.
-<ul>
-<li>Olio haetaan mallilta sopivalla metodilla.</li>
-<li>Malli ei koskaan käsittele GET- tai POST-parametreja suoraan vaan ne käsittelijä välittää ne mallin metodeille.</li>
-</ul></li>
-<li>Lomakkeen käsittelijä ohjaa takaisin lomakesivulle, mikäli lomake on virheellisesti täytetty.
-<ul>
-<li>Lomakesivulla tällöin näkyvissä ne tiedot, jotka käyttäjä siihen syötti.
-<ul>
-<li>Tiedot voidaan näyttää antamalla lomakkeelle näytettäväksi malliluokan olio, johon on asetettu käyttäjän syöttämät lomaketiedot.</li>
-</ul></li>
-<li>Väärin syötetyt tiedot eritellään vielä virheilmoituksin. Mieluiten kaikki kerrallaan.</li>
-</ul></li>
-<li>Sekä lomakkeita, että sivunäkymiä näytettäessä kannattaa varmistaa, etteivät käyttäjän syöttämät HTML-koodinpätkät, lainausmerkit yms. sotke sivujen rakennetta.
-<ul>
-<li>PHP:ssä <a href="http://www.php.net/manual/en/function.htmlspecialchars.php">htmlspecialchars-funktio</a> auttaa: <code>&lt;?php echo htmlspecialchars($muuttuja); ?&gt;</code></li>
-<li>Javassa voi käyttää <a href="http://docs.oracle.com/javaee/5/jstl/1.1/docs/tlddocs/">out-tägiä</a>: <code>&lt;c:out value=&quot;${muuttuja}&quot;/&gt;</code></li>
-</ul></li>
+<li><a href="tietokantayhteys.markdown">Tietokannan kokeilu ja yhteydenotto</a></li>
+<li><a href="mallit.markdown">Tietokantaa käyttävän mallin luominen</a></li>
+<li><a href="nakymat.html">Lomakkeiden ja sivujen toteuttaminen</a></li>
 </ul>
 <section id="nelosviikon-deadline" class="level2">
 <h2>Nelosviikon deadline</h2>
@@ -235,6 +167,16 @@ Deadline:
 <li>Tiedot näkyvät sivuilla oikein myös silloin kun käyttäjä on syöttänyt niiden sekaan HTML:ää, lainausmerkkejä yms.</li>
 </ul></li>
 </ul>
+<section class="alert alert-success"><h3>
+Ohje:
+</h3>
+<p>Aloita <a href="tietokantayhteys.html">tietokantayhteyden luomisesta</a> ja seuraa vihreitä ohjelaatikoita.</p>
+<p>Tehtyäsi kaiken varmista, että kaikki tekemäsi muutokset näkyvät GitHub-repositoriossasi.</p>
+</section>
+
+
+
+
 </section>
 </div>
 </div> 

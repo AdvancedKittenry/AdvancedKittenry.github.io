@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <title>Viikko 3</title>
+  <title>Tietokohteen sivujen toteuttaminen</title>
   <style type="text/css">code{white-space: pre;}</style>
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -90,7 +90,7 @@
 <li><a href="../../aikataulu/viikko2/netbeans.html">NetBeansin käyttöönotto</a></li>
 <li><a href="../../aikataulu/viikko2/html-versioiden-luonti.html">HTML-versioiden luominen</a></li>
 </ul></li>
-<li class="selected"><a href="../../aikataulu/viikko3/index.html">Viikko 3</a>
+<li><a href="../../aikataulu/viikko3/index.html">Viikko 3</a>
 <ul>
 <li><a href="../../aikataulu/viikko3/arkkitehtuuri.html">Arkkitehtuuriohje</a></li>
 <li><a href="../../aikataulu/viikko3/java/index.html">Kirjautuminen Javalla</a>
@@ -111,7 +111,7 @@
 <li><a href="../../aikataulu/viikko4/tietokantayhteys.html">Tietokantayhteyden pystytys</a></li>
 <li><a href="../../aikataulu/viikko4/ssh-tunnelit.html">SSH-tunnelointi</a></li>
 <li><a href="../../aikataulu/viikko4/mallit.html">Mallit ja tietokanta</a></li>
-<li><a href="../../aikataulu/viikko4/nakymat.html">Tietokohteen sivujen toteuttaminen</a></li>
+<li class="selected"><a href="../../aikataulu/viikko4/nakymat.html">Tietokohteen sivujen toteuttaminen</a></li>
 </ul></li>
 <li><a href="../../aikataulu/demo.html">Demotilaisuus</a></li>
 <li><a href="../../aikataulu/palautus.html">Työn palautus</a></li>
@@ -127,49 +127,54 @@
 </div>
 <div class="col-md-6" id="content">
 <header>
-<h1 class="title">Viikko 3</h1>
+<h1 class="title">Tietokohteen sivujen toteuttaminen</h1>
 </header>
-<!-- order: 1 -->
+<!-- order: 5 -->
 
-<section class="alert alert-warning small"><h3>
-Deadline:
+
+<div class="wip panel">
+  <div class="panel-body">
+    <h3>
+Work in progress
 </h3>
-<span class="coursekeyword deadline3">pe 20.9 klo 23:00</span>
-</section>
+    
+Tämän sivun sisältö on vielä työn alla ja saattaa muuttua kurssin edetessä.
+</div>
+</div>
 
-<p>Kolmannen viikon pääteemana on aloittaa hyvän arkkitehtuurin mukainen koodaaminen ja toteuttaa kirjautuminen.</p>
-<p>Palautuspäivämäärään mennessä työn on täytettävä seuraavat vaatimukset:</p>
+
+
+
+
 <ul>
-<li>Työssä on noudatettu <a href="arkkitehtuuri.html">arkkitehtuuriohjeen MVC-kolmijakoa</a></li>
-<li>Sivuille on luotu erillinen sivupohjatiedosto, joka sisältää jokaiselle sivulle tulevat asiat.
+<li>Lisäys- ja muokkauslomakkeet kannattaa toteuttaa samalla tai ainakin hyvin samanlaisella koodilla.</li>
+<li>Muokkaustoiminnot kannattaa toteuttaa niin, että sivun käsittelijä ottaa muokattavan tietokohteen id:n tai muun avaimen GET-parametrina ja näyttää sen perusteella oikean kohteen.
 <ul>
-<li>Java:lla helpointa käyttää <a href="java/rakenne.html#template-pohjatiedoston-k%C3%A4ytt%C3%B6">JSP-tägikirjastoa</a></li>
-<li>PHP:lle tulossa oma ohje, joka perustuu <a href="http://php.net/manual/en/function.include.php">include-funktion</a> käyttöön</li>
+<li>Poisto ym. vastaavat toiminnot toimivat käytännössä samoin. Usein niiden aktivointii kannattaa tosin käyttää lomakkeisiin upotettuja nappeja ja POST-metodia.</li>
 </ul></li>
-<li>Yleisesti käytetyt toiminnot koottu yhteen luokkaan tai tiedostoon
+<li>Muokkauslomake koodataan näyttämään GET-parametrin määrittämän olion tiedot valmiina kentissä.
 <ul>
-<li>Näkymän näyttäminen sivupohjan kanssa yhdellä funktiokutsulla</li>
-<li>Selaimen ohjaus toiselle sivulle (HTTP redirect, toteuttaminen vapaaehtoinen)</li>
-<li>Virheilmoitusten näyttäminen käyttäjälle.</li>
-<li>PHP:llä <code>session_start</code>-funktion kutsuminen kannattaa sijoittaa tähän tiedostoon.</li>
+<li>Olio haetaan mallilta sopivalla metodilla.</li>
+<li>Malli ei koskaan käsittele GET- tai POST-parametreja suoraan vaan ne käsittelijä välittää ne mallin metodeille.</li>
 </ul></li>
-<li>Sovellukseen kirjautuminen toimii
+<li>Lomakkeen käsittelijä ohjaa takaisin lomakesivulle, mikäli lomake on virheellisesti täytetty.
 <ul>
-<li>Käyttää valitsemasi kielen istuntotukea kirjautumisen muistamiseen</li>
-<li>Ei tarvitse käyttää vielä tietokantaa</li>
-<li>Antaa käyttäjälle virheilmoituksen jos kirjautuminen ei onnistu</li>
-<li>Ohjaa jollekin näkymäsivulle (esim. etusivu), kun kirjautuminen onnistuu
+<li>Lomakesivulla tällöin näkyvissä ne tiedot, jotka käyttäjä siihen syötti.
 <ul>
-<li>Näkymäsivu ei päästä käyttäjää sisään/näyttää erilaiselta jos käyttäjä ei ole kirjautunut.</li>
+<li>Tiedot voidaan näyttää antamalla lomakkeelle näytettäväksi malliluokan olio, johon on asetettu käyttäjän syöttämät lomaketiedot.</li>
 </ul></li>
+<li>Väärin syötetyt tiedot eritellään vielä virheilmoituksin. Mieluiten kaikki kerrallaan.</li>
 </ul></li>
-<li>Mikäli sovelluksessa ei ole lainkaan kirjautumistoimintoja, tee alustava versio jostain lisäys- ja muokkauslomakkeesta.</li>
+<li>Sekä lomakkeita, että sivunäkymiä näytettäessä kannattaa varmistaa, etteivät käyttäjän syöttämät HTML-koodinpätkät, lainausmerkit yms. sotke sivujen rakennetta.
+<ul>
+<li>PHP:ssä <a href="http://www.php.net/manual/en/function.htmlspecialchars.php">htmlspecialchars-funktio</a> auttaa: <code>&lt;?php echo htmlspecialchars($muuttuja); ?&gt;</code></li>
+<li>Javassa voi käyttää <a href="http://docs.oracle.com/javaee/5/jstl/1.1/docs/tlddocs/">out-tägiä</a>: <code>&lt;c:out value=&quot;${muuttuja}&quot;/&gt;</code></li>
+</ul></li>
 </ul>
-<section class="alert alert-success"><h3>
-Ohje:
+<section class="alert alert-info small"><h3>
+Valmista!
 </h3>
-<p>Aloita lukemalla <a href="arkkitehtuuri.html">arkkitehtuuriohje</a>. ja seuraa vihreitä ohjelaatikoita.</p>
-<p>Tehtyäsi kaiken varmista, että kaikki tekemäsi muutokset näkyvät GitHub-repositoriossasi.</p>
+<p>Kun olet tehnyt täyden setin sivuja yhtä tietokohdetta varten, viikon 4 työsi on valmis.</p>
 </section>
 
 

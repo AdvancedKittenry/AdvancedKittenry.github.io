@@ -127,6 +127,7 @@ consuegr-> ;
 
 Huomaa kuinka käyttäjänimen jälkeen tuleva merkki vaihtuu sen mukaan mitä merkkiä tietokantatulkki odottaa seuraavaksi.
 
+<comment> Tätä ei ehkä kannata vielä näyttää:
 <info>
 Usersilla tietokantayhteyden luomiseen tarvittava uusin PostgreSQL-ajuri löytyy tiedostosta `/usr/local/pgsql-7.4/jdbc.jar`.
 Ohjelmassa tarvittava ajuriluokan nimi on org.postgresql.Driver. 
@@ -135,11 +136,12 @@ Tietokantayhteyteen tarvittava yhteystunnus on `jdbc:postgresql://localhost/user
 PHP:n PDO:lle riittää seuraava hyvin yksinkertainen koodi:
 
 ~~~php
-<?php $yhteys = new PDO('psql:'); ?>
+<?php $yhteys = new PDO('pgsql:'); ?>
 ?>
 ~~~
 
 </info>
+</comment>
 
 ### MySql
 
