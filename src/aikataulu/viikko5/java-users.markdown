@@ -1,7 +1,7 @@
 % Java-työn vieminen users-palvelimelle
 
 Helpoin tapa sovelluksen pystyttämiseen tomcatissa on nk. Web Archive eli WAR-paketti.
-NetBeans osaa luoda WAR-paketin automaattisesti ja sijoittaa sen projektin `dist`-hakemistoon.
+NetBeans osaa luoda WAR-paketin automaattisesti ja sijoittaa sen projektin `dist`-hakemistoon, kun klikkaat sovelluksessa Build-nappia. NetBeans saattaa kysyä haluatko todella tehdä näin, voit vastata dialogiin valitsemalla "Clean and Build".
 
 Sijoita WAR-paketti users-palvelimelle `~/tomcat/webapps/`-kansioon.
 Tähän voit käyttää [scp-komentoa](http://linux.fi/wiki/Scp) tai Windowsilla [WinSCP](http://winscp.net/eng/index.php):tä.
