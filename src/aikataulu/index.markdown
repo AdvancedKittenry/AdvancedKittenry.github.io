@@ -45,7 +45,7 @@ Viikkojen 3-5 materiaali on vielä työn alla. Sivut aukeavat sitä mukaa kun oh
 | [Viikko II][viikko2]   | Sovelluksen suunnittelu, työympäristön pystytys                        | {{deadline2}}         |
 | [Viikko III][viikko3]  | Koodauksen alku, sovellusarkkitehtuuri, lomakkeet ja kirjautuminen     | {{deadline3}}         |
 | [Viikko IV][viikko4]   | Syvennytään tietokantaohjelmointiin                                    | {{deadline4}}         |
-| Viikko V               | Viimeistely, dokumentaatio valmiiksi                                   | {{deadline5}}         |
+| [Viikko V][viikko5]    | Työn jatkamista, dokumentaatio valmiiksi                               | {{deadline5}}         |
 | [Demotilaisuus][demo]  | Esitellään työtä ja sen koodia muille opiskelijoille                   | {{demodeadline}}      |
 | [Palautus][palautus]   | Valmis työ palautetaan ohjaajalle                                      | {{palautusdeadline}}  |
 

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <title>SSH-tunnelointi</title>
+  <title>Java-työn vieminen users-palvelimelle</title>
   <style type="text/css">code{white-space: pre;}</style>
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -109,13 +109,13 @@
 <li><a href="../../aikataulu/viikko4/index.html">Viikko 4</a>
 <ul>
 <li><a href="../../aikataulu/viikko4/tietokantayhteys.html">Tietokantayhteyden pystytys</a></li>
-<li class="selected"><a href="../../aikataulu/viikko4/ssh-tunnelit.html">SSH-tunnelointi</a></li>
+<li><a href="../../aikataulu/viikko4/ssh-tunnelit.html">SSH-tunnelointi</a></li>
 <li><a href="../../aikataulu/viikko4/mallit.html">Mallit ja tietokanta</a></li>
 <li><a href="../../aikataulu/viikko4/nakymat.html">Tietokohteen sivujen toteuttaminen</a></li>
 </ul></li>
 <li><a href="../../aikataulu/viikko5/index.html">Viikko 5</a>
 <ul>
-<li><a href="../../aikataulu/viikko5/java-users.html">Java-työn vieminen users-palvelimelle</a></li>
+<li class="selected"><a href="../../aikataulu/viikko5/java-users.html">Java-työn vieminen users-palvelimelle</a></li>
 </ul></li>
 <li><a href="../../aikataulu/demo.html">Demotilaisuus</a></li>
 <li><a href="../../aikataulu/palautus.html">Työn palautus</a></li>
@@ -131,30 +131,12 @@
 </div>
 <div class="col-md-6" id="content">
 <header>
-<h1 class="title">SSH-tunnelointi</h1>
+<h1 class="title">Java-työn vieminen users-palvelimelle</h1>
 </header>
-<!-- order: 2 -->
-
-<p>Jos haluat käyttää users-palvelimen tietokantaa, etkä pystytä ohjelmaasi suoraan users-palvelimelle, joudut tekemään palvelimen palomuuriin reiän tietokantayhtettä varten. Tähän nk. ssh-tunneli on paras ja tietoturvallisin vaihtoehto.</p>
-<p>Seuraava komento pystyttää SSH-tunnelin users-palvelimelle välittäen kaiken liikenteen tietokantapalvelimen portissa 5432 omalle koneellesi:</p>
-<pre class="ssh"><code>ssh -L 5432:localhost:5432 tunnus@users.cs.helsinki.fi</code></pre>
-<p>Komento kirjautuu usersille normaalisti, mutta ohjaa samalla portin 5432 palvelimelta omalle koneellesi. Jätä tämä komento pyörimään taustalle reitittämään tietokantayhteyksiä.</p>
-<section class="alert alert-danger"><h3>
-Pidä mielessä!
-</h3>
-<p>Jos tietokantayhteytesi eivät yhtäkkiä toimikaan, kannattaa tarkistaa, että ssh-tunneli on pystyssä.</p>
-</section>
-
-<section id="windows-ja-putty" class="level2">
-<h2>Windows ja Putty</h2>
-<p>Windowsilla käytetään putty-ohjelmaa, jolle annetaan seuraavan näköiset asetukset:</p>
-<figure>
-<img src="../../images/aikataulu/viikko2/putty-users.png" alt="users-palvelimen yhteyden luominen" /><figcaption>users-palvelimen yhteyden luominen</figcaption>
-</figure>
-<figure>
-<img src="../../images/aikataulu/viikko4/users-tunneli.png" alt="SSH-tunnelien määritteleminen putty-ohjelmalla" /><figcaption>SSH-tunnelien määritteleminen putty-ohjelmalla</figcaption>
-</figure>
-</section>
+<p>Helpoin tapa sovelluksen pystyttämiseen tomcatissa on nk. Web Archive eli WAR-paketti. NetBeans osaa luoda WAR-paketin automaattisesti ja sijoittaa sen projektin <code>dist</code>-hakemistoon.</p>
+<p>Sijoita WAR-paketti users-palvelimelle <code>~/tomcat/webapps/</code>-kansioon. Tähän voit käyttää <a href="http://linux.fi/wiki/Scp">scp-komentoa</a> tai Windowsilla <a href="http://winscp.net/eng/index.php">WinSCP</a>:tä.</p>
+<p>Käynnistä Tomcat, jos se ei jo ole käynnissä. Usersin Tomcat on oletuksena konfiguroitu huomaamaan paketit automaattisesti ja hoitamaan niiden purkamisen ja asentamisen itsestään. Nyt mikäli käyttäjätunnuksesi on <code>tunnus</code> ja pakettisi tiedostonimi on <code>paketti.war</code>, sovelluksesi pitäisi olla käytettävissä osoitteessa <code>http://t-tunnus.users.cs.helsinki.fi/paketti</code>.</p>
+<p>Aiheesta voi lukea teknisempiä lisätietoja <a href="http://tomcat.apache.org/tomcat-6.0-doc/deployer-howto.html">Tomcatin ohjesivuilta</a></p>
 </div>
 </div> 
 </div> 
