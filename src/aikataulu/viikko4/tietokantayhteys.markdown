@@ -12,7 +12,7 @@
     * Tätä varten kannattaa tehdä oma metodi
     * Kutsu metodia servletistä käsin vasta sitten, kun kaikki tietokantakutsut on tehty. 
         * Tietokantayhteyttä ei kannata avata ja sulkea monta kertaa per aineistopyyntö. Yhteyksien availu ja sulkeminen on usein varsin hidasta.
-    * PHP:llä asiasta ei tarvitse huolehtia, sillä kieli sulkee yhteyden automaattisesti skriptin suorituksen lopuksi. 
+    * PHP:llä sulkemisesta ei tarvitse huolehtia, sillä kieli sulkee yhteyden automaattisesti skriptin suorituksen lopuksi. 
 </summary>
 
 Seuraavaksi pyrimme luomaan tietokantaan yhteyden ja lyhyen testiohjelman, 
@@ -154,11 +154,10 @@ int(1)
 </sidebyside>
 
 Kun olet saanut saanut yhteyden toimimaan ja palauttamaan kannasta tietoa,
-laita se omaan tiedostoonsa ja luokkaansa, johon lisäät staattisen kentän yhteyttä varten
-ja metodin, joka palauttaa yhteyden. Metodin tulee luoda yhteys ensimmäisellä
-kutsuntakerrallaan.
+laita se omaan tiedostoonsa ja luokkaansa, johon lisäät kentän yhteyttä varten
+ja metodin, joka palauttaa yhteyden. 
 
-PHP:llä voidaan käyttää myös funktiota, jossa on funktion sisäinen
+PHP:llä voidaan käyttää myös lyhyttä funktiota, jossa on funktion sisäinen
 [staattinen muuttuja](http://php.net/manual/en/language.variables.scope.php#language.variables.scope.static):
 
 ~~~inlinephp
@@ -181,6 +180,11 @@ $kysely = annaYhteys()->prepare("SELECT 1");
 Pääasia on, että yhteys luodaan vain kerran, sillä sen luominen on 
 verraten hidasta. 
 Javalla sinun kannattaa tehdä luokkaasi myös metodi, joka sulkee yhteyden.
+
+Javaa käytettäessä toimi niin, että alustat tietokantayhteyden tietokantaluokkaasi käyttäen
+servletin käsittelijäkoodissa ja suljet sen aivan tuon koodin suorituksen lopuksi.
+Tietokantayhteyden säilyttämiseen ei Javalla kannata käyttää staattisia 
+kenttiä, sillä ne ovat Tomcat-sovellksissa koko sovelluksen yhteisiä, jolloin törmätään nopeasti samanaikaisusongelmiin.
 
 ## Java ja tietokanta-ajurin lisääminen
 

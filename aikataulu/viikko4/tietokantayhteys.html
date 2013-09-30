@@ -172,7 +172,7 @@ Tiivistelmä:
 <ul>
 <li>Tietokantayhteyttä ei kannata avata ja sulkea monta kertaa per aineistopyyntö. Yhteyksien availu ja sulkeminen on usein varsin hidasta.</li>
 </ul></li>
-<li>PHP:llä asiasta ei tarvitse huolehtia, sillä kieli sulkee yhteyden automaattisesti skriptin suorituksen lopuksi.</li>
+<li>PHP:llä sulkemisesta ei tarvitse huolehtia, sillä kieli sulkee yhteyden automaattisesti skriptin suorituksen lopuksi.</li>
 </ul></li>
 </ul>
 </section>
@@ -266,8 +266,8 @@ tulokset.<span class="fu">close</span>(); kysely.<span class="fu">close</span>()
 </div>
 </div>
 
-<p>Kun olet saanut saanut yhteyden toimimaan ja palauttamaan kannasta tietoa, laita se omaan tiedostoonsa ja luokkaansa, johon lisäät staattisen kentän yhteyttä varten ja metodin, joka palauttaa yhteyden. Metodin tulee luoda yhteys ensimmäisellä kutsuntakerrallaan.</p>
-<p>PHP:llä voidaan käyttää myös funktiota, jossa on funktion sisäinen <a href="http://php.net/manual/en/language.variables.scope.php#language.variables.scope.static">staattinen muuttuja</a>:</p>
+<p>Kun olet saanut saanut yhteyden toimimaan ja palauttamaan kannasta tietoa, laita se omaan tiedostoonsa ja luokkaansa, johon lisäät kentän yhteyttä varten ja metodin, joka palauttaa yhteyden.</p>
+<p>PHP:llä voidaan käyttää myös lyhyttä funktiota, jossa on funktion sisäinen <a href="http://php.net/manual/en/language.variables.scope.php#language.variables.scope.static">staattinen muuttuja</a>:</p>
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">function</span> annaYhteys<span class="ot">()</span> {
   <span class="kw">static</span> <span class="kw">$yhteys</span> = <span class="kw">null</span><span class="ot">;</span> <span class="co">//Muuttuja, jonka sisältö säilyy annaYhteys-kutsujen välillä.</span>
 
@@ -283,6 +283,7 @@ tulokset.<span class="fu">close</span>(); kysely.<span class="fu">close</span>()
 <span class="co">//Funktiota voi käyttää näin</span>
 <span class="kw">$kysely</span> = annaYhteys<span class="ot">()</span>-&gt;prepare<span class="ot">(</span><span class="st">&quot;SELECT 1&quot;</span><span class="ot">);</span></code></pre>
 <p>Pääasia on, että yhteys luodaan vain kerran, sillä sen luominen on verraten hidasta. Javalla sinun kannattaa tehdä luokkaasi myös metodi, joka sulkee yhteyden.</p>
+<p>Javaa käytettäessä toimi niin, että alustat tietokantayhteyden tietokantaluokkaasi käyttäen servletin käsittelijäkoodissa ja suljet sen aivan tuon koodin suorituksen lopuksi. Tietokantayhteyden säilyttämiseen ei Javalla kannata käyttää staattisia kenttiä, sillä ne ovat Tomcat-sovellksissa koko sovelluksen yhteisiä, jolloin törmätään nopeasti samanaikaisusongelmiin.</p>
 <section id="java-ja-tietokanta-ajurin-lisääminen" class="level2">
 <h2>Java ja tietokanta-ajurin lisääminen</h2>
 <p>Java-koodarit huomio! Joudut todennäköisimmin tässä vaiheessa lisäämään projektiisi PostgreSQL-kannan ajurikirjaston. NetBeansia käyttäessäsi tämä hoituu samasta kohtaa, kuin JSTL-kirjaston lisääminen: avaa valikosta <code>File-&gt;Project Properties</code>, paina <em>Libraries</em>-kategoriassa nappia <em>Add Library</em> ja lisää listasta projektiin kirjasto nimeltä <code>PostgreSQL JDBC Driver</code>.</p>
