@@ -202,7 +202,7 @@ Pidä mielessä!
 
 <span class="kw">try</span> {
   <span class="co">//Etsitään mysql-ajuri ja otetaan yhteys tietokantaan</span>
-  Class.<span class="fu">forName</span>(<span class="st">&quot;jdbc:postgresql://localhost:5432/&quot;</span>);
+  Class.<span class="fu">forName</span>(<span class="st">&quot;org.postgresql.Driver&quot;</span>);
   yhteys = DriverManager.<span class="fu">getConnection</span>(<span class="st">&quot;jdbc:postgresql://localhost:5432/&quot;</span>+tunnus,tunnus,salasana);
 } <span class="kw">catch</span> (Exception e) {
   <span class="kw">throw</span> e;
@@ -293,7 +293,7 @@ tulokset.<span class="fu">close</span>(); kysely.<span class="fu">close</span>()
 <section class="alert alert-success small"><h3>
 Seuraavaksi:
 </h3>
-<p>Seuravaaksi laitamme malliluokan <a href="mallit.markdown">käyttämään tietokantaa</a>.</p>
+<p>Seuravaaksi laitamme malliluokan <a href="mallit.html">käyttämään tietokantaa</a>.</p>
 </section>
 
 

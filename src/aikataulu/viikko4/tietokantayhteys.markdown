@@ -52,7 +52,7 @@ final String salasana = "psql-salasana";
 
 try {
   //Etsitään mysql-ajuri ja otetaan yhteys tietokantaan
-  Class.forName("jdbc:postgresql://localhost:5432/");
+  Class.forName("org.postgresql.Driver");
   yhteys = DriverManager.getConnection("jdbc:postgresql://localhost:5432/"+tunnus,tunnus,salasana);
 } catch (Exception e) {
   throw e;
@@ -198,5 +198,5 @@ lisää listasta projektiin kirjasto nimeltä `PostgreSQL JDBC Driver`.
 ![PostgreSQL-ajurin asennus]({{myimgdir}}postgres-ajuri.png)
 
 <next>
-Seuravaaksi laitamme malliluokan [käyttämään tietokantaa](mallit.markdown).
+Seuravaaksi laitamme malliluokan [käyttämään tietokantaa](mallit.html).
 </next>
