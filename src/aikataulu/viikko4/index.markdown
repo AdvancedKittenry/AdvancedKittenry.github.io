@@ -5,8 +5,8 @@
 
 Työaiheet neljännellä viikolla lyhyesti:
 
-* [Tietokannan kokeilu ja yhteydenotto](tietokantayhteys.markdown)
-* [Tietokantaa käyttävän mallin luominen](mallit.markdown)
+* [Tietokannan kokeilu ja yhteydenotto](tietokantayhteys.html)
+* [Tietokantaa käyttävän mallin luominen](mallit.html)
 * [Lomakkeiden ja sivujen toteuttaminen](nakymat.html)
 
 ## Nelosviikon deadline
