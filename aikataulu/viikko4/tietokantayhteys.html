@@ -188,27 +188,51 @@ Pidä mielessä!
 <p>Users.cs.helsinki.fi-palvelimen kanssa tämä ei tosin valitettavasti onnistu, sillä tietokantapalvelin on palomuurin takana. Joudut tällöin käyttämään <a href="ssh-tunnelit.html">ssh-tunnelia</a></p>
 <p>Jos olet noudattanut kurssin NetBeans-ohjetta Java-kielellä, tutustu <a href="ssh-tunnelit.html">ssh-tunnelin</a> muodostamiseen nyt. Et saa kantaan yhteyttä ilman sitä (ellet asenna omaa palvelinta).</p>
 <ul class='nav nav-tabs nav-justified'><li class='active'>
-<a href='#tab_1_0' data-toggle='tab'>Java ja JDBC</a>
+<a href='#tab_1_0' data-toggle='tab'>Java, JDBC ja context.xml</a>
 </li>
 <li>
 <a href='#tab_1_1' data-toggle='tab'>PHP ja PDO</a>
 </li></ul><div class='panel panel-default'><div class='panel-body'><div class='tab-content'>
 <section class='tab-pane active' id='tab_1_0' >
 
-<p>Yhteyden avaaminen:</p>
-<pre class="sourceCode java"><code class="sourceCode java">Connection yhteys = <span class="kw">null</span>;
-<span class="dt">final</span> String tunnus = <span class="st">&quot;kayttajatunnuksesi&quot;</span>;
-<span class="dt">final</span> String salasana = <span class="st">&quot;psql-salasana&quot;</span>;
+<p>Javalla suosittu tapa tietokantayhteyksien avaamiseen on käyttää DataSource-tyyppistä tietokantayhteysvarastoa, joka huolehtii koko sovelluksen yhteyksien ylläpidosta ja kierrättämisestä eri aineistopyyntöjen välillä.</p>
+<p>Ensiksi pitää kuitenkin määritellä Java-koodin rinnalle context.xml-tiedostoon tietokantayhteyttä kuvaava resurssi.</p>
+<p><strong>web/META-INF/context.xml</strong></p>
+<pre class="sourceCode xml"><code class="sourceCode xml"><span class="kw">&lt;?xml</span> version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;<span class="kw">?&gt;</span>
+<span class="kw">&lt;Context</span><span class="ot"> antiJARLocking=</span><span class="st">&quot;true&quot;</span><span class="ot"> path=</span><span class="st">&quot;/Kissalista-java&quot;</span><span class="kw">&gt;</span>
+    <span class="kw">&lt;Resource</span><span class="ot"> name=</span><span class="st">&quot;jdbc/tietokanta&quot;</span><span class="ot"> auth=</span><span class="st">&quot;Container&quot;</span>
+<span class="ot">        type=</span><span class="st">&quot;javax.sql.DataSource&quot;</span><span class="ot"> removeAbandoned=</span><span class="st">&quot;true&quot;</span>
+<span class="ot">        removeAbandonedTimeout=</span><span class="st">&quot;30&quot;</span><span class="ot"> maxActive=</span><span class="st">&quot;100&quot;</span>
+<span class="ot">        maxIdle=</span><span class="st">&quot;30&quot;</span><span class="ot"> maxWait=</span><span class="st">&quot;10000&quot;</span><span class="ot"> username=</span><span class="st">&quot;tunnus&quot;</span>
+<span class="ot">        password=</span><span class="st">&quot;salasana&quot;</span>
+<span class="ot">        driverClassName=</span><span class="st">&quot;org.postgresql.Driver&quot;</span>
+<span class="ot">        url=</span><span class="st">&quot;jdbc:postgresql://localhost/tietokannan_nimi&quot;</span> <span class="kw">/&gt;</span>
+<span class="kw">&lt;/Context&gt;</span></code></pre>
+<p>Kun resurssi on määritelty, voidaan Javan kirjastoilla hakea se:</p>
+<p><strong>Yhteysvaraston pystytyskoodi</strong></p>
+<pre class="sourceCode java"><code class="sourceCode java"><span class="co">//Haetaan context-xml-tiedostosta tietokannan yhteystiedot</span>
+<span class="co">//HUOM! Tämä esimerkki ei toimi sellaisenaan ilman Tomcat-palvelinta!</span>
+InitialContext cxt = <span class="kw">new</span> InitialContext();
+DataSource yhteysVarasto = (DataSource) cxt.<span class="fu">lookup</span>(<span class="st">&quot;java:/comp/env/jdbc/tietokanta&quot;</span>);</code></pre>
+<button type='button' class='btn-link expandable collapsed' data-toggle='collapse' data-target='#expandable_1'>
+Yllä olevan koodin vaatimat importit
+</button>
+  <div id='expandable_1' class='collapse'><section>
 
-<span class="kw">try</span> {
-  <span class="co">//Etsitään mysql-ajuri ja otetaan yhteys tietokantaan</span>
-  Class.<span class="fu">forName</span>(<span class="st">&quot;org.postgresql.Driver&quot;</span>);
-  yhteys = DriverManager.<span class="fu">getConnection</span>(<span class="st">&quot;jdbc:postgresql://localhost:5432/&quot;</span>+tunnus,tunnus,salasana);
-} <span class="kw">catch</span> (Exception e) {
-  <span class="kw">throw</span> e;
-} </code></pre>
-<p>Kun olet suorittanut kaikki haluamasi SQL-kyselyt, yhteys pitää sulkea:</p>
+<pre class="sourceCode java"><code class="sourceCode java"><span class="kw">import java.sql.Connection;</span>
+<span class="kw">import java.sql.SQLException;</span>
+<span class="kw">import javax.naming.Context;</span>
+<span class="kw">import javax.naming.InitialContext;</span>
+<span class="kw">import javax.naming.NamingException;</span>
+<span class="kw">import javax.sql.DataSource;</span></code></pre>
+</section></div>
+
+<p>Kun yhteysvarasto on kerran luotu, saa siltä uusia yhteyksiä suorittamalla getConnection-metodin:</p>
+<pre class="sourceCode java"><code class="sourceCode java">Connection yhteys = dataSource.<span class="fu">getConnection</span>(); </code></pre>
+<p>Menetelmän etuna on, ettei yhteyksien avaamisia tarvitse erikseen hallinnoida, vaan varasto avaa niitä lisää sitä mukaa kun tarvetta on.</p>
+<p>Kun olet suorittanut haluamasi SQL-kyselyn, yhteys pitää sulkea, jolloin se palaa takaisiin varastoon käytettäväksi:</p>
 <pre class="sourceCode java"><code class="sourceCode java"><span class="kw">try</span> { yhteys.<span class="fu">close</span>(); } <span class="kw">catch</span> (Exception e) {  }</code></pre>
+<p>Itse varasto-oliota ei tarvitse erikseen sulkea, sillä Tomcat huolehtii sen hallinnoinnista.</p>
 </section>
 <section class='tab-pane' id='tab_1_1' >
 
@@ -241,12 +265,12 @@ tulokset = kysely.<span class="fu">executeQuery</span>();
 
 <span class="kw">if</span>(tulokset.<span class="fu">next</span>()) {
   <span class="dt">int</span> ykkonen = tulokset.<span class="fu">getInt</span>(<span class="st">&quot;one&quot;</span>);
-  System.<span class="fu">out</span>.<span class="fu">println</span>(ykkonen);
+  request.<span class="fu">setAttribute</span>(&#39;tulos&#39;, ykkonen)
 }
 
-tulokset.<span class="fu">close</span>(); kysely.<span class="fu">close</span>();</code></pre>
-<p>Voit käyttää System.out:in sijaan JSP:tä ja sopivia attribuutteja. Koodin pitäisi tulostaa seuraava teksti:</p>
-<pre><code>1</code></pre>
+tulokset.<span class="fu">close</span>(); kysely.<span class="fu">close</span>();
+<span class="kw">new</span> <span class="fu">RequestDispatcher</span>(&#39;index.<span class="fu">jsp</span>&#39;).<span class="fu">forward</span>(request, response);</code></pre>
+<p>Koodin pitäisi sijoittaa attribuuttiin <code>tulos</code> arvo 1. Jos sijoittaa index.jsp-tiedostoon lauseen <code>${tulos}</code>, pitäisi sivulle ilmaantua tuo samainen ykkönen.</p>
 </div>
 <div class="col-md-6">
 <p><strong>PHP</strong></p>
@@ -266,7 +290,7 @@ tulokset.<span class="fu">close</span>(); kysely.<span class="fu">close</span>()
 </div>
 </div>
 
-<p>Kun olet saanut saanut yhteyden toimimaan ja palauttamaan kannasta tietoa, laita se omaan tiedostoonsa ja luokkaansa, johon lisäät kentän yhteyttä varten ja metodin, joka palauttaa yhteyden.</p>
+<p>Kun olet saanut saanut yhteyden toimimaan ja palauttamaan kannasta tietoa, laita se omaan metodiinsa, joka palauttaa yhteyden. Voit tehdä yhteydelle halutessasi myös oman luokan, johon sijoitat muitakin toistuvia tietokantaan liittyviä koodinpäktiä.</p>
 <p>PHP:llä voidaan käyttää myös lyhyttä funktiota, jossa on funktion sisäinen <a href="http://php.net/manual/en/language.variables.scope.php#language.variables.scope.static">staattinen muuttuja</a>:</p>
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">function</span> annaYhteys<span class="ot">()</span> {
   <span class="kw">static</span> <span class="kw">$yhteys</span> = <span class="kw">null</span><span class="ot">;</span> <span class="co">//Muuttuja, jonka sisältö säilyy annaYhteys-kutsujen välillä.</span>
@@ -282,14 +306,14 @@ tulokset.<span class="fu">close</span>(); kysely.<span class="fu">close</span>()
 
 <span class="co">//Funktiota voi käyttää näin</span>
 <span class="kw">$kysely</span> = annaYhteys<span class="ot">()</span>-&gt;prepare<span class="ot">(</span><span class="st">&quot;SELECT 1&quot;</span><span class="ot">);</span></code></pre>
-<p>Pääasia on, että yhteys luodaan vain kerran, sillä sen luominen on verraten hidasta. Javalla sinun kannattaa tehdä luokkaasi myös metodi, joka sulkee yhteyden.</p>
-<p>Javaa käytettäessä toimi niin, että alustat tietokantayhteyden tietokantaluokkaasi käyttäen servletin käsittelijäkoodissa ja suljet sen aivan tuon koodin suorituksen lopuksi. Tietokantayhteyden säilyttämiseen ei Javalla kannata käyttää staattisia kenttiä, sillä ne ovat Tomcat-sovellksissa koko sovelluksen yhteisiä, jolloin törmätään nopeasti samanaikaisusongelmiin.</p>
+<p>PHP:llä koodatessa on tärkeää, että yhteys luodaan vain kerran, sillä sen luominen on verraten hidasta. Javalla Tomcat huolehtii tästä, mutta yhteys pitää erikseen sulkea. Javaa käyttäessä sinun kannattaa siis tehdä myös apumetodi, joka sulkee yhteyden.</p>
 <section id="java-ja-tietokanta-ajurin-lisääminen" class="level2">
 <h2>Java ja tietokanta-ajurin lisääminen</h2>
 <p>Java-koodarit huomio! Joudut todennäköisimmin tässä vaiheessa lisäämään projektiisi PostgreSQL-kannan ajurikirjaston. NetBeansia käyttäessäsi tämä hoituu samasta kohtaa, kuin JSTL-kirjaston lisääminen: avaa valikosta <code>File-&gt;Project Properties</code>, paina <em>Libraries</em>-kategoriassa nappia <em>Add Library</em> ja lisää listasta projektiin kirjasto nimeltä <code>PostgreSQL JDBC Driver</code>.</p>
 <figure>
 <img src="../../images/aikataulu/viikko4/postgres-ajuri.png" alt="PostgreSQL-ajurin asennus" /><figcaption>PostgreSQL-ajurin asennus</figcaption>
 </figure>
+<p>Samanlaiset huomiot koskevat MySQL-tietokantaa.</p>
 <section class="alert alert-success small"><h3>
 Seuraavaksi:
 </h3>

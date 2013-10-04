@@ -41,30 +41,63 @@ tutustu [ssh-tunnelin](ssh-tunnelit.html) muodostamiseen nyt.
 Et saa kantaan yhteyttä ilman sitä (ellet asenna omaa palvelinta).
 
 <tabs>
-<tab title="Java ja JDBC">
+<tab title="Java, JDBC ja context.xml">
 
-Yhteyden avaaminen:
+Javalla suosittu tapa tietokantayhteyksien avaamiseen
+on käyttää DataSource-tyyppistä tietokantayhteysvarastoa,
+joka huolehtii koko sovelluksen yhteyksien ylläpidosta 
+ja kierrättämisestä eri aineistopyyntöjen välillä.
+
+Ensiksi pitää kuitenkin määritellä Java-koodin rinnalle context.xml-tiedostoon
+tietokantayhteyttä kuvaava resurssi.
+
+**web/META-INF/context.xml**
+
+~~~xml<include src="../viikko1/esimerkit/context.xml" />~~~
+
+Kun resurssi on määritelty, voidaan Javan kirjastoilla hakea
+se:
+
+**Yhteysvaraston pystytyskoodi**
 
 ~~~java
-Connection yhteys = null;
-final String tunnus = "kayttajatunnuksesi";
-final String salasana = "psql-salasana";
-
-try {
-  //Etsitään mysql-ajuri ja otetaan yhteys tietokantaan
-  Class.forName("org.postgresql.Driver");
-  yhteys = DriverManager.getConnection("jdbc:postgresql://localhost:5432/"+tunnus,tunnus,salasana);
-} catch (Exception e) {
-  throw e;
-} 
+//Haetaan context-xml-tiedostosta tietokannan yhteystiedot
+//HUOM! Tämä esimerkki ei toimi sellaisenaan ilman Tomcat-palvelinta!
+InitialContext cxt = new InitialContext();
+DataSource yhteysVarasto = (DataSource) cxt.lookup("java:/comp/env/jdbc/tietokanta");
 ~~~
 
-Kun olet suorittanut kaikki haluamasi SQL-kyselyt, yhteys pitää sulkea:
+<expandable title="Yllä olevan koodin vaatimat importit">
+~~~java
+import java.sql.Connection;
+import java.sql.SQLException;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
+~~~
+</expandable>
+
+Kun yhteysvarasto on kerran luotu, saa siltä uusia yhteyksiä 
+suorittamalla getConnection-metodin:
+
+~~~java
+Connection yhteys = dataSource.getConnection(); 
+~~~
+
+Menetelmän etuna on, ettei yhteyksien avaamisia tarvitse
+erikseen hallinnoida, vaan varasto avaa niitä 
+lisää sitä mukaa kun tarvetta on. 
+
+Kun olet suorittanut haluamasi SQL-kyselyn, yhteys pitää sulkea, 
+jolloin se palaa takaisiin varastoon käytettäväksi:
 
 ~~~java
 try { yhteys.close(); } catch (Exception e) {  }
 ~~~
 
+Itse varasto-oliota ei tarvitse erikseen sulkea, sillä
+Tomcat huolehtii sen hallinnoinnista.
 
 </tab>
 <tab title="PHP ja PDO">
@@ -112,18 +145,15 @@ tulokset = kysely.executeQuery();
 
 if(tulokset.next()) {
   int ykkonen = tulokset.getInt("one");
-  System.out.println(ykkonen);
+  request.setAttribute('tulos', ykkonen)
 }
 
 tulokset.close(); kysely.close();
+new RequestDispatcher('index.jsp').forward(request, response);
 ~~~
 
-Voit käyttää System.out:in sijaan JSP:tä ja sopivia attribuutteja.
-Koodin pitäisi tulostaa seuraava teksti:
+Koodin pitäisi sijoittaa attribuuttiin `tulos` arvo 1. Jos sijoittaa index.jsp-tiedostoon lauseen `${tulos}`, pitäisi sivulle ilmaantua tuo samainen ykkönen.
 
-~~~
-1
-~~~
 </column>
 <column>
 **PHP** 
@@ -154,8 +184,9 @@ int(1)
 </sidebyside>
 
 Kun olet saanut saanut yhteyden toimimaan ja palauttamaan kannasta tietoa,
-laita se omaan tiedostoonsa ja luokkaansa, johon lisäät kentän yhteyttä varten
-ja metodin, joka palauttaa yhteyden. 
+laita se omaan metodiinsa, joka palauttaa yhteyden. 
+Voit tehdä yhteydelle halutessasi myös oman luokan, johon sijoitat
+muitakin toistuvia tietokantaan liittyviä koodinpäktiä.
 
 PHP:llä voidaan käyttää myös lyhyttä funktiota, jossa on funktion sisäinen
 [staattinen muuttuja](http://php.net/manual/en/language.variables.scope.php#language.variables.scope.static):
@@ -177,14 +208,9 @@ function annaYhteys() {
 $kysely = annaYhteys()->prepare("SELECT 1");
 ~~~
 
-Pääasia on, että yhteys luodaan vain kerran, sillä sen luominen on 
-verraten hidasta. 
-Javalla sinun kannattaa tehdä luokkaasi myös metodi, joka sulkee yhteyden.
-
-Javaa käytettäessä toimi niin, että alustat tietokantayhteyden tietokantaluokkaasi käyttäen
-servletin käsittelijäkoodissa ja suljet sen aivan tuon koodin suorituksen lopuksi.
-Tietokantayhteyden säilyttämiseen ei Javalla kannata käyttää staattisia 
-kenttiä, sillä ne ovat Tomcat-sovellksissa koko sovelluksen yhteisiä, jolloin törmätään nopeasti samanaikaisusongelmiin.
+PHP:llä koodatessa on tärkeää, että yhteys luodaan vain kerran, sillä sen luominen on verraten hidasta. 
+Javalla Tomcat huolehtii tästä, mutta yhteys pitää erikseen sulkea.
+Javaa käyttäessä sinun kannattaa siis tehdä myös apumetodi, joka sulkee yhteyden.
 
 ## Java ja tietokanta-ajurin lisääminen
 
@@ -196,6 +222,8 @@ paina _Libraries_-kategoriassa nappia _Add Library_ ja
 lisää listasta projektiin kirjasto nimeltä `PostgreSQL JDBC Driver`.
 
 ![PostgreSQL-ajurin asennus]({{myimgdir}}postgres-ajuri.png)
+
+Samanlaiset huomiot koskevat MySQL-tietokantaa.
 
 <next>
 Seuravaaksi laitamme malliluokan [käyttämään tietokantaa](mallit.html).

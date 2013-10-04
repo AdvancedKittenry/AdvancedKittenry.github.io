@@ -101,18 +101,17 @@ Sekä PHP että Java hoitavat tietokannan käytön oliopohjaisesti tavalla,
 joka mahdollistaa kielen sisäisten muuttujien upottamisen SQL-lausekkeisiin helposti
 ja tietoturvallisesti.
 
-<sidebyside>
-<column>
-**PHP**
+**tietokanta.php**
 
 ~~~~php<include src="esimerkit/tietokanta.php" />~~~~
-</column>
-<column>
-**Java**
+
+**tietokanta.java**
 
 ~~~~java<include src="esimerkit/Tietokanta.java" />~~~~
-</column>
-</sidebyside>
+
+Yllä oleva Java-koodi hakee tietokannan tiedot xml-tiedostosta:
+
+~~~~xml<include src="esimerkit/context.xml" />~~~~
 
 PHP on tässäkin tapauksessa merkittävästi vähäsanaisempi. Taitava koodari lyhentää yllä olevasta
 esimerkistä toistuvat koodinpätkät kuitenkin yleiskäyttöisiin metodeihin, jolloin lopullisessa käytössä
@@ -131,6 +130,7 @@ Ominaisuus                       Java                          PHP
 Ajotapa                          Käännetään ennen ajoa         Tulkitaan ajonaikaisesti
 Tyyppijärjestelmä                Vahva tyypitys                Heikko tyypitys
 HTML:n tuottaminen               JSP-kielellä                  Suoraan PHP-koodin sisällä
+Konfigurointi                    Lukuisilla XML-tiedostoilla   Monia tapoja. Mahdollista suoraan koodissa.
 -------------------------------- ----------------------------- --------------------------------
 
 Voit tutustua myös Sami Saadan tekemiin esimerkkisovelluksiin 
