@@ -4,15 +4,12 @@
 <summary>
 * Varmista että aikaisemmin kirjoittamasi SQL-lauseet toimivat siten tietokantataulusi ovat nyt pystyssä kannassa.
 * Tietokantayhteyden luonti.
-    * Luominen pitää sijoittaa omaan tiedostoonsa/luokkaansa, josta muut tiedostot sitä käyttävät.
+    * Luominen pitää sijoittaa omaan metodiinsa, josta muut tiedostot sitä käyttävät.
     * Java-kielen NetBeans-ohjeita käyttäneille tarpeen on myös: [PostgreSQL-ssh-tunnelin luonti](ssh-tunnelit.html). 
       Sama pätee kaikkiin projekteihin, joissa käytetään users:in tietokantaa etänä.
     * Tietokantaa kannattaa tässä vaiheessa testata jollain hyvin yksinkertaisella testikoodilla.
-* Javalla tietokantayhteydet pitää vielä sulkea aineistopyynnön käsittelyn lopuksi
-    * Tätä varten kannattaa tehdä oma metodi
-    * Kutsu metodia servletistä käsin vasta sitten, kun kaikki tietokantakutsut on tehty. 
-        * Tietokantayhteyttä ei kannata avata ja sulkea monta kertaa per aineistopyyntö. Yhteyksien availu ja sulkeminen on usein varsin hidasta.
-    * PHP:llä sulkemisesta ei tarvitse huolehtia, sillä kieli sulkee yhteyden automaattisesti skriptin suorituksen lopuksi. 
+* Javalla tietokantayhteydet pitää vielä sulkea aineistopyynnön käsittelyn lopuksi. Tätä varten kannattaa tehdä oma metodi.
+* Jos käytät tietokantayhteyden autentikointiin salasanaa, [älä laita sitä GitHubiin sellaisenaan](#salasanojen-tallentaminen-ja-github).
 </summary>
 
 Seuraavaksi pyrimme luomaan tietokantaan yhteyden ja lyhyen testiohjelman, 
@@ -224,6 +221,33 @@ lisää listasta projektiin kirjasto nimeltä `PostgreSQL JDBC Driver`.
 ![PostgreSQL-ajurin asennus]({{myimgdir}}postgres-ajuri.png)
 
 Samanlaiset huomiot koskevat MySQL-tietokantaa.
+
+## Salasanojen tallentaminen ja GitHub
+
+Yksityiseksi tarkoitettujen salasanojen tallentaminen
+versionhallintaan ei ole ikinä kovin hyvä idea.
+Salasanoja sisältäviä tiedostoja ei useimmiten kuitenkaan
+kannata jättää versionhallinnasta poiskaan, sillä useimmiten niihin sisältyy 
+muutakin oleellista informaatiota projektista.
+
+Yksinkertainen ja hyvin yleisesti käytetty tapa hoitaa ongelma, on 
+luoda tarvittava salasanan sisältävä tiedosto kahdesti:
+ensiksi normaalina tiedostona, jossa on salasana, mutta jota ei laiteta versionhallintaan
+ja sitten salasanattomana .dist-tiedostopäätteellisenä versiona, joka laitetaan versionhallintaan.
+
+Esimerkiksi Javalla koodatessa voidaan tiedosto `web/META-INF/context.xml` 
+sijoittaa `.gitignore`-tiedostoon siten, ettei se mene versionhallintaan
+ja sensijaan tehdä tiedostosta kopio, `web/META-INF/context.xml.dist`,
+joka on muuten samanlainen kuin alkuperäinen `context.xml`, mutta ei sisällä salasanaa,
+eikä ole mainittu `.gitignore` tiedossa. 
+
+Näin repositorion kloonannut pystyy kopioimaan tiedoston paikalleen ja 
+laittamaan siihen tarvittavan salasanan käsin.
+
+<alert>
+Mikäli teet `.dist`-päätteisiä tiedostoja, laita dokumentaation asennusohjeisiin maininta niiden sijainnista
+ja siitä mitä niihin pitää sijoittaa ohjelman käyttämiseksi.
+</alert>
 
 <next>
 Seuravaaksi laitamme malliluokan [käyttämään tietokantaa](mallit.html).
