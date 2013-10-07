@@ -48,9 +48,11 @@ SQL-kielinen kysely, johon on upotettu paikkoja parametreille.
 Näiden parametrien paikalle voi sitten upottaa haluamiaan arvoja.
 
 Sekä PHP:ssä että Javassa parametrien paikkoja ilmaistaan kysymysmerkeillä.
-Kielien 
-
-Esimerkki:
+Kielien tapa syöttää kyselylle parametrejä on hieman erilainen:
+PHP:llä parametrit annetaan array-tyyppisenä listana [kyselyä suoritettaessa](http://php.net/manual/en/pdostatement.execute.php)
+Java:lla ne asetetaan kyselylle jokainen erikseen erilaisilla metodikutsuilla. Joka tyypille on omansa, esim. merkkijonoille
+[setString](http://docs.oracle.com/javase/7/docs/api/java/sql/PreparedStatement.html#setString(int, java.lang.String)).
+Huomaa, että Javalla kyselyn parametrien indeksointi alkaa ykkösestä.
 
 <sidebyside>
 <column>
@@ -87,12 +89,27 @@ String sql = "SELECT * FROM users WHERE nimi = ?";
 kysely = yhteys.prepareStatement(sql);
 
 //Annetaan yksi parametri array:n sisällä
-kysely.setString(1, "Lehtonen");
+kysely.setString(1, nimi);
 tulokset = kysely.executeQuery();
 ~~~
 
 </column>
 </sidebyside>
+
+## Mallien rakentaminen
+
+* Tähän on olemassa monia tapoja.
+* Selkeä: Joka tietokantataululle oma luokkansa.
+    * Jokainen olio edustaa yhtä taulunsa riviä.
+    * Poikkeus: liitostauluille ei välttämättä tarvita omaa luokkaansa, mikäli niiden toiminnot voi loogisesti sijoittaa muihinkin luokkiin.
+* Luokalla staattisia metodeja, joilla voi hakea olioita eli rivejä kannasta.
+    * Voi tehdä myös instassimetodeja, jotka hakevat johonkin olioon liittyviä rivejä toisista tietokantatauluista.
+* Tarvitaan myös metodit, joka syöttävät olion kantaan tai päivittävät kannassa olevia tietoja olion perusteella.
+    * Näitä mahdollista tehdä ilman oliotakin.
+    * Voivat olla staattisia tai instassimetodeja.
+* Lopuksi metodi(t), jolla voi poistaa rivejä.
+    * Instanssimetodi poistaa kyseisen olion kannasta.
+    * Staattisella metodilla voi poistaa useitakin olioita.
 
 ### Olion syöttäminen kantaan
 
@@ -103,12 +120,6 @@ olemassa omat kikkansa:
     * Javalle olemassa [vastaava tekniikka](http://www.technicalkeeda.com/details/how-to-get-mysql-auto-increment-key-value-using-java-jdbc).
     * SERIAL-tyyppiä käytettäessä INSERT-lauseeseen ei laiteta id-avaimelle lainkaan arvoa, jolloin kanta laittaa kenttään seuraavan vapaan arvon.
 
-
-<comment>
-## Staattisia ja instanssimetodeja
-
-<wip />
-</comment>
 
 <next>
 Kun malli on toteutettu, sitä voi käyttää [näkymissä](nakymat.html).

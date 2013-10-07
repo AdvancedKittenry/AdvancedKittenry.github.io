@@ -199,8 +199,7 @@ Tiivistelmä:
 <p>Jos tälläinen virhe eksyy vaikkapa kirjautumislogiikkaan, on sovellus auttamatta haavoittuvainen murtautumisyrityksille.</p>
 <p>Onneksi sekä PHP:llä että Javalla on olemassa hyvin helppokäyttöinen tapa estää tälläisiä kyselyjä menemästä kantaan: <a href="http://en.wikipedia.org/wiki/Prepared_statement">Prepared statementit</a> eli kankeasti suomennettuna esivalmistellut SQL-lauseet ovat ratkaisu ongelmaan.</p>
 <p>Käytännössä kyseessä on tietokannalle etukäteen lähetetty SQL-kielinen kysely, johon on upotettu paikkoja parametreille. Näiden parametrien paikalle voi sitten upottaa haluamiaan arvoja.</p>
-<p>Sekä PHP:ssä että Javassa parametrien paikkoja ilmaistaan kysymysmerkeillä. Kielien</p>
-<p>Esimerkki:</p>
+<p>Sekä PHP:ssä että Javassa parametrien paikkoja ilmaistaan kysymysmerkeillä. Kielien tapa syöttää kyselylle parametrejä on hieman erilainen: PHP:llä parametrit annetaan array-tyyppisenä listana <a href="http://php.net/manual/en/pdostatement.execute.php">kyselyä suoritettaessa</a> Java:lla ne asetetaan kyselylle jokainen erikseen erilaisilla metodikutsuilla. Joka tyypille on omansa, esim. merkkijonoille <a href="http://docs.oracle.com/javase/7/docs/api/java/sql/PreparedStatement.html#setString(int,%20java.lang.String)">setString</a>. Huomaa, että Javalla kyselyn parametrien indeksointi alkaa ykkösestä.</p>
 <div class="row">
 <div class="col-md-6">
 
@@ -230,11 +229,36 @@ String sql = <span class="st">&quot;SELECT * FROM users WHERE nimi = ?&quot;</sp
 kysely = yhteys.<span class="fu">prepareStatement</span>(sql);
 
 <span class="co">//Annetaan yksi parametri array:n sisällä</span>
-kysely.<span class="fu">setString</span>(<span class="dv">1</span>, <span class="st">&quot;Lehtonen&quot;</span>);
+kysely.<span class="fu">setString</span>(<span class="dv">1</span>, nimi);
 tulokset = kysely.<span class="fu">executeQuery</span>();</code></pre>
 </div>
 </div>
 
+</section>
+<section id="mallien-rakentaminen" class="level2">
+<h2>Mallien rakentaminen</h2>
+<ul>
+<li>Tähän on olemassa monia tapoja.</li>
+<li>Selkeä: Joka tietokantataululle oma luokkansa.
+<ul>
+<li>Jokainen olio edustaa yhtä taulunsa riviä.</li>
+<li>Poikkeus: liitostauluille ei välttämättä tarvita omaa luokkaansa, mikäli niiden toiminnot voi loogisesti sijoittaa muihinkin luokkiin.</li>
+</ul></li>
+<li>Luokalla staattisia metodeja, joilla voi hakea olioita eli rivejä kannasta.
+<ul>
+<li>Voi tehdä myös instassimetodeja, jotka hakevat johonkin olioon liittyviä rivejä toisista tietokantatauluista.</li>
+</ul></li>
+<li>Tarvitaan myös metodit, joka syöttävät olion kantaan tai päivittävät kannassa olevia tietoja olion perusteella.
+<ul>
+<li>Näitä mahdollista tehdä ilman oliotakin.</li>
+<li>Voivat olla staattisia tai instassimetodeja.</li>
+</ul></li>
+<li>Lopuksi metodi(t), jolla voi poistaa rivejä.
+<ul>
+<li>Instanssimetodi poistaa kyseisen olion kannasta.</li>
+<li>Staattisella metodilla voi poistaa useitakin olioita.</li>
+</ul></li>
+</ul>
 <section id="olion-syöttäminen-kantaan" class="level3">
 <h3>Olion syöttäminen kantaan</h3>
 <ul>
