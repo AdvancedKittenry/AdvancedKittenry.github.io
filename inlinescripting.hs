@@ -35,7 +35,7 @@ doInclude (cb@(CodeBlock (id, classes, namevals) contents):xs) =
                       return (makeBlock txt : rst)
                     Just "code" -> 
                       return (makeBlock txt : rst)
-                    Nothing -> 
+                    _ -> 
                       return ((blocks $ readMarkdown def txt) ++ rst)
                where makePlain = Plain . (\d -> [d]) . (Str)
                      makeBlock = CodeBlock attrs 
