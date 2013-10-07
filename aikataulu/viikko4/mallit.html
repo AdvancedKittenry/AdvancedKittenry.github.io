@@ -8,6 +8,25 @@
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
   <link rel="stylesheet" href="../../css/base.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!--[if lt IE 9]>
@@ -148,34 +167,83 @@ Tämän sivun sisältö on vielä työn alla ja saattaa muuttua kurssin edetess�
 
 
 
+<section class="alert alert-info"><h3>
+Tiivistelmä:
+</h3>
 <ul>
 <li>Käytännössä jokaista tietokohdetta vastaa yksi malliluokka.
 <ul>
-<li>Puhtaille välitauluille harvemmin tarvitaan omaa luokkaansa, vaan niiden toiminnot hoidetaan tietokohteiden kautta.</li>
+<li>Puhtaille välitauluille harvemmin tarvitaan omaa luokkaansa, vaan niiden toiminnot hoidetaan itse tietokohteiden kautta.</li>
 <li>Luokka sisältää tarvittavat metodit.</li>
 <li>Käytetään sekä instanssimetodeja, että staattisia metodeja.
 <ul>
 <li>Instanssimetodit käsittelevät yksittäiseen taulun riviin liittyvää tietoa.</li>
 <li>Staattiset metodit hakevat kannasta olioita sekä päivittävät tai poistavat kannasta useita olioita kerralla.</li>
-<li>Oliolla kannattaa yleensä olla metodi, jolla se osaa syöttää itsensä kantaan (INSERT-lause).
-<ul>
-<li>Autogeneroituja id-numeroita (esim. PostgreSQL:n <a href="http://www.postgresql.org/docs/9.2/static/datatype-numeric.html#DATATYPE-SERIAL">SERIAL-tietotyyppi</a>) varten olemassa omat rajapintansa:
-<ul>
-<li>PHP:llä PDO:n <a href="http://php.net/manual/en/pdo.lastinsertid.php">lastInsertId-metodi</a>.</li>
-<li>Javalle olemassa <a href="http://www.technicalkeeda.com/details/how-to-get-mysql-auto-increment-key-value-using-java-jdbc">vastaava tekniikka</a>.</li>
-<li>SERIAL-tyyppiä käytettäessä INSERT-lauseeseen ei laiteta id-avaimelle lainkaan arvoa, jolloin kanta laittaa kenttään seuraavan vapaan arvon.</li>
-</ul></li>
-</ul></li>
+<li>Oliolla kannattaa yleensä olla metodi, jolla se osaa syöttää itsensä kantaan (INSERT-lause).</li>
 <li>Päivittämiseen tarvitaan vastaavaa metodia, joka ajaa UPDATE-lauseen, samoin poistamiselle on tarpeen DELETE-lauseen ajava instanssimetodi.</li>
 </ul></li>
 </ul></li>
-<li>Käytetyn SQL-koodin pitää olla turvallista niin, ettei se tarjoa mahdollisuuksia SQL-injektioille.
+<li>Käytetyn SQL-koodin pitää olla turvallista niin, ettei se tarjoa mahdollisuuksia SQL-injektioille. Tähän käytetään PDO:n ja javan JDBC:n prepared statements -tukia.</li>
+</ul>
+</section>
+
+<section id="turvallinen-tietokantaohjelmointi" class="level2">
+<h2>Turvallinen tietokantaohjelmointi</h2>
+<p>Olennainen osa järkevää tietokantaohjelmointia on nk. <a href="http://fi.wikipedia.org/wiki/SQL-injektio">SQL-injektioiden</a> välttäminen.</p>
+<p>Sovellukseen on mahdollista tehdä SQL-injektio silloin, kun käyttäjän antamia syötteitä ei tarkisteta kunnolla vaan ne upotetaan SQL-kyselyihin sellaisinaan. Esimerkki PHP:llä:</p>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">$nimi</span> = <span class="kw">$_POST</span><span class="ot">[</span><span class="st">&#39;nimi&#39;</span><span class="ot">];</span>
+
+<span class="kw">$yhteys</span> = Tietokanta::getYhteys<span class="ot">();</span>
+<span class="kw">$kysely</span> = <span class="kw">$yhteys</span>-&gt;prepare<span class="ot">(</span><span class="st">&quot;SELECT * FROM users WHERE nimi = &#39;</span><span class="kw">$nimi</span><span class="st">&#39;&quot;</span><span class="ot">);</span></code></pre>
+<p>Nyt, mikäli nimeksi annetaankin vaikka merkkijono <code>' OR username = 'admin'</code>, hakeekin kysely kannasta aivan eri käyttäjän kuin pitäisi!</p>
+<p>Jos tälläinen virhe eksyy vaikkapa kirjautumislogiikkaan, on sovellus auttamatta haavoittuvainen murtautumisyrityksille.</p>
+<p>Onneksi sekä PHP:llä että Javalla on olemassa hyvin helppokäyttöinen tapa estää tälläisiä kyselyjä menemästä kantaan: <a href="http://en.wikipedia.org/wiki/Prepared_statement">Prepared statementit</a> eli kankeasti suomennettuna esivalmistellut SQL-lauseet ovat ratkaisu ongelmaan.</p>
+<p>Käytännössä kyseessä on tietokannalle etukäteen lähetetty SQL-kielinen kysely, johon on upotettu paikkoja parametreille. Näiden parametrien paikalle voi sitten upottaa haluamiaan arvoja.</p>
+<p>Sekä PHP:ssä että Javassa parametrien paikkoja ilmaistaan kysymysmerkeillä. Kielien</p>
+<p>Esimerkki:</p>
+<div class="row">
+<div class="col-md-6">
+
+<p><strong>PHP</strong></p>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">$nimi</span> = <span class="kw">$_POST</span><span class="ot">[</span><span class="st">&#39;nimi&#39;</span><span class="ot">];</span>
+<span class="kw">$yhteys</span> = Tietokanta::getYhteys<span class="ot">();</span>
+
+<span class="co">//Etsitään käyttäjää nimellä</span>
+<span class="kw">$sql</span> = <span class="st">&quot;SELECT * FROM users WHERE nimi = ?&quot;</span><span class="ot">;</span>
+<span class="kw">$kysely</span> = <span class="kw">$yhteys</span>-&gt;prepare<span class="ot">(</span><span class="kw">$sql</span><span class="ot">);</span>
+
+<span class="co">//Annetaan yksi parametri array:n sisällä</span>
+<span class="kw">$tulokset</span> = <span class="kw">$kysely</span>-&gt;execute<span class="ot">(</span><span class="fu">array</span><span class="ot">(</span><span class="kw">$nimi</span><span class="ot">));</span></code></pre>
+</div>
+<div class="col-md-6">
+
+<p><strong>Java</strong></p>
+<pre class="sourceCode java"><code class="sourceCode java">Connection yhteys = <span class="kw">null</span>;
+PreparedStatement kysely = <span class="kw">null</span>;
+ResultSet tulokset = <span class="kw">null</span>;
+
+String nimi = request.<span class="fu">getParameter</span>(<span class="st">&quot;nimi&quot;</span>);
+yhteys = TietokantaYhteydet.<span class="fu">getYhteys</span>();
+
+<span class="co">//Etsitään käyttäjää nimellä</span>
+String sql = <span class="st">&quot;SELECT * FROM users WHERE nimi = ?&quot;</span>;
+kysely = yhteys.<span class="fu">prepareStatement</span>(sql);
+
+<span class="co">//Annetaan yksi parametri array:n sisällä</span>
+kysely.<span class="fu">setString</span>(<span class="dv">1</span>, <span class="st">&quot;Lehtonen&quot;</span>);
+tulokset = kysely.<span class="fu">executeQuery</span>();</code></pre>
+</div>
+</div>
+
+<section id="olion-syöttäminen-kantaan" class="level3">
+<h3>Olion syöttäminen kantaan</h3>
 <ul>
-<li>Tähän käytetään PDO:n ja javan JDBC:n prepared statements -tukia.</li>
-<li>Kyselyihin upotetaan parametreja laittamalla SQL-komentojen sekaan kysymysmerkkejä, joiden sisällön voi täyttää ohjelmallisesti.
+<li>Autogeneroituja id-numeroita (esim. PostgreSQL:n <a href="http://www.postgresql.org/docs/9.2/static/datatype-numeric.html#DATATYPE-SERIAL">SERIAL-tietotyyppi</a>) varten olemassa omat kikkansa:
 <ul>
-<li><a href="../viikko1/ohjelmointikielet.html#tietokannan-käyttö">Lyhyt esimerkki PDO:n ja JDBC:n käytöstä</a></li>
-</ul></li>
+<li>PostgreSQL:llä voidaan INSERT-lauseen jälkeen laittaa käsky <code>RETURNING id</code>, jolloin kysely palauttaa kentän <code>id</code> arvon ikään kuin se olisi SELECT-kysely.</li>
+<li>MySQL:llä olemassa PHP:llä PDO:n <a href="http://php.net/manual/en/pdo.lastinsertid.php">lastInsertId-metodi</a>.</li>
+<li>Javalle olemassa <a href="http://www.technicalkeeda.com/details/how-to-get-mysql-auto-increment-key-value-using-java-jdbc">vastaava tekniikka</a>.</li>
+<li>SERIAL-tyyppiä käytettäessä INSERT-lauseeseen ei laiteta id-avaimelle lainkaan arvoa, jolloin kanta laittaa kenttään seuraavan vapaan arvon.</li>
 </ul></li>
 </ul>
 <section class="alert alert-success small"><h3>
@@ -186,6 +254,9 @@ Seuraavaksi:
 
 
 
+
+</section>
+</section>
 </div>
 </div> 
 </div> 

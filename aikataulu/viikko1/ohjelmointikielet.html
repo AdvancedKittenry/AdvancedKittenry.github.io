@@ -354,7 +354,7 @@ ResultSet tulokset = <span class="kw">null</span>;
   <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">teeAsioitaKannalla</span>() <span class="kw">throws</span> Exception {
     <span class="kw">try</span> {
       <span class="co">//Haetaan context-xml-tiedostosta tietokannan yhteystiedot</span>
-      <span class="co">//HUOM! Tämä esimerkki ei toimi sellaisenaan ilman tomcat-palvelinta!</span>
+      <span class="co">//HUOM! Tämä esimerkki ei toimi sellaisenaan ilman Tomcat-palvelinta!</span>
       Context ctx = <span class="kw">new</span> InitialContext();
       DataSource yhteysVarasto = (DataSource) ctx.<span class="fu">lookup</span>(<span class="st">&quot;java:/comp/env/jdbc/tietokanta&quot;</span>);
 
