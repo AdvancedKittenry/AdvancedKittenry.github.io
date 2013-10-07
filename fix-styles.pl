@@ -1,5 +1,7 @@
 #!/usr/bin/perl 
 
+use File::Basename;
+
 my $path = $ARGV[0];
 
 undef $/;
@@ -24,5 +26,17 @@ s#<br>#<br \/>#g;
 #Commenting is implemented twice: before and after the pandoc execution
 s#<comment>.*?</comment>##sg;
 s#&lt;inline-php-hack&gt;.*?&lt;/inline-php-hack&gt;\n##sg;
+
+# We only do the rootdir substitution after we know better
+# that is, after any including is done.
+# This is to take into account possible includes in other directories
+my $rootdir = dirname($ARGV[0]);
+if ($rootdir eq ".") {
+  $rootdir = "";
+} else {
+  $rootdir = $rootdir . "/";
+  $rootdir =~ s#[^/]+#..#g;
+}
+s#{{rootdir}}#$rootdir#g;
 
 print;
