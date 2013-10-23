@@ -511,12 +511,14 @@ libs/
   models/
     user.php
   utilities.php (Yleiskäyttöisiä funktioita)
-users.php (Käyttäjänhallinnan käsittelijä)
+users.php (Käyttäjänhallinnan kontrolleri)
 ~~~</code></pre>
 </section>
 <section class='tab-pane' id='tab_2_1' >
 
-<p>Javaa käytettäessä sijoita mallit ja käsittelijät - Javan tapauksessa Servletit - omiin paketteihinsa projektin yhteisen paketin alle src-kansioon. Näkymät - eli yleensä jsp-tiedostot - menevät omaan kansioonsa joka on oletuksena nimeltään web.</p>
+<p>Javaa käytettäessä sijoita mallit ja kontrollerit omiin paketteihinsa projektin yhteisen paketin alle src-kansioon.</p>
+<p>Kontrollerit ovat Javan tapauksessa aina HttpServlet-luokan aliluokkia eli servlettejä, joten niiden paketin voi nimetä myös esim. <code>servletit</code>.</p>
+<p>Näkymät - eli yleensä jsp-tiedostot - menevät omaan kansioonsa joka on oletuksena nimeltään web.</p>
 <pre><code>src/
   Paketti/
     Models/

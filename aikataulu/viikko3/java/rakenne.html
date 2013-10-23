@@ -184,10 +184,10 @@ web/
   user.jsp</code></pre>
 </section>
 
-<p>Tietokantasovellukset Javalla kannattaa jakaa <a href="../../../mvc-opas.html">arkkitehtuuriohjeen</a> mukaisesti malleihin, käsittelijöihin ja näkymiin. Keskitymme ensiksi käsittelijöihin ja näkymiin.</p>
+<p>Tietokantasovellukset Javalla kannattaa jakaa <a href="../../../mvc-opas.html">arkkitehtuuriohjeen</a> mukaisesti malleihin, kontrollereihin ja näkymiin. Keskitymme ensiksi kontrollereihin ja näkymiin.</p>
 <section id="servletit" class="level2">
 <h2>Servletit</h2>
-<p>Servletit ovat Java EE:ssä eli Javan nettipuolessa käytettäviä luokkia, jotka edustavat jonkin nettisivun tai toiminnon <em>käsittelijöitä</em>.</p>
+<p>Servletit ovat Java EE:ssä eli Javan nettipuolessa käytettäviä luokkia, jotka edustavat jonkin nettisivun tai toiminnon <em>kontrollereita</em>. Servletit ja kontrollerit ovat Javan näkökulmasta useimmiten käytännössä sama asia.</p>
 <p>Jokainen Servlet-luokka on sidottu johonkin URL-osoitteeseen, johon ohjattu aineistopyyntö aktivoi sen. Sitomiset on käyttämässämme Java-ympäristön versiossa määritelty XML-pohjaisesti tiedostossa <code>web/WEB-INF/web.xml</code>. Tiedoston muokkaus on hieman monimutkaista, mutta esimerkiksi NetBeans osaa muokata tämän tiedoston määrityksiä kätevällä käyttöliittymällä ja liittää esimerkiksi uusien Servlettien URL-osoitteet sinne samalla kun Servlettiä luodaan, jolloin käytännössä tiedostoon tarvitsee koskea käsin aika harvoin.</p>
 <section id="etusivut" class="level3">
 <h3>Etusivut</h3>
@@ -232,7 +232,7 @@ web/
   <span class="co">/* NetBeansin piilottamat doGet- ja doPost-metodit, jotka kutsuvat processRequest-metodia. */</span>
 
 }</code></pre>
-<p>Valmiin pohjan sisältämä vastauksen tuottava koodi sisältää suoraan käsittelijään upotettua HTML-koodia. Tälläistä koodia ei kannata käyttää, vaan kannattaa tuottaa HTML-sivut erillisillä näkymätiedostoilla.</p>
+<p>Valmiin pohjan sisältämä vastauksen tuottava koodi sisältää suoraan kontrolleriin upotettua HTML-koodia. Tälläistä koodia ei kannata käyttää, vaan kannattaa tuottaa HTML-sivut erillisillä näkymätiedostoilla.</p>
 </section>
 </section>
 <section id="näkymät-ja-jsp" class="level2">
@@ -252,7 +252,7 @@ web/
 &lt;/html&gt;</code></pre>
 <p>JSP-tiedoston käyttäminen tapahtuu RequestDispatcher-tyyppisen olion metodilla forward, jolle annetaan parametrina HttpServletRequest ja HttpServletResponse-oliot. RequestDispatcher-olion saa HttpServletRequest-oliolta antamalla sille sivun, jolle pyyntö ohjataan.</p>
 <p>Luo tässä vaiheessa projektisi luokille oma paketti. Esim. kissalistan paketti voisi olla <code>Kissalista</code>. Tee pakettiisi alipaketit servlettejä ja malleja varten. Esimerkiksi <code>Kissalista.Servlets</code> ja <code>Kissalista.Models</code>.</p>
-<p>Luo sitten itsellesi JSP-tiedosto ja servlet-luokka ja laita servletin pyynnön käsittelijään RequestDispatcher-olio, joka ohjaa luomaasi JSP-tiedostoon ja kutsuu metodia forward.</p>
+<p>Luo sitten itsellesi JSP-tiedosto ja servlet-luokka ja laita servletin pyynnön käsittelymetodiin RequestDispatcher-oliota käyttävää koodia, joka ohjaa luomaasi JSP-tiedostoon ja kutsuu metodia forward.</p>
 <pre class="sourceCode java"><code class="sourceCode java"><span class="kw">protected</span> <span class="dt">void</span> <span class="fu">processRequest</span>(HttpServletRequest request, HttpServletResponse response) {
   response.<span class="fu">setContentType</span>(<span class="st">&quot;text/html;charset=UTF-8&quot;</span>);
   
