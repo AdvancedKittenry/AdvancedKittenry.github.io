@@ -87,23 +87,21 @@ käyttötapauksia. Käyttötapaukset kannattaa esittää käyttäjittäin ryhmit
   Yritysinfon lukeminen:
     Kuka tahansa voi käydä lukemassa yrityksen mainos- ja yleistietoja 
     mm. työntekijöiden puhelinnumerot ja toimistojen sijainnit.
-    
+
   Asuntotilanteen yleiskuvan selvittäminen:
     Käyttäjälle näytetään, minkä tyyppisiä asuntoja kullakin alueella 
     kyselyn suoritushetkellä on tarjolla vuokralle ja kuinka monta näitä on tarjolla. 
     Esimerkki: Millaisia asuntoja on tarjolla Kruunuhaassa?
-    
+
   Rekisteröityminen asiakkaaksi:
     Rekisteröitymisessä käyttäjä ilmoittautuu yrityksen asiakkaaksi päästen näin 
     yrityksen muiden asiakaspalveluiden käyttäjäksi ja asiakastiedotteiden saajaksi.
-     
+
     Jokamiehestä tulee asiakas. Hän antaa henkilötietonsa ja saa asiakastunnuksen, 
     joka on avain asiakkaille tarkoitettuihin palveluihin. 
-    
+
     Prototyypissä asiakastunnus aktivoituu heti. 
     Aktivoinnin voisi kytkeä myös esimerkiksi jäsenmaksun maksamiseen.
-    
-
 
 
 ##4. Järjestelmän tietosisältö
@@ -120,7 +118,6 @@ Myös yhteydet täytyy määritellä. Alla on esimerkkinä yhden tietokohteen m�
 
 ####Esimerkki 
 
-  
 > **Tietokohde: Huoneisto**
 >
 > -----------------------------------------------------------------
@@ -241,8 +238,10 @@ jotka olisivat olemassa ilman navigaatiopalkkiakin.
 
 Lyhyehkö ohje, jonka tarkoituksena on toisaalta kertoa, miten sovellus on nyt asennettu ja toisaalta miten sen saisi asennettua uuteen ympäristöön.
 Servlettien sijoittelu riippuu servlettiympäristöstä, joten sitä ei tarvitse määritellä.
-Asennusohjeesta tulisi käydä myös ilmi, minne käytettävän tietokannan asetukset (käytettävä tietokanta, käyttäjätunnus, salasana) tulee ohjelmistoa asentaessa määritellä.
 
+<alert>
+Asennusohjeesta tulisi käydä myös ilmi, minne käytettävän tietokannan asetukset (käytettävä tietokanta, käyttäjätunnus, salasana) tulee ohjelmistoa asentaessa määritellä.
+</alert>
 
 ##10. Käynnistys- / käyttöohje
 

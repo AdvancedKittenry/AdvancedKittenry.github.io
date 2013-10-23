@@ -50,7 +50,7 @@ Lopputulos on vähänkään monimutkaisemmissa sovelluksissa sekava ja vaikea mu
 
 ~~~~php<include src="esimerkit/spagettikoodi.php" />~~~~
 
-Tällä kurssilla pyrimme hieman selkeämpään [arkkitehtuuriin](../arkkitehtuuri.html),
+Tällä kurssilla pyrimme hieman selkeämpään [arkkitehtuuriin]({{rootdir}}mvc-opas.html),
 jossa mallit ja näkymät määritellään omissa tiedostoissaan.
 
 Tämä ei kuitenkaan varsinaisesti estä käyttämästä PHP:n suoraviivaista luonnetta

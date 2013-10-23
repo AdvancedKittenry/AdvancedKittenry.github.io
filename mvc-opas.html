@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title>MVC-arkkitehtuuriopas</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
+  <link rel="stylesheet" href="css/base.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+  <script src="javascript/bootstrap.js"></script>
+  <script src="javascript/jquery.treeview.js"></script>
+  <script src="javascript/jquery.scrollTo.js"></script>
+  <script src="javascript/jquery.nav.js"></script>
+  <script src="javascript/navi.js"></script>
+</head>
+<body>
+<div class="titlebar">
+  <div class="container">
+    <div class="row">
+      <h1 class="col-md-6 col-md-offset-3">Advanced Kittenry - Tietokantasovellusohjeet</h1>
+    </div>
+  </div>
+</div>
+<div class="container">
+<div class="row">
+<div class="navcontainer col-md-3">
+<nav>
+<ul>
+<li><a href="index.html">Tietokantasovellus</a>
+<ul>
+<li><a href="aikataulu/index.html">Aikataulu</a>
+<ul>
+<li><a href="aikataulu/viikko1/index.html">Viikko 1</a>
+<ul>
+<li><a href="aikataulu/viikko1/aiheet/index.html">Aiheet</a>
+<ul>
+<li><a href="aikataulu/viikko1/aiheet/Drinkkiarkisto.html">Drinkkiarkisto</a></li>
+<li><a href="aikataulu/viikko1/aiheet/Elektroninen_keittokirja.html">Elektroninen keittokirja</a></li>
+<li><a href="aikataulu/viikko1/aiheet/Graduaiheet.html">Graduaiheet</a></li>
+<li><a href="aikataulu/viikko1/aiheet/Harjoitustyon_seuranta.html">Harjoitustyön seuranta</a></li>
+<li><a href="aikataulu/viikko1/aiheet/Hiihtokisojen_tulospalvelu.html">Hiihtokisojen tulospalvelu</a></li>
+<li><a href="aikataulu/viikko1/aiheet/Huutokauppa.html">Huutokauppa</a></li>
+<li><a href="aikataulu/viikko1/aiheet/Kennelkerho.html">Kennelkerho</a></li>
+<li><a href="aikataulu/viikko1/aiheet/Kuluttajan_tuki_Ry.html">Kuluttajan tuki Ry</a></li>
+<li><a href="aikataulu/viikko1/aiheet/Kurssikysely.html">Kurssikysely</a></li>
+<li><a href="aikataulu/viikko1/aiheet/Kurssin_kotisivu.html">Kurssin kotisivu</a></li>
+<li><a href="aikataulu/viikko1/aiheet/Kurssitarjonta_ja_kurssipaikan_varaus.html">Kurssitarjonta ja kurssipaikan varaus</a></li>
+<li><a href="aikataulu/viikko1/aiheet/Lainahakemusten_kasittely.html">Lainahakemusten käsittely</a></li>
+<li><a href="aikataulu/viikko1/aiheet/Laakariaseman_tyovuorolista.html">Lääkäriaseman työvuorolista</a></li>
+<li><a href="aikataulu/viikko1/aiheet/Laakarin_kotikaynnit.html">Lääkärin kotikäynnit</a></li>
+<li><a href="aikataulu/viikko1/aiheet/Matkojen_markkinointi.html">Matkojen markkinointi</a></li>
+<li><a href="aikataulu/viikko1/aiheet/Muistilista.html">Muistilista</a></li>
+<li><a href="aikataulu/viikko1/aiheet/Ostoskassi.html">Ostoskassi</a></li>
+<li><a href="aikataulu/viikko1/aiheet/Painontarkkailu.html">Painontarkkailu</a></li>
+<li><a href="aikataulu/viikko1/aiheet/Palvelubisnes.html">Palvelubisnes</a></li>
+<li><a href="aikataulu/viikko1/aiheet/Parturi-Kampaamo.html">Parturi-Kampaamo</a></li>
+<li><a href="aikataulu/viikko1/aiheet/Pizzapalvelu.html">Pizzapalvelu</a></li>
+<li><a href="aikataulu/viikko1/aiheet/Projektin_tyoaikaseuranta.html">Projektin työaikaseuranta</a></li>
+<li><a href="aikataulu/viikko1/aiheet/Rankkauslista.html">Rankkauslista</a></li>
+<li><a href="aikataulu/viikko1/aiheet/Taloyhtion_palvelut.html">Taloyhtiön palvelut</a></li>
+<li><a href="aikataulu/viikko1/aiheet/Tavaranvaihto.html">Tavaranvaihto</a></li>
+<li><a href="aikataulu/viikko1/aiheet/Tukkuliikkeen_tilaustenksittely.html">Tukkuliikkeen tilaustenkäsittely</a></li>
+<li><a href="aikataulu/viikko1/aiheet/Tutkimusaineston_kerays.html">Tutkimusaineiston keräys</a></li>
+<li><a href="aikataulu/viikko1/aiheet/Tyoaihekanta.html">Työaihekanta</a></li>
+<li><a href="aikataulu/viikko1/aiheet/Tyontekijanvuokraus_kotitoihin.html">Työntekijänvuokraus kotitöihin</a></li>
+<li><a href="aikataulu/viikko1/aiheet/Tyryhmtiedotus.html">Työryhmätiedotus</a></li>
+<li><a href="aikataulu/viikko1/aiheet/Opintoneuvonnan_usein_kysytyt_kysymykset.html">Usein kysytyt kysymykset</a></li>
+<li><a href="aikataulu/viikko1/aiheet/Vedonlyonti.html">Vedonlyönti</a></li>
+<li><a href="aikataulu/viikko1/aiheet/Vuokra-asuntojen_valitys.html">Vuokra-asuntojen välitys</a></li>
+<li><a href="aikataulu/viikko1/aiheet/Ystavanvalityspalvelu.html">Ystävänvälityspalvelu</a></li>
+<li><a href="aikataulu/viikko1/aiheet/Aanestys.html">Äänestys</a></li>
+</ul></li>
+<li><a href="aikataulu/viikko1/ohjelmointikielet.html">Ohjelmointikielen valinta</a></li>
+<li><a href="aikataulu/viikko1/tietokannat.html">Tietokannan valinta</a></li>
+<li><a href="aikataulu/viikko1/dokumentointi.html">Dokumentaation aloittaminen</a></li>
+<li><a href="aikataulu/viikko1/git-ohje.html">Versionhallinta</a></li>
+</ul></li>
+<li><a href="aikataulu/viikko2/index.html">Viikko 2</a>
+<ul>
+<li><a href="aikataulu/viikko2/tekniikka.html">Tietokantojen ja palvelimien käyttöönotto</a></li>
+<li><a href="aikataulu/viikko2/suunnittelu.html">Käyttöliittymän suunnittelu</a></li>
+<li><a href="aikataulu/viikko2/tietokanta.html">Tietokannan suunnittelu</a></li>
+<li><a href="aikataulu/viikko2/netbeans.html">NetBeansin käyttöönotto</a></li>
+<li><a href="aikataulu/viikko2/html-versioiden-luonti.html">HTML-versioiden luominen</a></li>
+</ul></li>
+<li><a href="aikataulu/viikko3/index.html">Viikko 3</a>
+<ul>
+<li><a href="aikataulu/viikko3/java/index.html">Kirjautuminen Javalla</a>
+<ul>
+<li><a href="aikataulu/viikko3/java/rakenne.html">Sovelluksen rakenne ja servletit</a></li>
+<li><a href="aikataulu/viikko3/java/lomakkeet.html">Lomakkeiden käyttö ja vastaanottaminen</a></li>
+<li><a href="aikataulu/viikko3/java/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
+</ul></li>
+<li><a href="aikataulu/viikko3/php/index.html">Kirjautuminen PHP:llä</a>
+<ul>
+<li><a href="aikataulu/viikko3/php/rakenne.html">Mihin eri tiedostot kannattaa laittaa?</a></li>
+<li><a href="aikataulu/viikko3/php/lomakkeet.html">Lomakkeiden käyttö ja vastaanottaminen</a></li>
+<li><a href="aikataulu/viikko3/php/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
+</ul></li>
+</ul></li>
+<li><a href="aikataulu/viikko4/index.html">Viikko 4</a>
+<ul>
+<li><a href="aikataulu/viikko4/tietokantayhteys.html">Tietokantayhteyden pystytys</a></li>
+<li><a href="aikataulu/viikko4/ssh-tunnelit.html">SSH-tunnelointi</a></li>
+<li><a href="aikataulu/viikko4/mallit.html">Mallit ja tietokanta</a></li>
+<li><a href="aikataulu/viikko4/nakymat.html">Tietokohteen sivujen toteuttaminen</a></li>
+</ul></li>
+<li><a href="aikataulu/viikko5/index.html">Viikko 5</a>
+<ul>
+<li><a href="aikataulu/viikko5/java-users.html">Java-työn vieminen users-palvelimelle</a></li>
+</ul></li>
+<li><a href="aikataulu/demo.html">Demotilaisuus</a></li>
+<li><a href="aikataulu/palautus.html">Työn palautus</a></li>
+</ul></li>
+<li><a href="arvosteluperusteet.html">Arvosteluperusteet</a></li>
+<li><a href="dokumentaatio-ohje.html">Dokumentaatio-ohje</a></li>
+<li><a href="cleancode.html">Hyvä ohjelmointityyli</a></li>
+<li><a href="kaytettavyys.html">Käytettävyys</a></li>
+<li class="selected"><a href="mvc-opas.html">MVC-arkkitehtuuriopas</a></li>
+<li><a href="web-sovelluksista.html">Web-sovelluksien toiminta</a></li>
+</ul></li>
+</ul>
+</nav>
+</div>
+<div class="col-md-6" id="content">
+<header>
+<h1 class="title">MVC-arkkitehtuuriopas</h1>
+</header>
+<script>addSectionLinks = true; </script>
+
+<p>Tällä kurssilla pyritään kevyeen <a href="http://fi.wikipedia.org/wiki/MVC-arkkitehtuuri">MVC-mallin</a> mukaiseen koodiarkkitehtuuriin. Monille käsite on hieman hämärä, siispä avaamme sitä tällä sivulla tarkemmin.</p>
+<p>Käytännössä MVC-arkkitehtuuri tarkoittaa sitä, että koodi jaetaan kolmeen osaan: <em>näkymiin</em>, <em>kontrollereihin</em> ja <em>malleihin</em> (engl. views, controllers ja models). Mallit käyttävät tietokantaa ja abstrahoivat sen ohjelmointirajapinnaksi, jota muu koodi käyttää. Näkymät hoitavat kaiken HTML:ään liittyvän koodin ja kontrollerit ottavat vastaan käyttäjän antamat aineistopyynnöt, hakevat ja päivittävät tietoa malleja käyttäen ja välittävät tiedot näkymälle, joka näyttää sivun.</p>
+<figure>
+<img src="images/mvc.png" alt="MVC-mallin vastuunjako" /><figcaption>MVC-mallin vastuunjako</figcaption>
+</figure>
+<section class="alert alert-info"><h3>
+Nyrkkisääntöjä
+</h3>
+
+<ul>
+<li>Malli vastaa tiedon käsittelemisestä ja abstrahoinnista ja <strong>ainoastaan</strong> siitä. Mallissa ei <strong>ikinä käsitellä HTML:ää</strong> tai käyttäjän lähettämiä pyyntöjä ja parametrejä, nämä ovat näkymän ja kontrollerin tehtäviä.</li>
+<li>Kaikki HTML-koodi sijoitetaan <em>näkymiin</em></li>
+<li>Kaikki käyttäjän lähettämät GET- ja POST-paremetrit vastaanotetaan <em>kontrollerissa</em>.</li>
+<li>SQL-kyselyjä ei ikinä tehdä kontrollereiden tai näkymien puolella.</li>
+</ul>
+</section>
+
+<section id="mallit" class="level2">
+<h2>Mallit</h2>
+<p>Mallit sisältävät kaikki sovelluksen tietokannassa olevan tiedon ja käsittelyyn liittyvät toiminnnot. Kaikki tietokantaa käsittelevä koodi kuuluu siis malleihin.</p>
+<p>Mallit toteutetaan keräämällä eri asioihin ja tietokohteisiin liittyviä toimintoja luokiksi ja/tai funktioiksi. Ohessa Javalla tehty esimerkki malliluokasta tietokohteelle kissa:</p>
+<pre class="sourceCode java scrollable"><code class="sourceCode java"><span class="kw">import Kissalista.Models.Tietokanta;</span>
+<span class="kw">import java.util.List;</span>
+<span class="kw">import java.util.ArrayList;</span>
+<span class="kw">import java.sql.Connection;</span>
+<span class="kw">import java.sql.PreparedStatement;</span>
+<span class="kw">import java.sql.ResultSet;</span>
+
+<span class="kw">class</span> Kissa {
+  
+  <span class="kw">private</span> <span class="dt">int</span> id;
+  <span class="kw">private</span> String nimi;
+  <span class="kw">private</span> String turkinVari;
+  <span class="kw">private</span> <span class="dt">int</span> rotuId;
+
+  <span class="kw">private</span> <span class="fu">Kissa</span>(ResultSet tulos) {
+    <span class="fu">Kissa</span>(
+      tulos.<span class="fu">getInteger</span>(<span class="st">&quot;id&quot;</span>),
+      tulos.<span class="fu">getString</span>(<span class="st">&quot;nimi&quot;</span>),
+      tulos.<span class="fu">getString</span>(<span class="st">&quot;turkin_vari&quot;</span>),
+      tulos.<span class="fu">getInteger</span>(<span class="st">&quot;rotuId&quot;</span>)
+    );
+  }
+  <span class="kw">public</span> <span class="fu">Kissa</span>(<span class="dt">int</span> id, String nimi, String vari, <span class="dt">int</span> rotuId) {
+    <span class="kw">this</span>.<span class="fu">id</span> = id;
+    <span class="kw">this</span>.<span class="fu">nimi</span> = nimi;
+    <span class="kw">this</span>.<span class="fu">turkinVari</span> = vari;
+    <span class="kw">this</span>.<span class="fu">rotuId</span> = rotuId;
+  }
+  
+  <span class="co">/** Hakee tietokannasta yksittäisen kissan id-numeron perusteella */</span>
+  <span class="kw">public</span> <span class="dt">static</span> Kissa <span class="fu">haeKissa</span>(<span class="dt">int</span> id) <span class="kw">throws</span> Exception {
+    Connection yhteys = <span class="kw">null</span>;
+    PreparedStatement kysely = <span class="kw">null</span>;
+    ResultSet tulokset = <span class="kw">null</span>;
+
+    <span class="kw">try</span> {
+      String sql = <span class="st">&quot;SELECT * FROM kissat WHERE id = ?&quot;</span>;
+      yhteys = Tietokanta.<span class="fu">getConnection</span>();
+      kysely = yhteys.<span class="fu">getKysely</span>(sql);
+      kysely.<span class="fu">setInteger</span>(<span class="dv">1</span>, id);
+      tulokset = kysely.<span class="fu">executeQuery</span>();
+
+      <span class="kw">if</span> (tulokset.<span class="fu">next</span>()) {
+        <span class="kw">return</span> <span class="kw">new</span> <span class="fu">Kissa</span>(tulokset);
+      } <span class="kw">else</span> {
+        <span class="kw">return</span> <span class="kw">null</span>;
+      }
+
+    } <span class="kw">finally</span> {
+      <span class="kw">try</span> { tulokset.<span class="fu">close</span>(); } <span class="kw">catch</span> (Exception e) {  }
+      <span class="kw">try</span> { kysely.<span class="fu">close</span>(); } <span class="kw">catch</span> (Exception e) {  }
+      <span class="kw">try</span> { yhteys.<span class="fu">close</span>(); } <span class="kw">catch</span> (Exception e) {  }
+    }
+
+  }
+  <span class="co">/** Hakee tietokannasta listan kissoja nimen perusteella */</span>
+  <span class="kw">public</span> <span class="dt">static</span> List&lt;Kissa&gt; <span class="fu">haeKissat</span>(String nimi) <span class="kw">throw</span> Exception {
+    Connection yhteys = <span class="kw">null</span>;
+    PreparedStatement kysely = <span class="kw">null</span>;
+    ResultSet tulokset = <span class="kw">null</span>;
+
+    <span class="kw">try</span> {
+      String sql = <span class="st">&quot;SELECT * FROM kissat WHERE nimi = ?&quot;</span>;
+      yhteys = Tietokanta.<span class="fu">getConnection</span>();
+      kysely = yhteys.<span class="fu">getKysely</span>(sql);
+      kysely.<span class="fu">setString</span>(<span class="dv">1</span>, nimi);
+      tulokset = kysely.<span class="fu">executeQuery</span>();
+      
+      ArrayList&lt;Kissa&gt; l = <span class="kw">new</span> ArrayList&lt;Kissa&gt;();
+      <span class="kw">while</span> (tulokset.<span class="fu">next</span>()) {
+        l.<span class="fu">append</span>(<span class="kw">new</span> <span class="fu">Kissa</span>(tulokset));
+      } 
+      <span class="kw">return</span> l;
+
+    } <span class="kw">finally</span> {
+      <span class="kw">try</span> { tulokset.<span class="fu">close</span>(); } <span class="kw">catch</span> (Exception e) {  }
+      <span class="kw">try</span> { kysely.<span class="fu">close</span>(); } <span class="kw">catch</span> (Exception e) {  }
+      <span class="kw">try</span> { yhteys.<span class="fu">close</span>(); } <span class="kw">catch</span> (Exception e) {  }
+    }
+
+  }
+
+  <span class="co">/** Tallentaa kissan tietokantaan */</span>
+  <span class="kw">public</span> <span class="dt">boolean</span> <span class="fu">tallenna</span>() <span class="kw">throw</span> Exception {
+    Connection yhteys = <span class="kw">null</span>;
+    PreparedStatement kysely = <span class="kw">null</span>;
+    ResultSet tulokset = <span class="kw">null</span>;
+
+    <span class="kw">try</span> {
+      String sql = <span class="st">&quot;INSERT INTO kissat(nimi, turkin_vari, rotuId) VALUES(?,?,?) RETURNING id&quot;</span>;
+      yhteys = Tietokanta.<span class="fu">getConnection</span>();
+      kysely = yhteys.<span class="fu">getKysely</span>(sql);
+      kysely.<span class="fu">setString</span>(<span class="dv">1</span>, nimi);
+      kysely.<span class="fu">setString</span>(<span class="dv">2</span>, turkinVari);
+      kysely.<span class="fu">setInteger</span>(<span class="dv">3</span>, rotuId);
+      tulokset = kysely.<span class="fu">executeQuery</span>();
+      
+      <span class="kw">if</span> (tulokset.<span class="fu">next</span>()) {
+        id = tulokset.<span class="fu">getInteger</span>(<span class="st">&quot;id&quot;</span>);
+        <span class="kw">return</span> <span class="kw">true</span>;
+      } <span class="kw">else</span> {
+        <span class="kw">return</span> <span class="kw">false</span>;
+      }
+
+    } <span class="kw">finally</span> {
+      <span class="kw">try</span> { tulokset.<span class="fu">close</span>(); } <span class="kw">catch</span> (Exception e) {  }
+      <span class="kw">try</span> { kysely.<span class="fu">close</span>(); } <span class="kw">catch</span> (Exception e) {  }
+      <span class="kw">try</span> { yhteys.<span class="fu">close</span>(); } <span class="kw">catch</span> (Exception e) {  }
+    }
+  }
+  <span class="co">/** Poistaa kissan tietokannasta */</span>
+  <span class="kw">public</span> <span class="dt">boolean</span> <span class="fu">poista</span>() <span class="kw">throw</span> Exception {
+    Connection yhteys = <span class="kw">null</span>;
+    PreparedStatement kysely = <span class="kw">null</span>;
+
+    <span class="kw">try</span> {
+      String sql = <span class="st">&quot;DELETE FROM kissat where id = ?&quot;</span>;
+      yhteys = Tietokanta.<span class="fu">getConnection</span>();
+      kysely = yhteys.<span class="fu">getKysely</span>(sql);
+      kysely.<span class="fu">setInteger</span>(<span class="dv">1</span>, id);
+      <span class="kw">return</span> kysely.<span class="fu">execute</span>();
+    } <span class="kw">finally</span> {
+      <span class="kw">try</span> { kysely.<span class="fu">close</span>(); } <span class="kw">catch</span> (Exception e) {  }
+      <span class="kw">try</span> { yhteys.<span class="fu">close</span>(); } <span class="kw">catch</span> (Exception e) {  }
+    }
+  }
+
+  <span class="co">/** Getterit ja setterit */</span>
+  <span class="kw">public</span> <span class="dt">int</span> <span class="fu">getId</span>() {
+    <span class="kw">return</span> <span class="kw">this</span>.<span class="fu">id</span>;
+  }
+  <span class="kw">public</span> <span class="dt">void</span> <span class="fu">setId</span>(<span class="dt">int</span> id) {
+    <span class="kw">this</span>.<span class="fu">id</span> = id;
+  }
+
+  <span class="kw">public</span> String <span class="fu">getNimi</span>() {
+    <span class="kw">return</span> <span class="kw">this</span>.<span class="fu">nimi</span>;
+  }
+  <span class="kw">public</span> <span class="dt">void</span> <span class="fu">setNimi</span>(String nimi) {
+    <span class="kw">this</span>.<span class="fu">nimi</span> = nimi;
+  }
+
+  <span class="kw">public</span> String <span class="fu">getTurkinVari</span>() {
+    <span class="kw">return</span> <span class="kw">this</span>.<span class="fu">turkinVari</span>;
+  }
+  <span class="kw">public</span> <span class="dt">void</span> <span class="fu">setTurkinVari</span>(String turkinVari) {
+    <span class="kw">this</span>.<span class="fu">turkinVari</span> = turkinVari;
+  }
+
+  <span class="kw">public</span> <span class="dt">int</span> <span class="fu">getRotuId</span>() {
+    <span class="kw">return</span> <span class="kw">this</span>.<span class="fu">rotuId</span>;
+  }
+  <span class="kw">public</span> <span class="dt">void</span> <span class="fu">setRotuId</span>(<span class="dt">int</span> rotuId) {
+    <span class="kw">this</span>.<span class="fu">rotuId</span> = rotuId;
+  }
+}</code></pre>
+<p>Vastaava luokka PHP-kielellä on hyvin samanlainen, joskin hieman lyhyempi.</p>
+<p>Huomaa miten malliluokka on käytännössä pelkkä abstraktitaso, joka piilottaa tietokantakoodin rumat yksityiskohdat siistin oliokäyttöliittymän taakse.</p>
+<p>Usein voi olla järkevää tehdä malleja myös abstraktimmeille asioille kuten istunnoille ja sille millä oikeuksilla käyttäjä on kirjautunut. Näiden ei ole tietenkään pakko käyttää tietokantaa (ainakaan suoraan), mutta ne ovat silti malleja.</p>
+</section>
+<section id="näkymät" class="level2">
+<h2>Näkymät</h2>
+<p>Näkymä määrittää käyttöliittymän ulkoasun ja tietojen näytön esityksen käyttöliittymässä. Tietokantasovelluksen tapauksessa käytetään nk. <em>template-tiedostoja</em> eli tiedostoja, joissa määritellään sivulle tuleva HTML-koodi, ja sen sekaan tulevat muuttujat.</p>
+<p>Javalla käytetään JSP-tiedostoja, PHP:llä tavallisia php-tiedostoja. Kummassakin on lähinnä HTML-koodia, jonka seassa on hieman ohjelmakoodia.</p>
+<p>Näkymissä ei ikinä käsitellä tietokantaa suoraan, ja erittäin harvoin niissä on varsinaista koodia yli kolmea riviä peräkkäin. Sensijaan, että haettaisiin tiedot näkymässä suoraan kannasta käytetään sovitun nimisiä muuttujia, joiden sisältö näytetään. Se, mistä muuttujien sisältö tulee, näkymän ei tarvitse tietää mitään. Sille riittää että tieto on siellä missä sen pitääkin. (Tiedon sijoittaminen oikeisiin muuttujiin on sitävastoinkontrollerin tehtävä.)</p>
+<p>Ohessa esimerkki kahdella tiedostolla toteutetusta kissalistasta. Jälkimmäistä tiedostoa voi käyttää myös muualla kissan näyttämiseen.</p>
+<p><strong>views/kissalista.php</strong></p>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;?php</span>
+  /** Tiedosto, jonka tarkoituksena on näyttää lista kissoja.
+    * Olettaa, että muuttujassa $tiedot on kentät kissat. */ 
+<span class="kw">?&gt;</span>
+<span class="kw">&lt;h1&gt;</span>Kissat<span class="kw">&lt;/h1&gt;</span>
+<span class="kw">&lt;p&gt;</span>Kissoja yhteensä <span class="kw">&lt;?php</span> echo count($kissat); <span class="kw">?&gt;</span> kpl<span class="kw">&lt;/p&gt;</span>  
+<span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;kissat&quot;</span><span class="kw">&gt;</span>
+  <span class="kw">&lt;?php</span> foreach($kissat as $kissa): <span class="kw">?&gt;</span>
+  <span class="kw">&lt;?php</span> require &#39;kissa.php&#39;; <span class="kw">?&gt;</span>
+  <span class="kw">&lt;?php</span> endforeach; <span class="kw">?&gt;</span>
+<span class="kw">&lt;/div&gt;</span></code></pre>
+<p><strong>views/kissa.php</strong></p>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;?php</span>
+  /** Tiedosto, jonka tarkoituksena on näyttää kissan tiedot.
+    * Olettaa, että muuttuja $kissa on asetettu. */ 
+<span class="kw">?&gt;&lt;div</span><span class="ot"> class=</span><span class="st">&quot;kissa&quot;</span><span class="kw">&gt;</span>
+  <span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;row nimi&quot;</span><span class="kw">&gt;</span>
+    <span class="kw">&lt;label&gt;</span>Nimi:<span class="kw">&lt;/label&gt;</span>
+    <span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;value&quot;</span><span class="kw">&gt;&lt;?php</span> echo $kissa-&gt;getNimi(); <span class="kw">?&gt;&lt;/div&gt;</span>
+  <span class="kw">&lt;/div&gt;</span>
+  <span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;row turkin_vari&quot;</span><span class="kw">&gt;</span>
+    <span class="kw">&lt;label&gt;</span>Turkin väri:<span class="kw">&lt;/label&gt;</span>
+    <span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;value&quot;</span><span class="kw">&gt;&lt;?php</span> echo $kissa-&gt;getTurkinVari(); <span class="kw">?&gt;&lt;/div&gt;</span>
+  <span class="kw">&lt;/div&gt;</span>
+  <span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;row rotu&quot;</span><span class="kw">&gt;</span>
+    <span class="kw">&lt;label&gt;</span>Rotu:<span class="kw">&lt;/label&gt;</span>
+    <span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;value&quot;</span><span class="kw">&gt;&lt;?php</span> echo $kissa-&gt;getRotu(); <span class="kw">?&gt;&lt;/div&gt;</span>
+  <span class="kw">&lt;/div&gt;</span>
+<span class="kw">&lt;/div&gt;</span></code></pre>
+<p>Yleensä on tapana myös tehdä muutama ns. template-näkymätiedosto, joissa määritellään kaikille sovelluksen sivuille yhteisiä elementtejä.</p>
+</section>
+<section id="kontrollerit" class="level2">
+<h2>Kontrollerit</h2>
+<p>Kontrolleri (tunnetaan myös nimellä käsittelijä tai ohjain) sitoo yhteen mallin ja näkymän ja välittää tietoa niiden välillä.</p>
+<p>Kontrolleri vastaanottaa käyttäjältä tulevat aineistopyynnöt, käyttää mallia tiedon hakemiseen ja muuttamiseen, ja lopuksi yleensä siirtää suorituksen jollekin näkymälle. Yleensä kontrolleri välittää samalla näkymälle jotain tietoa näytettäväksi, esimerkiksi listan mallin palauttamia olioita tai virheviestin.</p>
+<p>Kontrollerissa sensijaan <strong>ei</strong> koskaan käsitellä tietokantaa suoraan, tai lähetetä selaimelle HTML:ää tai muuta sisältöä. Nämä ovat mallien ja näkymien tehtäviä.</p>
+<p>Ohessa esimerkkejä kontrollereista PHP:llä ja Javalla</p>
+<ul class='nav nav-tabs nav-justified'><li class='active'>
+<a href='#tab_1_0' data-toggle='tab'>Kontrolleri PHP:llä</a>
+</li>
+<li>
+<a href='#tab_1_1' data-toggle='tab'>Kontrolleri Javalla</a>
+</li></ul><div class='panel panel-default'><div class='panel-body'><div class='tab-content'>
+<section class='tab-pane active' id='tab_1_0' >
+
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span> 
+  <span class="co">//Otetaan käyttöön kirjastotiedosto, joka hakee kasan omatekoisia yleistoimintoja, sekä malliluokka:</span>
+  <span class="kw">require_once</span> <span class="st">&#39;src/common.php&#39;</span><span class="ot">;</span>
+  <span class="kw">require_once</span> <span class="st">&#39;src/models/kissa.php&#39;</span><span class="ot">;</span>
+  
+  <span class="co">//Selvitetään onko käyttäjä tehnyt haun</span>
+  <span class="kw">$hakusana</span> = <span class="kw">null</span><span class="ot">;</span>
+  <span class="kw">if</span> <span class="ot">(</span>!<span class="fu">empty</span><span class="ot">(</span><span class="kw">$_GET</span><span class="ot">[</span><span class="st">&#39;haku&#39;</span><span class="ot">]))</span> {
+    <span class="kw">$hakusana</span> = <span class="kw">$_GET</span><span class="ot">[</span><span class="st">&#39;haku&#39;</span><span class="ot">];</span>
+  }
+
+  <span class="co">//Kutsutaan malliluokan staattista metodia</span>
+  <span class="kw">$kissat</span> = Kissa::hae<span class="ot">(</span><span class="kw">$hakusana</span><span class="ot">);</span>
+  
+  <span class="co">//Näytetään näkymä lähettäen sille muutamia muuttujia</span>
+  naytaNakymä<span class="ot">(</span><span class="st">&quot;kissalista&quot;</span><span class="ot">,</span> <span class="fu">array</span><span class="ot">(</span>
+    <span class="st">&#39;title&#39;</span> =&gt; <span class="st">&quot;Kissalista&quot;</span><span class="ot">,</span>
+    <span class="st">&#39;kissat&#39;</span> =&gt; <span class="kw">$kissat</span>
+  <span class="ot">));</span></code></pre>
+</section>
+<section class='tab-pane' id='tab_1_1' >
+
+<pre class="sourceCode java"><code class="sourceCode java"><span class="kw">package Kissalista.Servlets;</span>
+
+<span class="kw">import java.io.IOException;</span>
+<span class="kw">import javax.servlet.RequestDispatcher;</span>
+<span class="kw">import javax.servlet.ServletException;</span>
+<span class="kw">import javax.servlet.http.HttpServletRequest;</span>
+<span class="kw">import javax.servlet.http.HttpServletResponse;</span>
+
+<span class="kw">import Kissalista.Models.Kissa;</span>
+
+<span class="co">/* Kontrolleriluokka, joka näyttää listan kissoja. </span>
+<span class="co"> * Kissalista voi olla hakusanalla suodatettu, </span>
+<span class="co"> * mikäli parametri haku on lähetetty aineistopyynnön mukana.</span>
+<span class="co"> */</span>
+<span class="kw">public</span> <span class="kw">class</span> KissaServlet <span class="kw">extends</span> HttpServlet {
+  <span class="co">/**</span>
+<span class="co">   * Processes requests for both HTTP</span>
+<span class="co">   * &lt;code</span><span class="kw">&gt;</span><span class="co">GET&lt;/code</span><span class="kw">&gt;</span><span class="co"> and &lt;code</span><span class="kw">&gt;</span><span class="co">POST&lt;/code</span><span class="kw">&gt;</span><span class="co"> methods.</span>
+<span class="co">   *</span>
+<span class="co">   * </span><span class="kw">@param request </span><span class="co">servlet request</span>
+<span class="co">   * </span><span class="kw">@param response </span><span class="co">servlet response</span>
+<span class="co">   * </span><span class="kw">@throws ServletException </span><span class="co">if a servlet-specific error occurs</span>
+<span class="co">   * </span><span class="kw">@throws IOException </span><span class="co">if an I/O error occurs</span>
+<span class="co">   */</span>
+  <span class="kw">protected</span> <span class="dt">void</span> <span class="fu">processRequest</span>(HttpServletRequest request, 
+                                HttpServletResponse response)
+      <span class="kw">throws</span> ServletException, IOException {
+    response.<span class="fu">setContentType</span>(<span class="st">&quot;text/html;charset=UTF-8&quot;</span>);
+    
+    String hakusana = request.<span class="fu">getParameter</span>(<span class="st">&quot;haku&quot;</span>);
+    List&lt;Kissa&gt; kissat = <span class="kw">null</span>;
+    <span class="kw">if</span> (hakusana != <span class="kw">null</span> &amp;&amp; hakusana.<span class="fu">length</span> &gt; <span class="dv">0</span>) {
+      kissat = Kissa.<span class="fu">hae</span>(hakusana);
+    } <span class="kw">else</span> {
+      kissat = Kissa.<span class="fu">kaikkiKissat</span>();
+    }
+    
+    request.<span class="fu">setAttribute</span>(<span class="st">&quot;kissat&quot;</span>, kissat);
+    <span class="kw">if</span> (kissat.<span class="fu">length</span>() == <span class="dv">0</span>) {
+      request.<span class="fu">setAttribute</span>(<span class="st">&quot;viesti&quot;</span>, <span class="st">&quot;Kissoja ei löytynyt&quot;</span>);
+    }
+    
+    <span class="co">/* Luodaan RequestDispatcher-olio, joka osaa näyttää näkymätiedoston lista.jsp */</span>
+    RequestDispatcher dispatcher = request.<span class="fu">getRequestDispatcher</span>(<span class="st">&quot;lista.jsp&quot;</span>);
+    <span class="co">/* Pyydetään dispatcher-oliota näyttämään JSP-sivunsa */</span>
+    dispatcher.<span class="fu">forward</span>(request, response);
+  }
+  
+  <span class="co">/**</span>
+<span class="co">   * Handles the HTTP</span>
+<span class="co">   * &lt;code</span><span class="kw">&gt;</span><span class="co">GET&lt;/code</span><span class="kw">&gt;</span><span class="co"> method.</span>
+<span class="co">   *</span>
+<span class="co">   * </span><span class="kw">@param request </span><span class="co">servlet request</span>
+<span class="co">   * </span><span class="kw">@param response </span><span class="co">servlet response</span>
+<span class="co">   * </span><span class="kw">@throws ServletException </span><span class="co">if a servlet-specific error occurs</span>
+<span class="co">   * </span><span class="kw">@throws IOException </span><span class="co">if an I/O error occurs</span>
+<span class="co">   */</span>
+  <span class="fu">@Override</span>
+  <span class="kw">protected</span> <span class="dt">void</span> <span class="fu">doGet</span>(HttpServletRequest request, HttpServletResponse response)
+          <span class="kw">throws</span> ServletException, IOException {
+      <span class="fu">processRequest</span>(request, response);
+  }
+
+  <span class="co">/**</span>
+<span class="co">   * Handles the HTTP</span>
+<span class="co">   * &lt;code</span><span class="kw">&gt;</span><span class="co">POST&lt;/code</span><span class="kw">&gt;</span><span class="co"> method.</span>
+<span class="co">   *</span>
+<span class="co">   * </span><span class="kw">@param request </span><span class="co">servlet request</span>
+<span class="co">   * </span><span class="kw">@param response </span><span class="co">servlet response</span>
+<span class="co">   * </span><span class="kw">@throws ServletException </span><span class="co">if a servlet-specific error occurs</span>
+<span class="co">   * </span><span class="kw">@throws IOException </span><span class="co">if an I/O error occurs</span>
+<span class="co">   */</span>
+  <span class="fu">@Override</span>
+  <span class="kw">protected</span> <span class="dt">void</span> <span class="fu">doPost</span>(HttpServletRequest request, HttpServletResponse response)
+          <span class="kw">throws</span> ServletException, IOException {
+      <span class="fu">processRequest</span>(request, response);
+  }
+}</code></pre>
+</section>
+</div></div></div>
+
+</section>
+<section id="koodin-sijoittelu-tiedostojärjestelmään" class="level2">
+<h2>Koodin sijoittelu tiedostojärjestelmään</h2>
+<p>Eri osioiden koodit sijoitetaan käytetystä kielestä riippuen eri paikkaan. Ohjaajien toiveet sijoittelusta ovat alla:</p>
+<ul class='nav nav-tabs nav-justified'><li class='active'>
+<a href='#tab_2_0' data-toggle='tab'>PHP-esimerkkisijoittelu</a>
+</li>
+<li>
+<a href='#tab_2_1' data-toggle='tab'>Java-esimerkkisijoittelu</a>
+</li></ul><div class='panel panel-default'><div class='panel-body'><div class='tab-content'>
+<section class='tab-pane active' id='tab_2_0' >
+
+<p>PHP:tä käytettäessä sijoita kaikki mallit ja näkymät omaan kansioonsa. Käsittelijät taas sijoitetaan projektin juureen. Näkymät sijoitetaan kansioon <code>views</code>.</p>
+<p>Useimmiten on tarpeen luoda vielä oma kansionsa yleiskäyttöisille kirjastotiedostoille, jotka eivät varsinaisesti ole malleja. Yleiskäyttöisen koodin kansion voi nimetä kuvaavasti esim. <code>libs</code>. Luo malleille oma <code>models</code>-kansio yleiskäyttöisen koodin alle.</p>
+<p>Kansioiden nimet voi halutessaan suomentaa.</p>
+<pre><code>views/
+  userlist.php
+libs/
+  models/
+    user.php
+  utilities.php (Yleiskäyttöisiä funktioita)
+users.php (Käyttäjänhallinnan käsittelijä)
+~~~</code></pre>
+</section>
+<section class='tab-pane' id='tab_2_1' >
+
+<p>Javaa käytettäessä sijoita mallit ja käsittelijät - Javan tapauksessa Servletit - omiin paketteihinsa projektin yhteisen paketin alle src-kansioon. Näkymät - eli yleensä jsp-tiedostot - menevät omaan kansioonsa joka on oletuksena nimeltään web.</p>
+<pre><code>src/
+  Paketti/
+    Models/
+      User.java
+    Servlets/
+      UserServlet.java
+web/
+  user.jsp</code></pre>
+</section>
+</div></div></div>
+
+</section>
+<section id="nyrkkisääntöjä" class="level2">
+<h2>Nyrkkisääntöjä</h2>
+<ul>
+<li>Malli vastaa tiedon käsittelemisestä ja abstrahoinnista ja <strong>ainoastaan</strong> siitä. Mallissa ei <strong>ikinä käsitellä HTML:ää</strong> tai käyttäjän lähettämiä pyyntöjä ja parametrejä, nämä ovat näkymän ja kontrollerin tehtäviä.</li>
+<li>Kaikki HTML-koodi sijoitetaan <em>näkymiin</em></li>
+<li>Kaikki käyttäjän lähettämät GET- ja POST-paremetrit vastaanotetaan <em>kontrollerissa</em>.</li>
+<li>SQL-kyselyjä ei ikinä tehdä kontrollereiden tai näkymien puolella.</li>
+</ul>
+</section>
+<section id="linkkejä" class="level2">
+<h2>Linkkejä</h2>
+<ul>
+<li><a href="http://tomdalling.com/blog/software-design/model-view-controller-explained/">Model View Controller Explained</a></li>
+<li><a href="http://www.strongandagile.co.uk/index.php/a-really-simple-explanation-of-mvc/">A Really Simple Explanation Of MVC</a></li>
+<li><a href="http://www.ohjelmointiputka.net/oppaat/opas.php?tunnus=php_14#mvcmalli">Lyhyt PHP-esimerkki ohjelmointiputka.net:issä</a></li>
+</ul>
+</section>
+</div>
+</div> 
+</div> 
+<footer>
+  <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">AdvancedKittenry</span> 
+  by
+  <a xmlns:cc="http://creativecommons.org/ns#" href="http://advancedkittenry.github.io/credits.html" property="cc:attributionName" rel="cc:attributionURL">David Consuegra and others</a>
+  is licensed under a 
+  <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.
+  <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">
+    <img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png" />
+  </a>
+</footer>
+</body>
+</html>

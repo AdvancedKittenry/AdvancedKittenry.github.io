@@ -9,7 +9,7 @@ ja toteuttaa kirjautuminen.
 
 Palautuspäivämäärään mennessä työn on täytettävä seuraavat vaatimukset:
 
-* Työssä on noudatettu [arkkitehtuuriohjeen MVC-kolmijakoa](arkkitehtuuri.html)
+* Työssä on noudatettu [arkkitehtuuriohjeen MVC-kolmijakoa][arkkitehtuuri]
 * Sivuille on luotu erillinen sivupohjatiedosto, joka sisältää jokaiselle sivulle tulevat asiat.
     * Java:lla helpointa käyttää [JSP-tägikirjastoa](java/rakenne.html#template-pohjatiedoston-k%C3%A4ytt%C3%B6)
     * PHP:lle tulossa oma ohje, joka perustuu [include-funktion](http://php.net/manual/en/function.include.php) käyttöön
@@ -51,8 +51,14 @@ TODO:
 </comment>
 
 <ohje>
-Aloita lukemalla [arkkitehtuuriohje](arkkitehtuuri.html).
-ja seuraa vihreitä ohjelaatikoita.
+Aloita lukemalla [arkkitehtuuriohje][arkkitehtuuri].
+Siirry sitten käyttämäsi kielen kirjautumisen toteuttamisohjeisiin:
+
+* [Kirjautuminen PHP:llä](php/index.html)
+* [Kirjautuminen Javalla](java/index.html)
+
 
 Tehtyäsi kaiken varmista, että kaikki tekemäsi muutokset näkyvät GitHub-repositoriossasi.
 </ohje>
+
+[arkkitehtuuri]: {{rootdir}}mvc-opas.html

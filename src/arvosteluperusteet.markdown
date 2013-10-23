@@ -8,8 +8,8 @@ Pisteet jakautuvat seuraavasti:
 
 Osa-alue                    Minimipistemäärä   Maksimipistemäärä
 ------------------------  -------------------- -----------------
-Aikataulun noudattaminen  9                    15
-Koodin laatu              15                   25
+Aikataulun noudattaminen  8                    15
+Koodin laatu              12                   25
 Käytettävyys              5                    10 
 Dokumentaatio             5                    10
 ------------------------  -------------------- ------------------

@@ -20,7 +20,7 @@ Projektissa pitäisi tällöin olla seuraavanlainen kansiorakenne:
 </summary>
 
 Tietokantasovellukset Javalla kannattaa jakaa 
-[arkkitehtuuriohjeen](../arkkitehtuuri.html) mukaisesti
+[arkkitehtuuriohjeen]({{rootdir}}mvc-opas.html) mukaisesti
 malleihin, käsittelijöihin ja näkymiin.
 Keskitymme ensiksi käsittelijöihin ja näkymiin.
 
