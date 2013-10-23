@@ -4,5 +4,5 @@ libs/
   models/
     user.php
   utilities.php (Yleiskäyttöisiä funktioita)
-users.php (Käyttäjänhallinnan käsittelijä)
+users.php (Käyttäjänhallinnan kontrolleri)
 ~~~

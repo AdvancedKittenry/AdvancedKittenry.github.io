@@ -21,14 +21,15 @@ Projektissa pitäisi tällöin olla seuraavanlainen kansiorakenne:
 
 Tietokantasovellukset Javalla kannattaa jakaa 
 [arkkitehtuuriohjeen]({{rootdir}}mvc-opas.html) mukaisesti
-malleihin, käsittelijöihin ja näkymiin.
-Keskitymme ensiksi käsittelijöihin ja näkymiin.
+malleihin, kontrollereihin ja näkymiin.
+Keskitymme ensiksi kontrollereihin ja näkymiin.
 
 ## Servletit
 
 Servletit ovat Java EE:ssä eli Javan nettipuolessa 
 käytettäviä luokkia, jotka edustavat jonkin nettisivun tai toiminnon
-_käsittelijöitä_. 
+_kontrollereita_. 
+Servletit ja kontrollerit ovat Javan näkökulmasta useimmiten käytännössä sama asia. 
 
 Jokainen Servlet-luokka on sidottu johonkin URL-osoitteeseen,
 johon ohjattu aineistopyyntö aktivoi sen.
@@ -66,7 +67,7 @@ Metodilla on parametreina HttpServletRequest-olio, joka sisältää pyynnön tie
 ~~~~java<include src="esimerkit/TestiServlet.java" />~~~~
 
 Valmiin pohjan sisältämä vastauksen tuottava koodi sisältää 
-suoraan käsittelijään upotettua HTML-koodia. 
+suoraan kontrolleriin upotettua HTML-koodia. 
 Tälläistä koodia ei kannata käyttää, vaan kannattaa tuottaa
 HTML-sivut erillisillä näkymätiedostoilla.
 
@@ -94,8 +95,8 @@ Tee pakettiisi alipaketit servlettejä ja malleja varten.
 Esimerkiksi `Kissalista.Servlets` ja `Kissalista.Models`.
 
 Luo sitten itsellesi JSP-tiedosto ja servlet-luokka ja 
-laita servletin pyynnön käsittelijään
-RequestDispatcher-olio, joka ohjaa luomaasi JSP-tiedostoon
+laita servletin pyynnön käsittelymetodiin
+RequestDispatcher-oliota käyttävää koodia, joka ohjaa luomaasi JSP-tiedostoon
 ja kutsuu metodia forward.
 
 ~~~~java<include src="esimerkit/RequestDispatcher.java" />~~~~

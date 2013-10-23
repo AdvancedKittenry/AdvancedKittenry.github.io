@@ -32,7 +32,7 @@ Palautuspäivämäärään mennessä työn on täytettävä seuraavat vaatimukse
 * Yleistä arkkitehtuurista
   * Template-tiedostojen käyttö (php, java)
   * Mallien kirjoittaminen
-* Yksinkertainen lomakekäsittelijä
+* Yksinkertainen lomakekontrolleri
 * Istunnot, kirjautuminen ja virhetilanteet
   * Käytettävyys
 

@@ -22,7 +22,7 @@ Palautuspäivämäärään mennessä työn on täytettävä seuraavat vaatimukse
 * Käytetty SQL-koodi on turvallinen, eikä tarjoa mahdollisuuksia SQL-injektioille.
 * Luotu sivut, jossa edellä mainittuja malliluokan toimintoja käytetään hyväksi. Käytettävyyden pitää olla kohdallaan:
     * Sivuilla selkeät virheilmoitukset kaikista virhetilanteista ja lomakkeiden syöttövirheistä.
-    * Lomakkeen käsittelijä ohjaa takaisin lomakesivulle, mikäli lomake on virheellisesti täytetty.
+    * Lomakkeen kontrolleri ohjaa takaisin lomakesivulle, mikäli lomake on virheellisesti täytetty.
         * Lomakesivulla tällöin näkyvissä ne tiedot, jotka käyttäjä siihen syötti.
         * Väärin syötetyt tiedot kerrotaan virheilmoituksin.
     * Tiedot näkyvät sivuilla oikein myös silloin kun käyttäjä on syöttänyt niiden sekaan HTML:ää, lainausmerkkejä yms.

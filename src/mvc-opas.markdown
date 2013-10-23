@@ -130,8 +130,11 @@ Kansioiden nimet voi halutessaan suomentaa.
 <tab title="Java-esimerkkisijoittelu">
 
 Javaa käytettäessä sijoita mallit 
-ja käsittelijät - Javan tapauksessa Servletit - omiin paketteihinsa
+ja kontrollerit omiin paketteihinsa
 projektin yhteisen paketin alle src-kansioon.
+
+Kontrollerit ovat Javan tapauksessa aina HttpServlet-luokan aliluokkia eli servlettejä, joten niiden paketin voi nimetä myös esim. `servletit`.
+
 Näkymät - eli yleensä jsp-tiedostot - menevät omaan kansioonsa 
 joka on oletuksena nimeltään web.
 

@@ -41,7 +41,7 @@ Esimerkkejä:
   }
 ~~~
 
-Käytä istuntoa kirjautumiskäsittelijässäsi siten, että talletat
+Käytä istuntoa kirjautumiskontrollerissasi siten, että talletat
 jokaisen onnistuneen kirjautumisen yhteydessä kirjautuneen käyttäjän tiedot istuntoon.
 
 <alert>

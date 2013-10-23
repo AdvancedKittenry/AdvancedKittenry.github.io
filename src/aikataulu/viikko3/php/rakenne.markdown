@@ -34,15 +34,15 @@ minne tiedostot on sijoitettu.
 On periaatteessa täysin mahdollista tehdä php-sivuja, joissa
 jokainen ladattava sivu tuotetaan tasan yhdellä php-tiedostolla.
 
-Tästä johtuen yksinkertaisin tapa toteuttaa yksittäisen toiminnon käsittelijä PHP:llä
+Tästä johtuen yksinkertaisin tapa toteuttaa yksittäisen toiminnon kontrolleri PHP:llä
 ei oikeastaan vaadi muuta kuin sopivaan osoitteeseen sijoitetun PHP-tiedoston,
 joka kutsuu tarvitsemiaan kirjastoja tuottaakseen 
 käyttäjälle halutun vastauksen aineistopyyntöön.
 
-## Spagettikoodi ja käsittelijä
+## Spagettikoodi ja kontrolleri
 
 Tiiviimmillään ja rumimmillaan tämä näkyy vieläkin ikävän yleisenä _spagettikoodina_,
-jossa sovelluksen kaikki kolme osaa: käsittelijä, näkymä ja malli
+jossa sovelluksen kaikki kolme osaa: kontrolleri, näkymä ja malli
 ovat sulassa sovussa ja sekasotkussa samassa tiedostossa. 
 Lopputulos on vähänkään monimutkaisemmissa sovelluksissa sekava ja vaikea muuttaa.
 
@@ -54,9 +54,9 @@ Tällä kurssilla pyrimme hieman selkeämpään [arkkitehtuuriin]({{rootdir}}mvc
 jossa mallit ja näkymät määritellään omissa tiedostoissaan.
 
 Tämä ei kuitenkaan varsinaisesti estä käyttämästä PHP:n suoraviivaista luonnetta
-siihen, että jätämme varsinaiset käsittelijät paljaaksi koodiksi,
+siihen, että jätämme varsinaiset kontrollerit paljaaksi koodiksi,
 joka vain suoraan kutsuu erilaisia kirjastoja ja näyttää lopulta näkymän.
-Kutsumme tästä lähtien näitä käsittelijätiedostoja yksinkertaisesti sivuiksi.
+Käytämme tästä lähtien näistä kontrolleritiedostoja myös yksinkertaisempaa nimitystä "sivu".
 
 Esimerkkinä kuvitteellisen kissalistan sivu:
 
@@ -182,7 +182,7 @@ Useimmat sovelluksemme näkymistä ovat
 hieman elävämpiä kuin yksinkertainen kirjautumislomake,
 ja muuttuvat sen mukaan mitä tietokannasta löytyy.
 
-Tätä varten haluamme pystyä välittämään tietoa käsittelijöiden 
+Tätä varten haluamme pystyä välittämään tietoa kontrollereiden
 ja näkymien välillä. Tämä onnistuu helpoiten laittamalla
 `naytaNakyma`-funktioon toinen parametri ja hieman lisää koodia.
 
@@ -295,7 +295,7 @@ Yleensä erityyppisiä avaimia ei kuitenkaan kannata sekoittaa. Esimerkkejä:
 
 Käsittelijässä luotuja taulukoita voi käyttää 
 näkymässä tiedon näyttämiseen. 
-Oletetaan että käsittelijä on asettanut muuttujaan `$kissat` listan nimiä:
+Oletetaan että kontrolleri on asettanut muuttujaan `$kissat` listan nimiä:
 
 ~~~php
 <?php

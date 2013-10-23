@@ -15,12 +15,12 @@ Tehdään koko setti:
 </comment>
 
 * Lisäys- ja muokkauslomakkeet kannattaa toteuttaa samalla tai ainakin hyvin samanlaisella koodilla.
-* Muokkaustoiminnot kannattaa toteuttaa niin, että sivun käsittelijä ottaa muokattavan tietokohteen id:n tai muun avaimen GET-parametrina ja näyttää sen perusteella oikean kohteen.
+* Muokkaustoiminnot kannattaa toteuttaa niin, että sivun kontrolleri ottaa muokattavan tietokohteen id:n tai muun avaimen GET-parametrina ja näyttää sen perusteella oikean kohteen.
     * Poisto ym. vastaavat toiminnot toimivat käytännössä samoin. Usein niiden aktivointii kannattaa tosin käyttää lomakkeisiin upotettuja nappeja ja POST-metodia.
 * Muokkauslomake koodataan näyttämään GET-parametrin määrittämän olion tiedot valmiina kentissä. 
     * Olio haetaan mallilta sopivalla metodilla.
-    * Malli ei koskaan käsittele GET- tai POST-parametreja suoraan vaan ne käsittelijä välittää ne mallin metodeille.
-* Lomakkeen käsittelijä ohjaa takaisin lomakesivulle, mikäli lomake on virheellisesti täytetty.
+    * Malli ei koskaan käsittele GET- tai POST-parametreja suoraan vaan ne kontrolleri välittää ne parametreina mallin metodeille.
+* Lomakkeen kontrolleri ohjaa takaisin lomakesivulle, mikäli lomake on virheellisesti täytetty.
     * Lomakesivulla tällöin näkyvissä ne tiedot, jotka käyttäjä siihen syötti.
         * Tiedot voidaan näyttää antamalla lomakkeelle näytettäväksi malliluokan olio, johon on asetettu käyttäjän syöttämät lomaketiedot.
     * Väärin syötetyt tiedot eritellään vielä virheilmoituksin. Mieluiten kaikki kerrallaan.
