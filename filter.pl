@@ -108,6 +108,7 @@ for my $tag (keys %tags) {
     my $replacement = qq[<section class="alert alert-$class"><h3>$title</h3>];
     s#<$tag>#$replacement#g;
     s#</$tag>#\n</section>#g;
+    s#<$tag\s+title=["']([^'"]*)["']\s*>#<section class="alert alert-$class"><h3>\1</h3>#g;
 }
 
 for my $dir (keys %dirs) {
