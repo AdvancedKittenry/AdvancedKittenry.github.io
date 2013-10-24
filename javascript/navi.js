@@ -42,6 +42,31 @@ $(document).ready(function(){
     persist: "location",
     collapsed: true,
   });
+  
+  /*
+  $('nav li a').each(function() { 
+    var t = $(this); 
+    var opener = t.prev(); 
+    if (opener.length <1) {return;} 
+
+    var closed = function() { return opener.hasClass("expandable-hitarea");}
+    var originally_closed = closed();
+
+    t.parent().hover(
+      function() {
+        if (closed()) {
+          opener.click();
+          originally_closed = true;
+          console.log(t);
+        }
+      }, 
+      function() {
+        if (!closed() && originally_closed) {
+          opener.click();
+        } 
+      });
+  }) 
+  /* */
 
   // Stick the #nav to the top of the window
   var nav = $('nav');
