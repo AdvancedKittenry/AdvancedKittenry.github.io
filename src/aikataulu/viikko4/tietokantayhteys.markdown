@@ -79,7 +79,7 @@ Kun yhteysvarasto on kerran luotu, saa siltä uusia yhteyksiä
 suorittamalla getConnection-metodin:
 
 ~~~java
-Connection yhteys = dataSource.getConnection(); 
+Connection yhteys = yhteysVarasto.getConnection(); 
 ~~~
 
 Menetelmän etuna on, ettei yhteyksien avaamisia tarvitse

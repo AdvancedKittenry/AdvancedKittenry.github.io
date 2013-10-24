@@ -221,7 +221,7 @@ Yllä olevan koodin vaatimat importit
 </section></div>
 
 <p>Kun yhteysvarasto on kerran luotu, saa siltä uusia yhteyksiä suorittamalla getConnection-metodin:</p>
-<pre class="sourceCode java"><code class="sourceCode java">Connection yhteys = dataSource.<span class="fu">getConnection</span>(); </code></pre>
+<pre class="sourceCode java"><code class="sourceCode java">Connection yhteys = yhteysVarasto.<span class="fu">getConnection</span>(); </code></pre>
 <p>Menetelmän etuna on, ettei yhteyksien avaamisia tarvitse erikseen hallinnoida, vaan varasto avaa niitä lisää sitä mukaa kun tarvetta on.</p>
 <p>Kun olet suorittanut haluamasi SQL-kyselyn, yhteys pitää sulkea, jolloin se palaa takaisiin varastoon käytettäväksi:</p>
 <pre class="sourceCode java"><code class="sourceCode java"><span class="kw">try</span> { yhteys.<span class="fu">close</span>(); } <span class="kw">catch</span> (Exception e) {  }</code></pre>
