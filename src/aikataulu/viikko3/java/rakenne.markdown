@@ -274,6 +274,10 @@ ja luo kentille getterit ja setterit sekä halutessasi konstruktori, joka ottaa 
 Myöhemmin työn edetessä teemme tähän luokkaan staattisia metodeja, 
 jotka osaavat hakea näihin olioihin sisältöä tietokannasta.
 
+# Linkkejä
+
+* [Introduction to the Java Standard Tag Library](http://www.sitepoint.com/java-standard-tag-library/)
+
 <next>
 Seuraavaksi otamme käyttäjämallin ja servletit käyttöön
 [yksinkertaisen kirjautumisen](lomakkeet.html) toteuttamiseen.

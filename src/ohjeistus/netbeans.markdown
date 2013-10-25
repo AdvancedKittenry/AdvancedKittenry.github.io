@@ -1,5 +1,4 @@
 % NetBeansin käyttöönotto
-<!-- order: 4 -->
 
 Mikäli haluat ottaa NetBeansin käyttöön, klikkaa alla olevista
 linkeistä auki NetBeans-ohjeita. 

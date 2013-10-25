@@ -1,5 +1,19 @@
 {
   "default": {
+    "instancename": "Syksy 2013, periodi II",
+    "aloitusluentopvm": "ma 28.10 klo 16 luokassa D122",
+    "instructoremail": "consuegr@cs.helsinki.fi",
+    "deadline1": "su 3.11 klo 23:00",
+    "deadline2": "su 10.11 klo 23:00",
+    "deadline3": "su 17.11 klo 23:00",
+    "deadline4": "su 24.11 klo 23:00",
+    "deadline5": "su 1.12 klo 23:00",
+    "demodeadline": "Samaan aikaan paja-aikojen kanssa",
+    "palautusdeadline": "su 8.12 klo 23:00",
+    "paja-ajat-intro":"Pajat pidetään luokassa B221. Paja-ajat päätetään aloitusluennolla",
+    "paja-ajat-data":"[ ]"
+  },
+  "2013-fall-I": {
     "instancename": "Syksy 2013, periodi I",
     "aloitusluentopvm": "ti 3.9 klo 16 luokassa C222",
     "instructoremail": "consuegr@cs.helsinki.fi",

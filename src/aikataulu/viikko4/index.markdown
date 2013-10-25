@@ -1,9 +1,20 @@
 % Viikko 4
 <!-- order: 1 -->
+<!-- hidden! -->
 
 <deadline>{{deadline4}}</deadline>
 
 Työaiheet neljännellä viikolla lyhyesti:
+
+<comment>
+TODO:
+* Tietokantayhteys toimii, ja sen luonti on sijoitettu omaan metodiinsa/funktioonsa.
+* Luotu ainakin yksi täysi malliluokka.
+* Sivuilla virheilmoitukset virhetilanteista ja syöttövirheistä. Ohjataan takaisin lomakesivulle, mikäli virheellisesti täytetty. 
+* Virhellisesti täytetyillä lomakesivulla palatessa ne tiedot, jotka käyttäjä syötti.
+* Tiedot näkyvät sivuilla oikein myös silloin kun käyttäjä on syöttänyt niiden sekaan HTML:ää, lainausmerkkejä yms. eikä koodissa ole SQL-injektiopaikkoja
+* Alustava: asennustiedot, käynnistys- / käyttöohje
+</comment>
 
 * [Tietokannan kokeilu ja yhteydenotto](tietokantayhteys.html)
 * [Tietokantaa käyttävän mallin luominen](mallit.html)

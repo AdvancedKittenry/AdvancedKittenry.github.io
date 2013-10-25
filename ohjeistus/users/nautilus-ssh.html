@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <title>Java-työn vieminen users-palvelimelle</title>
+  <title>Tiedostojen etämuokkaus Linuxilla</title>
   <style type="text/css">code{white-space: pre;}</style>
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -79,45 +79,28 @@
 </ul></li>
 <li><a href="../../aikataulu/viikko1/ohjelmointikielet.html">Ohjelmointikielen valinta</a></li>
 <li><a href="../../aikataulu/viikko1/tietokannat.html">Tietokannan valinta</a></li>
+<li><a href="../../aikataulu/viikko1/tekniikka.html">Koodausympäristön pystytys</a></li>
 <li><a href="../../aikataulu/viikko1/dokumentointi.html">Dokumentaation aloittaminen</a></li>
 <li><a href="../../aikataulu/viikko1/git-ohje.html">Versionhallinta</a></li>
 </ul></li>
-<li><a href="../../aikataulu/viikko2/index.html">Viikko 2</a>
-<ul>
-<li><a href="../../aikataulu/viikko2/tekniikka.html">Tietokantojen ja palvelimien käyttöönotto</a></li>
-<li><a href="../../aikataulu/viikko2/suunnittelu.html">Käyttöliittymän suunnittelu</a></li>
-<li><a href="../../aikataulu/viikko2/tietokanta.html">Tietokannan suunnittelu</a></li>
-<li><a href="../../aikataulu/viikko2/netbeans.html">NetBeansin käyttöönotto</a></li>
-<li><a href="../../aikataulu/viikko2/html-versioiden-luonti.html">HTML-versioiden luominen</a></li>
-</ul></li>
-<li><a href="../../aikataulu/viikko3/index.html">Viikko 3</a>
-<ul>
-<li><a href="../../aikataulu/viikko3/java/index.html">Kirjautuminen Javalla</a>
-<ul>
-<li><a href="../../aikataulu/viikko3/java/rakenne.html">Sovelluksen rakenne ja servletit</a></li>
-<li><a href="../../aikataulu/viikko3/java/lomakkeet.html">Lomakkeiden käyttö ja vastaanottaminen</a></li>
-<li><a href="../../aikataulu/viikko3/java/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
-</ul></li>
-<li><a href="../../aikataulu/viikko3/php/index.html">Kirjautuminen PHP:llä</a>
-<ul>
-<li><a href="../../aikataulu/viikko3/php/rakenne.html">Mihin eri tiedostot kannattaa laittaa?</a></li>
-<li><a href="../../aikataulu/viikko3/php/lomakkeet.html">Lomakkeiden käyttö ja vastaanottaminen</a></li>
-<li><a href="../../aikataulu/viikko3/php/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
-</ul></li>
-</ul></li>
-<li><a href="../../aikataulu/viikko4/index.html">Viikko 4</a>
-<ul>
-<li><a href="../../aikataulu/viikko4/tietokantayhteys.html">Tietokantayhteyden pystytys</a></li>
-<li><a href="../../aikataulu/viikko4/ssh-tunnelit.html">SSH-tunnelointi</a></li>
-<li><a href="../../aikataulu/viikko4/mallit.html">Mallit ja tietokanta</a></li>
-<li><a href="../../aikataulu/viikko4/nakymat.html">Tietokohteen sivujen toteuttaminen</a></li>
-</ul></li>
-<li><a href="../../aikataulu/viikko5/index.html">Viikko 5</a>
-<ul>
-<li class="selected"><a href="../../aikataulu/viikko5/java-users.html">Java-työn vieminen users-palvelimelle</a></li>
-</ul></li>
 <li><a href="../../aikataulu/demo.html">Demotilaisuus</a></li>
 <li><a href="../../aikataulu/palautus.html">Työn palautus</a></li>
+</ul></li>
+<li><a href="../../ohjeistus/index.html">Ohjeistus</a>
+<ul>
+<li><a href="../../ohjeistus/netbeans.html">NetBeansin käyttöönotto</a></li>
+<li><a href="../../ohjeistus/users/index.html">Users-palvelin ja töiden pystyttäminen</a>
+<ul>
+<li><a href="../../ohjeistus/users/kayttoonotto/index.html">Palvelujen käynnistäminen ja käyttöönotto</a>
+<ul>
+<li><a href="../../ohjeistus/users/kayttoonotto/java.html">Java ja Tomcatin käyttöönotto</a></li>
+<li><a href="../../ohjeistus/users/kayttoonotto/mysql.html">MySql-tietokannan käyttöönotto</a></li>
+<li><a href="../../ohjeistus/users/kayttoonotto/php.html">PHP-tuen käyttöönotto</a></li>
+<li><a href="../../ohjeistus/users/kayttoonotto/postgresql.html">PostgreSQL-tietokannan käyttöönotto</a></li>
+</ul></li>
+<li><a href="../../ohjeistus/users/java-war-paketit.html">Kotikoneella tehdyn Java-työn julkaisu</a></li>
+<li class="selected"><a href="../../ohjeistus/users/nautilus-ssh.html">Tiedostojen etämuokkaus Linuxilla</a></li>
+</ul></li>
 </ul></li>
 <li><a href="../../arvosteluperusteet.html">Arvosteluperusteet</a></li>
 <li><a href="../../dokumentaatio-ohje.html">Dokumentaatio-ohje</a></li>
@@ -131,12 +114,20 @@
 </div>
 <div class="col-md-6" id="content">
 <header>
-<h1 class="title">Java-työn vieminen users-palvelimelle</h1>
+<h1 class="title">Tiedostojen etämuokkaus Linuxilla</h1>
 </header>
-<p>Helpoin tapa sovelluksen pystyttämiseen tomcatissa on nk. Web Archive eli WAR-paketti. NetBeans osaa luoda WAR-paketin automaattisesti ja sijoittaa sen projektin <code>dist</code>-hakemistoon, kun klikkaat sovelluksessa Build-nappia. NetBeans saattaa kysyä haluatko todella tehdä näin, voit vastata dialogiin valitsemalla “Clean and Build”.</p>
-<p>Sijoita WAR-paketti users-palvelimelle <code>~/tomcat/webapps/</code>-kansioon. Tähän voit käyttää <a href="http://linux.fi/wiki/Scp">scp-komentoa</a> tai Windowsilla <a href="http://winscp.net/eng/index.php">WinSCP</a>:tä.</p>
-<p>Käynnistä Tomcat, jos se ei jo ole käynnissä. Usersin Tomcat on oletuksena konfiguroitu huomaamaan paketit automaattisesti ja hoitamaan niiden purkamisen ja asentamisen itsestään. Nyt mikäli käyttäjätunnuksesi on <code>tunnus</code> ja pakettisi tiedostonimi on <code>paketti.war</code>, sovelluksesi pitäisi olla käytettävissä osoitteessa <code>http://t-tunnus.users.cs.helsinki.fi/paketti</code>.</p>
-<p>Aiheesta voi lukea teknisempiä lisätietoja <a href="http://tomcat.apache.org/tomcat-6.0-doc/deployer-howto.html">Tomcatin ohjesivuilta</a></p>
+<p>Gnomea työpöytäympäristönä käyttävissä Linux-jakeluissa, joihin laitoksenkin käyttämä Ubuntu kuuluu, on mahdollista käsitellä users-palvelimella sijaitsevia tiedostoja suoraan etäyhteyden yli. Tämä onnistuu avaamalla järjestelmän oletustiedostoselain, Nautilus: <img src="../../images/ohjeistus/users/nautilus-ssh/tsoha1crop.png" alt="Avaa nautilus" /></p>
+<p>Nautiluksen File-valikosta löytyy valinta Connect to server. <img src="../../images/ohjeistus/users/nautilus-ssh/tsoha2crop.png" alt="File-valikosta löytyy Connect to server" /></p>
+<p>Valitse yhteystyypiksi SSH ja täytä loput tiedot kuvan mukaisesti. Laita tunnuksen tilalle Folder ja User name -valinnoissa oma käyttäjätunnuksesi. <img src="../../images/ohjeistus/users/nautilus-ssh/tsoha4crop.png" alt="Loput tiedot täytetään näin" /></p>
+<p>Mikäli syötit tiedot oikein, pitäisi näytöllesi avautua users-palvelimen kotikansio. Voit tästä navigoida esim. PHP-tiedostoja muokkaamaan kansioon htdocs. Tiedostoja voi nyt avata, muokata, kopioida ja siirrellä kuten normaalisti.</p>
+<figure>
+<img src="../../images/ohjeistus/users/nautilus-ssh/tsoha5crop.png" alt="Avautuu uusi hakemistonäkymä" /><figcaption>Avautuu uusi hakemistonäkymä</figcaption>
+</figure>
+<p>Kätevä konsti on lisätä nyt avattu kansio nautiluksen bookmarkkeihin, niin siihen pääsee hyvin nopeasti käsiksi jatkossakin.</p>
+<p>Hyvä kevyt editori tiedostojen muokkaamiseen on useimmissa Ubuntuissakin vakiona tuleva Gedit.</p>
+<figure>
+<img src="../../images/ohjeistus/users/nautilus-ssh/tsoha6crop.png" alt="Gedit" /><figcaption>Gedit</figcaption>
+</figure>
 </div>
 </div> 
 </div> 

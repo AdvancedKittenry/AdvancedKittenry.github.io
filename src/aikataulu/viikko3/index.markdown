@@ -1,5 +1,6 @@
 % Viikko 3
 <!-- order: 1 -->
+<!-- hidden! -->
 
 <deadline>{{deadline3}}</deadline>
 
@@ -8,6 +9,16 @@ hyvän arkkitehtuurin mukainen koodaaminen
 ja toteuttaa kirjautuminen.
 
 Palautuspäivämäärään mennessä työn on täytettävä seuraavat vaatimukset:
+
+<comment>
+TODO:
+* Työssä on noudatettu arkkitehtuuriohjeen MVC-kolmijakoa ja koodi on siistiä
+* Sovellukseen kirjautumisesta kirjoitettu malliluokka/tiedosto
+* Virheilmoitusmekanismi
+* Ei päästetä näkymiin kirjautumatta
+* HTML-demo: lomakesivut
+* HTML-demo: listasivut
+</comment>
 
 * Työssä on noudatettu [arkkitehtuuriohjeen MVC-kolmijakoa][arkkitehtuuri]
 * Sivuille on luotu erillinen sivupohjatiedosto, joka sisältää jokaiselle sivulle tulevat asiat.

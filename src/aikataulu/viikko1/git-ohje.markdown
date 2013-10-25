@@ -1,5 +1,5 @@
 % Versionhallinta
-<!-- order: 5 -->
+<!-- order: 6 -->
 
 Tietokantasovellus-kurssilla käytetään versionhallintana git:iä ja
 oletuksena repositoriot sijoitetaan github.com-palveluun. Jos et ole 
@@ -22,15 +22,16 @@ doc/
   dokumentaatio.odt
 ~~~~
 
-Kun olet tehnyt kaikki viikon tehtävät, lähetä ohjaajallesi sähköposti 
-osoitteeseen [{{{instructoremail}}}]( mailto:{{{instructoremail}}} )
-otsikolla "Tietokantasovelluksen git-repositorio - Erkki Esimerkki",
-missä keksityn esimerkkinimen tilalla omasi.
-Viestiksi laita github-repositoriosi www-osoite tai jos haluat
-pitää repositoriotasi jossain muualla kirjoita
-asianmukaiset ohjeet git-repositoriosi kloonaamiseen.
-Kaiken muun palautukseen liittyvän informaation tulee löytyä repositoriosta.
+Kun olet tehnyt kaikki viikon tehtävät, 
+mene osoitteeseen [http://tsoha-labtool.herokuapp.com/](http://tsoha-labtool.herokuapp.com/)
+ja rekisteröi itsesi kurssille. 
+Labtool on laitoksen harjoitustöitä varten kehitetty pisteidenseurantajärjestelmä, 
+johon kaikki tämänkin kurssin palautteet annetaan.
+
+<alert>
+Tällä hetkellä labtool ei valitettavasti hyväksy muita versionhallintaosoitteita kuin GitHubiin osoittavat. Tästä ei tosin useimmille pitäisi koitua mitään ongelmaa.
+</alert>
 
 <last>
-  Sähköpostin lähetettyäsi olet suorittanut [1. viikon tehtävät](index.html).
+  Labtooliin rekisteröityäsi olet suorittanut [1. viikon tehtävät](index.html).
 </last>

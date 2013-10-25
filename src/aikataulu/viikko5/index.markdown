@@ -1,9 +1,17 @@
 % Viikko 5
 <!-- order: 1 -->
+<!-- hidden! -->
 
 <deadline>{{deadline5}}</deadline>
 
 Viikon viisi lopussa työltä vaaditaan seuraavat asiat:
+
+<comment>
+TODO:
+* Koodi noudattaa hyvää ohjelmointityyliä
+* Ainakin kahden tietokohteen sivut on toteutettu ja testattu.
+* Järjestelmän yleisrakenne, järjestelmän komponentit, koodin kommentointi
+</comment>
 
 * Ainakin kahden tietokohteen sivut on toteutettu ja testattu.
 * Ohjaajan on pystyttävä testaamaan työtäsi. Pystytä työsi viimeistään nyt users-palvelimelle tai jonnekin muualle nettiin.

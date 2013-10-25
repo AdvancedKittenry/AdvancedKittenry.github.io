@@ -79,45 +79,28 @@
 </ul></li>
 <li><a href="../../aikataulu/viikko1/ohjelmointikielet.html">Ohjelmointikielen valinta</a></li>
 <li><a href="../../aikataulu/viikko1/tietokannat.html">Tietokannan valinta</a></li>
+<li><a href="../../aikataulu/viikko1/tekniikka.html">Koodausympäristön pystytys</a></li>
 <li><a href="../../aikataulu/viikko1/dokumentointi.html">Dokumentaation aloittaminen</a></li>
 <li class="selected"><a href="../../aikataulu/viikko1/git-ohje.html">Versionhallinta</a></li>
 </ul></li>
-<li><a href="../../aikataulu/viikko2/index.html">Viikko 2</a>
-<ul>
-<li><a href="../../aikataulu/viikko2/tekniikka.html">Tietokantojen ja palvelimien käyttöönotto</a></li>
-<li><a href="../../aikataulu/viikko2/suunnittelu.html">Käyttöliittymän suunnittelu</a></li>
-<li><a href="../../aikataulu/viikko2/tietokanta.html">Tietokannan suunnittelu</a></li>
-<li><a href="../../aikataulu/viikko2/netbeans.html">NetBeansin käyttöönotto</a></li>
-<li><a href="../../aikataulu/viikko2/html-versioiden-luonti.html">HTML-versioiden luominen</a></li>
-</ul></li>
-<li><a href="../../aikataulu/viikko3/index.html">Viikko 3</a>
-<ul>
-<li><a href="../../aikataulu/viikko3/java/index.html">Kirjautuminen Javalla</a>
-<ul>
-<li><a href="../../aikataulu/viikko3/java/rakenne.html">Sovelluksen rakenne ja servletit</a></li>
-<li><a href="../../aikataulu/viikko3/java/lomakkeet.html">Lomakkeiden käyttö ja vastaanottaminen</a></li>
-<li><a href="../../aikataulu/viikko3/java/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
-</ul></li>
-<li><a href="../../aikataulu/viikko3/php/index.html">Kirjautuminen PHP:llä</a>
-<ul>
-<li><a href="../../aikataulu/viikko3/php/rakenne.html">Mihin eri tiedostot kannattaa laittaa?</a></li>
-<li><a href="../../aikataulu/viikko3/php/lomakkeet.html">Lomakkeiden käyttö ja vastaanottaminen</a></li>
-<li><a href="../../aikataulu/viikko3/php/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
-</ul></li>
-</ul></li>
-<li><a href="../../aikataulu/viikko4/index.html">Viikko 4</a>
-<ul>
-<li><a href="../../aikataulu/viikko4/tietokantayhteys.html">Tietokantayhteyden pystytys</a></li>
-<li><a href="../../aikataulu/viikko4/ssh-tunnelit.html">SSH-tunnelointi</a></li>
-<li><a href="../../aikataulu/viikko4/mallit.html">Mallit ja tietokanta</a></li>
-<li><a href="../../aikataulu/viikko4/nakymat.html">Tietokohteen sivujen toteuttaminen</a></li>
-</ul></li>
-<li><a href="../../aikataulu/viikko5/index.html">Viikko 5</a>
-<ul>
-<li><a href="../../aikataulu/viikko5/java-users.html">Java-työn vieminen users-palvelimelle</a></li>
-</ul></li>
 <li><a href="../../aikataulu/demo.html">Demotilaisuus</a></li>
 <li><a href="../../aikataulu/palautus.html">Työn palautus</a></li>
+</ul></li>
+<li><a href="../../ohjeistus/index.html">Ohjeistus</a>
+<ul>
+<li><a href="../../ohjeistus/netbeans.html">NetBeansin käyttöönotto</a></li>
+<li><a href="../../ohjeistus/users/index.html">Users-palvelin ja töiden pystyttäminen</a>
+<ul>
+<li><a href="../../ohjeistus/users/kayttoonotto/index.html">Palvelujen käynnistäminen ja käyttöönotto</a>
+<ul>
+<li><a href="../../ohjeistus/users/kayttoonotto/java.html">Java ja Tomcatin käyttöönotto</a></li>
+<li><a href="../../ohjeistus/users/kayttoonotto/mysql.html">MySql-tietokannan käyttöönotto</a></li>
+<li><a href="../../ohjeistus/users/kayttoonotto/php.html">PHP-tuen käyttöönotto</a></li>
+<li><a href="../../ohjeistus/users/kayttoonotto/postgresql.html">PostgreSQL-tietokannan käyttöönotto</a></li>
+</ul></li>
+<li><a href="../../ohjeistus/users/java-war-paketit.html">Kotikoneella tehdyn Java-työn julkaisu</a></li>
+<li><a href="../../ohjeistus/users/nautilus-ssh.html">Tiedostojen etämuokkaus Linuxilla</a></li>
+</ul></li>
 </ul></li>
 <li><a href="../../arvosteluperusteet.html">Arvosteluperusteet</a></li>
 <li><a href="../../dokumentaatio-ohje.html">Dokumentaatio-ohje</a></li>
@@ -133,7 +116,7 @@
 <header>
 <h1 class="title">Versionhallinta</h1>
 </header>
-<!-- order: 5 -->
+<!-- order: 6 -->
 
 <p>Tietokantasovellus-kurssilla käytetään versionhallintana git:iä ja oletuksena repositoriot sijoitetaan github.com-palveluun. Jos et ole aikaisemmin käyttänyt git:iä niin verestä muistiasi ohjelmoinnin harjoitustyön <a href="https://github.com/javaLabra/Javalabra2013-1/wiki/Git-ohje">git-ohjeella</a>.</p>
 <p>Ohjeita noudattamalla luo itsellesi tietokantasovellusta varten oma repositorio. Luo siihen kansio nimeltä <code>doc</code> ja sijoita siihen kaikki tähän mennessä tekemäsi dokumentaatio. Voit sijoittaa kansioon kaikki tarvitsemasi dokumentaatioon liittyvät tiedostot kunhan pidät huolen siitä, että siellä on tietokantasovelluksen <a href="../../dokumentaatio-ohje.html">päädokumentti</a> nimellä <code>dokumentaatio.pdf</code>. Tuo PDF-tiedosto on se, jonka ohjaajasi lukee, mutta on hyvä pitää lähdetiedostotkin versionhallinnassa.</p>
@@ -141,17 +124,18 @@
 <pre><code>doc/
   dokumentaatio.pdf
   dokumentaatio.odt</code></pre>
-<p>Kun olet tehnyt kaikki viikon tehtävät, lähetä ohjaajallesi sähköposti osoitteeseen <script type="text/javascript">
-<!--
-h='&#x63;&#x73;&#46;&#104;&#x65;&#108;&#x73;&#x69;&#110;&#x6b;&#x69;&#46;&#102;&#x69;';a='&#64;';n='&#x63;&#x6f;&#110;&#x73;&#x75;&#x65;&#x67;&#114;';e=n+a+h;
-document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'">'+e+'<\/'+'a'+'>');
-// -->
-</script><noscript>&#x63;&#x6f;&#110;&#x73;&#x75;&#x65;&#x67;&#114;&#32;&#x61;&#116;&#32;&#x63;&#x73;&#32;&#100;&#x6f;&#116;&#32;&#104;&#x65;&#108;&#x73;&#x69;&#110;&#x6b;&#x69;&#32;&#100;&#x6f;&#116;&#32;&#102;&#x69;</noscript> otsikolla “Tietokantasovelluksen git-repositorio - Erkki Esimerkki”, missä keksityn esimerkkinimen tilalla omasi. Viestiksi laita github-repositoriosi www-osoite tai jos haluat pitää repositoriotasi jossain muualla kirjoita asianmukaiset ohjeet git-repositoriosi kloonaamiseen. Kaiken muun palautukseen liittyvän informaation tulee löytyä repositoriosta.</p>
+<p>Kun olet tehnyt kaikki viikon tehtävät, mene osoitteeseen <a href="http://tsoha-labtool.herokuapp.com/">http://tsoha-labtool.herokuapp.com/</a> ja rekisteröi itsesi kurssille. Labtool on laitoksen harjoitustöitä varten kehitetty pisteidenseurantajärjestelmä, johon kaikki tämänkin kurssin palautteet annetaan.</p>
+<section class="alert alert-danger"><h3>
+Pidä mielessä!
+</h3>
+<p>Tällä hetkellä labtool ei valitettavasti hyväksy muita versionhallintaosoitteita kuin GitHubiin osoittavat. Tästä ei tosin useimmille pitäisi koitua mitään ongelmaa.</p>
+</section>
+
 <section class="alert alert-info small"><h3>
 Valmista!
 </h3>
   
-<p>Sähköpostin lähetettyäsi olet suorittanut <a href="index.html">1. viikon tehtävät</a>.</p>
+<p>Labtooliin rekisteröityäsi olet suorittanut <a href="index.html">1. viikon tehtävät</a>.</p>
 </section>
 
 

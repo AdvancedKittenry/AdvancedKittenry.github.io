@@ -1,10 +1,12 @@
-% Java-työn vieminen users-palvelimelle
+% Kotikoneella tehdyn Java-työn julkaisu
 
-Helpoin tapa sovelluksen pystyttämiseen tomcatissa on nk. Web Archive eli WAR-paketti.
+Helpoin tapa omalla koneella testatun sovelluksen pystyttämiseen tomcatissa on nk. Web Archive eli WAR-paketti.
 NetBeans osaa luoda WAR-paketin automaattisesti ja sijoittaa sen projektin `dist`-hakemistoon, kun klikkaat sovelluksessa Build-nappia. NetBeans saattaa kysyä haluatko todella tehdä näin, voit vastata dialogiin valitsemalla "Clean and Build".
 
 Sijoita WAR-paketti users-palvelimelle `~/tomcat/webapps/`-kansioon.
-Tähän voit käyttää [scp-komentoa](http://linux.fi/wiki/Scp) tai Windowsilla [WinSCP](http://winscp.net/eng/index.php):tä.
+Tähän voit käyttää [Nautilusta](nautilus-ssh.html)
+tai komentorivillä [scp-komentoa](http://linux.fi/wiki/Scp) 
+Windowsilla [WinSCP](http://winscp.net/eng/index.php) hoitaa homman.
 
 Käynnistä Tomcat, jos se ei jo ole käynnissä. 
 Usersin Tomcat on oletuksena konfiguroitu huomaamaan paketit automaattisesti 

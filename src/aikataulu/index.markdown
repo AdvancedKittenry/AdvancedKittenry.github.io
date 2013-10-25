@@ -1,4 +1,5 @@
 % Aikataulu
+<!-- order: 1 -->
 
 Kurssi alkaa **pakollisella** aloitusluennolla {{aloitusluentopvm}}.
 
@@ -14,6 +15,9 @@ Paja-ajat sijoittuvat  ohjausryhmälle ilmoitettuun kokoontumisaikaan. Opiskelij
 
 ~~~~ {execute=python}
 ajat={{{paja-ajat-data}}}
+
+if (len(ajat) == 0):
+  exit()
 
 print "|Aika|Huone|Ohjaaja|"
 print "|----|-----|-------|"
@@ -41,18 +45,19 @@ Viikkojen 3-5 materiaali on vielä työn alla. Sivut aukeavat sitä mukaa kun oh
 
 | Tilaisuus              | Työaihe                                                                | Deadline |
 |------------------------|------------------------------------------------------------------------|-----------------------|
-| [Viikko I][viikko1]    | Aiheen ja toteutustekniikkojen valinta, alustava dokumentointi         | {{deadline1}}         |
-| [Viikko II][viikko2]   | Sovelluksen suunnittelu, työympäristön pystytys                        | {{deadline2}}         |
-| [Viikko III][viikko3]  | Koodauksen alku, sovellusarkkitehtuuri, lomakkeet ja kirjautuminen     | {{deadline3}}         |
-| [Viikko IV][viikko4]   | Syvennytään tietokantaohjelmointiin                                    | {{deadline4}}         |
-| [Viikko V][viikko5]    | Työn jatkamista, dokumentaatio valmiiksi                               | {{deadline5}}         |
+| [Viikko I][viikko1]    | Aiheen valinta, suunnittelu, dokumentointi ja työympäristön pystytys   | {{deadline1}}         |
+| Viikko II              | Sovelluksen suunnittelu, tietokantayhteyden muodostaminen              | {{deadline2}}         |
+| Viikko III             | MVC-malli ja kirjautuminen                                             | {{deadline3}}         |
+| Viikko IV              | Muokkaustoiminnot, sovellus etenee                                     | {{deadline4}}         |
+| Viikko V               | Sovellus on lähes valmis                                               | {{deadline5}}         |
 | [Demotilaisuus][demo]  | Esitellään työtä ja sen koodia muille opiskelijoille                   | {{demodeadline}}      |
 | [Palautus][palautus]   | Valmis työ palautetaan ohjaajalle                                      | {{palautusdeadline}}  |
 
 <comment>
-| [Viikko III][viikko3]  |                                                                        | {{deadline3}}         |
-| [Viikko IV][viikko4]   |                                                                        | {{deadline4}}         |
-| [Viikko V][viikko5]    |                                                                        | {{deadline5}}         |
+| [Viikko II][viikko2]   
+| [Viikko III][viikko3]  
+| [Viikko IV][viikko4]   
+| [Viikko V][viikko5]    
 </comment>
 
 [viikko1]: {{rootdir}}aikataulu/viikko1/index.html

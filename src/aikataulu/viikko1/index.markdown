@@ -5,18 +5,35 @@
 
 Ensimmäisellä viikolla tulee olla tehtynä seuraavat asiat:
 
+<comment>
+TODO:
+Nämä pitää siirtää/lisätä
+* Laitoksen users-palvelimen nettisivutilan pystytys: testisivu, työympäristö (netbeans-projari)
+
+!! Tärkeää laittaa sivun osoite näkyville
+</comment>
+
 * [Aiheen valinta](aiheet/index.html)
 * [Ohjelmointikielen valinta](ohjelmointikielet.html)
 * [Tietokantapalvelimen valinta](tietokannat.html)
-* Työn dokumentoinnin aloittaminen [aihevalinnan, käytettyjen tekniikoiden]({{rootdir}}dokumentaatio-ohje.html#johdanto),
-  [käyttötapauksien]({{rootdir}}dokumentaatio-ohje.html#k%C3%A4ytt%C3%B6tapaukset) ja
-  [järjestelmän yleiskuvan]({{rootdir}}dokumentaatio-ohje.html#yleiskuva-j%C3%A4rjestelm%C3%A4st%C3%A4) kuvailulla.
+* [Koodausympäristön pystytys](tekniikka.markdown)
+    * Laitoksen [users-palvelimen]({{rootdir}}ohjeistus/users/index.html) nettisivutilan pystytys
+    * Laita users-palvelimelle näkyviin jokin yksinkertainen testisivu 
+    * Työympäristön pystytys 
+    * NetBeans-projektin pystytys mikäli haluat käyttää sitä: [NetBeans-ohje]({{rootdir}}ohjeistus/netbeans.html)
+* Työn dokumentoinnin aloittaminen
+    * [Aihevalinnan, käytettyjen tekniikoiden dokumentointi]({{rootdir}}dokumentaatio-ohje.html#johdanto)
+    * [Käyttötapaukset]({{rootdir}}dokumentaatio-ohje.html#k%C3%A4ytt%C3%B6tapaukset)
+    * [Järjestelmän yleiskuva]({{rootdir}}dokumentaatio-ohje.html#yleiskuva-j%C3%A4rjestelm%C3%A4st%C3%A4)
 * [Versionhallinnan pystytys](git-ohje.html)
-      * Laita dokumentaatiosi repositorioosi
+    * Laita dokumentaatiosi repositorioon
+
+Jokaisesta yläkohdasta saa puolikkaan aikataulupisteen. 
+Yhteensä kolme pistettä tältä viikolta. 
+Pisteet ovat nähtävillä tietokantasovelluksen [labtoolissa](http://tsoha-labtool.herokuapp.com/).
 
 <ohje>
 Aloita [aiheen valinnasta](aiheet/index.html) ja seuraa vihreitä ohjelaatikoita.
 
-Tehtyäsi kaiken lähetä ohjaajallesi sähköposti, jossa on asianmukaiset ohjeet git-repositoriosi kloonaamiseen.
-Kaiken muun informaation tulee löytyä repositoriostasi.
+Tehtyäsi kaiken rekisteröidy kurssin [labtooliin](http://tsoha-labtool.herokuapp.com/).
 </ohje>
