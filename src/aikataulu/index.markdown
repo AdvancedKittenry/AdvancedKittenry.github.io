@@ -39,7 +39,7 @@ Viikottaisten palautusten deadline on aina kunkin viikon perjantaina klo 23:00. 
 Palautukset suoritetaan ensimmäisellä viikolla ohjaajalle sähköpostitse
 ja siitä eteenpäin [versionhallinnan]({{rootdir}}aikataulu/viikko1/git-ohje.html) kautta.
 
-Viikkojen 3-5 materiaali on vielä työn alla. Sivut aukeavat sitä mukaa kun ohjeet valmistuvat.
+Viikkojen 2-5 materiaali on vielä työn alla. Sivut aukeavat sitä mukaa kun ohjeet valmistuvat.
 
 ### Deadlinet
 
