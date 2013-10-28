@@ -1,4 +1,4 @@
-% Viikko 1
+k Viikko 1
 <!-- order: 1 -->
 
 <deadline>{{deadline1}}</deadline>
@@ -16,7 +16,7 @@ Nämä pitää siirtää/lisätä
 * [Aiheen valinta](aiheet/index.html)
 * [Ohjelmointikielen valinta](ohjelmointikielet.html)
 * [Tietokantapalvelimen valinta](tietokannat.html)
-* [Koodausympäristön pystytys](tekniikka.markdown)
+* [Koodausympäristön pystytys](tekniikka.html)
     * Laitoksen [users-palvelimen]({{rootdir}}ohjeistus/users/index.html) nettisivutilan pystytys
     * Laita users-palvelimelle näkyviin jokin yksinkertainen testisivu 
     * Työympäristön pystytys 
