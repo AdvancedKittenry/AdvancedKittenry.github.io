@@ -1,4 +1,4 @@
-k Viikko 1
+% Viikko 1
 <!-- order: 1 -->
 
 <deadline>{{deadline1}}</deadline>
