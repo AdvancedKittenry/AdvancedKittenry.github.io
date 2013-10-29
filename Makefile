@@ -21,6 +21,9 @@ ${TEMPLATES}:
 ${HTML}: %.html : src/%.markdown $@ ${DEPS}
 	./make-html.sh src/$*.markdown $*.html
 
-clean:
-	rm -f ${HTML} src/templates/navigation-level-*.html inlinescripting inlinescripting.o inlinescripting.hi
+clean: cleanpages
+	rm -f inlinescripting inlinescripting.o inlinescripting.hi
+
+cleanpages:
+	rm -f ${HTML} src/templates/navigation-level-*.html 
 	rmdir $(call reverse, ${DIRS} )
