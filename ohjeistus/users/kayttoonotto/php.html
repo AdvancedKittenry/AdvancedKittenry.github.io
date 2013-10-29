@@ -102,12 +102,22 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li><a href="../../../aikataulu/viikko1/dokumentointi.html">Dokumentaation aloittaminen</a></li>
 <li><a href="../../../aikataulu/viikko1/git-ohje.html">Versionhallinta</a></li>
 </ul></li>
+<li><a href="../../../aikataulu/viikko2/index.html">Viikko 2</a>
+<ul>
+<li><a href="../../../aikataulu/viikko2/suunnittelu.html">Käyttöliittymän suunnittelu</a></li>
+<li><a href="../../../aikataulu/viikko2/tietokanta.html">Tietokannan suunnittelu</a></li>
+</ul></li>
 <li><a href="../../../aikataulu/demo.html">Demotilaisuus</a></li>
 <li><a href="../../../aikataulu/palautus.html">Työn palautus</a></li>
 </ul></li>
 <li><a href="../../../ohjeistus/index.html">Ohjeistus</a>
 <ul>
+<li><a href="../../../ohjeistus/html-opas.html">HTML-opas</a></li>
 <li><a href="../../../ohjeistus/netbeans.html">NetBeansin käyttöönotto</a></li>
+<li><a href="../../../ohjeistus/tietokantaohjelmointi/index.html">Tietokantaohjelmointi</a>
+<ul>
+<li><a href="../../../ohjeistus/tietokantaohjelmointi/intro.html">Tietokantaohjelmoinnin aloittaminen</a></li>
+</ul></li>
 <li><a href="../../../ohjeistus/users/index.html">Users-palvelin ja töiden pystyttäminen</a>
 <ul>
 <li><a href="../../../ohjeistus/users/kayttoonotto/index.html">Palvelujen käynnistäminen ja käyttöönotto</a>
@@ -117,6 +127,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li class="selected"><a href="../../../ohjeistus/users/kayttoonotto/php.html">PHP-tuen käyttöönotto</a></li>
 <li><a href="../../../ohjeistus/users/kayttoonotto/postgresql.html">PostgreSQL-tietokannan käyttöönotto</a></li>
 </ul></li>
+<li><a href="../../../ohjeistus/users/postgres-ssh-tunneli.html">PostgreSql-kannan etäkäyttö</a></li>
 <li><a href="../../../ohjeistus/users/java-war-paketit.html">Kotikoneella tehdyn Java-työn julkaisu</a></li>
 <li><a href="../../../ohjeistus/users/nautilus-ssh.html">Tiedostojen etämuokkaus Linuxilla</a></li>
 </ul></li>
@@ -135,22 +146,36 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <header>
 <h1 class="title">PHP-tuen käyttöönotto</h1>
 </header>
-<p>PHP sivut sijoitetaan users-koneen käyttäjän htdocs hakemistoon tai sen alihakemistoon. Hakemiston htdocs saa luotua komentoskriptillä komennolla <code>wanna-htdocs</code>.</p>
+<p>PHP sivut sijoitetaan users-koneen käyttäjän htdocs hakemistoon tai sen alihakemistoon. Hakemiston htdocs saa luotua komentoskriptillä ajamalla komentotulkissa komento <code>wanna-htdocs</code>.</p>
 <p>PHP sivut ajetaan käyttäjän oikeuksin, eikä niille tarvita mitään erityisiä luku- tai suoritusoikeuksia. Kuitenkin, jos php-sivuilla on viittauksia kuviin tai muihin tähän hakemistoon tai sen alihakemistoihin sijoitettuihin resursseihin kuten tyylitiedostoihin tai javascript koodiin, on näille annettava laaja lukuoikeus ja hakemistoille läpikulkuoikeus. Myös staattisille tavallisille html-sivuille on annettava maailmalle lukuoikeus. Seuraava komento varmistaa riittävät oikeudet sekä koodihakemistoille, että niissä oleville tiedostoille:</p>
 <pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">chmod</span> -R a+X <span class="ot">$HOME</span> <span class="ot">$HOME</span>/htdocs</code></pre>
 <p>Mikäli sinulla on jo tiedostoja tässä hakemistossa, saat niille lukuoikeudet komennolla:</p>
 <pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">chmod</span> -R a+r <span class="ot">$HOME</span>/htdocs/*</code></pre>
 <p>Siinä vaiheessa kun sivut ovat pystyssä htdocs-kansiossa olevaan PHP-tiedostoon <code>sivu.php</code> viitataan osoitteella: <em>http://käyttäjätunnuksesi.users.cs.helsinki.fi/sivu.php</em></p>
 <p>Esimerkiksi <em>http://laine.users.cs.helsinki.fi/lahja/lahjax.php</em> osoittaa php-tiedostoon <em>/home/laine/htdocs/lahja/lahjax.php</em></p>
-<p>Liitä PHP-tuen pystytyksen jälkeen dokumentaatiosi <a href="../../../dokumentaatio-ohje.html#käynnistys--käyttöohje">Käynnistys- / käyttöohje -kappaleeseen</a> sovelluksesi nettiosoite usersilla (tai muulla palvelimella, mikäli haluat käyttää sellaista). Kappaleeseen ei tässä vaiheessa tarvitse kirjoittaa muuta sisältöä.</p>
-<section id="virheilmoitukset" class="level4">
-<h4>Virheilmoitukset</h4>
+<section id="virheilmoitukset" class="level2">
+<h2>Virheilmoitukset</h2>
 <p>PHP:n virheilmoitukset kirjautuvat tiedostoon <code>/home/userlogs/käyttäjätunnuksesi.error</code>. Uusimmat virheet löytyvät tiedoston lopusta. Kätevä tapa seurata PHP:n tuottamia virheviestejä on ajaa komento:</p>
 <pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">tail</span> -f /home/userlogs/<span class="ot">$USER</span>.error</code></pre>
 <p>Komento näyttää viimeiset kymmenen virheviestiä ja jää komentoriville seuraamaan virheviestejä näyttäen aina viimeisimmät. Kommenon pystyy sulkemaan painamalla Ctrl+C:tä.</p>
 <p>Virheloki saattaa ajoittain täyttyä seuraavanlaisista virheviesteistä:</p>
 <pre><code>[Mon Sep 09 16:58:56 2013] [error] [client 128.214.137.101] File does not exist: /home/consuegr/htdocs/favicon.ico</code></pre>
 <p>Virheistä pääsee halutessaan eroon laittamalla sovellukselleen <a href="http://fi.wikipedia.org/wiki/Favicon">favicon.ico:n</a>.</p>
+</section>
+<section id="testitiedoston-tekeminen" class="level2">
+<h2>Testitiedoston tekeminen</h2>
+<p>Testataksesi htdocs-nettisivutilaasi luo sinne tiedosto index.php ja sijoita sinne jotain seuraavantapaista:</p>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span> 
+  <span class="kw">$tervehdys</span> = <span class="st">&quot;Moi maailma!&quot;</span><span class="ot">;</span> 
+<span class="kw">?&gt;</span>&lt;!DOCTYPE HTML&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;<span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$tervehdys</span><span class="ot">;</span> <span class="kw">?&gt;</span>&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;<span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$tervehdys</span><span class="ot">;</span> <span class="kw">?&gt;</span>&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p>Sivun pitäisi näyttää tervehdys osoitteessa: <a href="http://kayttajatunnuksesi.users.cs.helsinki.fi/index.php">http://kayttajatunnuksesi.users.cs.helsinki.fi/index.php</a></p>
+<p>Liitä PHP-tuen pystytyksen jälkeen dokumentaatiosi <a href="../../../dokumentaatio-ohje.html#käynnistys--käyttöohje">Käynnistys- / käyttöohje -kappaleeseen</a> sovelluksesi nettiosoite usersilla (tai muulla palvelimella, mikäli haluat käyttää sellaista). Kappaleeseen ei tässä vaiheessa (viikolla 2) tarvitse kirjoittaa muuta sisältöä.</p>
 </section>
 </div>
 </div> 

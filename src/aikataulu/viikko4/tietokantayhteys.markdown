@@ -5,7 +5,7 @@
 * Varmista että aikaisemmin kirjoittamasi SQL-lauseet toimivat siten tietokantataulusi ovat nyt pystyssä kannassa.
 * Tietokantayhteyden luonti.
     * Luominen pitää sijoittaa omaan metodiinsa, josta muut tiedostot sitä käyttävät.
-    * Java-kielen NetBeans-ohjeita käyttäneille tarpeen on myös: [PostgreSQL-ssh-tunnelin luonti](ssh-tunnelit.html). 
+    * Java-kielen NetBeans-ohjeita käyttäneille tarpeen on myös: [PostgreSQL-ssh-tunnelin luonti]({{rootdir}}ohjeistus/users/postgres-ssh-tunneli.html). 
       Sama pätee kaikkiin projekteihin, joissa käytetään users:in tietokantaa etänä.
     * Tietokantaa kannattaa tässä vaiheessa testata jollain hyvin yksinkertaisella testikoodilla.
 * Javalla tietokantayhteydet pitää vielä sulkea aineistopyynnön käsittelyn lopuksi. Tätä varten kannattaa tehdä oma metodi.

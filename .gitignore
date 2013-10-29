@@ -1,4 +1,5 @@
 *.swp
+*.swo
 inlinescripting
 inlinescripting.hi
 inlinescripting.o

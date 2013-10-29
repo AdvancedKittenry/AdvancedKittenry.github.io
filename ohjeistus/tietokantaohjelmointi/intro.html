@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <title>Viikko 3</title>
+  <title>Tietokantaohjelmoinnin aloittaminen</title>
   <style type="text/css">code{white-space: pre;}</style>
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -97,7 +97,7 @@
 <li><a href="../../ohjeistus/netbeans.html">NetBeansin käyttöönotto</a></li>
 <li><a href="../../ohjeistus/tietokantaohjelmointi/index.html">Tietokantaohjelmointi</a>
 <ul>
-<li><a href="../../ohjeistus/tietokantaohjelmointi/intro.html">Tietokantaohjelmoinnin aloittaminen</a></li>
+<li class="selected"><a href="../../ohjeistus/tietokantaohjelmointi/intro.html">Tietokantaohjelmoinnin aloittaminen</a></li>
 </ul></li>
 <li><a href="../../ohjeistus/users/index.html">Users-palvelin ja töiden pystyttäminen</a>
 <ul>
@@ -125,57 +125,49 @@
 </div>
 <div class="col-md-6" id="content">
 <header>
-<h1 class="title">Viikko 3</h1>
+<h1 class="title">Tietokantaohjelmoinnin aloittaminen</h1>
 </header>
-<!-- order: 1 -->
-<!-- hidden! -->
-
-<section class="alert alert-warning small"><h3>
-Deadline:
+<div class="wip panel">
+  <div class="panel-body">
+    <h3>
+Work in progress
 </h3>
-<span class="coursekeyword deadline3">su 17.11 klo 23:00</span>
+    
+Tämän sivun sisältö on vielä työn alla ja saattaa muuttua kurssin edetessä.
+</div>
+</div>
+
+
+
+<section id="tietokannan-alustustiedostojen-luominen" class="level2">
+<h2>Tietokannan alustustiedostojen luominen</h2>
+<p>Muistele Tietokantojen perusteet -kurssilla oppimaasi SQL-kieltä ja tutustu valitsemasi tietokannan dokumentaatioon. Luo sitten repositorioosi sql-kansio ja sijoita siihen kolme sql-tiedostoa: <code>create-tables.sql</code>, <code>drop-tables.sql</code> ja <code>add-test-data.sql</code>. Kirjoita näihin tiedostoihin tietokantasi alustavat create table -lauseet, drop table -lauseet, ja testidatan (oletuskäyttäjätunnusten yms.) luominen.</p>
+<p>SQL-lauseiden sijoittaminen tiedostoihin mahdollistaa kannan helpon pystyttämisen ja alasajon. Voit ajaa sql-tiedostoon kantaan kirjautumalla usersille ja käyttämällä unixin <em>putkitusta</em>. Esimeriksi PostgreSQL:llä tämä tapahtuu seuraavasti:</p>
+<pre><code>psql &lt; sql/create-tables.sql</code></pre>
+<p>Yllä oleva komento suorittaa tiedoston sisältämät SQL-lauseet tietokannassa. MySQL-versio on samantapainen, mutta komentona on psql:n sijasta mysql, minkä lisäksi mysql kysyy sinulta salasanaa.</p>
+<p>Mikäli haluaa resetoida koko tietokantansa voi ajaa seuraavat kolme komentoa peräkkäin:</p>
+<pre><code>psql &lt; sql/drop-tables.sql
+psql &lt; sql/create-tables.sql
+psql &lt; sql/add-test-data.sql</code></pre>
+<p>Tiedostossa <code>drop-tables.sql</code> kannattaa käyttää pudotuskäskystä muotoa <code>DROP TABLE IF EXISTS taulun_nimi</code>. Näin tietokantataulun puuttuminen ei katkaise komentosarjaa. Viiteavaimien takia joudut myös yleensä kirjoittamaan pudotuskäskyt päinvastaisessa järjestyksessä luontilauseisiin nähden. Muuten viite-eheystarkistukset eivät välttämättä anna ajaa kantaa alas.</p>
 </section>
-
-<p>Kolmannen viikon pääteemana on aloittaa hyvän arkkitehtuurin mukainen koodaaminen ja toteuttaa kirjautuminen.</p>
-<p>Palautuspäivämäärään mennessä työn on täytettävä seuraavat vaatimukset:</p>
+<section id="linkkejä" class="level2">
+<h2>Linkkejä</h2>
 <ul>
-<li>Työssä on noudatettu <a href="../../mvc-opas.html">arkkitehtuuriohjeen MVC-kolmijakoa</a></li>
-<li>Sivuille on luotu erillinen sivupohjatiedosto, joka sisältää jokaiselle sivulle tulevat asiat.
-<ul>
-<li>Java:lla helpointa käyttää <a href="java/rakenne.html#template-pohjatiedoston-k%C3%A4ytt%C3%B6">JSP-tägikirjastoa</a></li>
-<li>PHP:lle tulossa oma ohje, joka perustuu <a href="http://php.net/manual/en/function.include.php">include-funktion</a> käyttöön</li>
-</ul></li>
-<li>Yleisesti käytetyt toiminnot koottu yhteen luokkaan tai tiedostoon
-<ul>
-<li>Näkymän näyttäminen sivupohjan kanssa yhdellä funktiokutsulla</li>
-<li>Selaimen ohjaus toiselle sivulle (HTTP redirect, toteuttaminen vapaaehtoinen)</li>
-<li>Virheilmoitusten näyttäminen käyttäjälle.</li>
-<li>PHP:llä <code>session_start</code>-funktion kutsuminen kannattaa sijoittaa tähän tiedostoon.</li>
-</ul></li>
-<li>Sovellukseen kirjautuminen toimii
-<ul>
-<li>Käyttää valitsemasi kielen istuntotukea kirjautumisen muistamiseen</li>
-<li>Ei tarvitse käyttää vielä tietokantaa</li>
-<li>Antaa käyttäjälle virheilmoituksen jos kirjautuminen ei onnistu</li>
-<li>Ohjaa jollekin näkymäsivulle (esim. etusivu), kun kirjautuminen onnistuu
-<ul>
-<li>Näkymäsivu ei päästä käyttäjää sisään/näyttää erilaiselta jos käyttäjä ei ole kirjautunut.</li>
-</ul></li>
-</ul></li>
-<li>Mikäli sovelluksessa ei ole lainkaan kirjautumistoimintoja, tee alustava versio jostain lisäys- ja muokkauslomakkeesta.</li>
+<li><a href="http://dev.mysql.com/doc/refman/5.1/en/index.html">MySql:n dokumentaatio</a></li>
+<li><a href="http://www.postgresql.org/docs/8.4/interactive/index.html">PostgreSql:n dokumentaatio</a></li>
 </ul>
-<section class="alert alert-success"><h3>
-Ohje:
+<section class="alert alert-warning"><h3>
+Vinkki: Käytä hakukonetta
 </h3>
-<p>Aloita lukemalla <a href="../../mvc-opas.html">arkkitehtuuriohje</a>. Siirry sitten käyttämäsi kielen kirjautumisen toteuttamisohjeisiin:</p>
-<ul>
-<li><a href="php/index.html">Kirjautuminen PHP:llä</a></li>
-<li><a href="java/index.html">Kirjautuminen Javalla</a></li>
-</ul>
-<p>Tehtyäsi kaiken varmista, että kaikki tekemäsi muutokset näkyvät GitHub-repositoriossasi.</p>
+
+<p>Usein on huomattavasti helpompaa etsiä hakukoneella jotain tiettyä tietokannan ominaisuutta hakusanoilla tyyliin <code>autogenerate id mysql</code> tai <code>data types postgres</code> kuin koettaa etsiä niitä käsin tietokannan sivuilta.</p>
 </section>
 
 
+
+
+</section>
 </div>
 </div> 
 </div> 

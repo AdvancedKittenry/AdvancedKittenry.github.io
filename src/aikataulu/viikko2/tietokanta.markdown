@@ -3,14 +3,11 @@
 
 <summary>
 * Suunnittele tietokantasi
-* [Luo tiedostot tietokannan taulujen luomiseen ja alasajoon](#tietokannan-alustustiedostojen-luominen)
-    * `sql/create-tables.sql`
-    * `sql/drop-tables.sql`
-    * `sql/add-test-data.sql`
+* Luo dokumentaatioon asiaanliittyvät kaaviot ja kappaleet: 
+    * [Järjestelmän tietosisältö]({{rootdir}}dokumentaatio-ohje.html#j%C3%A4rjestelm%C3%A4n-tietosis%C3%A4lt%C3%B6)
+    * [Relaatiotietokantakaavio]({{rootdir}}dokumentaatio-ohje.html#relaatiotietokantakaavio)
 </summary>
 
-Suunniteltuasi sovelluksen ulkoasua, uppoa tietokantataulujen
-maailmaan. 
 Tee sovelluksellesi alustava käsitekaavio erittelemällä
 tekemiltäsi sivuilta ja aihekuvauksesta kaikki tietokohteet
 sekä niiden väliset riippuvuudet yhdellä kaaviolla:
@@ -74,42 +71,6 @@ repositoriosi dokumentaatiotiedostoon.
 Lisää myös kaavioiden tuottamiseen käyttämäsi lähdetiedostot
 repositoriosi doc-kansioon niin ne pysyvät tallessa muutosten varalta.
 
-## Tietokannan alustustiedostojen luominen
-
-Muistele Tietokantojen perusteet -kurssilla oppimaasi SQL-kieltä ja tutustu valitsemasi tietokannan dokumentaatioon.
-Luo sitten repositorioosi sql-kansio ja sijoita siihen kolme sql-tiedostoa:
-`create-tables.sql`, `drop-tables.sql` ja `add-test-data.sql`.
-Kirjoita näihin tiedostoihin tietokantasi alustavat create table -lauseet, drop table -lauseet, ja testidatan (oletuskäyttäjätunnusten yms.) luominen.
-
-SQL-lauseiden sijoittaminen tiedostoihin mahdollistaa kannan helpon
-pystyttämisen ja alasajon. 
-Voit ajaa sql-tiedostoon kantaan kirjautumalla usersille
-ja käyttämällä unixin _putkitusta_. Esimeriksi PostgreSQL:llä tämä tapahtuu seuraavasti:
-
-~~~~
-psql < sql/create-tables.sql
-~~~~
-
-
-Yllä oleva komento suorittaa tiedoston sisältämät SQL-lauseet
-tietokannassa. MySQL-versio on samantapainen, mutta komentona on psql:n
-sijasta mysql, minkä lisäksi mysql kysyy sinulta salasanaa.
-
-Mikäli haluaa resetoida koko tietokantansa voi ajaa seuraavat kolme komentoa peräkkäin:
-
-~~~~
-psql < sql/drop-tables.sql
-psql < sql/create-tables.sql
-psql < sql/add-test-data.sql
-~~~~
-
-Tiedostossa `drop-tables.sql` kannattaa käyttää pudotuskäskystä
-muotoa `DROP TABLE IF EXISTS taulun_nimi`. 
-Näin tietokantataulun puuttuminen ei katkaise komentosarjaa. 
-Viiteavaimien takia joudut myös yleensä kirjoittamaan pudotuskäskyt päinvastaisessa
-järjestyksessä luontilauseisiin nähden. Muuten viite-eheystarkistukset eivät välttämättä anna ajaa kantaa alas.
-
-
 <next>
-Suunniteltuasi kaiken tee suunnitelmistasi demoversiot [HTML:llä ja CSS:llä](html-versioiden-luonti.html).
+Suunniteltuasi kaiken voit toteuttaa käyttöliittymän [HTML:llä]({{rootdir}}ohjeistus/html-opas.html). Tai siirtyä [käytännön tietokantaohjelmointiin]({{rootdir}}ohjeistus/tietokantaohjelmointi/intro.html).
 </next>

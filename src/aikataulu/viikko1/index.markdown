@@ -5,14 +5,6 @@
 
 Ensimmäisellä viikolla tulee olla tehtynä seuraavat asiat:
 
-<comment>
-TODO:
-Nämä pitää siirtää/lisätä
-* Laitoksen users-palvelimen nettisivutilan pystytys: testisivu, työympäristö (netbeans-projari)
-
-!! Tärkeää laittaa sivun osoite näkyville
-</comment>
-
 * [Aiheen valinta](aiheet/index.html)
 * [Ohjelmointikielen valinta](ohjelmointikielet.html)
 * [Tietokantapalvelimen valinta](tietokannat.html)
@@ -23,8 +15,8 @@ Nämä pitää siirtää/lisätä
     * NetBeans-projektin pystytys mikäli haluat käyttää sitä: [NetBeans-ohje]({{rootdir}}ohjeistus/netbeans.html)
 * Työn dokumentoinnin aloittaminen
     * [Aihevalinnan, käytettyjen tekniikoiden dokumentointi]({{rootdir}}dokumentaatio-ohje.html#johdanto)
-    * [Käyttötapaukset]({{rootdir}}dokumentaatio-ohje.html#k%C3%A4ytt%C3%B6tapaukset)
     * [Järjestelmän yleiskuva]({{rootdir}}dokumentaatio-ohje.html#yleiskuva-j%C3%A4rjestelm%C3%A4st%C3%A4)
+    * [Käyttötapaukset]({{rootdir}}dokumentaatio-ohje.html#k%C3%A4ytt%C3%B6tapaukset)
 * [Versionhallinnan pystytys](git-ohje.html)
     * Laita dokumentaatiosi repositorioon
 

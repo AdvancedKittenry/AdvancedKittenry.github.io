@@ -46,7 +46,7 @@ Viikkojen 2-5 materiaali on vielä työn alla. Sivut aukeavat sitä mukaa kun oh
 | Tilaisuus              | Työaihe                                                                | Deadline |
 |------------------------|------------------------------------------------------------------------|-----------------------|
 | [Viikko I][viikko1]    | Aiheen valinta, suunnittelu, dokumentointi ja työympäristön pystytys   | {{deadline1}}         |
-| Viikko II              | Sovelluksen suunnittelu, tietokantayhteyden muodostaminen              | {{deadline2}}         |
+| [Viikko II][viikko2]   | Sovelluksen suunnittelu, HTML-kieli, tietokantayhteyden muodostaminen  | {{deadline2}}         |
 | Viikko III             | MVC-malli ja kirjautuminen                                             | {{deadline3}}         |
 | Viikko IV              | Muokkaustoiminnot, sovellus etenee                                     | {{deadline4}}         |
 | Viikko V               | Sovellus on lähes valmis                                               | {{deadline5}}         |

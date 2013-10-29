@@ -1,38 +1,61 @@
 % Viikko 2
 <!-- order: 1 -->
-<!-- hidden! -->
+<!-- hidden -->
 
 <deadline>{{deadline2}}</deadline>
 
-Toisen viikon aikataulu
-suunnittelemalla työhön
-tulevat sivut, jonka jälkeen niistä toteutetaan 
-oikean näköiset, mutta epätoiminnalliset raakaversiot HTML:llä.
-Tämän jälkeen suunnitellaan
+Toisella viikolla jatketaan työn suunnittelua käytännöllisemmällä
+puolella suunnittelemalla työlle käyttöliittymä ja tietokanta.
+
+Tämän jälkeen käyttöliittymästä toteutetaan 
+oikean näköiset, mutta epätoiminnalliset raakaversiot HTML:llä
+ja pystytetään tietokanta users-palvelimelle ja tehdään pienimuotoinen testiohjelma sen käyttöön.
+
 Näitä harjoituksia on yleensä paras tulla tekemään pajaan,
 jolloin ohjaaja voi antaa vinkkejä niiden tekemisessä.
 
-Sinulla tulee olla tehtynä seuraavat asiat:
+Viikon tehtävät jakautuvat seuraavasti.
+Kunkin otsikon alla olevista asioista saa yhden aikataulupisteen.
 
 <comment>
 TODO:
-Käyttöliittymäsuunnitelmat <- hajota kälikaavio pois ykkösviikkoon
-
-Asiat:
-* Käyttöliittymäsuunnitelmat 
-* HTML-demot: yleisnäkymä
-* Listaukset
-* Tietokannan suunnittelu: Järjestelmän tietosisältö, relaatiotietokantakaavio
-* Tiedostot sovelluksen tietokannan taulujen luomiseen ja alasajoon, tietokannan pystytys (Testifilu)
+* Tiedostot sovelluksen tietokannan taulujen luomiseen ja alasajoon, tietokannan pystytys 
+* Testifilu
 * Oma listaus! Hyvin yksinkertainen!
 </comment>
 
+## Työn käytännön yksityiskohtien suunnittelu (1p)
+
+Dokumentoi ja suunnittele sovelluksellesi käyttöliittymä ja tietokanta.
+Lisäohjeita löytyy seuraavilta sivuilta:
+
 * [Käyttöliittymän suunnittelu](suunnittelu.html).
-* [HTML-versio sovelluksen rungosta](html-versioiden-luonti.html).
-* HTML-versiot sovelluksen listaussivuista.
 * [Tietokannan suunnittelu](tietokanta.html) ja dokumentointi.
-    * [Järjestelmän tietosisältö]({{rootdir}}dokumentaatio-ohje.html#j%C3%A4rjestelm%C3%A4n-tietosis%C3%A4lt%C3%B6)
-    * [Relaatiotietokantakaavio]({{rootdir}}dokumentaatio-ohje.html#relaatiotietokantakaavio)
+
+## Käyttöliittymän toteututus HTML:llä (1p)
+
+Tässä vaiheessa työtä siirrytään suunnittelusta käytäntöön
+ja luodaan suunnitelluista sivuista oikean näköiset, mutta
+vielä staattiset HTML-versiot. 
+
+Se minne sivut kannattaa sijoittaa riippuu hieman ohjelmointikielestä.
+Javan servlet-tekniikalla ainoastaan `web`-hakemistoon laitetut
+tiedostot näkyvät selaimella. PHP:llä tätä rajoitusta ei ole,
+joskin myöhemmin keskitämme HTML-koodin MVC-mallin mukaisesti omaan hakemistoonsa.
+
+Tässä vaiheessa luo hakemisto `html-demo` ja lähde rakentamaan sinne HTML-versiota työstäsi. 
+Javalla tämä hakemisto sijoitetaan `web`-hakemistoon, PHP:llä se voi olla projektin juuressa.
+Sijoita kaikki tällä viikolla tekemäsi HTML-tiedostot tuohon kansioon.
+Lisää ohjeita HTML-kielen kanssa työskentelyyn löytyy [HTML-oppaasta]({{rootdir}}ohjeistus/html-opas.html).
+
+Toteutettuna pitää olla HTML-versiot seuraavista aiemmin suunnitelluista sivuista:
+
+* [Sivujen runko ja navigaatio sekä etusivu](suunnittelu.html#etusivu-ja-yleisnäkymä-template)
+* [Listaussivujen](suunnittelu.html#listanäkymän-suunnittelu) toteuttaminen
+* [Muokkaus ja tietonäkymien](suunnittelu.html#muokkaus--ja-tietonäkymät) toteuttaminen
+
+## Tietokannan käytön aloittaminen (1p)
+
 * Tiedostot sovelluksen tietokannan taulujen luomiseen ja alasajoon .
     * `sql/create-tables.sql`
     * `sql/drop-tables.sql`
@@ -41,17 +64,83 @@ Asiat:
     * Tietokantatestisovelluksen laittaminen näkyville
 * Kevyt testisivu, joka listaa jonkin tietokantataulun sisällön.
     * Käytä tietokannan täyttämiseen `add-test-data.sql`-tiedostoa, niin sivulla on jotain näytettävää.
-* MVC-malliin käytön aloittaminen.
 
-Jokaisesta listan yläkohdasta saa puolikkaan aikataulupisteen. 
-Yhteensä kolme pistettä tältä viikolta.
+## Palautus
+
+Lopulta palautuksesi kansiorakenteen pitäisi näyttää suurinpiirtein allaolevalta.
+Varmista, että olet ottanut kaikki tarvittavat tiedostot mukaan,
+ja että ne myös näkyvät selaimella testausosoitteessasi.
+
+<tabs>
+<tab title="PHP-projekti">
+
+~~~~
+css/
+  bootstrap.css
+  ...
+doc/
+  dokumentaatio.pdf
+  relaatiotietokantakaavio.dia
+  sivukartta.png
+  tietosisältökaavio.dia
+fonts/
+  ...
+html-demo/
+  index.html
+  kissalista.html
+  muokkaakissaa.html
+js/
+  ...
+sql/
+  create-tables.sql
+  drop-tables.sql
+  add-test-data.sql
+  ...
+index.php
+connectionTest.php
+.gitignore
+~~~~
+
+</tab>
+<tab title="Java-projekti">
+
+~~~~
+doc/
+  dokumentaatio.pdf
+  relaatiotietokantakaavio.dia
+  sivukartta.png
+  tietosisältökaavio.dia
+src/
+  Kissalista/
+    Servlets/
+      Listaservlet.java
+web/ 
+  css/
+    bootstrap.css
+    ...
+  fonts/
+    ...
+  html-demo/
+    index.html
+    kissalista.html
+    muokkaakissaa.html
+  js/
+    ...
+  sql/
+    create-tables.sql
+    drop-tables.sql
+    add-test-data.sql
+    ...
+.gitignore
+~~~~
+
+</tab>
+</tabs>
+
+
+NetBeansia käyttävillä on projektissaa todennäköisesti huomattavasti enemmän tiedostoja.
+Se ei haittaa.
 
 <alert>
 Laita kaikki uusi dokumentaatio kootusti yhteen `dokumentaatio.pdf`-tiedostoon `docs`-kansiossa. Ohjaajasi ei halua arvuutella mistä tiedostosta dokumentaatio löytyy.
 </alert>
-
-<ohje>
-Aloita ottamalla [laitoksen tietokanta- ja web-palvelimet käyttöön](tekniikka.html) ja jatka siitä seuraten vihreitä ohjelaatikoita.
-
-Tehtyäsi kaiken varmista, että kaikki tekemäsi muutokset näkyvät github-repositoriossasi.
-</ohje>

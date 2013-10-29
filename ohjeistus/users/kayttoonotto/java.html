@@ -83,12 +83,22 @@
 <li><a href="../../../aikataulu/viikko1/dokumentointi.html">Dokumentaation aloittaminen</a></li>
 <li><a href="../../../aikataulu/viikko1/git-ohje.html">Versionhallinta</a></li>
 </ul></li>
+<li><a href="../../../aikataulu/viikko2/index.html">Viikko 2</a>
+<ul>
+<li><a href="../../../aikataulu/viikko2/suunnittelu.html">Käyttöliittymän suunnittelu</a></li>
+<li><a href="../../../aikataulu/viikko2/tietokanta.html">Tietokannan suunnittelu</a></li>
+</ul></li>
 <li><a href="../../../aikataulu/demo.html">Demotilaisuus</a></li>
 <li><a href="../../../aikataulu/palautus.html">Työn palautus</a></li>
 </ul></li>
 <li><a href="../../../ohjeistus/index.html">Ohjeistus</a>
 <ul>
+<li><a href="../../../ohjeistus/html-opas.html">HTML-opas</a></li>
 <li><a href="../../../ohjeistus/netbeans.html">NetBeansin käyttöönotto</a></li>
+<li><a href="../../../ohjeistus/tietokantaohjelmointi/index.html">Tietokantaohjelmointi</a>
+<ul>
+<li><a href="../../../ohjeistus/tietokantaohjelmointi/intro.html">Tietokantaohjelmoinnin aloittaminen</a></li>
+</ul></li>
 <li><a href="../../../ohjeistus/users/index.html">Users-palvelin ja töiden pystyttäminen</a>
 <ul>
 <li><a href="../../../ohjeistus/users/kayttoonotto/index.html">Palvelujen käynnistäminen ja käyttöönotto</a>
@@ -98,6 +108,7 @@
 <li><a href="../../../ohjeistus/users/kayttoonotto/php.html">PHP-tuen käyttöönotto</a></li>
 <li><a href="../../../ohjeistus/users/kayttoonotto/postgresql.html">PostgreSQL-tietokannan käyttöönotto</a></li>
 </ul></li>
+<li><a href="../../../ohjeistus/users/postgres-ssh-tunneli.html">PostgreSql-kannan etäkäyttö</a></li>
 <li><a href="../../../ohjeistus/users/java-war-paketit.html">Kotikoneella tehdyn Java-työn julkaisu</a></li>
 <li><a href="../../../ohjeistus/users/nautilus-ssh.html">Tiedostojen etämuokkaus Linuxilla</a></li>
 </ul></li>
@@ -116,8 +127,38 @@
 <header>
 <h1 class="title">Java ja Tomcatin käyttöönotto</h1>
 </header>
-<p>Lue sivu <a href="http://www.cs.helsinki.fi/u/laine/tikas/material/servlet_ohje.html">Servlettien käyttö Tietokantasovellusten harjoitustyössä</a> ja noudata sen ohjeita.</p>
-<p>Liitä tämän jälkeen dokumentaatiosi <a href="../../../dokumentaatio-ohje.html#käynnistys--käyttöohje">Käynnistys- / käyttöohje -kappaleeseen</a> sovelluksesi nettiosoite usersilla (tai muulla palvelimella, mikäli haluat käyttää sellaista). Kappaleeseen ei tässä vaiheessa tarvitse kirjoittaa muuta sisältöä.</p>
+<p>Javalla tehdyt tietokantasovellukset asennetaan laitoksen users-palvelimella Tomcat-ohjelmiston alle. Ohjelmisto osaa pyörittää allaan useita Javalla tehtyjä <em>sovelluksia</em>, jotka ovat käytännössä toisistaan erillään pyöriviä ohjelmistopaketteja.</p>
+<section id="tomcatin-käyttöönotto" class="level2">
+<h2>Tomcatin käyttöönotto</h2>
+<p>Tomcatin saa otettua käyttöön omille tunnuksilleen kirjautumalla users-palvelimelle ja ajamalla siellä komento <code>wanna-tomcat</code></p>
+<p>Komento luo hakemiston <code>tomcat</code> ja asentaa sinne tarvittavat tiedostot tietokantasovellusten ajamiseen. Se luo myös hakemiston <code>tomcat/webapps</code>, jonne voidaan sijoittaa ajettavia Java-sovelluksia kunkin omaan hakemistoonsa. Lisäksi asennusskripti luo <code>webapps</code>-hakemistoon valmiiksi testiprojektin nimeltä <code>tsoha</code>.</p>
+<p>Jotta mitään tietokantasovellusta voidaan ajaa, pitää tomcat ensin käynnistää. Tähän voi käyttää komentoa <code>start-tomcat</code>. Komento käynnistää Tomcat-palvelimen ja kertoo samalla mistä osoitteesta työsi tulee löytymään.</p>
+<p>Osoite on mallia <a href="http://t-käyttäjätunnuksesi.users.cs.helsinki.fi/">http://t-käyttäjätunnuksesi.users.cs.helsinki.fi/</a> Missä aivan ensimmäisenä osana on yliopiston käyttäätunnuksesi, jota edeltää merkkijono “t-”. Laittamalla osoitteen perään jonkin <code>webapps</code> hakemistossa olevan sovelluksen nimen, pääsee käyttämään tätä sovellusta. Esimerkiksi tsoha-sovellusta voi käyttää laittamalla osoitteen perään <code>tsoha/esim.html</code>.</p>
+<p>Tomcatin voi myös sammuttaa komennolla <code>stop-tomcat</code>. Kurssin ajan lienee hyvä pitää Tomcat:ia päällä melko jatkuvasti, että ohjaajasi pystyy testaamaan työtäsi.</p>
+<p>Mikäli työsi ei näy internetissä on siihen useimmiten syynä se, ettei Tomcat ole päällä.</p>
+</section>
+<section id="sovelluksien-pystyttäminen-ja-koodaus" class="level2">
+<h2>Sovelluksien pystyttäminen ja koodaus</h2>
+<p>Kun olet saanut testisovelluksen toimimaan, sinulla on kaksi vaihtoehtoa sovelluskehitykseen.</p>
+<p>Voit lähteä rakentamaan sovellusta suoraan users-palvelimelle. Tällöin tsoha-sovelluksen rakenteesta voi ottaa mallia. Ratkaisu on siitä hyvä, että kaikki pyörii silloin samalla koneella, mutta joudut <a href="../nautilus-ssh.html">muokkaamaan tiedostoja etänä</a> ja kääntämään työtäsi käsin. Työn kääntäminen tsoha-projektissa tapahtuu menemällä komentorivillä hakemistoon <code>src</code> ja ajamalla ohjelma <code>ant</code>. Ant kääntää työn puolestasi ja asentaa luokat oikeisiin paikkoihin. Tätä varten tarvitset samassa hakemistossa olevan <code>build.xml</code>-tiedoston, jonka voi kopioida tsoha-projektin <code>src</code>-hakemistosta.</p>
+<p>Toinen ja useimmiten kätevämpi vaihoehto on käyttää <a href="../../netbeans.html">NetBeansiä ja asentaa tomcat omalle koneelleen</a>. Tässä vaihtoehdossa on se hyvä puoli, että alkuosan koodin kirjoittamisen voi tehdä kokonaan omalla tietokoneellaan, mutta tietokannan käyttöä varten tarvitsee aina <a href="../postgres-ssh-tunneli.html">muodostaa etäyhteys</a>, ellet asenna tietokantapalvelinta koneellesi itse. NetBeansin käytössä on myös se hyvä puoli, että sen tarjoama tuki nettipuolen Javalle on erinomainen ja auttaa monien koodausongelmien kanssa.</p>
+<section id="muualla-testatun-sovelluksen-asentaminen" class="level3">
+<h3>Muualla testatun sovelluksen asentaminen</h3>
+<p>Mikäli käytät NetBeansiä lokaaliin koodailuun, joudut aika-ajoin kuitenkin pystyttämään työsi users-palvelimelle testattavaksi. Tämä on onneksi melko yksinkertainen toimenpide ja siihen on <a href="../java-war-paketit.html">oma ohjeensa</a>.</p>
+</section>
+</section>
+<section id="testitiedoston-tekeminen" class="level2">
+<h2>Testitiedoston tekeminen</h2>
+<p>index.jsp</p>
+<p>Sivun pitäisi näyttää tervehdys osoitteessa:<br /><a href="http://t-kayttajatunnuksesi.users.cs.helsinki.fi/sovelluksen_nimi/index.jsp">http://t-kayttajatunnuksesi.users.cs.helsinki.fi/sovelluksen_nimi/index.jsp</a></p>
+<p>Liitä Tomcatin asennuksen jälkeen dokumentaatiosi <a href="../../../dokumentaatio-ohje.html#käynnistys--käyttöohje">Käynnistys- / käyttöohje -kappaleeseen</a> sovelluksesi nettiosoite usersilla (tai muulla palvelimella, mikäli haluat käyttää sellaista). Kappaleeseen ei tässä vaiheessa (viikolla 2) tarvitse kirjoittaa muuta sisältöä.</p>
+</section>
+<section id="linkkejä" class="level2">
+<h2>Linkkejä</h2>
+<ul>
+<li>Hieman vanhentunut, mutta kattava alkuperäinen Servlet-opas: <a href="http://www.cs.helsinki.fi/u/laine/tikas/material/servlet_ohje.html">Servlettien käyttö Tietokantasovellusten harjoitustyössä</a></li>
+</ul>
+</section>
 </div>
 </div> 
 </div> 

@@ -170,4 +170,6 @@ muokkausnäkymän pohjana.
 <next>
 Kun olet suunnitellut mielestäsi toimivan käyttöliittymän, 
 suunnittele työllesi [tietokanta ja dokumentoi se](tietokanta.html).
+
+Vaihtoehtoisesti toteuta suunnittelemasi käyttöliittymä [HTML:llä]({{rootdir}}ohjeistus/html-opas.html). Ja syvenny sitten tietokantoihin.
 </next>

@@ -1,40 +1,42 @@
-% HTML-versioiden luominen
+% HTML-opas
 <!-- order: 5 -->
 <!-- addHeaderNavigation -->
 
-Tässä vaiheessa työtä siirrytään suunnittelusta käytäntöön
-ja luodaan suunnitelluista sivuista oikean näköiset, mutta
-vielä staattiset HTML-versiot.
+Jokaisen tietokantasovelluksen käyttöliittymän pohjana on HTML-kieli,
+jolla määritetään se, mitä sivuilla näkyy. HTML-kielen kaverina 
+toimii CSS-tyylitiedostokieli, jolla on mahdollista määritellä minkä näköisenä
+HTML-kielellä ilmaistut elementit sivuilla esiintyvät.
 
-Viimeistään tässä vaiheessa työlle kannattaa luoda NetBeans-projekti.
-NetBeansia ei ole pakko käyttää, mutta etenkin Javalla koodatessa sen
-koodingenerointi- ja refaktorointiominaisuuksista on paljon iloa.
-Pääset NetBeans-ohjeisiin [tästä](netbeans.html).
+## Minne laitan sivuni?
 
-## Sivujen luonti
+Se minne sivut kannattaa sijoittaa riippuu hieman ohjelmointikielestä.
+Javan servlet-tekniikalla ainoastaan `web`-hakemistoon laitetut
+tiedostot näkyvät selaimella. PHP:llä tätä rajoitusta ei ole,
+joskin myöhemmin keskitämme HTML-koodin MVC-mallin mukaisesti omaan hakemistoonsa.
 
-Luo repositorioosi kansio `html-demo` ja lähde rakentamaan sinne HTML-versiota työstäsi. 
-Javalla ohjelmoivat voivat testauksen helpottamiseksi sijoittaa HTML-tiedostonsa kansioon `web/html-demo`.
-Sijoita kaikki tässä vaiheessa tekemäsi HTML-tiedostot tuohon kansioon.
+Jos teet vasta staattista HTML-versiota käyttöliittymää,
+luo hakemisto `html-demo` ja lähde rakentamaan sinne HTML-versiota työstäsi. 
+Javalla tämä hakemisto sijoitetaan `web`-hakemistoon, PHP:llä se voi olla projektin juuressa.
+Sijoita kaikki puhtaasti testausmielessä (lähinnä viikolla 2) tekemäsi HTML-tiedostot tuohon kansioon.
 
-### HTML-sivun luonti NetBeansillä
+## HTML-sivun luonti NetBeansillä
 
 NetBeansin käyttäjät voivat luoda HTML-tiedostoja projektiinsa seuraavasti:
 
 * Javalla koodatessa:
     * Valitse uuden tiedoston ikkunasta Web->HTML
-    * Voit halutessasi valita tyypiksi myös Web->JSP
+    * Halutessasi tehdä dynaamisia sivuja valitse Web->JSP
 * PHP:llä koodatessa:
     * Valitse uuden tiedoston ikkunasta Other->HTML
-    * Voit halutessasi valita tyypiksi myös PHP->PHP Web Page
+    * Halutessasi tehdä dynaamisia sivuja valitse PHP->PHP Web Page
 
 Poista kummassakin tapauksessa NetBeansin alkuun lisäämä Template-kommentti.
 Ota kommentin luominen pois päältä valitsemalla valikosta `Tools->Templates`.
 Avaa listassa kohdan _Licenses_ alla oleva tiedosto `Default License` ja tyhjennä sen sisältö.
 
-### HTML ja CSS
+## HTML, CSS ja Bootstrap
 
-Mikäli loit tiedostosi NetBeansillä näyttää se tältä:
+Mikäli loit tiedostosi NetBeansillä näyttää se suurinpiirtein tältä:
 
 ~~~~HTML
 <!DOCTYPE html>
@@ -49,12 +51,48 @@ Mikäli loit tiedostosi NetBeansillä näyttää se tältä:
 </html>
 ~~~~
 
+Mikäli tämännäköinen koodi ei ole tuttua, kannattaa lukea taustatietoja
+esim. [w3schoolsin sivuilta](http://w3schools.com/html/html_intro.asp).
+Myös [tietokone työvälineenä -kurssin](https://blogs.helsinki.fi/tyovaline-2013/tehtavat/)
+[materiaaleista](https://docs.google.com/document/d/1GhmkqP86f1q4tYIP6EsxXAnM6Ntlc0SiUcitWC3RcoE/pub) voi olla apua.
+
 Tehdään sivusta vähän nätimpi CSS:llä. Lataa twitterin mainio [Bootstrap-kirjasto](http://getbootstrap.com/)
 ja pura paketin sisältä dist kansion sisältö projektisi juureen tai Javalla `web`-kansioon.
 Tarkoituksena on, että bootstrapin `css`, `fonts` ja `js`-kansiot
-sijoittuvat samaan kansioon kuin edellä luomasi `html-demo`-kansio. 
+sijoittuvat seuraavasti: 
 
-Tämän jälkeen luo `css`-kansioon vielä oma tyylitiedostosi `main.css`. (NetBeansillä tyylitiedoston luonti löytyy kategoriasta _Other_ nimellä _Cascading Style Sheet_). Tähän tiedostoon voit sijoittaa omat projektikohtaiset tyylimääritelmäsi. Älä sijoita tiedostoon vielä mitään.
+<tabs>
+<tab title="Bootstrap PHP-projektissa">
+
+Kansiorakenteesta tulee suurinpiirtein seuraavanlainen
+
+```
+css/
+fonts/
+index.php
+js/
+html-demo/
+```
+
+</tab>
+<tab title="Bootstrap Java-projektissa">
+
+Kansiorakenteesta tulee suurinpiirtein seuraavanlainen
+
+```
+src/
+web/
+  css/
+  fonts/
+  html-demo/
+  js/
+  index.jps
+```
+</tab>
+</tabs>
+
+Tämän jälkeen luo `css`-kansioon vielä oma tyylitiedostosi `main.css`. (NetBeansillä tyylitiedoston luonti löytyy kategoriasta _Other_ nimellä _Cascading Style Sheet_). Tähän tiedostoon voit sijoittaa omat projektikohtaiset tyylimääritelmäsi. 
+Tiedostoon ei tarvitse laittaa vielä mitään.
 
 Lisätään CSS-tiedostoihin linkit laittamalla HTML-tiedoston head-tägin sisään ja
 katso miten CSS muuttaa sivun ulkoasua hieman.
@@ -83,12 +121,12 @@ Lisää Bootstrap-esimerkkejä voi katsoa Bootstrapin sivujen [CSS](http://getbo
 
 Käyttämällä luokkia `nav` ja `nav-tabs` saadaan tavallinen ul-elementti toimimaan [tabinavigaationa](http://getbootstrap.com/components/#nav).
 
-<iframe src="{{rootdir}}src/{{curdir}}esimerkit/tabit.html" ></iframe>
+<iframe src="{{rootdir}}src/{{curdir}}html-esimerkit/tabit.html" ></iframe>
 
 Esimerkin lähdekoodi:
 
 ~~~~ {#html execute=bash type=block}
-./extract-tag.pl body src/{{curdir}}esimerkit/tabit.html
+./extract-tag.pl body src/{{curdir}}html-esimerkit/tabit.html
 ~~~~
 
 </tab>
@@ -100,12 +138,12 @@ päällekkäisiksi jos sivulta loppuu tila. Bootstrapin Grid-järjestelmästä l
 
 Huomaam myös kätevä `panel`-luokka, jolla saa helposti aikaan nättejä [laatikoita](http://getbootstrap.com/components/#panels).
 
-<iframe src="{{rootdir}}src/{{curdir}}esimerkit/sivunavi.html" ></iframe>
+<iframe src="{{rootdir}}src/{{curdir}}html-esimerkit/sivunavi.html" ></iframe>
 
 Esimerkin lähdekoodi:
 
 ~~~~ {#html execute=bash type=block}
-./extract-tag.pl body src/{{curdir}}esimerkit/sivunavi.html | sed -e s/-xs-/-md-/g 
+./extract-tag.pl body src/{{curdir}}html-esimerkit/sivunavi.html | sed -e s/-xs-/-md-/g 
 ~~~~
 
 </tab>
@@ -117,12 +155,12 @@ Bootstrapissa on hyvät oletustyylit tätä varten luokilla `table` ja `table-st
 
 Listauksessa on myös käytetty hyväksi Bootstrapin tukea [napeille](http://getbootstrap.com/css/#buttons) ja [Glyphicon-kuvakkeille](http://getbootstrap.com/components/#glyphicons).
 
-<iframe src="{{rootdir}}src/{{curdir}}esimerkit/table.html" ></iframe>
+<iframe src="{{rootdir}}src/{{curdir}}html-esimerkit/table.html" ></iframe>
 
 Esimerkin lähdekoodi:
 
 ~~~~ {#html execute=bash type=block}
-./extract-tag.pl body src/{{curdir}}esimerkit/table.html | sed -e s/-xs-/-md-/g 
+./extract-tag.pl body src/{{curdir}}html-esimerkit/table.html | sed -e s/-xs-/-md-/g 
 ~~~~
 
 </tab>
@@ -131,12 +169,12 @@ Esimerkin lähdekoodi:
 Bootstrap tukee lomakkeiden tyylittelyyn samankaltaisia [rivi- ja sarakeluokkia](http://getbootstrap.com/css/#forms-horizontal) kuin yleiseen asetteluunkin.
 Myös [monia muita tapoja](http://getbootstrap.com/css/#forms) tyylitellä lomakkeita löytyy.
 
-<iframe src="{{rootdir}}src/{{curdir}}esimerkit/lomake.html" ></iframe>
+<iframe src="{{rootdir}}src/{{curdir}}html-esimerkit/lomake.html" ></iframe>
 
 Esimerkin lähdekoodi:
 
 ~~~~ {#html execute=bash type=block}
-./extract-tag.pl body src/{{curdir}}esimerkit/lomake.html | sed -e s/-xs-/-md-/g 
+./extract-tag.pl body src/{{curdir}}html-esimerkit/lomake.html | sed -e s/-xs-/-md-/g 
 ~~~~
 
 </tab>
@@ -151,44 +189,30 @@ yleistä ulkoasua.
 Tekeminen kannattaa aloittaa yleisestä sivunavigaatiosta ja valita joku päätietokohde johon liittyvät sivut tekee valmiiksi ensin.
 Tästä saadun kokemuksen pohjalta muut sivut on helpompi tehdä valmiiksi.
 
+## Vinkkejä
+
+Kannattaa varmistaa, että jokainen aloitettu HTML-tägi myös lopetetaan jossain:
+
+```html
+<nav>Navigaatio</nav>
+<div>Sisältöä</div>
+```
+
+Jos näin ei tee, joutuvat tägit toistensa sisään ja aikaansaavat mystisiä bugeja.
+Jotkin tägeistä ovat sellaisia että ne suljetaan samantien, niille ei tarvitse tehdä
+erillistä sulkutägiä. Näistä käytetään nimitystä tyhjät tägit (engl. *void tags*).
+Esimerkiksi `<input>` toimii näin:
+
+```html
+<input type="text" name="username">
+```
+
+Muita vastaavia tägejä ovat mm. `<br>`, `<hr>`, `<link>`, `<meta>` ja `<img>`.
+
 ## Linkkejä
 
+* [W3schools-sivuston HTML-intro](http://w3schools.com/html/html_intro.asp).
+* [tietokone työvälineenä -kurssin HTML-materiaalit](https://docs.google.com/document/d/1GhmkqP86f1q4tYIP6EsxXAnM6Ntlc0SiUcitWC3RcoE/pub).
+* [Learn the Basic HTML Tags!](http://www.htmlgoodies.com/primers/html/article.php/3478151)
 * [Twitter Bootstrap](http://getbootstrap.com/)
 * [HTML Dogin tutoriaalit](http://www.htmldog.com/) (HTML ja CSS) ovat lupsakoita ja perusteellisia. Suositellaan selattavaksi sivuja tehdessä! Tutoriaaleissa tehdään XHTML-sivuja, mutta ne on helppo soveltaa HTML5-sivuiksi (korvaa alun pitkä DOCTYPE lyhyellä HTML5-doctypellä).
-* W3-konsortion sivuilta löydät alkuperäiset, kattavat standardit: [HTML5](http://www.w3.org/TR/html5/) ja [CSS(3)](http://www.w3.org/TR/CSS/) sekä aika hyvän [tutoriaali- ja referenssisivun](http://w3schools.com/html/html5_intro.asp).
-
-## Palautus
-
-Lopulta palautuksesi kansiorakenteen pitäisi näyttää suurinpiirtein tältä:
-
-~~~~
-css/
-  bootstrap.css
-  ...
-doc/
-  dokumentaatio.pdf
-  relaatiotietokantakaavio.dia
-  sivukartta.png
-  tietosisältökaavio.dia
-fonts/
-  ...
-html-demo/
-  index.html
-  kissalista.html
-  muokkaakissaa.html
-js/
-  ...
-sql/
-  create-tables.sql
-  drop-tables.sql
-  add-test-data.sql
-  ...
-.gitignore
-~~~~
-
-NetBeansia käyttävillä on projektissaa todennäköisesti huomattavasti enemmän tiedostoja.
-Se ei haittaa.
-
-<last>
-Varmista vielä, että olet laittanut [tietosisältö- ja relaatiottietokantakaaviot](tietokanta.html), SQL-tiedostot ja [HTML-demoversion](html-versioiden-luonti.markdown) repositorioosi!
-</last>

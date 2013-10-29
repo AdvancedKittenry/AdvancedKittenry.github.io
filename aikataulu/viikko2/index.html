@@ -83,12 +83,22 @@
 <li><a href="../../aikataulu/viikko1/dokumentointi.html">Dokumentaation aloittaminen</a></li>
 <li><a href="../../aikataulu/viikko1/git-ohje.html">Versionhallinta</a></li>
 </ul></li>
+<li class="selected"><a href="../../aikataulu/viikko2/index.html">Viikko 2</a>
+<ul>
+<li><a href="../../aikataulu/viikko2/suunnittelu.html">Käyttöliittymän suunnittelu</a></li>
+<li><a href="../../aikataulu/viikko2/tietokanta.html">Tietokannan suunnittelu</a></li>
+</ul></li>
 <li><a href="../../aikataulu/demo.html">Demotilaisuus</a></li>
 <li><a href="../../aikataulu/palautus.html">Työn palautus</a></li>
 </ul></li>
 <li><a href="../../ohjeistus/index.html">Ohjeistus</a>
 <ul>
+<li><a href="../../ohjeistus/html-opas.html">HTML-opas</a></li>
 <li><a href="../../ohjeistus/netbeans.html">NetBeansin käyttöönotto</a></li>
+<li><a href="../../ohjeistus/tietokantaohjelmointi/index.html">Tietokantaohjelmointi</a>
+<ul>
+<li><a href="../../ohjeistus/tietokantaohjelmointi/intro.html">Tietokantaohjelmoinnin aloittaminen</a></li>
+</ul></li>
 <li><a href="../../ohjeistus/users/index.html">Users-palvelin ja töiden pystyttäminen</a>
 <ul>
 <li><a href="../../ohjeistus/users/kayttoonotto/index.html">Palvelujen käynnistäminen ja käyttöönotto</a>
@@ -98,6 +108,7 @@
 <li><a href="../../ohjeistus/users/kayttoonotto/php.html">PHP-tuen käyttöönotto</a></li>
 <li><a href="../../ohjeistus/users/kayttoonotto/postgresql.html">PostgreSQL-tietokannan käyttöönotto</a></li>
 </ul></li>
+<li><a href="../../ohjeistus/users/postgres-ssh-tunneli.html">PostgreSql-kannan etäkäyttö</a></li>
 <li><a href="../../ohjeistus/users/java-war-paketit.html">Kotikoneella tehdyn Java-työn julkaisu</a></li>
 <li><a href="../../ohjeistus/users/nautilus-ssh.html">Tiedostojen etämuokkaus Linuxilla</a></li>
 </ul></li>
@@ -117,7 +128,7 @@
 <h1 class="title">Viikko 2</h1>
 </header>
 <!-- order: 1 -->
-<!-- hidden! -->
+<!-- hidden -->
 
 <section class="alert alert-warning small"><h3>
 Deadline:
@@ -125,17 +136,33 @@ Deadline:
 <span class="coursekeyword deadline2">su 10.11 klo 23:00</span>
 </section>
 
-<p>Toisen viikon aikataulu suunnittelemalla työhön tulevat sivut, jonka jälkeen niistä toteutetaan oikean näköiset, mutta epätoiminnalliset raakaversiot HTML:llä. Tämän jälkeen suunnitellaan Näitä harjoituksia on yleensä paras tulla tekemään pajaan, jolloin ohjaaja voi antaa vinkkejä niiden tekemisessä.</p>
-<p>Sinulla tulee olla tehtynä seuraavat asiat:</p>
+<p>Toisella viikolla jatketaan työn suunnittelua käytännöllisemmällä puolella suunnittelemalla työlle käyttöliittymä ja tietokanta.</p>
+<p>Tämän jälkeen käyttöliittymästä toteutetaan oikean näköiset, mutta epätoiminnalliset raakaversiot HTML:llä ja pystytetään tietokanta users-palvelimelle ja tehdään pienimuotoinen testiohjelma sen käyttöön.</p>
+<p>Näitä harjoituksia on yleensä paras tulla tekemään pajaan, jolloin ohjaaja voi antaa vinkkejä niiden tekemisessä.</p>
+<p>Viikon tehtävät jakautuvat seuraavasti. Kunkin otsikon alla olevista asioista saa yhden aikataulupisteen.</p>
+<section id="työn-käytännön-yksityiskohtien-suunnittelu-1p" class="level2">
+<h2>Työn käytännön yksityiskohtien suunnittelu (1p)</h2>
+<p>Dokumentoi ja suunnittele sovelluksellesi käyttöliittymä ja tietokanta. Lisäohjeita löytyy seuraavilta sivuilta:</p>
 <ul>
 <li><a href="suunnittelu.html">Käyttöliittymän suunnittelu</a>.</li>
-<li><a href="html-versioiden-luonti.html">HTML-versio sovelluksen rungosta</a>.</li>
-<li>HTML-versiot sovelluksen listaussivuista.</li>
-<li><a href="tietokanta.html">Tietokannan suunnittelu</a> ja dokumentointi.
+<li><a href="tietokanta.html">Tietokannan suunnittelu</a> ja dokumentointi.</li>
+</ul>
+</section>
+<section id="käyttöliittymän-toteututus-htmlllä-1p" class="level2">
+<h2>Käyttöliittymän toteututus HTML:llä (1p)</h2>
+<p>Tässä vaiheessa työtä siirrytään suunnittelusta käytäntöön ja luodaan suunnitelluista sivuista oikean näköiset, mutta vielä staattiset HTML-versiot.</p>
+<p>Se minne sivut kannattaa sijoittaa riippuu hieman ohjelmointikielestä. Javan servlet-tekniikalla ainoastaan <code>web</code>-hakemistoon laitetut tiedostot näkyvät selaimella. PHP:llä tätä rajoitusta ei ole, joskin myöhemmin keskitämme HTML-koodin MVC-mallin mukaisesti omaan hakemistoonsa.</p>
+<p>Tässä vaiheessa luo hakemisto <code>html-demo</code> ja lähde rakentamaan sinne HTML-versiota työstäsi. Javalla tämä hakemisto sijoitetaan <code>web</code>-hakemistoon, PHP:llä se voi olla projektin juuressa. Sijoita kaikki tällä viikolla tekemäsi HTML-tiedostot tuohon kansioon. Lisää ohjeita HTML-kielen kanssa työskentelyyn löytyy <a href="../../ohjeistus/html-opas.html">HTML-oppaasta</a>.</p>
+<p>Toteutettuna pitää olla HTML-versiot seuraavista aiemmin suunnitelluista sivuista:</p>
 <ul>
-<li><a href="../../dokumentaatio-ohje.html#j%C3%A4rjestelm%C3%A4n-tietosis%C3%A4lt%C3%B6">Järjestelmän tietosisältö</a></li>
-<li><a href="../../dokumentaatio-ohje.html#relaatiotietokantakaavio">Relaatiotietokantakaavio</a></li>
-</ul></li>
+<li><a href="suunnittelu.html#etusivu-ja-yleisnäkymä-template">Sivujen runko ja navigaatio sekä etusivu</a></li>
+<li><a href="suunnittelu.html#listanäkymän-suunnittelu">Listaussivujen</a> toteuttaminen</li>
+<li><a href="suunnittelu.html#muokkaus--ja-tietonäkymät">Muokkaus ja tietonäkymien</a> toteuttaminen</li>
+</ul>
+</section>
+<section id="tietokannan-käytön-aloittaminen-1p" class="level2">
+<h2>Tietokannan käytön aloittaminen (1p)</h2>
+<ul>
 <li>Tiedostot sovelluksen tietokannan taulujen luomiseen ja alasajoon .
 <ul>
 <li><code>sql/create-tables.sql</code></li>
@@ -148,24 +175,88 @@ Deadline:
 <ul>
 <li>Käytä tietokannan täyttämiseen <code>add-test-data.sql</code>-tiedostoa, niin sivulla on jotain näytettävää.</li>
 </ul></li>
-<li>MVC-malliin käytön aloittaminen.</li>
 </ul>
-<p>Jokaisesta listan yläkohdasta saa puolikkaan aikataulupisteen. Yhteensä kolme pistettä tältä viikolta.</p>
+</section>
+<section id="palautus" class="level2">
+<h2>Palautus</h2>
+<p>Lopulta palautuksesi kansiorakenteen pitäisi näyttää suurinpiirtein allaolevalta. Varmista, että olet ottanut kaikki tarvittavat tiedostot mukaan, ja että ne myös näkyvät selaimella testausosoitteessasi.</p>
+<ul class='nav nav-tabs nav-justified'><li class='active'>
+<a href='#tab_1_0' data-toggle='tab'>PHP-projekti</a>
+</li>
+<li>
+<a href='#tab_1_1' data-toggle='tab'>Java-projekti</a>
+</li></ul><div class='panel panel-default'><div class='panel-body'><div class='tab-content'>
+<section class='tab-pane active' id='tab_1_0' >
+
+<pre><code>css/
+  bootstrap.css
+  ...
+doc/
+  dokumentaatio.pdf
+  relaatiotietokantakaavio.dia
+  sivukartta.png
+  tietosisältökaavio.dia
+fonts/
+  ...
+html-demo/
+  index.html
+  kissalista.html
+  muokkaakissaa.html
+js/
+  ...
+sql/
+  create-tables.sql
+  drop-tables.sql
+  add-test-data.sql
+  ...
+index.php
+connectionTest.php
+.gitignore</code></pre>
+</section>
+<section class='tab-pane' id='tab_1_1' >
+
+<pre><code>doc/
+  dokumentaatio.pdf
+  relaatiotietokantakaavio.dia
+  sivukartta.png
+  tietosisältökaavio.dia
+src/
+  Kissalista/
+    Servlets/
+      Listaservlet.java
+web/ 
+  css/
+    bootstrap.css
+    ...
+  fonts/
+    ...
+  html-demo/
+    index.html
+    kissalista.html
+    muokkaakissaa.html
+  js/
+    ...
+  sql/
+    create-tables.sql
+    drop-tables.sql
+    add-test-data.sql
+    ...
+.gitignore</code></pre>
+</section>
+</div></div></div>
+
+
+<p>NetBeansia käyttävillä on projektissaa todennäköisesti huomattavasti enemmän tiedostoja. Se ei haittaa.</p>
 <section class="alert alert-danger"><h3>
 Pidä mielessä!
 </h3>
 <p>Laita kaikki uusi dokumentaatio kootusti yhteen <code>dokumentaatio.pdf</code>-tiedostoon <code>docs</code>-kansiossa. Ohjaajasi ei halua arvuutella mistä tiedostosta dokumentaatio löytyy.</p>
 </section>
 
-<section class="alert alert-success"><h3>
-Ohje:
-</h3>
-<p>Aloita ottamalla <a href="tekniikka.html">laitoksen tietokanta- ja web-palvelimet käyttöön</a> ja jatka siitä seuraten vihreitä ohjelaatikoita.</p>
-<p>Tehtyäsi kaiken varmista, että kaikki tekemäsi muutokset näkyvät github-repositoriossasi.</p>
+
+
+
 </section>
-
-
-
 </div>
 </div> 
 </div> 
