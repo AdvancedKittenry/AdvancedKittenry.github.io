@@ -1,5 +1,7 @@
 % NetBeansin käyttö PHP:n kanssa
 
+Näissä ohjeissa oletetaan, että olet jo [asentanut NetBeansiin kielesi web-tuen](index.html#web-tuen-asentaminen).
+
 Luo NetBeansiin uusi projekti Kategoriasta PHP.
 Valitse PHP Application.
 
@@ -16,7 +18,7 @@ tyypiksi "Remote Web Site (FTP, SFTP)".
 Laita kohtaan Project URL osoite
 `http://kayttajatunnuksesi.users.cs.helsinki.fi`,
 kohtaan Upload Directory polku
-`/htdocs`
+`/htdocs/tsoha` (tsohan voi korvata oman projektinsa nimellä)
 ja kohtaan Upload Files
 `On save`
 Paina sen jälkeen Remote Connections -kohdassa olevaa `Manage`-nappia

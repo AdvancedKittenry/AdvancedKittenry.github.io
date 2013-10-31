@@ -83,8 +83,10 @@ code > span.er { color: #ff0000; font-weight: bold; }
 </ul></li>
 <li><a href="../../ohjeistus/tietokantaohjelmointi/index.html">Tietokantaohjelmointi</a>
 <ul>
+<li><a href="../../ohjeistus/tietokantaohjelmointi/kannan-alustus.html">Tietokantataulujen pystyttäminen</a></li>
+<li><a href="../../ohjeistus/tietokantaohjelmointi/testisovellus.html">ConnectionTest-testisovellus</a></li>
 <li><a href="../../ohjeistus/tietokantaohjelmointi/tietokantayhteys.html">Tietokantayhteyden pystytys</a></li>
-<li><a href="../../ohjeistus/tietokantaohjelmointi/intro.html">Tietokantaohjelmoinnin aloittaminen</a></li>
+<li><a href="../../ohjeistus/tietokantaohjelmointi/listaustesti.html">Ensimmäinen tietokantalistaus</a></li>
 </ul></li>
 <li class="selected"><a href="../../ohjeistus/users/index.html">Users-palvelin ja töiden pystyttäminen</a>
 <ul>
@@ -154,7 +156,8 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <h1 class="title">Users-palvelin ja töiden pystyttäminen</h1>
 </header>
 <p>Lähes kaikki tietokantasovellukset tullaan pystyttämään laitoksen users-palvelimelle, jolla on mahdollista pyörittää Javalla ja PHP:llä toteutettuja tietokantasovelluksia käyttäen PostgreSQL- ja MySQL-tietokantapalvelimia.</p>
-<p>Tällä kurssilla käytämme users-palvelinta ennenkaikkea töiden saamiseen julkisen internetin puolelle ajettavaksi. Javaa käyttävät pystyvät melko helposti ajamaan <a href="../netbeans.html">NetBeansin ja Tomcatin avulla</a> töitänsä myös omalla koneellaan, mutta PHP:tä käytettäessä on käytännössä helpompi konfiguroida esim. NetBeans lähettämään tai tallentamaan tiedostot suoraan users-palvelimelle. Tästä on <a href="../netbeans.html">NetBeansille ohje</a> tai vaihtoehtoisesti voi käyttää myös vaikkapa <a href="../nautilus-ssh.html">Nautilusta ja Gedit:iä tiedostojen etämuokkaamiseen</a></p>
+<p>Palvelinten ja tietokantojen käyttöönottoon on omat ohjeensa <a href="kayttoonotto/index.html">täällä</a>.</p>
+<p>Tällä kurssilla käytämme users-palvelinta ennenkaikkea töiden saamiseen julkisen internetin puolelle ajettavaksi. Javaa käyttävät pystyvät melko helposti ajamaan <a href="../netbeans/java.html">NetBeansin ja Tomcatin avulla</a> töitänsä myös omalla koneellaan, mutta PHP:tä käytettäessä on käytännössä helpompi konfiguroida esim. NetBeans lähettämään tai tallentamaan tiedostot suoraan users-palvelimelle. Tästä on <a href="../netbeans/php.html">NetBeansille ohje</a> tai vaihtoehtoisesti voi käyttää myös vaikkapa <a href="../nautilus-ssh.html">Nautilusta ja Gedit:iä tiedostojen etämuokkaamiseen</a></p>
 <section id="yhteyden-ottaminen-users-palvelimeen" class="level2">
 <h2>Yhteyden ottaminen users-palvelimeen</h2>
 <p>Ensiksi sinun pitää kirjautua laitoksen tietokantasovelluspalvelimelle SSH:llä. Käytä Windowsissa <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html">Puttyä</a> ja muissa käyttäjärjestelmissä komentoriviä ja ssh-ohjelmaa.</p>
@@ -166,12 +169,12 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <h3>SSH-yhteydet Windowsilla</h3>
 <p>Windowsin oma komentorivi on senverran kömpelö, että SSH-yhteyksiä varten on kehitetty oma komentoriviohjelmansa <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html">Putty</a>. Yhteyden saa aikaan kuvan mukaisella tavalla. Luotu yhteys kannattaa tallentaa kirjoittamalla Saved sessions-tekstin alla olevaan kenttään yhteydelle nimi ja painamalla Save-nappia. Yhteys tallentuu kentän alla olevaan listaan, josta sen voi helposti avata kaksoisklikkaamalla sitä.</p>
 <figure>
-<img src="../../images/aikataulu/viikko2/putty-users.png" alt="users-palvelimen yhteyden luominen" /><figcaption>users-palvelimen yhteyden luominen</figcaption>
+<img src="../../images/ohjeistus/users/putty-users.png" alt="users-palvelimen yhteyden luominen" /><figcaption>users-palvelimen yhteyden luominen</figcaption>
 </figure>
 </section>
 </section>
-<section id="jatkolukemista" class="level1">
-<h1>Jatkolukemista</h1>
+<section id="linkkejä" class="level2">
+<h2>Linkkejä</h2>
 <ul>
 <li><a href="kayttoonotto/index.html">Palvelinten ja tietokantojen käyttöönotto</a></li>
 <li><a href="java-war-paketit.html">Omalla koneella tehdyn Java-työn vieminen users-palvelimelle</a></li>

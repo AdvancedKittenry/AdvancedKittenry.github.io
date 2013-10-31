@@ -1,6 +1,5 @@
 % Viikko 2
 <!-- order: 1 -->
-<!-- hidden -->
 
 <deadline>{{deadline2}}</deadline>
 
@@ -8,8 +7,9 @@ Toisella viikolla jatketaan työn suunnittelua käytännöllisemmällä
 puolella suunnittelemalla työlle käyttöliittymä ja tietokanta.
 
 Tämän jälkeen käyttöliittymästä toteutetaan 
-oikean näköiset, mutta epätoiminnalliset raakaversiot HTML:llä
-ja pystytetään tietokanta users-palvelimelle ja tehdään pienimuotoinen testiohjelma sen käyttöön.
+oikean näköiset, mutta epätoiminnalliset raakaversiot HTML:llä,
+pystytetään tietokanta users-palvelimelle 
+ja tehdään pienimuotoinen testiohjelma sen käyttöön.
 
 Näitä harjoituksia on yleensä paras tulla tekemään pajaan,
 jolloin ohjaaja voi antaa vinkkejä niiden tekemisessä.
@@ -56,13 +56,13 @@ Toteutettuna pitää olla HTML-versiot seuraavista aiemmin suunnitelluista sivui
 
 ## Tietokannan käytön aloittaminen (1p)
 
-* Tiedostot sovelluksen tietokannan taulujen luomiseen ja alasajoon .
-    * `sql/create-tables.sql`
-    * `sql/drop-tables.sql`
-    * `sql/add-test-data.sql`
-    * Tietokannan pystyttäminen näillä tiedostoilla
-    * Tietokantatestisovelluksen laittaminen näkyville
-* Kevyt testisivu, joka listaa jonkin tietokantataulun sisällön.
+* [Tietokannan pystyttäminen palvelimelle]({{rootdir}}ohjeistus/tietokantaohjelmointi/kannan-alustus.html)
+    * Luodaan SQL-tiedostot, joilla kannan rakenteen saa vedettyä ylös ja alas.
+    * Käytetään luotuja tiedostoja tietokannan pystyttämiseen
+* Otetaan käyttöön [tietokantatestisovellus]({{rootdir}}ohjeistus/tietokantaohjelmointi/testisovellus.html)
+    * Sovellus näyttää tietokannan taulut ja niiden sisältöä. Ohjaaja käyttää tätä pysyäkseen paremmin kärryillä tietokannan tilasta.
+    * Tämän tulee olla näkyvillä usersin palvelintilassa.
+* [Kevyt testisivu]({{rootdir}}ohjeistus/tietokantaohjelmointi/listaustesti.html), joka listaa jonkin tietokantataulun sisällön.
     * Käytä tietokannan täyttämiseen `add-test-data.sql`-tiedostoa, niin sivulla on jotain näytettävää.
 
 ## Palautus
@@ -102,7 +102,7 @@ connectionTest.php
 ~~~~
 
 </tab>
-<tab title="Java-projekti">
+<tab title="Java: NetBeansillä luotu">
 
 ~~~~
 doc/
@@ -111,9 +111,12 @@ doc/
   sivukartta.png
   tietosisältökaavio.dia
 src/
-  Kissalista/
-    Servlets/
-      Listaservlet.java
+  conf/
+  java/
+    Kissalista/
+      Servlets/
+        Listaservlet.java
+    ...
 web/ 
   css/
     bootstrap.css
@@ -126,11 +129,42 @@ web/
     muokkaakissaa.html
   js/
     ...
-  sql/
-    create-tables.sql
-    drop-tables.sql
-    add-test-data.sql
-    ...
+sql/
+  create-tables.sql
+  drop-tables.sql
+  add-test-data.sql
+.gitignore
+~~~~
+
+</tab>
+<tab title="Java suoraan users:illa">
+
+~~~~
+doc/
+  dokumentaatio.pdf
+  relaatiotietokantakaavio.dia
+  sivukartta.png
+  tietosisältökaavio.dia
+css/
+  bootstrap.css
+  ...
+fonts/
+  ...
+html-demo/
+  index.html
+  kissalista.html
+  muokkaakissaa.html
+js/
+  ...
+sql/
+  create-tables.sql
+  drop-tables.sql
+  add-test-data.sql
+src/
+  Kissalista/
+    Servlets/
+      Listaservlet.java
+  ...
 .gitignore
 ~~~~
 

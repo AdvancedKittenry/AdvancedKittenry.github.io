@@ -72,5 +72,5 @@ Lisää myös kaavioiden tuottamiseen käyttämäsi lähdetiedostot
 repositoriosi doc-kansioon niin ne pysyvät tallessa muutosten varalta.
 
 <next>
-Suunniteltuasi kaiken voit toteuttaa käyttöliittymän [HTML:llä]({{rootdir}}ohjeistus/html-opas.html). Tai siirtyä [käytännön tietokantaohjelmointiin]({{rootdir}}ohjeistus/tietokantaohjelmointi/intro.html).
+Suunniteltuasi kaiken voit toteuttaa käyttöliittymän [HTML:llä]({{rootdir}}ohjeistus/html-opas.html). Tai siirtyä [käytännön tietokantaohjelmointiin]({{rootdir}}ohjeistus/tietokantaohjelmointi/kannan-alustus.html).
 </next>

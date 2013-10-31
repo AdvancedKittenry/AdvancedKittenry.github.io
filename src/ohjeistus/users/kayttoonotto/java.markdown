@@ -49,7 +49,7 @@ Työn kääntäminen tsoha-projektissa tapahtuu menemällä komentorivillä hake
 ja ajamalla ohjelma `ant`. Ant kääntää työn puolestasi ja asentaa luokat oikeisiin paikkoihin.
 Tätä varten tarvitset samassa hakemistossa olevan `build.xml`-tiedoston, jonka voi kopioida tsoha-projektin `src`-hakemistosta.
 
-Toinen ja useimmiten kätevämpi vaihoehto on käyttää [NetBeansiä ja asentaa tomcat omalle koneelleen](../../netbeans.html). 
+Toinen ja useimmiten kätevämpi vaihoehto on käyttää [NetBeansiä ja asentaa tomcat omalle koneelleen](../../netbeans/java.html). 
 Tässä vaihtoehdossa on se hyvä puoli, että alkuosan koodin kirjoittamisen
 voi tehdä kokonaan omalla tietokoneellaan, mutta tietokannan käyttöä varten
 tarvitsee aina [muodostaa etäyhteys](../postgres-ssh-tunneli.html),

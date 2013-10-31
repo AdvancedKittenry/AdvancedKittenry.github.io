@@ -15,4 +15,25 @@ Nyt mikäli käyttäjätunnuksesi on `tunnus` ja pakettisi tiedostonimi on `pake
 sovelluksesi pitäisi olla käytettävissä osoitteessa
 `http://t-tunnus.users.cs.helsinki.fi/paketti`.
 
+## Tietokanta-asetusten säätäminen
+
+Mikäli sinun pitää säätää sovelluksen tietokanta-asetuksia, joudut kikkailemaan hieman lisää.
+Puretun sovelluksen tietokanta löytyvät 
+sen META-INF-hakemistosta `context.xml`-tiedostosta.
+
+Tomcat on kuitenkin sinua juonikkaampi
+ja kopioi tästä tiedostosta oman kopionsa,
+joten tiedoston muokkaaminen ei vaikuta mihinkään.
+Saadaksesi oikeat asetukset säädettyä
+sinun tulee mennä hakemistoon `tomcat/conf/Catalina/localhost`
+ja avata sovelluksesi nimellä varustettu XML-tiedosto,
+esim. `kissalista.xml`. 
+
+Tätä tiedostoa muokkaamalla saat tietokanta-asetukset kuntoon.
+Sinun pitää kuitenkin vielä käynnistää tomcat-uudestaan
+komennoilla `stop-tomcat` ja `start-tomcat`, jotta muutokset
+näkyvät sivuilla.
+
+## Lisätietoja
+
 Aiheesta voi lukea teknisempiä lisätietoja [Tomcatin ohjesivuilta](http://tomcat.apache.org/tomcat-6.0-doc/deployer-howto.html)

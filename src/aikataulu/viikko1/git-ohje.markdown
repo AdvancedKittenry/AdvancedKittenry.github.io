@@ -22,6 +22,12 @@ doc/
   dokumentaatio.odt
 ~~~~
 
+Kopioi työsi myös usersille. PHP:tä NetBeansillä koodaaville tämä on automaattista.
+Javalla helpoin tapa on [kopioida projektin war-tiedosto Tomcatin webapps-hakemistoon]({{rootdir}}ohjeistus/users/java-war-paketit.html).A
+
+Mikäli kopioit töitä käsin, helpointa on pystyttää git-repositoriosi users:ille ja käyttää sitä tiedostojen synkkaamiseen.
+PHP:tä käytettäessä luo repositoriollesi ja työllesi oma alihakemisto `htdocs`:in alle.
+
 Kun olet tehnyt kaikki viikon tehtävät, 
 mene osoitteeseen [http://tsoha-labtool.herokuapp.com/](http://tsoha-labtool.herokuapp.com/)
 ja rekisteröi itsesi kurssille. 

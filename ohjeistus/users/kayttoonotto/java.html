@@ -83,8 +83,10 @@ code > span.er { color: #ff0000; font-weight: bold; }
 </ul></li>
 <li><a href="../../../ohjeistus/tietokantaohjelmointi/index.html">Tietokantaohjelmointi</a>
 <ul>
+<li><a href="../../../ohjeistus/tietokantaohjelmointi/kannan-alustus.html">Tietokantataulujen pystyttäminen</a></li>
+<li><a href="../../../ohjeistus/tietokantaohjelmointi/testisovellus.html">ConnectionTest-testisovellus</a></li>
 <li><a href="../../../ohjeistus/tietokantaohjelmointi/tietokantayhteys.html">Tietokantayhteyden pystytys</a></li>
-<li><a href="../../../ohjeistus/tietokantaohjelmointi/intro.html">Tietokantaohjelmoinnin aloittaminen</a></li>
+<li><a href="../../../ohjeistus/tietokantaohjelmointi/listaustesti.html">Ensimmäinen tietokantalistaus</a></li>
 </ul></li>
 <li><a href="../../../ohjeistus/users/index.html">Users-palvelin ja töiden pystyttäminen</a>
 <ul>
@@ -167,7 +169,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <h2>Sovelluksien pystyttäminen ja koodaus</h2>
 <p>Kun olet saanut testisovelluksen toimimaan, sinulla on kaksi vaihtoehtoa sovelluskehitykseen.</p>
 <p>Voit lähteä rakentamaan sovellusta suoraan users-palvelimelle. Tällöin tsoha-sovelluksen rakenteesta voi ottaa mallia. Ratkaisu on siitä hyvä, että kaikki pyörii silloin samalla koneella, mutta joudut <a href="../nautilus-ssh.html">muokkaamaan tiedostoja etänä</a> ja kääntämään työtäsi käsin. Työn kääntäminen tsoha-projektissa tapahtuu menemällä komentorivillä hakemistoon <code>src</code> ja ajamalla ohjelma <code>ant</code>. Ant kääntää työn puolestasi ja asentaa luokat oikeisiin paikkoihin. Tätä varten tarvitset samassa hakemistossa olevan <code>build.xml</code>-tiedoston, jonka voi kopioida tsoha-projektin <code>src</code>-hakemistosta.</p>
-<p>Toinen ja useimmiten kätevämpi vaihoehto on käyttää <a href="../../netbeans.html">NetBeansiä ja asentaa tomcat omalle koneelleen</a>. Tässä vaihtoehdossa on se hyvä puoli, että alkuosan koodin kirjoittamisen voi tehdä kokonaan omalla tietokoneellaan, mutta tietokannan käyttöä varten tarvitsee aina <a href="../postgres-ssh-tunneli.html">muodostaa etäyhteys</a>, ellet asenna tietokantapalvelinta koneellesi itse. NetBeansin käytössä on myös se hyvä puoli, että sen tarjoama tuki nettipuolen Javalle on erinomainen ja auttaa monien koodausongelmien kanssa.</p>
+<p>Toinen ja useimmiten kätevämpi vaihoehto on käyttää <a href="../../netbeans/java.html">NetBeansiä ja asentaa tomcat omalle koneelleen</a>. Tässä vaihtoehdossa on se hyvä puoli, että alkuosan koodin kirjoittamisen voi tehdä kokonaan omalla tietokoneellaan, mutta tietokannan käyttöä varten tarvitsee aina <a href="../postgres-ssh-tunneli.html">muodostaa etäyhteys</a>, ellet asenna tietokantapalvelinta koneellesi itse. NetBeansin käytössä on myös se hyvä puoli, että sen tarjoama tuki nettipuolen Javalle on erinomainen ja auttaa monien koodausongelmien kanssa.</p>
 <section id="sovelluksien-kansiorakenteesta" class="level3">
 <h3>Sovelluksien kansiorakenteesta</h3>
 <p>Sekä NetBeansin kanssa tehdyt, että usersille pystytettävät sovellukset noudattavat melko samanlaista kansiorakennetta.</p>

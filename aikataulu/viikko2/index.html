@@ -64,8 +64,10 @@
 </ul></li>
 <li><a href="../../ohjeistus/tietokantaohjelmointi/index.html">Tietokantaohjelmointi</a>
 <ul>
+<li><a href="../../ohjeistus/tietokantaohjelmointi/kannan-alustus.html">Tietokantataulujen pystyttäminen</a></li>
+<li><a href="../../ohjeistus/tietokantaohjelmointi/testisovellus.html">ConnectionTest-testisovellus</a></li>
 <li><a href="../../ohjeistus/tietokantaohjelmointi/tietokantayhteys.html">Tietokantayhteyden pystytys</a></li>
-<li><a href="../../ohjeistus/tietokantaohjelmointi/intro.html">Tietokantaohjelmoinnin aloittaminen</a></li>
+<li><a href="../../ohjeistus/tietokantaohjelmointi/listaustesti.html">Ensimmäinen tietokantalistaus</a></li>
 </ul></li>
 <li><a href="../../ohjeistus/users/index.html">Users-palvelin ja töiden pystyttäminen</a>
 <ul>
@@ -135,7 +137,6 @@
 <h1 class="title">Viikko 2</h1>
 </header>
 <!-- order: 1 -->
-<!-- hidden -->
 
 <section class="alert alert-warning small"><h3>
 Deadline:
@@ -144,7 +145,7 @@ Deadline:
 </section>
 
 <p>Toisella viikolla jatketaan työn suunnittelua käytännöllisemmällä puolella suunnittelemalla työlle käyttöliittymä ja tietokanta.</p>
-<p>Tämän jälkeen käyttöliittymästä toteutetaan oikean näköiset, mutta epätoiminnalliset raakaversiot HTML:llä ja pystytetään tietokanta users-palvelimelle ja tehdään pienimuotoinen testiohjelma sen käyttöön.</p>
+<p>Tämän jälkeen käyttöliittymästä toteutetaan oikean näköiset, mutta epätoiminnalliset raakaversiot HTML:llä, pystytetään tietokanta users-palvelimelle ja tehdään pienimuotoinen testiohjelma sen käyttöön.</p>
 <p>Näitä harjoituksia on yleensä paras tulla tekemään pajaan, jolloin ohjaaja voi antaa vinkkejä niiden tekemisessä.</p>
 <p>Viikon tehtävät jakautuvat seuraavasti. Kunkin otsikon alla olevista asioista saa yhden aikataulupisteen.</p>
 <section id="työn-käytännön-yksityiskohtien-suunnittelu-1p" class="level2">
@@ -170,15 +171,17 @@ Deadline:
 <section id="tietokannan-käytön-aloittaminen-1p" class="level2">
 <h2>Tietokannan käytön aloittaminen (1p)</h2>
 <ul>
-<li>Tiedostot sovelluksen tietokannan taulujen luomiseen ja alasajoon .
+<li><a href="../../ohjeistus/tietokantaohjelmointi/kannan-alustus.html">Tietokannan pystyttäminen palvelimelle</a>
 <ul>
-<li><code>sql/create-tables.sql</code></li>
-<li><code>sql/drop-tables.sql</code></li>
-<li><code>sql/add-test-data.sql</code></li>
-<li>Tietokannan pystyttäminen näillä tiedostoilla</li>
-<li>Tietokantatestisovelluksen laittaminen näkyville</li>
+<li>Luodaan SQL-tiedostot, joilla kannan rakenteen saa vedettyä ylös ja alas.</li>
+<li>Käytetään luotuja tiedostoja tietokannan pystyttämiseen</li>
 </ul></li>
-<li>Kevyt testisivu, joka listaa jonkin tietokantataulun sisällön.
+<li>Otetaan käyttöön <a href="../../ohjeistus/tietokantaohjelmointi/testisovellus.html">tietokantatestisovellus</a>
+<ul>
+<li>Sovellus näyttää tietokannan taulut ja niiden sisältöä. Ohjaaja käyttää tätä pysyäkseen paremmin kärryillä tietokannan tilasta.</li>
+<li>Tämän tulee olla näkyvillä usersin palvelintilassa.</li>
+</ul></li>
+<li><a href="../../ohjeistus/tietokantaohjelmointi/listaustesti.html">Kevyt testisivu</a>, joka listaa jonkin tietokantataulun sisällön.
 <ul>
 <li>Käytä tietokannan täyttämiseen <code>add-test-data.sql</code>-tiedostoa, niin sivulla on jotain näytettävää.</li>
 </ul></li>
@@ -191,7 +194,10 @@ Deadline:
 <a href='#tab_1_0' data-toggle='tab'>PHP-projekti</a>
 </li>
 <li>
-<a href='#tab_1_1' data-toggle='tab'>Java-projekti</a>
+<a href='#tab_1_1' data-toggle='tab'>Java: NetBeansillä luotu</a>
+</li>
+<li>
+<a href='#tab_1_2' data-toggle='tab'>Java suoraan users:illa</a>
 </li></ul><div class='panel panel-default'><div class='panel-body'><div class='tab-content'>
 <section class='tab-pane active' id='tab_1_0' >
 
@@ -228,9 +234,12 @@ connectionTest.php
   sivukartta.png
   tietosisältökaavio.dia
 src/
-  Kissalista/
-    Servlets/
-      Listaservlet.java
+  conf/
+  java/
+    Kissalista/
+      Servlets/
+        Listaservlet.java
+    ...
 web/ 
   css/
     bootstrap.css
@@ -243,11 +252,39 @@ web/
     muokkaakissaa.html
   js/
     ...
-  sql/
-    create-tables.sql
-    drop-tables.sql
-    add-test-data.sql
-    ...
+sql/
+  create-tables.sql
+  drop-tables.sql
+  add-test-data.sql
+.gitignore</code></pre>
+</section>
+<section class='tab-pane' id='tab_1_2' >
+
+<pre><code>doc/
+  dokumentaatio.pdf
+  relaatiotietokantakaavio.dia
+  sivukartta.png
+  tietosisältökaavio.dia
+css/
+  bootstrap.css
+  ...
+fonts/
+  ...
+html-demo/
+  index.html
+  kissalista.html
+  muokkaakissaa.html
+js/
+  ...
+sql/
+  create-tables.sql
+  drop-tables.sql
+  add-test-data.sql
+src/
+  Kissalista/
+    Servlets/
+      Listaservlet.java
+  ...
 .gitignore</code></pre>
 </section>
 </div></div></div>

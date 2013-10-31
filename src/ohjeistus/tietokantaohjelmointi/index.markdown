@@ -3,5 +3,5 @@
 <wip />
 
 Tällä sivulla ei ole vielä kunnollista sisältöä.
-Ole hyvä ja siirry sivulle 
-[Tietokantaohjelmoinnin aloittaminen](intro.html).
+Tietokannan käyttö kannattaa kuitenkin aloittaa kohdasta
+[Tietokantataulujen pystyttäminen](kannan-alustus.html).

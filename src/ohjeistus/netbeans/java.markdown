@@ -1,5 +1,7 @@
 % NetBeansin käyttö Javan kanssa
 
+Näissä ohjeissa oletetaan, että olet jo [asentanut NetBeansiin kielesi web-tuen](index.html#web-tuen-asentaminen).
+
 Luo NetBeansiin uusi projekti Kategoriasta Java Web.
 Valitse Web Application.
 

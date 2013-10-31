@@ -1,5 +1,5 @@
 % Tietokantayhteyden pystytys
-<!-- order: 1 -->
+<!-- order: 3 -->
 
 <summary>
 * Varmista että aikaisemmin kirjoittamasi SQL-lauseet toimivat siten tietokantataulusi ovat nyt pystyssä kannassa.
@@ -50,7 +50,7 @@ tietokantayhteyttä kuvaava resurssi.
 
 **web/META-INF/context.xml**
 
-~~~xml<include src="../viikko1/esimerkit/context.xml" />~~~
+~~~xml<include src="../../aikataulu/viikko1/esimerkit/context.xml" />~~~
 
 Kun resurssi on määritelty, voidaan Javan kirjastoilla hakea
 se:

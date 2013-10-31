@@ -4,15 +4,16 @@ Lähes kaikki tietokantasovellukset tullaan pystyttämään laitoksen
 users-palvelimelle, jolla on mahdollista pyörittää Javalla ja PHP:llä toteutettuja tietokantasovelluksia
 käyttäen PostgreSQL- ja MySQL-tietokantapalvelimia.
 
+Palvelinten ja tietokantojen käyttöönottoon on omat ohjeensa [täällä](kayttoonotto/index.html).
+
 Tällä kurssilla käytämme users-palvelinta ennenkaikkea 
 töiden saamiseen julkisen internetin puolelle ajettavaksi.
-Javaa käyttävät pystyvät melko helposti ajamaan [NetBeansin ja Tomcatin avulla](../netbeans.html)
+Javaa käyttävät pystyvät melko helposti ajamaan [NetBeansin ja Tomcatin avulla](../netbeans/java.html)
 töitänsä myös omalla koneellaan, mutta 
 PHP:tä käytettäessä on käytännössä helpompi konfiguroida 
 esim. NetBeans lähettämään tai tallentamaan tiedostot suoraan users-palvelimelle.
-Tästä on [NetBeansille ohje](../netbeans.html) tai vaihtoehtoisesti voi käyttää
+Tästä on [NetBeansille ohje](../netbeans/php.html) tai vaihtoehtoisesti voi käyttää
 myös vaikkapa [Nautilusta ja Gedit:iä tiedostojen etämuokkaamiseen](../nautilus-ssh.html)
-
 
 ## Yhteyden ottaminen users-palvelimeen
 
@@ -44,9 +45,9 @@ kirjoittamalla Saved sessions-tekstin alla olevaan kenttään yhteydelle nimi
 ja painamalla Save-nappia. Yhteys tallentuu kentän alla olevaan listaan,
 josta sen voi helposti avata kaksoisklikkaamalla sitä.
 
-![users-palvelimen yhteyden luominen]({{imgdir}}aikataulu/viikko2/putty-users.png)
+![users-palvelimen yhteyden luominen]({{myimgdir}}putty-users.png)
 
-# Jatkolukemista
+## Linkkejä
 
 * [Palvelinten ja tietokantojen käyttöönotto](kayttoonotto/index.html)
 * [Omalla koneella tehdyn Java-työn vieminen users-palvelimelle](java-war-paketit.html)

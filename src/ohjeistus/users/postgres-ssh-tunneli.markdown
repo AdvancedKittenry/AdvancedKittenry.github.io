@@ -29,6 +29,6 @@ on pystyssä.
 
 Windowsilla käytetään putty-ohjelmaa, jolle annetaan seuraavan näköiset asetukset:
 
-![users-palvelimen yhteyden luominen]({{imgdir}}aikataulu/viikko2/putty-users.png)
+![users-palvelimen yhteyden luominen]({{myimgdir}}putty-users.png)
 
 ![SSH-tunnelien määritteleminen putty-ohjelmalla]({{myimgdir}}users-tunneli.png)

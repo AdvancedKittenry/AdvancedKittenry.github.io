@@ -12,7 +12,7 @@ Ensimmäisellä viikolla tulee olla tehtynä seuraavat asiat:
     * Laitoksen [users-palvelimen]({{rootdir}}ohjeistus/users/index.html) nettisivutilan pystytys
     * Laita users-palvelimelle näkyviin jokin yksinkertainen testisivu 
     * Työympäristön pystytys 
-    * NetBeans-projektin pystytys mikäli haluat käyttää sitä: [NetBeans-ohje]({{rootdir}}ohjeistus/netbeans.html)
+    * NetBeans-projektin pystytys mikäli haluat käyttää sitä: [NetBeans-ohje]({{rootdir}}ohjeistus/netbeans/java.html)
 * Työn dokumentoinnin aloittaminen
     * [Aihevalinnan, käytettyjen tekniikoiden dokumentointi]({{rootdir}}dokumentaatio-ohje.html#johdanto)
     * [Järjestelmän yleiskuva]({{rootdir}}dokumentaatio-ohje.html#yleiskuva-j%C3%A4rjestelm%C3%A4st%C3%A4)

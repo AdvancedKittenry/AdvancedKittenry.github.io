@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <title>Tietokantaohjelmoinnin aloittaminen</title>
+  <title>Tietokantataulujen pystyttäminen</title>
   <style type="text/css">code{white-space: pre;}</style>
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -64,8 +64,10 @@
 </ul></li>
 <li><a href="../../ohjeistus/tietokantaohjelmointi/index.html">Tietokantaohjelmointi</a>
 <ul>
+<li class="selected"><a href="../../ohjeistus/tietokantaohjelmointi/kannan-alustus.html">Tietokantataulujen pystyttäminen</a></li>
+<li><a href="../../ohjeistus/tietokantaohjelmointi/testisovellus.html">ConnectionTest-testisovellus</a></li>
 <li><a href="../../ohjeistus/tietokantaohjelmointi/tietokantayhteys.html">Tietokantayhteyden pystytys</a></li>
-<li class="selected"><a href="../../ohjeistus/tietokantaohjelmointi/intro.html">Tietokantaohjelmoinnin aloittaminen</a></li>
+<li><a href="../../ohjeistus/tietokantaohjelmointi/listaustesti.html">Ensimmäinen tietokantalistaus</a></li>
 </ul></li>
 <li><a href="../../ohjeistus/users/index.html">Users-palvelin ja töiden pystyttäminen</a>
 <ul>
@@ -132,31 +134,48 @@
 </div>
 <div class="col-md-6" id="content">
 <header>
-<h1 class="title">Tietokantaohjelmoinnin aloittaminen</h1>
+<h1 class="title">Tietokantataulujen pystyttäminen</h1>
 </header>
-<div class="wip panel">
-  <div class="panel-body">
-    <h3>
-Work in progress
+<!-- order: 1 -->
+
+<section class="alert alert-info"><h3>
+Lisätietoa
 </h3>
-    
-Tämän sivun sisältö on vielä työn alla ja saattaa muuttua kurssin edetessä.
-</div>
-</div>
+<p>Näissä ohjeissa oletetaan kannan pystyttäminen users-palvelimelle, jossa on jo <a href="../../ohjeistus/users/kayttoonotto/index.html">otettu tietokantapalvelin käyttöön</a>.</p>
+</section>
 
-
-
+<p>Ennen kuin voimme aloittaa kannan käyttämisen, pitää sinne pystyttää tarvittavat tietokantataulut ja testidataa. Tämän jälkeen voimme testata saammeko kantaan yhteyden <a href="testisovellus.html">testisovelluksella</a>.</p>
 <section id="tietokannan-alustustiedostojen-luominen" class="level2">
 <h2>Tietokannan alustustiedostojen luominen</h2>
 <p>Muistele Tietokantojen perusteet -kurssilla oppimaasi SQL-kieltä ja tutustu valitsemasi tietokannan dokumentaatioon. Luo sitten repositorioosi sql-kansio ja sijoita siihen kolme sql-tiedostoa: <code>create-tables.sql</code>, <code>drop-tables.sql</code> ja <code>add-test-data.sql</code>. Kirjoita näihin tiedostoihin tietokantasi alustavat create table -lauseet, drop table -lauseet, ja testidatan (oletuskäyttäjätunnusten yms.) luominen.</p>
-<p>SQL-lauseiden sijoittaminen tiedostoihin mahdollistaa kannan helpon pystyttämisen ja alasajon. Voit ajaa sql-tiedostoon kantaan kirjautumalla usersille ja käyttämällä unixin <em>putkitusta</em>. Esimeriksi PostgreSQL:llä tämä tapahtuu seuraavasti:</p>
+<section class="alert alert-success"><h3>
+Ohje:
+</h3>
+<p>Joudut todennäköisesti testaamaan tiedostojasi moneen otteeseen ennen kuin ne toimivat moitteettomasti.</p>
+<p>Jos SQL-taitosi ovat pahasti ruosteessa, on usein helpointa tulla pajaan kysymään SQL-vinkkejä.</p>
+</section>
+
+<p>SQL-lauseiden sijoittaminen tiedostoihin mahdollistaa kannan helpon pystyttämisen ja alasajon. Voit ajaa sql-tiedostoon kantaan kirjautumalla usersille ja käyttämällä unixin <em>putkitusta</em>.</p>
+<p>Jos olet laittanut SQL-tiedostosi kansioon sql, ja käytät PostgreSQL:ää saat tietokantataulut luotua näin:</p>
 <pre><code>psql &lt; sql/create-tables.sql</code></pre>
 <p>Yllä oleva komento suorittaa tiedoston sisältämät SQL-lauseet tietokannassa. MySQL-versio on samantapainen, mutta komentona on psql:n sijasta mysql, minkä lisäksi mysql kysyy sinulta salasanaa.</p>
 <p>Mikäli haluaa resetoida koko tietokantansa voi ajaa seuraavat kolme komentoa peräkkäin:</p>
 <pre><code>psql &lt; sql/drop-tables.sql
 psql &lt; sql/create-tables.sql
 psql &lt; sql/add-test-data.sql</code></pre>
-<p>Tiedostossa <code>drop-tables.sql</code> kannattaa käyttää pudotuskäskystä muotoa <code>DROP TABLE IF EXISTS taulun_nimi</code>. Näin tietokantataulun puuttuminen ei katkaise komentosarjaa. Viiteavaimien takia joudut myös yleensä kirjoittamaan pudotuskäskyt päinvastaisessa järjestyksessä luontilauseisiin nähden. Muuten viite-eheystarkistukset eivät välttämättä anna ajaa kantaa alas.</p>
+<p>Tiedostossa <code>drop-tables.sql</code> kannattaa käyttää pudotuskäskystä muotoa <code>DROP TABLE IF EXISTS taulun_nimi</code>. Näin tietokantataulun puuttuminen ei katkaise komentosarjaa.</p>
+<section class="alert alert-danger"><h3>
+Pidä mielessä!
+</h3>
+<p>Viiteavaimien takia joudut yleensä kirjoittamaan pudotuskäskyt päinvastaisessa järjestyksessä luontilauseisiin nähden. Muuten viite-eheystarkistukset eivät välttämättä anna ajaa tietokantatauluja alas.</p>
+</section>
+
+<section class="alert alert-success small"><h3>
+Seuraavaksi:
+</h3>
+<p>Saatuasi tietokannan pyörimään voit asentaa sen testaamiseksi <a href="testisovellus.html">ConnectionTest-testisovelluksen</a> ja aloittaa <a href="tietokantayhteys.html">oman tietokantakoodisi tekemisen</a>.</p>
+</section>
+
 </section>
 <section id="linkkejä" class="level2">
 <h2>Linkkejä</h2>
