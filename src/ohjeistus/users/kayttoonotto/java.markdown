@@ -49,10 +49,6 @@ Työn kääntäminen tsoha-projektissa tapahtuu menemällä komentorivillä hake
 ja ajamalla ohjelma `ant`. Ant kääntää työn puolestasi ja asentaa luokat oikeisiin paikkoihin.
 Tätä varten tarvitset samassa hakemistossa olevan `build.xml`-tiedoston, jonka voi kopioida tsoha-projektin `src`-hakemistosta.
 
-<comment>
-Löpinää `WEB-INF`-kansiosta, xml-tiedostoista, src-kansiosta.
-</comment>
-
 Toinen ja useimmiten kätevämpi vaihoehto on käyttää [NetBeansiä ja asentaa tomcat omalle koneelleen](../../netbeans.html). 
 Tässä vaihtoehdossa on se hyvä puoli, että alkuosan koodin kirjoittamisen
 voi tehdä kokonaan omalla tietokoneellaan, mutta tietokannan käyttöä varten
@@ -60,6 +56,32 @@ tarvitsee aina [muodostaa etäyhteys](../postgres-ssh-tunneli.html),
 ellet asenna tietokantapalvelinta koneellesi itse.
 NetBeansin käytössä on myös se hyvä puoli, että sen tarjoama
 tuki nettipuolen Javalle on erinomainen ja auttaa monien koodausongelmien kanssa.
+
+### Sovelluksien kansiorakenteesta
+
+Sekä NetBeansin kanssa tehdyt, että usersille pystytettävät sovellukset noudattavat
+melko samanlaista kansiorakennetta. 
+
+Suurin ero on siinä, että NetBeans jäsentää kaiken kahteen kansioon: `src` ja `web`.
+Ensimmäiseen on sijoitettu kaikki kääntämätön java-koodi, jälkimmäisen
+sisältö taas näkyy internettiin ja sisältää kaikki JSP-, HTML- ja muut internet-sivujen kannalta olennaiset tiedostot. 
+
+Usersin Tomcatille pystytetyssä projektissa projektin juurikansio on tämä nettiin
+näkyvä kansio, ja `src` on sen alla.
+
+Kummassakin tapauksessa netin puolelle näkyvässä hakemistossa on alihakemisto `WEB-INF`.
+Tämän kansion sisällä olevat tiedostot eivät koskaan näy ulospäin.
+Siispä sinne on turvallista sijoittaa kaikkea sellaista, minkä ei halua
+olevan käytettävissä sellaisenaan.
+
+Eräs tälläinen tiedosto on `ẁeb.xml`, joka konfiguroi sovelluksen asetuksia.
+Tiedostossa voidaan esimerkiksi määritellä alustusparametreja ja nimetä servlettejä uudelleen. Tiedostossa on määriteltävä polku servlettien hakuun. 
+Esimerkkinä [testisovellusten web.xml](http://www.cs.helsinki.fi/u/laine/tikas/material/web.xml).
+Jokaiselle servletille voi määritellä erikseen url:n rakenteen. Tässä web.xml:ssä kaikkien url:iin tulee lisäosa /servlet/ (tiedoston servlet-mapping osa)
+
+Toinen olennainen hakemisto, jonka ainakin NetBeans tekee on nimeltään `META-INF`.
+Sen sisältönä on näissä prjekteissa lähinnä `context.xml`, 
+johon on mahdollista [konfiguroida sovelluksen käyttämä tietokanta]({{rootdir}}ohjeistus/tietokantaohjelmointi/tietokantayhteys.html).
 
 ### Muualla testatun sovelluksen asentaminen
 
@@ -69,9 +91,22 @@ Tämä on onneksi melko yksinkertainen toimenpide ja siihen on [oma ohjeensa](..
 
 ## Testitiedoston tekeminen
 
-index.jsp
+Luo sovelluksesi internettiin näkyvään kansioon 
+(eli juurikansioon tai NetBeansillä `ẁeb`-kansioon)
+tiedosto index.jsp. Sen sisällöksi riittää seuraavantapainen koodi:
 
-Sivun pitäisi näyttää tervehdys osoitteessa: \
+~~~jsp
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE HTML>
+<html>
+<head><title>Terve maailma</title></head>
+<body>
+  <h1>Terve maailma</h1>
+</body>
+</html>
+~~~
+
+Sivun pitäisi nyt näyttää tervehdys osoitteessa: \
 [http://t-kayttajatunnuksesi.users.cs.helsinki.fi/sovelluksen_nimi/index.jsp](http://t-kayttajatunnuksesi.users.cs.helsinki.fi/sovelluksen_nimi/index.jsp)
 
 Liitä Tomcatin asennuksen jälkeen dokumentaatiosi [Käynnistys- / käyttöohje -kappaleeseen]({{rootdir}}dokumentaatio-ohje.html#käynnistys--käyttöohje) 

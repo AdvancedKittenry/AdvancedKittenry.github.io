@@ -245,10 +245,6 @@ Näin repositorion kloonannut pystyy kopioimaan tiedoston paikalleen ja
 laittamaan siihen tarvittavan salasanan käsin.
 
 <alert>
-Mikäli teet `.dist`-päätteisiä tiedostoja, laita dokumentaation asennusohjeisiin maininta niiden sijainnista
+Kun käytät `.dist`-päätteisiä tiedostoja, laita dokumentaation asennusohjeisiin maininta niiden sijainnista
 ja siitä mitä niihin pitää sijoittaa ohjelman käyttämiseksi.
 </alert>
-
-<next>
-Seuravaaksi laitamme malliluokan [käyttämään tietokantaa](mallit.html).
-</next>

@@ -83,6 +83,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 </ul></li>
 <li><a href="../../ohjeistus/tietokantaohjelmointi/index.html">Tietokantaohjelmointi</a>
 <ul>
+<li class="selected"><a href="../../ohjeistus/tietokantaohjelmointi/tietokantayhteys.html">Tietokantayhteyden pystytys</a></li>
 <li><a href="../../ohjeistus/tietokantaohjelmointi/intro.html">Tietokantaohjelmoinnin aloittaminen</a></li>
 </ul></li>
 <li><a href="../../ohjeistus/users/index.html">Users-palvelin ja töiden pystyttäminen</a>
@@ -191,16 +192,7 @@ Pidä mielessä!
 <p>Javalla suosittu tapa tietokantayhteyksien avaamiseen on käyttää DataSource-tyyppistä tietokantayhteysvarastoa, joka huolehtii koko sovelluksen yhteyksien ylläpidosta ja kierrättämisestä eri aineistopyyntöjen välillä.</p>
 <p>Ensiksi pitää kuitenkin määritellä Java-koodin rinnalle context.xml-tiedostoon tietokantayhteyttä kuvaava resurssi.</p>
 <p><strong>web/META-INF/context.xml</strong></p>
-<pre class="sourceCode xml"><code class="sourceCode xml"><span class="kw">&lt;?xml</span> version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;<span class="kw">?&gt;</span>
-<span class="kw">&lt;Context</span><span class="ot"> antiJARLocking=</span><span class="st">&quot;true&quot;</span><span class="ot"> path=</span><span class="st">&quot;/Kissalista-java&quot;</span><span class="kw">&gt;</span>
-    <span class="kw">&lt;Resource</span><span class="ot"> name=</span><span class="st">&quot;jdbc/tietokanta&quot;</span><span class="ot"> auth=</span><span class="st">&quot;Container&quot;</span>
-<span class="ot">        type=</span><span class="st">&quot;javax.sql.DataSource&quot;</span><span class="ot"> removeAbandoned=</span><span class="st">&quot;true&quot;</span>
-<span class="ot">        removeAbandonedTimeout=</span><span class="st">&quot;30&quot;</span><span class="ot"> maxActive=</span><span class="st">&quot;100&quot;</span>
-<span class="ot">        maxIdle=</span><span class="st">&quot;30&quot;</span><span class="ot"> maxWait=</span><span class="st">&quot;10000&quot;</span><span class="ot"> username=</span><span class="st">&quot;tunnus&quot;</span>
-<span class="ot">        password=</span><span class="st">&quot;salasana&quot;</span>
-<span class="ot">        driverClassName=</span><span class="st">&quot;org.postgresql.Driver&quot;</span>
-<span class="ot">        url=</span><span class="st">&quot;jdbc:postgresql://localhost/tietokannan_nimi&quot;</span> <span class="kw">/&gt;</span>
-<span class="kw">&lt;/Context&gt;</span></code></pre>
+<pre class="sourceCode xml"><code class="sourceCode xml"></code></pre>
 <p>Kun resurssi on määritelty, voidaan Javan kirjastoilla hakea se:</p>
 <p><strong>Yhteysvaraston pystytyskoodi</strong></p>
 <pre class="sourceCode java"><code class="sourceCode java"><span class="co">//Haetaan context-xml-tiedostosta tietokannan yhteystiedot</span>
@@ -304,7 +296,7 @@ tulokset.<span class="fu">close</span>(); kysely.<span class="fu">close</span>()
 <h2>Java ja tietokanta-ajurin lisääminen</h2>
 <p>Java-koodarit huomio! Joudut todennäköisimmin tässä vaiheessa lisäämään projektiisi PostgreSQL-kannan ajurikirjaston. NetBeansia käyttäessäsi tämä hoituu samasta kohtaa, kuin JSTL-kirjaston lisääminen: avaa valikosta <code>File-&gt;Project Properties</code>, paina <em>Libraries</em>-kategoriassa nappia <em>Add Library</em> ja lisää listasta projektiin kirjasto nimeltä <code>PostgreSQL JDBC Driver</code>.</p>
 <figure>
-<img src="../../images/aikataulu/viikko4/postgres-ajuri.png" alt="PostgreSQL-ajurin asennus" /><figcaption>PostgreSQL-ajurin asennus</figcaption>
+<img src="../../images/ohjeistus/tietokantaohjelmointi/postgres-ajuri.png" alt="PostgreSQL-ajurin asennus" /><figcaption>PostgreSQL-ajurin asennus</figcaption>
 </figure>
 <p>Samanlaiset huomiot koskevat MySQL-tietokantaa.</p>
 </section>
@@ -317,13 +309,7 @@ tulokset.<span class="fu">close</span>(); kysely.<span class="fu">close</span>()
 <section class="alert alert-danger"><h3>
 Pidä mielessä!
 </h3>
-<p>Mikäli teet <code>.dist</code>-päätteisiä tiedostoja, laita dokumentaation asennusohjeisiin maininta niiden sijainnista ja siitä mitä niihin pitää sijoittaa ohjelman käyttämiseksi.</p>
-</section>
-
-<section class="alert alert-success small"><h3>
-Seuraavaksi:
-</h3>
-<p>Seuravaaksi laitamme malliluokan <a href="mallit.html">käyttämään tietokantaa</a>.</p>
+<p>Kun käytät <code>.dist</code>-päätteisiä tiedostoja, laita dokumentaation asennusohjeisiin maininta niiden sijainnista ja siitä mitä niihin pitää sijoittaa ohjelman käyttämiseksi.</p>
 </section>
 
 

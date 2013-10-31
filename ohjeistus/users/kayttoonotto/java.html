@@ -8,6 +8,25 @@
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
   <link rel="stylesheet" href="../../../css/base.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!--[if lt IE 9]>
@@ -64,6 +83,7 @@
 </ul></li>
 <li><a href="../../../ohjeistus/tietokantaohjelmointi/index.html">Tietokantaohjelmointi</a>
 <ul>
+<li><a href="../../../ohjeistus/tietokantaohjelmointi/tietokantayhteys.html">Tietokantayhteyden pystytys</a></li>
 <li><a href="../../../ohjeistus/tietokantaohjelmointi/intro.html">Tietokantaohjelmoinnin aloittaminen</a></li>
 </ul></li>
 <li><a href="../../../ohjeistus/users/index.html">Users-palvelin ja töiden pystyttäminen</a>
@@ -148,6 +168,15 @@
 <p>Kun olet saanut testisovelluksen toimimaan, sinulla on kaksi vaihtoehtoa sovelluskehitykseen.</p>
 <p>Voit lähteä rakentamaan sovellusta suoraan users-palvelimelle. Tällöin tsoha-sovelluksen rakenteesta voi ottaa mallia. Ratkaisu on siitä hyvä, että kaikki pyörii silloin samalla koneella, mutta joudut <a href="../nautilus-ssh.html">muokkaamaan tiedostoja etänä</a> ja kääntämään työtäsi käsin. Työn kääntäminen tsoha-projektissa tapahtuu menemällä komentorivillä hakemistoon <code>src</code> ja ajamalla ohjelma <code>ant</code>. Ant kääntää työn puolestasi ja asentaa luokat oikeisiin paikkoihin. Tätä varten tarvitset samassa hakemistossa olevan <code>build.xml</code>-tiedoston, jonka voi kopioida tsoha-projektin <code>src</code>-hakemistosta.</p>
 <p>Toinen ja useimmiten kätevämpi vaihoehto on käyttää <a href="../../netbeans.html">NetBeansiä ja asentaa tomcat omalle koneelleen</a>. Tässä vaihtoehdossa on se hyvä puoli, että alkuosan koodin kirjoittamisen voi tehdä kokonaan omalla tietokoneellaan, mutta tietokannan käyttöä varten tarvitsee aina <a href="../postgres-ssh-tunneli.html">muodostaa etäyhteys</a>, ellet asenna tietokantapalvelinta koneellesi itse. NetBeansin käytössä on myös se hyvä puoli, että sen tarjoama tuki nettipuolen Javalle on erinomainen ja auttaa monien koodausongelmien kanssa.</p>
+<section id="sovelluksien-kansiorakenteesta" class="level3">
+<h3>Sovelluksien kansiorakenteesta</h3>
+<p>Sekä NetBeansin kanssa tehdyt, että usersille pystytettävät sovellukset noudattavat melko samanlaista kansiorakennetta.</p>
+<p>Suurin ero on siinä, että NetBeans jäsentää kaiken kahteen kansioon: <code>src</code> ja <code>web</code>. Ensimmäiseen on sijoitettu kaikki kääntämätön java-koodi, jälkimmäisen sisältö taas näkyy internettiin ja sisältää kaikki JSP-, HTML- ja muut internet-sivujen kannalta olennaiset tiedostot.</p>
+<p>Usersin Tomcatille pystytetyssä projektissa projektin juurikansio on tämä nettiin näkyvä kansio, ja <code>src</code> on sen alla.</p>
+<p>Kummassakin tapauksessa netin puolelle näkyvässä hakemistossa on alihakemisto <code>WEB-INF</code>. Tämän kansion sisällä olevat tiedostot eivät koskaan näy ulospäin. Siispä sinne on turvallista sijoittaa kaikkea sellaista, minkä ei halua olevan käytettävissä sellaisenaan.</p>
+<p>Eräs tälläinen tiedosto on <code>ẁeb.xml</code>, joka konfiguroi sovelluksen asetuksia. Tiedostossa voidaan esimerkiksi määritellä alustusparametreja ja nimetä servlettejä uudelleen. Tiedostossa on määriteltävä polku servlettien hakuun. Esimerkkinä <a href="http://www.cs.helsinki.fi/u/laine/tikas/material/web.xml">testisovellusten web.xml</a>. Jokaiselle servletille voi määritellä erikseen url:n rakenteen. Tässä web.xml:ssä kaikkien url:iin tulee lisäosa /servlet/ (tiedoston servlet-mapping osa)</p>
+<p>Toinen olennainen hakemisto, jonka ainakin NetBeans tekee on nimeltään <code>META-INF</code>. Sen sisältönä on näissä prjekteissa lähinnä <code>context.xml</code>, johon on mahdollista <a href="../../../ohjeistus/tietokantaohjelmointi/tietokantayhteys.html">konfiguroida sovelluksen käyttämä tietokanta</a>.</p>
+</section>
 <section id="muualla-testatun-sovelluksen-asentaminen" class="level3">
 <h3>Muualla testatun sovelluksen asentaminen</h3>
 <p>Mikäli käytät NetBeansiä lokaaliin koodailuun, joudut aika-ajoin kuitenkin pystyttämään työsi users-palvelimelle testattavaksi. Tämä on onneksi melko yksinkertainen toimenpide ja siihen on <a href="../java-war-paketit.html">oma ohjeensa</a>.</p>
@@ -155,8 +184,16 @@
 </section>
 <section id="testitiedoston-tekeminen" class="level2">
 <h2>Testitiedoston tekeminen</h2>
-<p>index.jsp</p>
-<p>Sivun pitäisi näyttää tervehdys osoitteessa:<br /><a href="http://t-kayttajatunnuksesi.users.cs.helsinki.fi/sovelluksen_nimi/index.jsp">http://t-kayttajatunnuksesi.users.cs.helsinki.fi/sovelluksen_nimi/index.jsp</a></p>
+<p>Luo sovelluksesi internettiin näkyvään kansioon (eli juurikansioon tai NetBeansillä <code>ẁeb</code>-kansioon) tiedosto index.jsp. Sen sisällöksi riittää seuraavantapainen koodi:</p>
+<pre class="sourceCode jsp"><code class="sourceCode jsp">&lt;%@page<span class="ot"> contentType</span>=<span class="st">&quot;text/html&quot;</span><span class="ot"> pageEncoding</span>=<span class="st">&quot;UTF-8&quot;</span>%&gt;
+&lt;<span class="ot">!DOCTYPE HTML</span>&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;Terve maailma&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Terve maailma&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p>Sivun pitäisi nyt näyttää tervehdys osoitteessa:<br /><a href="http://t-kayttajatunnuksesi.users.cs.helsinki.fi/sovelluksen_nimi/index.jsp">http://t-kayttajatunnuksesi.users.cs.helsinki.fi/sovelluksen_nimi/index.jsp</a></p>
 <p>Liitä Tomcatin asennuksen jälkeen dokumentaatiosi <a href="../../../dokumentaatio-ohje.html#käynnistys--käyttöohje">Käynnistys- / käyttöohje -kappaleeseen</a> sovelluksesi nettiosoite usersilla (tai muulla palvelimella, mikäli haluat käyttää sellaista). Kappaleeseen ei tässä vaiheessa (viikolla 2) tarvitse kirjoittaa muuta sisältöä.</p>
 </section>
 <section id="linkkejä" class="level2">

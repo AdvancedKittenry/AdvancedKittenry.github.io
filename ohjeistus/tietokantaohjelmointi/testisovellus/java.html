@@ -3,30 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <title>Istunnot ja kirjautumisen tallentaminen</title>
+  <title></title>
   <style type="text/css">code{white-space: pre;}</style>
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
-  <style type="text/css">
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; }
-code > span.dt { color: #902000; }
-code > span.dv { color: #40a070; }
-code > span.bn { color: #40a070; }
-code > span.fl { color: #40a070; }
-code > span.ch { color: #4070a0; }
-code > span.st { color: #4070a0; }
-code > span.co { color: #60a0b0; font-style: italic; }
-code > span.ot { color: #007020; }
-code > span.al { color: #ff0000; font-weight: bold; }
-code > span.fu { color: #06287e; }
-code > span.er { color: #ff0000; font-weight: bold; }
-  </style>
   <link rel="stylesheet" href="../../../css/base.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!--[if lt IE 9]>
@@ -150,74 +131,15 @@ code > span.er { color: #ff0000; font-weight: bold; }
 </nav>
 </div>
 <div class="col-md-6" id="content">
-<header>
-<h1 class="title">Istunnot ja kirjautumisen tallentaminen</h1>
-</header>
-<!-- order: 3 -->
-
-<p>Edellä toteutetussa kirjautumisessa on se huono puoli, ettei se tallennu mihinkään, sillä <a href="../../../web-sovelluksista.html#tilatiedon-hallinta-ja-samanaikaiset-aineistopyynn%C3%B6t">HTTP-protokolla on tilaton</a>, eikä aineistopyyntöjen välillä talleteta informaatiota.</p>
-<p>Apuun ongelmaan tulee PHP:n istuntotuki. Istunnot ovat ikäänkuin pieniä, käyttäjä- ja selainkohtaisia tietokantoja, joihin voi tallettaa olioita siten, että ne säilyvät sivulataukselta toiselle.</p>
-<p>Kirjautumisen tapauksessa haluamme tallentaa tiedon siitä kuka on kirjautunut sisään. Tieto tallennetaan istuntoon siinä vaiheessa, kun käyttäjä kirjautuu sisään ja sitä käytetään aina kun halutaan tarkastella onko käyttäjä kirjautunut sivulle.</p>
-<p>PHP:ssä istunto alustetaan käyttämällä siihen erikseen tarkoitettua funktiota <a href="http://www.php.net/manual/en/function.session-start.php">session_start</a>. Metodi hakee PHP:n istuntotiedostosta käyttäjän istunnon tai mikäli sellaista ei vielä ole olemassa, luo sen. Samalla se alustaa erityisen superglobaalin <code>$_SESSION</code>-muuttujan assosiaatiotaulukoksi, johon voi tämän jälkeen tallentaa tietoa ja tarkastella siellä olevia tietoja siten että ne automaattisesti tallettuvat istuntotiedostoon ja näkyvät seuraavillakin sivulatauksilla.</p>
-<p>Esimerkkejä:</p>
-<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>
-  <span class="fu">session_start</span><span class="ot">();</span>
-  <span class="kw">$_SESSION</span><span class="ot">[</span><span class="st">&#39;kirjautunut&#39;</span><span class="ot">]</span> = <span class="kw">new</span> Kayttaja<span class="ot">(</span><span class="st">&quot;Kalle&quot;</span><span class="ot">);</span>
-
-  <span class="co">/* Ohessa kätevä tapa välittää virheviestejä silloin kun käytetään HTTP-redirectiä */</span> 
-  <span class="kw">$_SESSION</span><span class="ot">[</span><span class="st">&#39;virheviesti&#39;</span><span class="ot">]</span> = <span class="st">&#39;Virhe! Kissoja on liikaa!&#39;</span><span class="ot">;</span>
-
-  <span class="co">/* Istuntoon talletetut viestit voi hakea näkymäkoodissa jollain toisella sivulla myöhemmin näin: */</span>
-  <span class="kw">$virheViesti</span> = <span class="kw">null</span><span class="ot">;</span>
-
-  <span class="kw">if</span> <span class="ot">(</span>!<span class="fu">empty</span><span class="ot">(</span><span class="kw">$_SESSION</span><span class="ot">[</span><span class="st">&#39;virheViesti&#39;</span><span class="ot">])</span> {
-    <span class="kw">$virheViesti</span> = <span class="kw">$_SESSION</span><span class="ot">[</span><span class="st">&#39;virheViesti&#39;</span><span class="ot">];</span>
-    
-    <span class="co">// Samalla kun viesti näytetään, se poistetaan istunnosta, ettei se näkyisi myöhemmin</span>
-    <span class="fu">unset</span><span class="ot">(</span><span class="kw">$_SESSION</span><span class="ot">[</span><span class="st">&#39;virheViesti&#39;</span><span class="ot">]);</span>
-  }</code></pre>
-<p>Käytä istuntoa kirjautumiskontrollerissasi siten, että talletat jokaisen onnistuneen kirjautumisen yhteydessä kirjautuneen käyttäjän tiedot istuntoon.</p>
-<section class="alert alert-danger"><h3>
-Pidä mielessä!
-</h3>
-<p>Sivuja tehdessä <code>session_start</code>-funktion kutsuminen on yllättävän helppoa unohtaa. Tällöin <code>$_SESSION</code>-muuttuja ei toimi erityisenä istuntomuuttujana, vaan on aivan normaali muuttuja.</p>
-<p>Helpoin tapa estää tämä moka on kutsua <code>session_start</code>-funktiota samassa tiedostossa, johon olet määritellyt yleiskäyttöisiä funktioitasi. Mieluiten niin, että tiedoston ensimmäinen rivi php-tägien jälkeen on <code>session_start();</code>, jotta kaikki varmasti toimii.</p>
-</section>
-
-<section class="alert alert-danger"><h3>
-Pidä mielessä!
-</h3>
-
-<p>Myöskään istunnot eivät toimi kunnolla, mikäli PHP on ehtinyt lähettää selaimelle jotain sisältöä. Kannattaa siis varoa ylimääräisiä välilyöntejä ennen &lt;?php-tägiä tämänkin takia.</p>
-</section>
-
-<section id="kirjautumisen-tarkistaminen" class="level2">
-<h2>Kirjautumisen tarkistaminen</h2>
-<p>Lisää yleiskäyttöiseen kirjastotiedostoosi funktio, joka palauttaa arvon <code>true</code>, mikäli käyttäjä on kirjautunut ja istunnossa on tallennettuna käyttäjän kirjautumistiedot. Funktio voi halutessasi myös ohjata käyttäjän kirjautumissivulle mikäli näin ei ole. Näin kirjautumista vaativat sivut voivat kätevästi tarkistaa onko käyttäjä oikeasti kirjautunut.</p>
-<p>Jos sovelluksessasi on monia erilaisia käyttöoikeustasoja tms., voit tehdä vastaavan metodin myös käyttöoikeuden tarkistamiseen.</p>
-<p>Käytä tekemääsi funktiota estääksesi käyttäjää pääsemästä kirjautumista vaativille sivuille ilman kirjautumista.</p>
-</section>
-<section id="uloskirjautuminen" class="level2">
-<h2>Uloskirjautuminen</h2>
-<p>Kun olet lisännyt kirjautumistarkistuksen kaikille sivuille jotka sitä vaativat, uloskirjautumisen toteuttamiseksi riittää poistaa istuntoon tallennetut tiedot kirjautumisesta. Tämän jälkeen käyttäjä ei enää pääse sivuille sisään.</p>
-<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>
-  <span class="co">//Kirjaudutaan ulos</span>
-  <span class="fu">unset</span><span class="ot">(</span>session<span class="ot">[</span><span class="st">&quot;kirjautunutKayttaja&quot;</span><span class="ot">]);</span>
-
-  <span class="co">//Yleensä kannattaa ulkos kirjautumisen jälkeen ohjata käyttäjä kirjautumissivulle</span>
-  <span class="fu">header</span><span class="ot">(</span><span class="st">&#39;Location: kirjautuminen.php&#39;</span><span class="ot">);</span>
-<span class="kw">?&gt;</span></code></pre>
-<section class="alert alert-info small"><h3>
-Valmista!
-</h3>
-
-<p>Kun olet toteuttanut kaikki näissä ohjeissa mainitut asiat, olet saanut valmiiksi viikon 3 palautuksen. Varmista vielä, että kaikki tiedostot löytyvät repositoriostasi.</p>
-</section>
-
-
-
-
-</section>
+<p>Lyhyet ohjeet:</p>
+<ol type="1">
+<li>War-paketti usersin tomcat/webapps-hakemistoon</li>
+<li>Avaa XML-tiedosto tomcat/conf/Catalina/localhost/ConnectionTest.xml</li>
+<li>Muokkaa kaikki kohdat joissa arvona on FIXME oikeiksi</li>
+<li>Jos tomcat on jo käynnissä, sammuta se jotta xml-tiedostot saadaan luettua uudestaan</li>
+<li>Käynnistä tomcat</li>
+<li>Sovelluksen pitäisi pyöriä osoitteessa <a href="http://t-kayttajatunnuksesi.users.cs.helsinki.fi/ConnectionTest/">http://t-kayttajatunnuksesi.users.cs.helsinki.fi/ConnectionTest/</a></li>
+</ol>
 </div>
 </div> 
 </div> 
