@@ -5,7 +5,7 @@
 
 Ensimmäisellä viikolla tulee olla tehtynä seuraavat asiat:
 
-* [Aiheen valinta](aiheet/index.html)
+* [Aiheen valinta]({{rootdir}}aiheet/index.html)
 * [Ohjelmointikielen valinta](ohjelmointikielet.html)
 * [Tietokantapalvelimen valinta](tietokannat.html)
 * [Koodausympäristön pystytys](tekniikka.html)
