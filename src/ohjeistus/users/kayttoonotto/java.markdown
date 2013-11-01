@@ -15,7 +15,15 @@ tietokantasovellusten ajamiseen.
 Se luo myös hakemiston `tomcat/webapps`,
 jonne voidaan sijoittaa ajettavia Java-sovelluksia
 kunkin omaan hakemistoonsa. 
-Lisäksi asennusskripti luo `webapps`-hakemistoon valmiiksi testiprojektin nimeltä `tsoha`.
+
+~~Lisäksi asennusskripti luo `webapps`-hakemistoon valmiiksi testiprojektin nimeltä `tsoha`.~~
+
+Asennus ei luokkaan enää tsoha-esimerkkiprojektia. Sillä välin kun saamme tehtyä uuden esimerkkiprojektin,
+voit kopioida vanhan ohjaajan kotihakemistosta näin:
+
+~~~
+cp -r /home/consuegr/tomcat/webapps/tsoha ~/tomcat/webapps
+~~~
 
 Jotta mitään tietokantasovellusta voidaan ajaa, pitää tomcat ensin käynnistää.
 Tähän voi käyttää komentoa `start-tomcat`.

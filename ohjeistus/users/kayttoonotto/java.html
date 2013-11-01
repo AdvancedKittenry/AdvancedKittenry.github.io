@@ -159,7 +159,10 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <section id="tomcatin-käyttöönotto" class="level2">
 <h2>Tomcatin käyttöönotto</h2>
 <p>Tomcatin saa otettua käyttöön omille tunnuksilleen kirjautumalla users-palvelimelle ja ajamalla siellä komento <code>wanna-tomcat</code></p>
-<p>Komento luo hakemiston <code>tomcat</code> ja asentaa sinne tarvittavat tiedostot tietokantasovellusten ajamiseen. Se luo myös hakemiston <code>tomcat/webapps</code>, jonne voidaan sijoittaa ajettavia Java-sovelluksia kunkin omaan hakemistoonsa. Lisäksi asennusskripti luo <code>webapps</code>-hakemistoon valmiiksi testiprojektin nimeltä <code>tsoha</code>.</p>
+<p>Komento luo hakemiston <code>tomcat</code> ja asentaa sinne tarvittavat tiedostot tietokantasovellusten ajamiseen. Se luo myös hakemiston <code>tomcat/webapps</code>, jonne voidaan sijoittaa ajettavia Java-sovelluksia kunkin omaan hakemistoonsa.</p>
+<p><del>Lisäksi asennusskripti luo <code>webapps</code>-hakemistoon valmiiksi testiprojektin nimeltä <code>tsoha</code>.</del></p>
+<p>Asennus ei luokkaan enää tsoha-esimerkkiprojektia. Sillä välin kun saamme tehtyä uuden esimerkkiprojektin, voit kopioida vanhan ohjaajan kotihakemistosta näin:</p>
+<pre><code>cp -r /home/consuegr/tomcat/webapps/tsoha ~/tomcat/webapps</code></pre>
 <p>Jotta mitään tietokantasovellusta voidaan ajaa, pitää tomcat ensin käynnistää. Tähän voi käyttää komentoa <code>start-tomcat</code>. Komento käynnistää Tomcat-palvelimen ja kertoo samalla mistä osoitteesta työsi tulee löytymään.</p>
 <p>Osoite on mallia <a href="http://t-käyttäjätunnuksesi.users.cs.helsinki.fi/">http://t-käyttäjätunnuksesi.users.cs.helsinki.fi/</a> Missä aivan ensimmäisenä osana on yliopiston käyttäätunnuksesi, jota edeltää merkkijono “t-”. Laittamalla osoitteen perään jonkin <code>webapps</code> hakemistossa olevan sovelluksen nimen, pääsee käyttämään tätä sovellusta. Esimerkiksi tsoha-sovellusta voi käyttää laittamalla osoitteen perään <code>tsoha/esim.html</code>.</p>
 <p>Tomcatin voi myös sammuttaa komennolla <code>stop-tomcat</code>. Kurssin ajan lienee hyvä pitää Tomcat:ia päällä melko jatkuvasti, että ohjaajasi pystyy testaamaan työtäsi.</p>
