@@ -171,6 +171,14 @@ Lisätietoa
 OK</code></pre>
 </section>
 
+<section class="alert alert-danger"><h3>
+Pidä mielessä!
+</h3>
+<p>Älä aja mysql-palvelintasi tilassa, jossa se kuuntelee TCP-yhteyksiä. Normikäytöllä tähän ei päästäkään, mutta, jos jostain syystä harkitset haksoroivasi sen toimimaan niin, älä tee näin.</p>
+<p>Syy tähän on siinä, että usersin käyttäjäkohtaiset htdocs ja tomcat-kansiot on toteutettu sisäisesti tietyssä portissa toimivina palvelimen sisäisinä yhteyksinä ja omat viritykset ovat ajoittain menneet niiden väliin.</p>
+</section>
+
+
 
 
 </div>

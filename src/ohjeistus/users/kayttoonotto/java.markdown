@@ -18,12 +18,16 @@ kunkin omaan hakemistoonsa.
 
 ~~Lisäksi asennusskripti luo `webapps`-hakemistoon valmiiksi testiprojektin nimeltä `tsoha`.~~
 
+-----------
+
 Asennus ei enää luokaan tsoha-esimerkkiprojektia. Sillä välin kun saamme tehtyä uuden esimerkkiprojektin,
 voit kopioida vanhan ohjaajan kotihakemistosta näin:
 
 ~~~
 cp -r /home/consuegr/tomcat/webapps/tsoha ~/tomcat/webapps
 ~~~
+
+-----------
 
 Jotta mitään tietokantasovellusta voidaan ajaa, pitää tomcat ensin käynnistää.
 Tähän voi käyttää komentoa `start-tomcat`.

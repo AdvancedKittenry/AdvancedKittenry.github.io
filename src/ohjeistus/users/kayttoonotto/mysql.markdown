@@ -33,3 +33,14 @@ OK
 ~~~
 
 </info>
+
+<alert>
+Älä aja mysql-palvelintasi tilassa, jossa se kuuntelee TCP-yhteyksiä.
+Normikäytöllä tähän ei päästäkään, mutta, 
+jos jostain syystä harkitset haksoroivasi sen toimimaan niin, älä tee näin.
+
+Syy tähän on siinä, että usersin käyttäjäkohtaiset htdocs ja tomcat-kansiot on
+toteutettu sisäisesti tietyssä portissa toimivina palvelimen sisäisinä yhteyksinä
+ja omat viritykset ovat ajoittain menneet niiden väliin.
+</alert>
+
