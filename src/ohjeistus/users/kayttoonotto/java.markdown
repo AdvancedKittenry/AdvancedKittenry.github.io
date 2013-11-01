@@ -18,7 +18,7 @@ kunkin omaan hakemistoonsa.
 
 ~~Lisäksi asennusskripti luo `webapps`-hakemistoon valmiiksi testiprojektin nimeltä `tsoha`.~~
 
-Asennus ei luokkaan enää tsoha-esimerkkiprojektia. Sillä välin kun saamme tehtyä uuden esimerkkiprojektin,
+Asennus ei enää luokaan tsoha-esimerkkiprojektia. Sillä välin kun saamme tehtyä uuden esimerkkiprojektin,
 voit kopioida vanhan ohjaajan kotihakemistosta näin:
 
 ~~~
