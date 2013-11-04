@@ -28,25 +28,8 @@ _http://käyttäjätunnuksesi.users.cs.helsinki.fi/sivu.php_
 Esimerkiksi _http://laine.users.cs.helsinki.fi/lahja/lahjax.php_ osoittaa php-tiedostoon _/home/laine/htdocs/lahja/lahjax.php_
 
 ## Virheilmoitukset
-PHP:n virheilmoitukset kirjautuvat tiedostoon 
-`/home/userlogs/käyttäjätunnuksesi.error`.
-Uusimmat virheet löytyvät tiedoston lopusta. Kätevä tapa seurata PHP:n tuottamia virheviestejä on ajaa komento:
 
-~~~~bash
-tail -f /home/userlogs/$USER.error
-~~~~
-
-Komento näyttää viimeiset kymmenen virheviestiä ja jää komentoriville
-seuraamaan virheviestejä näyttäen aina viimeisimmät. Kommenon pystyy sulkemaan
-painamalla Ctrl+C:tä.
-
-Virheloki saattaa ajoittain täyttyä seuraavanlaisista virheviesteistä:
-
-~~~
-[Mon Sep 09 16:58:56 2013] [error] [client 128.214.137.101] File does not exist: /home/consuegr/htdocs/favicon.ico
-~~~
-
-Virheistä pääsee halutessaan eroon laittamalla sovellukselleen [favicon.ico:n](http://fi.wikipedia.org/wiki/Favicon).
+<include src="../php-virheet.markdown" />
 
 ## Testitiedoston tekeminen
 

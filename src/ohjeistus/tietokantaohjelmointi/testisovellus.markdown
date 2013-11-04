@@ -67,5 +67,5 @@ Sovelluksen pitäisi asennuksen jälkeen pyöriä osoitteessa [http://t-kayttaja
 
 <next>
 Kun olet saanut testisovelluksen näyttämään kannasta tietoja,
-on aika koodata itse [ensimmäinen tietokantalistaus](listaustesti.html)
+on aika koodata itse [ensimmäinen tietokantalistaus](listaustesti/index.html)
 </next>

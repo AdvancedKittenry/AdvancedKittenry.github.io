@@ -85,8 +85,8 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <ul>
 <li><a href="../../../ohjeistus/tietokantaohjelmointi/kannan-alustus.html">Tietokantataulujen pystyttäminen</a></li>
 <li><a href="../../../ohjeistus/tietokantaohjelmointi/testisovellus.html">ConnectionTest-testisovellus</a></li>
-<li><a href="../../../ohjeistus/tietokantaohjelmointi/tietokantayhteys.html">Tietokantayhteyden pystytys</a></li>
-<li><a href="../../../ohjeistus/tietokantaohjelmointi/listaustesti.html">Ensimmäinen tietokantalistaus</a></li>
+<li><a href="../../../ohjeistus/tietokantaohjelmointi/tietokantayhteys/index.html">Tietokantayhteyden pystytys</a></li>
+<li><a href="../../../ohjeistus/tietokantaohjelmointi/listaustesti/index.html">Ensimmäinen tietokantalistaus</a></li>
 </ul></li>
 <li><a href="../../../ohjeistus/users/index.html">Users-palvelin ja töiden pystyttäminen</a>
 <ul>
@@ -99,6 +99,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 </ul></li>
 <li><a href="../../../ohjeistus/users/postgres-ssh-tunneli.html">PostgreSql-kannan etäkäyttö</a></li>
 <li><a href="../../../ohjeistus/users/java-war-paketit.html">Kotikoneella tehdyn Java-työn julkaisu</a></li>
+<li><a href="../../../ohjeistus/users/php-virheet.html">PHP:n virheilmoitusten katselu</a></li>
 <li><a href="../../../ohjeistus/users/nautilus-ssh.html">Tiedostojen etämuokkaus Linuxilla</a></li>
 </ul></li>
 </ul></li>
@@ -182,7 +183,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <p>Usersin Tomcatille pystytetyssä projektissa projektin juurikansio on tämä nettiin näkyvä kansio, ja <code>src</code> on sen alla.</p>
 <p>Kummassakin tapauksessa netin puolelle näkyvässä hakemistossa on alihakemisto <code>WEB-INF</code>. Tämän kansion sisällä olevat tiedostot eivät koskaan näy ulospäin. Siispä sinne on turvallista sijoittaa kaikkea sellaista, minkä ei halua olevan käytettävissä sellaisenaan.</p>
 <p>Eräs tälläinen tiedosto on <code>ẁeb.xml</code>, joka konfiguroi sovelluksen asetuksia. Tiedostossa voidaan esimerkiksi määritellä alustusparametreja ja nimetä servlettejä uudelleen. Tiedostossa on määriteltävä polku servlettien hakuun. Esimerkkinä <a href="http://www.cs.helsinki.fi/u/laine/tikas/material/web.xml">testisovellusten web.xml</a>. Jokaiselle servletille voi määritellä erikseen url:n rakenteen. Tässä web.xml:ssä kaikkien url:iin tulee lisäosa /servlet/ (tiedoston servlet-mapping osa)</p>
-<p>Toinen olennainen hakemisto, jonka ainakin NetBeans tekee on nimeltään <code>META-INF</code>. Sen sisältönä on näissä prjekteissa lähinnä <code>context.xml</code>, johon on mahdollista <a href="../../../ohjeistus/tietokantaohjelmointi/tietokantayhteys.html">konfiguroida sovelluksen käyttämä tietokanta</a>.</p>
+<p>Toinen olennainen hakemisto, jonka ainakin NetBeans tekee on nimeltään <code>META-INF</code>. Sen sisältönä on näissä prjekteissa lähinnä <code>context.xml</code>, johon on mahdollista <a href="../../../ohjeistus/tietokantaohjelmointi/tietokantayhteys/java.html">konfiguroida sovelluksen käyttämä tietokanta</a>.</p>
 </section>
 <section id="muualla-testatun-sovelluksen-asentaminen" class="level3">
 <h3>Muualla testatun sovelluksen asentaminen</h3>

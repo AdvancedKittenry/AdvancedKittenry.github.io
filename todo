@@ -1,5 +1,4 @@
 TODO
-Maininta index.php/html/jsp:n merkityksestä?
 Tietokantayhteyden muodostamisohjeiden pilkkominen
 Arkkitehtuuriohje
   Näkymien teko
@@ -8,6 +7,7 @@ Arkkitehtuuriohje
       Tagit
     PHP
       Toteuttaminen funktiona
+Maininta index.php/html/jsp:n merkityksestä?
 Alustavaa selkiytystä arkkitehtuurista yhteysohjeisiin
 Listaussovellus
 SQL-ohjeita introon

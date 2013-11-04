@@ -63,7 +63,7 @@ Muuten viite-eheystarkistukset eivät välttämättä anna ajaa tietokantatauluj
 
 <next>
 Saatuasi tietokannan pyörimään voit asentaa sen testaamiseksi [ConnectionTest-testisovelluksen](testisovellus.html)
-ja aloittaa [oman tietokantakoodisi tekemisen](tietokantayhteys.html).
+ja aloittaa [oman tietokantakoodisi tekemisen](tietokantayhteys/index.html).
 </next>
 
 ## Linkkejä

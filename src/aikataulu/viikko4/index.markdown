@@ -16,7 +16,7 @@ TODO:
 * Alustava: asennustiedot, käynnistys- / käyttöohje
 </comment>
 
-* [Tietokannan kokeilu ja yhteydenotto](tietokantayhteys.html)
+* [Tietokannan kokeilu ja yhteydenotto]({{rootdir}}ohjeistus/tietokantaohjelmointi/tietokantayhteys/index.html)
 * [Tietokantaa käyttävän mallin luominen](mallit.html)
 * [Lomakkeiden ja sivujen toteuttaminen](nakymat.html)
 
@@ -39,7 +39,7 @@ Palautuspäivämäärään mennessä työn on täytettävä seuraavat vaatimukse
     * Tiedot näkyvät sivuilla oikein myös silloin kun käyttäjä on syöttänyt niiden sekaan HTML:ää, lainausmerkkejä yms.
 
 <ohje>
-Aloita [tietokantayhteyden luomisesta](tietokantayhteys.html) ja seuraa vihreitä ohjelaatikoita.
+Aloita [tietokantayhteyden luomisesta]({{rootdir}}ohjeistus/tietokantaohjelmointi/tietokantayhteys/index.html) ja seuraa vihreitä ohjelaatikoita.
 
 Tehtyäsi kaiken varmista, että kaikki tekemäsi muutokset näkyvät GitHub-repositoriossasi.
 </ohje>

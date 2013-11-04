@@ -3,30 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <title>Lomakkeiden käyttö ja vastaanottaminen</title>
+  <title>Ensimmäinen tietokantalistaus</title>
   <style type="text/css">code{white-space: pre;}</style>
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
-  <style type="text/css">
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; }
-code > span.dt { color: #902000; }
-code > span.dv { color: #40a070; }
-code > span.bn { color: #40a070; }
-code > span.fl { color: #40a070; }
-code > span.ch { color: #4070a0; }
-code > span.st { color: #4070a0; }
-code > span.co { color: #60a0b0; font-style: italic; }
-code > span.ot { color: #007020; }
-code > span.al { color: #ff0000; font-weight: bold; }
-code > span.fu { color: #06287e; }
-code > span.er { color: #ff0000; font-weight: bold; }
-  </style>
   <link rel="stylesheet" href="../../../css/base.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!--[if lt IE 9]>
@@ -86,7 +67,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li><a href="../../../ohjeistus/tietokantaohjelmointi/kannan-alustus.html">Tietokantataulujen pystyttäminen</a></li>
 <li><a href="../../../ohjeistus/tietokantaohjelmointi/testisovellus.html">ConnectionTest-testisovellus</a></li>
 <li><a href="../../../ohjeistus/tietokantaohjelmointi/tietokantayhteys/index.html">Tietokantayhteyden pystytys</a></li>
-<li><a href="../../../ohjeistus/tietokantaohjelmointi/listaustesti/index.html">Ensimmäinen tietokantalistaus</a></li>
+<li class="selected"><a href="../../../ohjeistus/tietokantaohjelmointi/listaustesti/index.html">Ensimmäinen tietokantalistaus</a></li>
 </ul></li>
 <li><a href="../../../ohjeistus/users/index.html">Users-palvelin ja töiden pystyttäminen</a>
 <ul>
@@ -154,66 +135,24 @@ code > span.er { color: #ff0000; font-weight: bold; }
 </div>
 <div class="col-md-6" id="content">
 <header>
-<h1 class="title">Lomakkeiden käyttö ja vastaanottaminen</h1>
+<h1 class="title">Ensimmäinen tietokantalistaus</h1>
 </header>
-<!-- order: 2 -->
+<!-- order: 5 -->
 
-<p>Seuraavaksi tee servletti, joka näyttää html-demoon tekemäsi kirjautumislomakkeen JSP-tekniikalla. Voit laittaa servlettisi esim. osoitteeseen <code>/kirjautuminen</code> tai <code>/login</code>.</p>
-<p>Laitetaan seuraavaksi tämä servlet-luokka ottamaan kirjautuminen myös vastaan.</p>
-<section id="lomakkeiden-vastaanottaminen" class="level2">
-<h2>Lomakkeiden vastaanottaminen</h2>
-<p>Oletetaan, että kirjautumissivulla on suurinpiirtein allaolevan tapainen lomake.</p>
-<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;form</span><span class="ot"> action=</span><span class="st">&quot;login&quot;</span><span class="ot"> method=</span><span class="st">&quot;POST&quot;</span><span class="kw">&gt;</span>
-Käyttäjänimi: <span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;text&quot;</span><span class="ot"> name=</span><span class="st">&quot;username&quot;</span> <span class="kw">/&gt;</span>
-Salasana: <span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;password&quot;</span><span class="ot"> name=</span><span class="st">&quot;password&quot;</span> <span class="kw">/&gt;</span>
-<span class="kw">&lt;button</span><span class="ot"> type=</span><span class="st">&quot;submit&quot;</span><span class="kw">&gt;</span>Kirjaudu<span class="kw">&lt;/button&gt;</span>
-<span class="kw">&lt;/form&gt;</span></code></pre>
-<p>HTML-kertauksena: <code>form</code>-elementin <code>action</code>-attribuutti määrittää mihin osoitteeseen lomakkeen tiedot lähetetään, <code>method</code> sensijaan kertoo lähetetäänkö tiedot GET- vai POST-parametreina. Jokaisen <code>input</code>-elementin sisältö lähetetään parametrina, joka tunnistetaan <code>name</code>-attribuutissa annetulla nimellä.</p>
-<p>Lähetetyn lomakkeen parametreja voidaan käsitellä hakemalla ne HttpServletRequest-olion <a href="http://docs.oracle.com/javaee/6/api/javax/servlet/ServletRequest.html#getParameter(java.lang.String)">getParameter-metodilla</a>.</p>
-<p>Hyvin yksinkertainen kirjautuminen voitaisiin sitä käyttäen toteuttaa suurinpiirtein seuraavasti:</p>
-<pre class="sourceCode java"><code class="sourceCode java"><span class="kw">protected</span> <span class="dt">void</span> <span class="fu">processRequest</span>(HttpServletRequest request, HttpServletResponse response) {
-  
-  String salasana = request.<span class="fu">getParameter</span>(<span class="st">&quot;password&quot;</span>);
-  String kayttaja = request.<span class="fu">getParameter</span>(<span class="st">&quot;username&quot;</span>);
-  
-  <span class="co">/* Tarkistetaan mallilta onko parametrina saatu oikeat tunnukset */</span>
-  <span class="kw">if</span> (Kissalista.<span class="fu">Mallit</span>.<span class="fu">Kayttaja</span>.<span class="fu">getKayttaja</span>(kayttaja, salasana) != <span class="kw">null</span>) {
-    <span class="co">/* Jos tunnus on oikea, ohjataan käyttäjä HTTP-ohjauksella kissalistaan. */</span>
-    response.<span class="fu">sendRedirect</span>(<span class="st">&quot;kissalista&quot;</span>);
-  } <span class="kw">else</span> {
-    <span class="co">/* Väärän tunnuksen syöttänyt saa eteensä lomakkeen ja virheen.</span>
-<span class="co">     * Tässä käytetään omalta yläluokalta perittyjä yleiskäyttöisiä metodeja.</span>
-<span class="co">     */</span>
-    <span class="fu">asetaVirhe</span>(<span class="st">&quot;Kirjautuminen ei onnistunut. Käyttäjää ei löytynyt&quot;</span>, request);
-    <span class="fu">naytaJSP</span>(<span class="st">&quot;login.jsp&quot;</span>, request, response);
-  }
-}</code></pre>
-<p>Koodissa kannattaa huomata kutsu <code>response.sendRedirect(&quot;kissalista&quot;);</code>. <code>HttpServletResponse</code>-olion <a href="http://docs.oracle.com/javaee/6/api/javax/servlet/http/HttpServletResponse.html#sendRedirect(java.lang.String)">sendRedirect-metodi</a> lähettää käyttäjän selaimen parametrina annettuun osoitteesen. Tämä on kätevä tapa ohjata käyttäjä jonkin toisen servletin luo. Voit halutessasi tehdä siitäkin metodin aiemmin tekemääsi servlet-yläluokkaan.</p>
-<p>Toteuta ylläolevan kaltainen tarkastus omaan kirjautumisservlettiisi. Voit tehdä tarkistuksen joko niin, että se toimii samassa servletissä tai tehdä kirjautumislomakkeen vastaanottolle oman servletin. Tee myös aiemmin tekemääsi käyttäjää mallintavaan luokkaan metodi käyttäjän hakemiseen käyttäjätunnuksella ja salasanalla. Käytä tätä metodia kirjautumisen toteuttamiseen.</p>
-<p>Itse metodin ei vielä tässä vaiheessa tarvitse olla allaolevaa logiikkaa monimutkaisempi:</p>
-<p><strong>Ote tiedostosta Kayttajat.java:</strong></p>
-<pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="dt">static</span> Kayttaja <span class="fu">getKayttaja</span>(String kayttaja, String salasana) {
-  String oikeaSalasana = <span class="st">&quot;kala&quot;</span>;
-  String oikeaKayttaja = <span class="st">&quot;admin&quot;</span>;
-
-  <span class="kw">if</span> (oikeaKayttaja.<span class="fu">equals</span>(kayttaja) &amp;&amp; oikeaSalasana.<span class="fu">equals</span>(salasana)) {
-    <span class="kw">return</span> <span class="kw">new</span> <span class="fu">Kayttaja</span>();
-  }
-
-  <span class="kw">return</span> <span class="kw">null</span>;
-}</code></pre>
-<p>Varmista, että kirjautumislomake näyttää käyttäjälle järkevän virheviestin mikäli kirjautuminen ei onnistu.</p>
-<section class="alert alert-success small"><h3>
-Seuraavaksi:
+<p>Varmista ensin, että sinulla on luokka tai funktio, jolla saat <a href="tietokantayhteys.html">yhteyden tietokantaan</a>.</p>
+<div class="wip panel">
+  <div class="panel-body">
+    <h3>
+Work in progress
 </h3>
+    
+Tämän sivun sisältö on vielä työn alla ja saattaa muuttua kurssin edetessä.
+</div>
+</div>
 
-<p>Seuraavaksi käytämme istuntoja <a href="istunnot.html">kirjautumisen tallentamiseen sivulatausten välillä</a>.</p>
-</section>
 
 
-
-
-</section>
+<p>Tarkempien ohjeiden puuttuessa esimerkkikoodia voi noukkia <a href="../../../aikataulu/viikko1/ohjelmointikielet.html#tietokannan-käyttö">ohjelmointikieli-esimerkkien sivuilta</a>.</p>
 </div>
 </div> 
 </div> 

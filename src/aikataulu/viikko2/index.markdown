@@ -62,7 +62,7 @@ Toteutettuna pitää olla HTML-versiot seuraavista aiemmin suunnitelluista sivui
 * Otetaan käyttöön [tietokantatestisovellus]({{rootdir}}ohjeistus/tietokantaohjelmointi/testisovellus.html)
     * Sovellus näyttää tietokannan taulut ja niiden sisältöä. Ohjaaja käyttää tätä pysyäkseen paremmin kärryillä tietokannan tilasta.
     * Tämän tulee olla näkyvillä usersin palvelintilassa.
-* [Kevyt testisivu]({{rootdir}}ohjeistus/tietokantaohjelmointi/listaustesti.html), joka listaa jonkin tietokantataulun sisällön.
+* [Kevyt testisivu]({{rootdir}}ohjeistus/tietokantaohjelmointi/listaustesti/index.html), joka listaa jonkin tietokantataulun sisällön.
     * Käytä tietokannan täyttämiseen `add-test-data.sql`-tiedostoa, niin sivulla on jotain näytettävää.
 
 ## Palautus

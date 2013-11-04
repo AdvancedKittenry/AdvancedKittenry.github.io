@@ -93,7 +93,7 @@ Jokaiselle servletille voi määritellä erikseen url:n rakenteen. Tässä web.x
 
 Toinen olennainen hakemisto, jonka ainakin NetBeans tekee on nimeltään `META-INF`.
 Sen sisältönä on näissä prjekteissa lähinnä `context.xml`, 
-johon on mahdollista [konfiguroida sovelluksen käyttämä tietokanta]({{rootdir}}ohjeistus/tietokantaohjelmointi/tietokantayhteys.html).
+johon on mahdollista [konfiguroida sovelluksen käyttämä tietokanta]({{rootdir}}ohjeistus/tietokantaohjelmointi/tietokantayhteys/java.html).
 
 ### Muualla testatun sovelluksen asentaminen
 

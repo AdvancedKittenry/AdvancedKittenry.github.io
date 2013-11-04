@@ -3,11 +3,30 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <title>Ensimmäinen tietokantalistaus</title>
+  <title>PHP:n virheilmoitusten katselu</title>
   <style type="text/css">code{white-space: pre;}</style>
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
   <link rel="stylesheet" href="../../css/base.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!--[if lt IE 9]>
@@ -66,8 +85,8 @@
 <ul>
 <li><a href="../../ohjeistus/tietokantaohjelmointi/kannan-alustus.html">Tietokantataulujen pystyttäminen</a></li>
 <li><a href="../../ohjeistus/tietokantaohjelmointi/testisovellus.html">ConnectionTest-testisovellus</a></li>
-<li><a href="../../ohjeistus/tietokantaohjelmointi/tietokantayhteys.html">Tietokantayhteyden pystytys</a></li>
-<li class="selected"><a href="../../ohjeistus/tietokantaohjelmointi/listaustesti.html">Ensimmäinen tietokantalistaus</a></li>
+<li><a href="../../ohjeistus/tietokantaohjelmointi/tietokantayhteys/index.html">Tietokantayhteyden pystytys</a></li>
+<li><a href="../../ohjeistus/tietokantaohjelmointi/listaustesti/index.html">Ensimmäinen tietokantalistaus</a></li>
 </ul></li>
 <li><a href="../../ohjeistus/users/index.html">Users-palvelin ja töiden pystyttäminen</a>
 <ul>
@@ -80,6 +99,7 @@
 </ul></li>
 <li><a href="../../ohjeistus/users/postgres-ssh-tunneli.html">PostgreSql-kannan etäkäyttö</a></li>
 <li><a href="../../ohjeistus/users/java-war-paketit.html">Kotikoneella tehdyn Java-työn julkaisu</a></li>
+<li class="selected"><a href="../../ohjeistus/users/php-virheet.html">PHP:n virheilmoitusten katselu</a></li>
 <li><a href="../../ohjeistus/users/nautilus-ssh.html">Tiedostojen etämuokkaus Linuxilla</a></li>
 </ul></li>
 </ul></li>
@@ -134,24 +154,14 @@
 </div>
 <div class="col-md-6" id="content">
 <header>
-<h1 class="title">Ensimmäinen tietokantalistaus</h1>
+<h1 class="title">PHP:n virheilmoitusten katselu</h1>
 </header>
-<!-- order: 5 -->
-
-<p>Varmista ensin, että sinulla on luokka tai funktio, jolla saat <a href="tietokantayhteys.html">yhteyden tietokantaan</a>.</p>
-<div class="wip panel">
-  <div class="panel-body">
-    <h3>
-Work in progress
-</h3>
-    
-Tämän sivun sisältö on vielä työn alla ja saattaa muuttua kurssin edetessä.
-</div>
-</div>
-
-
-
-<p>Tarkempien ohjeiden puuttuessa esimerkkikoodia voi noukkia <a href="../../aikataulu/viikko1/ohjelmointikielet.html#tietokannan-käyttö">ohjelmointikieli-esimerkkien sivuilta</a>.</p>
+<p>PHP:n virheilmoitukset kirjautuvat users-koneella tiedostoon <code>/home/userlogs/käyttäjätunnuksesi.error</code>. Uusimmat virheet löytyvät tiedoston lopusta. Kätevä tapa seurata PHP:n tuottamia virheviestejä on ajaa usersilla komento:</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">tail</span> -f /home/userlogs/<span class="ot">$USER</span>.error</code></pre>
+<p>Komento näyttää viimeiset kymmenen virheviestiä ja jää komentoriville seuraamaan virheviestejä näyttäen aina viimeisimmät. Kommenon pystyy sulkemaan painamalla Ctrl+C:tä.</p>
+<p>Virheloki saattaa ajoittain täyttyä seuraavanlaisista virheviesteistä:</p>
+<pre><code>[Mon Sep 09 16:58:56 2013] [error] [client 128.214.137.101] File does not exist: /home/consuegr/htdocs/favicon.ico</code></pre>
+<p>Virheistä pääsee halutessaan eroon laittamalla sovellukselleen <a href="http://fi.wikipedia.org/wiki/Favicon">favicon.ico:n</a>.</p>
 </div>
 </div> 
 </div> 
