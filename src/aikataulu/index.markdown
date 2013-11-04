@@ -49,7 +49,7 @@ Viikkojen 3-5 materiaali on vielä työn alla. Sivut aukeavat sitä mukaa kun oh
 |------------------------|------------------------------------------------------------------------|-----------------------|
 | [Viikko I][viikko1]    | Aiheen valinta, suunnittelu, dokumentointi ja työympäristön pystytys   | {{deadline1}}         |
 | [Viikko II][viikko2]   | Sovelluksen suunnittelu, HTML-kieli, tietokantayhteyden muodostaminen  | {{deadline2}}         |
-| Viikko III             | MVC-malli ja kirjautuminen                                             | {{deadline3}}         |
+| [Viikko III][viikko3]  | MVC-malli ja kirjautuminen                                             | {{deadline3}}         |
 | Viikko IV              | Muokkaustoiminnot, sovellus etenee                                     | {{deadline4}}         |
 | Viikko V               | Sovellus on lähes valmis                                               | {{deadline5}}         |
 | [Demotilaisuus][demo]  | Esitellään työtä ja sen koodia muille opiskelijoille                   | {{demodeadline}}      |
