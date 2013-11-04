@@ -7,19 +7,23 @@ Viikon tehtävät jakautuvat seuraavasti.
 Kunkin otsikon alla olevista asioista saa suluissa ilmoitetut aikataulupisteet.
 Pisteet ovat nähtävillä tietokantasovelluksen [labtoolissa][labtool].
 
-## Aiheen, ohjelmointikielen ja tietokantapalvelimen valinta (Yht. 3p)
+## Aiheen, ohjelmointikielen ja tietokantapalvelimen valinta (Yht. 1p)
 
-* [Aiheen valinta]({{rootdir}}aiheet/index.html) (1p)
-* [Ohjelmointikielen valinta](ohjelmointikielet.html) (1p)
-* [Tietokantapalvelimen valinta](tietokannat.html) (1p)
+* [Aiheen valinta]({{rootdir}}aiheet/index.html)
+* [Ohjelmointikielen valinta](ohjelmointikielet.html)
+* [Tietokantapalvelimen valinta](tietokannat.html)
 
-## Ympäristöjen pystytys (1p)
+## Ympäristöjen pystytys (puoli pistettä)
 
 * Laitoksen [users-palvelimen]({{rootdir}}ohjeistus/users/index.html) nettisivutilan pystytys
 * Laita users-palvelimelle näkyviin jokin yksinkertainen testisivu 
 * Työympäristön pystytys 
 * NetBeans-projektin pystytys mikäli haluat käyttää sitä: [NetBeans-ohje]({{rootdir}}ohjeistus/netbeans/java.html)
 
+<huomio>
+Pystytyksestä saa pisteen vain, mikäli saa työnsä näkymään ohjaajankin koneella ja selaimella.
+Tietokantasovelluksia pitää pystyä alusta saakka testaamaan hyvän palautteen antamiseksi.
+</huomio>
 
 ## Työn dokumentoinnin aloittaminen (1p)
 
@@ -27,7 +31,7 @@ Pisteet ovat nähtävillä tietokantasovelluksen [labtoolissa][labtool].
 * [Järjestelmän yleiskuva]({{rootdir}}dokumentaatio-ohje.html#yleiskuva-j%C3%A4rjestelm%C3%A4st%C3%A4)
 * [Käyttötapaukset]({{rootdir}}dokumentaatio-ohje.html#k%C3%A4ytt%C3%B6tapaukset)
 
-## Versionhallinnan pystytys  (1p)
+## Versionhallinnan pystytys  (puoli pistettä)
 
 Ohjeet tähän täällä: [Versionhallinnan pystytys](git-ohje.html).
 Muista laittaa dokumentaatiosi repositorioon ja rekisteröityä [labtooliin][labtool].
