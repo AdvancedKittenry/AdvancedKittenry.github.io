@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <title>MVC-arkkitehtuuriopas</title>
+  <title>Arkkitehtuuri ja MVC</title>
   <style type="text/css">code{white-space: pre;}</style>
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -27,17 +27,17 @@ code > span.al { color: #ff0000; font-weight: bold; }
 code > span.fu { color: #06287e; }
 code > span.er { color: #ff0000; font-weight: bold; }
   </style>
-  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="../../css/base.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!--[if lt IE 9]>
   <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
-  <script src="javascript/bootstrap.js"></script>
-  <script src="javascript/jquery.treeview.js"></script>
-  <script src="javascript/jquery.scrollTo.js"></script>
-  <script src="javascript/jquery.nav.js"></script>
-  <script src="javascript/navi.js"></script>
+  <script src="../../javascript/jquery.min.js"></script>
+  <script src="../../javascript/bootstrap.js"></script>
+  <script src="../../javascript/jquery.treeview.js"></script>
+  <script src="../../javascript/jquery.scrollTo.js"></script>
+  <script src="../../javascript/jquery.nav.js"></script>
+  <script src="../../javascript/navi.js"></script>
 </head>
 <body>
 <div class="titlebar">
@@ -52,120 +52,123 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <div class="navcontainer col-md-3">
 <nav>
 <ul>
-<li><a href="index.html">Tietokantasovellus</a>
+<li><a href="../../index.html">Tietokantasovellus</a>
 <ul>
-<li><a href="aikataulu/index.html">Aikataulu</a>
+<li><a href="../../aikataulu/index.html">Aikataulu</a>
 <ul>
-<li><a href="aikataulu/viikko1/index.html">Viikko 1</a>
+<li><a href="../../aikataulu/viikko1/index.html">Viikko 1</a>
 <ul>
-<li><a href="aikataulu/viikko1/ohjelmointikielet.html">Ohjelmointikielen valinta</a></li>
-<li><a href="aikataulu/viikko1/tietokannat.html">Tietokannan valinta</a></li>
-<li><a href="aikataulu/viikko1/tekniikka.html">Koodausympäristön pystytys</a></li>
-<li><a href="aikataulu/viikko1/dokumentointi.html">Dokumentaation aloittaminen</a></li>
-<li><a href="aikataulu/viikko1/git-ohje.html">Versionhallinta</a></li>
+<li><a href="../../aikataulu/viikko1/ohjelmointikielet.html">Ohjelmointikielen valinta</a></li>
+<li><a href="../../aikataulu/viikko1/tietokannat.html">Tietokannan valinta</a></li>
+<li><a href="../../aikataulu/viikko1/tekniikka.html">Koodausympäristön pystytys</a></li>
+<li><a href="../../aikataulu/viikko1/dokumentointi.html">Dokumentaation aloittaminen</a></li>
+<li><a href="../../aikataulu/viikko1/git-ohje.html">Versionhallinta</a></li>
 </ul></li>
-<li><a href="aikataulu/viikko2/index.html">Viikko 2</a>
+<li><a href="../../aikataulu/viikko2/index.html">Viikko 2</a>
 <ul>
-<li><a href="aikataulu/viikko2/suunnittelu.html">Käyttöliittymän suunnittelu</a></li>
-<li><a href="aikataulu/viikko2/tietokanta.html">Tietokannan suunnittelu</a></li>
+<li><a href="../../aikataulu/viikko2/suunnittelu.html">Käyttöliittymän suunnittelu</a></li>
+<li><a href="../../aikataulu/viikko2/tietokanta.html">Tietokannan suunnittelu</a></li>
 </ul></li>
-<li><a href="aikataulu/demo.html">Demotilaisuus</a></li>
-<li><a href="aikataulu/palautus.html">Työn palautus</a></li>
+<li><a href="../../aikataulu/demo.html">Demotilaisuus</a></li>
+<li><a href="../../aikataulu/palautus.html">Työn palautus</a></li>
 </ul></li>
-<li><a href="ohjeistus/index.html">Ohjeistus</a>
+<li><a href="../../ohjeistus/index.html">Ohjeistus</a>
 <ul>
-<li><a href="ohjeistus/html-opas.html">HTML-opas</a></li>
-<li><a href="ohjeistus/netbeans/index.html">NetBeansin käyttöönotto</a>
+<li><a href="../../ohjeistus/html-opas.html">HTML-opas</a></li>
+<li class="selected"><a href="../../ohjeistus/arkkitehtuuri/index.html">Arkkitehtuuri ja MVC</a>
 <ul>
-<li><a href="ohjeistus/netbeans/java.html">NetBeansin käyttö Javan kanssa</a></li>
-<li><a href="ohjeistus/netbeans/php.html">NetBeansin käyttö PHP:n kanssa</a></li>
-<li><a href="ohjeistus/netbeans/keyring-reset.html">Unlock your keyring? - Avainnippujen nollaus</a></li>
+<li><a href="../../ohjeistus/arkkitehtuuri/nyrkkisaannot.html">MVC-mallin nyrkisääntöjä</a></li>
 </ul></li>
-<li><a href="ohjeistus/tietokantaohjelmointi/index.html">Tietokantaohjelmointi</a>
+<li><a href="../../ohjeistus/netbeans/index.html">NetBeansin käyttöönotto</a>
 <ul>
-<li><a href="ohjeistus/tietokantaohjelmointi/kannan-alustus.html">Tietokantataulujen pystyttäminen</a></li>
-<li><a href="ohjeistus/tietokantaohjelmointi/testisovellus.html">ConnectionTest-testisovellus</a></li>
-<li><a href="ohjeistus/tietokantaohjelmointi/tietokantayhteys/index.html">Tietokantayhteyden pystytys</a></li>
-<li><a href="ohjeistus/tietokantaohjelmointi/listaustesti/index.html">Ensimmäinen tietokantalistaus</a></li>
+<li><a href="../../ohjeistus/netbeans/java.html">NetBeansin käyttö Javan kanssa</a></li>
+<li><a href="../../ohjeistus/netbeans/php.html">NetBeansin käyttö PHP:n kanssa</a></li>
+<li><a href="../../ohjeistus/netbeans/keyring-reset.html">Unlock your keyring? - Avainnippujen nollaus</a></li>
 </ul></li>
-<li><a href="ohjeistus/users/index.html">Users-palvelin ja töiden pystyttäminen</a>
+<li><a href="../../ohjeistus/tietokantaohjelmointi/index.html">Tietokantaohjelmointi</a>
 <ul>
-<li><a href="ohjeistus/users/kayttoonotto/index.html">Palvelujen käynnistäminen ja käyttöönotto</a>
+<li><a href="../../ohjeistus/tietokantaohjelmointi/kannan-alustus.html">Tietokantataulujen pystyttäminen</a></li>
+<li><a href="../../ohjeistus/tietokantaohjelmointi/testisovellus.html">ConnectionTest-testisovellus</a></li>
+<li><a href="../../ohjeistus/tietokantaohjelmointi/tietokantayhteys/index.html">Tietokantayhteyden pystytys</a></li>
+<li><a href="../../ohjeistus/tietokantaohjelmointi/listaustesti/index.html">Ensimmäinen tietokantalistaus</a></li>
+</ul></li>
+<li><a href="../../ohjeistus/users/index.html">Users-palvelin ja töiden pystyttäminen</a>
 <ul>
-<li><a href="ohjeistus/users/kayttoonotto/java.html">Java ja Tomcatin käyttöönotto</a></li>
-<li><a href="ohjeistus/users/kayttoonotto/mysql.html">MySql-tietokannan käyttöönotto</a></li>
-<li><a href="ohjeistus/users/kayttoonotto/php.html">PHP-tuen käyttöönotto</a></li>
-<li><a href="ohjeistus/users/kayttoonotto/postgresql.html">PostgreSQL-tietokannan käyttöönotto</a></li>
-</ul></li>
-<li><a href="ohjeistus/users/postgres-ssh-tunneli.html">PostgreSql-kannan etäkäyttö</a></li>
-<li><a href="ohjeistus/users/java-war-paketit.html">Kotikoneella tehdyn Java-työn julkaisu</a></li>
-<li><a href="ohjeistus/users/php-virheet.html">PHP:n virheilmoitusten katselu</a></li>
-<li><a href="ohjeistus/users/nautilus-ssh.html">Tiedostojen etämuokkaus Linuxilla</a></li>
-</ul></li>
-</ul></li>
-<li><a href="aiheet/index.html">Työaiheet</a>
+<li><a href="../../ohjeistus/users/kayttoonotto/index.html">Palvelujen käynnistäminen ja käyttöönotto</a>
 <ul>
-<li><a href="aiheet/Drinkkiarkisto.html">Drinkkiarkisto</a></li>
-<li><a href="aiheet/Elektroninen_keittokirja.html">Elektroninen keittokirja</a></li>
-<li><a href="aiheet/Graduaiheet.html">Graduaiheet</a></li>
-<li><a href="aiheet/Harjoitustyon_seuranta.html">Harjoitustyön seuranta</a></li>
-<li><a href="aiheet/Hiihtokisojen_tulospalvelu.html">Hiihtokisojen tulospalvelu</a></li>
-<li><a href="aiheet/Huutokauppa.html">Huutokauppa</a></li>
-<li><a href="aiheet/Kennelkerho.html">Kennelkerho</a></li>
-<li><a href="aiheet/Kuluttajan_tuki_Ry.html">Kuluttajan tuki Ry</a></li>
-<li><a href="aiheet/Kurssikysely.html">Kurssikysely</a></li>
-<li><a href="aiheet/Kurssin_kotisivu.html">Kurssin kotisivu</a></li>
-<li><a href="aiheet/Kurssitarjonta_ja_kurssipaikan_varaus.html">Kurssitarjonta ja kurssipaikan varaus</a></li>
-<li><a href="aiheet/Lainahakemusten_kasittely.html">Lainahakemusten käsittely</a></li>
-<li><a href="aiheet/Laakariaseman_tyovuorolista.html">Lääkäriaseman työvuorolista</a></li>
-<li><a href="aiheet/Laakarin_kotikaynnit.html">Lääkärin kotikäynnit</a></li>
-<li><a href="aiheet/Matkojen_markkinointi.html">Matkojen markkinointi</a></li>
-<li><a href="aiheet/Muistilista.html">Muistilista</a></li>
-<li><a href="aiheet/Ostoskassi.html">Ostoskassi</a></li>
-<li><a href="aiheet/Painontarkkailu.html">Painontarkkailu</a></li>
-<li><a href="aiheet/Palvelubisnes.html">Palvelubisnes</a></li>
-<li><a href="aiheet/Parturi-Kampaamo.html">Parturi-Kampaamo</a></li>
-<li><a href="aiheet/Pizzapalvelu.html">Pizzapalvelu</a></li>
-<li><a href="aiheet/Projektin_tyoaikaseuranta.html">Projektin työaikaseuranta</a></li>
-<li><a href="aiheet/Rankkauslista.html">Rankkauslista</a></li>
-<li><a href="aiheet/Taloyhtion_palvelut.html">Taloyhtiön palvelut</a></li>
-<li><a href="aiheet/Tavaranvaihto.html">Tavaranvaihto</a></li>
-<li><a href="aiheet/Tukkuliikkeen_tilaustenksittely.html">Tukkuliikkeen tilaustenkäsittely</a></li>
-<li><a href="aiheet/Tutkimusaineston_kerays.html">Tutkimusaineiston keräys</a></li>
-<li><a href="aiheet/Tyoaihekanta.html">Työaihekanta</a></li>
-<li><a href="aiheet/Tyontekijanvuokraus_kotitoihin.html">Työntekijänvuokraus kotitöihin</a></li>
-<li><a href="aiheet/Tyryhmtiedotus.html">Työryhmätiedotus</a></li>
-<li><a href="aiheet/Opintoneuvonnan_usein_kysytyt_kysymykset.html">Usein kysytyt kysymykset</a></li>
-<li><a href="aiheet/Vedonlyonti.html">Vedonlyönti</a></li>
-<li><a href="aiheet/Vuokra-asuntojen_valitys.html">Vuokra-asuntojen välitys</a></li>
-<li><a href="aiheet/Ystavanvalityspalvelu.html">Ystävänvälityspalvelu</a></li>
-<li><a href="aiheet/Aanestys.html">Äänestys</a></li>
+<li><a href="../../ohjeistus/users/kayttoonotto/java.html">Java ja Tomcatin käyttöönotto</a></li>
+<li><a href="../../ohjeistus/users/kayttoonotto/mysql.html">MySql-tietokannan käyttöönotto</a></li>
+<li><a href="../../ohjeistus/users/kayttoonotto/php.html">PHP-tuen käyttöönotto</a></li>
+<li><a href="../../ohjeistus/users/kayttoonotto/postgresql.html">PostgreSQL-tietokannan käyttöönotto</a></li>
 </ul></li>
-<li><a href="arvosteluperusteet.html">Arvosteluperusteet</a></li>
-<li><a href="dokumentaatio-ohje.html">Dokumentaatio-ohje</a></li>
-<li><a href="cleancode.html">Hyvä ohjelmointityyli</a></li>
-<li><a href="kaytettavyys.html">Käytettävyys</a></li>
-<li class="selected"><a href="mvc-opas.html">MVC-arkkitehtuuriopas</a></li>
-<li><a href="sivukartta.html">Sivukartta</a></li>
-<li><a href="web-sovelluksista.html">Web-sovelluksien toiminta</a></li>
+<li><a href="../../ohjeistus/users/postgres-ssh-tunneli.html">PostgreSql-kannan etäkäyttö</a></li>
+<li><a href="../../ohjeistus/users/java-war-paketit.html">Kotikoneella tehdyn Java-työn julkaisu</a></li>
+<li><a href="../../ohjeistus/users/php-virheet.html">PHP:n virheilmoitusten katselu</a></li>
+<li><a href="../../ohjeistus/users/nautilus-ssh.html">Tiedostojen etämuokkaus Linuxilla</a></li>
+</ul></li>
+</ul></li>
+<li><a href="../../aiheet/index.html">Työaiheet</a>
+<ul>
+<li><a href="../../aiheet/Drinkkiarkisto.html">Drinkkiarkisto</a></li>
+<li><a href="../../aiheet/Elektroninen_keittokirja.html">Elektroninen keittokirja</a></li>
+<li><a href="../../aiheet/Graduaiheet.html">Graduaiheet</a></li>
+<li><a href="../../aiheet/Harjoitustyon_seuranta.html">Harjoitustyön seuranta</a></li>
+<li><a href="../../aiheet/Hiihtokisojen_tulospalvelu.html">Hiihtokisojen tulospalvelu</a></li>
+<li><a href="../../aiheet/Huutokauppa.html">Huutokauppa</a></li>
+<li><a href="../../aiheet/Kennelkerho.html">Kennelkerho</a></li>
+<li><a href="../../aiheet/Kuluttajan_tuki_Ry.html">Kuluttajan tuki Ry</a></li>
+<li><a href="../../aiheet/Kurssikysely.html">Kurssikysely</a></li>
+<li><a href="../../aiheet/Kurssin_kotisivu.html">Kurssin kotisivu</a></li>
+<li><a href="../../aiheet/Kurssitarjonta_ja_kurssipaikan_varaus.html">Kurssitarjonta ja kurssipaikan varaus</a></li>
+<li><a href="../../aiheet/Lainahakemusten_kasittely.html">Lainahakemusten käsittely</a></li>
+<li><a href="../../aiheet/Laakariaseman_tyovuorolista.html">Lääkäriaseman työvuorolista</a></li>
+<li><a href="../../aiheet/Laakarin_kotikaynnit.html">Lääkärin kotikäynnit</a></li>
+<li><a href="../../aiheet/Matkojen_markkinointi.html">Matkojen markkinointi</a></li>
+<li><a href="../../aiheet/Muistilista.html">Muistilista</a></li>
+<li><a href="../../aiheet/Ostoskassi.html">Ostoskassi</a></li>
+<li><a href="../../aiheet/Painontarkkailu.html">Painontarkkailu</a></li>
+<li><a href="../../aiheet/Palvelubisnes.html">Palvelubisnes</a></li>
+<li><a href="../../aiheet/Parturi-Kampaamo.html">Parturi-Kampaamo</a></li>
+<li><a href="../../aiheet/Pizzapalvelu.html">Pizzapalvelu</a></li>
+<li><a href="../../aiheet/Projektin_tyoaikaseuranta.html">Projektin työaikaseuranta</a></li>
+<li><a href="../../aiheet/Rankkauslista.html">Rankkauslista</a></li>
+<li><a href="../../aiheet/Taloyhtion_palvelut.html">Taloyhtiön palvelut</a></li>
+<li><a href="../../aiheet/Tavaranvaihto.html">Tavaranvaihto</a></li>
+<li><a href="../../aiheet/Tukkuliikkeen_tilaustenksittely.html">Tukkuliikkeen tilaustenkäsittely</a></li>
+<li><a href="../../aiheet/Tutkimusaineston_kerays.html">Tutkimusaineiston keräys</a></li>
+<li><a href="../../aiheet/Tyoaihekanta.html">Työaihekanta</a></li>
+<li><a href="../../aiheet/Tyontekijanvuokraus_kotitoihin.html">Työntekijänvuokraus kotitöihin</a></li>
+<li><a href="../../aiheet/Tyryhmtiedotus.html">Työryhmätiedotus</a></li>
+<li><a href="../../aiheet/Opintoneuvonnan_usein_kysytyt_kysymykset.html">Usein kysytyt kysymykset</a></li>
+<li><a href="../../aiheet/Vedonlyonti.html">Vedonlyönti</a></li>
+<li><a href="../../aiheet/Vuokra-asuntojen_valitys.html">Vuokra-asuntojen välitys</a></li>
+<li><a href="../../aiheet/Ystavanvalityspalvelu.html">Ystävänvälityspalvelu</a></li>
+<li><a href="../../aiheet/Aanestys.html">Äänestys</a></li>
+</ul></li>
+<li><a href="../../arvosteluperusteet.html">Arvosteluperusteet</a></li>
+<li><a href="../../dokumentaatio-ohje.html">Dokumentaatio-ohje</a></li>
+<li><a href="../../cleancode.html">Hyvä ohjelmointityyli</a></li>
+<li><a href="../../kaytettavyys.html">Käytettävyys</a></li>
+<li><a href="../../sivukartta.html">Sivukartta</a></li>
+<li><a href="../../web-sovelluksista.html">Web-sovelluksien toiminta</a></li>
 </ul></li>
 </ul>
 </nav>
 </div>
 <div class="col-md-6" id="content">
 <header>
-<h1 class="title">MVC-arkkitehtuuriopas</h1>
+<h1 class="title">Arkkitehtuuri ja MVC</h1>
 </header>
-<script>addSectionLinks = true; </script>
-
 <p>Tällä kurssilla pyritään kevyeen <a href="http://fi.wikipedia.org/wiki/MVC-arkkitehtuuri">MVC-mallin</a> mukaiseen koodiarkkitehtuuriin. Monille käsite on hieman hämärä, siispä avaamme sitä tällä sivulla tarkemmin.</p>
 <p>Käytännössä MVC-arkkitehtuuri tarkoittaa sitä, että koodi jaetaan kolmeen osaan: <em>näkymiin</em>, <em>kontrollereihin</em> ja <em>malleihin</em> (engl. views, controllers ja models). Mallit käyttävät tietokantaa ja abstrahoivat sen ohjelmointirajapinnaksi, jota muu koodi käyttää. Näkymät hoitavat kaiken HTML:ään liittyvän koodin ja kontrollerit ottavat vastaan käyttäjän antamat aineistopyynnöt, hakevat ja päivittävät tietoa malleja käyttäen ja välittävät tiedot näkymälle, joka näyttää sivun.</p>
 <figure>
-<img src="images/mvc.png" alt="MVC-mallin vastuunjako" /><figcaption>MVC-mallin vastuunjako</figcaption>
+<img src="../../images/mvc.png" alt="MVC-mallin vastuunjako" /><figcaption>MVC-mallin vastuunjako</figcaption>
 </figure>
 <section class="alert alert-info"><h3>
 Nyrkkisääntöjä
 </h3>
+
+
 
 <ul>
 <li>Malli vastaa tiedon käsittelemisestä ja abstrahoinnista ja <strong>ainoastaan</strong> siitä. Mallissa ei <strong>ikinä käsitellä HTML:ää</strong> tai käyttäjän lähettämiä pyyntöjä ja parametrejä, nämä ovat näkymän ja kontrollerin tehtäviä.</li>
@@ -556,7 +559,7 @@ web/
 </div> 
 </div> 
 <footer>
-  <a href="sivukartta.html">Sivukartta</a> - 
+  <a href="../../sivukartta.html">Sivukartta</a> - 
   <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">AdvancedKittenry</span> 
   by
   <a xmlns:cc="http://creativecommons.org/ns#" href="http://advancedkittenry.github.io/credits.html" property="cc:attributionName" rel="cc:attributionURL">David Consuegra and others</a>

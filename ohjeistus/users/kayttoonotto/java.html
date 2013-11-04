@@ -32,7 +32,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
   <!--[if lt IE 9]>
   <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+  <script src="../../../javascript/jquery.min.js"></script>
   <script src="../../../javascript/bootstrap.js"></script>
   <script src="../../../javascript/jquery.treeview.js"></script>
   <script src="../../../javascript/jquery.scrollTo.js"></script>
@@ -75,6 +75,10 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li><a href="../../../ohjeistus/index.html">Ohjeistus</a>
 <ul>
 <li><a href="../../../ohjeistus/html-opas.html">HTML-opas</a></li>
+<li><a href="../../../ohjeistus/arkkitehtuuri/index.html">Arkkitehtuuri ja MVC</a>
+<ul>
+<li><a href="../../../ohjeistus/arkkitehtuuri/nyrkkisaannot.html">MVC-mallin nyrkisääntöjä</a></li>
+</ul></li>
 <li><a href="../../../ohjeistus/netbeans/index.html">NetBeansin käyttöönotto</a>
 <ul>
 <li><a href="../../../ohjeistus/netbeans/java.html">NetBeansin käyttö Javan kanssa</a></li>
@@ -145,7 +149,6 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li><a href="../../../dokumentaatio-ohje.html">Dokumentaatio-ohje</a></li>
 <li><a href="../../../cleancode.html">Hyvä ohjelmointityyli</a></li>
 <li><a href="../../../kaytettavyys.html">Käytettävyys</a></li>
-<li><a href="../../../mvc-opas.html">MVC-arkkitehtuuriopas</a></li>
 <li><a href="../../../sivukartta.html">Sivukartta</a></li>
 <li><a href="../../../web-sovelluksista.html">Web-sovelluksien toiminta</a></li>
 </ul></li>
@@ -183,7 +186,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <p>Usersin Tomcatille pystytetyssä projektissa projektin juurikansio on tämä nettiin näkyvä kansio, ja <code>src</code> on sen alla.</p>
 <p>Kummassakin tapauksessa netin puolelle näkyvässä hakemistossa on alihakemisto <code>WEB-INF</code>. Tämän kansion sisällä olevat tiedostot eivät koskaan näy ulospäin. Siispä sinne on turvallista sijoittaa kaikkea sellaista, minkä ei halua olevan käytettävissä sellaisenaan.</p>
 <p>Eräs tälläinen tiedosto on <code>ẁeb.xml</code>, joka konfiguroi sovelluksen asetuksia. Tiedostossa voidaan esimerkiksi määritellä alustusparametreja ja nimetä servlettejä uudelleen. Tiedostossa on määriteltävä polku servlettien hakuun. Esimerkkinä <a href="http://www.cs.helsinki.fi/u/laine/tikas/material/web.xml">testisovellusten web.xml</a>. Jokaiselle servletille voi määritellä erikseen url:n rakenteen. Tässä web.xml:ssä kaikkien url:iin tulee lisäosa /servlet/ (tiedoston servlet-mapping osa)</p>
-<p>Toinen olennainen hakemisto, jonka ainakin NetBeans tekee on nimeltään <code>META-INF</code>. Sen sisältönä on näissä prjekteissa lähinnä <code>context.xml</code>, johon on mahdollista <a href="../../../ohjeistus/tietokantaohjelmointi/tietokantayhteys/java.html">konfiguroida sovelluksen käyttämä tietokanta</a>.</p>
+<p>Toinen olennainen hakemisto, jonka ainakin NetBeans tekee on nimeltään <code>META-INF</code>. Sen sisältönä on näissä prjekteissa lähinnä <code>context.xml</code>, johon on mahdollista <a href="../../../ohjeistus/tietokantaohjelmointi/tietokantayhteys/index.html">konfiguroida sovelluksen käyttämä tietokanta</a>.</p>
 </section>
 <section id="muualla-testatun-sovelluksen-asentaminen" class="level3">
 <h3>Muualla testatun sovelluksen asentaminen</h3>

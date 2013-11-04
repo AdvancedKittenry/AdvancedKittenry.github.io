@@ -70,6 +70,11 @@ ja aloittaa [oman tietokantakoodisi tekemisen](tietokantayhteys/index.html).
 
 * [MySql:n dokumentaatio](http://dev.mysql.com/doc/refman/5.1/en/index.html)
 * [PostgreSql:n dokumentaatio](http://www.postgresql.org/docs/8.4/interactive/index.html)
+* [W3Schoolsin SQL-intro](http://w3schools.com/sql/default.asp)
+* Laineen tietokantojen perusteet -kurssin SQL materiaaleja
+   * [Osa 1](http://www.cs.helsinki.fi/u/laine/tikape/moniste/osa1.pdf)
+   * [Osa 2](http://www.cs.helsinki.fi/u/laine/tikape/moniste/osa2.pdf)
+   * [Osa 3](http://www.cs.helsinki.fi/u/laine/tikape/moniste/osa3.pdf)
 
 <vinkki title="Vinkki: Käytä hakukonetta">
 

@@ -25,7 +25,7 @@ Yhteensä kolme pistettä tältä viikolta.
 Pisteet ovat nähtävillä tietokantasovelluksen [labtoolissa](http://tsoha-labtool.herokuapp.com/).
 
 <ohje>
-Aloita [aiheen valinnasta](aiheet/index.html) ja seuraa vihreitä ohjelaatikoita.
+Aloita [aiheen valinnasta]({{rootdir}}aiheet/index.html) ja seuraa vihreitä ohjelaatikoita.
 
 Tehtyäsi kaiken rekisteröidy kurssin [labtooliin](http://tsoha-labtool.herokuapp.com/).
 </ohje>

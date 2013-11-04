@@ -1,5 +1,4 @@
-% MVC-arkkitehtuuriopas
-<!-- addHeaderNavigation -->
+% Arkkitehtuuri ja MVC
 
 Tällä kurssilla pyritään kevyeen [MVC-mallin](http://fi.wikipedia.org/wiki/MVC-arkkitehtuuri) mukaiseen 
 koodiarkkitehtuuriin.
@@ -16,7 +15,7 @@ kontrollerit ottavat vastaan käyttäjän antamat aineistopyynnöt, hakevat ja p
 ![MVC-mallin vastuunjako]({{imgdir}}mvc.png)
 
 <summary title="Nyrkkisääntöjä">
-<include src="mvc/nyrkkisaannot.markdown" />
+<include src="nyrkkisaannot.markdown" />
 </summary>
 
 ## Mallit
@@ -29,7 +28,7 @@ Mallit toteutetaan keräämällä eri asioihin ja tietokohteisiin
 liittyviä toimintoja luokiksi ja/tai funktioiksi. 
 Ohessa Javalla tehty esimerkki malliluokasta tietokohteelle kissa:
 
-~~~ {.java .scrollable}<include src="mvc/Kissa.java" />~~~
+~~~ {.java .scrollable}<include src="esimerkit/Kissa.java" />~~~
 
 Vastaava luokka PHP-kielellä on hyvin samanlainen, joskin hieman lyhyempi.
 
@@ -64,11 +63,11 @@ Jälkimmäistä tiedostoa voi käyttää myös muualla kissan näyttämiseen.
 
 **views/kissalista.php**
 
-~~~html<include src="mvc/kissalista.php" />~~~
+~~~html<include src="esimerkit/kissalista.php" />~~~
 
 **views/kissa.php**
 
-~~~html<include src="mvc/kissa.php" />~~~
+~~~html<include src="esimerkit/kissa.php" />~~~
 
 Yleensä on tapana myös tehdä muutama ns. template-näkymätiedosto,
 joissa määritellään kaikille sovelluksen sivuille yhteisiä elementtejä.
@@ -93,12 +92,12 @@ Ohessa esimerkkejä kontrollereista PHP:llä ja Javalla
 <tabs>
 <tab title="Kontrolleri PHP:llä">
 
-~~~~php<include src="aikataulu/viikko3/php/esimerkit/kasittelija.php" />~~~~
+~~~~php<include src="../../aikataulu/viikko3/php/esimerkit/kasittelija.php" />~~~~
 
 </tab>
 <tab title="Kontrolleri Javalla">
 
-~~~~java<include src="mvc/KissaServlet.java" />~~~~
+~~~~java<include src="esimerkit/KissaServlet.java" />~~~~
 
 </tab>
 </tabs>
@@ -124,7 +123,7 @@ esim. `libs`. Luo malleille oma `models`-kansio yleiskäyttöisen koodin alle.
 
 Kansioiden nimet voi halutessaan suomentaa.
 
-~~~~<include src="aikataulu/viikko3/php/kansiorakenne.txt" />~~~~
+~~~~<include src="../../aikataulu/viikko3/php/kansiorakenne.txt" />~~~~
 
 </tab>
 <tab title="Java-esimerkkisijoittelu">
@@ -138,14 +137,14 @@ Kontrollerit ovat Javan tapauksessa aina HttpServlet-luokan aliluokkia eli servl
 Näkymät - eli yleensä jsp-tiedostot - menevät omaan kansioonsa 
 joka on oletuksena nimeltään web.
 
-~~~~<include src="aikataulu/viikko3/java/kansiorakenne.txt" />~~~~
+~~~~<include src="../../aikataulu/viikko3/java/kansiorakenne.txt" />~~~~
 
 </tab>
 </tabs>
 
 ## Nyrkkisääntöjä
 
-<include src="mvc/nyrkkisaannot.markdown" />
+<include src="nyrkkisaannot.markdown" />
 
 ## Linkkejä
 

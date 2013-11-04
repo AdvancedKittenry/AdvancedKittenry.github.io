@@ -72,4 +72,4 @@ Siirry sitten käyttämäsi kielen kirjautumisen toteuttamisohjeisiin:
 Tehtyäsi kaiken varmista, että kaikki tekemäsi muutokset näkyvät GitHub-repositoriossasi.
 </ohje>
 
-[arkkitehtuuri]: {{rootdir}}mvc-opas.html
+[arkkitehtuuri]: {{rootdir}}ohjeistus/arkkitehtuuri/index.html
