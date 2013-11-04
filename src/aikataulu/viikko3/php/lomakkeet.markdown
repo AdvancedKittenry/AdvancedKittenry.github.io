@@ -82,7 +82,7 @@ on hyvä kandidaatti yleiskäyttöisen funktion sisällöksi.
 <alert>
 
 PHP:llä kannattaa varoa lisäämästä tiedostojensa alkuun välilyöntejä 
-ja rivinvaihtoja ennen <?php-tägiä. PHP tulkitsee nämä merkit
+ja rivinvaihtoja ennen &lt;?php-tägiä. PHP tulkitsee nämä merkit
 sivun sisällöksi, joka pitää lähettää selaimelle. 
 Tämä estää kaikkien HTTP-otsakkeiden lähettämisen, 
 sillä ne on lähetettävä ennen sivun sisältöä.
@@ -94,20 +94,42 @@ Tee myös aiemmin tekemääsi käyttäjää mallintavaan luokkaan staattinen met
 käyttäjän hakemiseen käyttäjätunnuksella ja salasanalla. Käytä tätä
 metodia kirjautumisen tarkistamisen toteuttamiseen. 
 
-Itse metodin ei vielä tässä vaiheessa tarvitse olla allaolevaa logiikkaa monimutkaisempi:
+Metodi kannattaa toteuttaa sellaisen SQL-kyselyn ympärille, joka 
+hakee kannasta tietoja salasanan ja käyttäjänimen perusteella.
+Se voi palauttaa esimerkiksi käyttäjäluokan olion,
+jolloin siitä on järkevää tehdä luokan staattinen metodi.
 
-**Ote tiedostosta libs/models/kayttaja.php:**
+Palautettua arvoa käytetään myöhemmin kirjautuneen käyttäjän tallentamiseen istuntoon.
 
-~~~java
-public static function getKayttaja($kayttaja, $salasana) {
-  $oikeaSalasana = "kala";
-  $oikeaKayttaja = "admin";
+**Esimerkkikoodina ote tiedostosta libs/models/kayttaja.php:**
 
-  if (oikeaKayttaja == kayttaja && oikeaSalasana == salasana) {
-    return new Kayttaja();
+~~~php
+class Kayttaja {
+  
+  private $id;
+  private $username;
+  private $password;
+  
+  public static function getKayttaja($kayttaja, $salasana) {
+    $sql = "SELECT id,username, password from users where username = ? AND password = ?";
+    $kysely = getTietokanta()->prepare($sql);
+    $kysely->execute(array($kayttaja, $salasana));
+
+    $tulos = $kysely->fetchObject();
+    if ($tulos == null) {
+      return null;
+    } else {
+      $kayttaja = new Kayttaja(); 
+      /* Käytetään PHP:n vapaamielistä muuttujamallia olion
+         kenttien asettamiseen */
+      foreach($tulos as $kentta => $arvo) {
+        $kayttaja->$kentta = $arvo;
+      }
+      return $kayttaja;
+    }
   }
 
-  return null;
+  /* Tähän muita Käyttäjäluokan metodeita */
 }
 ~~~
 

@@ -69,6 +69,21 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li><a href="../../../aikataulu/viikko2/suunnittelu.html">Käyttöliittymän suunnittelu</a></li>
 <li><a href="../../../aikataulu/viikko2/tietokanta.html">Tietokannan suunnittelu</a></li>
 </ul></li>
+<li><a href="../../../aikataulu/viikko3/index.html">Viikko 3</a>
+<ul>
+<li><a href="../../../aikataulu/viikko3/java/index.html">Kirjautuminen Javalla</a>
+<ul>
+<li><a href="../../../aikataulu/viikko3/java/rakenne.html">Sovelluksen rakenne ja servletit</a></li>
+<li><a href="../../../aikataulu/viikko3/java/lomakkeet.html">Lomakkeiden käyttö ja vastaanottaminen</a></li>
+<li><a href="../../../aikataulu/viikko3/java/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
+</ul></li>
+<li><a href="../../../aikataulu/viikko3/php/index.html">Kirjautuminen PHP:llä</a>
+<ul>
+<li><a href="../../../aikataulu/viikko3/php/rakenne.html">Mihin eri tiedostot kannattaa laittaa?</a></li>
+<li class="selected"><a href="../../../aikataulu/viikko3/php/lomakkeet.html">Lomakkeiden käyttö ja vastaanottaminen</a></li>
+<li><a href="../../../aikataulu/viikko3/php/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
+</ul></li>
+</ul></li>
 <li><a href="../../../aikataulu/demo.html">Demotilaisuus</a></li>
 <li><a href="../../../aikataulu/palautus.html">Työn palautus</a></li>
 </ul></li>
@@ -90,7 +105,11 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li><a href="../../../ohjeistus/tietokantaohjelmointi/kannan-alustus.html">Tietokantataulujen pystyttäminen</a></li>
 <li><a href="../../../ohjeistus/tietokantaohjelmointi/testisovellus.html">ConnectionTest-testisovellus</a></li>
 <li><a href="../../../ohjeistus/tietokantaohjelmointi/tietokantayhteys/index.html">Tietokantayhteyden pystytys</a></li>
-<li><a href="../../../ohjeistus/tietokantaohjelmointi/listaustesti/index.html">Ensimmäinen tietokantalistaus</a></li>
+<li><a href="../../../ohjeistus/tietokantaohjelmointi/listaustesti/index.html">Yksinkertainen tietokantalistaus</a>
+<ul>
+<li><a href="../../../ohjeistus/tietokantaohjelmointi/listaustesti/java.html">Listaus Javalla</a></li>
+<li><a href="../../../ohjeistus/tietokantaohjelmointi/listaustesti/php.html">Listaus PHP:llä</a></li>
+</ul></li>
 </ul></li>
 <li><a href="../../../ohjeistus/users/index.html">Users-palvelin ja töiden pystyttäminen</a>
 <ul>
@@ -209,25 +228,39 @@ Salasana: <span class="kw">&lt;input</span><span class="ot"> type=</span><span c
 Pidä mielessä!
 </h3>
 
-<p>PHP:llä kannattaa varoa lisäämästä tiedostojensa alkuun välilyöntejä ja rivinvaihtoja ennen <?php-tägiä. PHP tulkitsee nämä merkit
-sivun sisällöksi, joka pitää lähettää selaimelle. 
-Tämä estää kaikkien HTTP-otsakkeiden lähettämisen, 
-sillä ne on lähetettävä ennen sivun sisältöä.
- 
+<p>PHP:llä kannattaa varoa lisäämästä tiedostojensa alkuun välilyöntejä ja rivinvaihtoja ennen &lt;?php-tägiä. PHP tulkitsee nämä merkit sivun sisällöksi, joka pitää lähettää selaimelle. Tämä estää kaikkien HTTP-otsakkeiden lähettämisen, sillä ne on lähetettävä ennen sivun sisältöä.</p>
+</section>
 
-</section></p>
 <p>Toteuta ylläolevan kaltainen tarkastus omaan tiedostoonsa, esim. <code>doLogin.php</code> tai <code>kirjaudu.php</code>. Tee myös aiemmin tekemääsi käyttäjää mallintavaan luokkaan staattinen metodi käyttäjän hakemiseen käyttäjätunnuksella ja salasanalla. Käytä tätä metodia kirjautumisen tarkistamisen toteuttamiseen.</p>
-<p>Itse metodin ei vielä tässä vaiheessa tarvitse olla allaolevaa logiikkaa monimutkaisempi:</p>
-<p><strong>Ote tiedostosta libs/models/kayttaja.php:</strong></p>
-<pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="dt">static</span> function <span class="fu">getKayttaja</span>($kayttaja, $salasana) {
-  $oikeaSalasana = <span class="st">&quot;kala&quot;</span>;
-  $oikeaKayttaja = <span class="st">&quot;admin&quot;</span>;
+<p>Metodi kannattaa toteuttaa sellaisen SQL-kyselyn ympärille, joka hakee kannasta tietoja salasanan ja käyttäjänimen perusteella. Se voi palauttaa esimerkiksi käyttäjäluokan olion, jolloin siitä on järkevää tehdä luokan staattinen metodi.</p>
+<p>Palautettua arvoa käytetään myöhemmin kirjautuneen käyttäjän tallentamiseen istuntoon.</p>
+<p><strong>Esimerkkikoodina ote tiedostosta libs/models/kayttaja.php:</strong></p>
+<pre class="sourceCode php"><code class="sourceCode php">class Kayttaja {
+  
+  private $id;
+  private $username;
+  private $password;
+  
+  public static function getKayttaja($kayttaja, $salasana) {
+    $sql = &quot;SELECT id,username, password from users where username = ? AND password = ?&quot;;
+    $kysely = getTietokanta()-&gt;prepare($sql);
+    $kysely-&gt;execute(array($kayttaja, $salasana));
 
-  <span class="kw">if</span> (oikeaKayttaja == kayttaja &amp;&amp; oikeaSalasana == salasana) {
-    <span class="kw">return</span> <span class="kw">new</span> <span class="fu">Kayttaja</span>();
+    $tulos = $kysely-&gt;fetchObject();
+    if ($tulos == null) {
+      return null;
+    } else {
+      $kayttaja = new Kayttaja(); 
+      /* Käytetään PHP:n vapaamielistä muuttujamallia olion
+         kenttien asettamiseen */
+      foreach($tulos as $kentta =&gt; $arvo) {
+        $kayttaja-&gt;$kentta = $arvo;
+      }
+      return $kayttaja;
+    }
   }
 
-  <span class="kw">return</span> <span class="kw">null</span>;
+  /* Tähän muita Käyttäjäluokan metodeita */
 }</code></pre>
 <p>Varmista, että kirjautumislomake näyttää käyttäjälle järkevän virheviestin mikäli kirjautuminen ei onnistu.</p>
 <section class="alert alert-success small"><h3>

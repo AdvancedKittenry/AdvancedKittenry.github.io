@@ -1,8 +1,8 @@
-% Ensimmäinen tietokantalistaus
+% Yksinkertainen tietokantalistaus
 <!-- order: 5 -->
 
-Varmista ensin, että sinulla on luokka tai funktio, jolla saat [yhteyden tietokantaan](../tietokantayhteys/index.html).
+Tarkemmat ohjeet listauksien tekemiseen löytyvät kielikohtaisesti alta:
 
-<wip />
+* [PHP-listauksen tekeminen](php.html)
+* [Java-listauksen tekeminen](java.html)
 
-Tarkempien ohjeiden puuttuessa esimerkkikoodia voi noukkia [ohjelmointikieli-esimerkkien sivuilta]({{rootdir}}aikataulu/viikko1/ohjelmointikielet.html#tietokannan-käyttö).

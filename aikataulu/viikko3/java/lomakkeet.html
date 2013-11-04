@@ -69,6 +69,21 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li><a href="../../../aikataulu/viikko2/suunnittelu.html">Käyttöliittymän suunnittelu</a></li>
 <li><a href="../../../aikataulu/viikko2/tietokanta.html">Tietokannan suunnittelu</a></li>
 </ul></li>
+<li><a href="../../../aikataulu/viikko3/index.html">Viikko 3</a>
+<ul>
+<li><a href="../../../aikataulu/viikko3/java/index.html">Kirjautuminen Javalla</a>
+<ul>
+<li><a href="../../../aikataulu/viikko3/java/rakenne.html">Sovelluksen rakenne ja servletit</a></li>
+<li class="selected"><a href="../../../aikataulu/viikko3/java/lomakkeet.html">Lomakkeiden käyttö ja vastaanottaminen</a></li>
+<li><a href="../../../aikataulu/viikko3/java/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
+</ul></li>
+<li><a href="../../../aikataulu/viikko3/php/index.html">Kirjautuminen PHP:llä</a>
+<ul>
+<li><a href="../../../aikataulu/viikko3/php/rakenne.html">Mihin eri tiedostot kannattaa laittaa?</a></li>
+<li><a href="../../../aikataulu/viikko3/php/lomakkeet.html">Lomakkeiden käyttö ja vastaanottaminen</a></li>
+<li><a href="../../../aikataulu/viikko3/php/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
+</ul></li>
+</ul></li>
 <li><a href="../../../aikataulu/demo.html">Demotilaisuus</a></li>
 <li><a href="../../../aikataulu/palautus.html">Työn palautus</a></li>
 </ul></li>
@@ -90,7 +105,11 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li><a href="../../../ohjeistus/tietokantaohjelmointi/kannan-alustus.html">Tietokantataulujen pystyttäminen</a></li>
 <li><a href="../../../ohjeistus/tietokantaohjelmointi/testisovellus.html">ConnectionTest-testisovellus</a></li>
 <li><a href="../../../ohjeistus/tietokantaohjelmointi/tietokantayhteys/index.html">Tietokantayhteyden pystytys</a></li>
-<li><a href="../../../ohjeistus/tietokantaohjelmointi/listaustesti/index.html">Ensimmäinen tietokantalistaus</a></li>
+<li><a href="../../../ohjeistus/tietokantaohjelmointi/listaustesti/index.html">Yksinkertainen tietokantalistaus</a>
+<ul>
+<li><a href="../../../ohjeistus/tietokantaohjelmointi/listaustesti/java.html">Listaus Javalla</a></li>
+<li><a href="../../../ohjeistus/tietokantaohjelmointi/listaustesti/php.html">Listaus PHP:llä</a></li>
+</ul></li>
 </ul></li>
 <li><a href="../../../ohjeistus/users/index.html">Users-palvelin ja töiden pystyttäminen</a>
 <ul>
@@ -193,17 +212,28 @@ Salasana: <span class="kw">&lt;input</span><span class="ot"> type=</span><span c
 }</code></pre>
 <p>Koodissa kannattaa huomata kutsu <code>response.sendRedirect(&quot;kissalista&quot;);</code>. <code>HttpServletResponse</code>-olion <a href="http://docs.oracle.com/javaee/6/api/javax/servlet/http/HttpServletResponse.html#sendRedirect(java.lang.String)">sendRedirect-metodi</a> lähettää käyttäjän selaimen parametrina annettuun osoitteesen. Tämä on kätevä tapa ohjata käyttäjä jonkin toisen servletin luo. Voit halutessasi tehdä siitäkin metodin aiemmin tekemääsi servlet-yläluokkaan.</p>
 <p>Toteuta ylläolevan kaltainen tarkastus omaan kirjautumisservlettiisi. Voit tehdä tarkistuksen joko niin, että se toimii samassa servletissä tai tehdä kirjautumislomakkeen vastaanottolle oman servletin. Tee myös aiemmin tekemääsi käyttäjää mallintavaan luokkaan metodi käyttäjän hakemiseen käyttäjätunnuksella ja salasanalla. Käytä tätä metodia kirjautumisen toteuttamiseen.</p>
-<p>Itse metodin ei vielä tässä vaiheessa tarvitse olla allaolevaa logiikkaa monimutkaisempi:</p>
-<p><strong>Ote tiedostosta Kayttajat.java:</strong></p>
+<p>Metodi kannattaa toteuttaa sellaisen SQL-kyselyn ympärille, joka hakee kannasta tietoja salasanan ja käyttäjänimen perusteella. Se palauttaa käyttäjäluokan olion, jolloin siitä on järkevää tehdä luokan staattinen metodi.</p>
+<p>Palautettua arvoa käytetään myöhemmin kirjautuneen käyttäjän tallentamiseen istuntoon.</p>
+<p><strong>Ote tiedostosta kissalista/models/Kayttajat.java:</strong></p>
 <pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="dt">static</span> Kayttaja <span class="fu">getKayttaja</span>(String kayttaja, String salasana) {
-  String oikeaSalasana = <span class="st">&quot;kala&quot;</span>;
-  String oikeaKayttaja = <span class="st">&quot;admin&quot;</span>;
+  String sql = <span class="st">&quot;SELECT id,username, password from users where username = ? AND password = ?&quot;</span>;
+  Connection yhteys = Tietokanta.<span class="fu">getTietokanta</span>();
+  PreparedStatement kysely = yhteys.<span class="fu">prepareStatement</span>(sql);
+  kysely.<span class="fu">setString</span>(<span class="dv">1</span>, kayttaja);
+  kysely.<span class="fu">setString</span>(<span class="dv">2</span>, salasana);
+  ResultSet rs = kysely.<span class="fu">executeQuery</span>();
 
-  <span class="kw">if</span> (oikeaKayttaja.<span class="fu">equals</span>(kayttaja) &amp;&amp; oikeaSalasana.<span class="fu">equals</span>(salasana)) {
-    <span class="kw">return</span> <span class="kw">new</span> <span class="fu">Kayttaja</span>();
+  <span class="kw">if</span> (rs.<span class="fu">next</span>()) {
+    <span class="co">//Kutsutaan sopivat tiedot vastaanottavaa konstruktoria ja palautetaan olio:</span>
+    <span class="kw">return</span> <span class="kw">new</span> <span class="fu">Kayttaja</span>(rs.<span class="fu">getInt</span>(<span class="st">&quot;id&quot;</span>), rs.<span class="fu">getString</span>(<span class="st">&quot;username&quot;</span>), rs.<span class="fu">getString</span>(<span class="st">&quot;password&quot;</span>));
+  } <span class="kw">else</span> {
+    <span class="kw">return</span> <span class="kw">null</span>;
   }
-
-  <span class="kw">return</span> <span class="kw">null</span>;
+  
+  <span class="co">//Suljetaan kaikki resurssit:</span>
+  <span class="kw">try</span> { rs.<span class="fu">close</span>(); } <span class="kw">catch</span> (Exception e) {}
+  <span class="kw">try</span> { kysely.<span class="fu">close</span>(); } <span class="kw">catch</span> (Exception e) {}
+  <span class="kw">try</span> { yhteys.<span class="fu">close</span>(); } <span class="kw">catch</span> (Exception e) {}
 }</code></pre>
 <p>Varmista, että kirjautumislomake näyttää käyttäjälle järkevän virheviestin mikäli kirjautuminen ei onnistu.</p>
 <section class="alert alert-success small"><h3>

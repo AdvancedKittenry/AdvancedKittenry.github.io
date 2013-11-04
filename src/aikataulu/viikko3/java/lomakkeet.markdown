@@ -67,20 +67,35 @@ Tee myös aiemmin tekemääsi käyttäjää mallintavaan luokkaan metodi
 käyttäjän hakemiseen käyttäjätunnuksella ja salasanalla. Käytä tätä
 metodia kirjautumisen toteuttamiseen. 
 
-Itse metodin ei vielä tässä vaiheessa tarvitse olla allaolevaa logiikkaa monimutkaisempi:
+Metodi kannattaa toteuttaa sellaisen SQL-kyselyn ympärille, joka 
+hakee kannasta tietoja salasanan ja käyttäjänimen perusteella.
+Se palauttaa käyttäjäluokan olion,
+jolloin siitä on järkevää tehdä luokan staattinen metodi.
 
-**Ote tiedostosta Kayttajat.java:**
+Palautettua arvoa käytetään myöhemmin kirjautuneen käyttäjän tallentamiseen istuntoon.
+
+**Ote tiedostosta kissalista/models/Kayttajat.java:**
 
 ~~~java
 public static Kayttaja getKayttaja(String kayttaja, String salasana) {
-  String oikeaSalasana = "kala";
-  String oikeaKayttaja = "admin";
+  String sql = "SELECT id,username, password from users where username = ? AND password = ?";
+  Connection yhteys = Tietokanta.getTietokanta();
+  PreparedStatement kysely = yhteys.prepareStatement(sql);
+  kysely.setString(1, kayttaja);
+  kysely.setString(2, salasana);
+  ResultSet rs = kysely.executeQuery();
 
-  if (oikeaKayttaja.equals(kayttaja) && oikeaSalasana.equals(salasana)) {
-    return new Kayttaja();
+  if (rs.next()) {
+    //Kutsutaan sopivat tiedot vastaanottavaa konstruktoria ja palautetaan olio:
+    return new Kayttaja(rs.getInt("id"), rs.getString("username"), rs.getString("password"));
+  } else {
+    return null;
   }
-
-  return null;
+  
+  //Suljetaan kaikki resurssit:
+  try { rs.close(); } catch (Exception e) {}
+  try { kysely.close(); } catch (Exception e) {}
+  try { yhteys.close(); } catch (Exception e) {}
 }
 ~~~
 
