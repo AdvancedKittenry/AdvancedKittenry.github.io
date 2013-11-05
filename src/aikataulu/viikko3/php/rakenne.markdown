@@ -4,7 +4,7 @@
 
 <summary>
 
-* Luo ensin projektillesi koeluontoinen index.php-sivu repositoriosi juureen.
+* Luo ensin projektillesi koeluontoinen php-sivu repositoriosi juureen.
 * Laita sitten sivusi käyttämään HTML:n tulostukseen näkymätiedostoa `views`-kansiossa.
 * Tee toinen näkymätiedosto, ja laita sivujesi yhteinen HTML-runko siihen. Tee luokka, jolla voit käyttää runkoa ja näkymää yhdessä.
 * Tee sovelluksesi yleisesti käytetyille toiminnoille kirjastotiedosto, johon voi sijoittaa yleiskäyttöisiä toimintoja.
@@ -50,7 +50,7 @@ Lopputulos on vähänkään monimutkaisemmissa sovelluksissa sekava ja vaikea mu
 
 ~~~~php<include src="esimerkit/spagettikoodi.php" />~~~~
 
-Tällä kurssilla pyrimme hieman selkeämpään [arkkitehtuuriin]({{rootdir}}mvc-opas.html),
+Tällä kurssilla pyrimme hieman selkeämpään [arkkitehtuuriin]({{rootdir}}ohjeistus/tietokantaohjelmointi/arkkitehtuuri/index.html),
 jossa mallit ja näkymät määritellään omissa tiedostoissaan.
 
 Tämä ei kuitenkaan varsinaisesti estä käyttämästä PHP:n suoraviivaista luonnetta

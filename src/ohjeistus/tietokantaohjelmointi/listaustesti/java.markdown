@@ -15,8 +15,13 @@ Tarkempien ohjeiden puuttuessa näkymien toteutuksen esimerkkikoodia voi noukkia
 
 ## Tietokannan käyttö
 
+Nyt kun meillä on tapa kirjoitaa lista, voimme kirjoittaa koodia,
+joka palauttaa meille listan.
 
-Esimerkki metodista joka hakee kaikki käyttäjät kannasta.
+Alla on esimerkki käyttäjäluokasta, jolla on metodi, joka palauttaa jokaisen käyttäjän.
+Koodissa oletetaan, että Tietokanta-luokan metodi `getTietokanta` palauttaa 
+sovelluksen tietokantaa vastaavan Connection-olion.
+
 
 ~~~java
 public static List<Kayttaja> getKayttajat() {
@@ -40,8 +45,19 @@ public static List<Kayttaja> getKayttajat() {
 }
 ~~~
 
+Nyt listaesimerkin alku voi näyttää esimerkiksi seuraavalta:
+
+~~~java
+TODO:
+~~~
+
 <vinkki title="Hyvä tietää">
 Tällä viikolla tehtävä listaus on tahallaan melko yksinkertainen, sillä tarkoitus on vain testata tietokantaohjelmointia.
 Lopulliset sivut tulevat noudattamaan läheisemmin [MVC-arkkitehtuuria][mvc].
 </vinkki>
-[mvc]: {{rootdir}}ohjeistus/arkkitehtuuri/index.html
+[mvc]: {{rootdir}}ohjeistus/tietokantaohjelmointi/arkkitehtuuri/index.html
+
+<next>
+Testisovelluksen tehtyäsi tustustu tarkemmin [MVC-arkkitehtuuriin](../arkkitehtuuri/index.html)
+ja sen jälkeen kirjautumisen toteuttamiseen.
+</next>

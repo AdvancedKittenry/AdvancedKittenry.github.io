@@ -90,17 +90,14 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li><a href="../../../ohjeistus/index.html">Ohjeistus</a>
 <ul>
 <li><a href="../../../ohjeistus/html-opas.html">HTML-opas</a></li>
-<li><a href="../../../ohjeistus/arkkitehtuuri/index.html">Arkkitehtuuri ja MVC</a>
-<ul>
-<li><a href="../../../ohjeistus/arkkitehtuuri/nyrkkisaannot.html">MVC-mallin nyrkisääntöjä</a></li>
-</ul></li>
+<li><a href="../../../ohjeistus/git-ja-salasanat.html">Git-repositoriot ja salasanat</a></li>
 <li><a href="../../../ohjeistus/netbeans/index.html">NetBeansin käyttöönotto</a>
 <ul>
 <li><a href="../../../ohjeistus/netbeans/java.html">NetBeansin käyttö Javan kanssa</a></li>
 <li><a href="../../../ohjeistus/netbeans/php.html">NetBeansin käyttö PHP:n kanssa</a></li>
 <li><a href="../../../ohjeistus/netbeans/keyring-reset.html">Unlock your keyring? - Avainnippujen nollaus</a></li>
 </ul></li>
-<li><a href="../../../ohjeistus/tietokantaohjelmointi/index.html">Tietokantaohjelmointi</a>
+<li><a href="../../../ohjeistus/tietokantaohjelmointi/index.html">Sovelluksen ohjelmointi</a>
 <ul>
 <li><a href="../../../ohjeistus/tietokantaohjelmointi/kannan-alustus.html">Tietokantataulujen pystyttäminen</a></li>
 <li><a href="../../../ohjeistus/tietokantaohjelmointi/testisovellus.html">ConnectionTest-testisovellus</a></li>
@@ -109,6 +106,10 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <ul>
 <li><a href="../../../ohjeistus/tietokantaohjelmointi/listaustesti/java.html">Listaus Javalla</a></li>
 <li class="selected"><a href="../../../ohjeistus/tietokantaohjelmointi/listaustesti/php.html">Listaus PHP:llä</a></li>
+</ul></li>
+<li><a href="../../../ohjeistus/tietokantaohjelmointi/arkkitehtuuri/index.html">Arkkitehtuuri ja MVC</a>
+<ul>
+<li><a href="../../../ohjeistus/tietokantaohjelmointi/arkkitehtuuri/nyrkkisaannot.html">MVC-mallin nyrkisääntöjä</a></li>
 </ul></li>
 </ul></li>
 <li><a href="../../../ohjeistus/users/index.html">Users-palvelin ja töiden pystyttäminen</a>
@@ -178,25 +179,44 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <header>
 <h1 class="title">Listaus PHP:llä</h1>
 </header>
-<div class="wip panel">
-  <div class="panel-body">
-    <h3>
-Work in progress
-</h3>
-    
-Tämän sivun sisältö on vielä työn alla ja saattaa muuttua kurssin edetessä.
-</div>
-</div>
-
-
-<p>Varmista ensin, että sinulla on luokka tai funktio, jolla saat <a href="../tietokantayhteys/index.html">yhteyden tietokantaan</a>. Nyt käytämme tietokantayhteyttä luokaksemme hyvin yksinkertaisen sivun, jolla listataan jonkun taulun sisältöä. Teemme tämän kahdessa vaiheessa: Ensin luomme yksinkertaisen sivun, joka näyttää listan asioista sitten luomme koodin, joka hakee tuon listan tietokannasta.</p>
-<section id="asioiden-listaaminen" class="level2">
-<h2>Asioiden listaaminen</h2>
-<p>Tarkempien ohjeiden puuttuessa näkymien toteutuksen esimerkkikoodia voi noukkia <a href="../../../aikataulu/viikko3/php/rakenne.html">viikon 3 materiaaleista</a>.</p>
+<p>Varmista ensin, että sinulla on omassa tiedossaan luokka tai funktio, jolla saat <a href="../tietokantayhteys/index.html">yhteyden tietokantaan</a>. Nyt käytämme tietokantayhteyttä luokaksemme hyvin yksinkertaisen sivun, jolla listataan jonkun taulun sisältöä. Teemme tämän kahdessa vaiheessa: Ensin luomme yksinkertaisen sivun, joka näyttää listan asioista sitten luomme koodin, joka hakee tuon listan tietokannasta.</p>
+<section id="asioiden-listaaminen-ja-html" class="level2">
+<h2>Asioiden listaaminen ja HTML</h2>
+<p>Jotta saamme näkyviin listan asioita, meidän pitää käyttää HTML:ää. Tämä on PHP:llä onneksi hyvin helppoa.</p>
+<p>Kielessä on käytössä kaksi tilaa, joita kontrolloidaan <code>&lt;?php ?&gt;</code>-tägien avulla. Tägien ulkopuolella oleva teksti lähetetään sellaisenaan suoraan selaimelle, niiden sisällä taas tulkitaan PHP-ohjelmakoodina.</p>
+<p>PHP-tilassa on myös mahdollista lähettää selaimelle tekstiä käyttämällä <a href="http://www.php.net/echo">echo-konstruktiota</a>:</p>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="st">&quot;Hei maailma!&quot;</span><span class="ot">,</span> <span class="st">&quot;Hei &quot;</span><span class="ot">,</span> <span class="kw">$nimi</span><span class="ot">;</span> <span class="kw">?&gt;</span></code></pre>
+<p>PHP- ja HTML-tilojen välillä voi myös hyppiä koska tahansa. Esimerkiksi for-luupin sisällä on täysin laillista lopettaa php-tägi ja siirtyä HTML-tilaan.</p>
+<p>Oikeastaan voidaan ajatella että kaikki php-tägien ulkopuolinen on oikeastaan vain yhtä suurta echo-lausetta.</p>
+<p>Tämä mielessä pitäen yksinkertainen lista voidaan toteuttaa suhteellisen helposti:</p>
+<p><strong>Esimerkki</strong></p>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>
+<span class="co">//Lista asioista array-tietotyyppiin laitettuna:</span>
+<span class="kw">$lista</span> = <span class="fu">array</span><span class="ot">(</span><span class="st">&quot;Kirahvi&quot;</span><span class="ot">,</span> <span class="st">&quot;Trumpetti&quot;</span><span class="ot">,</span> <span class="st">&quot;Jeesus&quot;</span><span class="ot">,</span> <span class="st">&quot;Parta&quot;</span><span class="ot">)</span><span class="st">&quot;;</span>
+<span class="st">?&gt;&lt;!DOCTYPE HTML&gt;</span>
+<span class="st">&lt;html&gt;</span>
+<span class="st">  &lt;head&gt;&lt;title&gt;Otsikko&lt;/title&gt;&lt;/head&gt;</span>
+<span class="st">  &lt;body&gt;</span>
+<span class="st">    &lt;h1&gt;Listaelementtitesti&lt;/h1&gt;</span>
+<span class="st">    &lt;ul&gt;</span>
+<span class="st">    &lt;?php foreach(</span><span class="kw">$lista</span><span class="st"> as </span><span class="kw">$asia</span><span class="st">) { ?&gt;</span>
+<span class="st">      &lt;li&gt;&lt;?php echo </span><span class="kw">$asia</span><span class="st">; ?&gt;&lt;/li&gt;</span>
+<span class="st">    &lt;?php } ?&gt;</span>
+<span class="st">    &lt;/ul&gt;</span>
+<span class="st">  &lt;/body&gt;</span>
+<span class="st">&lt;/html&gt;</span></code></pre>
+<p>Tätä nimenomaista HTML-koodin seassa koodausta varten PHP:ssä on olemassa myös hieman <a href="http://php.net/manual/en/control-structures.alternative-syntax.php">erilaiset versiot useimmista kielen rakenteista</a>:</p>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span> <span class="kw">foreach</span><span class="ot">(</span><span class="kw">$lista</span> <span class="kw">as</span> <span class="kw">$asia</span><span class="ot">)</span>: <span class="kw">?&gt;</span>
+  &lt;li&gt;<span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$asia</span><span class="ot">;</span> <span class="kw">?&gt;</span>&lt;/li&gt;
+<span class="kw">&lt;?php</span> <span class="kw">endforeach</span><span class="ot">;</span> <span class="kw">?&gt;</span></code></pre>
+<p>Huomaa kaksoispiste for-luupin jälkeen ja puolipiste endforeach-sanan jälkeen.</p>
+<p>HTML-koodin seassa nämä tavat ilmaista luuppeja ja muita kontrollirakenteita tekevät koodin tulkitsemisesta usein helpompaa, sillä lopetussanasta näkee heti minkä rakenteen se lopettaa.</p>
+<p>Jos haluat tutustua näkymäkoodin kirjoittamiseen tarkemmin, voit tutustua <a href="../../../aikataulu/viikko3/php/rakenne.html">kolmosviikon ohjeisiin</a>.</p>
 </section>
 <section id="tietokannan-käyttö" class="level2">
 <h2>Tietokannan käyttö</h2>
-<p>Esimerkki metodista joka hakee kaikki käyttäjät kannasta ja käyttäjäluokasta. Luokka kannattaa sijoittaa omaan tiedostoonsa, josta se haetaan käyttöön <a href="http://php.net/manual/en/function.include.php">require-funktiolla</a>.</p>
+<p>Nyt kun meillä on tapa kirjoitaa lista, voimme kirjoittaa koodia, joka palauttaa meille listan.</p>
+<p>Alla on esimerkki käyttäjäluokasta, jolla on metodi, joka palauttaa jokaisen käyttäjän. Koodissa oletetaan, että funktio <code>getTietokanta</code> palauttaa sovelluksen tietokantaa vastaavan PDO-olion.</p>
 <pre class="sourceCode php"><code class="sourceCode php">class Kayttaja {
   
   private $id;
@@ -219,14 +239,43 @@ Tämän sivun sisältö on vielä työn alla ja saattaa muuttua kurssin edetess�
     }
     return $tulokset;
   }
-
+  
+  public function getUsername() {
+    return $this-&gt;username;
+  }
   /* Tähän muita Käyttäjäluokan metodeita */
 }</code></pre>
+<p>Tälläinen luokka kannattaa sijoittaa omaan tiedostoonsa, josta se haetaan käyttöön <a href="http://php.net/manual/en/function.include.php">include tai require-funktiolla</a>. Include ja require ovat hieman samanlaisia kuin Javan import, mutta ovat teknisesti lähemänä C-kielen includea. Molemmat lähinnä ikäänkuin upottavat kysytyn tiedoston siihen kohtaan koodia, missä niitä kutsutaan.</p>
+<p>Nyt listaesimerkin alku voi näyttää esimerkiksi seuraavalta:</p>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>
+<span class="kw">require_once</span> <span class="st">&quot;utils/tietokanta.php&quot;</span><span class="ot">;</span>
+<span class="kw">require_once</span> <span class="st">&quot;models/kayttaja.php&quot;</span><span class="ot">;</span>
+
+<span class="co">//Lista asioista array-tietotyyppiin laitettuna:</span>
+<span class="kw">$lista</span> = Kayttaja::getKayttajat<span class="ot">();</span>
+<span class="kw">?&gt;</span>&lt;!DOCTYPE HTML&gt;
+...</code></pre>
+<p>Ja koska kyseessä ovat oliot, pitää niitä listatessa tulostaa jokin merkkijono eikä itse oliota:</p>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$asia</span>-&gt;getUsername<span class="ot">();</span> <span class="kw">?&gt;</span></code></pre>
 <section class="alert alert-warning"><h3>
 Hyvä tietää
 </h3>
-<p>Tällä viikolla tehtävä listaus on tahallaan melko yksinkertainen, sillä tarkoitus on vain testata tietokantaohjelmointia. Lopulliset sivut tulevat noudattamaan läheisemmin <a href="../../../ohjeistus/arkkitehtuuri/index.html">MVC-arkkitehtuuria</a>.</p>
+<p>Tällä viikolla tehtävä listaus on tahallaan melko yksinkertainen, sillä tarkoitus on vain testata tietokantaohjelmointia. Lopulliset sivut tulevat noudattamaan läheisemmin <a href="../../../ohjeistus/tietokantaohjelmointi/arkkitehtuuri/index.html">MVC-arkkitehtuuria</a>.</p>
 </section>
+</section>
+<section id="linkkejä" class="level2">
+<h2>Linkkejä</h2>
+<ul>
+<li><a href="http://www.php.net/manual/en/language.basic-syntax.phpmode.php">Esimerkkejä PHP-tilasta kielen omasta dokumentaatiosta</a></li>
+<li><a href="http://php.net/manual/en/function.include.php">Include ja require</a></li>
+</ul>
+<section class="alert alert-success small"><h3>
+Seuraavaksi:
+</h3>
+<p>Testisovelluksen tehtyäsi tustustu tarkemmin <a href="../arkkitehtuuri/index.html">MVC-arkkitehtuuriin</a> ja sen jälkeen kirjautumisen toteuttamiseen.</p>
+</section>
+
+
 
 
 </section>

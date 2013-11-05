@@ -12,8 +12,10 @@
 * Jos käytät tietokantayhteyden autentikointiin salasanaa, [älä laita sitä GitHubiin sellaisenaan](#salasanojen-tallentaminen-ja-github).
 </summary>
 
-Seuraavaksi pyrimme luomaan tietokantaan yhteyden ja lyhyen testiohjelman, 
-jolla sitä voi testata. 
+Seuraavaksi pyrimme luomaan tiedoston, jossa on tarvittava koodi,
+tietokantayhteyden luomiseen.
+Samoin esitetään lyhyet testiohjelma, jolla yhteyttä voi testata. 
+
 Sekä Javalla että PHP:llä tietokantayhteyksiä edustaa erillinen luokka,
 jonka olio muodostetaan kutsumalla sopivaa metodia/konstruktoria.
 Kummallekin annetaan merkkijonona tietokantayhteyttä kuvaava osoite,
@@ -37,6 +39,14 @@ Jos olet noudattanut kurssin NetBeans-ohjetta Java-kielellä,
 tutustu [ssh-tunnelin]({{rootdir}}ohjeistus/users/postgres-ssh-tunneli.html) muodostamiseen nyt.
 Et saa kantaan yhteyttä ilman sitä (ellet asenna omaa palvelinta).
 
+<alert>
+Joudut useimmiten syöttämään johonkin tiedostoon
+tietokantatunnustesi salasanan, että saat koodin toimimaan.
+
+Näitä salasanoja ei kuitenkaan kannata laittaa repositorioon sellaisenaan.
+Hyvä tapa ratkaista ongelma on [käyttää nk. dist-tiedostoja](../../git-ja-salasanat.html)
+</alert>
+
 <tabs>
 <tab title="Java, JDBC ja context.xml">
 
@@ -50,7 +60,7 @@ tietokantayhteyttä kuvaava resurssi.
 
 **web/META-INF/context.xml**
 
-~~~xml<include src="../../aikataulu/viikko1/esimerkit/context.xml" />~~~
+~~~xml<include src="../../../aikataulu/viikko1/esimerkit/context.xml" />~~~
 
 Kun resurssi on määritelty, voidaan Javan kirjastoilla hakea
 se:
@@ -95,6 +105,19 @@ try { yhteys.close(); } catch (Exception e) {  }
 
 Itse varasto-oliota ei tarvitse erikseen sulkea, sillä
 Tomcat huolehtii sen hallinnoinnista.
+
+## Java ja tietokanta-ajurin lisääminen
+
+Java-koodarit huomio! Joudut todennäköisimmin tässä vaiheessa lisäämään projektiisi 
+PostgreSQL-kannan ajurikirjaston.
+NetBeansia käyttäessäsi tämä hoituu samasta kohtaa, kuin JSTL-kirjaston lisääminen:
+avaa valikosta `File->Project Properties`,
+paina _Libraries_-kategoriassa nappia _Add Library_ ja 
+lisää listasta projektiin kirjasto nimeltä `PostgreSQL JDBC Driver`.
+
+![PostgreSQL-ajurin asennus]({{myimgdir}}postgres-ajuri.png)
+
+Samanlaiset huomiot koskevat MySQL-tietokantaa.
 
 </tab>
 <tab title="PHP ja PDO">
@@ -185,7 +208,7 @@ laita se omaan metodiinsa, joka palauttaa yhteyden.
 Voit tehdä yhteydelle halutessasi myös oman luokan, johon sijoitat
 muitakin toistuvia tietokantaan liittyviä koodinpäktiä.
 
-PHP:llä voidaan käyttää myös lyhyttä funktiota, jossa on funktion sisäinen
+Jos et halua tehdä luokkaa, voit PHP:llä käyttää myös lyhyttä funktiota, jossa on funktion sisäinen
 [staattinen muuttuja](http://php.net/manual/en/language.variables.scope.php#language.variables.scope.static):
 
 ~~~inlinephp
@@ -209,42 +232,8 @@ PHP:llä koodatessa on tärkeää, että yhteys luodaan vain kerran, sillä sen 
 Javalla Tomcat huolehtii tästä, mutta yhteys pitää erikseen sulkea.
 Javaa käyttäessä sinun kannattaa siis tehdä myös apumetodi, joka sulkee yhteyden.
 
-## Java ja tietokanta-ajurin lisääminen
-
-Java-koodarit huomio! Joudut todennäköisimmin tässä vaiheessa lisäämään projektiisi 
-PostgreSQL-kannan ajurikirjaston.
-NetBeansia käyttäessäsi tämä hoituu samasta kohtaa, kuin JSTL-kirjaston lisääminen:
-avaa valikosta `File->Project Properties`,
-paina _Libraries_-kategoriassa nappia _Add Library_ ja 
-lisää listasta projektiin kirjasto nimeltä `PostgreSQL JDBC Driver`.
-
-![PostgreSQL-ajurin asennus]({{myimgdir}}postgres-ajuri.png)
-
-Samanlaiset huomiot koskevat MySQL-tietokantaa.
-
-## Salasanojen tallentaminen ja GitHub
-
-Yksityiseksi tarkoitettujen salasanojen tallentaminen
-versionhallintaan ei ole ikinä kovin hyvä idea.
-Salasanoja sisältäviä tiedostoja ei useimmiten kuitenkaan
-kannata jättää versionhallinnasta poiskaan, sillä useimmiten niihin sisältyy 
-muutakin oleellista informaatiota projektista.
-
-Yksinkertainen ja hyvin yleisesti käytetty tapa hoitaa ongelma, on 
-luoda tarvittava salasanan sisältävä tiedosto kahdesti:
-ensiksi normaalina tiedostona, jossa on salasana, mutta jota ei laiteta versionhallintaan
-ja sitten salasanattomana .dist-tiedostopäätteellisenä versiona, joka laitetaan versionhallintaan.
-
-Esimerkiksi Javalla koodatessa voidaan tiedosto `web/META-INF/context.xml` 
-sijoittaa `.gitignore`-tiedostoon siten, ettei se mene versionhallintaan
-ja sensijaan tehdä tiedostosta kopio, `web/META-INF/context.xml.dist`,
-joka on muuten samanlainen kuin alkuperäinen `context.xml`, mutta ei sisällä salasanaa,
-eikä ole mainittu `.gitignore` tiedossa. 
-
-Näin repositorion kloonannut pystyy kopioimaan tiedoston paikalleen ja 
-laittamaan siihen tarvittavan salasanan käsin.
-
-<alert>
-Kun käytät `.dist`-päätteisiä tiedostoja, laita dokumentaation asennusohjeisiin maininta niiden sijainnista
-ja siitä mitä niihin pitää sijoittaa ohjelman käyttämiseksi.
-</alert>
+<next>
+Kun olet saanut tietokantaan toimivan yhteyden ja laittanut sen omaan tiedostoonsa, 
+voit jatkaa tietokantaohjelmointia
+tekemällä [yksinkertaisen listauksen](../listaustesti/index.html).
+</next>

@@ -3,30 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <title>Istunnot ja kirjautumisen tallentaminen</title>
+  <title>MVC-mallin nyrkisääntöjä</title>
   <style type="text/css">code{white-space: pre;}</style>
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
-  <style type="text/css">
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; }
-code > span.dt { color: #902000; }
-code > span.dv { color: #40a070; }
-code > span.bn { color: #40a070; }
-code > span.fl { color: #40a070; }
-code > span.ch { color: #4070a0; }
-code > span.st { color: #4070a0; }
-code > span.co { color: #60a0b0; font-style: italic; }
-code > span.ot { color: #007020; }
-code > span.al { color: #ff0000; font-weight: bold; }
-code > span.fu { color: #06287e; }
-code > span.er { color: #ff0000; font-weight: bold; }
-  </style>
   <link rel="stylesheet" href="../../../css/base.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!--[if lt IE 9]>
@@ -75,7 +56,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <ul>
 <li><a href="../../../aikataulu/viikko3/java/rakenne.html">Sovelluksen rakenne ja servletit</a></li>
 <li><a href="../../../aikataulu/viikko3/java/lomakkeet.html">Lomakkeiden käyttö ja vastaanottaminen</a></li>
-<li class="selected"><a href="../../../aikataulu/viikko3/java/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
+<li><a href="../../../aikataulu/viikko3/java/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
 </ul></li>
 <li><a href="../../../aikataulu/viikko3/php/index.html">Kirjautuminen PHP:llä</a>
 <ul>
@@ -109,7 +90,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 </ul></li>
 <li><a href="../../../ohjeistus/tietokantaohjelmointi/arkkitehtuuri/index.html">Arkkitehtuuri ja MVC</a>
 <ul>
-<li><a href="../../../ohjeistus/tietokantaohjelmointi/arkkitehtuuri/nyrkkisaannot.html">MVC-mallin nyrkisääntöjä</a></li>
+<li class="selected"><a href="../../../ohjeistus/tietokantaohjelmointi/arkkitehtuuri/nyrkkisaannot.html">MVC-mallin nyrkisääntöjä</a></li>
 </ul></li>
 </ul></li>
 <li><a href="../../../ohjeistus/users/index.html">Users-palvelin ja töiden pystyttäminen</a>
@@ -177,43 +158,14 @@ code > span.er { color: #ff0000; font-weight: bold; }
 </div>
 <div class="col-md-6" id="content">
 <header>
-<h1 class="title">Istunnot ja kirjautumisen tallentaminen</h1>
+<h1 class="title">MVC-mallin nyrkisääntöjä</h1>
 </header>
-<!-- order: 3 -->
-
-<p>Edellä toteutetussa kirjautumisessa on se huono puoli, ettei se tallennu mihinkään, sillä <a href="../../../web-sovelluksista.html#tilatiedon-hallinta-ja-samanaikaiset-aineistopyynn%C3%B6t">HTTP-protokolla on tilaton</a>, eikä aineistopyyntöjen välillä talleteta informaatiota.</p>
-<p>Apuun ongelmaan tulee Javan istuntotuki. Istunnot ovat ikäänkuin pieniä, käyttäjä- ja selainkohtaisia tietokantoja, joihin voi tallettaa olioita siten, että ne säilyvät sivulataukselta toiselle.</p>
-<p>Kirjautumisen tapauksessa haluamme tallentaa tiedon siitä kuka on kirjautunut sisään. Tieto tallennetaan istuntoon siinä vaiheessa, kun käyttäjä kirjautuu sisään ja sitä käytetään aina kun halutaan tarkastella onko käyttäjä kirjautunut sivulle.</p>
-<p>Javassa istunto alustetaan käyttämällä HttpServletRequest-olion <a href="http://docs.oracle.com/javaee/6/api/javax/servlet/http/HttpServletRequest.html#getSession(boolean)">getSession-metodia</a>. Metodi palauttaa käyttäjän istunnon tai mikäli sellaista ei vielä ole olemassa, luo sen. Istunto-olioon voi tämän jälkeen tallentaa tietoa ja tarkastella siellä olevia tietoja.</p>
-<pre class="sourceCode java"><code class="sourceCode java">HttpSession session = request.<span class="fu">getSession</span>();
-session.<span class="fu">setAttribute</span>(<span class="st">&quot;kirjautunut&quot;</span>, <span class="kw">new</span> <span class="fu">Kayttaja</span>(<span class="st">&quot;Kalle&quot;</span>));
-
-<span class="co">// Ohessa kätevä tapa välittää virheviestejä silloin kun käytetään HTTP-redirectiä */</span>
-String lomakekasittelijanVirheviesti = (String)session.<span class="fu">getAttribute</span>(<span class="st">&quot;virheViesti&quot;</span>);
-session.<span class="fu">removeAttribute</span>(<span class="st">&quot;virheViesti&quot;</span>);</code></pre>
-<p>Käytä istunto-oliota kirjautumisservletissäsi siten, että talletat jokaisen onnistuneen kirjautumisen yhteydessä kirjautuneen käyttäjän tiedot istuntoon.</p>
-<section id="kirjautumisen-tarkistaminen" class="level2">
-<h2>Kirjautumisen tarkistaminen</h2>
-<p>Lisää yleiskäyttöiseen servlet-yläluokkaasi metodi, joka palauttaa arvon <code>true</code>, mikäli käyttäjä on kirjautunut ja istunnossa on tallennettuna käyttäjän kirjautumistiedot. Metodi voi halutessasi myös ohjata käyttäjän kirjautumissivulle mikäli näin ei ole. Näin kirjautumista vaativat sivut voivat kätevästi tarkistaa onko käyttäjä oikeasti kirjautunut.</p>
-<p>Jos sovelluksessasi on monia erilaisia käyttöoikeustasoja tms., voit tehdä vastaavan metodin myös käyttöoikeuden tarkistamiseen.</p>
-<p>Käytä tekemääsi metodia estääksesi käyttäjää pääsemästä kirjautumista vaativille sivuille ilman kirjautumista.</p>
-</section>
-<section id="uloskirjautuminen" class="level2">
-<h2>Uloskirjautuminen</h2>
-<p>Kun olet lisännyt kirjautumistarkistuksen kaikille sivuille jotka sitä vaativat, uloskirjautumisen toteuttamiseksi riittää poistaa istuntoon tallennetut tiedot kirjautumisesta. Tämän jälkeen käyttäjä ei enää pääse sivuille sisään.</p>
-<pre class="sourceCode java"><code class="sourceCode java"><span class="co">//Kirjaudutaan ulos</span>
-session.<span class="fu">removeAttribute</span>(<span class="st">&quot;kirjautunutKayttaja&quot;</span>);</code></pre>
-<section class="alert alert-info small"><h3>
-Valmista!
-</h3>
-
-<p>Kun olet toteuttanut kaikki näissä ohjeissa mainitut asiat, olet saanut valmiiksi viikon 3 palautuksen. Varmista vielä, että kaikki tiedostot löytyvät repositoriostasi.</p>
-</section>
-
-
-
-
-</section>
+<ul>
+<li>Malli vastaa tiedon käsittelemisestä ja abstrahoinnista ja <strong>ainoastaan</strong> siitä. Mallissa ei <strong>ikinä käsitellä HTML:ää</strong> tai käyttäjän lähettämiä pyyntöjä ja parametrejä, nämä ovat näkymän ja kontrollerin tehtäviä.</li>
+<li>Kaikki HTML-koodi sijoitetaan <em>näkymiin</em></li>
+<li>Kaikki käyttäjän lähettämät GET- ja POST-paremetrit vastaanotetaan <em>kontrollerissa</em>.</li>
+<li>SQL-kyselyjä ei ikinä tehdä kontrollereiden tai näkymien puolella.</li>
+</ul>
 </div>
 </div> 
 </div> 

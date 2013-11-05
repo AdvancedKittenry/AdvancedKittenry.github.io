@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <title>Harjoitustyön seuranta</title>
+  <title>Git-repositoriot ja salasanat</title>
   <style type="text/css">code{white-space: pre;}</style>
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -71,7 +71,7 @@
 <li><a href="../ohjeistus/index.html">Ohjeistus</a>
 <ul>
 <li><a href="../ohjeistus/html-opas.html">HTML-opas</a></li>
-<li><a href="../ohjeistus/git-ja-salasanat.html">Git-repositoriot ja salasanat</a></li>
+<li class="selected"><a href="../ohjeistus/git-ja-salasanat.html">Git-repositoriot ja salasanat</a></li>
 <li><a href="../ohjeistus/netbeans/index.html">NetBeansin käyttöönotto</a>
 <ul>
 <li><a href="../ohjeistus/netbeans/java.html">NetBeansin käyttö Javan kanssa</a></li>
@@ -113,7 +113,7 @@
 <li><a href="../aiheet/Drinkkiarkisto.html">Drinkkiarkisto</a></li>
 <li><a href="../aiheet/Elektroninen_keittokirja.html">Elektroninen keittokirja</a></li>
 <li><a href="../aiheet/Graduaiheet.html">Graduaiheet</a></li>
-<li class="selected"><a href="../aiheet/Harjoitustyon_seuranta.html">Harjoitustyön seuranta</a></li>
+<li><a href="../aiheet/Harjoitustyon_seuranta.html">Harjoitustyön seuranta</a></li>
 <li><a href="../aiheet/Hiihtokisojen_tulospalvelu.html">Hiihtokisojen tulospalvelu</a></li>
 <li><a href="../aiheet/Huutokauppa.html">Huutokauppa</a></li>
 <li><a href="../aiheet/Kennelkerho.html">Kennelkerho</a></li>
@@ -158,36 +158,20 @@
 </div>
 <div class="col-md-6" id="content">
 <header>
-<h1 class="title">Harjoitustyön seuranta</h1>
+<h1 class="title">Git-repositoriot ja salasanat</h1>
 </header>
-<section class="alert alert-info small"><h3>
-Arvosanamaksimi:
+<p>Yksityiseksi tarkoitettujen salasanojen tallentaminen versionhallintaan ei ole ikinä kovin hyvä idea. Salasanoja sisältäviä tiedostoja ei useimmiten kuitenkaan kannata jättää versionhallinnasta poiskaan, sillä useimmiten niihin sisältyy muutakin oleellista informaatiota projektista.</p>
+<p>Yksinkertainen ja hyvin yleisesti käytetty tapa hoitaa ongelma, on luoda tarvittava salasanan sisältävä tiedosto kahdesti: ensiksi normaalina tiedostona, jossa on salasana, mutta jota ei laiteta versionhallintaan ja sitten salasanattomana .dist-tiedostopäätteellisenä versiona, joka laitetaan versionhallintaan.</p>
+<p>Esimerkiksi Javalla koodatessa voidaan tiedosto <code>web/META-INF/context.xml</code> sijoittaa <code>.gitignore</code>-tiedostoon siten, ettei se mene versionhallintaan ja sensijaan tehdä tiedostosta kopio, <code>web/META-INF/context.xml.dist</code>, joka on muuten samanlainen kuin alkuperäinen <code>context.xml</code>, mutta ei sisällä salasanaa, eikä ole mainittu <code>.gitignore</code> tiedossa.</p>
+<p>Näin repositorion kloonannut pystyy kopioimaan tiedoston paikalleen ja laittamaan siihen tarvittavan salasanan käsin.</p>
+<section class="alert alert-danger"><h3>
+Pidä mielessä!
 </h3>
-5
-</section>
-<section class="alert alert-info small"><h3>
-Vaikeustaso:
-</h3>
-Haastava
+<p>Kun käytät <code>.dist</code>-päätteisiä tiedostoja, laita dokumentaation asennusohjeisiin maininta niiden sijainnista ja siitä mitä niihin pitää sijoittaa ohjelman käyttämiseksi.</p>
 </section>
 
 
-<p><strong>IS98HL1</strong></p>
-<p>Informaatiojärjestelmien harjoitustyöt ohjataan henkilökohtaisin ennakkoon sovituin ohjauskäynnein sekä päivystyskäyntien avulla. Opiskelijakohtaisesti sovitaan karkea yleisaikataulu, jonka puitteissa opiskelijat voivat varata ajat henkilökohtaisille ohjauspalavereille. Ajat valitaan niiden aikojen joukosta, jotka ohjaaja on laittanut tarjolle. Opiskelijalla on ns. ‘omaohjaaja’, joka hoitaa ennalta sovittavat ohjaustilaisuudet. Opiskelija voi päivystysneuvonnassa käyttää myös muiden ohjaajien palveluita.</p>
-<p>Ohjaajat kirjaavat tiedot jokaisesta ohjauskäynnistä. Käyntikirjaukseen liittyen kirjataan opiskelijatiedon lisäksi erilaisia kommentteja. Jokaisen ennalta sovitun käynnin yhteydessä kirjataan myös opiskelijan siihen menness käyttämä työaika.</p>
-<p>Työssä laaditaan harjoitustyön seurantaa avustava järjestelmä. Järjestelmä tarjoaa palveluja opiskelijoille, ohjaajille ja kurssin vastuuhenkilölle. Toimintoja:</p>
-<ul>
-<li>kirjautuminen</li>
-<li>ohjaajan ohjausaikojen tarjollepano ja muokkaaminen</li>
-<li>ohjaajan päivytysaikojen kirjaus</li>
-<li>ohjausajan varaus henkilökohtaiseen palaveriin</li>
-<li>ohjaajien päivystysaikojen selailu</li>
-<li>luettelo sovituista palavereista (ohjaajalle, opiskelijalle)</li>
-<li>ohjaustilanteen kirjaus</li>
-<li>tietyn opiskelijan historia (ohjaajalle)</li>
-<li>yhteenveto ohjauksesta (kurssin vastuuhenkilölle)</li>
-<li>ohjaajien ja opiskelijoiden tietojen lisäys, poisto ja muokkaus (kurssin vastuuhenkilölle)</li>
-</ul>
+
 </div>
 </div> 
 </div> 

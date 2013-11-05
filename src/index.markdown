@@ -35,6 +35,6 @@ Hyödyllisiä sivuja:
 * [Dokumentointiohje](dokumentaatio-ohje.html)
 
 [kaytettavyys]: kaytettavyys.html
-[arkkitehtuuri]: ohjeistus/arkkitehtuuri/index.html
+[arkkitehtuuri]: ohjeistus/tietokantaohjelmointi/arkkitehtuuri/index.html
 [cleancode]: cleancode.html
 [kielivalinta]: ohjelmointikielet/index.html

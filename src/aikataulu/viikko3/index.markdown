@@ -54,4 +54,4 @@ Siirry sitten käyttämäsi kielen kirjautumisen toteuttamisohjeisiin:
 Tehtyäsi kaiken varmista, että kaikki tekemäsi muutokset näkyvät GitHub-repositoriossasi.
 </ohje>
 
-[arkkitehtuuri]: {{rootdir}}ohjeistus/arkkitehtuuri/index.html
+[arkkitehtuuri]: {{rootdir}}ohjeistus/tietokantaohjelmointi/arkkitehtuuri/index.html
