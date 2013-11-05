@@ -416,7 +416,25 @@ Nyrkkisääntöjä
 </li></ul><div class='panel panel-default'><div class='panel-body'><div class='tab-content'>
 <section class='tab-pane active' id='tab_1_0' >
 
-<pre class="sourceCode php"><code class="sourceCode php"></code></pre>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span> 
+  <span class="co">//Otetaan käyttöön kirjastotiedosto, joka hakee kasan omatekoisia yleistoimintoja, sekä malliluokka:</span>
+  <span class="kw">require_once</span> <span class="st">&#39;src/common.php&#39;</span><span class="ot">;</span>
+  <span class="kw">require_once</span> <span class="st">&#39;src/models/kissa.php&#39;</span><span class="ot">;</span>
+  
+  <span class="co">//Selvitetään onko käyttäjä tehnyt haun</span>
+  <span class="kw">$hakusana</span> = <span class="kw">null</span><span class="ot">;</span>
+  <span class="kw">if</span> <span class="ot">(</span>!<span class="fu">empty</span><span class="ot">(</span><span class="kw">$_GET</span><span class="ot">[</span><span class="st">&#39;haku&#39;</span><span class="ot">]))</span> {
+    <span class="kw">$hakusana</span> = <span class="kw">$_GET</span><span class="ot">[</span><span class="st">&#39;haku&#39;</span><span class="ot">];</span>
+  }
+
+  <span class="co">//Kutsutaan malliluokan staattista metodia</span>
+  <span class="kw">$kissat</span> = Kissa::hae<span class="ot">(</span><span class="kw">$hakusana</span><span class="ot">);</span>
+  
+  <span class="co">//Näytetään näkymä lähettäen sille muutamia muuttujia</span>
+  naytaNakymä<span class="ot">(</span><span class="st">&quot;kissalista&quot;</span><span class="ot">,</span> <span class="fu">array</span><span class="ot">(</span>
+    <span class="st">&#39;title&#39;</span> =&gt; <span class="st">&quot;Kissalista&quot;</span><span class="ot">,</span>
+    <span class="st">&#39;kissat&#39;</span> =&gt; <span class="kw">$kissat</span>
+  <span class="ot">));</span></code></pre>
 </section>
 <section class='tab-pane' id='tab_1_1' >
 
@@ -516,12 +534,28 @@ Nyrkkisääntöjä
 <p>PHP:tä käytettäessä sijoita kaikki mallit ja näkymät omaan kansioonsa. Käsittelijät taas sijoitetaan projektin juureen. Näkymät sijoitetaan kansioon <code>views</code>.</p>
 <p>Useimmiten on tarpeen luoda vielä oma kansionsa yleiskäyttöisille kirjastotiedostoille, jotka eivät varsinaisesti ole malleja. Yleiskäyttöisen koodin kansion voi nimetä kuvaavasti esim. <code>libs</code>. Luo malleille oma <code>models</code>-kansio yleiskäyttöisen koodin alle.</p>
 <p>Kansioiden nimet voi halutessaan suomentaa.</p>
+<pre><code>views/
+  userlist.php
+libs/
+  models/
+    user.php
+  utilities.php (Yleiskäyttöisiä funktioita)
+users.php (Käyttäjänhallinnan kontrolleri)
+~~~</code></pre>
 </section>
 <section class='tab-pane' id='tab_2_1' >
 
 <p>Javaa käytettäessä sijoita mallit ja kontrollerit omiin paketteihinsa projektin yhteisen paketin alle src-kansioon.</p>
 <p>Kontrollerit ovat Javan tapauksessa aina HttpServlet-luokan aliluokkia eli servlettejä, joten niiden paketin voi nimetä myös esim. <code>servletit</code>.</p>
 <p>Näkymät - eli yleensä jsp-tiedostot - menevät omaan kansioonsa joka on oletuksena nimeltään web.</p>
+<pre><code>src/
+  Paketti/
+    Models/
+      User.java
+    Servlets/
+      UserServlet.java
+web/
+  user.jsp</code></pre>
 </section>
 </div></div></div>
 
