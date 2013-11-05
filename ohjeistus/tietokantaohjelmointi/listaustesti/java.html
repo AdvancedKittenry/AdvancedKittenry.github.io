@@ -191,10 +191,79 @@ Tämän sivun sisältö on vielä työn alla ja saattaa muuttua kurssin edetess�
 
 
 
-<p>Varmista ensin, että sinulla on luokka tai funktio, jolla saat <a href="../tietokantayhteys/index.html">yhteyden tietokantaan</a>. Nyt käytämme tietokantayhteyttä luokaksemme hyvin yksinkertaisen sivun, jolla listataan jonkun taulun sisältöä. Teemme tämän kahdessa vaiheessa: Ensin luomme yksinkertaisen sivun, joka näyttää listan asioista sitten luomme koodin, joka hakee tuon listan tietokannasta.</p>
-<section id="asioiden-listaaminen" class="level2">
-<h2>Asioiden listaaminen</h2>
-<p>Tarkempien ohjeiden puuttuessa näkymien toteutuksen esimerkkikoodia voi noukkia <a href="../../../aikataulu/viikko3/java/rakenne.html">viikon 3 materiaaleista</a>.</p>
+<p>Varmista ensin, että sinulla on luokka tai funktio, jolla saat <a href="../tietokantayhteys/index.html">yhteyden tietokantaan</a>. Nyt käytämme tietokantayhteyttä luokaksemme hyvin yksinkertaisen sivun, jolla listataan jonkun taulun sisältöä. Teemme tämän kahdessa vaiheessa: Ensin luomme yksinkertaisen servletin, joka lähettää selaimelle yksinkertaista HTML:ää, sitten laitamme tämän servletin näyttämään listan. Lopulta luomme koodin, joka hakee tuon listan tietokannasta.</p>
+<p>Tässä vaiheessa ymmärtämistä saattaa helpottaa <a href="../arkkitehtuuri/index.html">MVC-mallin rakenteen tunteminen</a>.</p>
+<section id="servletit" class="level2">
+<h2>Servletit</h2>
+<p>Tomcatille koodatessa kaikki dynaamista toiminnallisuutta vaativat sivut koodataan <em>Servletteinä</em>.</p>
+<p>Servletit ovat Java EE:ssä eli Javan nettipuolessa käytettäviä luokkia, jotka edustavat jonkin nettisivun tai toiminnon <em>kontrollereita</em>. Servletit ja kontrollerit ovat Javan näkökulmasta useimmiten käytännössä sama asia.</p>
+<p>Jokainen Servlet-luokka on sidottu johonkin URL-osoitteeseen, johon ohjattu aineistopyyntö aktivoi sen. Sitomiset on käyttämässämme Java-ympäristön versiossa määritelty XML-pohjaisesti tiedostossa <code>web/WEB-INF/web.xml</code>. Tiedoston muokkaus on hieman monimutkaista, mutta esimerkiksi NetBeans osaa muokata tämän tiedoston määrityksiä kätevällä käyttöliittymällä ja liittää esimerkiksi uusien Servlettien URL-osoitteet sinne samalla kun Servlettiä luodaan, jolloin käytännössä tiedostoon tarvitsee koskea käsin aika harvoin.</p>
+<section id="servletin-toiminta" class="level3">
+<h3>Servletin toiminta</h3>
+<p>Servletin toiminnan ytimessä ovat <code>doGet</code>- ja <code>doPost</code>-metodit, jotka ottavat vastaan servletin osoitteeeseen <a href="../../../web-sovelluksista.html#get-ja-post">GET- ja POST-metodeilla</a> tehtyjä aineistopyyntöjä. NetBeansin vakiopohja Servlet-luokille luo nämä metodit automaattisesti ja laittaa ne molemmat kutsumaan samaa <code>processRequest</code>-metodia. Metodilla on parametreina HttpServletRequest-olio, joka sisältää pyynnön tiedot, ja HttpServletResponse-olio, johon voidaan määrittää pyynnölle vastaus.</p>
+<p><strong>Esimerkki Netbeansillä tuotetusta Servlet-luokasta:</strong></p>
+<pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="kw">class</span> TestiServlet <span class="kw">extends</span> HttpServlet {
+
+  <span class="co">/**</span>
+<span class="co">   * Processes requests for both HTTP</span>
+<span class="co">   * &lt;code</span><span class="kw">&gt;</span><span class="co">GET&lt;/code</span><span class="kw">&gt;</span><span class="co"> and &lt;code</span><span class="kw">&gt;</span><span class="co">POST&lt;/code</span><span class="kw">&gt;</span><span class="co"> methods.</span>
+<span class="co">   *</span>
+<span class="co">   * </span><span class="kw">@param request </span><span class="co">servlet request</span>
+<span class="co">   * </span><span class="kw">@param response </span><span class="co">servlet response</span>
+<span class="co">   * </span><span class="kw">@throws ServletException </span><span class="co">if a servlet-specific error occurs</span>
+<span class="co">   * </span><span class="kw">@throws IOException </span><span class="co">if an I/O error occurs</span>
+<span class="co">   */</span>
+  <span class="kw">protected</span> <span class="dt">void</span> <span class="fu">processRequest</span>(HttpServletRequest request, HttpServletResponse response)
+      <span class="kw">throws</span> ServletException, IOException {
+    response.<span class="fu">setContentType</span>(<span class="st">&quot;text/html;charset=UTF-8&quot;</span>);
+    PrintWriter out = response.<span class="fu">getWriter</span>(); 
+    <span class="kw">try</span> {
+      <span class="co">/* TODO output your page here. You may use following sample code. */</span>
+      out.<span class="fu">println</span>(<span class="st">&quot;&lt;html&gt;&quot;</span>); 
+      out.<span class="fu">println</span>(<span class="st">&quot;&lt;head&gt;&lt;title&gt;Servlet TestiServlet&lt;/title&gt;&lt;/head&gt;&quot;</span>);
+      out.<span class="fu">println</span>(<span class="st">&quot;&lt;body&gt;&quot;</span>);
+      out.<span class="fu">println</span>(<span class="st">&quot;&lt;h1&gt;Servlet TestiServlet at &quot;</span> + 
+        request.<span class="fu">getContextPath</span>() + <span class="st">&quot;&lt;/h1&gt;&quot;</span>);
+      out.<span class="fu">println</span>(<span class="st">&quot;&lt;/body&gt;&quot;</span>);
+      out.<span class="fu">println</span>(<span class="st">&quot;&lt;/html&gt;&quot;</span>);
+    } <span class="kw">finally</span> {            
+      out.<span class="fu">close</span>();
+    }
+  }
+  
+  <span class="co">/* NetBeansin piilottamat doGet- ja doPost-metodit, jotka kutsuvat processRequest-metodia. */</span>
+
+}</code></pre>
+<p>Valmiin pohjan sisältämä vastauksen tuottava koodi sisältää suoraan kontrolleriin upotettua HTML-koodia. Tälläistä koodia ei pidemmän päälle kannata käyttää, mutta testitiedoston luomisen kannalta voimme muokata sen tuottamaan seuraavanlaisen listan:</p>
+<pre class="sourceCode java"><code class="sourceCode java"><span class="kw">protected</span> <span class="dt">void</span> <span class="fu">processRequest</span>(HttpServletRequest request, HttpServletResponse response)
+    <span class="kw">throws</span> ServletException, IOException {
+  List&lt;String&gt; asiat = <span class="kw">new</span> ArrayList&lt;String&gt;();
+  asiat.<span class="fu">add</span>(<span class="st">&quot;Kirahvi&quot;</span>);
+  asiat.<span class="fu">add</span>(<span class="st">&quot;Trumpetti&quot;</span>);
+  asiat.<span class="fu">add</span>(<span class="st">&quot;Jeesus&quot;</span>);
+  asiat.<span class="fu">add</span>(<span class="st">&quot;Parta&quot;</span>);
+
+  response.<span class="fu">setContentType</span>(<span class="st">&quot;text/html;charset=UTF-8&quot;</span>);
+  PrintWriter out = response.<span class="fu">getWriter</span>(); 
+  <span class="kw">try</span> {
+    out.<span class="fu">println</span>(<span class="st">&quot;&lt;html&gt;&quot;</span>); 
+    out.<span class="fu">println</span>(<span class="st">&quot;&lt;head&gt;&lt;title&gt;Servlet TestiServlet&lt;/title&gt;&lt;/head&gt;&quot;</span>);
+    out.<span class="fu">println</span>(<span class="st">&quot;&lt;body&gt;&quot;</span>);
+    out.<span class="fu">println</span>(<span class="st">&quot;&lt;ul&gt;&quot;</span>);
+    <span class="kw">for</span> (String asia : asiat) {
+      out.<span class="fu">println</span>(<span class="st">&quot;&lt;li&gt;&quot;</span>+asia+<span class="st">&quot;&lt;/li&gt;&quot;</span>);
+    }
+    out.<span class="fu">println</span>(<span class="st">&quot;&lt;/ul&gt;&quot;</span>);
+    out.<span class="fu">println</span>(<span class="st">&quot;&lt;/body&gt;&quot;</span>);
+    out.<span class="fu">println</span>(<span class="st">&quot;&lt;/html&gt;&quot;</span>);
+  } <span class="kw">finally</span> {            
+    out.<span class="fu">close</span>();
+  }
+}</code></pre>
+<p>Ohjeisen servletin pitäisi tuottaa selaimelle lista, jossa on asiat-listaan lisätyt neljä asiaa. Testaa tätä selaimessa nyt.</p>
+<p>HTML:n upottaminen Java-koodiin on melko kömpelöä. Jatkossa kurssilla käytetään hieman edistyneempiä tekniikoita, mutta tietokantatestin kannalta tämä on yksinkertaisempaa.</p>
+<p>Voit halutessasi katsoa miten esimerkki toteutetaan oikein <a href="../../../aikataulu/viikko3/java/rakenne.html">viikon 3 materiaaleista</a>.</p>
+</section>
 </section>
 <section id="tietokannan-käyttö" class="level2">
 <h2>Tietokannan käyttö</h2>
@@ -220,7 +289,11 @@ Tämän sivun sisältö on vielä työn alla ja saattaa muuttua kurssin edetess�
   <span class="kw">return</span> kayttajat;
 }</code></pre>
 <p>Nyt listaesimerkin alku voi näyttää esimerkiksi seuraavalta:</p>
-<pre class="sourceCode java"><code class="sourceCode java">TODO:</code></pre>
+<pre class="sourceCode java"><code class="sourceCode java">List&lt;Kayttaja&gt; kayttajat = Kayttaja.<span class="fu">getKayttajat</span>();</code></pre>
+<p>Ja koska kyseessä ovat oliot, pitää niitä listatessa tulostaa jokin merkkijono eikä itse oliota:</p>
+<pre class="sourceCode php"><code class="sourceCode php">for (Kayttaja kayttaja : kayttajat) {
+  out.println(&quot;&lt;li&gt;&quot;+kayttaja.getUsername()+&quot;&lt;/li&gt;&quot;);
+}</code></pre>
 <section class="alert alert-warning"><h3>
 Hyvä tietää
 </h3>
@@ -229,7 +302,7 @@ Hyvä tietää
 <section class="alert alert-success small"><h3>
 Seuraavaksi:
 </h3>
-<p>Testisovelluksen tehtyäsi tustustu tarkemmin <a href="../arkkitehtuuri/index.html">MVC-arkkitehtuuriin</a> ja sen jälkeen kirjautumisen toteuttamiseen.</p>
+<p>Testisovelluksen tehtyäsi voit tustustua tarkemmin viikon 3 materiaaliin: <a href="../arkkitehtuuri/index.html">MVC-arkkitehtuuriin</a> ja sen jälkeen kirjautumisen toteuttamiseen.</p>
 </section>
 
 

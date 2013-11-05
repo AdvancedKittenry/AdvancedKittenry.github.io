@@ -51,6 +51,9 @@ $lista = array("Kirahvi", "Trumpetti", "Jeesus", "Parta")";
 </html>
 ~~~
 
+Ohjeisen koodin pitäisi tuottaa selaimelle lista, jossa on asiat-listaan lisätyt
+neljä asiaa. Testaa tätä selaimessa nyt.
+
 Tätä nimenomaista HTML-koodin seassa koodausta varten PHP:ssä on 
 olemassa myös hieman 
 [erilaiset versiot useimmista kielen rakenteista](http://php.net/manual/en/control-structures.alternative-syntax.php):
@@ -150,6 +153,7 @@ Lopulliset sivut tulevat noudattamaan läheisemmin [MVC-arkkitehtuuria][mvc].
 * [Include ja require](http://php.net/manual/en/function.include.php)
 
 <next>
-Testisovelluksen tehtyäsi tustustu tarkemmin [MVC-arkkitehtuuriin](../arkkitehtuuri/index.html)
+Testisovelluksen tehtyäsi voit tustustua tarkemmin viikon 3 materiaaliin:
+[MVC-arkkitehtuuriin](../arkkitehtuuri/index.html)
 ja sen jälkeen kirjautumisen toteuttamiseen.
 </next>
