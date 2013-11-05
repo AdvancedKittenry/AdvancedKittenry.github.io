@@ -3,8 +3,8 @@
 
 <deadline>{{deadline3}}</deadline>
 
-Kolmannen viikon pääteemana on aloittaa 
-hyvän arkkitehtuurin mukainen koodaaminen
+Kolmannen viikon pääteemana on tutustua 
+hyvän arkkitehtuurin mukaiseen koodaamiseen
 ja toteuttaa kirjautuminen.
 
 <wip />
@@ -19,10 +19,15 @@ TODO:
 * Käytettävyys
 </comment>
 
+## MVC-arkkitehtuuri (1p)
+
 * Sovelluksen logiikkaa on eritelty kontrollereista malleihin ja näkymiin [MVC-mallin mukaisesti][arkkitehtuuri].
 * Sivuille on luotu erillinen sivupohjatiedosto, joka sisältää jokaiselle sivulle tulevat asiat.
     * Java:lla helpointa käyttää [JSP-tägikirjastoa](java/rakenne.html#template-pohjatiedoston-k%C3%A4ytt%C3%B6)
     * PHP:lle tulossa oma ohje, joka perustuu [include-funktion](http://php.net/manual/en/function.include.php) käyttöön
+
+## Kirjautuminen (2p)
+
 * Sovelluksessa on malliluokka tai luokat käyttäjien ja kirjautumisen käsittelyyn. Toteutuksessa pitää käyttää tietokantaa ja istuntoa.
 * Sovelluksessa on kirjautumislomake ja kontrolleri, joka ottaa lomakkeen lähettämät tiedot vastaan
 * Kirjautuneelle käyttäjälle varattuihin toimintoihin ei päästetä kirjautumatta
