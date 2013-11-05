@@ -97,6 +97,7 @@ sql/
   add-test-data.sql
   ...
 index.php
+listaustesti.php
 connectionTest.php
 .gitignore
 ~~~~
@@ -128,7 +129,8 @@ web/
     kissalista.html
     muokkaakissaa.html
   js/
-    ...
+  index.jsp
+   ...
 sql/
   create-tables.sql
   drop-tables.sql
@@ -166,6 +168,7 @@ src/
       Listaservlet.java
   ...
 .gitignore
+index.jsp
 ~~~~
 
 </tab>
