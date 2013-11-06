@@ -47,12 +47,13 @@ Korjausta vaativissa kohdissa lukee isolla FIXME.
 
 ## Java-testisovellus
 
-Testisovelluksen Java-versio on helpointa asentaa [war-pakettina]({{rootdir}}ohjeistus/users/java-war-paketit.html).
+Testisovelluksen Java-versio on helpointa asentaa war-pakettina.
 
 Voit ladata paketin [githubista][javaConnectionTest]. 
 Paketti on valitettavasti aika iso, sillä siihen on sisällytetty kaikki tarvittavat tietokanta-ajurit.
+Noudata paketin ladattuasi [asennusohjeita täältä]({{rootdir}}ohjeistus/users/java-war-paketit.html).
 
-Lataamisen jälkeen sinun pitää säätää
+Kun paketti on asennettu usersille sinun pitää vielä säätää
 XML-tiedostosta tietokannan yhteystiedot oikeiksi.
 Tomcat tekee tiedostosta oman kopionsa oletuksena polkuun 
 `tomcat/conf/Catalina/localhost/ConnectionTest.xml`.
