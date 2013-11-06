@@ -58,6 +58,10 @@ XML-tiedostosta tietokannan yhteystiedot oikeiksi.
 Tomcat tekee tiedostosta oman kopionsa oletuksena polkuun 
 `tomcat/conf/Catalina/localhost/ConnectionTest.xml`.
 
+Avaa tämä XML-tiedosto jollain ohjelmalla (esim. nano) ja korjaa
+siinä olevat tietokantatunnukset omiksesi.
+Korjausta vaativia kohtia on kolme ja niissä lukee isolla FIXME.
+
 Muista käynnistää tomcat uudelleen asetusten säätämisen jälkeen.
 
 Sovelluksen pitäisi asennuksen jälkeen pyöriä osoitteessa [http://t-kayttajatunnuksesi.users.cs.helsinki.fi/ConnectionTest/](http://t-kayttajatunnuksesi.users.cs.helsinki.fi/ConnectionTest/)

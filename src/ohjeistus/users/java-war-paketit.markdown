@@ -30,7 +30,9 @@ ja avata sovelluksesi nimellä varustettu XML-tiedosto,
 esim. `kissalista.xml`. 
 
 Tätä tiedostoa muokkaamalla saat tietokanta-asetukset kuntoon.
-Sinun pitää kuitenkin vielä käynnistää tomcat-uudestaan
+Tämän voi tehdä esimerkiksi nanolla tai [etänä geditillä](nautilus-ssh-tunneli.html).
+
+Muokkausten jälkeen sinun pitää vielä käynnistää tomcat-uudestaan
 komennoilla `stop-tomcat` ja `start-tomcat`, jotta muutokset
 näkyvät sivuilla.
 
