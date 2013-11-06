@@ -35,8 +35,8 @@ Users.cs.helsinki.fi-palvelimen kanssa tämä ei tosin valitettavasti onnistu,
 sillä tietokantapalvelin on palomuurin takana.
 Joudut tällöin käyttämään [ssh-tunnelia]({{rootdir}}ohjeistus/users/postgres-ssh-tunneli.html)
 
-Jos olet noudattanut kurssin NetBeans-ohjetta Java-kielellä, 
-tutustu [ssh-tunnelin]({{rootdir}}ohjeistus/users/postgres-ssh-tunneli.html) muodostamiseen nyt.
+Tämä pätee lähinnä niihin jotka ovat noudattaneet kurssin NetBeans-ohjetta Java-kielellä.
+Jos olet tehnyt näin, tutustu [ssh-tunnelin]({{rootdir}}ohjeistus/users/postgres-ssh-tunneli.html) muodostamiseen nyt.
 Et saa kantaan yhteyttä ilman sitä (ellet asenna omaa palvelinta).
 
 <alert>
@@ -219,6 +219,7 @@ function annaYhteys() {
     //Tämä koodi suoritetaan vain kerran, sillä seuraavilla 
     //funktion suorituskerroilla $yhteys-muuttujassa on sisältöä.
     $yhteys = new PDO('pgsql:');
+    $yhteys->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
   }
 
   return $yhteys;

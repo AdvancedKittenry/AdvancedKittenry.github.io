@@ -207,7 +207,7 @@ Pidä mielessä!
 
 <p>Alla esimerkit tietokantayhteyden muodostamisesta Javalla ja PHP:llä tilanteessa, jossa tietokantapalvelin on samalla koneella eli osoitteessa <code>localhost</code>. Mikäli tietokantapalvelin on toisella tietokoneella, laita <code>localhost</code>:in tilalle koneen osoite.</p>
 <p>Users.cs.helsinki.fi-palvelimen kanssa tämä ei tosin valitettavasti onnistu, sillä tietokantapalvelin on palomuurin takana. Joudut tällöin käyttämään <a href="../../../ohjeistus/users/postgres-ssh-tunneli.html">ssh-tunnelia</a></p>
-<p>Jos olet noudattanut kurssin NetBeans-ohjetta Java-kielellä, tutustu <a href="../../../ohjeistus/users/postgres-ssh-tunneli.html">ssh-tunnelin</a> muodostamiseen nyt. Et saa kantaan yhteyttä ilman sitä (ellet asenna omaa palvelinta).</p>
+<p>Tämä pätee lähinnä niihin jotka ovat noudattaneet kurssin NetBeans-ohjetta Java-kielellä. Jos olet tehnyt näin, tutustu <a href="../../../ohjeistus/users/postgres-ssh-tunneli.html">ssh-tunnelin</a> muodostamiseen nyt. Et saa kantaan yhteyttä ilman sitä (ellet asenna omaa palvelinta).</p>
 <section class="alert alert-danger"><h3>
 Pidä mielessä!
 </h3>
@@ -333,6 +333,7 @@ tulokset.<span class="fu">close</span>(); kysely.<span class="fu">close</span>()
     <span class="co">//Tämä koodi suoritetaan vain kerran, sillä seuraavilla </span>
     <span class="co">//funktion suorituskerroilla $yhteys-muuttujassa on sisältöä.</span>
     <span class="kw">$yhteys</span> = <span class="kw">new</span> <span class="kw">PDO</span><span class="ot">(</span><span class="st">&#39;pgsql:&#39;</span><span class="ot">);</span>
+    <span class="kw">$yhteys</span>-&gt;setAttribute<span class="ot">(</span><span class="kw">PDO</span>::<span class="kw">ATTR_ERRMODE</span><span class="ot">,</span><span class="kw">PDO</span>::<span class="kw">ERRMODE_EXCEPTION</span><span class="ot">);</span>
   }
 
   <span class="kw">return</span> <span class="kw">$yhteys</span><span class="ot">;</span>
