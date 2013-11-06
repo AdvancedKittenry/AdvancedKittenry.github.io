@@ -29,11 +29,8 @@ luokittelemaan erilaisiin ryhmiin. Tietty kohde voi kuulua useaan ryhmään.
 
 Järjestelmässä täytyy kiinnittää erityistä huomiota järjestelmän käytettävyyteen.
 
-Testiaineistoa lytyy esim. lähteistä: [Me Naiset lehden
-kaloritaulukko](http://www.menaiset.fi/kalori.html) tai [ruotsalainen
-lääkäripalsta](http://www.doktorn.com/banta/kalorif.htm). Kulutustietoja
-löytyy esim [Fitness Partners'ien
-laskentaohjelmasta](http://www.primusweb.com/fitnesspartner/jumpsite/calculat.htm).
+Kulutustietoja löytyy esim.
+[Fitness Partners'ien laskentaohjelmasta](http://www.primusweb.com/fitnesspartner/jumpsite/calculat.htm).
 
 Toimintoja:
 
