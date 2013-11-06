@@ -36,7 +36,7 @@ Tämä mielessä pitäen yksinkertainen lista voidaan toteuttaa suhteellisen hel
 ~~~php
 <?php
 //Lista asioista array-tietotyyppiin laitettuna:
-$lista = array("Kirahvi", "Trumpetti", "Jeesus", "Parta")";
+$lista = array("Kirahvi", "Trumpetti", "Jeesus", "Parta");
 ?><!DOCTYPE HTML>
 <html>
   <head><title>Otsikko</title></head>

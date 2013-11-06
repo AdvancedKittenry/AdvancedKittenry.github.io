@@ -192,19 +192,19 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <p><strong>Esimerkki</strong></p>
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>
 <span class="co">//Lista asioista array-tietotyyppiin laitettuna:</span>
-<span class="kw">$lista</span> = <span class="fu">array</span><span class="ot">(</span><span class="st">&quot;Kirahvi&quot;</span><span class="ot">,</span> <span class="st">&quot;Trumpetti&quot;</span><span class="ot">,</span> <span class="st">&quot;Jeesus&quot;</span><span class="ot">,</span> <span class="st">&quot;Parta&quot;</span><span class="ot">)</span><span class="st">&quot;;</span>
-<span class="st">?&gt;&lt;!DOCTYPE HTML&gt;</span>
-<span class="st">&lt;html&gt;</span>
-<span class="st">  &lt;head&gt;&lt;title&gt;Otsikko&lt;/title&gt;&lt;/head&gt;</span>
-<span class="st">  &lt;body&gt;</span>
-<span class="st">    &lt;h1&gt;Listaelementtitesti&lt;/h1&gt;</span>
-<span class="st">    &lt;ul&gt;</span>
-<span class="st">    &lt;?php foreach(</span><span class="kw">$lista</span><span class="st"> as </span><span class="kw">$asia</span><span class="st">) { ?&gt;</span>
-<span class="st">      &lt;li&gt;&lt;?php echo </span><span class="kw">$asia</span><span class="st">; ?&gt;&lt;/li&gt;</span>
-<span class="st">    &lt;?php } ?&gt;</span>
-<span class="st">    &lt;/ul&gt;</span>
-<span class="st">  &lt;/body&gt;</span>
-<span class="st">&lt;/html&gt;</span></code></pre>
+<span class="kw">$lista</span> = <span class="fu">array</span><span class="ot">(</span><span class="st">&quot;Kirahvi&quot;</span><span class="ot">,</span> <span class="st">&quot;Trumpetti&quot;</span><span class="ot">,</span> <span class="st">&quot;Jeesus&quot;</span><span class="ot">,</span> <span class="st">&quot;Parta&quot;</span><span class="ot">);</span>
+<span class="kw">?&gt;</span>&lt;!DOCTYPE HTML&gt;
+&lt;html&gt;
+  &lt;head&gt;&lt;title&gt;Otsikko&lt;/title&gt;&lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Listaelementtitesti&lt;/h1&gt;
+    &lt;ul&gt;
+    <span class="kw">&lt;?php</span> <span class="kw">foreach</span><span class="ot">(</span><span class="kw">$lista</span> <span class="kw">as</span> <span class="kw">$asia</span><span class="ot">)</span> { <span class="kw">?&gt;</span>
+      &lt;li&gt;<span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$asia</span><span class="ot">;</span> <span class="kw">?&gt;</span>&lt;/li&gt;
+    <span class="kw">&lt;?php</span> } <span class="kw">?&gt;</span>
+    &lt;/ul&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
 <p>Ohjeisen koodin pitäisi tuottaa selaimelle lista, jossa on asiat-listaan lisätyt neljä asiaa. Testaa tätä selaimessa nyt.</p>
 <p>Tätä nimenomaista HTML-koodin seassa koodausta varten PHP:ssä on olemassa myös hieman <a href="http://php.net/manual/en/control-structures.alternative-syntax.php">erilaiset versiot useimmista kielen rakenteista</a>:</p>
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span> <span class="kw">foreach</span><span class="ot">(</span><span class="kw">$lista</span> <span class="kw">as</span> <span class="kw">$asia</span><span class="ot">)</span>: <span class="kw">?&gt;</span>
