@@ -19,7 +19,7 @@ src/templates/navigation-level-0.html: make-navigation.sh make-indexes.py ${DIRS
 ${TEMPLATES}:
 
 ${HTML}: %.html : src/%.markdown $@ ${DEPS}
-	./make-html.sh src/$*.markdown $*.html
+	./make-html.sh src/$*.markdown
 
 clean: cleanpages
 	rm -f inlinescripting inlinescripting.o inlinescripting.hi
