@@ -69,21 +69,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li><a href="../../../aikataulu/viikko2/suunnittelu.html">Käyttöliittymän suunnittelu</a></li>
 <li><a href="../../../aikataulu/viikko2/tietokanta.html">Tietokannan suunnittelu</a></li>
 </ul></li>
-<li><a href="../../../aikataulu/viikko3/index.html">Viikko 3</a>
-<ul>
-<li><a href="../../../aikataulu/viikko3/java/index.html">Kirjautuminen Javalla</a>
-<ul>
-<li><a href="../../../aikataulu/viikko3/java/rakenne.html">Sovelluksen rakenne ja servletit</a></li>
-<li><a href="../../../aikataulu/viikko3/java/lomakkeet.html">Lomakkeiden käyttö ja vastaanottaminen</a></li>
-<li><a href="../../../aikataulu/viikko3/java/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
-</ul></li>
-<li><a href="../../../aikataulu/viikko3/php/index.html">Kirjautuminen PHP:llä</a>
-<ul>
-<li><a href="../../../aikataulu/viikko3/php/rakenne.html">Mihin eri tiedostot kannattaa laittaa?</a></li>
-<li><a href="../../../aikataulu/viikko3/php/lomakkeet.html">Lomakkeiden käyttö ja vastaanottaminen</a></li>
-<li><a href="../../../aikataulu/viikko3/php/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
-</ul></li>
-</ul></li>
+<li><a href="../../../aikataulu/viikko3/index.html">Viikko 3</a></li>
 <li><a href="../../../aikataulu/demo.html">Demotilaisuus</a></li>
 <li><a href="../../../aikataulu/palautus.html">Työn palautus</a></li>
 </ul></li>
@@ -110,6 +96,18 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li><a href="../../../ohjeistus/tietokantaohjelmointi/arkkitehtuuri/index.html">Arkkitehtuuri ja MVC</a>
 <ul>
 <li><a href="../../../ohjeistus/tietokantaohjelmointi/arkkitehtuuri/nyrkkisaannot.html">MVC-mallin nyrkisääntöjä</a></li>
+</ul></li>
+<li><a href="../../../ohjeistus/tietokantaohjelmointi/java/index.html">Java-ohjeet</a>
+<ul>
+<li><a href="../../../ohjeistus/tietokantaohjelmointi/java/rakenne.html">Sovelluksen rakenne ja servletit</a></li>
+<li><a href="../../../ohjeistus/tietokantaohjelmointi/java/lomakkeet.html">Lomakkeiden käyttö ja vastaanottaminen</a></li>
+<li><a href="../../../ohjeistus/tietokantaohjelmointi/java/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
+</ul></li>
+<li><a href="../../../ohjeistus/tietokantaohjelmointi/php/index.html">PHP-ohjeet</a>
+<ul>
+<li><a href="../../../ohjeistus/tietokantaohjelmointi/php/rakenne.html">Mihin eri tiedostot kannattaa laittaa?</a></li>
+<li><a href="../../../ohjeistus/tietokantaohjelmointi/php/lomakkeet.html">Lomakkeiden käyttö ja vastaanottaminen</a></li>
+<li><a href="../../../ohjeistus/tietokantaohjelmointi/php/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
 </ul></li>
 </ul></li>
 <li><a href="../../../ohjeistus/users/index.html">Users-palvelin ja töiden pystyttäminen</a>
@@ -212,44 +210,57 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <span class="kw">&lt;?php</span> <span class="kw">endforeach</span><span class="ot">;</span> <span class="kw">?&gt;</span></code></pre>
 <p>Huomaa kaksoispiste for-luupin jälkeen ja puolipiste endforeach-sanan jälkeen.</p>
 <p>HTML-koodin seassa nämä tavat ilmaista luuppeja ja muita kontrollirakenteita tekevät koodin tulkitsemisesta usein helpompaa, sillä lopetussanasta näkee heti minkä rakenteen se lopettaa.</p>
-<p>Jos haluat tutustua näkymäkoodin kirjoittamiseen tarkemmin, voit tutustua <a href="../../../aikataulu/viikko3/php/rakenne.html">kolmosviikon ohjeisiin</a>.</p>
+<p>Jos haluat tutustua näkymäkoodin kirjoittamiseen tarkemmin, voit tutustua <a href="../php/rakenne.html">kolmosviikon ohjeisiin</a>.</p>
 </section>
 <section id="tietokannan-käyttö" class="level2">
 <h2>Tietokannan käyttö</h2>
 <p>Nyt kun meillä on tapa kirjoitaa lista, voimme kirjoittaa koodia, joka palauttaa meille listan.</p>
+<p>Aivan kuten tietokantayhteydenkin muodostamisen kirjoitamme tietokantaa käsittelevän koodin omaan tiedostoonsa. Tee jostakin sovelluksesi tietokohteesta, esim. käyttäjistä, oma luokkansa ja tee sille staattinen metodi, joka palauttaa kaikki tuon tietokohteen taulun rivit tuon luokan olioina.</p>
 <p>Alla on esimerkki käyttäjäluokasta, jolla on metodi, joka palauttaa jokaisen käyttäjän. Koodissa oletetaan, että funktio <code>getTietokanta</code> palauttaa sovelluksen tietokantaa vastaavan PDO-olion.</p>
-<pre class="sourceCode php"><code class="sourceCode php">class Kayttaja {
-  
-  private $id;
-  private $username;
-  private $password;
-  
-  public static function getKayttajat() {
-    $sql = &quot;SELECT id,username, password from users&quot;;
-    $kysely = getTietokanta()-&gt;prepare($sql); $kysely-&gt;execute();
-      
-    $tulokset = array();
-    foreach($kysely-&gt;fetchAll() as $tulos) {
-      $kayttaja = new Kayttaja(); 
-      /* Käytetään PHP:n vapaamielistä muuttujamallia olion
-         kenttien asettamiseen */
-      foreach($tulos as $kentta =&gt; $arvo) {
-        $kayttaja-&gt;$kentta = $arvo;
-      }
-      $tulokset[] = $kayttaja;
-    }
-    return $tulokset;
-  }
-  
-  public function getUsername() {
-    return $this-&gt;username;
-  }
-  /* Tähän muita Käyttäjäluokan metodeita */
-}</code></pre>
-<p>Tälläinen luokka kannattaa sijoittaa omaan tiedostoonsa, josta se haetaan käyttöön <a href="http://php.net/manual/en/function.include.php">include tai require-funktiolla</a>. Include ja require ovat hieman samanlaisia kuin Javan import, mutta ovat teknisesti lähemänä C-kielen includea. Molemmat lähinnä ikäänkuin upottavat kysytyn tiedoston siihen kohtaan koodia, missä niitä kutsutaan.</p>
-<p>Nyt listaesimerkin alku voi näyttää esimerkiksi seuraavalta:</p>
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>
-<span class="kw">require_once</span> <span class="st">&quot;utils/tietokanta.php&quot;</span><span class="ot">;</span>
+<span class="kw">class</span> Kayttaja {
+  
+  <span class="kw">private</span> <span class="kw">$id</span><span class="ot">;</span>
+  <span class="kw">private</span> <span class="kw">$username</span><span class="ot">;</span>
+  <span class="kw">private</span> <span class="kw">$password</span><span class="ot">;</span>
+  
+  <span class="kw">public</span> <span class="kw">static</span> <span class="kw">function</span> getKayttajat<span class="ot">()</span> {
+    <span class="kw">$sql</span> = <span class="st">&quot;SELECT id,username, password from users&quot;</span><span class="ot">;</span>
+    <span class="kw">$kysely</span> = getTietokanta<span class="ot">()</span>-&gt;prepare<span class="ot">(</span><span class="kw">$sql</span><span class="ot">);</span> <span class="kw">$kysely</span>-&gt;execute<span class="ot">();</span>
+      
+    <span class="kw">$tulokset</span> = <span class="fu">array</span><span class="ot">();</span>
+    <span class="kw">foreach</span><span class="ot">(</span><span class="kw">$kysely</span>-&gt;fetchAll<span class="ot">()</span> <span class="kw">as</span> <span class="kw">$tulos</span><span class="ot">)</span> {
+      <span class="kw">$kayttaja</span> = <span class="kw">new</span> Kayttaja<span class="ot">();</span> 
+      <span class="co">/* Käytetään PHP:n vapaamielistä muuttujamallia olion</span>
+<span class="co">         kenttien asettamiseen */</span>
+      <span class="kw">foreach</span><span class="ot">(</span><span class="kw">$tulos</span> <span class="kw">as</span> <span class="kw">$kentta</span> =&gt; <span class="kw">$arvo</span><span class="ot">)</span> {
+        <span class="kw">$kayttaja</span>-&gt;<span class="kw">$kentta</span> = <span class="kw">$arvo</span><span class="ot">;</span>
+      }
+      <span class="kw">$tulokset</span><span class="ot">[]</span> = <span class="kw">$kayttaja</span><span class="ot">;</span>
+    }
+    <span class="kw">return</span> <span class="kw">$tulokset</span><span class="ot">;</span>
+  }
+  
+  <span class="kw">public</span> <span class="kw">function</span> getUsername<span class="ot">()</span> {
+    <span class="kw">return</span> <span class="kw">$this</span>-&gt;username<span class="ot">;</span>
+  }
+  <span class="co">/* Tähän muita Käyttäjäluokan metodeita */</span>
+}</code></pre>
+<p>Tälläinen omaan tiedostoonsa kirjoitettu kirjastoluokka, haetaan käyttöön <a href="http://php.net/manual/en/function.include.php">include tai require-funktiolla</a>.</p>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>
+  <span class="kw">require</span> <span class="st">&#39;kirjastot/kayttaja.php&#39;</span><span class="ot">;</span></code></pre>
+<p>Include ja require ovat hieman samanlaisia kuin Javan import, mutta ovat teknisesti lähemänä C-kielen includea. Molemmat lähinnä ikäänkuin upottavat kysytyn tiedoston siihen kohtaan koodia, missä niitä kutsutaan.</p>
+<p>Kirjastoja hakiessa kannattaa käyttää once-päätteisiä versioita, jotka eivät koskaan hae samaa tiedostoa kahdesti. PHP:ssä saman tiedoston voi hakea kahdesti, mutta jos tiedostossa on luokkamäärittely kaatuu suoritus siihen, että toisella kerralla jo olemassa olevaa luokkaa yritettään luoda uusiksi.</p>
+<section class="alert alert-warning"><h3>
+Vinkki
+</h3>
+<p>Näitä luokkia sisältäviä kirjastoina toimivia php-tiedostoja ei tarvitse päättää <code>?&gt;</code>-lopputägiin. Lopputägin laittaminen on itseasiassa huono idea, sillä niiden jälkeen saattaa tällöin eksyä rivinvaihtoja ja välilyöntejä, jotka PHP lähettää empimättä selaimelle. Tällä on ikävä tapa sotkea istuntojen ja sivujen välisten ohjausten ym. HTTP-otsakkeita käyttävien toiintojen toimintaa.</p>
+</section>
+
+<p>Kun käytössä on käyttäjäluokka, listaesimerkin alku voi näyttää esimerkiksi seuraavalta:</p>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>
+<span class="co">//require_once sisällyttää annetun tiedoston vain kerran</span>
+<span class="kw">require_once</span> <span class="st">&quot;utils/tietokanta.php&quot;</span><span class="ot">;</span> 
 <span class="kw">require_once</span> <span class="st">&quot;models/kayttaja.php&quot;</span><span class="ot">;</span>
 
 <span class="co">//Lista asioista array-tietotyyppiin laitettuna:</span>
@@ -267,13 +278,13 @@ Hyvä tietää
 <section id="linkkejä" class="level2">
 <h2>Linkkejä</h2>
 <ul>
-<li><a href="http://www.php.net/manual/en/language.basic-syntax.phpmode.php">Esimerkkejä PHP-tilasta kielen omasta dokumentaatiosta</a></li>
+<li><a href="http://www.php.net/manual/en/language.basic-syntax.phpmode.php">Esimerkkejä PHP-tilasta kielen omassa dokumentaatiossa</a></li>
 <li><a href="http://php.net/manual/en/function.include.php">Include ja require</a></li>
 </ul>
 <section class="alert alert-success small"><h3>
 Seuraavaksi:
 </h3>
-<p>Testisovelluksen tehtyäsi voit tustustua tarkemmin viikon 3 materiaaliin: <a href="../arkkitehtuuri/index.html">MVC-arkkitehtuuriin</a> ja sen jälkeen kirjautumisen toteuttamiseen.</p>
+<p>Testisovelluksen tehtyäsi voit tustustua tarkemmin viikon 3 materiaaliin: <a href="../arkkitehtuuri/index.html">MVC-arkkitehtuuriin</a> ja sen jälkeen <a href="../php/index.html">kirjautumisen toteuttamiseen</a>.</p>
 </section>
 
 

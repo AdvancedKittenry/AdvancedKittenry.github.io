@@ -69,21 +69,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li><a href="../../../aikataulu/viikko2/suunnittelu.html">Käyttöliittymän suunnittelu</a></li>
 <li><a href="../../../aikataulu/viikko2/tietokanta.html">Tietokannan suunnittelu</a></li>
 </ul></li>
-<li><a href="../../../aikataulu/viikko3/index.html">Viikko 3</a>
-<ul>
-<li><a href="../../../aikataulu/viikko3/java/index.html">Kirjautuminen Javalla</a>
-<ul>
-<li><a href="../../../aikataulu/viikko3/java/rakenne.html">Sovelluksen rakenne ja servletit</a></li>
-<li><a href="../../../aikataulu/viikko3/java/lomakkeet.html">Lomakkeiden käyttö ja vastaanottaminen</a></li>
-<li><a href="../../../aikataulu/viikko3/java/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
-</ul></li>
-<li><a href="../../../aikataulu/viikko3/php/index.html">Kirjautuminen PHP:llä</a>
-<ul>
-<li><a href="../../../aikataulu/viikko3/php/rakenne.html">Mihin eri tiedostot kannattaa laittaa?</a></li>
-<li><a href="../../../aikataulu/viikko3/php/lomakkeet.html">Lomakkeiden käyttö ja vastaanottaminen</a></li>
-<li><a href="../../../aikataulu/viikko3/php/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
-</ul></li>
-</ul></li>
+<li><a href="../../../aikataulu/viikko3/index.html">Viikko 3</a></li>
 <li><a href="../../../aikataulu/demo.html">Demotilaisuus</a></li>
 <li><a href="../../../aikataulu/palautus.html">Työn palautus</a></li>
 </ul></li>
@@ -110,6 +96,18 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li><a href="../../../ohjeistus/tietokantaohjelmointi/arkkitehtuuri/index.html">Arkkitehtuuri ja MVC</a>
 <ul>
 <li><a href="../../../ohjeistus/tietokantaohjelmointi/arkkitehtuuri/nyrkkisaannot.html">MVC-mallin nyrkisääntöjä</a></li>
+</ul></li>
+<li><a href="../../../ohjeistus/tietokantaohjelmointi/java/index.html">Java-ohjeet</a>
+<ul>
+<li><a href="../../../ohjeistus/tietokantaohjelmointi/java/rakenne.html">Sovelluksen rakenne ja servletit</a></li>
+<li><a href="../../../ohjeistus/tietokantaohjelmointi/java/lomakkeet.html">Lomakkeiden käyttö ja vastaanottaminen</a></li>
+<li><a href="../../../ohjeistus/tietokantaohjelmointi/java/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
+</ul></li>
+<li><a href="../../../ohjeistus/tietokantaohjelmointi/php/index.html">PHP-ohjeet</a>
+<ul>
+<li><a href="../../../ohjeistus/tietokantaohjelmointi/php/rakenne.html">Mihin eri tiedostot kannattaa laittaa?</a></li>
+<li><a href="../../../ohjeistus/tietokantaohjelmointi/php/lomakkeet.html">Lomakkeiden käyttö ja vastaanottaminen</a></li>
+<li><a href="../../../ohjeistus/tietokantaohjelmointi/php/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
 </ul></li>
 </ul></li>
 <li><a href="../../../ohjeistus/users/index.html">Users-palvelin ja töiden pystyttäminen</a>
@@ -285,42 +283,49 @@ Yllä olevan koodin vaatimat importit
 </section>
 </div></div></div>
 
-<p>Tee itsellesi testiluokka/tiedosto, johon sijoitat sellaisenaan tietokannan muodostamisen. Koeta ajaa tiedostosi ja katso muodostuuko yhteys.</p>
-<p>Tietokannan nopeaan testaamisen voi käyttää esim. seuraavanlaista koodia:</p>
+<p>Tee itsellesi testiluokka/tiedosto, johon sijoitat sellaisenaan tietokannan muodostamisen. Laita tämä tiedosto omaan pakettiinsa ja/tai kansioonsa. Hyviä nimiä paketille/hakemistolle voivat olla esim. “Tietokanta” tai “Models”. Sovelluksesta tulee huomattavasti selkeämpi, jos kaikki tietokantaa käsittelevä koodi on sijoitettu yhteen paikkaan.</p>
+<p>Koeta käynnistää tiedostosi koodi selaimella ja katso muodostuuko yhteys virheittä. Tietokannan nopeaan testaamisen voi myös käyttää seuraavanlaista koodia:</p>
 <div class="row">
 <div class="col-md-6">
 <p><strong>Java</strong></p>
-<pre class="sourceCode java"><code class="sourceCode java">PreparedStatement kysely;
+<pre class="sourceCode java"><code class="sourceCode java"><span class="co">//Koodi olettaa, että muuttuja yhteys sisältää yhteysvarastosta saadun yhteysolion.</span>
+PreparedStatement kysely;
 ResultSet tulokset;
+PrintWriter out = response.<span class="fu">getWriter</span>(); 
+response.<span class="fu">setContentType</span>(<span class="st">&quot;text/plain;charset=UTF-8&quot;</span>);
 
-String sql = <span class="st">&quot;SELECT 1 as one&quot;</span>;
-kysely = yhteys.<span class="fu">prepareStatement</span>(sql);
-tulokset = kysely.<span class="fu">executeQuery</span>();
-
-<span class="kw">if</span>(tulokset.<span class="fu">next</span>()) {
-  <span class="dt">int</span> ykkonen = tulokset.<span class="fu">getInt</span>(<span class="st">&quot;one&quot;</span>);
-  request.<span class="fu">setAttribute</span>(<span class="st">&quot;tulos&quot;</span>, ykkonen)
+<span class="kw">try</span> {
+  String sql = <span class="st">&quot;SELECT 1+1 as two&quot;</span>;
+  kysely = yhteys.<span class="fu">prepareStatement</span>(sql);
+  tulokset = kysely.<span class="fu">executeQuery</span>();
+  <span class="kw">if</span>(tulokset.<span class="fu">next</span>()) {
+    <span class="dt">int</span> kakkonen = tulokset.<span class="fu">getInt</span>(<span class="st">&quot;two&quot;</span>);
+    out.<span class="fu">println</span>(<span class="st">&quot;Tulos: &quot;</span>+kakkonen<span class="st">&quot;); </span>
+  } <span class="kw">else</span> {
+    out.<span class="fu">println</span>(<span class="st">&quot;Virhe!&quot;</span>); 
+  }
+} <span class="kw">catch</span> (Exception e) {
+  out.<span class="fu">println</span>(<span class="st">&quot;Virhe: &quot;</span>+e.<span class="fu">getMessage</span>()<span class="st">&quot;); </span>
 }
 
-tulokset.<span class="fu">close</span>(); kysely.<span class="fu">close</span>();
-request.<span class="fu">getRequestDispatcher</span>(<span class="st">&quot;index.jsp&quot;</span>).<span class="fu">forward</span>(request, response);</code></pre>
-<p>Sijoita tämä koodi asianmukaisen servletin processRequest-metodiin. Koodin pitäisi sijoittaa attribuuttiin <code>tulos</code> arvo 1. Jos sijoittaa index.jsp-tiedostoon lauseen <code>${tulos}</code>, pitäisi sivulle ilmaantua tuo samainen ykkönen.</p>
+tulokset.<span class="fu">close</span>(); kysely.<span class="fu">close</span>();</code></pre>
+<p>Sijoita tämä koodi asianmukaisen servletin processRequest-metodiin. Koodin pitäisi lähettää selaimelle teksti “Tulos: 2”.</p>
 </div>
 <div class="col-md-6">
 <p><strong>PHP</strong></p>
 <pre class="sourceCode php"><code class="sourceCode php">
 
 
-<span class="kw">$sql</span> = <span class="st">&quot;select 1 as one&quot;</span><span class="ot">;</span>
+<span class="kw">$sql</span> = <span class="st">&quot;select 1+1 as two&quot;</span><span class="ot">;</span>
 <span class="kw">$kysely</span> = <span class="kw">$yhteys</span>-&gt;prepare<span class="ot">(</span><span class="kw">$sql</span><span class="ot">);</span>
 
 
 <span class="kw">if</span> <span class="ot">(</span><span class="kw">$kysely</span>-&gt;execute<span class="ot">())</span> {
-  <span class="kw">$ykkonen</span> = <span class="kw">$kysely</span>-&gt;fetchColumn<span class="ot">();</span>
-  <span class="fu">var_dump</span><span class="ot">(</span><span class="kw">$ykkonen</span><span class="ot">);</span>
+  <span class="kw">$kakkonen</span> = <span class="kw">$kysely</span>-&gt;fetchColumn<span class="ot">();</span>
+  <span class="fu">var_dump</span><span class="ot">(</span><span class="kw">$kakkonen</span><span class="ot">);</span>
 }</code></pre>
 <p>Koodin pitäisi tulostaa seuraava teksti debug-koodaukseen tarkoitettua <a href="http://php.net/manual/en/function.var-dump.php">var_dump</a>-funktiota käyttäen:</p>
-<pre><code>int(1)</code></pre>
+<pre><code>int(2)</code></pre>
 </div>
 </div>
 

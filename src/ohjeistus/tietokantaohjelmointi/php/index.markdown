@@ -1,6 +1,7 @@
-% Kirjautuminen PHP:llä
+% PHP-ohjeet
+<!-- order: 7 -->
 
-Näillä sivuilla käydään yksityiskohtaisemmin läpi kirjautumisen toteuttamiseen välttämättömät asiat PHP-kielellä.
+Näillä sivuilla käydään läpi sovelluksen toteuttamiseen tarvittavia asioita PHP-kielellä.
 
 * [Mihin eri sovelluksen osat kannattaa laittaa?](rakenne.html) 
 * [Lomakkeiden käyttö ja vastaanottaminen](lomakkeet.html)

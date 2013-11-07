@@ -43,7 +43,7 @@ Metodilla on parametreina HttpServletRequest-olio, joka sisältää pyynnön tie
 
 **Esimerkki Netbeansillä tuotetusta Servlet-luokasta:**
 
-~~~~java<include src="../../../aikataulu/viikko3/java/esimerkit/TestiServlet.java" />~~~~
+~~~~java<include src="../java/esimerkit/rakenne/TestiServlet.java" />~~~~
 
 Valmiin pohjan sisältämä vastauksen tuottava koodi sisältää 
 suoraan kontrolleriin upotettua HTML-koodia. 
@@ -87,12 +87,18 @@ Jatkossa kurssilla käytetään hieman edistyneempiä tekniikoita,
 mutta tietokantatestin kannalta tämä on yksinkertaisempaa.
 
 Voit halutessasi katsoa miten esimerkki toteutetaan oikein
-[viikon 3 materiaaleista]({{rootdir}}aikataulu/viikko3/java/rakenne.html).
+[viikon 3 materiaaleista](../java/rakenne.html).
 
 ## Tietokannan käyttö
 
 Nyt kun meillä on tapa kirjoitaa lista, voimme kirjoittaa koodia,
 joka palauttaa meille listan.
+
+Aivan kuten tietokantayhteydenkin muodostamisen
+kirjoitamme tietokantaa käsittelevän koodin omaan luokkaansa.
+Tee jostakin sovelluksesi tietokohteesta, esim. käyttäjistä, oma luokkansa
+ja tee sille staattinen metodi, joka palauttaa kaikki tuon tietokohteen taulun rivit
+tuon luokan olioina.
 
 Alla on esimerkki käyttäjäluokasta, jolla on metodi, joka palauttaa jokaisen käyttäjän.
 Koodissa oletetaan, että Tietokanta-luokan metodi `getTietokanta` palauttaa 
@@ -145,5 +151,5 @@ Lopulliset sivut tulevat noudattamaan läheisemmin [MVC-arkkitehtuuria][mvc].
 <next>
 Testisovelluksen tehtyäsi voit tustustua tarkemmin viikon 3 materiaaliin:
 [MVC-arkkitehtuuriin](../arkkitehtuuri/index.html)
-ja sen jälkeen kirjautumisen toteuttamiseen.
+ja sen jälkeen [kirjautumisen toteuttamiseen](../java/index.html).
 </next>

@@ -15,7 +15,7 @@
 
 Projektissa pitäisi tällöin olla seuraavanlainen kansiorakenne:
 
-~~~~<include src="kansiorakenne.txt" />~~~~
+~~~~<include src="esimerkit/rakenne/kansiorakenne.txt" />~~~~
 
 </summary>
 
@@ -64,7 +64,7 @@ Metodilla on parametreina HttpServletRequest-olio, joka sisältää pyynnön tie
 
 **Esimerkki Netbeansillä tuotetusta Servlet-luokasta. Älä käytä tätä koodia suoraan!**
 
-~~~~java<include src="esimerkit/TestiServlet.java" />~~~~
+~~~~java<include src="esimerkit/rakenne/TestiServlet.java" />~~~~
 
 Valmiin pohjan sisältämä vastauksen tuottava koodi sisältää 
 suoraan kontrolleriin upotettua HTML-koodia. 
@@ -81,7 +81,7 @@ koodattuja käskyjä.
 
 Yksinkertaisimmillaan JSP-tiedosto näyttää tältä:
 
-~~~~jsp<include src="esimerkit/index.jsp" />~~~~
+~~~~jsp<include src="esimerkit/rakenne/index.jsp" />~~~~
 
 
 JSP-tiedoston käyttäminen tapahtuu RequestDispatcher-tyyppisen 
@@ -99,7 +99,7 @@ laita servletin pyynnön käsittelymetodiin
 RequestDispatcher-oliota käyttävää koodia, joka ohjaa luomaasi JSP-tiedostoon
 ja kutsuu metodia forward.
 
-~~~~java<include src="esimerkit/RequestDispatcher.java" />~~~~
+~~~~java<include src="esimerkit/rakenne/RequestDispatcher.java" />~~~~
 
 Viimeistään tässä vaiheessa joutunet lisäämään muutaman importin servlettiisi. 
 Näissä esimerkeissä niitä ei tulla erikseen luettelemaan, mutta esim.
@@ -223,7 +223,7 @@ ja sisältönä yksi h1-elementti.
 
 **helloworld.jsp**
 
-~~~~jsp<include src="esimerkit/templated.jsp" />~~~~
+~~~~jsp<include src="esimerkit/rakenne/templated.jsp" />~~~~
 
 Tägitiedosto sijoittaa annetut tiedot 
 sen mukaan mitä tägitiedostossa käsketään.
@@ -232,7 +232,7 @@ tägin sisällön navigaatioelementin viereen käyttäen Bootstrap-kirjastoa:
 
 **pohja.tag**
 
-~~~~jsp<include src="esimerkit/template.tag" />~~~~
+~~~~jsp<include src="esimerkit/rakenne/template.tag" />~~~~
 
 Kun yllä oleva JSP-koodi ja tägitiedosto ajetaan syntyy sivu, jonka
 otsikko on "Kissalista!" ja 

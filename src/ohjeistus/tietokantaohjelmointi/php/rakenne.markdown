@@ -14,7 +14,7 @@
 
 Projektissa pitäisi tällöin olla seuraavanlainen kansiorakenne:
 
-~~~~<include src="kansiorakenne.txt" />~~~~
+~~~~<include src="esimerkit/rakenne/kansiorakenne.txt" />~~~~
 
 </summary>
 
@@ -48,7 +48,7 @@ Lopputulos on vähänkään monimutkaisemmissa sovelluksissa sekava ja vaikea mu
 
 **spagettikoodi.php**
 
-~~~~php<include src="esimerkit/spagettikoodi.php" />~~~~
+~~~~php<include src="esimerkit/rakenne/spagettikoodi.php" />~~~~
 
 Tällä kurssilla pyrimme hieman selkeämpään [arkkitehtuuriin]({{rootdir}}ohjeistus/tietokantaohjelmointi/arkkitehtuuri/index.html),
 jossa mallit ja näkymät määritellään omissa tiedostoissaan.
@@ -62,7 +62,7 @@ Esimerkkinä kuvitteellisen kissalistan sivu:
 
 **kissalista.php**
 
-~~~~php<include src="esimerkit/kasittelija.php" />~~~~
+~~~~php<include src="esimerkit/rakenne/kasittelija.php" />~~~~
 
 Jotta yllä oleva esimerkki toimisi, on luotava sen tueksi malliluokat,
 näkymät ja muutama yleiskäyttöinen luokka ja funktio. Tehdään ensiksi tuki näkymille.
@@ -74,7 +74,7 @@ jotka koostuvat pääasiassa HTML-koodista, jonka seassa on
 <?php ?>-tägien välissä lyhyitä PHP-koodinpätkiä.
 Yksinkertaisimmillaan PHP-näkymätiedosto näyttää tältä:
 
-~~~~php<include src="esimerkit/nakyma.php" />~~~~
+~~~~php<include src="esimerkit/rakenne/nakyma.php" />~~~~
 
 Helpoin tapa käyttää näkymiä on käyttää
 [include- ja require-funktiota](http://php.net/manual/en/function.include.php)
@@ -93,7 +93,7 @@ varmistavat ettei samaa tiedostoa sisällytetä kahdesti.
 Käytä näitä versioita sisällyttäessäsi yleiskäyttöistä kirjastokoodia (tiedostot `libs`-kansiosta).
 </info>
 
-Kokeile includea. Luo projektiisi views-kansio
+Kokeile includea. Luo projektiisi `views`-kansio
 ja kopioi sinne html-demosi kirjautumislomake php-tiedostopäätteellä.
 
 Luo sitten sivu `login.php` tai suomeksi `kirjautuminen.php` projektisi juurikansioon ja 
@@ -338,7 +338,7 @@ jotka osaavat hakea näihin olioihin sisältöä tietokannasta.
 
 Esimerkkinä mallikoodille voit käyttää ensimmäisen viikon ohjelmointikielioppaan Kahvikuppia:
 
-~~~php<include src="../../viikko1/esimerkit/kahvikuppi.php" />~~~
+~~~php<include src="../../../aikataulu/viikko1/esimerkit/kahvikuppi.php" />~~~
 
 <comment>
 <next>

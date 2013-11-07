@@ -93,7 +93,7 @@ Ohessa esimerkkejä kontrollereista PHP:llä ja Javalla
 <tabs>
 <tab title="Kontrolleri PHP:llä">
 
-~~~~php<include src="../../../aikataulu/viikko3/php/esimerkit/kasittelija.php" />~~~~
+~~~~php<include src="../php/esimerkit/rakenne/kasittelija.php" />~~~~
 
 </tab>
 <tab title="Kontrolleri Javalla">
@@ -124,7 +124,7 @@ esim. `libs`. Luo malleille oma `models`-kansio yleiskäyttöisen koodin alle.
 
 Kansioiden nimet voi halutessaan suomentaa.
 
-~~~~<include src="../../../aikataulu/viikko3/php/kansiorakenne.txt" />~~~~
+~~~~<include src="../php/esimerkit/rakenne/kansiorakenne.txt" />~~~~
 
 </tab>
 <tab title="Java-esimerkkisijoittelu">
@@ -138,7 +138,7 @@ Kontrollerit ovat Javan tapauksessa aina HttpServlet-luokan aliluokkia eli servl
 Näkymät - eli yleensä jsp-tiedostot - menevät omaan kansioonsa 
 joka on oletuksena nimeltään web.
 
-~~~~<include src="../../../aikataulu/viikko3/java/kansiorakenne.txt" />~~~~
+~~~~<include src="../java/esimerkit/rakenne/kansiorakenne.txt" />~~~~
 
 </tab>
 </tabs>

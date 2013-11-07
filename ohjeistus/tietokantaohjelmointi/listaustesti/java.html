@@ -69,21 +69,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li><a href="../../../aikataulu/viikko2/suunnittelu.html">Käyttöliittymän suunnittelu</a></li>
 <li><a href="../../../aikataulu/viikko2/tietokanta.html">Tietokannan suunnittelu</a></li>
 </ul></li>
-<li><a href="../../../aikataulu/viikko3/index.html">Viikko 3</a>
-<ul>
-<li><a href="../../../aikataulu/viikko3/java/index.html">Kirjautuminen Javalla</a>
-<ul>
-<li><a href="../../../aikataulu/viikko3/java/rakenne.html">Sovelluksen rakenne ja servletit</a></li>
-<li><a href="../../../aikataulu/viikko3/java/lomakkeet.html">Lomakkeiden käyttö ja vastaanottaminen</a></li>
-<li><a href="../../../aikataulu/viikko3/java/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
-</ul></li>
-<li><a href="../../../aikataulu/viikko3/php/index.html">Kirjautuminen PHP:llä</a>
-<ul>
-<li><a href="../../../aikataulu/viikko3/php/rakenne.html">Mihin eri tiedostot kannattaa laittaa?</a></li>
-<li><a href="../../../aikataulu/viikko3/php/lomakkeet.html">Lomakkeiden käyttö ja vastaanottaminen</a></li>
-<li><a href="../../../aikataulu/viikko3/php/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
-</ul></li>
-</ul></li>
+<li><a href="../../../aikataulu/viikko3/index.html">Viikko 3</a></li>
 <li><a href="../../../aikataulu/demo.html">Demotilaisuus</a></li>
 <li><a href="../../../aikataulu/palautus.html">Työn palautus</a></li>
 </ul></li>
@@ -110,6 +96,18 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li><a href="../../../ohjeistus/tietokantaohjelmointi/arkkitehtuuri/index.html">Arkkitehtuuri ja MVC</a>
 <ul>
 <li><a href="../../../ohjeistus/tietokantaohjelmointi/arkkitehtuuri/nyrkkisaannot.html">MVC-mallin nyrkisääntöjä</a></li>
+</ul></li>
+<li><a href="../../../ohjeistus/tietokantaohjelmointi/java/index.html">Java-ohjeet</a>
+<ul>
+<li><a href="../../../ohjeistus/tietokantaohjelmointi/java/rakenne.html">Sovelluksen rakenne ja servletit</a></li>
+<li><a href="../../../ohjeistus/tietokantaohjelmointi/java/lomakkeet.html">Lomakkeiden käyttö ja vastaanottaminen</a></li>
+<li><a href="../../../ohjeistus/tietokantaohjelmointi/java/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
+</ul></li>
+<li><a href="../../../ohjeistus/tietokantaohjelmointi/php/index.html">PHP-ohjeet</a>
+<ul>
+<li><a href="../../../ohjeistus/tietokantaohjelmointi/php/rakenne.html">Mihin eri tiedostot kannattaa laittaa?</a></li>
+<li><a href="../../../ohjeistus/tietokantaohjelmointi/php/lomakkeet.html">Lomakkeiden käyttö ja vastaanottaminen</a></li>
+<li><a href="../../../ohjeistus/tietokantaohjelmointi/php/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
 </ul></li>
 </ul></li>
 <li><a href="../../../ohjeistus/users/index.html">Users-palvelin ja töiden pystyttäminen</a>
@@ -262,12 +260,13 @@ Tämän sivun sisältö on vielä työn alla ja saattaa muuttua kurssin edetess�
 }</code></pre>
 <p>Ohjeisen servletin pitäisi tuottaa selaimelle lista, jossa on asiat-listaan lisätyt neljä asiaa. Testaa tätä selaimessa nyt.</p>
 <p>HTML:n upottaminen Java-koodiin on melko kömpelöä. Jatkossa kurssilla käytetään hieman edistyneempiä tekniikoita, mutta tietokantatestin kannalta tämä on yksinkertaisempaa.</p>
-<p>Voit halutessasi katsoa miten esimerkki toteutetaan oikein <a href="../../../aikataulu/viikko3/java/rakenne.html">viikon 3 materiaaleista</a>.</p>
+<p>Voit halutessasi katsoa miten esimerkki toteutetaan oikein <a href="../java/rakenne.html">viikon 3 materiaaleista</a>.</p>
 </section>
 </section>
 <section id="tietokannan-käyttö" class="level2">
 <h2>Tietokannan käyttö</h2>
 <p>Nyt kun meillä on tapa kirjoitaa lista, voimme kirjoittaa koodia, joka palauttaa meille listan.</p>
+<p>Aivan kuten tietokantayhteydenkin muodostamisen kirjoitamme tietokantaa käsittelevän koodin omaan luokkaansa. Tee jostakin sovelluksesi tietokohteesta, esim. käyttäjistä, oma luokkansa ja tee sille staattinen metodi, joka palauttaa kaikki tuon tietokohteen taulun rivit tuon luokan olioina.</p>
 <p>Alla on esimerkki käyttäjäluokasta, jolla on metodi, joka palauttaa jokaisen käyttäjän. Koodissa oletetaan, että Tietokanta-luokan metodi <code>getTietokanta</code> palauttaa sovelluksen tietokantaa vastaavan Connection-olion.</p>
 <pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="dt">static</span> List&lt;Kayttaja&gt; <span class="fu">getKayttajat</span>() {
   String sql = <span class="st">&quot;SELECT id,username, password from users&quot;</span>;
@@ -302,7 +301,7 @@ Hyvä tietää
 <section class="alert alert-success small"><h3>
 Seuraavaksi:
 </h3>
-<p>Testisovelluksen tehtyäsi voit tustustua tarkemmin viikon 3 materiaaliin: <a href="../arkkitehtuuri/index.html">MVC-arkkitehtuuriin</a> ja sen jälkeen kirjautumisen toteuttamiseen.</p>
+<p>Testisovelluksen tehtyäsi voit tustustua tarkemmin viikon 3 materiaaliin: <a href="../arkkitehtuuri/index.html">MVC-arkkitehtuuriin</a> ja sen jälkeen <a href="../java/index.html">kirjautumisen toteuttamiseen</a>.</p>
 </section>
 
 

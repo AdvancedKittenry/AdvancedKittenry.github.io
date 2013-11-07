@@ -69,21 +69,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li><a href="../../../aikataulu/viikko2/suunnittelu.html">Käyttöliittymän suunnittelu</a></li>
 <li><a href="../../../aikataulu/viikko2/tietokanta.html">Tietokannan suunnittelu</a></li>
 </ul></li>
-<li><a href="../../../aikataulu/viikko3/index.html">Viikko 3</a>
-<ul>
-<li><a href="../../../aikataulu/viikko3/java/index.html">Kirjautuminen Javalla</a>
-<ul>
-<li class="selected"><a href="../../../aikataulu/viikko3/java/rakenne.html">Sovelluksen rakenne ja servletit</a></li>
-<li><a href="../../../aikataulu/viikko3/java/lomakkeet.html">Lomakkeiden käyttö ja vastaanottaminen</a></li>
-<li><a href="../../../aikataulu/viikko3/java/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
-</ul></li>
-<li><a href="../../../aikataulu/viikko3/php/index.html">Kirjautuminen PHP:llä</a>
-<ul>
-<li><a href="../../../aikataulu/viikko3/php/rakenne.html">Mihin eri tiedostot kannattaa laittaa?</a></li>
-<li><a href="../../../aikataulu/viikko3/php/lomakkeet.html">Lomakkeiden käyttö ja vastaanottaminen</a></li>
-<li><a href="../../../aikataulu/viikko3/php/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
-</ul></li>
-</ul></li>
+<li><a href="../../../aikataulu/viikko3/index.html">Viikko 3</a></li>
 <li><a href="../../../aikataulu/demo.html">Demotilaisuus</a></li>
 <li><a href="../../../aikataulu/palautus.html">Työn palautus</a></li>
 </ul></li>
@@ -110,6 +96,18 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li><a href="../../../ohjeistus/tietokantaohjelmointi/arkkitehtuuri/index.html">Arkkitehtuuri ja MVC</a>
 <ul>
 <li><a href="../../../ohjeistus/tietokantaohjelmointi/arkkitehtuuri/nyrkkisaannot.html">MVC-mallin nyrkisääntöjä</a></li>
+</ul></li>
+<li><a href="../../../ohjeistus/tietokantaohjelmointi/java/index.html">Java-ohjeet</a>
+<ul>
+<li class="selected"><a href="../../../ohjeistus/tietokantaohjelmointi/java/rakenne.html">Sovelluksen rakenne ja servletit</a></li>
+<li><a href="../../../ohjeistus/tietokantaohjelmointi/java/lomakkeet.html">Lomakkeiden käyttö ja vastaanottaminen</a></li>
+<li><a href="../../../ohjeistus/tietokantaohjelmointi/java/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
+</ul></li>
+<li><a href="../../../ohjeistus/tietokantaohjelmointi/php/index.html">PHP-ohjeet</a>
+<ul>
+<li><a href="../../../ohjeistus/tietokantaohjelmointi/php/rakenne.html">Mihin eri tiedostot kannattaa laittaa?</a></li>
+<li><a href="../../../ohjeistus/tietokantaohjelmointi/php/lomakkeet.html">Lomakkeiden käyttö ja vastaanottaminen</a></li>
+<li><a href="../../../ohjeistus/tietokantaohjelmointi/php/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
 </ul></li>
 </ul></li>
 <li><a href="../../../ohjeistus/users/index.html">Users-palvelin ja töiden pystyttäminen</a>
@@ -307,7 +305,7 @@ web/
 <pre class="sourceCode jsp"><code class="sourceCode jsp">&lt;%@ taglib<span class="ot"> prefix</span>=<span class="st">&quot;c&quot;</span><span class="ot"> uri</span>=<span class="st">&quot;http://java.sun.com/jsp/jstl/core&quot;</span><span class="ot"> </span>%&gt;</code></pre>
 <p>Saatat joutua lisäämään projektiisi JSTL-kirjaston, että viite toimisi. Tämä tapahtuu NetBeansissä avaamalla valikosta projektin ominaisuusikkuna kohdasta <code>File-&gt;Project Properties</code>. Paina <em>Libraries</em>-kategoriassa nappia <em>Add Library</em> ja lisää listasta projektiin kirjasto nimeltä <code>JSTL 1.1</code>.</p>
 <figure>
-<img src="../../../images/aikataulu/viikko3/java/jstl.png" alt="JSTL 1.1 -kirjaston lisääminen projektiin" /><figcaption>JSTL 1.1 -kirjaston lisääminen projektiin</figcaption>
+<img src="../../../images/ohjeistus/tietokantaohjelmointi/java/jstl.png" alt="JSTL 1.1 -kirjaston lisääminen projektiin" /><figcaption>JSTL 1.1 -kirjaston lisääminen projektiin</figcaption>
 </figure>
 <p>Tämän jälkeen voimme näyttää virheviestin ehtolausekkeen avulla:</p>
 <pre class="sourceCode jsp"><code class="sourceCode jsp"><span class="kw">&lt;c:if</span><span class="ot"> test</span>=<span class="dt">&quot;</span>${virheViesti != <span class="kw">null</span>}<span class="dt">&quot;</span><span class="kw">&gt;</span>
@@ -392,7 +390,7 @@ request.<span class="fu">setAttribute</span>(<span class="st">&quot;kissat&quot;
 <p>Tee nyt projektillesi HTML-pohjatiedosto kansioon <code>web/WEB-INF/tags/pohja.tag</code>. Ja sijoita siihen oma sivupohjasi.</p>
 <p>NetBeansistä löydät tägitiedoston uusien tiedostojen valikosta <code>Web</code>-kohdan alta nimellä <code>Tag File</code>. Voit käyttää seuraavia asetuksia:</p>
 <figure>
-<img src="../../../images/aikataulu/viikko3/java/tagi.png" alt="Tagitiedoston luonti" /><figcaption>Tagitiedoston luonti</figcaption>
+<img src="../../../images/ohjeistus/tietokantaohjelmointi/java/tagi.png" alt="Tagitiedoston luonti" /><figcaption>Tagitiedoston luonti</figcaption>
 </figure>
 </section>
 <section id="koodin-sijoittamineen-uudelleenkäytettävään-luokkaan" class="level2">

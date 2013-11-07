@@ -1,6 +1,7 @@
-% Kirjautuminen Javalla
+% Java-ohjeet
+<!-- order: 7 -->
 
-Näillä sivuilla käydään yksityiskohtaisemmin läpi kirjautumisen toteuttamiseen välttämättömät asiat Java-kielellä.
+Näillä sivuilla käydään läpi sovelluksen toteuttamiseen tarvittavia asioita Java-kielellä.
 
 * [Java-sovelluksen rakenne](rakenne.html) 
   ja mihin eri sovelluksen osat kannattaa laittaa 

@@ -146,34 +146,45 @@ $yhteys->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 </tabs>
 
 Tee itsellesi testiluokka/tiedosto, johon sijoitat 
-sellaisenaan tietokannan muodostamisen. Koeta
-ajaa tiedostosi ja katso muodostuuko yhteys.
+sellaisenaan tietokannan muodostamisen. 
+Laita tämä tiedosto omaan pakettiinsa ja/tai kansioonsa.
+Hyviä nimiä paketille/hakemistolle voivat olla esim. "Tietokanta" tai "Models".
+Sovelluksesta tulee huomattavasti selkeämpi, jos kaikki tietokantaa käsittelevä
+koodi on sijoitettu yhteen paikkaan.
 
-Tietokannan nopeaan testaamisen voi käyttää esim. seuraavanlaista koodia:
+Koeta käynnistää tiedostosi koodi selaimella ja katso muodostuuko yhteys virheittä.
+Tietokannan nopeaan testaamisen voi myös käyttää seuraavanlaista koodia:
 
 <sidebyside>
 <column>
 **Java** 
 
 ~~~java
+//Koodi olettaa, että muuttuja yhteys sisältää yhteysvarastosta saadun yhteysolion.
 PreparedStatement kysely;
 ResultSet tulokset;
+PrintWriter out = response.getWriter(); 
+response.setContentType("text/plain;charset=UTF-8");
 
-String sql = "SELECT 1 as one";
-kysely = yhteys.prepareStatement(sql);
-tulokset = kysely.executeQuery();
-
-if(tulokset.next()) {
-  int ykkonen = tulokset.getInt("one");
-  request.setAttribute("tulos", ykkonen)
+try {
+  String sql = "SELECT 1+1 as two";
+  kysely = yhteys.prepareStatement(sql);
+  tulokset = kysely.executeQuery();
+  if(tulokset.next()) {
+    int kakkonen = tulokset.getInt("two");
+    out.println("Tulos: "+kakkonen"); 
+  } else {
+    out.println("Virhe!"); 
+  }
+} catch (Exception e) {
+  out.println("Virhe: "+e.getMessage()"); 
 }
 
 tulokset.close(); kysely.close();
-request.getRequestDispatcher("index.jsp").forward(request, response);
 ~~~
 
 Sijoita tämä koodi asianmukaisen servletin processRequest-metodiin.
-Koodin pitäisi sijoittaa attribuuttiin `tulos` arvo 1. Jos sijoittaa index.jsp-tiedostoon lauseen `${tulos}`, pitäisi sivulle ilmaantua tuo samainen ykkönen.
+Koodin pitäisi lähettää selaimelle teksti "Tulos: 2".
 
 </column>
 <column>
@@ -183,13 +194,13 @@ Koodin pitäisi sijoittaa attribuuttiin `tulos` arvo 1. Jos sijoittaa index.jsp-
 
 
 
-$sql = "select 1 as one";
+$sql = "select 1+1 as two";
 $kysely = $yhteys->prepare($sql);
 
 
 if ($kysely->execute()) {
-  $ykkonen = $kysely->fetchColumn();
-  var_dump($ykkonen);
+  $kakkonen = $kysely->fetchColumn();
+  var_dump($kakkonen);
 }
 
 
@@ -199,7 +210,7 @@ Koodin pitäisi tulostaa seuraava teksti debug-koodaukseen tarkoitettua
 [var_dump](http://php.net/manual/en/function.var-dump.php)-funktiota käyttäen:
 
 ~~~
-int(1)
+int(2)
 ~~~
 </column>
 </sidebyside>

@@ -23,7 +23,7 @@ TODO:
 
 * Sovelluksen logiikkaa on eritelty kontrollereista malleihin ja näkymiin [MVC-mallin mukaisesti][arkkitehtuuri].
 * Sivuille on luotu erillinen sivupohjatiedosto, joka sisältää jokaiselle sivulle tulevat asiat.
-    * Java:lla helpointa käyttää [JSP-tägikirjastoa](java/rakenne.html#template-pohjatiedoston-k%C3%A4ytt%C3%B6)
+    * Java:lla helpointa käyttää [JSP-tägikirjastoa]({{rootdir}}ohjeistus/tietokantaohjelmointi/java/rakenne.html#template-pohjatiedoston-k%C3%A4ytt%C3%B6)
     * PHP:lle tulossa oma ohje, joka perustuu [include-funktion](http://php.net/manual/en/function.include.php) käyttöön
 
 ## Kirjautuminen (2p)
@@ -46,10 +46,10 @@ Yleensä ottaen kirjautumisdeadline voidaan korvata tekemällä alustava versio 
 
 <ohje>
 Aloita lukemalla [arkkitehtuuriohje][arkkitehtuuri].
-Siirry sitten käyttämäsi kielen kirjautumisen toteuttamisohjeisiin:
+Siirry sitten käyttämäsi kielen toteuttamisohjeisiin:
 
-* [Kirjautuminen PHP:llä](php/index.html)
-* [Kirjautuminen Javalla](java/index.html)
+* [PHP-ohjeet]({{rootdir}}ohjeistus/tietokantaohjelmointi/php/index.html)
+* [Java-ohjeet]({{rootdir}}ohjeistus/tietokantaohjelmointi/java/index.html)
 
 Tehtyäsi kaiken varmista, että kaikki tekemäsi muutokset näkyvät GitHub-repositoriossasi.
 </ohje>
