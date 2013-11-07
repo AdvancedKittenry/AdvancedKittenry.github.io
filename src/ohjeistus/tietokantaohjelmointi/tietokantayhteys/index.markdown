@@ -165,13 +165,14 @@ tulokset = kysely.executeQuery();
 
 if(tulokset.next()) {
   int ykkonen = tulokset.getInt("one");
-  request.setAttribute('tulos', ykkonen)
+  request.setAttribute("tulos", ykkonen)
 }
 
 tulokset.close(); kysely.close();
-new RequestDispatcher('index.jsp').forward(request, response);
+request.getRequestDispatcher("index.jsp").forward(request, response);
 ~~~
 
+Sijoita tämä koodi asianmukaisen servletin processRequest-metodiin.
 Koodin pitäisi sijoittaa attribuuttiin `tulos` arvo 1. Jos sijoittaa index.jsp-tiedostoon lauseen `${tulos}`, pitäisi sivulle ilmaantua tuo samainen ykkönen.
 
 </column>

@@ -299,12 +299,12 @@ tulokset = kysely.<span class="fu">executeQuery</span>();
 
 <span class="kw">if</span>(tulokset.<span class="fu">next</span>()) {
   <span class="dt">int</span> ykkonen = tulokset.<span class="fu">getInt</span>(<span class="st">&quot;one&quot;</span>);
-  request.<span class="fu">setAttribute</span>(&#39;tulos&#39;, ykkonen)
+  request.<span class="fu">setAttribute</span>(<span class="st">&quot;tulos&quot;</span>, ykkonen)
 }
 
 tulokset.<span class="fu">close</span>(); kysely.<span class="fu">close</span>();
-<span class="kw">new</span> <span class="fu">RequestDispatcher</span>(&#39;index.<span class="fu">jsp</span>&#39;).<span class="fu">forward</span>(request, response);</code></pre>
-<p>Koodin pitäisi sijoittaa attribuuttiin <code>tulos</code> arvo 1. Jos sijoittaa index.jsp-tiedostoon lauseen <code>${tulos}</code>, pitäisi sivulle ilmaantua tuo samainen ykkönen.</p>
+request.<span class="fu">getRequestDispatcher</span>(<span class="st">&quot;index.jsp&quot;</span>).<span class="fu">forward</span>(request, response);</code></pre>
+<p>Sijoita tämä koodi asianmukaisen servletin processRequest-metodiin. Koodin pitäisi sijoittaa attribuuttiin <code>tulos</code> arvo 1. Jos sijoittaa index.jsp-tiedostoon lauseen <code>${tulos}</code>, pitäisi sivulle ilmaantua tuo samainen ykkönen.</p>
 </div>
 <div class="col-md-6">
 <p><strong>PHP</strong></p>
