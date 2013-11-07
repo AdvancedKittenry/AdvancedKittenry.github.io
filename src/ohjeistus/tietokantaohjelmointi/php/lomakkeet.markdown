@@ -1,13 +1,15 @@
 % Lomakkeiden käyttö ja vastaanottaminen
-<!-- order: 2 -->
+<!-- order: 3 -->
 
-Seuraavaksi tee sivu, joka näyttää
+Käsittelemme seuraavaksi lomakkeita ja kirjautumisen toteuttamista.
+
+Aloita tekemällä kontrolleri, joka näyttää
 html-demoon tekemäsi kirjautumislomakkeen
 näkymänään. 
 Voit laittaa sivun esim. osoitteeseen `/kirjautuminen.php`
 tai `/login.php`. 
 
-Laitetaan seuraavaksi tämä sivu ottamaan kirjautuminen myös vastaan.
+Laitetaan seuraavaksi tämä sivu ottamaan kirjautumislomake vastaan.
 
 ## Lomakkeiden vastaanottaminen
 

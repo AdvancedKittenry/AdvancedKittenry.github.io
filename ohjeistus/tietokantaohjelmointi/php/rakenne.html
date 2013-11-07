@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <title>Mihin eri tiedostot kannattaa laittaa?</title>
+  <title>Sovelluksen rakenne ja kontrollerit</title>
   <style type="text/css">code{white-space: pre;}</style>
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -100,12 +100,14 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li><a href="../../../ohjeistus/tietokantaohjelmointi/java/index.html">Java-ohjeet</a>
 <ul>
 <li><a href="../../../ohjeistus/tietokantaohjelmointi/java/rakenne.html">Sovelluksen rakenne ja servletit</a></li>
+<li><a href="../../../ohjeistus/tietokantaohjelmointi/java/nakymat.html">Näkymien tekeminen ja JSP</a></li>
 <li><a href="../../../ohjeistus/tietokantaohjelmointi/java/lomakkeet.html">Lomakkeiden käyttö ja vastaanottaminen</a></li>
 <li><a href="../../../ohjeistus/tietokantaohjelmointi/java/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
 </ul></li>
 <li><a href="../../../ohjeistus/tietokantaohjelmointi/php/index.html">PHP-ohjeet</a>
 <ul>
-<li class="selected"><a href="../../../ohjeistus/tietokantaohjelmointi/php/rakenne.html">Mihin eri tiedostot kannattaa laittaa?</a></li>
+<li class="selected"><a href="../../../ohjeistus/tietokantaohjelmointi/php/rakenne.html">Sovelluksen rakenne ja kontrollerit</a></li>
+<li><a href="../../../ohjeistus/tietokantaohjelmointi/php/nakymat.html">Näkymien tekeminen</a></li>
 <li><a href="../../../ohjeistus/tietokantaohjelmointi/php/lomakkeet.html">Lomakkeiden käyttö ja vastaanottaminen</a></li>
 <li><a href="../../../ohjeistus/tietokantaohjelmointi/php/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
 </ul></li>
@@ -175,7 +177,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 </div>
 <div class="col-md-6" id="content">
 <header>
-<h1 class="title">Mihin eri tiedostot kannattaa laittaa?</h1>
+<h1 class="title">Sovelluksen rakenne ja kontrollerit</h1>
 </header>
 <!-- order: 1 -->
 <script>addSectionLinks = true; </script>
@@ -185,19 +187,13 @@ Tiivistelmä:
 </h3>
 
 <ul>
-<li>Luo ensin projektillesi koeluontoinen php-sivu repositoriosi juureen.</li>
-<li>Laita sitten sivusi käyttämään HTML:n tulostukseen näkymätiedostoa <code>views</code>-kansiossa.</li>
-<li>Tee toinen näkymätiedosto, ja laita sivujesi yhteinen HTML-runko siihen. Tee luokka, jolla voit käyttää runkoa ja näkymää yhdessä.</li>
-<li>Tee sovelluksesi yleisesti käytetyille toiminnoille kirjastotiedosto, johon voi sijoittaa yleiskäyttöisiä toimintoja.
-<ul>
-<li>Sijoita kirjastotiedostot omaan kansioonsa, esim. <code>libs</code>.</li>
-</ul></li>
-<li>Tee käyttäjien käsittelyä varten alustava malliluokka.
-<ul>
-<li>Sijoita kaikki mallit omaan kansioonsa. Esim. <code>libs/models</code>.</li>
-</ul></li>
+<li>Sovelluksen sivut ovat projektin juuressa olevia kontrollereita, jotka käyttävät malleja ja näkymiä.</li>
+<li>Kaikki näkymät menevät kansioon <code>views</code></li>
+<li>Tee sovelluksesi yleisesti käytetyille toiminnoille kirjastotiedosto, johon voi sijoittaa yleiskäyttöisiä toimintoja.</li>
+<li>Kaikki kirjastotiedostot menevät omaan kansioonsa, esim. <code>libs</code>.</li>
+<li>Mallit voi sijoittaa kirjastotiedostojen mukana omaan kansioonsa. Esim. <code>libs/models</code>.</li>
 </ul>
-<p>Projektissa pitäisi tällöin olla seuraavanlainen kansiorakenne:</p>
+<p>Lopullisen projektin pitäisi noudatella tämäntapaista kansiorakennetta</p>
 <pre><code>views/
   userlist.php
 libs/
@@ -210,7 +206,9 @@ users.php (Käyttäjänhallinnan kontrolleri)
 
 <p>PHP on historialtaan ja luonteeltaan selkeä <a href="http://fi.wikipedia.org/wiki/Komentosarjakieli">skriptikieli</a>. Toisin kuin useimmat käännettävien ohjelmointikielien ohjelmat, PHP-ohjelmalla ei ole erityistä nimettyä alkukohtaa, vaan suoritus alkaa tiedoston alusta ja jatkuu siitä tiedoston loppuun, ellei sitä erikseen keskeytetä.</p>
 <p>Lisäksi PHP eroaa hieman useimmista muista web-ohjelmointikielistä suoraviivaisessa lähestymisessään URL-osoitteiden ja suoritettavan ohjelmakoodin väliseen riippuvuuteen.</p>
-<p>Perussääntö on hyvin yksinkertainen, jokainen tiedosto näkyy oman URL:insa takana sillä palvelimella, minne tiedostot on sijoitettu. On periaatteessa täysin mahdollista tehdä php-sivuja, joissa jokainen ladattava sivu tuotetaan tasan yhdellä php-tiedostolla.</p>
+<p>Perussääntö on hyvin yksinkertainen, jokainen tiedosto näkyy oman URL:insa takana sillä palvelimella, minne tiedostot on sijoitettu.</p>
+<p>Eräänlaisena poikkeuksena toimivat etusivut: Jos syöttää osoitekenttään pelkän hakemiston osoitteen, esim. <code>http://tunnus.users.cs.helsinki.fi</code> on se sama kuin kirjoittaisi <code>http://tunnus.users.cs.helsinki.fi/index.php</code>, kunhan htdocs-kansiossa on <code>index.php</code>-tiedosto.</p>
+<p>On periaatteessa täysin mahdollista tehdä php-sivuja, joissa jokainen ladattava sivu tuotetaan tasan yhdellä php-tiedostolla.</p>
 <p>Tästä johtuen yksinkertaisin tapa toteuttaa yksittäisen toiminnon kontrolleri PHP:llä ei oikeastaan vaadi muuta kuin sopivaan osoitteeseen sijoitetun PHP-tiedoston, joka kutsuu tarvitsemiaan kirjastoja tuottaakseen käyttäjälle halutun vastauksen aineistopyyntöön.</p>
 <section id="spagettikoodi-ja-kontrolleri" class="level2">
 <h2>Spagettikoodi ja kontrolleri</h2>
@@ -239,8 +237,8 @@ users.php (Käyttäjänhallinnan kontrolleri)
   &lt;/body&gt;
 &lt;/html&gt;</code></pre>
 <p>Tällä kurssilla pyrimme hieman selkeämpään <a href="../../../ohjeistus/tietokantaohjelmointi/arkkitehtuuri/index.html">arkkitehtuuriin</a>, jossa mallit ja näkymät määritellään omissa tiedostoissaan.</p>
-<p>Tämä ei kuitenkaan varsinaisesti estä käyttämästä PHP:n suoraviivaista luonnetta siihen, että jätämme varsinaiset kontrollerit paljaaksi koodiksi, joka vain suoraan kutsuu erilaisia kirjastoja ja näyttää lopulta näkymän. Käytämme tästä lähtien näistä kontrolleritiedostoja myös yksinkertaisempaa nimitystä “sivu”.</p>
-<p>Esimerkkinä kuvitteellisen kissalistan sivu:</p>
+<p>Tämä ei kuitenkaan varsinaisesti estä käyttämästä PHP:n suoraviivaista luonnetta siihen, että jätämme varsinaiset kontrollerit paljaaksi koodiksi, joka vain suoraan kutsuu erilaisia kirjastoja ja näyttää lopulta näkymän.</p>
+<p>Esimerkkinä kuvitteellisen kissalistan kontrolleri:</p>
 <p><strong>kissalista.php</strong></p>
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span> 
   <span class="co">//Otetaan käyttöön kirjastotiedosto, joka hakee kasan omatekoisia yleistoimintoja, sekä malliluokka:</span>
@@ -261,181 +259,22 @@ users.php (Käyttäjänhallinnan kontrolleri)
     <span class="st">&#39;title&#39;</span> =&gt; <span class="st">&quot;Kissalista&quot;</span><span class="ot">,</span>
     <span class="st">&#39;kissat&#39;</span> =&gt; <span class="kw">$kissat</span>
   <span class="ot">));</span></code></pre>
-<p>Jotta yllä oleva esimerkki toimisi, on luotava sen tueksi malliluokat, näkymät ja muutama yleiskäyttöinen luokka ja funktio. Tehdään ensiksi tuki näkymille.</p>
+<p>Jotta yllä oleva esimerkki toimisi, on luotava sen tueksi malliluokat, näkymät ja muutama yleiskäyttöinen luokka ja funktio.</p>
 </section>
-<section id="näkymätiedostot" class="level2">
-<h2>Näkymätiedostot</h2>
-<p>PHP:ssä näkyminä käytetään tiedostoja, jotka koostuvat pääasiassa HTML-koodista, jonka seassa on <?php ?>-tägien välissä lyhyitä PHP-koodinpätkiä. Yksinkertaisimmillaan PHP-näkymätiedosto näyttää tältä:</p>
-<pre class="sourceCode php"><code class="sourceCode php">&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-  &lt;head&gt;
-    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;
-    &lt;title&gt;PHP Page&lt;/title&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;h1&gt;Hello World!&lt;/h1&gt;
-    <span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="st">&quot;Some content here&quot;</span><span class="ot">;</span> <span class="kw">?&gt;</span>
-  &lt;/body&gt;
-&lt;/html&gt;</code></pre>
-<p>Helpoin tapa käyttää näkymiä on käyttää <a href="http://php.net/manual/en/function.include.php">include- ja require-funktiota</a> Nämä funktiot sisällyttävät parametrina annetun tiedostonimen php-koodin nykyisen tiedoston suoritukseen siihen kohtaan, jossa include-suoritetaan. Tällöin sisällytetyssä tiedostossa näkyvät samat muuttujat, kuin sen sisällyttäneessä tiedostossa.</p>
-<section class="alert alert-info"><h3>
-Lisätietoa
+<section id="mallit" class="level2">
+<h2>Mallit</h2>
+<p>Sijoita projektin mallit omaan kansioonsa kirjastokansiosi alle, siten että kussakin tiedostossa on yksi malliluokka.</p>
+<p>Sijoita malliisi kentät tietokantataulun kenttiä varten ja luo kentille getterit ja setterit sekä halutessasi konstruktori, joka ottaa kenttien arvot vastaan.</p>
+<p>Työn edetessä teemme luokkiin metodeja, jotka osaavat hakea olioihin sisältöä tietokannasta, sekä metodit, joilla tietoa päivitetään takaisin kantaan.</p>
+<section class="alert alert-success small"><h3>
+Seuraavaksi:
 </h3>
-<p>Ero <code>include</code>:n ja <code>require</code>:n välillä on se, että require ei anna skriptin suorituksen jatkua, mikäli haettua tiedostoa ei löydy.</p>
-<p>Funktioista on olemassa myös versiot <code>include_once</code> ja <code>require_once</code>, jotka varmistavat ettei samaa tiedostoa sisällytetä kahdesti. Käytä näitä versioita sisällyttäessäsi yleiskäyttöistä kirjastokoodia (tiedostot <code>libs</code>-kansiosta).</p>
+<p>Seuraavaksi tutustumme tarkemmin <a href="nakymat.html">näkymien toteuttamiseen</a>.</p>
 </section>
 
-<p>Kokeile includea. Luo projektiisi <code>views</code>-kansio ja kopioi sinne html-demosi kirjautumislomake php-tiedostopäätteellä.</p>
-<p>Luo sitten sivu <code>login.php</code> tai suomeksi <code>kirjautuminen.php</code> projektisi juurikansioon ja laita sen sisällöksi seuraavanlainen koodinpätkä:</p>
-<p><strong>testikasittelija.php</strong></p>
-<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span> 
-  <span class="kw">require</span> <span class="st">&#39;views/login.php&#39;</span><span class="ot">;</span></code></pre>
-<p>Kokeile avata tämä sivu selaimella. Jos teet työtä usersilla URL on todennäköisesti <a href="http://tunnuksesi.users.cs.helsinki.fi/login.php">http://tunnuksesi.users.cs.helsinki.fi/login.php</a>.</p>
-<p>Selaimeesi pitäisi tulla sama kirjautumislomake kuin aikaisemminkin. Tämä on vielä melko tylsää, mutta jatketaan tekemällä näkymien tekemisestä helpompaa.</p>
-</section>
-<section id="template-pohjatiedoston-käyttö" class="level2">
-<h2>Template-pohjatiedoston käyttö</h2>
-<p>Käytännössä suurin osa ohjelmaasi tulevista sivuista tulee sisältämään samanlaisen HTML-rungon, johon sisältyvät sivunavigaatio sekä head-tägin sisältämät otsakkeet ja tyylitiedostolinkit.</p>
-<p>Tämän rungon koodia ei turhaan kannata toistaa, vaan se kannattaa sijoittaa omaan uudelleenkäytettävään tiedostoonsa.</p>
-<p>PHP:llä tälläisille uudelleenkäytettävät HTML-pohjille ei ole mitään yleisesti käytettyä standarditoteutusta. Yleensä ne toteutetaan jonkinlaisella näkymäluokalla.</p>
-<p>Eräs suhteellisen yksinkertainen tapa on toteuttaa pohja siten että sijoitetaan pohjatiedostoon kaikki sivujen sisällön ympärillä pyörivä HTML-koodi ja laitetaan itse sisällön paikalle koodi:</p>
-<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span> <span class="kw">require</span> <span class="kw">$sivu</span><span class="ot">;</span> <span class="kw">?&gt;</span></code></pre>
-<p>Nyt pohjan ja näkymätiedoston yhdessä käyttämiseen riittää, että tallennetaan näkymätiedoston nimi näkymää käyttävässä sivussa muuttujaan <code>$sivu</code> ja sisällytetään pohjatiedosto <code>require</code>-funktiolla.</p>
-<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>
-  
-  <span class="kw">$sivu</span> = <span class="st">&#39;login.php&#39;</span><span class="ot">;</span>
-  requre <span class="st">&#39;views/pohja.php&#39;</span><span class="ot">;</span></code></pre>
-<p>Käytännössä ylläoleva koodi on melko virhealtis muuttujanimien vaihdoksille ja kirjoitusvirheille, joten se kannattaa sijoittaa funktioksi johonkin yksittäiseen paikkaan. Tee itsellesi <code>libs</code>-kansioon tiedosto tälläisiä yleisiä funktioita varten ja laita sinne sisällytyksemme funktioversio:</p>
-<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>
-  
-  <span class="kw">function</span> naytaNakyma<span class="ot">(</span><span class="kw">$sivu</span><span class="ot">)</span> {
-    <span class="kw">require</span> <span class="st">&#39;views/pohja.php&#39;</span><span class="ot">;</span>
-    <span class="fu">exit</span><span class="ot">();</span>
-  }</code></pre>
-<p>Kutsumme näkymän näyttämisen jälkeen PHP:n suorituksen lopettavaa <a href="http://www.php.net/manual/en/function.exit.php">exit-funktiota</a>, sillä mallin näyttämisen jälkeen emme käytännössä koskaan halua suorittaa sivun koodia loppuun. Tästä on hyötyä tapauksissa, jossa haluamme kutsua funktiota ennen kuin sivun koodi on suoritettu loppuun. Esimerkiksi silloin kun tapahtui jokin virhe ja haluamme näyttää virheviestin.</p>
-<p>Tätä funktiota käyttäen riittää kirjoittaa tavalliselle sivulle:</p>
-<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>
-  <span class="kw">require_once</span> <span class="st">&#39;libs/common.php&#39;</span><span class="ot">;</span>
 
-  naytaNakyma<span class="ot">(</span><span class="st">&#39;login.php&#39;</span><span class="ot">);</span></code></pre>
-<p>Seuraavaksi selvitämme miten voimme välittää näkymällemme tietoa.</p>
-<section id="muuttujien-käyttö" class="level3">
-<h3>Muuttujien käyttö</h3>
-<p>Useimmat sovelluksemme näkymistä ovat hieman elävämpiä kuin yksinkertainen kirjautumislomake, ja muuttuvat sen mukaan mitä tietokannasta löytyy.</p>
-<p>Tätä varten haluamme pystyä välittämään tietoa kontrollereiden ja näkymien välillä. Tämä onnistuu helpoiten laittamalla <code>naytaNakyma</code>-funktioon toinen parametri ja hieman lisää koodia.</p>
-<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>
-  
-  <span class="co">/* Näyttää näkymätiedoston ja lähettää sille muuttujat */</span>
-  <span class="kw">function</span> naytaNakyma<span class="ot">(</span><span class="kw">$sivu</span><span class="ot">,</span> <span class="kw">$data</span> = <span class="fu">array</span><span class="ot">())</span> {
-    <span class="kw">$data</span> = <span class="dt">(object)</span><span class="kw">$data</span><span class="ot">;</span>
-    <span class="kw">require</span> <span class="st">&#39;views/pohja.php&#39;</span><span class="ot">;</span>
-    <span class="fu">die</span><span class="ot">();</span>
-  }</code></pre>
-<p>Ylimääräinen parametrimme on oletuksena tyhjä array, ja koodin kutsuja voi sijoittaa sinne minkälaisen assosiaatiotaulun haluaa. Funktion ensimmäinen rivi muuntaa array-tietotyypin luokattomaksi olioksi, sillä olioiden kenttien käyttösyntaksi on huomattavasti miellyttävämpi.</p>
-<p>Käyttäminen on yksinkertaista. Voimme esimerkiksi asettaa näkymälle lähetettävän virheviestin näin:</p>
-<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span> 
-  naytaNakyma<span class="ot">(</span><span class="st">&#39;kissat.php&#39;</span><span class="ot">,</span> <span class="fu">array</span><span class="ot">(</span>
-    <span class="st">&#39;virheViesti&#39;</span> =&gt; <span class="st">&quot;Et voi ruokkia kissaa, joka on syönyt alle kolme tuntia sitten!&quot;</span>
-  <span class="ot">));</span>
-}</code></pre>
-<p>Jolloin näkymässä voimme kirjoittaa HTML-koodin sekaan:</p>
-<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$data</span>-&gt;virheViesti<span class="ot">;</span> <span class="kw">?&gt;</span></code></pre>
-<section class="alert alert-info"><h3>
-Lisätietoa
-</h3>
 
-<p>Vastaava koodinpätkä array-tietorakenteella on:</p>
-<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$data</span><span class="ot">[</span><span class="st">&#39;virheViesti&#39;</span><span class="ot">];</span> <span class="kw">?&gt;</span></code></pre>
-<p>Tämä on ainakin ohjeiden kirjoittajan mielestä ikävä kirjoittaa monta kertaa.</p>
-</section>
 
-<p>Näkymissä voi käyttää myös erilaisia koodirakenteita kuten ehtolausekkeita:</p>
-<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span> <span class="kw">if</span> <span class="ot">(</span>!<span class="fu">empty</span><span class="ot">(</span><span class="kw">$data</span>-&gt;virheViesti<span class="ot">))</span>: <span class="kw">?&gt;</span>
-  &lt;div class=&quot;alert alert-danger&quot;&gt;Virhe! <span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$data</span>-&gt;virheViesti<span class="ot">;</span> <span class="kw">?&gt;</span>&lt;/div&gt;
-<span class="kw">&lt;?php</span> <span class="kw">endif</span><span class="ot">;</span> <span class="kw">?&gt;</span></code></pre>
-<p>Yllä oleva koodi näyttää virheviestin ja siihen liittyvän div-elementin vain jos muuttuja <code>virheViesti</code> on asetettu. Huomaa, että PHP:ssä on HTML:än seassa käyttöä varten <a href="http://php.net/manual/en/control-structures.alternative-syntax.php">kaksi himean erilaista syntaksia if-lauseelle</a>.</p>
-<section class="alert alert-info"><h3>
-Lisätietoa
-</h3>
-<p>Funktiot <a href="http://php.net/manual/en/function.empty.php">empty</a> ja <a href="http://www.php.net/manual/en/function.isset.php">isset</a> ovat PHP:ssä parivaljakko, jolla yleisimmin tarkistetaan, onko jollekin muuttujalle asetettu arvo.</p>
-<p><code>Isset</code> palauttaa <code>true</code>:n, mikäli sille annettu muuttuja on olemassa eikä ole <code>null</code>. Empty taas palauttaa true, mikäli muuttujaa ei ole asetettu, tai sillä on arvo, jonka PHP rinnastaa <code>false</code>:een: 0, 0.0, false, null, tyhjä merkkijono tai tyhjä <a href="http://php.net/manual/en/language.types.array.php">array</a>.</p>
-<p>Hyödyllisiä funktiot ovat etenkin sen takia, etteivät ne tee virhettä määrittelemättömien muuttujien kohdalla. Siksi niitä käytetään usein GET- ja POST-parametrien olemassaolon tarkistamiseen:</p>
-<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>
-  <span class="kw">if</span> <span class="ot">(</span><span class="fu">isset</span><span class="ot">(</span><span class="kw">$_POST</span><span class="ot">[</span><span class="st">&#39;salasana&#39;</span><span class="ot">]))</span> {
-    <span class="co">//Käyttäjä on syöttänyt lomakkeella ohjelmalle salasanan</span>
-  }</code></pre>
-</section>
-
-</section>
-<section id="listojen-läpikäynti" class="level3">
-<h3>Listojen läpikäynti</h3>
-<p>PHP:ssä listojen ja erilaisten assosiaatiotaulujen virkaa hoitaa yleiskäyttöinen <a href="http://php.net/manual/en/language.types.array.php">array</a>-tietotyyppi. Arraytä käytetään hieman kuin javan taulukoita, mutta avaimena voi käyttää sekä kokonaislukuja, että merkkijonoja. Yleensä erityyppisiä avaimia ei kuitenkaan kannata sekoittaa. Esimerkkejä:</p>
-<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span> 
-  <span class="kw">$a</span> = <span class="fu">array</span><span class="ot">();</span>
-  <span class="kw">$a</span><span class="ot">[</span><span class="dv">0</span><span class="ot">]</span> = <span class="st">&quot;arvo&quot;</span><span class="ot">;</span>
-  <span class="kw">$a</span><span class="ot">[</span><span class="dv">1</span><span class="ot">]</span> = <span class="st">&quot;toinen arvo&quot;</span><span class="ot">;</span>
-
-  <span class="co">//Taulukkoja voi myös alustaa luodessa. Oletuksena indeksointi alkaa nollasta.</span>
-  <span class="kw">$m</span> = <span class="fu">array</span><span class="ot">(</span><span class="dv">1</span><span class="ot">,</span><span class="dv">2</span><span class="ot">,</span><span class="dv">3</span><span class="ot">,</span><span class="dv">4</span><span class="ot">);</span>
-  <span class="kw">$m</span><span class="ot">[</span><span class="dv">0</span><span class="ot">]</span> == <span class="dv">1</span><span class="ot">;</span> <span class="co">//tosi</span>
-
-  <span class="co">//Taulukon perään voi lisätä arvoja jättämällä avaimen pois.</span>
-  <span class="kw">$m</span><span class="ot">[]</span> = <span class="dv">5</span><span class="ot">;</span> <span class="co">//Sama kuin sanoisi: $m[4] = 5;</span>
-
-  <span class="co">//Alustaessa voi myös antaa avaimia.</span>
-  <span class="kw">$kissa</span> = <span class="fu">array</span><span class="ot">(</span><span class="st">&quot;nimi&quot;</span> =&gt; <span class="st">&quot;Kasper&quot;</span><span class="ot">,</span> <span class="st">&quot;rotu&quot;</span> =&gt; <span class="st">&quot;Siamilainen&quot;</span><span class="ot">);</span>
-  <span class="fu">echo</span> <span class="kw">$kissa</span><span class="ot">[</span><span class="st">&quot;nimi&quot;</span><span class="ot">];</span> <span class="co">//Tulostaa nimen Kasper.</span></code></pre>
-<p>Käsittelijässä luotuja taulukoita voi käyttää näkymässä tiedon näyttämiseen. Oletetaan että kontrolleri on asettanut muuttujaan <code>$kissat</code> listan nimiä:</p>
-<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>
-  naytaNakyma<span class="ot">(</span><span class="st">&#39;kissalista.php&#39;</span><span class="ot">,</span> <span class="fu">array</span><span class="ot">(</span>
-    <span class="st">&#39;kissat&#39;</span> =&gt; <span class="fu">array</span><span class="ot">(</span><span class="st">&quot;Matleena&quot;</span><span class="ot">,</span> <span class="st">&quot;Iiris&quot;</span><span class="ot">,</span> <span class="st">&quot;Inari&quot;</span><span class="ot">);</span>
-  <span class="ot">));</span></code></pre>
-<p>Nyt jos tämä muuttuja on käytettävissä näkymätiedostossa, voimme näyttää nimet näin:</p>
-<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span> <span class="kw">foreach</span><span class="ot">(</span><span class="kw">$data</span>-&gt;kissat <span class="kw">as</span> <span class="kw">$kissa</span><span class="ot">)</span>: <span class="kw">?&gt;</span>
-&lt;div class=&quot;kissa&quot;&gt;
-  Kissan nimi on
-  <span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$kissa</span><span class="ot">;</span> <span class="kw">?&gt;</span>
-&lt;/div&gt;
-<span class="kw">&lt;?php</span> <span class="kw">endforeach</span><span class="ot">;</span> <span class="kw">?&gt;</span></code></pre>
-</section>
-</section>
-<section id="etusivut" class="level2">
-<h2>Etusivut</h2>
-<p>Sivujen etusivu tallennetaan aina nimellä <code>index.php</code> (tai <code>index.html</code>). Muun nimisiä etusivuja ei ole mahdollista määrittää. Bonuksena on, että jos syöttää osoitekenttään pelkän hakemiston osoitteen, esim. <code>http://tunnus.users.cs.helsinki.fi</code> on se sama kuin kirjoittaisi <code>http://tunnus.users.cs.helsinki.fi/index.php</code>, kunhan htdocs-kansiossa on kyseinen tiedosto.</p>
-</section>
-<section id="mallien-luominen" class="level2">
-<h2>Mallien luominen</h2>
-<p>Luodaan vielä projektille yksi malliluokka, joka kuvaa sovelluksesi käyttäjää. Sijoita projektin mallit omaan kansioonsa kirjastokansiosi alle, siten että kussakin tiedostossa on yksi malliluokka.</p>
-<p>Tee mallitiedostoosi luokka, joka vastaa käyttäjää. Sijoita luokkaan kentät käyttäjäsi tietokantataulun kenttiä varten ja luo kentille getterit ja setterit sekä halutessasi konstruktori, joka ottaa kenttien arvot vastaan.</p>
-<p>Myöhemmin työn edetessä teemme tähän luokkaan staattisia metodeja, jotka osaavat hakea näihin olioihin sisältöä tietokannasta.</p>
-<p>Esimerkkinä mallikoodille voit käyttää ensimmäisen viikon ohjelmointikielioppaan Kahvikuppia:</p>
-<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>
-
-<span class="kw">class</span> Kahvikuppi {
-
-  <span class="co">/* Luokkamuuttujat */</span>
-  <span class="kw">private</span> <span class="kw">$tekstiKyljessa</span><span class="ot">;</span>
-  <span class="kw">private</span> <span class="kw">$tayttoaste</span> = <span class="dv">0</span><span class="ot">;</span>
-  
-  <span class="co">/* Konstruktori */</span>
-  <span class="kw">function</span> <span class="fu">__construct</span><span class="ot">(</span><span class="kw">$teksti</span><span class="ot">)</span> {
-    <span class="kw">$this</span>-&gt;tekstiKyljessa = <span class="kw">$teksti</span><span class="ot">;</span>
-  }
-  
-  <span class="co">/* Metodeja */</span>
-  <span class="kw">function</span> kaadaKahvia<span class="ot">(</span><span class="kw">$maara</span><span class="ot">)</span> {
-    <span class="kw">$this</span>-&gt;tayttoaste += <span class="kw">$maara</span><span class="ot">;</span>
-    <span class="kw">if</span> <span class="ot">(</span><span class="kw">$this</span>-&gt;tayttoaste &gt; <span class="dv">100</span><span class="ot">)</span> {
-      <span class="kw">throw</span> <span class="kw">new</span> <span class="kw">Exception</span><span class="ot">(</span><span class="st">&quot;Kahvikuppi valui yli&quot;</span><span class="ot">);</span>
-    }
-  }
-  <span class="kw">function</span> juoTyhjaksi<span class="ot">()</span> {
-    <span class="kw">$this</span>-&gt;tayttoaste = <span class="dv">0</span><span class="ot">;</span>
-  }
-  <span class="kw">function</span> getKahvinMaara<span class="ot">()</span> {
-    <span class="kw">return</span> <span class="kw">$this</span>-&gt;tayttoaste<span class="ot">;</span>
-  }
-}</code></pre>
 </section>
 </div>
 </div> 

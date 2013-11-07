@@ -100,12 +100,14 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li><a href="../../../ohjeistus/tietokantaohjelmointi/java/index.html">Java-ohjeet</a>
 <ul>
 <li class="selected"><a href="../../../ohjeistus/tietokantaohjelmointi/java/rakenne.html">Sovelluksen rakenne ja servletit</a></li>
+<li><a href="../../../ohjeistus/tietokantaohjelmointi/java/nakymat.html">Näkymien tekeminen ja JSP</a></li>
 <li><a href="../../../ohjeistus/tietokantaohjelmointi/java/lomakkeet.html">Lomakkeiden käyttö ja vastaanottaminen</a></li>
 <li><a href="../../../ohjeistus/tietokantaohjelmointi/java/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
 </ul></li>
 <li><a href="../../../ohjeistus/tietokantaohjelmointi/php/index.html">PHP-ohjeet</a>
 <ul>
-<li><a href="../../../ohjeistus/tietokantaohjelmointi/php/rakenne.html">Mihin eri tiedostot kannattaa laittaa?</a></li>
+<li><a href="../../../ohjeistus/tietokantaohjelmointi/php/rakenne.html">Sovelluksen rakenne ja kontrollerit</a></li>
+<li><a href="../../../ohjeistus/tietokantaohjelmointi/php/nakymat.html">Näkymien tekeminen</a></li>
 <li><a href="../../../ohjeistus/tietokantaohjelmointi/php/lomakkeet.html">Lomakkeiden käyttö ja vastaanottaminen</a></li>
 <li><a href="../../../ohjeistus/tietokantaohjelmointi/php/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
 </ul></li>
@@ -186,19 +188,10 @@ Tiivistelmä:
 
 <ul>
 <li>Tee koodia varten oma pakettisi. Esim. <code>Kissalista</code>.</li>
-<li>Luo ensin itsellesi servlet-luokka.
-<ul>
-<li>Sijoita servlet-luokkasi omaan pakettiinsa. Esim. <code>Kissalista.Servlets</code>. Jatkossa samaan pakettiin tulevat kaikki muutkin servletit.</li>
-</ul></li>
-<li>Laita sitten servlettisi käyttämään HTML:n tulostukseen JSP-tiedostoa.</li>
-<li>Tee JSP-tägitiedosto, ja laita JSP-sivusi HTML-runko siihen. Ota tägitiedostosi käyttöön servlettisi JSP-tiedosssa.</li>
-<li>Tee sovelluksesi servleteille yläluokka, johon voi sijoittaa yleiskäyttöisiä toimintoja.</li>
-<li>Tee käyttäjien käsittelyä varten alustava malliluokka.
-<ul>
 <li>Sijoita kaikki mallit omaan pakettiinsa. Esim. <code>Kissalista.Models</code>.</li>
-</ul></li>
+<li>Sijoita servlet-luokkasi omaan pakettiinsa. Esim. <code>Kissalista.Servlets</code>. Jatkossa samaan pakettiin tulevat kaikki muutkin servletit.</li>
 </ul>
-<p>Projektissa pitäisi tällöin olla seuraavanlainen kansiorakenne:</p>
+<p>Lopullisen projektin pitäisi noudatella tämäntapaista kansiorakennetta</p>
 <pre><code>src/
   Paketti/
     Models/
@@ -209,17 +202,24 @@ web/
   user.jsp</code></pre>
 </section>
 
-<p>Tietokantasovellukset Javalla kannattaa jakaa <a href="../../../ohjeistus/tietokantaohjelmointi/arkkitehtuuri/index.html">arkkitehtuuriohjeen</a> mukaisesti malleihin, kontrollereihin ja näkymiin. Keskitymme ensiksi kontrollereihin ja näkymiin.</p>
+<p>Tietokantasovellukset Javalla kannattaa jakaa <a href="../../../ohjeistus/tietokantaohjelmointi/arkkitehtuuri/index.html">arkkitehtuuriohjeen</a> mukaisesti malleihin, kontrollereihin ja näkymiin. Keskitymme ensiksi malleihin ja kontrollereihin ja jatkamme sitten näkymiin <a href="nakymat.html">seuraavalla sivulla</a>.</p>
+<section id="mallit" class="level2">
+<h2>Mallit</h2>
+<p>Sijoita projektin mallit omaan pakettiinsa samaan tapaan kuin servletit. Kolmannen viikon töihin tarvitset käytännössä vain yhden malliluokan, joka kuvaa käyttäjää. Jos teit toisella viikolla listauksesi käyttäjälistauksena, sinulla on jo sellainen valmiina.</p>
+<p>Sijoita malliisi kentät tietokantataulun kenttiä varten ja luo kentille getterit ja setterit sekä halutessasi konstruktori, joka ottaa kenttien arvot vastaan.</p>
+<p>Työn edetessä teemme luokkiin metodeja, jotka osaavat hakea olioihin sisältöä tietokannasta, sekä metodit, joilla tietoa päivitetään takaisin kantaan.</p>
+</section>
 <section id="servletit" class="level2">
 <h2>Servletit</h2>
 <p>Servletit ovat Java EE:ssä eli Javan nettipuolessa käytettäviä luokkia, jotka edustavat jonkin nettisivun tai toiminnon <em>kontrollereita</em>. Servletit ja kontrollerit ovat Javan näkökulmasta useimmiten käytännössä sama asia.</p>
 <p>Jokainen Servlet-luokka on sidottu johonkin URL-osoitteeseen, johon ohjattu aineistopyyntö aktivoi sen. Sitomiset on käyttämässämme Java-ympäristön versiossa määritelty XML-pohjaisesti tiedostossa <code>web/WEB-INF/web.xml</code>. Tiedoston muokkaus on hieman monimutkaista, mutta esimerkiksi NetBeans osaa muokata tämän tiedoston määrityksiä kätevällä käyttöliittymällä ja liittää esimerkiksi uusien Servlettien URL-osoitteet sinne samalla kun Servlettiä luodaan, jolloin käytännössä tiedostoon tarvitsee koskea käsin aika harvoin.</p>
-<section id="etusivut" class="level3">
-<h3>Etusivut</h3>
+<section id="sovelluksen-etusivun-määrittely" class="level3">
+<h3>Sovelluksen etusivun määrittely</h3>
 <p>Voit myös halutessasi tehdä servletistä sivujesi etusivun lisäämällä tiedostoon <code>web/WEB-INF/web.xml</code> seuraavanlaista koodia</p>
 <pre class="sourceCode xml"><code class="sourceCode xml"><span class="kw">&lt;welcome-file-list&gt;</span>
   <span class="kw">&lt;welcome-file&gt;</span>kirjautuminen<span class="kw">&lt;/welcome-file&gt;</span>
 <span class="kw">&lt;/welcome-file-list&gt;</span></code></pre>
+<p>Oletuksena Tomcat-sovellus käyttää etusivunaan index.jsp-tiedostoa.</p>
 </section>
 <section id="servletin-toiminta" class="level3">
 <h3>Servletin toiminta</h3>
@@ -258,167 +258,17 @@ web/
 
 }</code></pre>
 <p>Valmiin pohjan sisältämä vastauksen tuottava koodi sisältää suoraan kontrolleriin upotettua HTML-koodia. Tälläistä koodia ei kannata käyttää, vaan kannattaa tuottaa HTML-sivut erillisillä näkymätiedostoilla.</p>
-</section>
-</section>
-<section id="näkymät-ja-jsp" class="level2">
-<h2>Näkymät ja JSP</h2>
-<p>Javassa näkyminä käytetään JSP-päätteisiä tiedostoja, jotka koostuvat pääasiassa HTML-koodista, jonka seassa on nettijavaa varten toteutetulla <a href="http://docs.oracle.com/javaee/5/tutorial/doc/bnahq.html">Unified Expression Language -kielellä</a> koodattuja käskyjä.</p>
-<p>Yksinkertaisimmillaan JSP-tiedosto näyttää tältä:</p>
-<pre class="sourceCode jsp"><code class="sourceCode jsp">&lt;%@page<span class="ot"> contentType</span>=<span class="st">&quot;text/html&quot;</span><span class="ot"> pageEncoding</span>=<span class="st">&quot;UTF-8&quot;</span>%&gt;
-&lt;<span class="ot">!DOCTYPE html</span>&gt;
-&lt;html&gt;
-  &lt;head&gt;
-    &lt;meta<span class="ot"> http-equiv</span>=<span class="dt">&quot;Content-Type&quot;</span><span class="ot"> content</span>=<span class="dt">&quot;text/html; charset=UTF-8&quot;</span>&gt;
-    &lt;title&gt;JSP Page&lt;/title&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;h1&gt;Hello World!&lt;/h1&gt;
-  &lt;/body&gt;
-&lt;/html&gt;</code></pre>
-<p>JSP-tiedoston käyttäminen tapahtuu RequestDispatcher-tyyppisen olion metodilla forward, jolle annetaan parametrina HttpServletRequest ja HttpServletResponse-oliot. RequestDispatcher-olion saa HttpServletRequest-oliolta antamalla sille sivun, jolle pyyntö ohjataan.</p>
-<p>Luo tässä vaiheessa projektisi luokille oma paketti. Esim. kissalistan paketti voisi olla <code>Kissalista</code>. Tee pakettiisi alipaketit servlettejä ja malleja varten. Esimerkiksi <code>Kissalista.Servlets</code> ja <code>Kissalista.Models</code>.</p>
-<p>Luo sitten itsellesi JSP-tiedosto ja servlet-luokka ja laita servletin pyynnön käsittelymetodiin RequestDispatcher-oliota käyttävää koodia, joka ohjaa luomaasi JSP-tiedostoon ja kutsuu metodia forward.</p>
-<pre class="sourceCode java"><code class="sourceCode java"><span class="kw">protected</span> <span class="dt">void</span> <span class="fu">processRequest</span>(HttpServletRequest request, HttpServletResponse response) {
-  response.<span class="fu">setContentType</span>(<span class="st">&quot;text/html;charset=UTF-8&quot;</span>);
-  
-  <span class="co">/* Luodaan RequestDispatcher-olio, joka osaa näyttää lista.jsp:n */</span>
-  RequestDispatcher dispatcher = request.<span class="fu">getRequestDispatcher</span>(<span class="st">&quot;lista.jsp&quot;</span>);
-  <span class="co">/* Pyydetään dispatcher-oliota näyttämään JSP-sivunsa */</span>
-  dispatcher.<span class="fu">forward</span>(request, response);
-}</code></pre>
-<p>Viimeistään tässä vaiheessa joutunet lisäämään muutaman importin servlettiisi. Näissä esimerkeissä niitä ei tulla erikseen luettelemaan, mutta esim. NetBeans osaa lisätä ne varsin kätevästi tiedoston alkuun, kunhan klikkailee sen antamia virhepalluroita.</p>
-<section id="muuttujien-käyttö" class="level3">
-<h3>Muuttujien käyttö</h3>
-<p>JSP-koodiin on mahdollista sijoittaa muuttujia ja mm. ehtolausekkeita. esimerkiksi virheviestin näyttämisen voi toteuttaa seuraavasti:</p>
-<p>Asetetaan <code>processRequest</code>-metodissa aineistopyyntöä mallintavalle <code>HttpServletRequest</code>-oliolle <em>attribuutti</em>, joka sisältää viestin.</p>
-<pre class="sourceCode java"><code class="sourceCode java"><span class="kw">protected</span> <span class="dt">void</span> <span class="fu">processRequest</span>(HttpServletRequest request, HttpServletResponse response) {
-  response.<span class="fu">setContentType</span>(<span class="st">&quot;text/html;charset=UTF-8&quot;</span>);
-  
-  <span class="co">/* Asetetaan virheviesti */</span>
-  request.<span class="fu">setAttribute</span>(<span class="st">&quot;virheViesti&quot;</span>, <span class="st">&quot;Sinulla ei ole ainuttakaan kissaa!&quot;</span>);  
-
-  <span class="co">/* Näytetään JSP-sivu sivux.jsp */</span>
-  RequestDispatcher dispatcher = request.<span class="fu">getRequestDispatcher</span>(<span class="st">&quot;sivux.jsp&quot;</span>);
-  dispatcher.<span class="fu">forward</span>(request, response);
-}</code></pre>
-<p>JSP-sivulla on mahdollista näyttää pyyntöön asetettuja attribuutteja suoraan syntaksilla <code>${attribuutin_nimi}</code>. Myös erilaisia koodirakenteita kuten ehtolausekkeita voi käyttää ottamalla käyttöön <em>JSTL-tägikirjaston</em> laittamalla tiedoston alkuun taglib-referenssin:</p>
-<pre class="sourceCode jsp"><code class="sourceCode jsp">&lt;%@ taglib<span class="ot"> prefix</span>=<span class="st">&quot;c&quot;</span><span class="ot"> uri</span>=<span class="st">&quot;http://java.sun.com/jsp/jstl/core&quot;</span><span class="ot"> </span>%&gt;</code></pre>
-<p>Saatat joutua lisäämään projektiisi JSTL-kirjaston, että viite toimisi. Tämä tapahtuu NetBeansissä avaamalla valikosta projektin ominaisuusikkuna kohdasta <code>File-&gt;Project Properties</code>. Paina <em>Libraries</em>-kategoriassa nappia <em>Add Library</em> ja lisää listasta projektiin kirjasto nimeltä <code>JSTL 1.1</code>.</p>
-<figure>
-<img src="../../../images/ohjeistus/tietokantaohjelmointi/java/jstl.png" alt="JSTL 1.1 -kirjaston lisääminen projektiin" /><figcaption>JSTL 1.1 -kirjaston lisääminen projektiin</figcaption>
-</figure>
-<p>Tämän jälkeen voimme näyttää virheviestin ehtolausekkeen avulla:</p>
-<pre class="sourceCode jsp"><code class="sourceCode jsp"><span class="kw">&lt;c:if</span><span class="ot"> test</span>=<span class="dt">&quot;</span>${virheViesti != <span class="kw">null</span>}<span class="dt">&quot;</span><span class="kw">&gt;</span>
-  &lt;div<span class="ot"> class</span>=<span class="dt">&quot;alert alert-danger&quot;</span>&gt;Virhe! ${virheViesti}&lt;/div&gt;
-<span class="kw">&lt;/c:if&gt;</span></code></pre>
-<p>Yllä oleva koodi näyttää virheviestin ja siihen liittyvän div-elementin vain jos attribuutti <code>virheViesti</code> on asetettu.</p>
-</section>
-<section id="listojen-läpikäynti" class="level3">
-<h3>Listojen läpikäynti</h3>
-<p>Attribuutteihin voidaan laittaa käytännössä mitä tahansa olioita:</p>
-<pre class="sourceCode java"><code class="sourceCode java"><span class="co">/* Oletetaan että Kissa on luokka, joka tallettaa nimettyjä kissoja.</span>
-<span class="co"> * Jokaisella kissalla on konstruktori, joka ottaa parametrina kissan nimen.</span>
-<span class="co"> * Nimen saa kissasta ulos getNimi()-metodilla</span>
-<span class="co"> */</span>
-List&lt;Kissa&gt; katit = <span class="kw">new</span> ArrayList&lt;Kissa&gt;();
-katit.<span class="fu">add</span>(<span class="kw">new</span> <span class="fu">Kissa</span>(<span class="st">&quot;Ville&quot;</span>));
-katit.<span class="fu">add</span>(<span class="kw">new</span> <span class="fu">Kissa</span>(<span class="st">&quot;Minttu&quot;</span>));
-
-request.<span class="fu">setAttribute</span>(<span class="st">&quot;kissat&quot;</span>, katit);  </code></pre>
-<p>Yllä olevan kissalistan voi näyttää seuraavanlaisella silmukalla:</p>
-<pre class="sourceCode jsp"><code class="sourceCode jsp"><span class="kw">&lt;c:forEach</span><span class="ot"> var</span>=<span class="dt">&quot;kissa&quot;</span><span class="ot"> items</span>=<span class="dt">&quot;</span>${kissat}<span class="dt">&quot;</span><span class="kw">&gt;</span>
-  &lt;div<span class="ot"> class</span>=<span class="dt">&quot;kissa&quot;</span>&gt;{kissa.nimi}&lt;/div&gt;
-<span class="kw">&lt;/c:if&gt;</span></code></pre>
-<p>Yllä oleva komento <code>${kissa.nimi}</code> kutsuu käsiteltävän Kissa-olion <code>getNimi</code>-metodia, ja tulostaa sen palauttaman arvon.</p>
-</section>
-<section id="toisen-tiedoston-sisällön-upottaminen-koodiin" class="level3">
-<h3>Toisen tiedoston sisällön upottaminen koodiin</h3>
-<p>Myös muita tiedostoja on mahdollista sisällyttää yhteen JSP-tiedostoon. Nämä sisällytettävät tiedostot käyttävät yleensä tiedostopäätettä JSPF, eli JSP Fragment.</p>
-<pre class="sourceCode jsp"><code class="sourceCode jsp">&lt;%@include<span class="ot"> file</span>=<span class="st">&quot;navigaatio.jspf&quot;</span><span class="ot"> </span>%&gt;</code></pre>
-<p>Sisällytetyn tiedoston sisältö tulee include-lauseen kohtaan sellaisenaan ikäänkuin tiedosto olisi copy-pastettu siihen suoraan.</p>
-</section>
-</section>
-<section id="template-pohjatiedoston-käyttö" class="level2">
-<h2>Template-pohjatiedoston käyttö</h2>
-<p>Käytännössä suurin osa ohjelmaasi tulevista sivuista tulee sisältämään samanlaisen HTML-rungon, johon sisältyvät sivunavigaatio sekä head-tägin sisältämät otsakkeet ja tyylitiedostolinkit.</p>
-<p>Tämän rungon koodia ei turhaan kannata toistaa, vaan se kannattaa sijoittaa omaan uudelleenkäytettävään tiedostoonsa. Javalla tälläiset uudelleenkäytettävät HTML-pätkät kannattaa toteuttaa erityisinä JSP-tägitiedostoina.</p>
-<p>Tagitiedoston sisälle voi laittaa mitä tahansa HTML-koodia aivan kuten JSP-tiedostoonkin. Tärkein kohta koodissa on kuitenkin käsky <code>&lt;jsp:doBody/&gt;</code>, jolla voi upottaa tägiin jotain tägin käyttäjän määrittelemää sisältöä.</p>
-<p>Myös omia tägispesifisiä muuttujia voi määritellä. Rivi <code>&lt;%@attribute name=&quot;pageTitle&quot;%&gt;</code> määrittelee muuttujan pageTitle, jota voi käyttää normaaliin tapaan tagin koodissa kirjoittamalla <code>${pageTitle}</code>.</p>
-<p>Muuttujan sisällön määrittää tägin käyttäjä. Alla olevassa esimerkissä tiedostossa <code>web/WEB-INF/tags/pohja.tag</code> määritellylle tägille annetaan muuttuja <code>pageTitle</code> ja sisältönä yksi h1-elementti.</p>
-<p><strong>helloworld.jsp</strong></p>
-<pre class="sourceCode jsp"><code class="sourceCode jsp">&lt;%@page<span class="ot"> contentType</span>=<span class="st">&quot;text/html&quot;</span><span class="ot"> pageEncoding</span>=<span class="st">&quot;UTF-8&quot;</span>%&gt;
-&lt;%@ taglib<span class="ot"> prefix</span>=<span class="st">&quot;t&quot;</span><span class="ot"> tagdir</span>=<span class="st">&quot;/WEB-INF/tags&quot;</span><span class="ot"> </span>%&gt;
-<span class="kw">&lt;t:pohja</span><span class="ot"> pageTitle</span>=<span class="dt">&quot;Kissalista!&quot;</span><span class="kw">&gt;</span>
-    &lt;h1&gt;Hello World!&lt;/h1&gt;
-<span class="kw">&lt;/t:pohja&gt;</span></code></pre>
-<p>Tägitiedosto sijoittaa annetut tiedot sen mukaan mitä tägitiedostossa käsketään. Esimerkiksi kissalistan pohjatägitiedosto sijoittaa tägin sisällön navigaatioelementin viereen käyttäen Bootstrap-kirjastoa:</p>
-<p><strong>pohja.tag</strong></p>
-<pre class="sourceCode jsp"><code class="sourceCode jsp">&lt;%@tag<span class="ot"> description</span>=<span class="st">&quot;Generic template for Kissalista pages&quot;</span><span class="ot"> pageEncoding</span>=<span class="st">&quot;UTF-8&quot;</span>%&gt;
-&lt;%@ taglib<span class="ot"> prefix</span>=<span class="st">&quot;c&quot;</span><span class="ot"> uri</span>=<span class="st">&quot;http://java.sun.com/jsp/jstl/core&quot;</span><span class="ot"> </span>%&gt;
-&lt;%@attribute<span class="ot"> name</span>=<span class="st">&quot;pageTitle&quot;</span>%&gt;
-&lt;<span class="ot">!DOCTYPE html</span>&gt;
-&lt;html&gt;
-    &lt;head&gt;
-        &lt;title&gt;${pageTitle}&lt;/title&gt;
-        &lt;meta<span class="ot"> http-equiv</span>=<span class="dt">&quot;Content-Type&quot;</span><span class="ot"> content</span>=<span class="dt">&quot;text/html; charset=UTF-8&quot;</span>&gt;
-        &lt;link<span class="ot"> href</span>=<span class="dt">&quot;css/bootstrap.css&quot;</span><span class="ot"> rel</span>=<span class="dt">&quot;stylesheet&quot;</span>&gt;
-        &lt;link<span class="ot"> href</span>=<span class="dt">&quot;css/bootstrap-theme.css&quot;</span><span class="ot"> rel</span>=<span class="dt">&quot;stylesheet&quot;</span>&gt;
-        &lt;link<span class="ot"> href</span>=<span class="dt">&quot;css/main.css&quot;</span><span class="ot"> rel</span>=<span class="dt">&quot;stylesheet&quot;</span>&gt;
-        &lt;script<span class="ot"> src</span>=<span class="dt">&quot;http://code.jquery.com/jquery.js&quot;</span>&gt;&lt;/script&gt;
-        &lt;script<span class="ot"> src</span>=<span class="dt">&quot;js/bootstrap.min.js&quot;</span>&gt;&lt;/script&gt;
-    &lt;/head&gt;
-    &lt;body&gt;
-        &lt;div<span class="ot"> class</span>=<span class="dt">&quot;navbar navbar-default&quot;</span>&gt;
-            &lt;div<span class="ot"> class</span>=<span class="dt">&quot;container&quot;</span>&gt;
-                &lt;ul<span class="ot"> class</span>=<span class="dt">&quot;nav navbar-nav&quot;</span>&gt;
-                    &lt;li<span class="ot"> class</span>=<span class="dt">&quot;active&quot;</span>&gt;&lt;a<span class="ot"> href</span>=<span class="dt">&quot;Lista&quot;</span>&gt;Lista&lt;/a&gt;&lt;/li&gt;
-                    &lt;li&gt;&lt;a<span class="ot"> href</span>=<span class="dt">&quot;Logout&quot;</span>&gt;Kirjaudu ulos&lt;/a&gt;&lt;/li&gt;
-                &lt;/ul&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-            
-        &lt;div<span class="ot"> class</span>=<span class="dt">&quot;container&quot;</span>&gt;
-            <span class="kw">&lt;c:if</span><span class="ot"> test</span>=<span class="dt">&quot;</span>${pageError != <span class="kw">null</span>}<span class="dt">&quot;</span><span class="kw">&gt;</span>
-                &lt;div<span class="ot"> class</span>=<span class="dt">&quot;alert alert-danger&quot;</span>&gt;${pageError}&lt;/div&gt;
-            <span class="kw">&lt;/c:if&gt;</span>
-            &lt;jsp:doBody/&gt;
-        &lt;/div&gt;
-    &lt;/body&gt;
-&lt;/html&gt;</code></pre>
-<p>Kun yllä oleva JSP-koodi ja tägitiedosto ajetaan syntyy sivu, jonka otsikko on “Kissalista!” ja jonka sisältönä on sivunavigaatio ja Hello World -toivotus.</p>
-<hr>
-<p>Tee nyt projektillesi HTML-pohjatiedosto kansioon <code>web/WEB-INF/tags/pohja.tag</code>. Ja sijoita siihen oma sivupohjasi.</p>
-<p>NetBeansistä löydät tägitiedoston uusien tiedostojen valikosta <code>Web</code>-kohdan alta nimellä <code>Tag File</code>. Voit käyttää seuraavia asetuksia:</p>
-<figure>
-<img src="../../../images/ohjeistus/tietokantaohjelmointi/java/tagi.png" alt="Tagitiedoston luonti" /><figcaption>Tagitiedoston luonti</figcaption>
-</figure>
-</section>
-<section id="koodin-sijoittamineen-uudelleenkäytettävään-luokkaan" class="level2">
-<h2>Koodin sijoittamineen uudelleenkäytettävään luokkaan</h2>
-<p>Siinä vaiheessa kun servlet-luokkia alkaa tulla projektiin useampia alkavat tietyt toiminnot toistua luokasta toiseen. Hyvänä esimerkkinä JSP-sivun näyttämiseen tarvittu koodinpätkä, virheilmoitusten lähettäminen näkymälle näkyviin, ja kirjautumisen tarkistaminen.</p>
-<p>Tee itsellesi uusi luokka, ja lähde rakentamaan siihen yleisiä toiminnallisuuksia omina metodeinaan. Laita siihen ensimmäiseksi metodi, jolla saat näytettyä JSP-sivun. Kehittele myös tapa näyttää sivupohjassasi sovelluksen virheitä ja tee metodi joka aktivoi tuon tavan. Useimmiten tähän kannattaa käyttää <code>setAttribute</code>-metodia ja jotain sovittua attribuuttia, jonka arvo näytetään virheviestinä.</p>
-<p>Voit halutessasi myös laittaa uuden luokkasi perimään HttpServletin ja periyttää kaikki muut servlettisi siitä. Näin luokkasi metodit ovat kaikissa projektisi servlet-luokissa suoraan käytettävissä.</p>
-</section>
-<section id="mallien-luominen" class="level2">
-<h2>Mallien luominen</h2>
-<p>Sijoita projektin mallit omaan pakettiinsa samaan tapaan kuin servletit. Tämän viikon töihin tarvitset käytännössä vain yhden malliluokan, joka kuvaa käyttäjää. Sijoita malliisi kentät käyttäjäsi tietokantataulun kenttiä varten ja luo kentille getterit ja setterit sekä halutessasi konstruktori, joka ottaa kenttien arvot vastaan.</p>
-<p>Myöhemmin työn edetessä teemme tähän luokkaan staattisia metodeja, jotka osaavat hakea näihin olioihin sisältöä tietokannasta.</p>
-</section>
-<section id="linkkejä" class="level1">
-<h1>Linkkejä</h1>
-<ul>
-<li><a href="http://www.sitepoint.com/java-standard-tag-library/">Introduction to the Java Standard Tag Library</a></li>
-</ul>
+<p>Näistä kerrotaan enemmän seuraavalla sivuilla.</p>
 <section class="alert alert-success small"><h3>
 Seuraavaksi:
 </h3>
-<p>Seuraavaksi otamme käyttäjämallin ja servletit käyttöön <a href="lomakkeet.html">yksinkertaisen kirjautumisen</a> toteuttamiseen.</p>
+<p>Seuraavaksi tutustumme tarkemmin <a href="nakymat.html">näkymien toteuttamiseen</a>.</p>
 </section>
 
 
 
 
-
+</section>
 </section>
 </div>
 </div> 

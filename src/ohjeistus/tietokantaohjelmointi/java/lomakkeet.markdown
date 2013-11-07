@@ -1,5 +1,5 @@
 % Lomakkeiden käyttö ja vastaanottaminen
-<!-- order: 2 -->
+<!-- order: 3 -->
 
 Seuraavaksi tee servletti, joka näyttää
 html-demoon tekemäsi kirjautumislomakkeen
