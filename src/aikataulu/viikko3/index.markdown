@@ -7,10 +7,6 @@ Kolmannen viikon pääteemana on tutustua
 hyvän arkkitehtuurin mukaiseen koodaamiseen
 ja toteuttaa kirjautuminen.
 
-<wip />
-
-Näillä sivuilla ei valitettavasti vielä ole kunnollista ohjeistusta virheilmoitusten toteuttamisesta.
-
 Palautuspäivämäärään mennessä työn on täytettävä seuraavat vaatimukset:
 
 <comment>

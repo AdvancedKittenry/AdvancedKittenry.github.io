@@ -1,7 +1,5 @@
 % Listaus Javalla
 
-<wip />
-
 Varmista ensin, että sinulla on luokka tai funktio, jolla saat [yhteyden tietokantaan](../tietokantayhteys/index.html).
 Nyt käytämme tietokantayhteyttä luokaksemme hyvin yksinkertaisen sivun, jolla listataan jonkun taulun sisältöä.
 Teemme tämän kahdessa vaiheessa: 
