@@ -160,27 +160,31 @@ Tietokannan nopeaan testaamisen voi myös käyttää seuraavanlaista koodia:
 **Java** 
 
 ~~~java
-//Koodi olettaa, että muuttuja yhteys sisältää yhteysvarastosta saadun yhteysolion.
-PreparedStatement kysely;
-ResultSet tulokset;
-PrintWriter out = response.getWriter(); 
-response.setContentType("text/plain;charset=UTF-8");
+//HttpServlet-luokan perivään servlettiin menevä metodi:
+protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
+  Connection yhteys = Tietokanta.getYhteys(); //Haetaan tietokantaluokalta yhteysolio
+  PreparedStatement kysely;
+  ResultSet tulokset;
+  PrintWriter out = response.getWriter(); 
+  response.setContentType("text/plain;charset=UTF-8");
 
-try {
-  String sql = "SELECT 1+1 as two";
-  kysely = yhteys.prepareStatement(sql);
-  tulokset = kysely.executeQuery();
-  if(tulokset.next()) {
-    int kakkonen = tulokset.getInt("two");
-    out.println("Tulos: "+kakkonen"); 
-  } else {
-    out.println("Virhe!"); 
+  try {
+    String sql = "SELECT 1+1 as two";
+    kysely = yhteys.prepareStatement(sql);
+    tulokset = kysely.executeQuery();
+    if(tulokset.next()) {
+      int kakkonen = tulokset.getInt("two");
+      out.println("Tulos: "+kakkonen"); 
+    } else {
+      out.println("Virhe!"); 
+    }
+  } catch (Exception e) {
+    out.println("Virhe: "+e.getMessage()"); 
   }
-} catch (Exception e) {
-  out.println("Virhe: "+e.getMessage()"); 
-}
 
-tulokset.close(); kysely.close();
+  tulokset.close(); kysely.close();
+}
 ~~~
 
 Sijoita tämä koodi asianmukaisen servletin processRequest-metodiin.

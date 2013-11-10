@@ -290,27 +290,31 @@ Yllä olevan koodin vaatimat importit
 <div class="row">
 <div class="col-md-6">
 <p><strong>Java</strong></p>
-<pre class="sourceCode java"><code class="sourceCode java"><span class="co">//Koodi olettaa, että muuttuja yhteys sisältää yhteysvarastosta saadun yhteysolion.</span>
-PreparedStatement kysely;
-ResultSet tulokset;
-PrintWriter out = response.<span class="fu">getWriter</span>(); 
-response.<span class="fu">setContentType</span>(<span class="st">&quot;text/plain;charset=UTF-8&quot;</span>);
+<pre class="sourceCode java"><code class="sourceCode java"><span class="co">//HttpServlet-luokan perivään servlettiin menevä metodi:</span>
+<span class="kw">protected</span> <span class="dt">void</span> <span class="fu">processRequest</span>(HttpServletRequest request, HttpServletResponse response)
+      <span class="kw">throws</span> ServletException, IOException {
+  Connection yhteys = Tietokanta.<span class="fu">getYhteys</span>(); <span class="co">//Haetaan tietokantaluokalta yhteysolio</span>
+  PreparedStatement kysely;
+  ResultSet tulokset;
+  PrintWriter out = response.<span class="fu">getWriter</span>(); 
+  response.<span class="fu">setContentType</span>(<span class="st">&quot;text/plain;charset=UTF-8&quot;</span>);
 
-<span class="kw">try</span> {
-  String sql = <span class="st">&quot;SELECT 1+1 as two&quot;</span>;
-  kysely = yhteys.<span class="fu">prepareStatement</span>(sql);
-  tulokset = kysely.<span class="fu">executeQuery</span>();
-  <span class="kw">if</span>(tulokset.<span class="fu">next</span>()) {
-    <span class="dt">int</span> kakkonen = tulokset.<span class="fu">getInt</span>(<span class="st">&quot;two&quot;</span>);
-    out.<span class="fu">println</span>(<span class="st">&quot;Tulos: &quot;</span>+kakkonen<span class="st">&quot;); </span>
-  } <span class="kw">else</span> {
-    out.<span class="fu">println</span>(<span class="st">&quot;Virhe!&quot;</span>); 
+  <span class="kw">try</span> {
+    String sql = <span class="st">&quot;SELECT 1+1 as two&quot;</span>;
+    kysely = yhteys.<span class="fu">prepareStatement</span>(sql);
+    tulokset = kysely.<span class="fu">executeQuery</span>();
+    <span class="kw">if</span>(tulokset.<span class="fu">next</span>()) {
+      <span class="dt">int</span> kakkonen = tulokset.<span class="fu">getInt</span>(<span class="st">&quot;two&quot;</span>);
+      out.<span class="fu">println</span>(<span class="st">&quot;Tulos: &quot;</span>+kakkonen<span class="st">&quot;); </span>
+    } <span class="kw">else</span> {
+      out.<span class="fu">println</span>(<span class="st">&quot;Virhe!&quot;</span>); 
+    }
+  } <span class="kw">catch</span> (Exception e) {
+    out.<span class="fu">println</span>(<span class="st">&quot;Virhe: &quot;</span>+e.<span class="fu">getMessage</span>()<span class="st">&quot;); </span>
   }
-} <span class="kw">catch</span> (Exception e) {
-  out.<span class="fu">println</span>(<span class="st">&quot;Virhe: &quot;</span>+e.<span class="fu">getMessage</span>()<span class="st">&quot;); </span>
-}
 
-tulokset.<span class="fu">close</span>(); kysely.<span class="fu">close</span>();</code></pre>
+  tulokset.<span class="fu">close</span>(); kysely.<span class="fu">close</span>();
+}</code></pre>
 <p>Sijoita tämä koodi asianmukaisen servletin processRequest-metodiin. Koodin pitäisi lähettää selaimelle teksti “Tulos: 2”.</p>
 </div>
 <div class="col-md-6">
