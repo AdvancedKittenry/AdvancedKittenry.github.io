@@ -81,8 +81,11 @@ tiedot kirjautumisesta. Tämän jälkeen käyttäjä ei enää pääse sivuille 
 
 ~~~php
 <?php
-  //Kirjaudutaan ulos
-  unset(session["kirjautunutKayttaja"]);
+  //Avataan istunto
+  session_start();
+
+  //Poistetaan istunnosta merkintä kirjautuneesta käyttäjästä -> Kirjaudutaan ulos
+  unset($_SESSION["kirjautunutKayttaja"]);
 
   //Yleensä kannattaa ulkos kirjautumisen jälkeen ohjata käyttäjä kirjautumissivulle
   header('Location: kirjautuminen.php');

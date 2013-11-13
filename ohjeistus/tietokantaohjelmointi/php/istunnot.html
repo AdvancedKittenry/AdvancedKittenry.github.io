@@ -227,8 +227,11 @@ Pidä mielessä!
 <h2>Uloskirjautuminen</h2>
 <p>Kun olet lisännyt kirjautumistarkistuksen kaikille sivuille jotka sitä vaativat, uloskirjautumisen toteuttamiseksi riittää poistaa istuntoon tallennetut tiedot kirjautumisesta. Tämän jälkeen käyttäjä ei enää pääse sivuille sisään.</p>
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>
-  <span class="co">//Kirjaudutaan ulos</span>
-  <span class="fu">unset</span><span class="ot">(</span>session<span class="ot">[</span><span class="st">&quot;kirjautunutKayttaja&quot;</span><span class="ot">]);</span>
+  <span class="co">//Avataan istunto</span>
+  <span class="fu">session_start</span><span class="ot">();</span>
+
+  <span class="co">//Poistetaan istunnosta merkintä kirjautuneesta käyttäjästä -&gt; Kirjaudutaan ulos</span>
+  <span class="fu">unset</span><span class="ot">(</span><span class="kw">$_SESSION</span><span class="ot">[</span><span class="st">&quot;kirjautunutKayttaja&quot;</span><span class="ot">]);</span>
 
   <span class="co">//Yleensä kannattaa ulkos kirjautumisen jälkeen ohjata käyttäjä kirjautumissivulle</span>
   <span class="fu">header</span><span class="ot">(</span><span class="st">&#39;Location: kirjautuminen.php&#39;</span><span class="ot">);</span>
