@@ -1,5 +1,6 @@
 % Tietokohteen sivujen toteuttaminen
 <!-- order: 5 -->
+<!-- hidden! -->
 
 <wip />
 

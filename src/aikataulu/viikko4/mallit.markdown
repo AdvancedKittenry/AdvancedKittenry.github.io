@@ -1,5 +1,6 @@
 % Mallit ja tietokanta
 <!-- order: 3 -->
+<!-- hidden! -->
 
 <wip />
 

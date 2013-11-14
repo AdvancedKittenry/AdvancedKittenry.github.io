@@ -51,6 +51,7 @@
 <li><a href="../../aikataulu/viikko2/tietokanta.html">Tietokannan suunnittelu</a></li>
 </ul></li>
 <li><a href="../../aikataulu/viikko3/index.html">Viikko 3</a></li>
+<li class="selected"><a href="../../aikataulu/viikko4/index.html">Viikko 4</a></li>
 <li><a href="../../aikataulu/demo.html">Demotilaisuus</a></li>
 <li><a href="../../aikataulu/palautus.html">Työn palautus</a></li>
 </ul></li>
@@ -161,7 +162,6 @@
 <h1 class="title">Viikko 4</h1>
 </header>
 <!-- order: 1 -->
-<!-- hidden! -->
 
 <section class="alert alert-warning small"><h3>
 Deadline:
@@ -169,46 +169,31 @@ Deadline:
 <span class="coursekeyword deadline4">su 24.11 klo 23:00</span>
 </section>
 
-<p>Työaiheet neljännellä viikolla lyhyesti:</p>
+<p>Neljännen viikon pääteemana on kantarivien muokkaus ja lomakkeet.</p>
+<p>Palautuspäivämäärään mennessä työn on täytettävä alla listatut vaatimukset. Kunkin otsikon alla olevista asioista saa suluissa määritellyt aikataulupisteet.</p>
+<section id="täysipainoinen-malliluokka-p" class="level2">
+<h2>Täysipainoinen malliluokka (¾p)</h2>
 <ul>
-<li><a href="../../ohjeistus/tietokantaohjelmointi/tietokantayhteys/index.html">Tietokannan kokeilu ja yhteydenotto</a></li>
-<li><a href="mallit.html">Tietokantaa käyttävän mallin luominen</a></li>
-<li><a href="nakymat.html">Lomakkeiden ja sivujen toteuttaminen</a></li>
+<li>Sovelluksessa on koodattu ainakin yksi täysi malliluokka: listaus, muokkaus, poisto, päivitys</li>
+<li>Tiedot näkyvät sivuilla oikein myös silloin kun käyttäjä on syöttänyt niiden sekaan HTML:ää, lainausmerkkejä yms. eikä koodissa ole SQL-injektiopaikkoja</li>
 </ul>
-<section id="nelosviikon-deadline" class="level2">
-<h2>Nelosviikon deadline</h2>
-<p>Palautuspäivämäärään mennessä työn on täytettävä seuraavat vaatimukset:</p>
-<ul>
-<li>Tietokantayhteys toimii, ja sen luonti on sijoitettu omaan metodiinsa/funktioonsa.</li>
-<li>Luotu ainakin yksi malliluokka, joka:
-<ol type="1">
-<li>Sisältää staattisia metodeja, jotka hakevat kannasta eri kriteerein rivejä olioiksi. (Esim. kissalistan hakutoiminto, yksittäisen kissan hakeminen id-numerolla yms.)</li>
-<li>Sisältää metodin, joka lisää olion kantaan (INSERT-lause).</li>
-<li>Sisältää metodin, joka päivittää olion tiedot kantaan (UPDATE-lause).</li>
-<li>Sisältää metodin joka poistaa olion kannasta, voidaan toteuttaa myös staattinen metodi, joka poistaa hakuehdolla rivejä taulusta.</li>
-</ol></li>
-<li>Käytetty SQL-koodi on turvallinen, eikä tarjoa mahdollisuuksia SQL-injektioille.</li>
-<li>Luotu sivut, jossa edellä mainittuja malliluokan toimintoja käytetään hyväksi. Käytettävyyden pitää olla kohdallaan:
-<ul>
-<li>Sivuilla selkeät virheilmoitukset kaikista virhetilanteista ja lomakkeiden syöttövirheistä.</li>
-<li>Lomakkeen kontrolleri ohjaa takaisin lomakesivulle, mikäli lomake on virheellisesti täytetty.
-<ul>
-<li>Lomakesivulla tällöin näkyvissä ne tiedot, jotka käyttäjä siihen syötti.</li>
-<li>Väärin syötetyt tiedot kerrotaan virheilmoituksin.</li>
-</ul></li>
-<li>Tiedot näkyvät sivuilla oikein myös silloin kun käyttäjä on syöttänyt niiden sekaan HTML:ää, lainausmerkkejä yms.</li>
-</ul></li>
-</ul>
-<section class="alert alert-success"><h3>
-Ohje:
-</h3>
-<p>Aloita <a href="../../ohjeistus/tietokantaohjelmointi/tietokantayhteys/index.html">tietokantayhteyden luomisesta</a> ja seuraa vihreitä ohjelaatikoita.</p>
-<p>Tehtyäsi kaiken varmista, että kaikki tekemäsi muutokset näkyvät GitHub-repositoriossasi.</p>
 </section>
-
-
-
-
+<section id="toimiva-tiedon-muokkaus-ja-lomakkeet-2p" class="level2">
+<h2>Toimiva tiedon muokkaus ja lomakkeet (2p)</h2>
+<ul>
+<li>Laajennettu listaus</li>
+<li>Lisäyslomake</li>
+<li>Muokkauslomake</li>
+<li>Sovelluksessa on virheilmoitusmekanismi
+<ul>
+<li>Syötteet tarkistetaan ja sovellus antaa ilmoitukset kaikista virheistä.</li>
+<li>Virhellisesti täytetyillä lomakesivulla palatessa ne tiedot, jotka käyttäjä syötti.</li>
+</ul></li>
+</ul>
+</section>
+<section id="dokumentaatio-p" class="level2">
+<h2>Dokumentaatio (¼p)</h2>
+<p>Tee vielä lopuksi alustava dokumentaatio kappaleista <a href="../../dokumentaatio-ohje.html#asennustiedot">asennustiedot</a> ja <a href="../../dokumentaatio-ohje.html#käynnistys--käyttöohje">käynnistys- / käyttöohje</a></p>
 </section>
 </div>
 </div> 

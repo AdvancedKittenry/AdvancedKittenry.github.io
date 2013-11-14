@@ -1,10 +1,32 @@
 % Viikko 4
 <!-- order: 1 -->
-<!-- hidden! -->
 
 <deadline>{{deadline4}}</deadline>
 
-Työaiheet neljännellä viikolla lyhyesti:
+Neljännen viikon pääteemana on kantarivien muokkaus ja lomakkeet.
+
+Palautuspäivämäärään mennessä työn on täytettävä alla listatut vaatimukset.
+Kunkin otsikon alla olevista asioista saa suluissa määritellyt aikataulupisteet.
+
+## Täysipainoinen malliluokka (¾p)
+
+* Sovelluksessa on koodattu ainakin yksi täysi malliluokka: listaus, muokkaus, poisto, päivitys
+* Tiedot näkyvät sivuilla oikein myös silloin kun käyttäjä on syöttänyt niiden sekaan HTML:ää, lainausmerkkejä yms. eikä koodissa ole SQL-injektiopaikkoja
+
+## Toimiva tiedon muokkaus ja lomakkeet (2p)
+
+* Laajennettu listaus
+* Lisäyslomake
+* Muokkauslomake
+* Sovelluksessa on virheilmoitusmekanismi
+    * Syötteet tarkistetaan ja sovellus antaa ilmoitukset kaikista virheistä. 
+    * Virhellisesti täytetyillä lomakesivulla palatessa ne tiedot, jotka käyttäjä syötti.
+
+## Dokumentaatio (¼p)
+
+Tee vielä lopuksi alustava dokumentaatio kappaleista 
+[asennustiedot]({{rootdir}}dokumentaatio-ohje.html#asennustiedot) ja 
+[käynnistys- / käyttöohje]({{rootdir}}dokumentaatio-ohje.html#käynnistys--käyttöohje)
 
 <comment>
 TODO:
@@ -14,7 +36,6 @@ TODO:
 * Virhellisesti täytetyillä lomakesivulla palatessa ne tiedot, jotka käyttäjä syötti.
 * Tiedot näkyvät sivuilla oikein myös silloin kun käyttäjä on syöttänyt niiden sekaan HTML:ää, lainausmerkkejä yms. eikä koodissa ole SQL-injektiopaikkoja
 * Alustava: asennustiedot, käynnistys- / käyttöohje
-</comment>
 
 * [Tietokannan kokeilu ja yhteydenotto]({{rootdir}}ohjeistus/tietokantaohjelmointi/tietokantayhteys/index.html)
 * [Tietokantaa käyttävän mallin luominen](mallit.html)
@@ -43,3 +64,4 @@ Aloita [tietokantayhteyden luomisesta]({{rootdir}}ohjeistus/tietokantaohjelmoint
 
 Tehtyäsi kaiken varmista, että kaikki tekemäsi muutokset näkyvät GitHub-repositoriossasi.
 </ohje>
+</comment>

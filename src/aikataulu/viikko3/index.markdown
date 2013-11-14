@@ -7,7 +7,8 @@ Kolmannen viikon pääteemana on tutustua
 hyvän arkkitehtuurin mukaiseen koodaamiseen
 ja toteuttaa kirjautuminen.
 
-Palautuspäivämäärään mennessä työn on täytettävä seuraavat vaatimukset:
+Palautuspäivämäärään mennessä työn on täytettävä seuraavat vaatimukset.
+Kunkin otsikon alla olevista asioista saa suluissa määritellyt aikataulupisteet.
 
 <comment>
 TODO:
