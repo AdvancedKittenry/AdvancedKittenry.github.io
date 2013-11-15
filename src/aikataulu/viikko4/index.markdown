@@ -11,7 +11,7 @@ Kunkin otsikon alla olevista asioista saa suluissa määritellyt aikataulupistee
 ## Täysipainoinen malliluokka (¾p)
 
 * Sovelluksessa on koodattu ainakin yksi täysi malliluokka: listaus, muokkaus, poisto, päivitys
-* Tiedot näkyvät sivuilla oikein myös silloin kun käyttäjä on syöttänyt niiden sekaan HTML:ää, lainausmerkkejä yms. eikä koodissa ole SQL-injektiopaikkoja
+* Koodissa ei ole SQL-injektiopaikkoja
 
 ## Toimiva tiedon muokkaus ja lomakkeet (2p)
 
@@ -21,6 +21,7 @@ Kunkin otsikon alla olevista asioista saa suluissa määritellyt aikataulupistee
 * Sovelluksessa on virheilmoitusmekanismi
     * Syötteet tarkistetaan ja sovellus antaa ilmoitukset kaikista virheistä. 
     * Virhellisesti täytetyillä lomakesivulla palatessa ne tiedot, jotka käyttäjä syötti.
+* Tiedot näkyvät sivuilla oikein myös silloin kun käyttäjä on syöttänyt niiden sekaan HTML:ää, lainausmerkkejä yms.
 
 ## Dokumentaatio (¼p)
 

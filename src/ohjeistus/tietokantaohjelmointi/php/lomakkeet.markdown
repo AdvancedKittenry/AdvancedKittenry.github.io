@@ -64,7 +64,7 @@ Hyvin yksinkertainen kirjautuminen voitaisiin näitä muuttujia käyttäen toteu
     /* Väärän tunnuksen syöttänyt saa eteensä lomakkeen ja virheen.
      * Tässä käytetään omalta yläluokalta perittyjä yleiskäyttöisiä metodeja.
      */
-    naytaJSP("login.php", array(
+    naytaNakyma("login", array(
       'virhe' => "Kirjautuminen ei onnistunut. Käyttäjää ei löytynyt", request;
     ));
   }

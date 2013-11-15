@@ -6,6 +6,7 @@
 * Luo dokumentaatioon asiaanliittyvät kaaviot ja kappaleet: 
     * [Järjestelmän tietosisältö]({{rootdir}}dokumentaatio-ohje.html#j%C3%A4rjestelm%C3%A4n-tietosis%C3%A4lt%C3%B6)
     * [Relaatiotietokantakaavio]({{rootdir}}dokumentaatio-ohje.html#relaatiotietokantakaavio)
+* Sijoita uudet kappaleet samaan pdf-tiedostoon kuin aikaisempikin dokumentaatio
 </summary>
 
 Tee sovelluksellesi alustava käsitekaavio erittelemällä
@@ -67,7 +68,7 @@ Muista lisätä kaavioon kaikki olennaiset viiteavaimet sekä
 monesta-moneen suhteiden tilalle välitaulut.
 
 Tallenna tekemäsi kaaviot ja uusi sisältö 
-repositoriosi dokumentaatiotiedostoon.
+repositoriosi samaan dokumentaatiotiedostoon missä edellisetkin dokumentaatiot olivat.
 Lisää myös kaavioiden tuottamiseen käyttämäsi lähdetiedostot
 repositoriosi doc-kansioon niin ne pysyvät tallessa muutosten varalta.
 

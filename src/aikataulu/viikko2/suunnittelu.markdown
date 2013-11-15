@@ -80,6 +80,8 @@ ja sijoita se repositoriosi doc-kansioon nimellä `sivukartta.jpg` (tiedostopä�
 Voit halutessasi myös skannata sen tai 
 tehdä valmiin version jollain diagrammiohjelmalla. 
 
+Tee samoin muidenkin käyttöliittymäluonnostesi kanssa, ellet ole päässyt näyttämään niitä pajaan.
+
 ## Etusivu ja yleisnäkymä (template)
 
 Lähde suunnittelemaan alustavasti etusivua
