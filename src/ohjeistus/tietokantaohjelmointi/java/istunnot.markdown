@@ -1,5 +1,5 @@
 % Istunnot ja kirjautumisen tallentaminen
-<!-- order: 4 -->
+<!-- order: 5 -->
 
 Edellä toteutetussa kirjautumisessa on se huono puoli,
 ettei se tallennu mihinkään, sillä [HTTP-protokolla on tilaton]({{rootdir}}web-sovelluksista.html#tilatiedon-hallinta-ja-samanaikaiset-aineistopyynn%C3%B6t),

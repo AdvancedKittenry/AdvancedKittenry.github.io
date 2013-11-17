@@ -85,6 +85,8 @@
 <li><a href="../../ohjeistus/tietokantaohjelmointi/java/nakymat.html">Näkymien tekeminen ja JSP</a></li>
 <li><a href="../../ohjeistus/tietokantaohjelmointi/java/lomakkeet.html">Lomakkeiden käyttö ja vastaanottaminen</a></li>
 <li><a href="../../ohjeistus/tietokantaohjelmointi/java/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
+<li><a href="../../ohjeistus/tietokantaohjelmointi/java/mallit_muokkaustoiminnot.html">Malliluokat ja tiedon muuttaminen</a></li>
+<li><a href="../../ohjeistus/tietokantaohjelmointi/java/muokkausnakymat.html">Muokkausnäkymän toteuttaminen</a></li>
 </ul></li>
 <li><a href="../../ohjeistus/tietokantaohjelmointi/php/index.html">PHP-ohjeet</a>
 <ul>
@@ -92,6 +94,8 @@
 <li><a href="../../ohjeistus/tietokantaohjelmointi/php/nakymat.html">Näkymien tekeminen</a></li>
 <li><a href="../../ohjeistus/tietokantaohjelmointi/php/lomakkeet.html">Lomakkeiden käyttö ja vastaanottaminen</a></li>
 <li><a href="../../ohjeistus/tietokantaohjelmointi/php/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
+<li><a href="../../ohjeistus/tietokantaohjelmointi/php/mallit_muokkaustoiminnot.html">Malliluokat ja tiedon muuttaminen</a></li>
+<li><a href="../../ohjeistus/tietokantaohjelmointi/php/muokkausnakymat.html">Muokkausnäkymän toteuttaminen</a></li>
 </ul></li>
 </ul></li>
 <li><a href="../../ohjeistus/users/index.html">Users-palvelin ja töiden pystyttäminen</a>
@@ -173,28 +177,42 @@ Deadline:
 <p>Palautuspäivämäärään mennessä työn on täytettävä alla listatut vaatimukset. Kunkin otsikon alla olevista asioista saa suluissa määritellyt aikataulupisteet.</p>
 <section id="täysipainoinen-malliluokka-p" class="level2">
 <h2>Täysipainoinen malliluokka (¾p)</h2>
-<ul>
-<li>Sovelluksessa on koodattu ainakin yksi täysi malliluokka: listaus, muokkaus, poisto, päivitys</li>
-<li>Koodissa ei ole SQL-injektiopaikkoja</li>
-</ul>
+<p>Sovelluksessa on koodattu ainakin yksi täysi malliluokka, jonka toimintoina on täysi <a href="http://en.wikipedia.org/wiki/Create,_read,_update_and_delete">CRUD-setti</a>: listaus, muokkaus, poisto, päivitys</p>
+<p>Tehdyn koodin pitää toimia turvallisesti ja luotettavasti antoi sille parametriksi mitä vaan. Etenkään siinä ei saa olla <a href="http://fi.wikipedia.org/wiki/SQL-injektio">SQL-injektiohaavoituvuuksia</a>.</p>
 </section>
 <section id="toimiva-tiedon-muokkaus-ja-lomakkeet-2p" class="level2">
 <h2>Toimiva tiedon muokkaus ja lomakkeet (2p)</h2>
+<p>Neljännellä viikolla toteutetaan yhden kokonaisen tietokohteen CRUD-toiminnot siten että meillä on tästä tietokohteesta olemassa:</p>
 <ul>
-<li>Laajennettu listaus</li>
+<li>Listaus, jossa listataan tietokohteen alkioita (esim. kissoja) ja mahdollisesti näytetään hakutuloksia. Listauksen kustakin rivistä on linkit kohteen muokkaamiseen ja poistamiseen sekä vielä erikseen linkki lisäyslomakkeeseen.</li>
 <li>Lisäyslomake</li>
 <li>Muokkauslomake</li>
-<li>Sovelluksessa on virheilmoitusmekanismi
-<ul>
-<li>Syötteet tarkistetaan ja sovellus antaa ilmoitukset kaikista virheistä.</li>
-<li>Virhellisesti täytetyillä lomakesivulla palatessa ne tiedot, jotka käyttäjä syötti.</li>
-</ul></li>
-<li>Tiedot näkyvät sivuilla oikein myös silloin kun käyttäjä on syöttänyt niiden sekaan HTML:ää, lainausmerkkejä yms.</li>
 </ul>
+<p>Tässä vaiheessa on myös järkevää ottaa käyttöön sovelluksessa järkevä ja yleinen virheilmoitusmekanismi.</p>
+<ul>
+<li>Kaikki käyttäjän antamat syötteet tarkistetaan ja sovellus antaa ilmoitukset kaikista virheistä.</li>
+<li>Virheiden näyttäminen kannattaa hoitaa jollain yleisellä metodilla/funktiolla ja mielellään sivun näkymien pohjatiedostossa, niin että jokainen sivu osaa tarvittaessa näyttää virheitä.</li>
+<li>Jos käyttäjä on syöttänyt lomakkeen virheellisesti, selain viedään takaisin lomakesivulle. Sivulla on tällöin ne virheelliset tiedot, jotka käyttäjä syötti. Näin niiden korjaaminen on helpompaa.</li>
+</ul>
+<p>Viimeisimpänä varmista että tiedot näkyvät sivuilla oikein myös silloin kun käyttäjä on syöttänyt niiden sekaan HTML:ää, lainausmerkkejä yms.</p>
 </section>
 <section id="dokumentaatio-p" class="level2">
 <h2>Dokumentaatio (¼p)</h2>
-<p>Tee vielä lopuksi alustava dokumentaatio kappaleista <a href="../../dokumentaatio-ohje.html#asennustiedot">asennustiedot</a> ja <a href="../../dokumentaatio-ohje.html#käynnistys--käyttöohje">käynnistys- / käyttöohje</a></p>
+<p>Lisää vielä lopuksi alustava dokumentaatio kappaleista <a href="../../dokumentaatio-ohje.html#asennustiedot">asennustiedot</a> ja <a href="../../dokumentaatio-ohje.html#käynnistys--käyttöohje">käynnistys- / käyttöohje</a> repositoriosi dokumentaation PDF-tiedostoon.</p>
+<section class="alert alert-success"><h3>
+Ohje:
+</h3>
+<p>Aloita menemällä oman kielesi malliluokkaohjeistukseen ja seuraa vihreitä ohjelaatikoita:</p>
+<ul>
+<li><a href="../../ohjeistus/tietokantaohjelmointi/php/mallit_muokkaustoiminnot.html">PHP: Malliluokat ja tiedon muuttaminen</a></li>
+<li><a href="../../ohjeistus/tietokantaohjelmointi/java/mallit_muokkaustoiminnot.html">Java: Malliluokat ja tiedon muuttaminen</a></li>
+</ul>
+<p>Tehtyäsi kaiken varmista, että kaikki tekemäsi muutokset näkyvät sekä GitHub-repositoriossasi, että testipalvelimella antamassasi osoitteessa.</p>
+</section>
+
+
+
+
 </section>
 </div>
 </div> 

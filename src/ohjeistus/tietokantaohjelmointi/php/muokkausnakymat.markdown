@@ -1,6 +1,5 @@
-% Tietokohteen sivujen toteuttaminen
-<!-- order: 5 -->
-<!-- hidden! -->
+% Muokkausnäkymän toteuttaminen
+<!-- order: 8 -->
 
 <wip />
 
