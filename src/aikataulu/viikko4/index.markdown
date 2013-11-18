@@ -11,7 +11,7 @@ Kunkin otsikon alla olevista asioista saa suluissa määritellyt aikataulupistee
 ## Täysipainoinen malliluokka (¾p)
 
 Sovelluksessa on koodattu ainakin yksi täysi malliluokka, jonka toimintoina on täysi 
-[CRUD-setti](http://en.wikipedia.org/wiki/Create,_read,_update_and_delete): listaus, muokkaus, poisto, päivitys
+[CRUD-setti](http://en.wikipedia.org/wiki/Create,_read,_update_and_delete): hakeminen, muokkaus, poisto, päivitys
 
 Tehdyn koodin pitää toimia turvallisesti ja luotettavasti antoi sille parametriksi mitä vaan. 
 Etenkään siinä ei saa olla [SQL-injektiohaavoituvuuksia](http://fi.wikipedia.org/wiki/SQL-injektio).
