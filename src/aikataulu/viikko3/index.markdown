@@ -20,8 +20,8 @@ TODO:
 
 * Sovelluksen logiikkaa on eritelty kontrollereista malleihin ja näkymiin [MVC-mallin mukaisesti][arkkitehtuuri].
 * Sivuille on luotu erillinen sivupohjatiedosto, joka sisältää jokaiselle sivulle tulevat asiat.
-    * Java:lla helpointa käyttää [JSP-tägikirjastoa]({{rootdir}}ohjeistus/tietokantaohjelmointi/java/rakenne.html#template-pohjatiedoston-k%C3%A4ytt%C3%B6)
-    * PHP:lle tulossa oma ohje, joka perustuu [include-funktion](http://php.net/manual/en/function.include.php) käyttöön
+    * Java:lla helpointa käyttää [JSP-tägikirjastoa]({{rootdir}}ohjeistus/tietokantaohjelmointi/java/nakymat.html#template-pohjatiedoston-k%C3%A4ytt%C3%B6)
+    * PHP:lle [oma ohje]({{rootdir}}ohjeistus/tietokantaohjelmointi/php/nakymat.html#template-pohjatiedoston-k%C3%A4ytt%C3%B6), joka perustuu [include-funktion](http://php.net/manual/en/function.include.php) käyttöön
 
 ## Kirjautuminen (2p)
 
