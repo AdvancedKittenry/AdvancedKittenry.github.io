@@ -110,7 +110,7 @@ Yllä olevan kissalistan voi näyttää seuraavanlaisella silmukalla:
 ~~~~jsp
 <c:forEach var="kissa" items="${kissat}">
   <div class="kissa">{kissa.nimi}</div>
-</c:if>
+</c:forEach>
 ~~~~
 
 Yllä oleva komento `${kissa.nimi}` kutsuu käsiteltävän Kissa-olion

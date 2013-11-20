@@ -264,7 +264,7 @@ request.<span class="fu">setAttribute</span>(<span class="st">&quot;kissat&quot;
 <p>Yllä olevan kissalistan voi näyttää seuraavanlaisella silmukalla:</p>
 <pre class="sourceCode jsp"><code class="sourceCode jsp"><span class="kw">&lt;c:forEach</span><span class="ot"> var</span>=<span class="dt">&quot;kissa&quot;</span><span class="ot"> items</span>=<span class="dt">&quot;</span>${kissat}<span class="dt">&quot;</span><span class="kw">&gt;</span>
   &lt;div<span class="ot"> class</span>=<span class="dt">&quot;kissa&quot;</span>&gt;{kissa.nimi}&lt;/div&gt;
-<span class="kw">&lt;/c:if&gt;</span></code></pre>
+<span class="kw">&lt;/c:forEach&gt;</span></code></pre>
 <p>Yllä oleva komento <code>${kissa.nimi}</code> kutsuu käsiteltävän Kissa-olion <code>getNimi</code>-metodia, ja tulostaa sen palauttaman arvon.</p>
 </section>
 <section id="toisen-tiedoston-sisällön-upottaminen-koodiin" class="level2">
