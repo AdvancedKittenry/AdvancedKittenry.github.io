@@ -1,17 +1,4 @@
 TODO
-Tietokantayhteyden muodostamisohjeiden pilkkominen
-Arkkitehtuuriohje
-  Näkymien teko
-    Java
-      JSP
-      Tagit
-    PHP
-      Toteuttaminen funktiona
-Maininta index.php/html/jsp:n merkityksestä?
-Alustavaa selkiytystä arkkitehtuurista yhteysohjeisiin
-Listaussovellus
-SQL-ohjeita introon
-
 Parempi java-tomcat-tsoha-esimerkkisovellus
 
 Later:
