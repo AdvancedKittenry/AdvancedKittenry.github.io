@@ -105,15 +105,16 @@ Palautettua arvoa käytetään myöhemmin kirjautuneen käyttäjän tallentamise
 
 **Esimerkkikoodina ote tiedostosta libs/models/kayttaja.php:**
 
-~~~php
+~~~inlinephp
 class Kayttaja {
   
   private $id;
   private $username;
   private $password;
   
-  public static function getKayttaja($kayttaja, $salasana) {
-    $sql = "SELECT id,username, password from users where username = ? AND password = ?";
+  /* Etsitään kannasta käyttäjätunnuksella ja salasanalla käyttäjäriviä */
+  public static function getKayttajaTunnuksilla($kayttaja, $salasana) {
+    $sql = "SELECT id,username, password from users where username = ? AND password = ? LIMIT 1";
     $kysely = getTietokanta()->prepare($sql);
     $kysely->execute(array($kayttaja, $salasana));
 
@@ -122,11 +123,10 @@ class Kayttaja {
       return null;
     } else {
       $kayttaja = new Kayttaja(); 
-      /* Käytetään PHP:n vapaamielistä muuttujamallia olion
-         kenttien asettamiseen */
-      foreach($tulos as $kentta => $arvo) {
-        $kayttaja->$kentta = $arvo;
-      }
+      $kayttaja->id = $tulos->id;
+      $kayttaja->username = $tulos->username;
+      $kayttaja->password = $tulos->password;
+
       return $kayttaja;
     }
   }

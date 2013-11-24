@@ -4,22 +4,36 @@
 
 <deadline>{{deadline5}}</deadline>
 
-Viikon viisi lopussa työltä vaaditaan seuraavat asiat:
+Palautuspäivämäärään mennessä työn on täytettävä alla listatut vaatimukset.
+Kunkin otsikon alla olevista asioista saa suluissa määritellyt aikataulupisteet.
 
-<comment>
-TODO:
-* Koodi noudattaa hyvää ohjelmointityyliä
-* Ainakin kahden tietokohteen sivut on toteutettu ja testattu.
-* Järjestelmän yleisrakenne, järjestelmän komponentit, koodin kommentointi
-</comment>
+## Työn eteneminen (1p)
 
-* Ainakin kahden tietokohteen sivut on toteutettu ja testattu.
-* Ohjaajan on pystyttävä testaamaan työtäsi. Pystytä työsi viimeistään nyt users-palvelimelle tai jonnekin muualle nettiin.
-    * Java-töiden pystyttämiseen users-palvelimelle olemassa [oma ohjeensa](java-users.html).
-* Dokumentaatiosta on kirjoitettu täysimittainen raakaversio. Kts. [dokumentaatio-ohje]({{rootdir}}dokumentaatio-ohje.html).
-    * Keskeneräisiä osia ei ole pakko vielä dokumentoida.
+Työn on viidennen viikon jälkeen hyvä olla jo melko lähellä valmista.
+Vaatimuksena on, että ainakin kahden tietokohteen sivut on toteutettu 
+ja testattu toimiviksi.
 
-<comment>
+Kaiken valmiin koodin on toimittava kaatumatta ja näytettävä virhetilanteista
+järkeviä virheilmoituksia käyttäjälle.
+
+## Hyvä ohjelmointityyli ja arkkitehtuuri (1p)
+
+Koodisi noudattaa hyvää ohjelmointityyliä ja on selkeää lukea. 
+Sovelluksen toiminnot on järjestetty järkevästi eri
+tiedostoihin MVC-arkkitehtuurin mukaisesti.
+
+## Dokumentaatio (1p)
+
+Dokumentaatiosta on kirjoitettu täysimittainen raakaversio. 
+Keskeneräisiä osia ei ole pakko vielä dokumentoida.
+
+Uutta kirjoitettava siis ainakin:
+
+* [Järjestelmän yleisrakenne]({{rootdir}}dokumentaatio-ohje.html#järjestelmän-yleisrakenne).
+* [Järjestelmän komponentit]({{rootdir}}dokumentaatio-ohje.html#järjestelmän-komponentit).
+
+Huolehdi myös siitä, että koodisi on kommentoitu siellä missä se on epäselvempää.
+
 <ohje>
 Aloita [tästä](404.html) ja seuraa vihreitä ohjelaatikoita.
 

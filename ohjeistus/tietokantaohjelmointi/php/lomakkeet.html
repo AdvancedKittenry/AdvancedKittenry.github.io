@@ -242,32 +242,32 @@ Pidä mielessä!
 <p>Metodi kannattaa toteuttaa sellaisen SQL-kyselyn ympärille, joka hakee kannasta tietoja salasanan ja käyttäjänimen perusteella. Se voi palauttaa esimerkiksi käyttäjäluokan olion, jolloin siitä on järkevää tehdä luokan staattinen metodi.</p>
 <p>Palautettua arvoa käytetään myöhemmin kirjautuneen käyttäjän tallentamiseen istuntoon.</p>
 <p><strong>Esimerkkikoodina ote tiedostosta libs/models/kayttaja.php:</strong></p>
-<pre class="sourceCode php"><code class="sourceCode php">class Kayttaja {
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">class</span> Kayttaja {
   
-  private $id;
-  private $username;
-  private $password;
+  <span class="kw">private</span> <span class="kw">$id</span><span class="ot">;</span>
+  <span class="kw">private</span> <span class="kw">$username</span><span class="ot">;</span>
+  <span class="kw">private</span> <span class="kw">$password</span><span class="ot">;</span>
   
-  public static function getKayttaja($kayttaja, $salasana) {
-    $sql = &quot;SELECT id,username, password from users where username = ? AND password = ?&quot;;
-    $kysely = getTietokanta()-&gt;prepare($sql);
-    $kysely-&gt;execute(array($kayttaja, $salasana));
+  <span class="co">/* Etsitään kannasta käyttäjätunnuksella ja salasanalla käyttäjäriviä */</span>
+  <span class="kw">public</span> <span class="kw">static</span> <span class="kw">function</span> getKayttajaTunnuksilla<span class="ot">(</span><span class="kw">$kayttaja</span><span class="ot">,</span> <span class="kw">$salasana</span><span class="ot">)</span> {
+    <span class="kw">$sql</span> = <span class="st">&quot;SELECT id,username, password from users where username = ? AND password = ? LIMIT 1&quot;</span><span class="ot">;</span>
+    <span class="kw">$kysely</span> = getTietokanta<span class="ot">()</span>-&gt;prepare<span class="ot">(</span><span class="kw">$sql</span><span class="ot">);</span>
+    <span class="kw">$kysely</span>-&gt;execute<span class="ot">(</span><span class="fu">array</span><span class="ot">(</span><span class="kw">$kayttaja</span><span class="ot">,</span> <span class="kw">$salasana</span><span class="ot">));</span>
 
-    $tulos = $kysely-&gt;fetchObject();
-    if ($tulos == null) {
-      return null;
-    } else {
-      $kayttaja = new Kayttaja(); 
-      /* Käytetään PHP:n vapaamielistä muuttujamallia olion
-         kenttien asettamiseen */
-      foreach($tulos as $kentta =&gt; $arvo) {
-        $kayttaja-&gt;$kentta = $arvo;
-      }
-      return $kayttaja;
+    <span class="kw">$tulos</span> = <span class="kw">$kysely</span>-&gt;fetchObject<span class="ot">();</span>
+    <span class="kw">if</span> <span class="ot">(</span><span class="kw">$tulos</span> == <span class="kw">null</span><span class="ot">)</span> {
+      <span class="kw">return</span> <span class="kw">null</span><span class="ot">;</span>
+    } <span class="kw">else</span> {
+      <span class="kw">$kayttaja</span> = <span class="kw">new</span> Kayttaja<span class="ot">();</span> 
+      <span class="kw">$kayttaja</span>-&gt;id = <span class="kw">$tulos</span>-&gt;id<span class="ot">;</span>
+      <span class="kw">$kayttaja</span>-&gt;username = <span class="kw">$tulos</span>-&gt;username<span class="ot">;</span>
+      <span class="kw">$kayttaja</span>-&gt;password = <span class="kw">$tulos</span>-&gt;password<span class="ot">;</span>
+
+      <span class="kw">return</span> <span class="kw">$kayttaja</span><span class="ot">;</span>
     }
   }
 
-  /* Tähän muita Käyttäjäluokan metodeita */
+  <span class="co">/* Tähän muita Käyttäjäluokan metodeita */</span>
 }</code></pre>
 <p>Varmista, että kirjautumislomake näyttää käyttäjälle järkevän virheviestin mikäli kirjautuminen ei onnistu.</p>
 <section class="alert alert-success small"><h3>
