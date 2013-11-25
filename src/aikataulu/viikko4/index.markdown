@@ -25,6 +25,7 @@ siten että meillä on tästä tietokohteesta olemassa:
   Listauksen kustakin rivistä on linkit kohteen muokkaamiseen ja poistamiseen sekä vielä erikseen linkki lisäyslomakkeeseen.
 * Lisäyslomake
 * Muokkauslomake
+* Poistotoiminto
 
 Tässä vaiheessa on myös järkevää ottaa käyttöön sovelluksessa järkevä ja yleinen virheilmoitusmekanismi.
 
