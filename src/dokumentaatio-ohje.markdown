@@ -236,12 +236,19 @@ jotka olisivat olemassa ilman navigaatiopalkkiakin.
 
 ##9. Asennustiedot
 
-Lyhyehkö ohje, jonka tarkoituksena on toisaalta kertoa, miten sovellus on nyt asennettu ja toisaalta miten sen saisi asennettua uuteen ympäristöön.
+TODOOOOOOOO
+
+yhyehkö ohje, jonka tarkoituksena on toisaalta kertoa, miten sovellus on nyt asennettu ja toisaalta miten sen saisi asennettua uuteen ympäristöön.
 Servlettien sijoittelu riippuu servlettiympäristöstä, joten sitä ei tarvitse määritellä.
 
-<alert>
-Asennusohjeesta tulisi käydä myös ilmi, minne käytettävän tietokannan asetukset (käytettävä tietokanta, käyttäjätunnus, salasana) tulee ohjelmistoa asentaessa määritellä.
-</alert>
+Asennusohjeesta tulisi käydä ilmi, minne käytettävän tietokannan asetukset (käytettävä tietokanta, käyttäjätunnus, salasana) tulee ohjelmistoa asentaessa määritellä.
+
+**Esimerkki PHP-sovelluksen asennustiedoista:**
+
+> Asenna sovellus kopioimalla sen tiedostot palvelimesi nettiin näkyvään hakemistoon 
+> (esim. usersin htdocs-hakemisto). 
+> Aseta sen jälkeen tietokannan yhteystiedot oikeaksi tiedostoon
+> `libs/config.php`. Voit kopioida asetustiedoston mallin tiedostosta `libs/config.php.dist`
 
 ##10. Käynnistys- / käyttöohje
 
