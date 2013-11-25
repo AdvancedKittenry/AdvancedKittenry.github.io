@@ -1,6 +1,5 @@
 % Viikko 5
 <!-- order: 1 -->
-<!-- hidden! -->
 
 <deadline>{{deadline5}}</deadline>
 

@@ -51,7 +51,7 @@ Viikkojen 3-5 materiaali on vielä työn alla. Sivut aukeavat sitä mukaa kun oh
 | [Viikko II][viikko2]   | Sovelluksen suunnittelu, HTML-kieli, tietokantayhteyden muodostaminen  | {{deadline2}}         |
 | [Viikko III][viikko3]  | MVC-malli ja kirjautuminen                                             | {{deadline3}}         |
 | [Viikko IV][viikko4]   | Muokkaustoiminnot, sovellus etenee                                     | {{deadline4}}         |
-| Viikko V               | Sovellus on lähes valmis                                               | {{deadline5}}         |
+| [Viikko V][viikko5]    | Sovellus on lähes valmis                                               | {{deadline5}}         |
 | [Demotilaisuus][demo]  | Esitellään työtä ja sen koodia muille opiskelijoille                   | {{demodeadline}}      |
 | [Palautus][palautus]   | Valmis työ palautetaan ohjaajalle                                      | {{palautusdeadline}}  |
 
