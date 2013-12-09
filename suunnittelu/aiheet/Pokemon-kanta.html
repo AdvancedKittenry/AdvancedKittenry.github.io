@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <title>Palvelujen käynnistäminen ja käyttöönotto</title>
+  <title>Pokémon-tietokanta</title>
   <style type="text/css">code{white-space: pre;}</style>
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -70,7 +70,7 @@
 <li><a href="../../suunnittelu/aiheet/Palvelubisnes.html">Palvelubisnes</a></li>
 <li><a href="../../suunnittelu/aiheet/Parturi-Kampaamo.html">Parturi-Kampaamo</a></li>
 <li><a href="../../suunnittelu/aiheet/Pizzapalvelu.html">Pizzapalvelu</a></li>
-<li><a href="../../suunnittelu/aiheet/Pokemon-kanta.html">Pokémon-tietokanta</a></li>
+<li class="selected"><a href="../../suunnittelu/aiheet/Pokemon-kanta.html">Pokémon-tietokanta</a></li>
 <li><a href="../../suunnittelu/aiheet/Projektin_tyoaikaseuranta.html">Projektin työaikaseuranta</a></li>
 <li><a href="../../suunnittelu/aiheet/Rankkauslista.html">Rankkauslista</a></li>
 <li><a href="../../suunnittelu/aiheet/Taloyhtion_palvelut.html">Taloyhtiön palvelut</a></li>
@@ -93,7 +93,7 @@
 </ul></li>
 <li><a href="../../pystytys/index.html">Users-palvelin ja töiden pystyttäminen</a>
 <ul>
-<li class="selected"><a href="../../pystytys/kayttoonotto/index.html">Palvelujen käynnistäminen ja käyttöönotto</a>
+<li><a href="../../pystytys/kayttoonotto/index.html">Palvelujen käynnistäminen ja käyttöönotto</a>
 <ul>
 <li><a href="../../pystytys/kayttoonotto/java.html">Java ja Tomcatin käyttöönotto</a></li>
 <li><a href="../../pystytys/kayttoonotto/mysql.html">MySql-tietokannan käyttöönotto</a></li>
@@ -158,17 +158,34 @@
 </div>
 <div class="col-md-6" id="content">
 <header>
-<h1 class="title">Palvelujen käynnistäminen ja käyttöönotto</h1>
+<h1 class="title">Pokémon-tietokanta</h1>
 </header>
-<!-- order: 1 -->
+<section class="alert alert-info small"><h3>
+Arvosanamaksimi:
+</h3>
+5
+</section>
+<section class="alert alert-info small"><h3>
+Vaikeustaso:
+</h3>
+Haastava
+</section>
 
-<p>Tarvitset kaikkiin näihin ohjeisiin komentorivi-istunnon uses-palvelimelle. Sisään pääsee <a href="../index.html#yhteyden-ottaminen-users-palvelimeen">SSH-protokollalla</a>.</p>
+
+<p><a href="http://fi.wikipedia.org/wiki/Pok%C3%A9mon">Pokémon-pelisarjan</a> hahmoja harrastuksenaan kouluttavalla herra Osterilla on usein ongelmana kaiken pelin sisältämän tiedon muistiin paneminen ja parhaimman pokémonin valitseminen koulutettavaksi.</p>
+<p>Hän on löytänyt suuren määrän tietoa pokémoneista <a href="http://bulbapedia.bulbagarden.net/">bulbapedia-sivustolta</a>, mutta hänen mielestään sivusto on hieman sekava, joten hän tilaa tietojenkäsittelytieteen opiskelijalta oman järjestelmänsä pokémoniensa kehityksen seuraamiseksi.</p>
+<p>Järjestelmän tarkoituksena on tarjota käyttäjälle kattava lista olemassa olevista pokémoneista, niiden ominaisuuksista, kasvattajalle tärkeistä <a href="http://bulbapedia.bulbagarden.net/wiki/Effort_values">EV-arvoista</a> yms. hyödyllisistä ominaisuuksista. Ylläpitäjän ominaisuudessa herra Oster pystyy syöttämään näitä tietoja kantaan.</p>
+<p>Lisäksi kuka tahansa muukin tietokannan internetistä löytänyt pystyy rekisteröitymään ja kirjautumaan järjestelmään, jolloin hän pääsee pitämään kirjaa omista pokemoneistaan ja näiden ominaisuuksista.</p>
+<p>Toimintoja:</p>
 <ul>
-<li><a href="php.html">PHP-tuen käyttöönotto</a></li>
-<li><a href="java.html">Java ja Tomcatin käyttöönotto</a></li>
-<li><a href="postgresql.html">PostgreSQL-tietokannan käyttöönotto</a></li>
-<li><a href="mysql.html">MySQL-tietokannan käyttöönotto</a></li>
+<li>Pokemonien tietojen lisääminen, muokkaus ja poisto</li>
+<li>Pokemonien hakeminen eri hakukriteereillä</li>
+<li>Käyttäjän rekisteröityminen</li>
+<li>Ylläpitäjän ja käyttäjän kirjautuminen</li>
+<li>Pokemonin lisääminen omiin pokemoneihin</li>
+<li>Omien pokemonien tietojen muuttaminen</li>
 </ul>
+<p>Aiheen voi ottaa myös pienillä muokkauksilla käyttöön, jonkin laajuudeltaan vastaavan pelin tapahtumien tai olioiden tietojen tallentamiseen.</p>
 </div>
 </div> 
 </div> 
