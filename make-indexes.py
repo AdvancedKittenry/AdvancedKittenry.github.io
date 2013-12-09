@@ -17,8 +17,8 @@ def parse_title(contents, path):
     return re.sub("\.markdown$", "", filename).title()
 
 def parse_ordering(contents, isIndex):
-  orderMatch = re.search(r"<!-- *order: *([0-9]+) *-->", contents)
-  return int(orderMatch.groups()[0]) if orderMatch else sys.maxint
+  orderMatch = re.search(r"<!-- *order: *([0-9]+(\.[0-9])?) *-->", contents)
+  return float(orderMatch.groups()[0]) if orderMatch else sys.maxint
 
 def isHidden(contents):
   hiddenMatch = re.search(r"<!-- *hidden! *-->", contents)

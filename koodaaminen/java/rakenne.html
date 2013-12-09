@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title>Sovelluksen rakenne ja servletit</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
+  <link rel="stylesheet" href="../../css/base.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <script src="../../javascript/jquery.min.js"></script>
+  <script src="../../javascript/bootstrap.js"></script>
+  <script src="../../javascript/jquery.treeview.js"></script>
+  <script src="../../javascript/jquery.scrollTo.js"></script>
+  <script src="../../javascript/jquery.nav.js"></script>
+  <script src="../../javascript/navi.js"></script>
+</head>
+<body>
+<div class="titlebar">
+  <div class="container">
+    <div class="row">
+      <h1 class="col-md-6 col-md-offset-3">Advanced Kittenry - Tietokantasovellusohjeet</h1>
+    </div>
+  </div>
+</div>
+<div class="container">
+<div class="row">
+<div class="navcontainer col-md-3">
+<nav>
+<ul>
+<li><a href="../../index.html">Tietokantasovellus</a>
+<ul>
+<li><a href="../../aikataulu/index.html">Aikataulu</a>
+<ul>
+<li><a href="../../aikataulu/viikko1.html">Viikko 1</a></li>
+<li><a href="../../aikataulu/viikko2.html">Viikko 2</a></li>
+<li><a href="../../aikataulu/viikko3.html">Viikko 3</a></li>
+<li><a href="../../aikataulu/viikko4.html">Viikko 4</a></li>
+<li><a href="../../aikataulu/viikko5.html">Viikko 5</a></li>
+<li><a href="../../aikataulu/demo.html">Demotilaisuus</a></li>
+<li><a href="../../aikataulu/palautus.html">Työn palautus</a></li>
+</ul></li>
+<li><a href="../../suunnittelu/index.html">Työn suunnittelu</a>
+<ul>
+<li><a href="../../suunnittelu/aiheet/index.html">Työaiheet</a>
+<ul>
+<li><a href="../../suunnittelu/aiheet/Drinkkiarkisto.html">Drinkkiarkisto</a></li>
+<li><a href="../../suunnittelu/aiheet/Elektroninen_keittokirja.html">Elektroninen keittokirja</a></li>
+<li><a href="../../suunnittelu/aiheet/Graduaiheet.html">Graduaiheet</a></li>
+<li><a href="../../suunnittelu/aiheet/Harjoitustyon_seuranta.html">Harjoitustyön seuranta</a></li>
+<li><a href="../../suunnittelu/aiheet/Hiihtokisojen_tulospalvelu.html">Hiihtokisojen tulospalvelu</a></li>
+<li><a href="../../suunnittelu/aiheet/Huutokauppa.html">Huutokauppa</a></li>
+<li><a href="../../suunnittelu/aiheet/Kennelkerho.html">Kennelkerho</a></li>
+<li><a href="../../suunnittelu/aiheet/Kuluttajan_tuki_Ry.html">Kuluttajan tuki Ry</a></li>
+<li><a href="../../suunnittelu/aiheet/Kurssikysely.html">Kurssikysely</a></li>
+<li><a href="../../suunnittelu/aiheet/Kurssin_kotisivu.html">Kurssin kotisivu</a></li>
+<li><a href="../../suunnittelu/aiheet/Kurssitarjonta_ja_kurssipaikan_varaus.html">Kurssitarjonta ja kurssipaikan varaus</a></li>
+<li><a href="../../suunnittelu/aiheet/Lainahakemusten_kasittely.html">Lainahakemusten käsittely</a></li>
+<li><a href="../../suunnittelu/aiheet/Laakariaseman_tyovuorolista.html">Lääkäriaseman työvuorolista</a></li>
+<li><a href="../../suunnittelu/aiheet/Laakarin_kotikaynnit.html">Lääkärin kotikäynnit</a></li>
+<li><a href="../../suunnittelu/aiheet/Matkojen_markkinointi.html">Matkojen markkinointi</a></li>
+<li><a href="../../suunnittelu/aiheet/Muistilista.html">Muistilista</a></li>
+<li><a href="../../suunnittelu/aiheet/Ostoskassi.html">Ostoskassi</a></li>
+<li><a href="../../suunnittelu/aiheet/Painontarkkailu.html">Painontarkkailu</a></li>
+<li><a href="../../suunnittelu/aiheet/Palvelubisnes.html">Palvelubisnes</a></li>
+<li><a href="../../suunnittelu/aiheet/Parturi-Kampaamo.html">Parturi-Kampaamo</a></li>
+<li><a href="../../suunnittelu/aiheet/Pizzapalvelu.html">Pizzapalvelu</a></li>
+<li><a href="../../suunnittelu/aiheet/Projektin_tyoaikaseuranta.html">Projektin työaikaseuranta</a></li>
+<li><a href="../../suunnittelu/aiheet/Rankkauslista.html">Rankkauslista</a></li>
+<li><a href="../../suunnittelu/aiheet/Taloyhtion_palvelut.html">Taloyhtiön palvelut</a></li>
+<li><a href="../../suunnittelu/aiheet/Tavaranvaihto.html">Tavaranvaihto</a></li>
+<li><a href="../../suunnittelu/aiheet/Tukkuliikkeen_tilaustenksittely.html">Tukkuliikkeen tilaustenkäsittely</a></li>
+<li><a href="../../suunnittelu/aiheet/Tutkimusaineston_kerays.html">Tutkimusaineiston keräys</a></li>
+<li><a href="../../suunnittelu/aiheet/Tyoaihekanta.html">Työaihekanta</a></li>
+<li><a href="../../suunnittelu/aiheet/Tyontekijanvuokraus_kotitoihin.html">Työntekijänvuokraus kotitöihin</a></li>
+<li><a href="../../suunnittelu/aiheet/Tyryhmtiedotus.html">Työryhmätiedotus</a></li>
+<li><a href="../../suunnittelu/aiheet/Opintoneuvonnan_usein_kysytyt_kysymykset.html">Usein kysytyt kysymykset</a></li>
+<li><a href="../../suunnittelu/aiheet/Vedonlyonti.html">Vedonlyönti</a></li>
+<li><a href="../../suunnittelu/aiheet/Vuokra-asuntojen_valitys.html">Vuokra-asuntojen välitys</a></li>
+<li><a href="../../suunnittelu/aiheet/Ystavanvalityspalvelu.html">Ystävänvälityspalvelu</a></li>
+<li><a href="../../suunnittelu/aiheet/Aanestys.html">Äänestys</a></li>
+</ul></li>
+<li><a href="../../suunnittelu/ohjelmointikielet.html">Ohjelmointikielen valinta</a></li>
+<li><a href="../../suunnittelu/tietokannan-valinta.html">Tietokannan valinta</a></li>
+<li><a href="../../suunnittelu/kayttoliittyma.html">Käyttöliittymän suunnittelu</a></li>
+<li><a href="../../suunnittelu/tietokanta.html">Tietokannan suunnittelu</a></li>
+</ul></li>
+<li><a href="../../pystytys/index.html">Users-palvelin ja töiden pystyttäminen</a>
+<ul>
+<li><a href="../../pystytys/kayttoonotto/index.html">Palvelujen käynnistäminen ja käyttöönotto</a>
+<ul>
+<li><a href="../../pystytys/kayttoonotto/java.html">Java ja Tomcatin käyttöönotto</a></li>
+<li><a href="../../pystytys/kayttoonotto/mysql.html">MySql-tietokannan käyttöönotto</a></li>
+<li><a href="../../pystytys/kayttoonotto/php.html">PHP-tuen käyttöönotto</a></li>
+<li><a href="../../pystytys/kayttoonotto/postgresql.html">PostgreSQL-tietokannan käyttöönotto</a></li>
+</ul></li>
+<li><a href="../../pystytys/netbeans/index.html">NetBeansin käyttöönotto</a>
+<ul>
+<li><a href="../../pystytys/netbeans/java.html">NetBeansin käyttö Javan kanssa</a></li>
+<li><a href="../../pystytys/netbeans/php.html">NetBeansin käyttö PHP:n kanssa</a></li>
+<li><a href="../../pystytys/netbeans/keyring-reset.html">Unlock your keyring? - Avainnippujen nollaus</a></li>
+</ul></li>
+<li><a href="../../pystytys/postgres-ssh-tunneli.html">PostgreSql-kannan etäkäyttö</a></li>
+<li><a href="../../pystytys/java-war-paketit.html">Kotikoneella tehdyn Java-työn julkaisu</a></li>
+<li><a href="../../pystytys/php-virheet.html">PHP:n virheilmoitusten katselu</a></li>
+<li><a href="../../pystytys/nautilus-ssh.html">Tiedostojen etämuokkaus Linuxilla</a></li>
+</ul></li>
+<li><a href="../../koodaaminen/index.html">Ohjelmointiohjeistus</a>
+<ul>
+<li><a href="../../koodaaminen/html-opas.html">HTML-opas</a></li>
+<li><a href="../../koodaaminen/kannan-alustus.html">Tietokantataulujen pystyttäminen</a></li>
+<li><a href="../../koodaaminen/testisovellus.html">ConnectionTest-testisovellus</a></li>
+<li><a href="../../koodaaminen/tietokantayhteys/index.html">Tietokantayhteyden pystytys</a></li>
+<li><a href="../../koodaaminen/git-ja-salasanat.html">Git-repositoriot ja salasanat</a></li>
+<li><a href="../../koodaaminen/listaustesti/index.html">Yksinkertainen tietokantalistaus</a>
+<ul>
+<li><a href="../../koodaaminen/listaustesti/java.html">Listaus Javalla</a></li>
+<li><a href="../../koodaaminen/listaustesti/php.html">Listaus PHP:llä</a></li>
+</ul></li>
+<li><a href="../../koodaaminen/arkkitehtuuri/index.html">Arkkitehtuuri ja MVC</a>
+<ul>
+<li><a href="../../koodaaminen/arkkitehtuuri/nyrkkisaannot.html">MVC-mallin nyrkisääntöjä</a></li>
+</ul></li>
+<li><a href="../../koodaaminen/java/index.html">Java-ohjeet</a>
+<ul>
+<li class="selected"><a href="../../koodaaminen/java/rakenne.html">Sovelluksen rakenne ja servletit</a></li>
+<li><a href="../../koodaaminen/java/nakymat.html">Näkymien tekeminen ja JSP</a></li>
+<li><a href="../../koodaaminen/java/lomakkeet.html">Lomakkeiden käyttö ja vastaanottaminen</a></li>
+<li><a href="../../koodaaminen/java/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
+<li><a href="../../koodaaminen/java/mallit_muokkaustoiminnot.html">Malliluokat ja tiedon muuttaminen</a></li>
+<li><a href="../../koodaaminen/java/muokkausnakymat.html">Muokkausnäkymän toteuttaminen</a></li>
+</ul></li>
+<li><a href="../../koodaaminen/php/index.html">PHP-ohjeet</a>
+<ul>
+<li><a href="../../koodaaminen/php/rakenne.html">Sovelluksen rakenne ja kontrollerit</a></li>
+<li><a href="../../koodaaminen/php/nakymat.html">Näkymien tekeminen</a></li>
+<li><a href="../../koodaaminen/php/lomakkeet.html">Lomakkeiden käyttö ja vastaanottaminen</a></li>
+<li><a href="../../koodaaminen/php/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
+<li><a href="../../koodaaminen/php/mallit_muokkaustoiminnot.html">Malliluokat ja tiedon muuttaminen</a></li>
+<li><a href="../../koodaaminen/php/muokkausnakymat.html">Muokkausnäkymän toteuttaminen</a></li>
+</ul></li>
+</ul></li>
+<li><a href="../../arvosteluperusteet.html">Arvosteluperusteet</a></li>
+<li><a href="../../dokumentaatio-ohje.html">Dokumentaatio-ohje</a></li>
+<li><a href="../../cleancode.html">Hyvä ohjelmointityyli</a></li>
+<li><a href="../../kaytettavyys.html">Käytettävyys</a></li>
+<li><a href="../../sivukartta.html">Sivukartta</a></li>
+<li><a href="../../web-sovelluksista.html">Web-sovelluksien toiminta</a></li>
+</ul></li>
+</ul>
+</nav>
+</div>
+<div class="col-md-6" id="content">
+<header>
+<h1 class="title">Sovelluksen rakenne ja servletit</h1>
+</header>
+<!-- order: 1 -->
+<script>addSectionLinks = true; </script>
+
+<section class="alert alert-info"><h3>
+Tiivistelmä:
+</h3>
+
+<ul>
+<li>Tee koodia varten oma pakettisi. Esim. <code>Kissalista</code>.</li>
+<li>Sijoita kaikki mallit omaan pakettiinsa. Esim. <code>Kissalista.Models</code>.</li>
+<li>Sijoita servlet-luokkasi omaan pakettiinsa. Esim. <code>Kissalista.Servlets</code>. Jatkossa samaan pakettiin tulevat kaikki muutkin servletit.</li>
+</ul>
+<p>Lopullisen projektin pitäisi noudatella tämäntapaista kansiorakennetta</p>
+<pre><code>src/
+  Paketti/
+    Models/
+      User.java
+    Servlets/
+      UserServlet.java
+web/
+  user.jsp</code></pre>
+</section>
+
+<p>Tietokantasovellukset Javalla kannattaa jakaa <a href="../../koodaaminen/arkkitehtuuri/index.html">arkkitehtuuriohjeen</a> mukaisesti malleihin, kontrollereihin ja näkymiin. Keskitymme ensiksi malleihin ja kontrollereihin ja jatkamme sitten näkymiin <a href="nakymat.html">seuraavalla sivulla</a>.</p>
+<section id="mallit" class="level2">
+<h2>Mallit</h2>
+<p>Sijoita projektin mallit omaan pakettiinsa samaan tapaan kuin servletit. Kolmannen viikon töihin tarvitset käytännössä vain yhden malliluokan, joka kuvaa käyttäjää. Jos teit toisella viikolla listauksesi käyttäjälistauksena, sinulla on jo sellainen valmiina.</p>
+<p>Sijoita malliisi kentät tietokantataulun kenttiä varten ja luo kentille getterit ja setterit sekä halutessasi konstruktori, joka ottaa kenttien arvot vastaan.</p>
+<p>Työn edetessä teemme luokkiin metodeja, jotka osaavat hakea olioihin sisältöä tietokannasta, sekä metodit, joilla tietoa päivitetään takaisin kantaan.</p>
+</section>
+<section id="servletit" class="level2">
+<h2>Servletit</h2>
+<p>Servletit ovat Java EE:ssä eli Javan nettipuolessa käytettäviä luokkia, jotka edustavat jonkin nettisivun tai toiminnon <em>kontrollereita</em>. Servletit ja kontrollerit ovat Javan näkökulmasta useimmiten käytännössä sama asia.</p>
+<p>Jokainen Servlet-luokka on sidottu johonkin URL-osoitteeseen, johon ohjattu aineistopyyntö aktivoi sen. Sitomiset on käyttämässämme Java-ympäristön versiossa määritelty XML-pohjaisesti tiedostossa <code>web/WEB-INF/web.xml</code>. Tiedoston muokkaus on hieman monimutkaista, mutta esimerkiksi NetBeans osaa muokata tämän tiedoston määrityksiä kätevällä käyttöliittymällä ja liittää esimerkiksi uusien Servlettien URL-osoitteet sinne samalla kun Servlettiä luodaan, jolloin käytännössä tiedostoon tarvitsee koskea käsin aika harvoin.</p>
+<section id="sovelluksen-etusivun-määrittely" class="level3">
+<h3>Sovelluksen etusivun määrittely</h3>
+<p>Voit myös halutessasi tehdä servletistä sivujesi etusivun lisäämällä tiedostoon <code>web/WEB-INF/web.xml</code> seuraavanlaista koodia</p>
+<pre class="sourceCode xml"><code class="sourceCode xml"><span class="kw">&lt;welcome-file-list&gt;</span>
+  <span class="kw">&lt;welcome-file&gt;</span>kirjautuminen<span class="kw">&lt;/welcome-file&gt;</span>
+<span class="kw">&lt;/welcome-file-list&gt;</span></code></pre>
+<p>Oletuksena Tomcat-sovellus käyttää etusivunaan index.jsp-tiedostoa.</p>
+</section>
+<section id="servletin-toiminta" class="level3">
+<h3>Servletin toiminta</h3>
+<p>Servletin toiminnan ytimessä ovat <code>doGet</code>- ja <code>doPost</code>-metodit, jotka ottavat vastaan servletin osoitteeeseen <a href="../../web-sovelluksista.html#get-ja-post">GET- ja POST-metodeilla</a> tehtyjä aineistopyyntöjä. NetBeansin vakiopohja Servlet-luokille luo nämä metodit automaattisesti ja laittaa ne molemmat kutsumaan samaa <code>processRequest</code>-metodia. Metodilla on parametreina HttpServletRequest-olio, joka sisältää pyynnön tiedot, ja HttpServletResponse-olio, johon voidaan lisätä vastaus.</p>
+<p><strong>Esimerkki Netbeansillä tuotetusta Servlet-luokasta. Älä käytä tätä koodia suoraan!</strong></p>
+<pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="kw">class</span> TestiServlet <span class="kw">extends</span> HttpServlet {
+
+  <span class="co">/**</span>
+<span class="co">   * Processes requests for both HTTP</span>
+<span class="co">   * &lt;code</span><span class="kw">&gt;</span><span class="co">GET&lt;/code</span><span class="kw">&gt;</span><span class="co"> and &lt;code</span><span class="kw">&gt;</span><span class="co">POST&lt;/code</span><span class="kw">&gt;</span><span class="co"> methods.</span>
+<span class="co">   *</span>
+<span class="co">   * </span><span class="kw">@param request </span><span class="co">servlet request</span>
+<span class="co">   * </span><span class="kw">@param response </span><span class="co">servlet response</span>
+<span class="co">   * </span><span class="kw">@throws ServletException </span><span class="co">if a servlet-specific error occurs</span>
+<span class="co">   * </span><span class="kw">@throws IOException </span><span class="co">if an I/O error occurs</span>
+<span class="co">   */</span>
+  <span class="kw">protected</span> <span class="dt">void</span> <span class="fu">processRequest</span>(HttpServletRequest request, HttpServletResponse response)
+      <span class="kw">throws</span> ServletException, IOException {
+    response.<span class="fu">setContentType</span>(<span class="st">&quot;text/html;charset=UTF-8&quot;</span>);
+    PrintWriter out = response.<span class="fu">getWriter</span>(); 
+    <span class="kw">try</span> {
+      <span class="co">/* TODO output your page here. You may use following sample code. */</span>
+      out.<span class="fu">println</span>(<span class="st">&quot;&lt;html&gt;&quot;</span>); 
+      out.<span class="fu">println</span>(<span class="st">&quot;&lt;head&gt;&lt;title&gt;Servlet TestiServlet&lt;/title&gt;&lt;/head&gt;&quot;</span>);
+      out.<span class="fu">println</span>(<span class="st">&quot;&lt;body&gt;&quot;</span>);
+      out.<span class="fu">println</span>(<span class="st">&quot;&lt;h1&gt;Servlet TestiServlet at &quot;</span> + 
+        request.<span class="fu">getContextPath</span>() + <span class="st">&quot;&lt;/h1&gt;&quot;</span>);
+      out.<span class="fu">println</span>(<span class="st">&quot;&lt;/body&gt;&quot;</span>);
+      out.<span class="fu">println</span>(<span class="st">&quot;&lt;/html&gt;&quot;</span>);
+    } <span class="kw">finally</span> {            
+      out.<span class="fu">close</span>();
+    }
+  }
+  
+  <span class="co">/* NetBeansin piilottamat doGet- ja doPost-metodit, jotka kutsuvat processRequest-metodia. */</span>
+
+}</code></pre>
+<p>Valmiin pohjan sisältämä vastauksen tuottava koodi sisältää suoraan kontrolleriin upotettua HTML-koodia. Tälläistä koodia ei kannata käyttää, vaan kannattaa tuottaa HTML-sivut erillisillä näkymätiedostoilla.</p>
+<p>Näistä kerrotaan enemmän seuraavalla sivuilla.</p>
+<section class="alert alert-success small"><h3>
+Seuraavaksi:
+</h3>
+<p>Seuraavaksi tutustumme tarkemmin <a href="nakymat.html">näkymien toteuttamiseen</a>.</p>
+</section>
+
+
+
+
+</section>
+</section>
+</div>
+</div> 
+</div> 
+<footer>
+  <a href="../../sivukartta.html">Sivukartta</a> - 
+  <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">AdvancedKittenry</span> 
+  by
+  <a xmlns:cc="http://creativecommons.org/ns#" href="http://advancedkittenry.github.io/credits.html" property="cc:attributionName" rel="cc:attributionURL">David Consuegra and others</a>
+  is licensed under a 
+  <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.
+  <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">
+    <img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png" />
+  </a>
+</footer>
+</body>
+</html>

@@ -277,9 +277,6 @@ Mikä oli tietokantasovelluksen teossa helppoa? Mikä vaikeaa? Mitä opit? Muu v
 ##13. Liitteet
 Dokumentin liitteinä annetaan:
 
-* Ohjelmakoodit
-* Tietokannan määrittelevät create table lauseet, jos ne eivät ole mukana dokumentin tekstiosuudessa
-  * Jos sovelluskehys on luonut tietokannan automaattisesti esim. oliorakenteen pohjalta, tämä ei ole tarpeen.
-    * (Jos et tiedä mikä sovelluskehys on, et ole käyttänyt sellaista.)
+* Tietokannan määrittelevät create table lauseet, erillisenä SQL-tiedostona projektin git-repositoriossa.
 * Tehtäväkuvaus, jos valmis aihe.
   * Linkki kuvaukseen liiteluettelossa riittää.

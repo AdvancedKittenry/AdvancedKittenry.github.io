@@ -39,7 +39,7 @@ Viikottaisten palautusten deadline on aina kunkin viikon sunnuntaina klo 23:00. 
 
 Palautukset suoritetaan ensimmäisellä viikolla rekisteröitymällä 
 [Labtool-sivustolle](http://tsoha-labtool.herokuapp.com)
-ja siitä eteenpäin [versionhallinnan]({{rootdir}}aikataulu/viikko1/git-ohje.html) kautta.
+ja siitä eteenpäin git-versionhallinnan ja githubin kautta.
 
 Viikkojen 3-5 materiaali on vielä työn alla. Sivut aukeavat sitä mukaa kun ohjeet valmistuvat.
 
@@ -55,17 +55,10 @@ Viikkojen 3-5 materiaali on vielä työn alla. Sivut aukeavat sitä mukaa kun oh
 | [Demotilaisuus][demo]  | Esitellään työtä ja sen koodia muille opiskelijoille                   | {{demodeadline}}      |
 | [Palautus][palautus]   | Valmis työ palautetaan ohjaajalle                                      | {{palautusdeadline}}  |
 
-<comment>
-| [Viikko II][viikko2]   
-| [Viikko III][viikko3]  
-| [Viikko IV][viikko4]   
-| [Viikko V][viikko5]    
-</comment>
-
-[viikko1]: {{rootdir}}aikataulu/viikko1/index.html
-[viikko2]: {{rootdir}}aikataulu/viikko2/index.html
-[viikko3]: {{rootdir}}aikataulu/viikko3/index.html
-[viikko4]: {{rootdir}}aikataulu/viikko4/index.html
-[viikko5]: {{rootdir}}aikataulu/viikko5/index.html
+[viikko1]: {{rootdir}}aikataulu/viikko1.html
+[viikko2]: {{rootdir}}aikataulu/viikko2.html
+[viikko3]: {{rootdir}}aikataulu/viikko3.html
+[viikko4]: {{rootdir}}aikataulu/viikko4.html
+[viikko5]: {{rootdir}}aikataulu/viikko5.html
 [demo]: {{rootdir}}aikataulu/demo.html
 [palautus]: {{rootdir}}aikataulu/palautus.html

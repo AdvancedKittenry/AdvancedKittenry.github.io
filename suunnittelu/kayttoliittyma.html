@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title>Käyttöliittymän suunnittelu</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link rel="stylesheet" href="../css/base.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <script src="../javascript/jquery.min.js"></script>
+  <script src="../javascript/bootstrap.js"></script>
+  <script src="../javascript/jquery.treeview.js"></script>
+  <script src="../javascript/jquery.scrollTo.js"></script>
+  <script src="../javascript/jquery.nav.js"></script>
+  <script src="../javascript/navi.js"></script>
+</head>
+<body>
+<div class="titlebar">
+  <div class="container">
+    <div class="row">
+      <h1 class="col-md-6 col-md-offset-3">Advanced Kittenry - Tietokantasovellusohjeet</h1>
+    </div>
+  </div>
+</div>
+<div class="container">
+<div class="row">
+<div class="navcontainer col-md-3">
+<nav>
+<ul>
+<li><a href="../index.html">Tietokantasovellus</a>
+<ul>
+<li><a href="../aikataulu/index.html">Aikataulu</a>
+<ul>
+<li><a href="../aikataulu/viikko1.html">Viikko 1</a></li>
+<li><a href="../aikataulu/viikko2.html">Viikko 2</a></li>
+<li><a href="../aikataulu/viikko3.html">Viikko 3</a></li>
+<li><a href="../aikataulu/viikko4.html">Viikko 4</a></li>
+<li><a href="../aikataulu/viikko5.html">Viikko 5</a></li>
+<li><a href="../aikataulu/demo.html">Demotilaisuus</a></li>
+<li><a href="../aikataulu/palautus.html">Työn palautus</a></li>
+</ul></li>
+<li><a href="../suunnittelu/index.html">Työn suunnittelu</a>
+<ul>
+<li><a href="../suunnittelu/aiheet/index.html">Työaiheet</a>
+<ul>
+<li><a href="../suunnittelu/aiheet/Drinkkiarkisto.html">Drinkkiarkisto</a></li>
+<li><a href="../suunnittelu/aiheet/Elektroninen_keittokirja.html">Elektroninen keittokirja</a></li>
+<li><a href="../suunnittelu/aiheet/Graduaiheet.html">Graduaiheet</a></li>
+<li><a href="../suunnittelu/aiheet/Harjoitustyon_seuranta.html">Harjoitustyön seuranta</a></li>
+<li><a href="../suunnittelu/aiheet/Hiihtokisojen_tulospalvelu.html">Hiihtokisojen tulospalvelu</a></li>
+<li><a href="../suunnittelu/aiheet/Huutokauppa.html">Huutokauppa</a></li>
+<li><a href="../suunnittelu/aiheet/Kennelkerho.html">Kennelkerho</a></li>
+<li><a href="../suunnittelu/aiheet/Kuluttajan_tuki_Ry.html">Kuluttajan tuki Ry</a></li>
+<li><a href="../suunnittelu/aiheet/Kurssikysely.html">Kurssikysely</a></li>
+<li><a href="../suunnittelu/aiheet/Kurssin_kotisivu.html">Kurssin kotisivu</a></li>
+<li><a href="../suunnittelu/aiheet/Kurssitarjonta_ja_kurssipaikan_varaus.html">Kurssitarjonta ja kurssipaikan varaus</a></li>
+<li><a href="../suunnittelu/aiheet/Lainahakemusten_kasittely.html">Lainahakemusten käsittely</a></li>
+<li><a href="../suunnittelu/aiheet/Laakariaseman_tyovuorolista.html">Lääkäriaseman työvuorolista</a></li>
+<li><a href="../suunnittelu/aiheet/Laakarin_kotikaynnit.html">Lääkärin kotikäynnit</a></li>
+<li><a href="../suunnittelu/aiheet/Matkojen_markkinointi.html">Matkojen markkinointi</a></li>
+<li><a href="../suunnittelu/aiheet/Muistilista.html">Muistilista</a></li>
+<li><a href="../suunnittelu/aiheet/Ostoskassi.html">Ostoskassi</a></li>
+<li><a href="../suunnittelu/aiheet/Painontarkkailu.html">Painontarkkailu</a></li>
+<li><a href="../suunnittelu/aiheet/Palvelubisnes.html">Palvelubisnes</a></li>
+<li><a href="../suunnittelu/aiheet/Parturi-Kampaamo.html">Parturi-Kampaamo</a></li>
+<li><a href="../suunnittelu/aiheet/Pizzapalvelu.html">Pizzapalvelu</a></li>
+<li><a href="../suunnittelu/aiheet/Projektin_tyoaikaseuranta.html">Projektin työaikaseuranta</a></li>
+<li><a href="../suunnittelu/aiheet/Rankkauslista.html">Rankkauslista</a></li>
+<li><a href="../suunnittelu/aiheet/Taloyhtion_palvelut.html">Taloyhtiön palvelut</a></li>
+<li><a href="../suunnittelu/aiheet/Tavaranvaihto.html">Tavaranvaihto</a></li>
+<li><a href="../suunnittelu/aiheet/Tukkuliikkeen_tilaustenksittely.html">Tukkuliikkeen tilaustenkäsittely</a></li>
+<li><a href="../suunnittelu/aiheet/Tutkimusaineston_kerays.html">Tutkimusaineiston keräys</a></li>
+<li><a href="../suunnittelu/aiheet/Tyoaihekanta.html">Työaihekanta</a></li>
+<li><a href="../suunnittelu/aiheet/Tyontekijanvuokraus_kotitoihin.html">Työntekijänvuokraus kotitöihin</a></li>
+<li><a href="../suunnittelu/aiheet/Tyryhmtiedotus.html">Työryhmätiedotus</a></li>
+<li><a href="../suunnittelu/aiheet/Opintoneuvonnan_usein_kysytyt_kysymykset.html">Usein kysytyt kysymykset</a></li>
+<li><a href="../suunnittelu/aiheet/Vedonlyonti.html">Vedonlyönti</a></li>
+<li><a href="../suunnittelu/aiheet/Vuokra-asuntojen_valitys.html">Vuokra-asuntojen välitys</a></li>
+<li><a href="../suunnittelu/aiheet/Ystavanvalityspalvelu.html">Ystävänvälityspalvelu</a></li>
+<li><a href="../suunnittelu/aiheet/Aanestys.html">Äänestys</a></li>
+</ul></li>
+<li><a href="../suunnittelu/ohjelmointikielet.html">Ohjelmointikielen valinta</a></li>
+<li><a href="../suunnittelu/tietokannan-valinta.html">Tietokannan valinta</a></li>
+<li class="selected"><a href="../suunnittelu/kayttoliittyma.html">Käyttöliittymän suunnittelu</a></li>
+<li><a href="../suunnittelu/tietokanta.html">Tietokannan suunnittelu</a></li>
+</ul></li>
+<li><a href="../pystytys/index.html">Users-palvelin ja töiden pystyttäminen</a>
+<ul>
+<li><a href="../pystytys/kayttoonotto/index.html">Palvelujen käynnistäminen ja käyttöönotto</a>
+<ul>
+<li><a href="../pystytys/kayttoonotto/java.html">Java ja Tomcatin käyttöönotto</a></li>
+<li><a href="../pystytys/kayttoonotto/mysql.html">MySql-tietokannan käyttöönotto</a></li>
+<li><a href="../pystytys/kayttoonotto/php.html">PHP-tuen käyttöönotto</a></li>
+<li><a href="../pystytys/kayttoonotto/postgresql.html">PostgreSQL-tietokannan käyttöönotto</a></li>
+</ul></li>
+<li><a href="../pystytys/netbeans/index.html">NetBeansin käyttöönotto</a>
+<ul>
+<li><a href="../pystytys/netbeans/java.html">NetBeansin käyttö Javan kanssa</a></li>
+<li><a href="../pystytys/netbeans/php.html">NetBeansin käyttö PHP:n kanssa</a></li>
+<li><a href="../pystytys/netbeans/keyring-reset.html">Unlock your keyring? - Avainnippujen nollaus</a></li>
+</ul></li>
+<li><a href="../pystytys/postgres-ssh-tunneli.html">PostgreSql-kannan etäkäyttö</a></li>
+<li><a href="../pystytys/java-war-paketit.html">Kotikoneella tehdyn Java-työn julkaisu</a></li>
+<li><a href="../pystytys/php-virheet.html">PHP:n virheilmoitusten katselu</a></li>
+<li><a href="../pystytys/nautilus-ssh.html">Tiedostojen etämuokkaus Linuxilla</a></li>
+</ul></li>
+<li><a href="../koodaaminen/index.html">Ohjelmointiohjeistus</a>
+<ul>
+<li><a href="../koodaaminen/html-opas.html">HTML-opas</a></li>
+<li><a href="../koodaaminen/kannan-alustus.html">Tietokantataulujen pystyttäminen</a></li>
+<li><a href="../koodaaminen/testisovellus.html">ConnectionTest-testisovellus</a></li>
+<li><a href="../koodaaminen/tietokantayhteys/index.html">Tietokantayhteyden pystytys</a></li>
+<li><a href="../koodaaminen/git-ja-salasanat.html">Git-repositoriot ja salasanat</a></li>
+<li><a href="../koodaaminen/listaustesti/index.html">Yksinkertainen tietokantalistaus</a>
+<ul>
+<li><a href="../koodaaminen/listaustesti/java.html">Listaus Javalla</a></li>
+<li><a href="../koodaaminen/listaustesti/php.html">Listaus PHP:llä</a></li>
+</ul></li>
+<li><a href="../koodaaminen/arkkitehtuuri/index.html">Arkkitehtuuri ja MVC</a>
+<ul>
+<li><a href="../koodaaminen/arkkitehtuuri/nyrkkisaannot.html">MVC-mallin nyrkisääntöjä</a></li>
+</ul></li>
+<li><a href="../koodaaminen/java/index.html">Java-ohjeet</a>
+<ul>
+<li><a href="../koodaaminen/java/rakenne.html">Sovelluksen rakenne ja servletit</a></li>
+<li><a href="../koodaaminen/java/nakymat.html">Näkymien tekeminen ja JSP</a></li>
+<li><a href="../koodaaminen/java/lomakkeet.html">Lomakkeiden käyttö ja vastaanottaminen</a></li>
+<li><a href="../koodaaminen/java/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
+<li><a href="../koodaaminen/java/mallit_muokkaustoiminnot.html">Malliluokat ja tiedon muuttaminen</a></li>
+<li><a href="../koodaaminen/java/muokkausnakymat.html">Muokkausnäkymän toteuttaminen</a></li>
+</ul></li>
+<li><a href="../koodaaminen/php/index.html">PHP-ohjeet</a>
+<ul>
+<li><a href="../koodaaminen/php/rakenne.html">Sovelluksen rakenne ja kontrollerit</a></li>
+<li><a href="../koodaaminen/php/nakymat.html">Näkymien tekeminen</a></li>
+<li><a href="../koodaaminen/php/lomakkeet.html">Lomakkeiden käyttö ja vastaanottaminen</a></li>
+<li><a href="../koodaaminen/php/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
+<li><a href="../koodaaminen/php/mallit_muokkaustoiminnot.html">Malliluokat ja tiedon muuttaminen</a></li>
+<li><a href="../koodaaminen/php/muokkausnakymat.html">Muokkausnäkymän toteuttaminen</a></li>
+</ul></li>
+</ul></li>
+<li><a href="../arvosteluperusteet.html">Arvosteluperusteet</a></li>
+<li><a href="../dokumentaatio-ohje.html">Dokumentaatio-ohje</a></li>
+<li><a href="../cleancode.html">Hyvä ohjelmointityyli</a></li>
+<li><a href="../kaytettavyys.html">Käytettävyys</a></li>
+<li><a href="../sivukartta.html">Sivukartta</a></li>
+<li><a href="../web-sovelluksista.html">Web-sovelluksien toiminta</a></li>
+</ul></li>
+</ul>
+</nav>
+</div>
+<div class="col-md-6" id="content">
+<header>
+<h1 class="title">Käyttöliittymän suunnittelu</h1>
+</header>
+<!-- order: 4 -->
+<script>addSectionLinks = true; </script>
+
+<section class="alert alert-info"><h3>
+Tiivistelmä:
+</h3>
+<ul>
+<li>Luo aihekuvauksen perusteella alustava <a href="#k%C3%A4ytt%C3%B6liittym%C3%A4kaavio">käyttöliittymäkaavio</a></li>
+<li>Suunnittele sovelluksen yleinen näkymä ja päävalikko
+<ul>
+<li>Näiden kuuluu näkyä joka sivulla!</li>
+</ul></li>
+<li>Suunnittele listaus-, tieto- ja lomakesivut ohjeiden mukaisesti</li>
+</ul>
+</section>
+
+<p>Aloita suunnittelu lukemalla valitsemasi aihekuvaus ja miettimällä millaisiin sivuihin sovelluksesi voisi jakautua. Otetaan esimerkiksi kuvitteellinen aihe “Kissatädin kissalista”, jonka aihekuvaus on seuraava:</p>
+<div class='panel panel-default'><div class='panel-body'>
+<p>Eerika Svinhufvud harrastaa kissojen keräilyä. Hänellä on kartanossaan 127 kissaa ja kuuden hengen palveluskunta, mutta heillä on jo pitkään ollut vaikeuksia koordinoida sitä kuka ruokkii minkäkin kissan. Ratkaisuksi Eerika haluaa ottaa käyttöön järjestelmän, jossa olisi jokaisen hänen kissansa tiedot, sekä tieto siitä koska kukin kissa on viimeksi ruokittu.</p>
+<p>Järjestelmällä olisi myös tieto jokaisen kissan roduista ja rotujen ominaisuuksista, sekä tieto siitä onko jokin kissoista lainassa jollakin ompeluseuran rouvista.</p>
+Lisäksi, jotta tiedettäisiin kuka on ruokkinut minkäkin karvakasan, kukin palveluskunnan jäsen järjestelmään kirjautuisi järjestelmään omilla tunnuksillaan, joita kartanonomistaja hallinnoi.
+</div></div>
+
+<section id="käyttöliittymäkaavio" class="level2">
+<h2>Käyttöliittymäkaavio</h2>
+<p>Keskimääräinen tietokantasovellus jakautuu suurinpiirtein viidentyyppisin sivuihin: etusivuihin, listauksiin, dynaamisiin tietosivuihin, lomakesivuihin ja kirjautumiseen liittyviin sivuihin. Näistä joko kirjautuminen tai etusivu on se sivu, jonka sovelluksen käyttäjä ensimmäiseksi näkee. Etusivut esittelevät sovellusta, kertovat sen toiminnasta ja antavat käyttäjälle ohjeita sovelluksen käyttöön. Ne liittyvät usein saumattomasti listauksiin, jotka näyttävät listan jostain sovelluksen tietokohteesta. Tässä tapauksessa esimerkiksi kissoista tai palveluskunnasta. Listauksesta taas päästään yleensä suoraan erilaisille tieto- ja lomakesivuille, jolla pystyy katselemaan, lisäämään tai muokkaamaan jonkin tietokohteen tietoja eli vaikkapa muokkaamaan yksittäisen kissan kuvausta.</p>
+<p>Nämä mielessä pitäen lähde rakentamaan eri sivuista ja toiminnoista karkeaa sivukarttaa, joka on dokumentaation <a href="../dokumentaatio-ohje.html#k%C3%A4ytt%C3%B6liittym%C3%A4">käyttöliittymäkaavion</a> karkea luonnos. Suunnitelmaan kannattaa hahmotella mitä sivuja sovelluksessa on, mille sivuille niiltä pääsee ja mitkä sivuista olisi luonnollista sijoittaa sovelluksen <em>päävalikkoon</em>, eli niihin linkkeihin, jotka ovat jokaisella sivulla näkyvissä.</p>
+<section class="alert alert-warning"><h3>
+Vinkki
+</h3>
+<p>Suunnittelemiseen kannattaa käyttää <em>paperia ja kynää</em>, <em>valkotaulua</em> tai jotain muuta välinettä, jolla luonnosteleminen on nopeaa. Suunnitteluvaiheessa kaikenlaiset kaavio-ohjelmistot yleensä vain hidastavat ajattelua, ellei niiden käytössä ole erityisen rutinoitunut.</p>
+</section>
+
+<p>Kissalistan tapauksessa alustava suunnitelma voisi näyttää vaikkapa tältä:</p>
+<figure>
+<img src="../images/suunnittelu/sivukartta.png" alt="Alustava sivukartta" /><figcaption>Alustava sivukartta</figcaption>
+</figure>
+<p>Kuten kuvasta huomaa, suunnitelman ei tarvitse tässä vaiheessa olla erityisen siisti, riittää että sen perusteella tietää mitä sivuja haluaa toteuttaa. Tässä kuvassa esimerkiksi on vielä sekaisin sivuja ja sivuilla esiintyviä toimintoja, jotka eivät tarvitse omaa sivua (esim. eri kohteiden poistot ja tallennukset). Lopullisen siistin version voi huoletta jättää myöhemmäksi, sillä yleensä suunnitelmat kuitenkin muuttuvat työn edetessä.</p>
+<p>Kun sivukartta on tehty, ota siitä kuva kännykkäkamerallasi ja sijoita se repositoriosi doc-kansioon nimellä <code>sivukartta.jpg</code> (tiedostopäätteellä ei ole niin väliä). Voit halutessasi myös skannata sen tai tehdä valmiin version jollain diagrammiohjelmalla.</p>
+<p>Tee samoin muidenkin käyttöliittymäluonnostesi kanssa, ellet ole päässyt näyttämään niitä pajaan.</p>
+</section>
+<section id="etusivu-ja-yleisnäkymä-template" class="level2">
+<h2>Etusivu ja yleisnäkymä (template)</h2>
+<p>Lähde suunnittelemaan alustavasti etusivua ja yleistä sivujen käyttöliittymää. Tee samalla luonnos siitä millaisia yleisiä navigaatioelementtejä sovelluksesi sivuille tulisi. Pohdi myös haluatko sijoittaa jo etusivulle jonkun listauksen. Esimerkiksi kissalistan etusivulle tulee suoraan lista kissoista, sekä kaksiosainen navigaatioyläpalkki, jossa on linkit tärkeimpiin tietokohteisiin ja uloskirjautumiseen:</p>
+<figure>
+<img src="../images/suunnittelu/etusivu.png" alt="Kissalistan etusivu" /><figcaption>Kissalistan etusivu</figcaption>
+</figure>
+<p>Kun on kerran piirtänyt joka sivulla olevan navigaation, voi sen jättää muista piirroksista pois. Navigaation on kuitenkin tultava lopullisessa sovelluksessa joka sivulle. Ainoana poikkeuksena toimii kirjautumissivu, joka näyttää useimmiten tältä:</p>
+<figure>
+<img src="../images/suunnittelu/kirjautuminen.png" alt="Kirjautumislomake" /><figcaption>Kirjautumislomake</figcaption>
+</figure>
+</section>
+<section id="listanäkymän-suunnittelu" class="level2">
+<h2>Listanäkymän suunnittelu</h2>
+<p>Tietokohteen listausta suunnitellessa tärkeintä ovat helppous ja selkeys. Yksinkertaisimmillaan listaus voi olla pelkkä lista listattavien asioiden nimiä, koodeja tai muita vastaavia tunnisteita, josta nimeä klikkaamalla pääsee käsiksi lisätietoihin. Usein on kuitenkin hyvä listata sovelluksen toiminnan kannalta olennaisimmat tiedot (joskus peräti kaikki tiedot) listaukseen, jolloin tietoa on helppo ja nopea löytää. Liikaa tietoa ei kuitenkaan yhteen näkymään kannata ahtaa, sillä se vaikeuttaa olennaisten asioiden löytämistä.</p>
+<p>Mikäli lista on hyvin pitkä, näytetään tarvittaessa siitä vain osa ja mahdollistetaan loppuosan selailu <em>sivunavigaation</em> avulla. Myös hakutoimintojen liittämistä sovellukseen kannattaa harkita, varsinkin jos lista on pitkä ja sivutettu. Lyhyemmissä listoissa voidaan turvautua selaimen hakutoimintoon. Myös listan näyttäminen aakkosjärjestyksessä helpottaa siitä hakemista.</p>
+<figure>
+<img src="../images/suunnittelu/kissalista.png" alt="Kissalista, aakkosjärjestys tosin näkyy unohtuneen suunnittelijalta" /><figcaption>Kissalista, aakkosjärjestys tosin näkyy unohtuneen suunnittelijalta</figcaption>
+</figure>
+<p>Listaa suunnitellessa kannattaa muistaa, että listalla on käytännössä kaksi käyttötarkoitusta: tiedon ylimalkaisen selailun mahdollistaminen ja pääsy yksittäistä kohdetta käsitteleville tieto- ja muokkaussivuille. Yleensä listan kohdetta klikkaamalla pääsee joko tarkastelemaan sivua, jolla on siitä lisätietoja tai suoraan muokkaamaan sitä lomakkeella. Lisätiedot ja lomakkeeet ovat yleensä omalla sivullaaan, mutta joskus on pätevää myös upottaa se suoraan listauksen sisään, mahdollisesti niin, että se näytetään dynaamisesti javascriptillä.</p>
+<p>Myös erilaiset yleisesti käytetyt toiminnot esim. asioiden poistaminen, aktivoiminen tai sulkeminen, tai vaikka kissojen syöttäminen saattaa olla järkevä laittaa listalle suoraan erilaisten nappien muodossa. Samaan tapaan uuden kohteen lisääminen listaan on yleensä luontevaa laittaa listan yhteyteen joko erillisenä linkkinä tai nappina, tai lomakkeena listan ohessa.</p>
+</section>
+<section id="muokkaus--ja-tietonäkymät" class="level2">
+<h2>Muokkaus- ja tietonäkymät</h2>
+<p>Muokkaus- ja tietonäkymissä näkyy kaikki johonkin yksittäiseen tietokohteeseen, esimerkiksi kissaan, liittyvä informaatio yhdellä selkeällä sivulla. Sivutyyppien ero on siinä, että tietosivu vain näyttää sisältöä antamatta suoraa mahdollisuutta muokata sitä, muokkaussivut taas koostuvat yleensä lomakkeista ja toimintonapeista, joilla kohdetta voi muokata.</p>
+<p>Yleensä nämä sivut on myös jollain tapaa linkitetty toisiinsa, joskin joskus linkitys näkyy vain mikäli senhetkisellä käyttäjällä on oikeus muokata kyseessä olevaa tietoa.</p>
+<p>Kissalistan tapauksessa suunnittelija ei ole nähnyt yksittäisen kissan tietosivulle tarvetta, mutta muokkaussivu on tehty:</p>
+<figure>
+<img src="../images/suunnittelu/kissalomake.png" alt="Kissan tietojen muokkaus- ja syöttölomake" /><figcaption>Kissan tietojen muokkaus- ja syöttölomake</figcaption>
+</figure>
+<p>Varsinaisen päämuokkauslomakkeen ohessa sivulla on kasa muita toimintoja. Sivulta löytyvät erillinen kommentointiosio ja napit kissan poistamiseen, lainaamiseen sekä uuden kuvan laittamiseen. Näistä toiminnoista avautuvat sivut ovat yleensä keveämpiä yhden lomakkeen sivuja:</p>
+<figure>
+<img src="../images/suunnittelu/misc.png" alt="Muutamia muokkauksen alitoimintoja" /><figcaption>Muutamia muokkauksen alitoimintoja</figcaption>
+</figure>
+<p>Yleensäottaen jonkin tiedon lisäämis ja muokkaamissivut ovat melko samanlaisia pienillä variaatioilla. Voit halutessasi suunnitella erikseen lisäysnäkymän tai piirtää suunnitelmastasi hybridin, joka tulee toimimaan sekä lisäys- että muokkausnäkymän pohjana.</p>
+<section class="alert alert-success small"><h3>
+Seuraavaksi:
+</h3>
+<p>Kun olet suunnitellut mielestäsi toimivan käyttöliittymän, suunnittele työllesi <a href="tietokanta.html">tietokanta ja dokumentoi se</a>.</p>
+<p>Vaihtoehtoisesti toteuta suunnittelemasi käyttöliittymä <a href="../koodaaminen/html-opas.html">HTML:llä</a>. Ja syvenny sitten tietokantoihin.</p>
+</section>
+
+
+
+
+</section>
+</div>
+</div> 
+</div> 
+<footer>
+  <a href="../sivukartta.html">Sivukartta</a> - 
+  <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">AdvancedKittenry</span> 
+  by
+  <a xmlns:cc="http://creativecommons.org/ns#" href="http://advancedkittenry.github.io/credits.html" property="cc:attributionName" rel="cc:attributionURL">David Consuegra and others</a>
+  is licensed under a 
+  <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.
+  <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">
+    <img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png" />
+  </a>
+</footer>
+</body>
+</html>
