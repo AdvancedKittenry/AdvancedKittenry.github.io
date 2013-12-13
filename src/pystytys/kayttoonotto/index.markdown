@@ -2,7 +2,7 @@
 <!-- order: 1 -->
 
 Tarvitset kaikkiin näihin ohjeisiin komentorivi-istunnon 
-uses-palvelimelle. Sisään pääsee [SSH-protokollalla](../index.html#yhteyden-ottaminen-users-palvelimeen).
+users-palvelimelle. Sisään pääsee [SSH-protokollalla](../index.html#yhteyden-ottaminen-users-palvelimeen).
 
 * [PHP-tuen käyttöönotto](php.html)
 * [Java ja Tomcatin käyttöönotto](java.html)

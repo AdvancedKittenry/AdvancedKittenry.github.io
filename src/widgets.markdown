@@ -122,12 +122,12 @@ class M {
 
 "{\{deadline1}}" turns to "{{deadline1}}".
 
-| Tilaisuus                                               | Deadline |
-|---------------------------------------------------------|--------------------------------|
-| [Viikko I]({{rootdir}}aikataulu/viikko1/index.html)     | {{deadline1}} klo 23:00        |
-| [Viikko II]({{rootdir}}aikataulu/viikko2/index.html)    | {{deadline2}} klo 23:00        |
-| [Viikko III]({{rootdir}}aikataulu/viikko3/index.html)   | {{deadline3}} klo 23:00        |
-| [Viikko IV]({{rootdir}}aikataulu/viikko4/index.html)    | {{deadline4}} klo 23:00        |
-| [Viikko V]({{rootdir}}aikataulu/viikko5/index.html)     | {{deadline5}} klo 23:00        |
-| [Demotilaisuus]({{rootdir}}aikataulu/demo.html)         | {{demodeadline}}               |
-| [Palautus]({{rootdir}}aikataulu/palautus.html)          | {{palautusdeadline}}           |
+| Tilaisuus     | Deadline |
+|---------------|--------------------------------|
+| Viikko I      | {{deadline1}} klo 23:00        |
+| Viikko II     | {{deadline2}} klo 23:00        |
+| Viikko III    | {{deadline3}} klo 23:00        |
+| Viikko IV     | {{deadline4}} klo 23:00        |
+| Viikko V      | {{deadline5}} klo 23:00        |
+| Demotilaisuus | {{demodeadline}}               |
+| Palautus      | {{palautusdeadline}}           |

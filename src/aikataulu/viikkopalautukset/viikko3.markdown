@@ -38,6 +38,11 @@ Kirjautumista toteuttaessa kannattaa koota yleisesti käytetyt toiminnot koottun
 * Virheilmoitusten näyttäminen käyttäjälle.
 * PHP:llä `session_start`-funktion kutsuminen kannattaa sijoittaa tähän tiedostoon.
 
+Laita linkki kirjautumissivuusi myös [esittelysivusi](esittelysivu.html)
+linkkilistaan.
+Mallia linkkeihin voi katsoa 
+[valmiin sivun näköisversiosta]({{rootdir}}src/{{curdir}}esittelysivu/esittelysivu-lopullinen.html).
+
 Mikäli sovelluksessa ei ole lainkaan kirjautumistoimintoja, sovi ohjaajasi kanssa jokin toinen tavoite viikolle 3.
 Yleensä ottaen kirjautumisdeadline voidaan korvata tekemällä alustava versio jostain lisäys- ja muokkauslomakkeesta.
 
@@ -48,7 +53,8 @@ Siirry sitten käyttämäsi kielen toteuttamisohjeisiin:
 * [PHP-ohjeet]({{rootdir}}koodaaminen/php/index.html)
 * [Java-ohjeet]({{rootdir}}koodaaminen/java/index.html)
 
-Tehtyäsi kaiken varmista, että kaikki tekemäsi muutokset näkyvät GitHub-repositoriossasi.
+Tehtyäsi kaiken varmista, että kaikki tekemäsi muutokset näkyvät sekä
+GitHub-repositoriossasi että esittelysivullasi users-palvelimella.
 </ohje>
 
 [arkkitehtuuri]: {{rootdir}}koodaaminen/arkkitehtuuri/index.html

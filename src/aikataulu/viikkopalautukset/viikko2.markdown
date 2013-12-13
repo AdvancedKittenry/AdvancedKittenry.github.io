@@ -65,7 +65,17 @@ Toteutettuna pitää olla HTML-versiot seuraavista aiemmin suunnitelluista sivui
 * [Kevyt testisivu]({{rootdir}}koodaaminen/listaustesti/index.html), joka listaa jonkin tietokantataulun sisällön.
     * Käytä tietokannan täyttämiseen `add-test-data.sql`-tiedostoa, niin sivulla on jotain näytettävää.
 
-## Palautus
+## Palautus ja esittelysivun päivittäminen
+
+Laita lopuksi kaikki tekemäsi uudet tiedostot git-repositorioosi.
+(ConnectionTest-sovellusta ei tosin ole tarpeellista laittaa repositorioon).
+Päivitä [esittelysivullesi](esittelysivu.html)
+linkit omaan sivutilaasi pystyttämääsi
+Connectiontest-sovellukseen,
+HTML-demosivujen etusivulle sekä
+tekemäsi oman tietokantalistaukseen.
+Mallia linkkeihin voi katsoa 
+[valmiin sivun näköisversiosta]({{rootdir}}src/{{curdir}}esittelysivu/esittelysivu-lopullinen.html).
 
 Lopulta palautuksesi kansiorakenteen pitäisi näyttää suurinpiirtein allaolevalta.
 Varmista, että olet ottanut kaikki tarvittavat tiedostot mukaan,
@@ -96,6 +106,7 @@ sql/
   drop-tables.sql
   add-test-data.sql
   ...
+esittelysivu.html
 index.php
 listaustesti.php
 connectionTest.php
@@ -129,6 +140,7 @@ web/
     kissalista.html
     muokkaakissaa.html
   js/
+  esittelysivu.html
   index.jsp
    ...
 sql/
@@ -168,6 +180,7 @@ src/
       Listaservlet.java
   ...
 .gitignore
+esittelysivu.html
 index.jsp
 ~~~~
 
