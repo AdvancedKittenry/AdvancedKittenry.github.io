@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <title>Tietokantataulujen pystyttäminen</title>
+  <title></title>
   <style type="text/css">code{white-space: pre;}</style>
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -113,7 +113,7 @@
 <li><a href="../koodaaminen/index.html">Ohjelmointiohjeistus</a>
 <ul>
 <li><a href="../koodaaminen/html-opas.html">HTML-opas</a></li>
-<li class="selected"><a href="../koodaaminen/kannan-alustus.html">Tietokantataulujen pystyttäminen</a></li>
+<li><a href="../koodaaminen/kannan-alustus.html">Tietokantataulujen pystyttäminen</a></li>
 <li><a href="../koodaaminen/testisovellus.html">ConnectionTest-testisovellus</a></li>
 <li><a href="../koodaaminen/tietokantayhteys/index.html">Tietokantayhteyden pystytys</a></li>
 <li><a href="../koodaaminen/git-ja-salasanat.html">Git-repositoriot ja salasanat</a></li>
@@ -156,45 +156,36 @@
 </nav>
 </div>
 <div class="col-md-6" id="content">
-<header>
-<h1 class="title">Tietokantataulujen pystyttäminen</h1>
-</header>
-<!-- order: 1 -->
-
-<section class="alert alert-info"><h3>
-Lisätietoa
-</h3>
-<p>Näissä ohjeissa oletetaan kannan pystyttäminen users-palvelimelle, jossa on jo <a href="../pystytys/kayttoonotto/index.html">otettu tietokantapalvelin käyttöön</a>.</p>
-</section>
-
-<p>Ennen kuin voimme aloittaa kannan käyttämisen, pitää sinne pystyttää tarvittavat tietokantataulut ja testidataa. Tämän jälkeen voimme testata saammeko kantaan yhteyden <a href="testisovellus.html">testisovelluksella</a>.</p>
-<section id="tietokannan-alustustiedostojen-ajaminen" class="level2">
-<h2>Tietokannan alustustiedostojen ajaminen</h2>
-<p>SQL-lauseiden sijoittaminen tiedostoihin mahdollistaa kannan helpon pystyttämisen ja alasajon. Voit ajaa sql-tiedostoon kantaan kirjautumalla usersille ja käyttämällä unixin <em>putkitusta</em>.</p>
-<p>Jos olet laittanut SQL-tiedostosi kansioon sql, ja käytät PostgreSQL:ää saat tietokantataulut luotua näin:</p>
-<pre><code>psql &lt; sql/create-tables.sql</code></pre>
-<p>Yllä oleva komento suorittaa tiedoston sisältämät SQL-lauseet tietokannassa. MySQL-versio on samantapainen, mutta komentona on psql:n sijasta mysql, minkä lisäksi mysql kysyy sinulta salasanaa.</p>
-<p>Mikäli haluaa resetoida koko tietokantansa voi ajaa seuraavan komennon:</p>
-<pre><code>cat sql/drop-tables.sql sql/create-tables.sql sql/add-test-data.sql | psql</code></pre>
-<p>Komento syöttää <code>cat</code>:in jälkeen annettujen tiedostojen sisällön yksitellen psql-tietokantakomentotulkille. Näin kanta saadaan ajettua ensin alas, jonka jälkeen luodaan taulut ja lisätään testidata.</p>
-<section class="alert alert-danger"><h3>
-Pidä mielessä!
-</h3>
-<p>Viiteavaimien takia joudut yleensä kirjoittamaan pudotuskäskyt päinvastaisessa järjestyksessä luontilauseisiin nähden. Muuten viite-eheystarkistukset eivät välttämättä anna ajaa tietokantatauluja alas.</p>
-</section>
-
-<section class="alert alert-success small"><h3>
-Seuraavaksi:
-</h3>
-<p>Saatuasi tietokannan pyörimään voit asentaa sen testaamiseksi <a href="testisovellus.html">ConnectionTest-testisovelluksen</a> ja aloittaa <a href="tietokantayhteys/index.html">oman tietokantakoodisi tekemisen</a>.</p>
-</section>
-
-
-
-
-
-
-</section>
+<blockquote>
+<p><strong>Tietokohde: Huoneisto</strong></p>
+<table class="table table-striped table-bordered">
+<col style="width: 18%" /><col style="width: 25%" /><col style="width: 38%" /><thead>
+<tr class="header">
+<th style="text-align: left;">Attribuutti</th>
+<th style="text-align: left;">Arvojoukko</th>
+<th style="text-align: left;">Kuvailu</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Osoite</td>
+<td style="text-align: left;">Merkkijono, max. 120 merkkiä</td>
+<td style="text-align: left;">Asunnon katuosoite muodossa Paratiisitie 13, Ankkalinna, Calisota, Yhdysvallat</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Pinta-ala</td>
+<td style="text-align: left;">Desimaaliluku</td>
+<td style="text-align: left;">Asunnon pinta-ala neliömetreinä</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Hintapyyntö</td>
+<td style="text-align: left;">Desimaaliluku</td>
+<td style="text-align: left;">Myyjän hintapyyntö euroina.</td>
+</tr>
+</tbody>
+</table>
+<p>Huoneisto, joka on annettu myytäväksi, mutta joka ei vielä ole katalogissa voi olla kuulumatta yhdellekään virkailijalle. Kukin huoneisto voi olla kerralla vain yhden virkailijan hoidettavana. Yhdellä virkailijalla voi kuitenkin olla hoidettavanaan useita huoneistoja. Huoneistoon voidaan liittää myös varustelukuvauksia. Huoneistoa koskevista kuvauksista kulloinkin huomioidaan vain viimeisimpänä lisätty. Yksi varustelukuvaus voi kuvata vain yhtä huoneistoa. Huoneiston varustelukuvaus voi olla huoneistoa hoitavan tai jonkun muun virkailijan kirjoittama.</p>
+</blockquote>
 </div>
 </div> 
 </div> 

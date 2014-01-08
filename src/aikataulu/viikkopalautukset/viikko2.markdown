@@ -17,24 +17,18 @@ jolloin ohjaaja voi antaa vinkkejä niiden tekemisessä.
 Viikon tehtävät jakautuvat seuraavasti.
 Kunkin otsikon alla olevista asioista saa yhden aikataulupisteen.
 
-<comment>
-TODO:
-* Tiedostot sovelluksen tietokannan taulujen luomiseen ja alasajoon, tietokannan pystytys 
-* Testifilu
-* Oma listaus! Hyvin yksinkertainen!
-</comment>
+## Käyttöliittymän suunnittelu (puoli pistettä)
 
-## Työn käytännön yksityiskohtien suunnittelu (1p)
-
-Dokumentoi ja suunnittele sovelluksellesi käyttöliittymä ja tietokanta.
-Lisäohjeita löytyy seuraavilta sivuilta:
-
-* [Käyttöliittymän suunnittelu]({{rootdir}}suunnittelu/kayttoliittyma.html).
-* [Tietokannan suunnittelu]({{rootdir}}suunnittelu/tietokanta.html) ja dokumentointi.
+Dokumentoi ja suunnittele sovelluksellesi käyttöliittymä
+seuraamalla
+[käyttöliittymän suunnitteluohjetta]({{rootdir}}suunnittelu/kayttoliittyma.html).
+Lopputuloksena pitäisi dokumentaatiossa olla käyttöliittymäkaavio.
+Liitä myös tekemäsi muut suunnitelmat (etenkin yleisnavigaatio)
+repositorioosi, ellet ole näyttänyt niitä ohjaajalle pajassa.
 
 ## Käyttöliittymän toteututus HTML:llä (1p)
 
-Tässä vaiheessa työtä siirrytään suunnittelusta käytäntöön
+Siirrytään suunnittelusta käytäntöön
 ja luodaan suunnitelluista sivuista oikean näköiset, mutta
 vielä staattiset HTML-versiot. 
 
@@ -48,13 +42,19 @@ Javalla tämä hakemisto sijoitetaan `web`-hakemistoon, PHP:llä se voi olla pro
 Sijoita kaikki tällä viikolla tekemäsi HTML-tiedostot tuohon kansioon.
 Lisää ohjeita HTML-kielen kanssa työskentelyyn löytyy [HTML-oppaasta]({{rootdir}}koodaaminen/html-opas.html).
 
-Toteutettuna pitää olla HTML-versiot seuraavista aiemmin suunnitelluista sivuista:
+Toteutettuna pitää olla HTML-versiot seuraavista aiemmin suunnitelluista sivuista (linkit suunnitteluohjeeseen):
 
 * [Sivujen runko ja navigaatio sekä etusivu]({{rootdir}}suunnittelu/kayttoliittyma.html#etusivu-ja-yleisnäkymä-template)
 * [Listaussivujen]({{rootdir}}suunnittelu/kayttoliittyma.html#listanäkymän-suunnittelu) toteuttaminen
 * [Muokkaus ja tietonäkymien]({{rootdir}}suunnittelu/kayttoliittyma.html#muokkaus--ja-tietonäkymät) toteuttaminen
 
 ## Tietokannan käytön aloittaminen (1p)
+
+Suunnittele ja dokumentoi sovelluksellesi tietokanta
+sekä sanallisella että kooditasolla.
+Aloita sivulta 
+[tietokannan suunnittelu]({{rootdir}}suunnittelu/tietokanta.html).
+
 
 * [Tietokannan pystyttäminen palvelimelle]({{rootdir}}koodaaminen/kannan-alustus.html)
     * Luodaan SQL-tiedostot, joilla kannan rakenteen saa vedettyä ylös ja alas.
@@ -64,6 +64,47 @@ Toteutettuna pitää olla HTML-versiot seuraavista aiemmin suunnitelluista sivui
     * Tämän tulee olla näkyvillä usersin palvelintilassa.
 * [Kevyt testisivu]({{rootdir}}koodaaminen/listaustesti/index.html), joka listaa jonkin tietokantataulun sisällön.
     * Käytä tietokannan täyttämiseen `add-test-data.sql`-tiedostoa, niin sivulla on jotain näytettävää.
+
+## Tietokannan rakenteen dokumentoiminen (puoli pistettä)
+
+Tee lopuksi lista kunkin kaavion tietokohteen
+sisältämistä tietokentistä, niiden tyypeistä ja rooleista sovelluksessa.
+Liitä kenttien kuvaukset taulukkoina dokumentaatioon. 
+Myös yhteydet toisiin kohteisiin täytyy määritellä. 
+Lopputuloksen kuuluu näyttää tämäntapaiselta:
+
+> **Tietokohde: Kissa**
+> 
+> ------------------------------------------------------------------------
+> Attribuutti          Arvojoukko         Kuvailu
+> -------------------- ------------------ -------------------------------
+> Nimi                 Merkkijono,        Kissan nimi
+>                      max. 80 merkkiä    
+> 
+> Väri                 Merkkijono,        Kuvaus kissan väristä
+>                      max. 30 merkkiä    esim. "valkotäplikäs oranssi"
+> 
+> Viim. ruokkimis-pvm. Päivämäärä         Koska kissa on viimeksi ruokittu?
+> 
+> Lisätiedot           Merkkijono,        Kuvaus kissan ominaisuuksista
+>                      max. 255 merkkiä   esim. "Serafiina syö vain kalaa."
+> 
+> -----------------------------------------------------------------------
+> 
+> Kissa, joka asuu kissatädin kartanossa. Jokainen kissa kuuluu tasan yhteen kissarotuun. Jokaisesta kissasta merkitään ylös sitä viimeksi ruokkinut palvelija.
+
+### Relaatiotietokantakaavio
+
+Tee lopuksi suunnittelemastasi tietosisällöstä [dokumentaatio-ohjeen mukainen relaatiotietokantakaavio]({{rootdir}}dokumentaatio-ohje.html#relaatiotietokantakaavio):
+![Kissoihin liittymätön relaatiotietokantakaavio]({{imgdir}}dokumentaatio-ohje/relaatiokaavio.gif)
+
+Muista lisätä kaavioon kaikki olennaiset viiteavaimet sekä
+monesta-moneen suhteiden tilalle välitaulut.
+
+Tallenna tekemäsi kaaviot ja uusi sisältö 
+repositoriosi samaan dokumentaatiotiedostoon missä edellisetkin dokumentaatiot olivat.
+Lisää myös kaavioiden tuottamiseen käyttämäsi lähdetiedostot
+repositoriosi doc-kansioon niin ne pysyvät tallessa muutosten varalta.
 
 ## Palautus ja esittelysivun päivittäminen
 
