@@ -36,7 +36,7 @@ Kirjautumista toteuttaessa kannattaa koota yleisesti käytetyt toiminnot koottun
 * Näkymän näyttäminen sivupohjan kanssa yhdellä funktiokutsulla
 * Selaimen ohjaus toiselle sivulle (HTTP redirect, toteuttaminen vapaaehtoinen)
 * Virheilmoitusten näyttäminen käyttäjälle.
-* PHP:llä `session_start`-funktion kutsuminen kannattaa sijoittaa tähän tiedostoon.
+* PHP:llä `[session_start](http://www.php.net/session_start)`-funktion kutsuminen kannattaa sijoittaa tähän tiedostoon.
 
 Laita linkki kirjautumissivuusi myös [esittelysivusi](esittelysivu.html)
 linkkilistaan.
