@@ -1,7 +1,7 @@
 % Listaus Javalla
 
 Varmista ensin, että sinulla on luokka tai funktio, jolla saat [yhteyden tietokantaan](../tietokantayhteys/index.html).
-Nyt käytämme tietokantayhteyttä luokaksemme hyvin yksinkertaisen sivun, jolla listataan jonkun taulun sisältöä.
+Nyt käytämme tietokantayhteyttä luodaksemme hyvin yksinkertaisen sivun, jolla listataan jonkun taulun sisältöä.
 Teemme tämän kahdessa vaiheessa: 
 Ensin luomme yksinkertaisen servletin, joka lähettää selaimelle yksinkertaista HTML:ää,
 sitten laitamme tämän servletin näyttämään listan.

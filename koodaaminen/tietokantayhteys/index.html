@@ -286,9 +286,15 @@ Yllä olevan koodin vaatimat importit
 
 <p>Tee itsellesi testiluokka/tiedosto, johon sijoitat sellaisenaan tietokannan muodostamisen. Laita tämä tiedosto omaan pakettiinsa ja/tai kansioonsa. Hyviä nimiä paketille/hakemistolle voivat olla esim. “Tietokanta” tai “Models”. Sovelluksesta tulee huomattavasti selkeämpi, jos kaikki tietokantaa käsittelevä koodi on sijoitettu yhteen paikkaan.</p>
 <p>Koeta käynnistää tiedostosi koodi selaimella ja katso muodostuuko yhteys virheittä. Tietokannan nopeaan testaamisen voi myös käyttää seuraavanlaista koodia:</p>
-<div class="row">
-<div class="col-md-6">
-<p><strong>Java</strong></p>
+<ul class='nav nav-tabs nav-justified'><li class='active'>
+<a href='#tab_2_0' data-toggle='tab'>Java-testausesimerkki</a>
+</li>
+<li>
+<a href='#tab_2_1' data-toggle='tab'>PHP-testausesimerkki </a>
+</li></ul><div class='panel panel-default'><div class='panel-body'><div class='tab-content'>
+<section class='tab-pane active' id='tab_2_0' >
+
+<p>Javalla yhteyden testaamista varten pitää luoda oma Servlet-luokka. NetBeans sisältää niitä varten varsin toimivan mallirungon, josta riittää vaihtaa <code>processRequest</code>-metodin sisältö:</p>
 <pre class="sourceCode java"><code class="sourceCode java"><span class="co">//HttpServlet-luokan perivään servlettiin menevä metodi:</span>
 <span class="kw">protected</span> <span class="dt">void</span> <span class="fu">processRequest</span>(HttpServletRequest request, HttpServletResponse response)
       <span class="kw">throws</span> ServletException, IOException {
@@ -314,14 +320,12 @@ Yllä olevan koodin vaatimat importit
 
   tulokset.<span class="fu">close</span>(); kysely.<span class="fu">close</span>();
 }</code></pre>
-<p>Sijoita tämä koodi asianmukaisen servletin processRequest-metodiin. Koodin pitäisi lähettää selaimelle teksti “Tulos: 2”.</p>
-</div>
-<div class="col-md-6">
-<p><strong>PHP</strong></p>
-<pre class="sourceCode php"><code class="sourceCode php">
+<p>Koodin pitäisi lähettää selaimelle teksti “Tulos: 2”.</p>
+<p>Jos et käytä NetBeansia, voit katsoa kontrolleriesimerkkejä <a href="../../koodaaminen/listaustesti/java.html">listauksen toteuttamisohjeista</a>.</p>
+</section>
+<section class='tab-pane' id='tab_2_1' >
 
-
-<span class="kw">$sql</span> = <span class="st">&quot;select 1+1 as two&quot;</span><span class="ot">;</span>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">$sql</span> = <span class="st">&quot;select 1+1 as two&quot;</span><span class="ot">;</span>
 <span class="kw">$kysely</span> = <span class="kw">$yhteys</span>-&gt;prepare<span class="ot">(</span><span class="kw">$sql</span><span class="ot">);</span>
 
 
@@ -331,8 +335,8 @@ Yllä olevan koodin vaatimat importit
 }</code></pre>
 <p>Koodin pitäisi tulostaa seuraava teksti debug-koodaukseen tarkoitettua <a href="http://php.net/manual/en/function.var-dump.php">var_dump</a>-funktiota käyttäen:</p>
 <pre><code>int(2)</code></pre>
-</div>
-</div>
+</section>
+</div></div></div>
 
 <p>Kun olet saanut saanut yhteyden toimimaan ja palauttamaan kannasta tietoa, laita se omaan metodiinsa, joka palauttaa yhteyden. Voit tehdä yhteydelle halutessasi myös oman luokan, johon sijoitat muitakin toistuvia tietokantaan liittyviä koodinpäktiä.</p>
 <p>Jos et halua tehdä luokkaa, voit PHP:llä käyttää myös lyhyttä funktiota, jossa on funktion sisäinen <a href="http://php.net/manual/en/language.variables.scope.php#language.variables.scope.static">staattinen muuttuja</a>:</p>

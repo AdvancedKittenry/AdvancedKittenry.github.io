@@ -155,9 +155,14 @@ koodi on sijoitettu yhteen paikkaan.
 Koeta käynnistää tiedostosi koodi selaimella ja katso muodostuuko yhteys virheittä.
 Tietokannan nopeaan testaamisen voi myös käyttää seuraavanlaista koodia:
 
-<sidebyside>
-<column>
-**Java** 
+<tabs>
+<tab title="Java-testausesimerkki">
+
+Javalla yhteyden testaamista varten pitää luoda
+oma Servlet-luokka.
+NetBeans sisältää niitä varten varsin toimivan
+mallirungon, josta riittää vaihtaa `processRequest`-metodin
+sisältö:
 
 ~~~java
 //HttpServlet-luokan perivään servlettiin menevä metodi:
@@ -187,17 +192,15 @@ protected void processRequest(HttpServletRequest request, HttpServletResponse re
 }
 ~~~
 
-Sijoita tämä koodi asianmukaisen servletin processRequest-metodiin.
 Koodin pitäisi lähettää selaimelle teksti "Tulos: 2".
 
-</column>
-<column>
-**PHP** 
+Jos et käytä NetBeansia, voit katsoa kontrolleriesimerkkejä
+[listauksen toteuttamisohjeista]({{rootdir}}koodaaminen/listaustesti/java.html).
+
+</tab>
+<tab title="PHP-testausesimerkki ">
 
 ~~~inlinephp
-
-
-
 $sql = "select 1+1 as two";
 $kysely = $yhteys->prepare($sql);
 
@@ -206,8 +209,6 @@ if ($kysely->execute()) {
   $kakkonen = $kysely->fetchColumn();
   var_dump($kakkonen);
 }
-
-
 ~~~
 
 Koodin pitäisi tulostaa seuraava teksti debug-koodaukseen tarkoitettua
@@ -216,8 +217,9 @@ Koodin pitäisi tulostaa seuraava teksti debug-koodaukseen tarkoitettua
 ~~~
 int(2)
 ~~~
-</column>
-</sidebyside>
+
+</tab>
+</tabs>
 
 Kun olet saanut saanut yhteyden toimimaan ja palauttamaan kannasta tietoa,
 laita se omaan metodiinsa, joka palauttaa yhteyden. 
