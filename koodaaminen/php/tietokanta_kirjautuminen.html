@@ -3,11 +3,30 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <title>Viikko 5</title>
+  <title>Tietokannan käytön alkeet</title>
   <style type="text/css">code{white-space: pre;}</style>
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
   <link rel="stylesheet" href="../../css/base.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!--[if lt IE 9]>
@@ -44,7 +63,7 @@
 <li><a href="../../aikataulu/viikkopalautukset/viikko2.html">Viikko 2</a></li>
 <li><a href="../../aikataulu/viikkopalautukset/viikko3.html">Viikko 3</a></li>
 <li><a href="../../aikataulu/viikkopalautukset/viikko4.html">Viikko 4</a></li>
-<li class="selected"><a href="../../aikataulu/viikkopalautukset/viikko5.html">Viikko 5</a></li>
+<li><a href="../../aikataulu/viikkopalautukset/viikko5.html">Viikko 5</a></li>
 </ul></li>
 <li><a href="../../aikataulu/demo.html">Demotilaisuus</a></li>
 <li><a href="../../aikataulu/palautus.html">Työn palautus</a></li>
@@ -141,7 +160,7 @@
 <li><a href="../../koodaaminen/php/rakenne.html">Sovelluksen rakenne ja kontrollerit</a></li>
 <li><a href="../../koodaaminen/php/nakymat.html">Näkymien tekeminen</a></li>
 <li><a href="../../koodaaminen/php/lomakkeet.html">Lomakkeiden käyttö ja vastaanottaminen</a></li>
-<li><a href="../../koodaaminen/php/tietokanta_kirjautuminen.html">Tietokannan käytön alkeet</a></li>
+<li class="selected"><a href="../../koodaaminen/php/tietokanta_kirjautuminen.html">Tietokannan käytön alkeet</a></li>
 <li><a href="../../koodaaminen/php/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
 <li><a href="../../koodaaminen/php/mallit_muokkaustoiminnot.html">Malliluokat ja tiedon muuttaminen</a></li>
 <li><a href="../../koodaaminen/php/muokkausnakymat.html">Muokkausnäkymän toteuttaminen</a></li>
@@ -159,36 +178,51 @@
 </div>
 <div class="col-md-6" id="content">
 <header>
-<h1 class="title">Viikko 5</h1>
+<h1 class="title">Tietokannan käytön alkeet</h1>
 </header>
-<!-- order: 1 -->
+<!-- order: 4 -->
 
-<section class="alert alert-warning small"><h3>
-Deadline:
+<p>Tehdään nyt aiemmin tehtyyn käyttäjää mallintavaan luokkaan staattinen metodi käyttäjän hakemiseen käyttäjätunnuksella ja salasanalla. Käytä tätä metodia kirjautumisen tarkistamisen toteuttamiseen.</p>
+<p>Metodi kannattaa toteuttaa sellaisen SQL-kyselyn ympärille, joka hakee kannasta tietoja salasanan ja käyttäjänimen perusteella. Se voi palauttaa esimerkiksi käyttäjäluokan olion, jolloin siitä on järkevää tehdä luokan staattinen metodi.</p>
+<p>Palautettua arvoa käytetään myöhemmin kirjautuneen käyttäjän tallentamiseen istuntoon.</p>
+<p><strong>Esimerkkikoodina ote tiedostosta libs/models/kayttaja.php:</strong></p>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">class</span> Kayttaja {
+  
+  <span class="kw">private</span> <span class="kw">$id</span><span class="ot">;</span>
+  <span class="kw">private</span> <span class="kw">$username</span><span class="ot">;</span>
+  <span class="kw">private</span> <span class="kw">$password</span><span class="ot">;</span>
+  
+  <span class="co">/* Etsitään kannasta käyttäjätunnuksella ja salasanalla käyttäjäriviä */</span>
+  <span class="kw">public</span> <span class="kw">static</span> <span class="kw">function</span> getKayttajaTunnuksilla<span class="ot">(</span><span class="kw">$kayttaja</span><span class="ot">,</span> <span class="kw">$salasana</span><span class="ot">)</span> {
+    <span class="kw">$sql</span> = <span class="st">&quot;SELECT id,username, password from users where username = ? AND password = ? LIMIT 1&quot;</span><span class="ot">;</span>
+    <span class="kw">$kysely</span> = getTietokanta<span class="ot">()</span>-&gt;prepare<span class="ot">(</span><span class="kw">$sql</span><span class="ot">);</span>
+    <span class="kw">$kysely</span>-&gt;execute<span class="ot">(</span><span class="fu">array</span><span class="ot">(</span><span class="kw">$kayttaja</span><span class="ot">,</span> <span class="kw">$salasana</span><span class="ot">));</span>
+
+    <span class="kw">$tulos</span> = <span class="kw">$kysely</span>-&gt;fetchObject<span class="ot">();</span>
+    <span class="kw">if</span> <span class="ot">(</span><span class="kw">$tulos</span> == <span class="kw">null</span><span class="ot">)</span> {
+      <span class="kw">return</span> <span class="kw">null</span><span class="ot">;</span>
+    } <span class="kw">else</span> {
+      <span class="kw">$kayttaja</span> = <span class="kw">new</span> Kayttaja<span class="ot">();</span> 
+      <span class="kw">$kayttaja</span>-&gt;id = <span class="kw">$tulos</span>-&gt;id<span class="ot">;</span>
+      <span class="kw">$kayttaja</span>-&gt;username = <span class="kw">$tulos</span>-&gt;username<span class="ot">;</span>
+      <span class="kw">$kayttaja</span>-&gt;password = <span class="kw">$tulos</span>-&gt;password<span class="ot">;</span>
+
+      <span class="kw">return</span> <span class="kw">$kayttaja</span><span class="ot">;</span>
+    }
+  }
+
+  <span class="co">/* Tähän muita Käyttäjäluokan metodeita */</span>
+}</code></pre>
+<p>Tee omaan malliluokkaasi vastaava metodi ja laita kirjautumislomakkeesi käyttämään sitä. Testaa toimiiko kaikki oikein.</p>
+<section class="alert alert-success small"><h3>
+Seuraavaksi:
 </h3>
-<span class="coursekeyword deadline5">su 1.12 klo 23:00</span>
+
+<p>Seuraavaksi käytämme istuntoja <a href="istunnot.html">kirjautumisen tallentamiseen sivulatausten välillä</a>.</p>
 </section>
 
-<p>Palautuspäivämäärään mennessä työn on täytettävä alla listatut vaatimukset. Kunkin otsikon alla olevista asioista saa suluissa määritellyt aikataulupisteet.</p>
-<section id="työn-eteneminen-1p" class="level2">
-<h2>Työn eteneminen (1p)</h2>
-<p>Työn on viidennen viikon jälkeen hyvä olla jo melko lähellä valmista. Vaatimuksena on, että ainakin kahden tietokohteen sivut on toteutettu ja testattu toimiviksi.</p>
-<p>Kaiken valmiin koodin on toimittava kaatumatta ja näytettävä virhetilanteista järkeviä virheilmoituksia käyttäjälle.</p>
-</section>
-<section id="hyvä-ohjelmointityyli-ja-arkkitehtuuri-1p" class="level2">
-<h2>Hyvä ohjelmointityyli ja arkkitehtuuri (1p)</h2>
-<p>Koodisi noudattaa hyvää ohjelmointityyliä ja on selkeää lukea. Sovelluksen toiminnot on järjestetty järkevästi eri tiedostoihin MVC-arkkitehtuurin mukaisesti.</p>
-</section>
-<section id="dokumentaatio-1p" class="level2">
-<h2>Dokumentaatio (1p)</h2>
-<p>Dokumentaatiosta on kirjoitettu täysimittainen raakaversio. Keskeneräisiä osia ei ole pakko vielä dokumentoida.</p>
-<p>Uutta kirjoitettava siis ainakin:</p>
-<ul>
-<li><a href="../../dokumentaatio-ohje.html#järjestelmän-yleisrakenne">Järjestelmän yleisrakenne</a>.</li>
-<li><a href="../../dokumentaatio-ohje.html#järjestelmän-komponentit">Järjestelmän komponentit</a>.</li>
-</ul>
-<p>Huolehdi myös siitä, että koodisi on kommentoitu siellä missä se on epäselvempää.</p>
-</section>
+
+
 </div>
 </div> 
 </div> 

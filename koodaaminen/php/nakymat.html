@@ -150,6 +150,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li><a href="../../koodaaminen/java/rakenne.html">Sovelluksen rakenne ja servletit</a></li>
 <li><a href="../../koodaaminen/java/nakymat.html">Näkymien tekeminen ja JSP</a></li>
 <li><a href="../../koodaaminen/java/lomakkeet.html">Lomakkeiden käyttö ja vastaanottaminen</a></li>
+<li><a href="../../koodaaminen/java/tietokanta_kirjautuminen.html">Tietokannan käytön alkeet</a></li>
 <li><a href="../../koodaaminen/java/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
 <li><a href="../../koodaaminen/java/mallit_muokkaustoiminnot.html">Malliluokat ja tiedon muuttaminen</a></li>
 <li><a href="../../koodaaminen/java/muokkausnakymat.html">Muokkausnäkymän toteuttaminen</a></li>
@@ -159,6 +160,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li><a href="../../koodaaminen/php/rakenne.html">Sovelluksen rakenne ja kontrollerit</a></li>
 <li class="selected"><a href="../../koodaaminen/php/nakymat.html">Näkymien tekeminen</a></li>
 <li><a href="../../koodaaminen/php/lomakkeet.html">Lomakkeiden käyttö ja vastaanottaminen</a></li>
+<li><a href="../../koodaaminen/php/tietokanta_kirjautuminen.html">Tietokannan käytön alkeet</a></li>
 <li><a href="../../koodaaminen/php/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
 <li><a href="../../koodaaminen/php/mallit_muokkaustoiminnot.html">Malliluokat ja tiedon muuttaminen</a></li>
 <li><a href="../../koodaaminen/php/muokkausnakymat.html">Muokkausnäkymän toteuttaminen</a></li>
@@ -262,11 +264,13 @@ Lisätietoa
 <p>Käyttäminen on yksinkertaista. Voimme esimerkiksi asettaa näkymälle lähetettävän virheviestin näin:</p>
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span> 
   naytaNakyma<span class="ot">(</span><span class="st">&#39;kissat.php&#39;</span><span class="ot">,</span> <span class="fu">array</span><span class="ot">(</span>
-    <span class="st">&#39;virheViesti&#39;</span> =&gt; <span class="st">&quot;Et voi ruokkia kissaa, joka on syönyt alle kolme tuntia sitten!&quot;</span>
+    <span class="st">&#39;virhe&#39;</span> =&gt; <span class="st">&quot;Et voi ruokkia kissaa, joka on syönyt alle kolme tuntia sitten!&quot;</span>
   <span class="ot">));</span>
 }</code></pre>
 <p>Jolloin näkymässä voimme kirjoittaa HTML-koodin sekaan:</p>
-<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$data</span>-&gt;virheViesti<span class="ot">;</span> <span class="kw">?&gt;</span></code></pre>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span> <span class="kw">if</span> <span class="ot">(</span>!<span class="fu">empty</span><span class="ot">(</span><span class="kw">$data</span>-&gt;virhe<span class="ot">))</span>: <span class="kw">?&gt;</span>
+  &lt;div class=&quot;alert alert-danger&quot;&gt;<span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$data</span>-&gt;virhe<span class="ot">;</span> <span class="kw">?&gt;</span>&lt;/div&gt;
+<span class="kw">&lt;?php</span> <span class="kw">endif</span><span class="ot">;</span> <span class="kw">?&gt;</span></code></pre>
 <section class="alert alert-info"><h3>
 Lisätietoa
 </h3>

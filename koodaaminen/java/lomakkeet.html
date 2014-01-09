@@ -150,6 +150,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li><a href="../../koodaaminen/java/rakenne.html">Sovelluksen rakenne ja servletit</a></li>
 <li><a href="../../koodaaminen/java/nakymat.html">Näkymien tekeminen ja JSP</a></li>
 <li class="selected"><a href="../../koodaaminen/java/lomakkeet.html">Lomakkeiden käyttö ja vastaanottaminen</a></li>
+<li><a href="../../koodaaminen/java/tietokanta_kirjautuminen.html">Tietokannan käytön alkeet</a></li>
 <li><a href="../../koodaaminen/java/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
 <li><a href="../../koodaaminen/java/mallit_muokkaustoiminnot.html">Malliluokat ja tiedon muuttaminen</a></li>
 <li><a href="../../koodaaminen/java/muokkausnakymat.html">Muokkausnäkymän toteuttaminen</a></li>
@@ -159,6 +160,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li><a href="../../koodaaminen/php/rakenne.html">Sovelluksen rakenne ja kontrollerit</a></li>
 <li><a href="../../koodaaminen/php/nakymat.html">Näkymien tekeminen</a></li>
 <li><a href="../../koodaaminen/php/lomakkeet.html">Lomakkeiden käyttö ja vastaanottaminen</a></li>
+<li><a href="../../koodaaminen/php/tietokanta_kirjautuminen.html">Tietokannan käytön alkeet</a></li>
 <li><a href="../../koodaaminen/php/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
 <li><a href="../../koodaaminen/php/mallit_muokkaustoiminnot.html">Malliluokat ja tiedon muuttaminen</a></li>
 <li><a href="../../koodaaminen/php/muokkausnakymat.html">Muokkausnäkymän toteuttaminen</a></li>
@@ -198,59 +200,106 @@ Salasana: <span class="kw">&lt;input</span><span class="ot"> type=</span><span c
   String salasana = request.<span class="fu">getParameter</span>(<span class="st">&quot;password&quot;</span>);
   String kayttaja = request.<span class="fu">getParameter</span>(<span class="st">&quot;username&quot;</span>);
   
-  <span class="co">/* Tarkistetaan mallilta onko parametrina saatu oikeat tunnukset */</span>
-  <span class="kw">if</span> (Kissalista.<span class="fu">Mallit</span>.<span class="fu">Kayttaja</span>.<span class="fu">getKayttaja</span>(kayttaja, salasana) != <span class="kw">null</span>) {
+  <span class="co">/* Muuten tarkistetaan onko parametrina saatu oikeat tunnukset */</span>
+  <span class="kw">if</span> (<span class="st">&quot;svinhufvud&quot;</span>.<span class="fu">equals</span>(kayttaja) &amp;&amp; <span class="st">&quot;kissakartano&quot;</span>.<span class="fu">equals</span>(salasana)) {
+    <span class="co">/* Jos tunnus on oikea, ohjataan käyttäjä HTTP-ohjauksella kissalistaan. */</span>
+    response.<span class="fu">sendRedirect</span>(<span class="st">&quot;kissalista&quot;</span>);
+  } <span class="kw">else</span> {
+    <span class="co">/* Väärän tunnuksen syöttänyt saa eteensä kirjautumislomakkeen.</span>
+<span class="co">     * Tässä käytetään omassa kirjastotiedostossa määriteltyä näkymännäyttöfunktioita */</span>
+    <span class="fu">naytaJSP</span>(<span class="st">&quot;login.jsp&quot;</span>, request, response);
+  }
+}</code></pre>
+<p>Koodissa kannattaa huomata kutsu <code>response.sendRedirect(&quot;kissalista&quot;);</code>. <code>HttpServletResponse</code>-olion <a href="http://docs.oracle.com/javaee/6/api/javax/servlet/http/HttpServletResponse.html#sendRedirect(java.lang.String)">sendRedirect-metodi</a> lähettää käyttäjän selaimen parametrina annettuun osoitteesen. Tämä on kätevä tapa ohjata käyttäjä jonkin toisen servletin luo. Voit halutessasi tehdä siitäkin metodin aiemmin tekemääsi servlet-yläluokkaan.</p>
+<p>Testaa ylläolevan tapaista koodia omassa sovelluksessasi. Voit tehdä lomakkeen vastaanottamisen joko niin, että se toimii samassa servletissä lomakkeen näyttämisen kanssa tai tehdä kirjautumislomakkeen vastaanottolle oman servletin.</p>
+<p>Keskitytään tämän jälkeen tekemään koodista käyttäjäystävällisempi.</p>
+</section>
+<section id="käytettävyys" class="level2">
+<h2>Käytettävyys</h2>
+<p>Ylläolevassa kirjautumiskäsittelijässä on kaksi olennaista käytettävyysongelmaa. Ensinnäkin, mikäli käyttäjä syöttää väärän tunnuksen tai salasana tai ei syötä jompaakumpaa ollenkaan, lomake vain palaa kirjautumisruutuun kertomatta mitä tapahtui. Käyttäjälle jää hiipivä epäilys siitä, ottiko sovellus tunnuksia ollenkaan vastana, kun se ei kerro mitään tekemisistään.</p>
+<p>Toinen, hieman pienempi, ongelma on, että salasanansa väärin syöttänyt käyttäjä joutuu syöttämään käyttäjätunnuksensa turhaan uudestaan.</p>
+<p>Korjataan nämä ongelmat!</p>
+<p>Jälkimmäisen ongelman korjaaminen on yksinkertaista, tarvitsee vain lisätä näkymän näyttämiseen määrite, jossa lähetetään käyttäjän syöttämä käyttäjätunnus näkymälle ja sitten näyttää se näkymässä:</p>
+<div class="row">
+<div class="col-md-7">
+<p><strong>Servlet:</strong></p>
+<pre class="sourceCode java"><code class="sourceCode java">request.<span class="fu">setAttribute</span>(<span class="st">&quot;kayttaja&quot;</span>, kayttaja);  
+<span class="fu">naytaJSP</span>(<span class="st">&quot;login.jsp&quot;</span>, request, response);</code></pre>
+</div>
+<div class="col-md-5">
+
+<p><strong>JSP-tiedosto:</strong></p>
+<pre class="sourceCode jsp"><code class="sourceCode jsp">Käyttäjänimi: &lt;input<span class="ot"> type</span>=<span class="dt">&quot;text&quot;</span><span class="ot"> name</span>=<span class="dt">&quot;username&quot;</span><span class="ot"> value</span>=<span class="dt">&quot;</span>${kayttaja}<span class="dt">&quot;</span><span class="ot"> </span>/&gt;</code></pre>
+</div>
+</div>
+
+<p>Ensimmäinen ongelma eli virheviestien näyttäminen on niin yleinen, että sitä varten kannattaa sijoittaa oma koodinsa template-tagiin, sillä sitä tullaan oikeasti tarvitsemaan <em>lähes jokaisella sivulla</em>. Idea on samanlainen kuin käyttäjäkentän esitäyttämisessä, mutta koodi sijaitsee tag-tiedostossa:</p>
+<div class="row">
+<div class="col-md-7">
+<p><strong>Servlet:</strong></p>
+<pre class="sourceCode java"><code class="sourceCode java"><span class="kw">if</span> (kayttaja.<span class="fu">equals</span>(&#39;svinhufvud&#39;) &amp;&amp; salasana.<span class="fu">equals</span>(&#39;kissakartano&#39;)) {
+  response.<span class="fu">sendRedirect</span>(<span class="st">&quot;kissalista&quot;</span>);
+} <span class="kw">else</span> {
+  request.<span class="fu">setAttribute</span>(<span class="st">&quot;virheViesti&quot;</span>, <span class="st">&quot;Kirjautuminen epäonnistui! Antamasi tunnus tai salasana on väärä.&quot;</span>);
+  request.<span class="fu">setAttribute</span>(<span class="st">&quot;kayttaja&quot;</span>, kayttaja);  
+  <span class="fu">naytaJSP</span>(<span class="st">&quot;login.jsp&quot;</span>, request, response);
+}</code></pre>
+</div>
+<div class="col-md-5">
+
+<p><strong>Tag-tiedosto:</strong></p>
+<pre class="sourceCode jsp"><code class="sourceCode jsp"><span class="kw">&lt;c:if</span><span class="ot"> test</span>=<span class="dt">&quot;</span>${virheViesti != <span class="kw">null</span>}<span class="dt">&quot;</span><span class="kw">&gt;</span>
+  &lt;div<span class="ot"> class</span>=<span class="dt">&quot;alert alert-danger&quot;</span>&gt;Virhe! ${virheViesti}&lt;/div&gt;
+<span class="kw">&lt;/c:if&gt;</span></code></pre>
+</div>
+</div>
+
+<p>On hyvä idea tehdä virheviestit myös sille, että joko käyttäjää tai salasanaa ei ole syötetty ollenkaan.</p>
+<p>Lopullinen kontrollerin koodi voi olla vaikkapa tämän näköinen.</p>
+<pre class="sourceCode java"><code class="sourceCode java"><span class="kw">protected</span> <span class="dt">void</span> <span class="fu">processRequest</span>(HttpServletRequest request, HttpServletResponse response) {
+  
+  String salasana = request.<span class="fu">getParameter</span>(<span class="st">&quot;password&quot;</span>);
+  String kayttaja = request.<span class="fu">getParameter</span>(<span class="st">&quot;username&quot;</span>);
+  
+  <span class="co">/* Jos kummatkin parametrit ovat null, käyttäjä ei ole edes yrittänyt vielä kirjautua. </span>
+<span class="co">   * Näytetään pelkkä lomake */</span>
+  <span class="kw">if</span> (kayttaja == <span class="kw">null</span> || !kayttaja.<span class="fu">equals</span>(<span class="st">&quot;&quot;</span>)) {
+    <span class="fu">naytaJSP</span>(<span class="st">&quot;login.jsp&quot;</span>, request, response);
+    <span class="kw">return</span>;
+  }
+
+  <span class="co">//Tarkistetaan että vaaditut kentät on täytetty:</span>
+  <span class="kw">if</span> (kayttaja == <span class="kw">null</span> &amp;&amp; !kayttaja.<span class="fu">equals</span>(<span class="st">&quot;&quot;</span>)) {
+    <span class="fu">asetaVirhe</span>(<span class="st">&quot;Kirjautuminen epäonnistui! Et antanut käyttäjätunnusta.&quot;</span>, request);
+    <span class="fu">naytaJSP</span>(<span class="st">&quot;login.jsp&quot;</span>, request, response);
+  }
+
+  <span class="co">/* Välitetään näkymille tieto siitä, mikä tunnus yritti kirjautumista */</span>
+  request.<span class="fu">setAttribute</span>(<span class="st">&quot;kayttaja&quot;</span>, kayttaja);  
+
+  <span class="kw">if</span> (salasana == <span class="kw">null</span> &amp;&amp; !salasana.<span class="fu">equals</span>(<span class="st">&quot;&quot;</span>)) {
+    <span class="fu">asetaVirhe</span>(<span class="st">&quot;Kirjautuminen epäonnistui! Et antanut käyttäjätunnusta.&quot;</span>, request);
+    <span class="fu">naytaJSP</span>(<span class="st">&quot;login.jsp&quot;</span>, request, response);
+  }
+  
+  <span class="co">/* Tarkistetaan onko parametrina saatu oikeat tunnukset */</span>
+  <span class="kw">if</span> (kayttaja.<span class="fu">equals</span>(&#39;svinhufvud&#39;) &amp;&amp; salasana.<span class="fu">equals</span>(&#39;kissakartano&#39;)) {
     <span class="co">/* Jos tunnus on oikea, ohjataan käyttäjä HTTP-ohjauksella kissalistaan. */</span>
     response.<span class="fu">sendRedirect</span>(<span class="st">&quot;kissalista&quot;</span>);
   } <span class="kw">else</span> {
     <span class="co">/* Väärän tunnuksen syöttänyt saa eteensä lomakkeen ja virheen.</span>
 <span class="co">     * Tässä käytetään omalta yläluokalta perittyjä yleiskäyttöisiä metodeja.</span>
 <span class="co">     */</span>
-    <span class="fu">asetaVirhe</span>(<span class="st">&quot;Kirjautuminen ei onnistunut. Käyttäjää ei löytynyt&quot;</span>, request);
+    <span class="fu">asetaVirhe</span>(<span class="st">&quot;Kirjautuminen epäonnistui! Antamasi tunnus tai salasana on väärä.&quot;</span>, request);
     <span class="fu">naytaJSP</span>(<span class="st">&quot;login.jsp&quot;</span>, request, response);
   }
 }</code></pre>
-<p>Koodissa kannattaa huomata kutsu <code>response.sendRedirect(&quot;kissalista&quot;);</code>. <code>HttpServletResponse</code>-olion <a href="http://docs.oracle.com/javaee/6/api/javax/servlet/http/HttpServletResponse.html#sendRedirect(java.lang.String)">sendRedirect-metodi</a> lähettää käyttäjän selaimen parametrina annettuun osoitteesen. Tämä on kätevä tapa ohjata käyttäjä jonkin toisen servletin luo. Voit halutessasi tehdä siitäkin metodin aiemmin tekemääsi servlet-yläluokkaan.</p>
-<p>Toteuta ylläolevan kaltainen tarkastus omaan kirjautumisservlettiisi. Voit tehdä tarkistuksen joko niin, että se toimii samassa servletissä tai tehdä kirjautumislomakkeen vastaanottolle oman servletin. Tee myös aiemmin tekemääsi käyttäjää mallintavaan luokkaan metodi käyttäjän hakemiseen käyttäjätunnuksella ja salasanalla. Käytä tätä metodia kirjautumisen toteuttamiseen.</p>
-<p>Metodi kannattaa toteuttaa sellaisen SQL-kyselyn ympärille, joka hakee kannasta tietoja salasanan ja käyttäjänimen perusteella. Se palauttaa käyttäjäluokan olion, jolloin siitä on järkevää tehdä luokan staattinen metodi.</p>
-<p>Palautettua arvoa käytetään myöhemmin kirjautuneen käyttäjän tallentamiseen istuntoon.</p>
-<p><strong>Ote tiedostosta kissalista/models/Kayttajat.java:</strong></p>
-<pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="dt">static</span> Kayttaja <span class="fu">getKayttaja</span>(String kayttaja, String salasana) {
-  String sql = <span class="st">&quot;SELECT id,username, password from users where username = ? AND password = ?&quot;</span>;
-  Connection yhteys = Tietokanta.<span class="fu">getTietokanta</span>();
-  PreparedStatement kysely = yhteys.<span class="fu">prepareStatement</span>(sql);
-  kysely.<span class="fu">setString</span>(<span class="dv">1</span>, kayttaja);
-  kysely.<span class="fu">setString</span>(<span class="dv">2</span>, salasana);
-  ResultSet rs = kysely.<span class="fu">executeQuery</span>();
-  
-  <span class="co">//Alustetaan muuttuja, joka sisältää löydetyn käyttäjän</span>
-  Kayttaja kirjautunut = <span class="kw">null</span>;
-
-  <span class="co">//next-metodia on kutsuttava aina, kun käsitellään vasta kannasta saatuja ResultSet-olioita.</span>
-  <span class="co">//ResultSet on oletuksena ensimmäistä edeltävällä -1:llä rivillä.</span>
-  <span class="co">//Kun sitä kutsuu ensimmäisen kerran siirtyy se ensimmäiselle riville 0.</span>
-  <span class="co">//Samalla metodi myös palauttaa tiedon siitä onko seuraavaa riviä olemassa.</span>
-  <span class="kw">if</span> (rs.<span class="fu">next</span>()) { 
-    <span class="co">//Kutsutaan sopivat tiedot vastaanottavaa konstruktoria ja asetetaan palautettava olio:</span>
-    kirjautunut = <span class="kw">new</span> <span class="fu">Kayttaja</span>(rs.<span class="fu">getInt</span>(<span class="st">&quot;id&quot;</span>), rs.<span class="fu">getString</span>(<span class="st">&quot;username&quot;</span>), rs.<span class="fu">getString</span>(<span class="st">&quot;password&quot;</span>));
-  }
-
-  <span class="co">//Jos kysely ei tuottanut tuloksia käyttäjä on nyt vielä null.</span>
-
-  <span class="co">//Suljetaan kaikki resurssit:</span>
-  <span class="kw">try</span> { rs.<span class="fu">close</span>(); } <span class="kw">catch</span> (Exception e) {}
-  <span class="kw">try</span> { kysely.<span class="fu">close</span>(); } <span class="kw">catch</span> (Exception e) {}
-  <span class="kw">try</span> { yhteys.<span class="fu">close</span>(); } <span class="kw">catch</span> (Exception e) {}
-  
-  <span class="co">//Käyttäjä palautetaan vasta täällä, kun resurssit on suljettu onnistuneesti.</span>
-  <span class="kw">return</span> kirjautunut;
-}</code></pre>
-<p>Varmista, että kirjautumislomake näyttää käyttäjälle järkevän virheviestin mikäli kirjautuminen ei onnistu.</p>
+<p>Myös koodin alussa oleva muuttujien olemassaolon varmistamisesta huolehtiva koodi on hyvä kandidaatti yleiskäyttöisen funktion sisällöksi, sillä tuontapainen koodi toistuu lomakkeiden käsittelyssä hyvin usein.</p>
 <section class="alert alert-success small"><h3>
 Seuraavaksi:
 </h3>
-
-<p>Seuraavaksi käytämme istuntoja <a href="istunnot.html">kirjautumisen tallentamiseen sivulatausten välillä</a>.</p>
+<p>Toteuta ylläolevan kaltaiset käytettävyysparannukset myös omaan kirjautumisservlettiisi.</p>
+<p>Lisää sitten kirjautumisen taustalle <a href="tietokanta_kirjautuminen.html">käyttäjän hakeminen tietokannasta</a>.</p>
 </section>
 
 

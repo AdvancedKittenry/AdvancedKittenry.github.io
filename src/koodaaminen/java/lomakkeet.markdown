@@ -39,15 +39,13 @@ protected void processRequest(HttpServletRequest request, HttpServletResponse re
   String salasana = request.getParameter("password");
   String kayttaja = request.getParameter("username");
   
-  /* Tarkistetaan mallilta onko parametrina saatu oikeat tunnukset */
-  if (Kissalista.Mallit.Kayttaja.getKayttaja(kayttaja, salasana) != null) {
+  /* Muuten tarkistetaan onko parametrina saatu oikeat tunnukset */
+  if ("svinhufvud".equals(kayttaja) && "kissakartano".equals(salasana)) {
     /* Jos tunnus on oikea, ohjataan käyttäjä HTTP-ohjauksella kissalistaan. */
     response.sendRedirect("kissalista");
   } else {
-    /* Väärän tunnuksen syöttänyt saa eteensä lomakkeen ja virheen.
-     * Tässä käytetään omalta yläluokalta perittyjä yleiskäyttöisiä metodeja.
-     */
-    asetaVirhe("Kirjautuminen ei onnistunut. Käyttäjää ei löytynyt", request);
+    /* Väärän tunnuksen syöttänyt saa eteensä kirjautumislomakkeen.
+     * Tässä käytetään omassa kirjastotiedostossa määriteltyä näkymännäyttöfunktioita */
     naytaJSP("login.jsp", request, response);
   }
 }
@@ -60,60 +58,135 @@ lähettää käyttäjän selaimen parametrina annettuun osoitteesen.
 Tämä on kätevä tapa ohjata käyttäjä jonkin toisen servletin luo.
 Voit halutessasi tehdä siitäkin metodin aiemmin tekemääsi servlet-yläluokkaan.
 
-Toteuta ylläolevan kaltainen tarkastus omaan kirjautumisservlettiisi.
-Voit tehdä tarkistuksen joko niin, että se toimii samassa servletissä tai tehdä
+Testaa ylläolevan tapaista koodia omassa sovelluksessasi.
+Voit tehdä lomakkeen vastaanottamisen joko niin, että se toimii samassa servletissä lomakkeen näyttämisen kanssa tai tehdä
 kirjautumislomakkeen vastaanottolle oman servletin. 
-Tee myös aiemmin tekemääsi käyttäjää mallintavaan luokkaan metodi
-käyttäjän hakemiseen käyttäjätunnuksella ja salasanalla. Käytä tätä
-metodia kirjautumisen toteuttamiseen. 
 
-Metodi kannattaa toteuttaa sellaisen SQL-kyselyn ympärille, joka 
-hakee kannasta tietoja salasanan ja käyttäjänimen perusteella.
-Se palauttaa käyttäjäluokan olion,
-jolloin siitä on järkevää tehdä luokan staattinen metodi.
+Keskitytään tämän jälkeen tekemään koodista käyttäjäystävällisempi.
 
-Palautettua arvoa käytetään myöhemmin kirjautuneen käyttäjän tallentamiseen istuntoon.
+## Käytettävyys
 
-**Ote tiedostosta kissalista/models/Kayttajat.java:**
+Ylläolevassa kirjautumiskäsittelijässä on kaksi olennaista käytettävyysongelmaa.
+Ensinnäkin, mikäli käyttäjä syöttää väärän tunnuksen tai salasana tai ei syötä jompaakumpaa ollenkaan, lomake vain palaa kirjautumisruutuun
+kertomatta mitä tapahtui. 
+Käyttäjälle jää hiipivä epäilys siitä, ottiko sovellus tunnuksia ollenkaan vastana, kun se ei kerro mitään tekemisistään.
+
+Toinen, hieman pienempi, ongelma on, että salasanansa väärin syöttänyt käyttäjä joutuu syöttämään käyttäjätunnuksensa turhaan uudestaan.
+
+Korjataan nämä ongelmat!
+
+Jälkimmäisen ongelman korjaaminen on yksinkertaista, tarvitsee vain lisätä
+näkymän näyttämiseen määrite, jossa lähetetään
+käyttäjän syöttämä käyttäjätunnus näkymälle ja sitten näyttää se
+näkymässä:
+
+<sidebyside>
+<column size="7">
+**Servlet:**
 
 ~~~java
-public static Kayttaja getKayttaja(String kayttaja, String salasana) {
-  String sql = "SELECT id,username, password from users where username = ? AND password = ?";
-  Connection yhteys = Tietokanta.getTietokanta();
-  PreparedStatement kysely = yhteys.prepareStatement(sql);
-  kysely.setString(1, kayttaja);
-  kysely.setString(2, salasana);
-  ResultSet rs = kysely.executeQuery();
-  
-  //Alustetaan muuttuja, joka sisältää löydetyn käyttäjän
-  Kayttaja kirjautunut = null;
+request.setAttribute("kayttaja", kayttaja);  
+naytaJSP("login.jsp", request, response);
+~~~
 
-  //next-metodia on kutsuttava aina, kun käsitellään vasta kannasta saatuja ResultSet-olioita.
-  //ResultSet on oletuksena ensimmäistä edeltävällä -1:llä rivillä.
-  //Kun sitä kutsuu ensimmäisen kerran siirtyy se ensimmäiselle riville 0.
-  //Samalla metodi myös palauttaa tiedon siitä onko seuraavaa riviä olemassa.
-  if (rs.next()) { 
-    //Kutsutaan sopivat tiedot vastaanottavaa konstruktoria ja asetetaan palautettava olio:
-    kirjautunut = new Kayttaja(rs.getInt("id"), rs.getString("username"), rs.getString("password"));
-  }
+</column>
+<column size="5">
 
-  //Jos kysely ei tuottanut tuloksia käyttäjä on nyt vielä null.
+**JSP-tiedosto:**
 
-  //Suljetaan kaikki resurssit:
-  try { rs.close(); } catch (Exception e) {}
-  try { kysely.close(); } catch (Exception e) {}
-  try { yhteys.close(); } catch (Exception e) {}
-  
-  //Käyttäjä palautetaan vasta täällä, kun resurssit on suljettu onnistuneesti.
-  return kirjautunut;
+~~~jsp
+Käyttäjänimi: <input type="text" name="username" value="${kayttaja}" />
+~~~
+
+</column>
+</sidebyside>
+
+Ensimmäinen ongelma eli virheviestien näyttäminen on niin yleinen, että
+sitä varten kannattaa sijoittaa oma koodinsa template-tagiin,
+sillä sitä tullaan oikeasti tarvitsemaan *lähes jokaisella sivulla*.
+Idea on samanlainen kuin käyttäjäkentän esitäyttämisessä, mutta 
+koodi sijaitsee tag-tiedostossa:
+
+<sidebyside>
+<column size="7">
+**Servlet:**
+
+~~~java
+if (kayttaja.equals('svinhufvud') && salasana.equals('kissakartano')) {
+  response.sendRedirect("kissalista");
+} else {
+  request.setAttribute("virheViesti", "Kirjautuminen epäonnistui! Antamasi tunnus tai salasana on väärä.");
+  request.setAttribute("kayttaja", kayttaja);  
+  naytaJSP("login.jsp", request, response);
 }
 ~~~
 
-Varmista, että kirjautumislomake näyttää käyttäjälle järkevän virheviestin
-mikäli kirjautuminen ei onnistu.
+</column>
+<column size="5">
+
+**Tag-tiedosto:**
+
+~~~jsp
+<c:if test="${virheViesti != null}">
+  <div class="alert alert-danger">Virhe! ${virheViesti}</div>
+</c:if>
+~~~
+
+</column>
+</sidebyside>
+
+On hyvä idea tehdä virheviestit myös sille, että joko
+käyttäjää tai salasanaa ei ole syötetty ollenkaan.
+
+Lopullinen kontrollerin koodi voi olla vaikkapa tämän näköinen.
+
+~~~java
+protected void processRequest(HttpServletRequest request, HttpServletResponse response) {
+  
+  String salasana = request.getParameter("password");
+  String kayttaja = request.getParameter("username");
+  
+  /* Jos kummatkin parametrit ovat null, käyttäjä ei ole edes yrittänyt vielä kirjautua. 
+   * Näytetään pelkkä lomake */
+  if (kayttaja == null || !kayttaja.equals("")) {
+    naytaJSP("login.jsp", request, response);
+    return;
+  }
+
+  //Tarkistetaan että vaaditut kentät on täytetty:
+  if (kayttaja == null && !kayttaja.equals("")) {
+    asetaVirhe("Kirjautuminen epäonnistui! Et antanut käyttäjätunnusta.", request);
+    naytaJSP("login.jsp", request, response);
+  }
+
+  /* Välitetään näkymille tieto siitä, mikä tunnus yritti kirjautumista */
+  request.setAttribute("kayttaja", kayttaja);  
+
+  if (salasana == null && !salasana.equals("")) {
+    asetaVirhe("Kirjautuminen epäonnistui! Et antanut käyttäjätunnusta.", request);
+    naytaJSP("login.jsp", request, response);
+  }
+  
+  /* Tarkistetaan onko parametrina saatu oikeat tunnukset */
+  if (kayttaja.equals('svinhufvud') && salasana.equals('kissakartano')) {
+    /* Jos tunnus on oikea, ohjataan käyttäjä HTTP-ohjauksella kissalistaan. */
+    response.sendRedirect("kissalista");
+  } else {
+    /* Väärän tunnuksen syöttänyt saa eteensä lomakkeen ja virheen.
+     * Tässä käytetään omalta yläluokalta perittyjä yleiskäyttöisiä metodeja.
+     */
+    asetaVirhe("Kirjautuminen epäonnistui! Antamasi tunnus tai salasana on väärä.", request);
+    naytaJSP("login.jsp", request, response);
+  }
+}
+~~~
+
+Myös koodin alussa oleva muuttujien olemassaolon varmistamisesta huolehtiva koodi
+on hyvä kandidaatti yleiskäyttöisen funktion sisällöksi,
+sillä tuontapainen koodi toistuu lomakkeiden käsittelyssä hyvin usein.
 
 <next>
+Toteuta ylläolevan kaltaiset käytettävyysparannukset myös omaan kirjautumisservlettiisi.
 
-Seuraavaksi käytämme istuntoja [kirjautumisen tallentamiseen sivulatausten välillä](istunnot.html).
-
+Lisää sitten kirjautumisen taustalle [käyttäjän hakeminen tietokannasta](tietokanta_kirjautuminen.html).
 </next>

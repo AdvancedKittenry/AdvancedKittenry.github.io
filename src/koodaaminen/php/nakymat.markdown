@@ -149,7 +149,7 @@ Voimme esimerkiksi asettaa näkymälle lähetettävän virheviestin näin:
 ~~~~php
 <?php 
   naytaNakyma('kissat.php', array(
-    'virheViesti' => "Et voi ruokkia kissaa, joka on syönyt alle kolme tuntia sitten!"
+    'virhe' => "Et voi ruokkia kissaa, joka on syönyt alle kolme tuntia sitten!"
   ));
 }
 ~~~~
@@ -157,7 +157,9 @@ Voimme esimerkiksi asettaa näkymälle lähetettävän virheviestin näin:
 Jolloin näkymässä voimme kirjoittaa HTML-koodin sekaan:
 
 ~~~php
-<?php echo $data->virheViesti; ?>
+<?php if (!empty($data->virhe)): ?>
+  <div class="alert alert-danger"><?php echo $data->virhe; ?></div>
+<?php endif; ?>
 ~~~
 
 <info>

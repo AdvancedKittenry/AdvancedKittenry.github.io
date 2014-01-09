@@ -150,6 +150,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li><a href="../../koodaaminen/java/rakenne.html">Sovelluksen rakenne ja servletit</a></li>
 <li><a href="../../koodaaminen/java/nakymat.html">Näkymien tekeminen ja JSP</a></li>
 <li><a href="../../koodaaminen/java/lomakkeet.html">Lomakkeiden käyttö ja vastaanottaminen</a></li>
+<li><a href="../../koodaaminen/java/tietokanta_kirjautuminen.html">Tietokannan käytön alkeet</a></li>
 <li><a href="../../koodaaminen/java/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
 <li><a href="../../koodaaminen/java/mallit_muokkaustoiminnot.html">Malliluokat ja tiedon muuttaminen</a></li>
 <li><a href="../../koodaaminen/java/muokkausnakymat.html">Muokkausnäkymän toteuttaminen</a></li>
@@ -159,6 +160,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li><a href="../../koodaaminen/php/rakenne.html">Sovelluksen rakenne ja kontrollerit</a></li>
 <li><a href="../../koodaaminen/php/nakymat.html">Näkymien tekeminen</a></li>
 <li class="selected"><a href="../../koodaaminen/php/lomakkeet.html">Lomakkeiden käyttö ja vastaanottaminen</a></li>
+<li><a href="../../koodaaminen/php/tietokanta_kirjautuminen.html">Tietokannan käytön alkeet</a></li>
 <li><a href="../../koodaaminen/php/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
 <li><a href="../../koodaaminen/php/mallit_muokkaustoiminnot.html">Malliluokat ja tiedon muuttaminen</a></li>
 <li><a href="../../koodaaminen/php/muokkausnakymat.html">Muokkausnäkymän toteuttaminen</a></li>
@@ -193,82 +195,121 @@ Salasana: <span class="kw">&lt;input</span><span class="ot"> type=</span><span c
 <span class="kw">&lt;/form&gt;</span></code></pre>
 <p>HTML-kertauksena: <code>form</code>-elementin <code>action</code>-attribuutti määrittää mihin osoitteeseen lomakkeen tiedot lähetetään, <code>method</code> sensijaan kertoo lähetetäänkö tiedot GET- vai POST-parametreina. Jokaisen <code>input</code>-elementin sisältö lähetetään parametrina, joka tunnistetaan <code>name</code>-attribuutissa annetulla nimellä.</p>
 <p>Lähetetyn lomakkeen parametreja voidaan käsitellä hakemalla ne PHP:n <a href="http://php.net/manual/en/language.variables.superglobals.php">superglobaaleista muuttujista</a> <code>$_GET</code> ja <code>$_POST</code>. Ne ovat PHP:n automaattisesti määrittämiä muuttujia, jotka ovat näkyvissä kaikissa funktioissa ja metodeissa automaattisesti. Niiden sisältönä on array, johon on laitettu sivun lomakkeelta vastaanottamat GET- ja POST-parametrit.</p>
-<p>Hyvin yksinkertainen kirjautuminen voitaisiin näitä muuttujia käyttäen toteuttaa suurinpiirtein seuraavasti:</p>
+<p>Hyvin yksinkertainen kirjautuminen voitaisiin sitä käyttäen toteuttaa suurinpiirtein seuraavasti:</p>
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>
   
-  <span class="co">//Tarkistetaan että vaaditut kentät on täytetty:</span>
-  <span class="kw">if</span> <span class="ot">(</span><span class="fu">empty</span><span class="ot">(</span><span class="kw">$_POST</span><span class="ot">[</span><span class="st">&quot;username&quot;</span><span class="ot">]))</span> {
-    naytaNakymä<span class="ot">(</span><span class="st">&quot;login&quot;</span><span class="ot">,</span> <span class="fu">array</span><span class="ot">(</span>
-      <span class="st">&#39;virhe&#39;</span> =&gt; <span class="st">&quot;Kirjautuminen epäonnistui! Antamasi käyttäjänimi on tyhjä.&quot;</span><span class="ot">,</span>
-    <span class="ot">));</span>
+  <span class="kw">if</span> <span class="ot">(</span><span class="fu">empty</span><span class="ot">(</span><span class="kw">$_POST</span><span class="ot">[</span><span class="st">&quot;username&quot;</span><span class="ot">])</span> || <span class="fu">empty</span><span class="ot">(</span><span class="kw">$_POST</span><span class="ot">[</span><span class="st">&quot;password&quot;</span><span class="ot">])</span> {
+     <span class="co">/* Käytetään omassa kirjastotiedostossa määriteltyä näkymännäyttöfunktioita */</span>
+    naytaNakymä<span class="ot">(</span><span class="st">&quot;login&quot;</span><span class="ot">);</span>
+    <span class="fu">exit</span><span class="ot">();</span> <span class="co">// Lopetetaan suoritus tähän. Kutsun voi sijoittaa myös naytaNakyma-funktioon, niin sitä ei tarvitse toistaa joka paikassa</span>
   }
-  <span class="kw">if</span> <span class="ot">(</span><span class="fu">empty</span><span class="ot">(</span><span class="kw">$_POST</span><span class="ot">[</span><span class="st">&quot;password&quot;</span><span class="ot">]))</span> {
-    naytaNakymä<span class="ot">(</span><span class="st">&quot;login&quot;</span><span class="ot">,</span> <span class="fu">array</span><span class="ot">(</span>
-      <span class="st">&#39;virhe&#39;</span> =&gt; <span class="st">&quot;Kirjautuminen epäonnistui! Antamasi salasana on tyhjä.&quot;</span><span class="ot">,</span>
-    <span class="ot">));</span>
-  }
-  
-  <span class="kw">$salasana</span> = <span class="kw">$_POST</span><span class="ot">[</span><span class="st">&quot;password&quot;</span><span class="ot">];</span>
+
   <span class="kw">$kayttaja</span> = <span class="kw">$_POST</span><span class="ot">[</span><span class="st">&quot;username&quot;</span><span class="ot">];</span>
+  <span class="kw">$salasana</span> = <span class="kw">$_POST</span><span class="ot">[</span><span class="st">&quot;password&quot;</span><span class="ot">];</span>
   
-  <span class="co">/* Tarkistetaan mallilta onko parametrina saatu oikeat tunnukset */</span>
-  <span class="kw">if</span> <span class="ot">(</span>Kayttaja::getKayttaja<span class="ot">(</span><span class="kw">$kayttaja</span><span class="ot">,</span> <span class="kw">$salasana</span><span class="ot">)</span> != <span class="kw">null</span><span class="ot">)</span> {
+  <span class="co">/* Tarkistetaan onko parametrina saatu oikeat tunnukset */</span>
+  <span class="kw">if</span> <span class="ot">(</span><span class="st">&quot;svinhufvud&quot;</span> == <span class="kw">$kayttaja</span> &amp;&amp; <span class="st">&quot;kissakartano&quot;</span> == <span class="kw">$salasana</span><span class="ot">)</span> {
     <span class="co">/* Jos tunnus on oikea, ohjataan käyttäjä sopivalla HTTP-otsakkeella kissalistaan. */</span>
     <span class="fu">header</span><span class="ot">(</span><span class="st">&#39;Location: kissalista.php&#39;</span><span class="ot">);</span>
   } <span class="kw">else</span> {
-    <span class="co">/* Väärän tunnuksen syöttänyt saa eteensä lomakkeen ja virheen.</span>
-<span class="co">     * Tässä käytetään omalta yläluokalta perittyjä yleiskäyttöisiä metodeja.</span>
-<span class="co">     */</span>
-    naytaNakyma<span class="ot">(</span><span class="st">&quot;login&quot;</span><span class="ot">,</span> <span class="fu">array</span><span class="ot">(</span>
-      <span class="st">&#39;virhe&#39;</span> =&gt; <span class="st">&quot;Kirjautuminen ei onnistunut. Käyttäjää ei löytynyt&quot;</span><span class="ot">,</span> request<span class="ot">;</span>
-    <span class="ot">));</span>
+    <span class="co">/* Väärän tunnuksen syöttänyt saa eteensä kirjautumislomakkeen. */</span>
+    naytaNakyma<span class="ot">(</span><span class="st">&quot;login&quot;</span><span class="ot">));</span>
   }</code></pre>
 <p>Koodissa kannattaa huomata kutsu <code>header('Location: kissalista.php');</code>. <a href="http://php.net/manual/en/function.header.php">header-funktio</a> lähettää käyttäjän selaimelle HTTP-otsakkeen. Otsakkeita voi käyttää monenlaisiin tarkoituksiin, mutta yleisimmin käytetään otsaketta “Location”, joka lähettää käyttäjän selaimen kaksoispisteen jälkeen kirjoitettuun osoitteesen. Tämä on kätevä tapa ohjata käyttäjä jonkin toisen sivun luo.</p>
-<p>Voit tehdä siitäkin oman apufunktion aiemmin tekemääsi yleiskäyttöiseen kirjastotiedostoon. Myös koodin alussa oleva muuttujien olemassaolon varmistamisesta huolehtiva koodi on hyvä kandidaatti yleiskäyttöisen funktion sisällöksi.</p>
+<p>Voit tehdä siitäkin oman apufunktion aiemmin tekemääsi yleiskäyttöiseen kirjastotiedostoon.</p>
 <section class="alert alert-danger"><h3>
 Pidä mielessä!
 </h3>
 
 <p>PHP:llä kannattaa varoa lisäämästä tiedostojensa alkuun välilyöntejä ja rivinvaihtoja ennen &lt;?php-tägiä. PHP tulkitsee nämä merkit sivun sisällöksi, joka pitää lähettää selaimelle. Tämä estää kaikkien HTTP-otsakkeiden lähettämisen, sillä ne on lähetettävä ennen sivun sisältöä.</p>
+<p>Käytännössä tämä vaikuttaa siten, että istunnot ja käyttäjän lähettäminen eteenpäin <code>Location</code>-otsakkeella eivät toimi kunnolla tai ollenkaan.</p>
 </section>
 
-<p>Toteuta ylläolevan kaltainen tarkastus omaan tiedostoonsa, esim. <code>doLogin.php</code> tai <code>kirjaudu.php</code>. Tee myös aiemmin tekemääsi käyttäjää mallintavaan luokkaan staattinen metodi käyttäjän hakemiseen käyttäjätunnuksella ja salasanalla. Käytä tätä metodia kirjautumisen tarkistamisen toteuttamiseen.</p>
-<p>Metodi kannattaa toteuttaa sellaisen SQL-kyselyn ympärille, joka hakee kannasta tietoja salasanan ja käyttäjänimen perusteella. Se voi palauttaa esimerkiksi käyttäjäluokan olion, jolloin siitä on järkevää tehdä luokan staattinen metodi.</p>
-<p>Palautettua arvoa käytetään myöhemmin kirjautuneen käyttäjän tallentamiseen istuntoon.</p>
-<p><strong>Esimerkkikoodina ote tiedostosta libs/models/kayttaja.php:</strong></p>
-<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">class</span> Kayttaja {
-  
-  <span class="kw">private</span> <span class="kw">$id</span><span class="ot">;</span>
-  <span class="kw">private</span> <span class="kw">$username</span><span class="ot">;</span>
-  <span class="kw">private</span> <span class="kw">$password</span><span class="ot">;</span>
-  
-  <span class="co">/* Etsitään kannasta käyttäjätunnuksella ja salasanalla käyttäjäriviä */</span>
-  <span class="kw">public</span> <span class="kw">static</span> <span class="kw">function</span> getKayttajaTunnuksilla<span class="ot">(</span><span class="kw">$kayttaja</span><span class="ot">,</span> <span class="kw">$salasana</span><span class="ot">)</span> {
-    <span class="kw">$sql</span> = <span class="st">&quot;SELECT id,username, password from users where username = ? AND password = ? LIMIT 1&quot;</span><span class="ot">;</span>
-    <span class="kw">$kysely</span> = getTietokanta<span class="ot">()</span>-&gt;prepare<span class="ot">(</span><span class="kw">$sql</span><span class="ot">);</span>
-    <span class="kw">$kysely</span>-&gt;execute<span class="ot">(</span><span class="fu">array</span><span class="ot">(</span><span class="kw">$kayttaja</span><span class="ot">,</span> <span class="kw">$salasana</span><span class="ot">));</span>
+<p>Toteuta ylläolevan kaltainen tarkastus omaan tiedostoonsa, esim. <code>doLogin.php</code> tai <code>kirjaudu.php</code>. Voit tehdä lomakkeen vastaanottamisen joko niin, että se toimii samassa kontrollerissa lomakkeen näyttämisen kanssa tai tehdä kirjautumislomakkeen vastaanottolle oman kontrollerin.</p>
+<p>Keskitytään tämän jälkeen tekemään koodista käyttäjäystävällisempi.</p>
+</section>
+<section id="käytettävyys" class="level2">
+<h2>Käytettävyys</h2>
+<p>Ylläolevassa kirjautumiskäsittelijässä on kaksi olennaista käytettävyysongelmaa. Ensinnäkin, mikäli käyttäjä syöttää väärän tunnuksen tai salasana tai ei syötä jompaakumpaa ollenkaan, lomake vain palaa kirjautumisruutuun kertomatta mitä tapahtui. Käyttäjälle jää hiipivä epäilys siitä, ottiko sovellus tunnuksia ollenkaan vastana, kun se ei kerro mitään tekemisistään.</p>
+<p>Toinen, hieman pienempi, ongelma on, että salasanansa väärin syöttänyt käyttäjä joutuu syöttämään käyttäjätunnuksensa turhaan uudestaan.</p>
+<p>Korjataan nämä ongelmat!</p>
+<p>Jälkimmäisen ongelman korjaaminen on yksinkertaista, tarvitsee vain lisätä näkymän näyttämiseen määrite, jossa lähetetään käyttäjän syöttämä käyttäjätunnus näkymälle ja sitten näyttää se näkymässä:</p>
+<div class="row">
+<div class="col-md-5">
+<p><strong>Kontrolleri:</strong></p>
+<pre class="sourceCode php"><code class="sourceCode php">naytaNakymä<span class="ot">(</span><span class="st">&quot;login&quot;</span><span class="ot">,</span> <span class="fu">array</span><span class="ot">(</span>
+  <span class="st">&#39;kayttaja&#39;</span> =&gt; <span class="kw">$kayttaja</span><span class="ot">,</span>
+<span class="ot">));</span></code></pre>
+</div>
+<div class="col-md-7">
 
-    <span class="kw">$tulos</span> = <span class="kw">$kysely</span>-&gt;fetchObject<span class="ot">();</span>
-    <span class="kw">if</span> <span class="ot">(</span><span class="kw">$tulos</span> == <span class="kw">null</span><span class="ot">)</span> {
-      <span class="kw">return</span> <span class="kw">null</span><span class="ot">;</span>
-    } <span class="kw">else</span> {
-      <span class="kw">$kayttaja</span> = <span class="kw">new</span> Kayttaja<span class="ot">();</span> 
-      <span class="kw">$kayttaja</span>-&gt;id = <span class="kw">$tulos</span>-&gt;id<span class="ot">;</span>
-      <span class="kw">$kayttaja</span>-&gt;username = <span class="kw">$tulos</span>-&gt;username<span class="ot">;</span>
-      <span class="kw">$kayttaja</span>-&gt;password = <span class="kw">$tulos</span>-&gt;password<span class="ot">;</span>
+<p><strong>Näkymä:</strong></p>
+<pre class="sourceCode php"><code class="sourceCode php">Käyttäjänimi:
+&lt;input type=&quot;text&quot; name=&quot;username&quot; 
+ value=&quot;<span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$data</span>-&gt;kayttaja<span class="ot">;</span> <span class="kw">?&gt;</span>&quot; /&gt;</code></pre>
+</div>
+</div>
 
-      <span class="kw">return</span> <span class="kw">$kayttaja</span><span class="ot">;</span>
-    }
-  }
-
-  <span class="co">/* Tähän muita Käyttäjäluokan metodeita */</span>
+<p>Ensimmäinen ongelma eli virheviestien näyttäminen on niin yleinen, että sitä varten kannattaa sijoittaa oma koodinsa sivupohjatiedostoon, sillä sitä tullaan oikeasti tarvitsemaan <em>lähes jokaisella sivulla</em>. Idea on samanlainen kuin käyttäjäkentän esitäyttämisessä, mutta koodi sijaitsee sivupohjassa:</p>
+<p><strong>Kontrolleri:</strong></p>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="co">/* Tarkistetaan onko parametrina saatu oikeat tunnukset */</span>
+<span class="kw">if</span> <span class="ot">(</span><span class="kw">$kayttaja</span> == <span class="st">&#39;svinhufvud&#39;</span> &amp;&amp; <span class="kw">$salasana</span> == <span class="st">&#39;kissakartano&#39;</span><span class="ot">)</span> {
+  <span class="co">/* Jos tunnus on oikea, ohjataan käyttäjä sopivalla HTTP-otsakkeella kissalistaan. */</span>
+  <span class="fu">header</span><span class="ot">(</span><span class="st">&#39;Location: kissalista.php&#39;</span><span class="ot">);</span>
+} <span class="kw">else</span> {
+  <span class="co">/* Väärän tunnuksen syöttänyt saa eteensä lomakkeen ja virheen.</span>
+<span class="co">   * Tässä käytetään omassa kirjastotiedostossa määriteltyjä yleiskäyttöisiä funktioita.</span>
+<span class="co">   */</span>
+  naytaNakyma<span class="ot">(</span><span class="st">&quot;login&quot;</span><span class="ot">,</span> <span class="fu">array</span><span class="ot">(</span>
+    <span class="co">/* Välitetään näkymälle tieto siitä, kuka yritti kirjautumista */</span>
+    <span class="st">&#39;kayttaja&#39;</span> =&gt; <span class="kw">$kayttaja</span><span class="ot">,</span>
+    <span class="st">&#39;virhe&#39;</span> =&gt; <span class="st">&quot;Kirjautuminen epäonnistui! Antamasi tunnus tai salasana on väärä.&quot;</span><span class="ot">,</span> request<span class="ot">;</span>
+  <span class="ot">));</span>
 }</code></pre>
-<p>Varmista, että kirjautumislomake näyttää käyttäjälle järkevän virheviestin mikäli kirjautuminen ei onnistu.</p>
+<p><strong>Sivupohja:</strong></p>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span> <span class="kw">if</span> <span class="ot">(</span>!<span class="fu">empty</span><span class="ot">(</span><span class="kw">$data</span>-&gt;virhe<span class="ot">))</span>: <span class="kw">?&gt;</span>
+  &lt;div class=&quot;alert alert-danger&quot;&gt;<span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$data</span>-&gt;virhe<span class="ot">;</span> <span class="kw">?&gt;</span>&lt;/div&gt;
+<span class="kw">&lt;?php</span> <span class="kw">endif</span><span class="ot">;</span> <span class="kw">?&gt;</span></code></pre>
+<p>On hyvä idea tehdä virheviestit myös sille, että joko käyttäjää tai salasanaa ei ole syötetty ollenkaan.</p>
+<p>Lopullinen kontrollerin koodi voi olla vaikkapa tämän näköinen.</p>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>
+  
+  <span class="co">//Tarkistetaan että vaaditut kentät on täytetty:</span>
+  <span class="kw">if</span> <span class="ot">(</span><span class="fu">empty</span><span class="ot">(</span><span class="kw">$_POST</span><span class="ot">[</span><span class="st">&quot;username&quot;</span><span class="ot">]))</span> {
+    naytaNakymä<span class="ot">(</span><span class="st">&quot;login&quot;</span><span class="ot">,</span> <span class="fu">array</span><span class="ot">(</span>
+      <span class="st">&#39;virhe&#39;</span> =&gt; <span class="st">&quot;Kirjautuminen epäonnistui! Et antanut käyttäjätunnusta.&quot;</span><span class="ot">,</span>
+    <span class="ot">));</span>
+  }
+  <span class="kw">$kayttaja</span> = <span class="kw">$_POST</span><span class="ot">[</span><span class="st">&quot;username&quot;</span><span class="ot">];</span>
+
+  <span class="kw">if</span> <span class="ot">(</span><span class="fu">empty</span><span class="ot">(</span><span class="kw">$_POST</span><span class="ot">[</span><span class="st">&quot;password&quot;</span><span class="ot">]))</span> {
+    naytaNakymä<span class="ot">(</span><span class="st">&quot;login&quot;</span><span class="ot">,</span> <span class="fu">array</span><span class="ot">(</span>
+      <span class="st">&#39;kayttaja&#39;</span> =&gt; <span class="kw">$kayttaja</span><span class="ot">,</span>
+      <span class="st">&#39;virhe&#39;</span> =&gt; <span class="st">&quot;Kirjautuminen epäonnistui! Et antanut salasanaa.&quot;</span><span class="ot">,</span>
+    <span class="ot">));</span>
+  }
+  <span class="kw">$salasana</span> = <span class="kw">$_POST</span><span class="ot">[</span><span class="st">&quot;password&quot;</span><span class="ot">];</span>
+  
+  <span class="co">/* Tarkistetaan onko parametrina saatu oikeat tunnukset */</span>
+  <span class="kw">if</span> <span class="ot">(</span><span class="kw">$kayttaja</span> == <span class="st">&#39;svinhufvud&#39;</span> &amp;&amp; <span class="kw">$salasana</span> == <span class="st">&#39;kissakartano&#39;</span><span class="ot">)</span> {
+    <span class="co">/* Jos tunnus on oikea, ohjataan käyttäjä sopivalla HTTP-otsakkeella kissalistaan. */</span>
+    <span class="fu">header</span><span class="ot">(</span><span class="st">&#39;Location: kissalista.php&#39;</span><span class="ot">);</span>
+  } <span class="kw">else</span> {
+    <span class="co">/* Väärän tunnuksen syöttänyt saa eteensä lomakkeen ja virheen.</span>
+<span class="co">     * Tässä käytetään omassa kirjastotiedostossa määriteltyjä yleiskäyttöisiä funktioita.</span>
+<span class="co">     */</span>
+    naytaNakyma<span class="ot">(</span><span class="st">&quot;login&quot;</span><span class="ot">,</span> <span class="fu">array</span><span class="ot">(</span>
+      <span class="co">/* Välitetään näkymälle tieto siitä, kuka yritti kirjautumista */</span>
+      <span class="st">&#39;kayttaja&#39;</span> =&gt; <span class="kw">$kayttaja</span><span class="ot">,</span>
+      <span class="st">&#39;virhe&#39;</span> =&gt; <span class="st">&quot;Kirjautuminen epäonnistui! Antamasi tunnus tai salasana on väärä.&quot;</span><span class="ot">,</span> request<span class="ot">;</span>
+    <span class="ot">));</span>
+  }</code></pre>
+<p>Myös koodin alussa oleva muuttujien olemassaolon varmistamisesta huolehtiva koodi on hyvä kandidaatti yleiskäyttöisen funktion sisällöksi, sillä tuontapainen koodi toistuu lomakkeiden käsittelyssä hyvin usein.</p>
 <section class="alert alert-success small"><h3>
 Seuraavaksi:
 </h3>
-
-<p>Seuraavaksi käytämme istuntoja <a href="istunnot.html">kirjautumisen tallentamiseen sivulatausten välillä</a>.</p>
+<p>Toteuta ylläolevan kaltaiset käytettävyysparannukset myös omaan kirjautumisservlettiisi.</p>
+<p>Lisää sitten kirjautumisen taustalle <a href="tietokanta_kirjautuminen.html">käyttäjän hakeminen tietokannasta</a>.</p>
 </section>
 
 

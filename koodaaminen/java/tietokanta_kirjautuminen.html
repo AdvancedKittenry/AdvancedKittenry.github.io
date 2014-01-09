@@ -3,11 +3,30 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <title>Viikko 5</title>
+  <title>Tietokannan käytön alkeet</title>
   <style type="text/css">code{white-space: pre;}</style>
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
   <link rel="stylesheet" href="../../css/base.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!--[if lt IE 9]>
@@ -44,7 +63,7 @@
 <li><a href="../../aikataulu/viikkopalautukset/viikko2.html">Viikko 2</a></li>
 <li><a href="../../aikataulu/viikkopalautukset/viikko3.html">Viikko 3</a></li>
 <li><a href="../../aikataulu/viikkopalautukset/viikko4.html">Viikko 4</a></li>
-<li class="selected"><a href="../../aikataulu/viikkopalautukset/viikko5.html">Viikko 5</a></li>
+<li><a href="../../aikataulu/viikkopalautukset/viikko5.html">Viikko 5</a></li>
 </ul></li>
 <li><a href="../../aikataulu/demo.html">Demotilaisuus</a></li>
 <li><a href="../../aikataulu/palautus.html">Työn palautus</a></li>
@@ -131,7 +150,7 @@
 <li><a href="../../koodaaminen/java/rakenne.html">Sovelluksen rakenne ja servletit</a></li>
 <li><a href="../../koodaaminen/java/nakymat.html">Näkymien tekeminen ja JSP</a></li>
 <li><a href="../../koodaaminen/java/lomakkeet.html">Lomakkeiden käyttö ja vastaanottaminen</a></li>
-<li><a href="../../koodaaminen/java/tietokanta_kirjautuminen.html">Tietokannan käytön alkeet</a></li>
+<li class="selected"><a href="../../koodaaminen/java/tietokanta_kirjautuminen.html">Tietokannan käytön alkeet</a></li>
 <li><a href="../../koodaaminen/java/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
 <li><a href="../../koodaaminen/java/mallit_muokkaustoiminnot.html">Malliluokat ja tiedon muuttaminen</a></li>
 <li><a href="../../koodaaminen/java/muokkausnakymat.html">Muokkausnäkymän toteuttaminen</a></li>
@@ -159,36 +178,54 @@
 </div>
 <div class="col-md-6" id="content">
 <header>
-<h1 class="title">Viikko 5</h1>
+<h1 class="title">Tietokannan käytön alkeet</h1>
 </header>
-<!-- order: 1 -->
+<!-- order: 4 -->
 
-<section class="alert alert-warning small"><h3>
-Deadline:
+<p>Tehdään nyt aiemmin tehtyyn käyttäjää mallintavaan luokkaan staattinen metodi käyttäjän hakemiseen käyttäjätunnuksella ja salasanalla. Käytä tätä metodia kirjautumisen toteuttamiseen.</p>
+<p>Metodi kannattaa toteuttaa sellaisen SQL-kyselyn ympärille, joka hakee kannasta tietoja salasanan ja käyttäjänimen perusteella. Se palauttaa käyttäjäluokan olion, jolloin siitä on järkevää tehdä luokan staattinen metodi.</p>
+<p>Palautettua arvoa käytetään myöhemmin kirjautuneen käyttäjän tallentamiseen istuntoon.</p>
+<p><strong>Ote tiedostosta kissalista/models/Kayttajat.java:</strong></p>
+<pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="dt">static</span> Kayttaja <span class="fu">getKayttajaTunnuksilla</span>(String kayttaja, String salasana) {
+  String sql = <span class="st">&quot;SELECT id,username, password from users where username = ? AND password = ?&quot;</span>;
+  Connection yhteys = Tietokanta.<span class="fu">getTietokanta</span>();
+  PreparedStatement kysely = yhteys.<span class="fu">prepareStatement</span>(sql);
+  kysely.<span class="fu">setString</span>(<span class="dv">1</span>, kayttaja);
+  kysely.<span class="fu">setString</span>(<span class="dv">2</span>, salasana);
+  ResultSet rs = kysely.<span class="fu">executeQuery</span>();
+  
+  <span class="co">//Alustetaan muuttuja, joka sisältää löydetyn käyttäjän</span>
+  Kayttaja kirjautunut = <span class="kw">null</span>;
+
+  <span class="co">//next-metodia on kutsuttava aina, kun käsitellään vasta kannasta saatuja ResultSet-olioita.</span>
+  <span class="co">//ResultSet on oletuksena ensimmäistä edeltävällä -1:llä rivillä.</span>
+  <span class="co">//Kun sitä kutsuu ensimmäisen kerran siirtyy se ensimmäiselle riville 0.</span>
+  <span class="co">//Samalla metodi myös palauttaa tiedon siitä onko seuraavaa riviä olemassa.</span>
+  <span class="kw">if</span> (rs.<span class="fu">next</span>()) { 
+    <span class="co">//Kutsutaan sopivat tiedot vastaanottavaa konstruktoria ja asetetaan palautettava olio:</span>
+    kirjautunut = <span class="kw">new</span> <span class="fu">Kayttaja</span>(rs.<span class="fu">getInt</span>(<span class="st">&quot;id&quot;</span>), rs.<span class="fu">getString</span>(<span class="st">&quot;username&quot;</span>), rs.<span class="fu">getString</span>(<span class="st">&quot;password&quot;</span>));
+  }
+
+  <span class="co">//Jos kysely ei tuottanut tuloksia käyttäjä on nyt vielä null.</span>
+
+  <span class="co">//Suljetaan kaikki resurssit:</span>
+  <span class="kw">try</span> { rs.<span class="fu">close</span>(); } <span class="kw">catch</span> (Exception e) {}
+  <span class="kw">try</span> { kysely.<span class="fu">close</span>(); } <span class="kw">catch</span> (Exception e) {}
+  <span class="kw">try</span> { yhteys.<span class="fu">close</span>(); } <span class="kw">catch</span> (Exception e) {}
+  
+  <span class="co">//Käyttäjä palautetaan vasta täällä, kun resurssit on suljettu onnistuneesti.</span>
+  <span class="kw">return</span> kirjautunut;
+}</code></pre>
+<p>Tee omaan malliluokkaasi vastaava metodi ja laita kirjautumislomakkeesi käyttämään sitä. Testaa toimiiko kaikki oikein.</p>
+<section class="alert alert-success small"><h3>
+Seuraavaksi:
 </h3>
-<span class="coursekeyword deadline5">su 1.12 klo 23:00</span>
+
+<p>Seuraavaksi käytämme istuntoja <a href="istunnot.html">kirjautumisen tallentamiseen sivulatausten välillä</a>.</p>
 </section>
 
-<p>Palautuspäivämäärään mennessä työn on täytettävä alla listatut vaatimukset. Kunkin otsikon alla olevista asioista saa suluissa määritellyt aikataulupisteet.</p>
-<section id="työn-eteneminen-1p" class="level2">
-<h2>Työn eteneminen (1p)</h2>
-<p>Työn on viidennen viikon jälkeen hyvä olla jo melko lähellä valmista. Vaatimuksena on, että ainakin kahden tietokohteen sivut on toteutettu ja testattu toimiviksi.</p>
-<p>Kaiken valmiin koodin on toimittava kaatumatta ja näytettävä virhetilanteista järkeviä virheilmoituksia käyttäjälle.</p>
-</section>
-<section id="hyvä-ohjelmointityyli-ja-arkkitehtuuri-1p" class="level2">
-<h2>Hyvä ohjelmointityyli ja arkkitehtuuri (1p)</h2>
-<p>Koodisi noudattaa hyvää ohjelmointityyliä ja on selkeää lukea. Sovelluksen toiminnot on järjestetty järkevästi eri tiedostoihin MVC-arkkitehtuurin mukaisesti.</p>
-</section>
-<section id="dokumentaatio-1p" class="level2">
-<h2>Dokumentaatio (1p)</h2>
-<p>Dokumentaatiosta on kirjoitettu täysimittainen raakaversio. Keskeneräisiä osia ei ole pakko vielä dokumentoida.</p>
-<p>Uutta kirjoitettava siis ainakin:</p>
-<ul>
-<li><a href="../../dokumentaatio-ohje.html#järjestelmän-yleisrakenne">Järjestelmän yleisrakenne</a>.</li>
-<li><a href="../../dokumentaatio-ohje.html#järjestelmän-komponentit">Järjestelmän komponentit</a>.</li>
-</ul>
-<p>Huolehdi myös siitä, että koodisi on kommentoitu siellä missä se on epäselvempää.</p>
-</section>
+
+
 </div>
 </div> 
 </div> 
