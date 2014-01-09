@@ -208,6 +208,10 @@ Myös koodin alussa oleva muuttujien olemassaolon varmistamisesta huolehtiva koo
 on hyvä kandidaatti yleiskäyttöisen funktion sisällöksi,
 sillä tuontapainen koodi toistuu lomakkeiden käsittelyssä hyvin usein.
 
+<alert>
+Muista aina testata koodiasi erilaisilla syötteillä niin varmistat ettei se kaadu missään tilanteessa.
+</alert>
+
 <next>
 Toteuta ylläolevan kaltaiset käytettävyysparannukset myös omaan kirjautumisservlettiisi.
 

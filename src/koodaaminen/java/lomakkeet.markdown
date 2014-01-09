@@ -185,6 +185,15 @@ Myös koodin alussa oleva muuttujien olemassaolon varmistamisesta huolehtiva koo
 on hyvä kandidaatti yleiskäyttöisen funktion sisällöksi,
 sillä tuontapainen koodi toistuu lomakkeiden käsittelyssä hyvin usein.
 
+<alert>
+Muista aina testata koodiasi erilaisilla syötteillä niin varmistat ettei se kaadu missään tilanteessa.
+
+Kannattaa huomioida etenkin tilanteet, joissa parametria
+ei ole annettu, sillä `getParameter` palauttaa silloin arvon null.
+Tästä seuraa usein ikävä `NullPointerException`, kun erehdytään 
+kutsumaan null-arvolta esimerkiksi `equals`-metodia.
+</alert>
+
 <next>
 Toteuta ylläolevan kaltaiset käytettävyysparannukset myös omaan kirjautumisservlettiisi.
 
