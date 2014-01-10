@@ -3,11 +3,30 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <title>Malliluokat I: tiedon hakeminen</title>
+  <title>Tietokantahaku ja kyselyn parametrit</title>
   <style type="text/css">code{white-space: pre;}</style>
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
   <link rel="stylesheet" href="../../css/base.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!--[if lt IE 9]>
@@ -131,7 +150,7 @@
 <li><a href="../../koodaaminen/java/rakenne.html">Sovelluksen rakenne ja servletit</a></li>
 <li><a href="../../koodaaminen/java/nakymat.html">Näkymien tekeminen ja JSP</a></li>
 <li><a href="../../koodaaminen/java/lomakkeet.html">Lomakkeiden käyttö ja vastaanottaminen</a></li>
-<li><a href="../../koodaaminen/java/tietokanta_kirjautuminen.html">Tietokannan käytön alkeet</a></li>
+<li><a href="../../koodaaminen/java/mallit_tiedonhaku.html">Tietokantahaku ja kyselyn parametrit</a></li>
 <li><a href="../../koodaaminen/java/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
 <li><a href="../../koodaaminen/java/mallit_muokkaustoiminnot.html">Malliluokat ja tiedon muuttaminen</a></li>
 <li><a href="../../koodaaminen/java/muokkausnakymat.html">Muokkausnäkymän toteuttaminen</a></li>
@@ -141,7 +160,7 @@
 <li><a href="../../koodaaminen/php/rakenne.html">Sovelluksen rakenne ja kontrollerit</a></li>
 <li><a href="../../koodaaminen/php/nakymat.html">Näkymien tekeminen</a></li>
 <li><a href="../../koodaaminen/php/lomakkeet.html">Lomakkeiden käyttö ja vastaanottaminen</a></li>
-<li><a href="../../koodaaminen/php/tietokanta_kirjautuminen.html">Tietokannan käytön alkeet</a></li>
+<li class="selected"><a href="../../koodaaminen/php/mallit_tiedonhaku.html">Tietokantahaku ja kyselyn parametrit</a></li>
 <li><a href="../../koodaaminen/php/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
 <li><a href="../../koodaaminen/php/mallit_muokkaustoiminnot.html">Malliluokat ja tiedon muuttaminen</a></li>
 <li><a href="../../koodaaminen/php/muokkausnakymat.html">Muokkausnäkymän toteuttaminen</a></li>
@@ -159,26 +178,90 @@
 </div>
 <div class="col-md-6" id="content">
 <header>
-<h1 class="title">Malliluokat I: tiedon hakeminen</h1>
+<h1 class="title">Tietokantahaku ja kyselyn parametrit</h1>
 </header>
 <!-- order: 4 -->
-<!-- hidden! -->
 
 <section class="alert alert-info"><h3>
 Tiivistelmä:
 </h3>
 <ul>
-<li>Käytännössä jokaista tietokohdetta vastaa yksi malliluokka.
-<ul>
-<li>Puhtaille välitauluille harvemmin tarvitaan omaa luokkaansa, vaan niiden toiminnot hoidetaan itse tietokohteiden kautta.</li>
-<li>Luokka sisältää tarvittavat metodit.</li>
-</ul></li>
-<li>Käytetyn SQL-koodin pitää olla turvallista niin, ettei se tarjoa mahdollisuuksia SQL-injektioille. Tähän käytetään PDO:n tai Javan JDBC:n prepared statements -tukia.</li>
+<li>Lisätään aiemmin tehtyyn malliluokkaan haeKayttajaTunnuksilla-metodi.</li>
+<li>Käytetyn SQL-koodin pitää olla turvallista niin, ettei se tarjoa mahdollisuuksia SQL-injektioille. Tähän käytetään PDO:n <em>prepared statements</em> -tukia.</li>
 </ul>
+</section>
+
+<p>Jotta sovellukseen voi kirjautua muillakin kuin yhdellä tunnuksella, pitää kirjautumisen taustalle tehdä oikea tietokantaa käyttävä malli, jolta voidaan kysyä ovatko käyttäjän antamat tunnukset oikeita.</p>
+<section id="turvallinen-tietokantaohjelmointi" class="level2">
+<h2>Turvallinen tietokantaohjelmointi</h2>
+<p>Olennainen osa järkevää tietokantaohjelmointia on nk. <a href="http://fi.wikipedia.org/wiki/SQL-injektio">SQL-injektioiden</a> välttäminen.</p>
+<p>Sovellukseen on mahdollista tehdä SQL-injektio silloin, kun käyttäjän antamia syötteitä ei tarkisteta kunnolla vaan ne upotetaan SQL-kyselyihin sellaisinaan.</p>
+<p><strong>Esimerkki:</strong></p>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">$nimi</span> = <span class="kw">$_POST</span><span class="ot">[</span><span class="st">&#39;nimi&#39;</span><span class="ot">];</span>
+
+<span class="kw">$yhteys</span> = Tietokanta::getYhteys<span class="ot">();</span>
+<span class="kw">$kysely</span> = <span class="kw">$yhteys</span>-&gt;prepare<span class="ot">(</span><span class="st">&quot;SELECT * FROM users WHERE nimi = &#39;</span><span class="kw">$nimi</span><span class="st">&#39; LIMIT 1&quot;</span><span class="ot">);</span></code></pre>
+<p>Nyt, mikäli nimeksi annetaankin vaikka merkkijono <code>' OR username = 'admin'</code>, hakeekin kysely kannasta aivan eri käyttäjän kuin pitäisi!</p>
+<p>Jos tälläinen virhe eksyy vaikkapa kirjautumislogiikkaan, on sovellus auttamatta haavoittuvainen murtautumisyrityksille.</p>
+<p>Onneksi sekä PHP:llä että Javalla on olemassa hyvin helppokäyttöinen tapa estää tälläisiä kyselyjä menemästä kantaan: <a href="http://en.wikipedia.org/wiki/Prepared_statement">Prepared statementit</a> eli kankeasti suomennettuna esivalmistellut SQL-lauseet ovat ratkaisu ongelmaan.</p>
+<p>Käytännössä kyseessä on tietokannalle etukäteen lähetetty SQL-kielinen kysely, johon on upotettu paikkoja parametreille. Näiden parametrien paikalle voi sitten upottaa haluamiaan arvoja.</p>
+<p>Näitä parametrien paikkoja ilmaistaan kysymysmerkeillä. PHP:llä parametrit annetaan array-tyyppisenä listana <a href="http://php.net/manual/en/pdostatement.execute.php">kyselyä suoritettaessa</a></p>
+<p><strong>Esimerkki</strong></p>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">$nimi</span> = <span class="kw">$_POST</span><span class="ot">[</span><span class="st">&#39;nimi&#39;</span><span class="ot">];</span>
+<span class="kw">$yhteys</span> = Tietokanta::getYhteys<span class="ot">();</span>
+
+<span class="co">//Etsitään käyttäjää nimellä</span>
+<span class="kw">$sql</span> = <span class="st">&quot;SELECT * FROM users WHERE nimi = ?&quot;</span><span class="ot">;</span>
+<span class="kw">$kysely</span> = <span class="kw">$yhteys</span>-&gt;prepare<span class="ot">(</span><span class="kw">$sql</span><span class="ot">);</span>
+
+<span class="co">//Annetaan yksi parametri array:n sisällä</span>
+<span class="kw">$tulokset</span> = <span class="kw">$kysely</span>-&gt;execute<span class="ot">(</span><span class="fu">array</span><span class="ot">(</span><span class="kw">$nimi</span><span class="ot">));</span></code></pre>
+</section>
+<section id="yksittäisen-käyttäjän-hakeminen-kannasta" class="level2">
+<h2>Yksittäisen käyttäjän hakeminen kannasta</h2>
+<p>Tehdään aiemmin tehtyyn käyttäjää mallintavaan luokkaan staattinen metodi käyttäjän hakemiseen käyttäjätunnuksella ja salasanalla. Käytä tätä metodia kirjautumisen tarkistamisen toteuttamiseen.</p>
+<p>Metodi kannattaa toteuttaa sellaisen SQL-kyselyn ympärille, joka hakee kannasta tietoja salasanan ja käyttäjänimen perusteella. Se voi palauttaa esimerkiksi käyttäjäluokan olion, jolloin siitä on järkevää tehdä luokan staattinen metodi.</p>
+<p>Palautettua arvoa voidaan käyttää myös myöhemmin kirjautuneen käyttäjän tallentamiseen istuntoon.</p>
+<p><strong>Esimerkkikoodina ote tiedostosta libs/models/kayttaja.php:</strong></p>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">class</span> Kayttaja {
+  
+  <span class="kw">private</span> <span class="kw">$id</span><span class="ot">;</span>
+  <span class="kw">private</span> <span class="kw">$username</span><span class="ot">;</span>
+  <span class="kw">private</span> <span class="kw">$password</span><span class="ot">;</span>
+  
+  <span class="co">/* Etsitään kannasta käyttäjätunnuksella ja salasanalla käyttäjäriviä */</span>
+  <span class="kw">public</span> <span class="kw">static</span> <span class="kw">function</span> getKayttajaTunnuksilla<span class="ot">(</span><span class="kw">$kayttaja</span><span class="ot">,</span> <span class="kw">$salasana</span><span class="ot">)</span> {
+    <span class="kw">$sql</span> = <span class="st">&quot;SELECT id,username, password from users where username = ? AND password = ? LIMIT 1&quot;</span><span class="ot">;</span>
+    <span class="kw">$kysely</span> = getTietokanta<span class="ot">()</span>-&gt;prepare<span class="ot">(</span><span class="kw">$sql</span><span class="ot">);</span>
+    <span class="kw">$kysely</span>-&gt;execute<span class="ot">(</span><span class="fu">array</span><span class="ot">(</span><span class="kw">$kayttaja</span><span class="ot">,</span> <span class="kw">$salasana</span><span class="ot">));</span>
+
+    <span class="kw">$tulos</span> = <span class="kw">$kysely</span>-&gt;fetchObject<span class="ot">();</span>
+    <span class="kw">if</span> <span class="ot">(</span><span class="kw">$tulos</span> == <span class="kw">null</span><span class="ot">)</span> {
+      <span class="kw">return</span> <span class="kw">null</span><span class="ot">;</span>
+    } <span class="kw">else</span> {
+      <span class="kw">$kayttaja</span> = <span class="kw">new</span> Kayttaja<span class="ot">();</span> 
+      <span class="kw">$kayttaja</span>-&gt;id = <span class="kw">$tulos</span>-&gt;id<span class="ot">;</span>
+      <span class="kw">$kayttaja</span>-&gt;username = <span class="kw">$tulos</span>-&gt;username<span class="ot">;</span>
+      <span class="kw">$kayttaja</span>-&gt;password = <span class="kw">$tulos</span>-&gt;password<span class="ot">;</span>
+
+      <span class="kw">return</span> <span class="kw">$kayttaja</span><span class="ot">;</span>
+    }
+  }
+
+  <span class="co">/* Tähän muita Käyttäjäluokan metodeita */</span>
+}</code></pre>
+<p>Tee omaan malliluokkaasi vastaava metodi ja laita kirjautumislomakkeesi käyttämään sitä. Testaa toimiiko kaikki oikein.</p>
+<section class="alert alert-success small"><h3>
+Seuraavaksi:
+</h3>
+
+<p>Seuraavaksi käytämme istuntoja <a href="istunnot.html">kirjautumisen tallentamiseen sivulatausten välillä</a>.</p>
 </section>
 
 
 
+
+</section>
 </div>
 </div> 
 </div> 

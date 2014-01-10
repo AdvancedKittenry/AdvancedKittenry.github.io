@@ -1,5 +1,13 @@
 % Listaus PHP:llä
 
+<summary>
+* PHP-tilan ja tekstitilan välillä pomppiminen ja miten HTML-koodia tulostetaan.
+* Tietokannan käsittely keskitetään omiin luokkiinsa eli *malleihin*.
+* Käytännössä jokaista tietokohdetta vastaa yksi malliluokka.
+    * Puhtaille välitauluille harvemmin tarvitaan omaa luokkaansa, vaan niiden toiminnot hoidetaan itse tietokohteiden kautta.
+    * Luokka sisältää tarvittavat taulun käsittelyyn metodit.
+</summary>
+
 Varmista ensin, että sinulla on omassa tiedossaan luokka tai funktio, jolla saat [yhteyden tietokantaan](../tietokantayhteys/index.html).
 Nyt käytämme tietokantayhteyttä luokaksemme hyvin yksinkertaisen sivun, jolla listataan jonkun taulun sisältöä.
 Teemme tämän kahdessa vaiheessa: 
@@ -73,50 +81,48 @@ heti minkä rakenteen se lopettaa.
 Jos haluat tutustua näkymäkoodin kirjoittamiseen tarkemmin, voit tutustua 
 [kolmosviikon ohjeisiin](../php/rakenne.html).
 
-## Tietokannan käyttö
+## Tietokannan käyttö ja mallit
 
-Nyt kun meillä on tapa kirjoitaa lista, voimme kirjoittaa koodia,
-joka palauttaa meille listan.
+Nyt kun meillä on tapa laittaa lista näkyville, voimme kirjoittaa koodia,
+joka tuottaa meille listan tietokannassa olevista asioista, vaikkapa kissoista.
 
-Aivan kuten tietokantayhteydenkin muodostamisen
+Aivan kuten tietokantayhteydenkin muodostamisenkin
 kirjoitamme tietokantaa käsittelevän koodin omaan tiedostoonsa.
-Tee jostakin sovelluksesi tietokohteesta, esim. käyttäjistä, oma luokkansa
-ja tee sille staattinen metodi, joka palauttaa kaikki tuon tietokohteen taulun rivit
-tuon luokan olioina.
+Tapana on jakaa tietokantaa käsittelevä koodi tietokohteittain
+siten, että kutakin tietokantataulua käsittelevä koodi on 
+omassa luokassaan. Näitä luokkia kutsutaan malleiksi.
+(Malleista ja sovelluksen arkkitehtuurista voi lukea lisää 
+[kolmosviikon materiaalista]({{rootdir}}koodaaminen/arkkitehtuuri/index.html))
 
-Alla on esimerkki käyttäjäluokasta, jolla on metodi, joka palauttaa jokaisen käyttäjän.
-Koodissa oletetaan, että funktio `getTietokanta` palauttaa 
-sovelluksen tietokantaa vastaavan PDO-olion.
+Poikkeuksena tietokantataulujen ja malliluokkien vastaavuuteen
+ovat tosin välitaulut, joille ei välttämättä aina tarvitse tehdä omaa tietokantatauluaan.
+
+Tässä materiaalissa rakennamme mallit niin, että kunkin malliluokan
+oliot vastaavat mallin kuvaaman tietokantataulun rivejä
+ja mallissa on staattisia metodeja, joilla on mahdollista
+hakea näitä olioita tietokannasta.
+
+### Mallin tekeminen käyttäjille
+
+Tehdän ensi viikon kirjautumisen toteuttamista silmälläpitäen
+jo valmiiksi käyttäjille oma malliluokkansa.
+Lisätään luokalle attribuuteiksi käyttäjätaulun kentät, sekä konstruktori:
 
 ~~~php
 <?php
 class Kayttaja {
   
   private $id;
-  private $username;
+  private $tunnus;
   private $password;
-  
-  public static function getKayttajat() {
-    $sql = "SELECT id,username, password from users";
-    $kysely = getTietokanta()->prepare($sql); $kysely->execute();
-      
-    $tulokset = array();
-    foreach($kysely->fetchAll() as $tulos) {
-      $kayttaja = new Kayttaja(); 
-      /* Käytetään PHP:n vapaamielistä muuttujamallia olion
-         kenttien asettamiseen */
-      foreach($tulos as $kentta => $arvo) {
-        $kayttaja->$kentta = $arvo;
-      }
-      $tulokset[] = $kayttaja;
-    }
-    return $tulokset;
+
+  public function __construct($id, $tunnus, $salasana) {
+    $this->id = $id;
+    $this->tunnus = $tunnus;
+    $this->salasana = $salasana;
   }
-  
-  public function getUsername() {
-    return $this->username;
-  }
-  /* Tähän muita Käyttäjäluokan metodeita */
+
+  /* Tähän gettereitä ja settereitä */
 }
 ~~~
 
@@ -142,10 +148,82 @@ kaatuu suoritus siihen, että toisella kerralla jo olemassa olevaa luokkaa yrite
 Näitä luokkia sisältäviä kirjastoina toimivia php-tiedostoja ei tarvitse päättää `?>`-lopputägiin. 
 Lopputägin laittaminen on itseasiassa huono idea, sillä niiden jälkeen saattaa tällöin
 eksyä rivinvaihtoja ja välilyöntejä, jotka PHP lähettää empimättä selaimelle. 
-Tällä on ikävä tapa sotkea istuntojen ja sivujen välisten ohjausten ym. HTTP-otsakkeita käyttävien toiintojen toimintaa.
+Tällä on ikävä tapa sotkea istuntojen ja sivujen välisten ohjausten ym. HTTP-otsakkeita käyttävien toimintojen toimintaa.
 </vinkki>
 
-Kun käytössä on käyttäjäluokka, listaesimerkin alku voi näyttää esimerkiksi seuraavalta:
+### Tietokantahaku
+
+Tehdään seuraavaksi luokalle staattinen metodi, joka palauttaa 
+kaikki tuon tietokohteen taulun rivit tuon luokan olioina.
+Käytetään tähän aiemmin tekemäämme tietokantayhteysfunktiota, jolta kysymme `PDO`-tyyppistä yhteysoliota:
+
+~~~inlinephp
+$yhteys = getTietokanta();
+~~~
+
+Yhteysoliota voi pyytää valmistelemaan SQL-koodia suoritettavaksi kutsumalla sen `prepare`-metodia.
+Tuloksena saatavan `PDOStatement`-olion voi taas käskeä sille annetun suorittamaan SQL:n
+kutsumalla `execute`-metodia.
+
+~~~inlinephp
+$sql = "SELECT id,tunnus, password from users";
+$kysely = getTietokanta()->prepare($sql); 
+$kysely->execute();
+~~~
+
+Viimeisen kutsun jälkeen `$kysely`-muuttujalta voi kysellä
+kannasta saatuja tietoja takaisin. Tietoja voi pyydellä
+rivi kerrallaan käyttämällä `fetch` tai `fetchObject`-metodia.
+Molemmat hakevat seuraavan tuloksissa olevan rivin.
+
+~~~inlinephp
+//Haetaan kaksi riviä eri tyyppisinä ja tulostetaan niiltä tunnus.
+$assosiaatiotaulu = $kysely->fetch();
+echo $assosiaatiotaulu['tunnus'];
+
+$nimeton_olio = $kysely->fetchObject();
+echo $nimeton_olio->tunnus;
+~~~
+
+Tiedot voi myös hakea kaikki rivit kerralla `fetchAll`-metodilla.
+
+~~~inlinephp
+$rivit = $kysely->fetchAll();
+echo $rivit[0]['tunnus'];
+~~~
+
+`fetchAll`-metodille voi antaa parametrin, jolla määritellään palautustyyppi.
+Listan olioita saa antamalla metodille paremetrina vakion `PDO::FETCH_OBJ`.
+
+~~~inlinephp
+$rivit = $kysely->fetchAll(PDO::FETCH_OBJ);
+echo $rivit[0]->tunnus;
+~~~
+
+Näillä metodeilla haetut tiedot voidaan nyt tallentaa olioihin, jotka voidaan tallentaa listaan
+ja palauttaa metodin kutsujalle.
+
+Alla on esimerkki valmiista metodista, joka palauttaa jokaisen käyttäjän.
+
+~~~inlinephp
+public static function getKayttajat() {
+  $sql = "SELECT id,tunnus, password from users";
+  $kysely = getTietokanta()->prepare($sql); $kysely->execute();
+    
+  $tulokset = array();
+  foreach($kysely->fetchAll(PDO::FETCH_OBJ) as $tulos) {
+    $kayttaja = new Kayttaja($tulos->id, $tulos->tunnus, $tulos->salasana); 
+    //$array[] = $muuttuja; lisää muuttujan arrayn perään. 
+    //Se vastaa melko suoraan ArrayList:in add-metodia.
+    $tulokset[] = $kayttaja;
+  }
+  return $tulokset;
+}
+~~~
+
+### Koodin käyttäminen servletissä
+
+Malliluokan koodia käyttäen listaesimerkin alku voi näyttää esimerkiksi seuraavalta:
 
 ~~~php
 <?php

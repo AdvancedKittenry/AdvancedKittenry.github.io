@@ -1,5 +1,16 @@
 % Listaus Javalla
 
+<summary>
+* Servlettien käyttämisen alkeet
+    * Javalla käytännössä kaikki nettisivut toteutetaan Servletteinä
+    * Servletissä voi tulostaa HTML:ää suoraan samanlaisella rajapinnalla kuin `System.out.println`. Tämä on yksinkertaisin, mutta ei kuitenkaan paras mahdollinen tapa.
+    * Myöhemmin HTML-sivut toteutetaan JSP-kielellä
+* Tietokannan käsittely keskitetään omiin luokkiinsa eli *malleihin*.
+* Käytännössä jokaista tietokohdetta vastaa yksi malliluokka.
+    * Puhtaille välitauluille harvemmin tarvitaan omaa luokkaansa, vaan niiden toiminnot hoidetaan itse tietokohteiden kautta.
+    * Luokka sisältää tarvittavat taulun käsittelyyn metodit.
+</summary>
+
 Varmista ensin, että sinulla on luokka tai funktio, jolla saat [yhteyden tietokantaan](../tietokantayhteys/index.html).
 Nyt käytämme tietokantayhteyttä luodaksemme hyvin yksinkertaisen sivun, jolla listataan jonkun taulun sisältöä.
 Teemme tämän kahdessa vaiheessa: 
@@ -87,25 +98,96 @@ mutta tietokantatestin kannalta tämä on yksinkertaisempaa.
 Voit halutessasi katsoa miten esimerkki toteutetaan oikein
 [viikon 3 materiaaleista](../java/rakenne.html).
 
-## Tietokannan käyttö
+## Tietokannan käyttö ja mallit
 
-Nyt kun meillä on tapa kirjoitaa lista, voimme kirjoittaa koodia,
-joka palauttaa meille listan.
+Nyt kun meillä on tapa laittaa lista näkyville, voimme kirjoittaa koodia,
+joka tuottaa meille listan tietokannassa olevista asioista, vaikkapa kissoista.
 
-Aivan kuten tietokantayhteydenkin muodostamisen
-kirjoitamme tietokantaa käsittelevän koodin omaan luokkaansa.
-Tee jostakin sovelluksesi tietokohteesta, esim. käyttäjistä, oma luokkansa
-ja tee sille staattinen metodi, joka palauttaa kaikki tuon tietokohteen taulun rivit
-tuon luokan olioina.
+Aivan kuten tietokantayhteydenkin muodostamisenkin
+kirjoitamme tietokantaa käsittelevän koodin omaan tiedostoonsa.
+Tapana on jakaa tietokantaa käsittelevä koodi tietokohteittain
+siten, että kutakin tietokantataulua käsittelevä koodi on 
+omassa luokassaan. Näitä luokkia kutsutaan malleiksi.
+(Malleista ja sovelluksen arkkitehtuurista voi lukea lisää 
+[kolmosviikon materiaalista]({{rootdir}}koodaaminen/arkkitehtuuri/index.html))
 
-Alla on esimerkki käyttäjäluokasta, jolla on metodi, joka palauttaa jokaisen käyttäjän.
-Koodissa oletetaan, että Tietokanta-luokan metodi `getTietokanta` palauttaa 
-sovelluksen tietokantaa vastaavan Connection-olion.
+Poikkeuksena tietokantataulujen ja malliluokkien vastaavuuteen
+ovat tosin välitaulut, joille ei välttämättä aina tarvitse tehdä omaa tietokantatauluaan.
 
+Tässä materiaalissa rakennamme mallit niin, että kunkin malliluokan
+oliot vastaavat mallin kuvaaman tietokantataulun rivejä
+ja mallissa on staattisia metodeja, joilla on mahdollista
+hakea näitä olioita tietokannasta.
+
+### Mallin tekeminen käyttäjille
+
+Tehdän ensi viikon kirjautumisen toteuttamista silmälläpitäen
+jo valmiiksi käyttäjille oma malliluokkansa.
+Lisätään luokalle attribuuteiksi käyttäjätaulun kentät, sekä konstruktori:
+
+~~~java
+package Kissalista.Mallit;
+
+public class Kayttaja {
+  private int id;
+  private String tunnus;
+  private String salasana;
+
+  public Kayttaja(int id, String tunnus, String salasana) {
+    this.id = id;
+    this.tunnus = tunnus;
+    this.salasana = salasana;
+  }
+
+  /* Tähän gettereitä ja settereitä */
+}
+~~~
+
+Tehdään seuraavaksi luokalle staattinen metodi, joka palauttaa 
+kaikki tuon tietokohteen taulun rivit tuon luokan olioina.
+Käytetään tähän aiemmin tekemäämme tietokantayhteysluokka, jolta kysymme `Connection`-oliota:
+
+~~~java
+Connection yhteys = Tietokanta.getTietokanta();
+~~~
+
+Yhteysoliota voi pyytää valmistelemaan SQL-koodia suoritettavaksi kutsumalla sen `prepareStatement`-metodia.
+Tuloksena saatavan `PreparedStatement`-olion voi taas käskeä sille annetun suorittamaan SQL:n
+kutsumalla `executeQuery`-metodia.
+
+~~~java
+String sql = "SELECT id, tunnus, salasana from kayttajat";
+PreparedStatement kysely = yhteys.prepareStatement(sql);
+ResultSet rs = kysely.executeQuery();
+~~~
+
+Tuloksena on `ResultSet`-olio, joka kuvaa sarjaa tietokannasta haettuja rivejä.
+Olio viittaa aina kerrallaan yhteen tuloksena saaduista riveistä,
+jossa olevia arvoja siltä voi kysellä erinäköisillä tietotyyppikohtaisilal 
+gettereillä. Seuraavan rivin saa kutsumalla `next`-metodia.
+Aluksi `ResultSet`-olio on kuitenkin aina tuloksen ns. nollannella rivillä, jolla ei
+ole arvoja ollenkaan. Se pitää siis heti kättelyssä siirtää ensimmäiselle oikealle riville.
+Jos tuloksia odotetaan useita, tämä hoituu kätevästi while-loopilla:
+
+~~~java
+while(rs.next()) {
+  //Haetaan tietoa riviltä
+  int id = rs.getInt("id");
+  String tunnus = rs.getString("tunnus");
+  String salasana = rs.getString("salasana");
+}
+~~~
+
+Nämä arvot voidaan nyt tallentaa olioihin, jotka voidaan tallentaa listaan
+ja palauttaa metodin kutsujalle.
+Lopuksi pitää muistaa sulkea kaikki kolme resurssia: ResultSet, PreparedStatement ja Connection.
+Jos näin ei muisteta tehdä, sovellus lakkaa ennenpitkää toimimasta kunnolla, sillä yhteyksiä on mahdollista pitää yllä vain rajallinen määrä.
+
+Alla on esimerkki valmiista metodista, joka palauttaa jokaisen käyttäjän.
 
 ~~~java
 public static List<Kayttaja> getKayttajat() {
-  String sql = "SELECT id,username, password from users";
+  String sql = "SELECT id, tunnus, salasana from kayttajat";
   Connection yhteys = Tietokanta.getTietokanta();
   PreparedStatement kysely = yhteys.prepareStatement(sql);
   ResultSet rs = kysely.executeQuery();
@@ -113,7 +195,7 @@ public static List<Kayttaja> getKayttajat() {
   ArrayList<Kayttaja> kayttajat = new ArrayList<Kayttaja>();
   while (rs.next()) {
     //Kutsutaan sopivat tiedot vastaanottavaa konstruktoria ja palautetaan olio:
-    Kayttaja k = new Kayttaja(rs.getInt("id"), rs.getString("username"), rs.getString("password"));
+    Kayttaja k = new Kayttaja(rs.getInt("id"), rs.getString("tunnus"), rs.getString("salasana"));
     kayttajat.add(k);
   }   
   //Suljetaan kaikki resurssit:
@@ -125,7 +207,9 @@ public static List<Kayttaja> getKayttajat() {
 }
 ~~~
 
-Nyt listaesimerkin alku voi näyttää esimerkiksi seuraavalta:
+### Koodin käyttäminen servletissä
+
+Malliluokan koodia käyttäen listaesimerkin alku voi näyttää esimerkiksi seuraavalta:
 
 ~~~java
 List<Kayttaja> kayttajat = Kayttaja.getKayttajat();

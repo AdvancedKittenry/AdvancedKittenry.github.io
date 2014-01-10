@@ -1,6 +1,15 @@
 % Lomakkeiden käyttö ja vastaanottaminen
 <!-- order: 3 -->
 
+<summary>
+* Tehdään kirjautumisen vastaanottamista varten oma kontrolleri, joka käyttää aiemmin tehtyä kirjautumisen html-demokoodia näkymänään.
+    * Saatat joutua muuttamaan html-tiedostosi JSP-tiedostoksi.
+* Kontrollerin ottaa vastaan lomakkeen tiedot ja lähettää käyttäjän eteenpäin, jos kirjautuminen onnistuu.
+* Jos tunnukset ovat väärät näytetään kirjautumislomake.
+    * Käyttäjä näkee samalla virheviestin, joka kertoo mikä meni pieleen.
+    * Jos käyttäjä syötti käyttäjätunnuskenttään jotakin, säilyy kentän sisältö myös virhesivulla. Niin käyttäjän ei tarvitse kirjoittaa nimeä uudestaan.
+</summary>
+
 Käsittelemme seuraavaksi lomakkeita ja kirjautumisen toteuttamista.
 
 Aloita tekemällä kontrolleri, joka näyttää

@@ -150,7 +150,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li><a href="../../koodaaminen/java/rakenne.html">Sovelluksen rakenne ja servletit</a></li>
 <li><a href="../../koodaaminen/java/nakymat.html">Näkymien tekeminen ja JSP</a></li>
 <li><a href="../../koodaaminen/java/lomakkeet.html">Lomakkeiden käyttö ja vastaanottaminen</a></li>
-<li><a href="../../koodaaminen/java/tietokanta_kirjautuminen.html">Tietokannan käytön alkeet</a></li>
+<li><a href="../../koodaaminen/java/mallit_tiedonhaku.html">Tietokantahaku ja kyselyn parametrit</a></li>
 <li><a href="../../koodaaminen/java/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
 <li><a href="../../koodaaminen/java/mallit_muokkaustoiminnot.html">Malliluokat ja tiedon muuttaminen</a></li>
 <li><a href="../../koodaaminen/java/muokkausnakymat.html">Muokkausnäkymän toteuttaminen</a></li>
@@ -160,7 +160,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li><a href="../../koodaaminen/php/rakenne.html">Sovelluksen rakenne ja kontrollerit</a></li>
 <li><a href="../../koodaaminen/php/nakymat.html">Näkymien tekeminen</a></li>
 <li><a href="../../koodaaminen/php/lomakkeet.html">Lomakkeiden käyttö ja vastaanottaminen</a></li>
-<li><a href="../../koodaaminen/php/tietokanta_kirjautuminen.html">Tietokannan käytön alkeet</a></li>
+<li><a href="../../koodaaminen/php/mallit_tiedonhaku.html">Tietokantahaku ja kyselyn parametrit</a></li>
 <li><a href="../../koodaaminen/php/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
 <li><a href="../../koodaaminen/php/mallit_muokkaustoiminnot.html">Malliluokat ja tiedon muuttaminen</a></li>
 <li><a href="../../koodaaminen/php/muokkausnakymat.html">Muokkausnäkymän toteuttaminen</a></li>
@@ -180,6 +180,25 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <header>
 <h1 class="title">Listaus Javalla</h1>
 </header>
+<section class="alert alert-info"><h3>
+Tiivistelmä:
+</h3>
+<ul>
+<li>Servlettien käyttämisen alkeet
+<ul>
+<li>Javalla käytännössä kaikki nettisivut toteutetaan Servletteinä</li>
+<li>Servletissä voi tulostaa HTML:ää suoraan samanlaisella rajapinnalla kuin <code>System.out.println</code>. Tämä on yksinkertaisin, mutta ei kuitenkaan paras mahdollinen tapa.</li>
+<li>Myöhemmin HTML-sivut toteutetaan JSP-kielellä</li>
+</ul></li>
+<li>Tietokannan käsittely keskitetään omiin luokkiinsa eli <em>malleihin</em>.</li>
+<li>Käytännössä jokaista tietokohdetta vastaa yksi malliluokka.
+<ul>
+<li>Puhtaille välitauluille harvemmin tarvitaan omaa luokkaansa, vaan niiden toiminnot hoidetaan itse tietokohteiden kautta.</li>
+<li>Luokka sisältää tarvittavat taulun käsittelyyn metodit.</li>
+</ul></li>
+</ul>
+</section>
+
 <p>Varmista ensin, että sinulla on luokka tai funktio, jolla saat <a href="../tietokantayhteys/index.html">yhteyden tietokantaan</a>. Nyt käytämme tietokantayhteyttä luodaksemme hyvin yksinkertaisen sivun, jolla listataan jonkun taulun sisältöä. Teemme tämän kahdessa vaiheessa: Ensin luomme yksinkertaisen servletin, joka lähettää selaimelle yksinkertaista HTML:ää, sitten laitamme tämän servletin näyttämään listan. Lopulta luomme koodin, joka hakee tuon listan tietokannasta.</p>
 <p>Tässä vaiheessa ymmärtämistä saattaa helpottaa <a href="../arkkitehtuuri/index.html">MVC-mallin rakenteen tunteminen</a>.</p>
 <section id="servletit" class="level2">
@@ -254,13 +273,47 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <p>Voit halutessasi katsoa miten esimerkki toteutetaan oikein <a href="../java/rakenne.html">viikon 3 materiaaleista</a>.</p>
 </section>
 </section>
-<section id="tietokannan-käyttö" class="level2">
-<h2>Tietokannan käyttö</h2>
-<p>Nyt kun meillä on tapa kirjoitaa lista, voimme kirjoittaa koodia, joka palauttaa meille listan.</p>
-<p>Aivan kuten tietokantayhteydenkin muodostamisen kirjoitamme tietokantaa käsittelevän koodin omaan luokkaansa. Tee jostakin sovelluksesi tietokohteesta, esim. käyttäjistä, oma luokkansa ja tee sille staattinen metodi, joka palauttaa kaikki tuon tietokohteen taulun rivit tuon luokan olioina.</p>
-<p>Alla on esimerkki käyttäjäluokasta, jolla on metodi, joka palauttaa jokaisen käyttäjän. Koodissa oletetaan, että Tietokanta-luokan metodi <code>getTietokanta</code> palauttaa sovelluksen tietokantaa vastaavan Connection-olion.</p>
+<section id="tietokannan-käyttö-ja-mallit" class="level2">
+<h2>Tietokannan käyttö ja mallit</h2>
+<p>Nyt kun meillä on tapa laittaa lista näkyville, voimme kirjoittaa koodia, joka tuottaa meille listan tietokannassa olevista asioista, vaikkapa kissoista.</p>
+<p>Aivan kuten tietokantayhteydenkin muodostamisenkin kirjoitamme tietokantaa käsittelevän koodin omaan tiedostoonsa. Tapana on jakaa tietokantaa käsittelevä koodi tietokohteittain siten, että kutakin tietokantataulua käsittelevä koodi on omassa luokassaan. Näitä luokkia kutsutaan malleiksi. (Malleista ja sovelluksen arkkitehtuurista voi lukea lisää <a href="../../koodaaminen/arkkitehtuuri/index.html">kolmosviikon materiaalista</a>)</p>
+<p>Poikkeuksena tietokantataulujen ja malliluokkien vastaavuuteen ovat tosin välitaulut, joille ei välttämättä aina tarvitse tehdä omaa tietokantatauluaan.</p>
+<p>Tässä materiaalissa rakennamme mallit niin, että kunkin malliluokan oliot vastaavat mallin kuvaaman tietokantataulun rivejä ja mallissa on staattisia metodeja, joilla on mahdollista hakea näitä olioita tietokannasta.</p>
+<section id="mallin-tekeminen-käyttäjille" class="level3">
+<h3>Mallin tekeminen käyttäjille</h3>
+<p>Tehdän ensi viikon kirjautumisen toteuttamista silmälläpitäen jo valmiiksi käyttäjille oma malliluokkansa. Lisätään luokalle attribuuteiksi käyttäjätaulun kentät, sekä konstruktori:</p>
+<pre class="sourceCode java"><code class="sourceCode java"><span class="kw">package Kissalista.Mallit;</span>
+
+<span class="kw">public</span> <span class="kw">class</span> Kayttaja {
+  <span class="kw">private</span> <span class="dt">int</span> id;
+  <span class="kw">private</span> String tunnus;
+  <span class="kw">private</span> String salasana;
+
+  <span class="kw">public</span> <span class="fu">Kayttaja</span>(<span class="dt">int</span> id, String tunnus, String salasana) {
+    <span class="kw">this</span>.<span class="fu">id</span> = id;
+    <span class="kw">this</span>.<span class="fu">tunnus</span> = tunnus;
+    <span class="kw">this</span>.<span class="fu">salasana</span> = salasana;
+  }
+
+  <span class="co">/* Tähän gettereitä ja settereitä */</span>
+}</code></pre>
+<p>Tehdään seuraavaksi luokalle staattinen metodi, joka palauttaa kaikki tuon tietokohteen taulun rivit tuon luokan olioina. Käytetään tähän aiemmin tekemäämme tietokantayhteysluokka, jolta kysymme <code>Connection</code>-oliota:</p>
+<pre class="sourceCode java"><code class="sourceCode java">Connection yhteys = Tietokanta.<span class="fu">getTietokanta</span>();</code></pre>
+<p>Yhteysoliota voi pyytää valmistelemaan SQL-koodia suoritettavaksi kutsumalla sen <code>prepareStatement</code>-metodia. Tuloksena saatavan <code>PreparedStatement</code>-olion voi taas käskeä sille annetun suorittamaan SQL:n kutsumalla <code>executeQuery</code>-metodia.</p>
+<pre class="sourceCode java"><code class="sourceCode java">String sql = <span class="st">&quot;SELECT id, tunnus, salasana from kayttajat&quot;</span>;
+PreparedStatement kysely = yhteys.<span class="fu">prepareStatement</span>(sql);
+ResultSet rs = kysely.<span class="fu">executeQuery</span>();</code></pre>
+<p>Tuloksena on <code>ResultSet</code>-olio, joka kuvaa sarjaa tietokannasta haettuja rivejä. Olio viittaa aina kerrallaan yhteen tuloksena saaduista riveistä, jossa olevia arvoja siltä voi kysellä erinäköisillä tietotyyppikohtaisilal gettereillä. Seuraavan rivin saa kutsumalla <code>next</code>-metodia. Aluksi <code>ResultSet</code>-olio on kuitenkin aina tuloksen ns. nollannella rivillä, jolla ei ole arvoja ollenkaan. Se pitää siis heti kättelyssä siirtää ensimmäiselle oikealle riville. Jos tuloksia odotetaan useita, tämä hoituu kätevästi while-loopilla:</p>
+<pre class="sourceCode java"><code class="sourceCode java"><span class="kw">while</span>(rs.<span class="fu">next</span>()) {
+  <span class="co">//Haetaan tietoa riviltä</span>
+  <span class="dt">int</span> id = rs.<span class="fu">getInt</span>(<span class="st">&quot;id&quot;</span>);
+  String tunnus = rs.<span class="fu">getString</span>(<span class="st">&quot;tunnus&quot;</span>);
+  String salasana = rs.<span class="fu">getString</span>(<span class="st">&quot;salasana&quot;</span>);
+}</code></pre>
+<p>Nämä arvot voidaan nyt tallentaa olioihin, jotka voidaan tallentaa listaan ja palauttaa metodin kutsujalle. Lopuksi pitää muistaa sulkea kaikki kolme resurssia: ResultSet, PreparedStatement ja Connection. Jos näin ei muisteta tehdä, sovellus lakkaa ennenpitkää toimimasta kunnolla, sillä yhteyksiä on mahdollista pitää yllä vain rajallinen määrä.</p>
+<p>Alla on esimerkki valmiista metodista, joka palauttaa jokaisen käyttäjän.</p>
 <pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="dt">static</span> List&lt;Kayttaja&gt; <span class="fu">getKayttajat</span>() {
-  String sql = <span class="st">&quot;SELECT id,username, password from users&quot;</span>;
+  String sql = <span class="st">&quot;SELECT id, tunnus, salasana from kayttajat&quot;</span>;
   Connection yhteys = Tietokanta.<span class="fu">getTietokanta</span>();
   PreparedStatement kysely = yhteys.<span class="fu">prepareStatement</span>(sql);
   ResultSet rs = kysely.<span class="fu">executeQuery</span>();
@@ -268,7 +321,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
   ArrayList&lt;Kayttaja&gt; kayttajat = <span class="kw">new</span> ArrayList&lt;Kayttaja&gt;();
   <span class="kw">while</span> (rs.<span class="fu">next</span>()) {
     <span class="co">//Kutsutaan sopivat tiedot vastaanottavaa konstruktoria ja palautetaan olio:</span>
-    Kayttaja k = <span class="kw">new</span> <span class="fu">Kayttaja</span>(rs.<span class="fu">getInt</span>(<span class="st">&quot;id&quot;</span>), rs.<span class="fu">getString</span>(<span class="st">&quot;username&quot;</span>), rs.<span class="fu">getString</span>(<span class="st">&quot;password&quot;</span>));
+    Kayttaja k = <span class="kw">new</span> <span class="fu">Kayttaja</span>(rs.<span class="fu">getInt</span>(<span class="st">&quot;id&quot;</span>), rs.<span class="fu">getString</span>(<span class="st">&quot;tunnus&quot;</span>), rs.<span class="fu">getString</span>(<span class="st">&quot;salasana&quot;</span>));
     kayttajat.<span class="fu">add</span>(k);
   }   
   <span class="co">//Suljetaan kaikki resurssit:</span>
@@ -278,7 +331,10 @@ code > span.er { color: #ff0000; font-weight: bold; }
 
   <span class="kw">return</span> kayttajat;
 }</code></pre>
-<p>Nyt listaesimerkin alku voi näyttää esimerkiksi seuraavalta:</p>
+</section>
+<section id="koodin-käyttäminen-servletissä" class="level3">
+<h3>Koodin käyttäminen servletissä</h3>
+<p>Malliluokan koodia käyttäen listaesimerkin alku voi näyttää esimerkiksi seuraavalta:</p>
 <pre class="sourceCode java"><code class="sourceCode java">List&lt;Kayttaja&gt; kayttajat = Kayttaja.<span class="fu">getKayttajat</span>();</code></pre>
 <p>Ja koska kyseessä ovat oliot, pitää niitä listatessa tulostaa jokin merkkijono eikä itse oliota:</p>
 <pre class="sourceCode php"><code class="sourceCode php">for (Kayttaja kayttaja : kayttajat) {
@@ -298,6 +354,7 @@ Seuraavaksi:
 
 
 
+</section>
 </section>
 </div>
 </div> 
