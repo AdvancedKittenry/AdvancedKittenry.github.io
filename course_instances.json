@@ -3,6 +3,21 @@
     "instancename": "Syksy 2013, periodi II",
     "aloitusluentopvm": "ma 28.10 klo 16 luokassa D122",
     "instructoremail": "consuegr@cs.helsinki.fi",
+    "deadline1": "su 19.1 klo 23:00",
+    "deadline2": "su 26.1 klo 23:00",
+    "deadline3": "su 2.2 klo 23:00",
+    "deadline4": "su 9.2 klo 23:00",
+    "deadline5": "su 16.2 klo 23:00",
+    "demodeadline": "Samaan aikaan paja-aikojen kanssa",
+    "palautusdeadline": "su 23.2 klo 23:00",
+    "paja-ajat-intro":"Paja-ajoista pidetään aloitusluennolla selvitys, jonka perusteella päätetään viikottaiset ajat. Pajat pidetään luokassa B221. \
+Myös henkilökohtaisia tapaamisia on mahdollista sopia ohjaajan kanssa.",
+    "paja-ajat-data":"[]"
+  },
+  "2013-fall-II": {
+    "instancename": "Syksy 2013, periodi II",
+    "aloitusluentopvm": "ma 28.10 klo 16 luokassa D122",
+    "instructoremail": "consuegr@cs.helsinki.fi",
     "deadline1": "su 3.11 klo 23:00",
     "deadline2": "su 10.11 klo 23:00",
     "deadline3": "su 17.11 klo 23:00",
@@ -11,7 +26,7 @@
     "demodeadline": "Samaan aikaan paja-aikojen kanssa",
     "palautusdeadline": "su 8.12 klo 23:00",
     "paja-ajat-intro":"Pajat pidetään luokassa B221. \
-Myös henkilökohtaisia tapaamisia on mahdollista sopia ohjaajan kanssa.",
+    Myös henkilökohtaisia tapaamisia on mahdollista sopia ohjaajan kanssa.",
     "paja-ajat-data":"[ \
       ('ma klo 13-15', 'David Consuegra','B221'), \
       ('ke klo 15-17', 'David Consuegra','BK107'), \
