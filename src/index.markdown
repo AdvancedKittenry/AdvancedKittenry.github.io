@@ -27,7 +27,7 @@ jossa niille annetaan viikottaista palautetta.
 
 ## Muuta
 
-Kurssilla on irc-kanava #tsoha2013@Ircnet. Sieltä saa usein hyviä neuvoja kurssilla oleville ongelmille.
+Kurssilla on irc-kanava #tsoha2014@Ircnet. Sieltä saa usein hyviä neuvoja kurssilla oleville ongelmille.
 
 Hyödyllisiä sivuja:
 
