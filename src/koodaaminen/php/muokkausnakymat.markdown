@@ -3,6 +3,8 @@
 
 <wip />
 
+Tämän sivun Java-versio on valitettavasti tällä hetkellä vielä klooni PHP-versiosta.
+
 <comment>
 Tehdään koko setti:
   Listaus
@@ -28,6 +30,33 @@ Tehdään koko setti:
   sotke sivujen rakennetta.
     * PHP:ssä [htmlspecialchars-funktio](http://www.php.net/manual/en/function.htmlspecialchars.php) auttaa: `<?php echo htmlspecialchars($muuttuja); ?>`
     * Javassa voi käyttää [out-tägiä](http://docs.oracle.com/javaee/5/jstl/1.1/docs/tlddocs/): `<c:out value="${muuttuja}"/>`
+
+## Istunnon käyttäminen ilmoitusten ja virheiden näyttämiseen
+
+Lyhyt esimerkki, selitykset tulossa:
+
+**Kontrollerissa**
+
+~~~inlinephp
+  $uusikatti->lisaaKantaan();
+  
+  //Äsken lisättiin kantaan onnistuneesti kissa,
+  //lähetetään käyttäjä eteenpäin listasivulle:
+  header('Location: kissalista.php');
+  //Asetetaan istuntoon ilmoitus siitä, että kissa on lisätty:
+  $_SESSION['ilmoitus'] = "Kissa lisätty onnistuneesti.";
+~~~
+
+**Näkymien pohjatiedostossa**
+
+~~~php
+<?php if (!empty($_SESSION['ilmoitus'])): ?>
+<?php unset($_SESSION['ilmoitus']); ?>
+  <div class="alert alert-danger">
+    <?php echo $_SESSION['ilmoitus']; ?>
+  </div>
+<?php endif; ?>
+~~~
 
 
 <last>

@@ -8,6 +8,25 @@
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
   <link rel="stylesheet" href="../../css/base.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!--[if lt IE 9]>
@@ -176,8 +195,7 @@ Tämän sivun sisältö on vielä työn alla ja saattaa muuttua kurssin edetess�
 
 
 
-
-
+<p>Tämän sivun Java-versio on valitettavasti tällä hetkellä vielä klooni PHP-versiosta.</p>
 <ul>
 <li>Lisäys- ja muokkauslomakkeet kannattaa toteuttaa samalla tai ainakin hyvin samanlaisella koodilla.</li>
 <li>Muokkaustoiminnot kannattaa toteuttaa niin, että sivun kontrolleri ottaa muokattavan tietokohteen id:n tai muun avaimen GET-parametrina ja näyttää sen perusteella oikean kohteen.
@@ -203,6 +221,24 @@ Tämän sivun sisältö on vielä työn alla ja saattaa muuttua kurssin edetess�
 <li>Javassa voi käyttää <a href="http://docs.oracle.com/javaee/5/jstl/1.1/docs/tlddocs/">out-tägiä</a>: <code>&lt;c:out value=&quot;${muuttuja}&quot;/&gt;</code></li>
 </ul></li>
 </ul>
+<section id="istunnon-käyttäminen-ilmoitusten-ja-virheiden-näyttämiseen" class="level2">
+<h2>Istunnon käyttäminen ilmoitusten ja virheiden näyttämiseen</h2>
+<p>Lyhyt esimerkki, selitykset tulossa:</p>
+<p><strong>Kontrollerissa</strong></p>
+<pre class="sourceCode php"><code class="sourceCode php">  <span class="kw">$uusikatti</span>-&gt;lisaaKantaan<span class="ot">();</span>
+  
+  <span class="co">//Äsken lisättiin kantaan onnistuneesti kissa,</span>
+  <span class="co">//lähetetään käyttäjä eteenpäin listasivulle:</span>
+  <span class="fu">header</span><span class="ot">(</span><span class="st">&#39;Location: kissalista.php&#39;</span><span class="ot">);</span>
+  <span class="co">//Asetetaan istuntoon ilmoitus siitä, että kissa on lisätty:</span>
+  <span class="kw">$_SESSION</span><span class="ot">[</span><span class="st">&#39;ilmoitus&#39;</span><span class="ot">]</span> = <span class="st">&quot;Kissa lisätty onnistuneesti.&quot;</span><span class="ot">;</span></code></pre>
+<p><strong>Näkymien pohjatiedostossa</strong></p>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span> <span class="kw">if</span> <span class="ot">(</span>!<span class="fu">empty</span><span class="ot">(</span><span class="kw">$_SESSION</span><span class="ot">[</span><span class="st">&#39;ilmoitus&#39;</span><span class="ot">]))</span>: <span class="kw">?&gt;</span>
+<span class="kw">&lt;?php</span> <span class="fu">unset</span><span class="ot">(</span><span class="kw">$_SESSION</span><span class="ot">[</span><span class="st">&#39;ilmoitus&#39;</span><span class="ot">]);</span> <span class="kw">?&gt;</span>
+  &lt;div class=&quot;alert alert-danger&quot;&gt;
+    <span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$_SESSION</span><span class="ot">[</span><span class="st">&#39;ilmoitus&#39;</span><span class="ot">];</span> <span class="kw">?&gt;</span>
+  &lt;/div&gt;
+<span class="kw">&lt;?php</span> <span class="kw">endif</span><span class="ot">;</span> <span class="kw">?&gt;</span></code></pre>
 <section class="alert alert-info small"><h3>
 Valmista!
 </h3>
@@ -211,6 +247,8 @@ Valmista!
 
 
 
+
+</section>
 </div>
 </div> 
 </div> 

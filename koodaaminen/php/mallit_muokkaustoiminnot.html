@@ -8,6 +8,25 @@
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
   <link rel="stylesheet" href="../../css/base.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!--[if lt IE 9]>
@@ -176,40 +195,97 @@ Tämän sivun sisältö on vielä työn alla ja saattaa muuttua kurssin edetess�
 
 
 
+<p>Tämän sivun Java-versio on valitettavasti tällä hetkellä vielä klooni PHP-versiosta.</p>
 <section class="alert alert-info"><h3>
 Tiivistelmä:
 </h3>
 <ul>
-<li>Malliluokan oliolla kannattaa olla metodi, jolla se osaa syöttää itsensä kantaan (INSERT-lause).</li>
+<li>Malliluokan oliolla kannattaa olla metodi, jolla se osaa syöttää itsensä kantaan (INSERT-lause), sekä metodit, joilla tarkistetaan ovatko syötettävät arvot oikeanlaisia.</li>
 <li>Päivittämiseen tarvitaan vastaavaa metodia, joka ajaa UPDATE-lauseen</li>
 <li>samoin poistamiselle on tarpeen DELETE-lauseen ajava instanssimetodi.</li>
 </ul>
 </section>
 
-<section id="mallien-rakentaminen" class="level2">
-<h2>Mallien rakentaminen</h2>
-<ul>
-<li>Tähän on olemassa monia tapoja.</li>
-<li>Selkeä: Joka tietokantataululle oma luokkansa.
-<ul>
-<li>Jokainen olio edustaa yhtä taulunsa riviä.</li>
-<li>Poikkeus: liitostauluille ei välttämättä tarvita omaa luokkaansa, mikäli niiden toiminnot voi loogisesti sijoittaa muihinkin luokkiin.</li>
-</ul></li>
-<li>Luokalla staattisia metodeja, joilla voi hakea olioita eli rivejä kannasta.
-<ul>
-<li>Voi tehdä myös instassimetodeja, jotka hakevat johonkin olioon liittyviä rivejä toisista tietokantatauluista.</li>
-</ul></li>
-<li>Tarvitaan myös metodit, joka syöttävät olion kantaan tai päivittävät kannassa olevia tietoja olion perusteella.
-<ul>
-<li>Näitä mahdollista tehdä ilman oliotakin.</li>
-<li>Voivat olla staattisia tai instassimetodeja.</li>
-</ul></li>
-<li>Lopuksi metodi(t), jolla voi poistaa rivejä.
-<ul>
-<li>Instanssimetodi poistaa kyseisen olion kannasta.</li>
-<li>Staattisella metodilla voi poistaa useitakin olioita.</li>
-</ul></li>
-</ul>
+<section id="tietojen-syöttäminen-olioon" class="level2">
+<h2>Tietojen syöttäminen olioon</h2>
+<p>Paras tapa toteuttaa jonkin tietokohteen olion, esimerkiksi kissan, syöttäminen tietokantaan, on tehdä siitä oliopohjaista: Ensiksi luodaan kissaolio, jonka jälkeen asetetaan sille settereillä sopivat arvot. Kun olio on luotu, kutsutaan varta vasten tätä tarkoitusta varten tehtyä metodia, joka lisää olion kantaan. Mallia kutsuva koodi voisi näyttää seuraavanlaiselta:</p>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">$uusikatti</span> = <span class="kw">new</span> Kissa<span class="ot">();</span>
+<span class="kw">$uusikatti</span>-&gt;setNimi<span class="ot">(</span><span class="kw">$_POST</span><span class="ot">[</span><span class="st">&#39;nimi&#39;</span><span class="ot">]);</span>
+<span class="kw">$uusikatti</span>-&gt;setVari<span class="ot">(</span><span class="kw">$_POST</span><span class="ot">[</span><span class="st">&#39;vari&#39;</span><span class="ot">]);</span>
+<span class="kw">$uusikatti</span>-&gt;setRotuId<span class="ot">(</span><span class="kw">$_POST</span><span class="ot">[</span><span class="st">&#39;rotu_id&#39;</span><span class="ot">]);</span>
+
+<span class="co">//Pyydetään Kissa-oliota tarkastamaan syötetyt tiedot.</span>
+<span class="kw">if</span> <span class="ot">(</span><span class="kw">$uusikatti</span>-&gt;onkoKelvollinen<span class="ot">())</span> {
+  <span class="kw">$uusikatti</span>-&gt;lisaaKantaan<span class="ot">();</span>
+  
+  <span class="co">//Kissa lisättiin kantaan onnistuneesti, lähetetään käyttäjä eteenpäin</span>
+  <span class="fu">header</span><span class="ot">(</span><span class="st">&#39;Location: kissalista.php&#39;</span><span class="ot">);</span>
+  <span class="co">//Asetetaan istuntoon ilmoitus siitä, että kissa on lisätty.</span>
+  <span class="co">//Tästä tekniikasta kerrotaan lisää seuraavalla sivulla</span>
+  <span class="kw">$_SESSION</span><span class="ot">[</span><span class="st">&#39;ilmoitus&#39;</span><span class="ot">]</span> = <span class="st">&quot;Kissa lisätty onnistuneesti.&quot;</span><span class="ot">;</span>
+} <span class="kw">else</span> {
+  <span class="kw">$virheet</span> = <span class="kw">$uusikatti</span>-&gt;getVirheet<span class="ot">();</span>
+
+  <span class="co">//Virheet voidaan nyt välittää näkymälle syötettyjen tietojen kera</span>
+  naytaNakymä<span class="ot">(</span><span class="st">&quot;kissalomake&quot;</span><span class="ot">,</span> <span class="fu">array</span><span class="ot">(</span>
+    <span class="st">&#39;kissa&#39;</span> =&gt; <span class="kw">$uusikatti</span><span class="ot">,</span>
+    <span class="st">&#39;virheet&#39;</span> =&gt; <span class="kw">$virheet</span>
+  <span class="ot">));</span>
+}</code></pre>
+<p>Huomaa käytetyt metodi <code>onkoKelvollinen</code> ja <code>getVirheet</code>, joista ensimmäinen kertoo, ovatko olioon asetetut tiedot tiedot oikeat ja jälkimmäinen palauttaa kaikki olion tietoihin liittyvät virheet.</p>
+<p>Etenkin jälkimmäisen toteuttamisesta on paljon hyötyä lisäyslomakkeen virheviestien toteuttamisessa.</p>
+<p>Nämä metodit voi toteuttaa käytännössä kahdella tavalla riippuen siitä missä tarkistuksen haluaa tehdä:</p>
+<ol type="1">
+<li>Laitetaan tarkistukset suoraan settereihin ja pidetään jatkuvasti yllä tietorakennetta siitä mitkä tiedot ovat kelvollisia.</li>
+<li>Laitetaan tarkistukset <code>onkoKelvollinen</code>-metodiin ja tarkistetaan kaikki kentät kerralla.</li>
+</ol>
+<p>Ensimmäinen toteutustapa on usein selkeämpi, sillä yhtä kenttää koskevat toiminnot pysyvät yhdessä paikassa, mutta jälkimmäisellä tavalla on joskus mahdollista automatisoida toistuvia tarkistuksia hieman paremmin laittamalla toisteista koodia luuppeihin.</p>
+<p>Alla esimerkki siitä miten virheentarkistuksen voi toteuttaa settereillä, jotka muokkaavat privaattikentäksi määriteltyä virhetaulukkoa.</p>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">class</span> Kissa {
+  <span class="kw">private</span> <span class="kw">$virheet</span> = <span class="fu">array</span><span class="ot">();</span>
+
+  <span class="kw">public</span> <span class="kw">function</span> setNimi<span class="ot">(</span><span class="kw">$uusinimi</span><span class="ot">)</span> {
+    <span class="kw">$this</span>-&gt;nimi = <span class="kw">$uusinimi</span><span class="ot">;</span>
+
+    <span class="kw">if</span> <span class="ot">(</span><span class="fu">trim</span><span class="ot">(</span><span class="kw">$this</span>-&gt;nimi<span class="ot">)</span> == <span class="st">&#39;&#39;</span><span class="ot">)</span> {
+      <span class="kw">$this</span>-&gt;virheet<span class="ot">[</span><span class="st">&#39;nimi&#39;</span><span class="ot">]</span> = <span class="st">&quot;Nimi ei saa olla tyhjä.&quot;</span><span class="ot">;</span>
+    } <span class="kw">else</span> { 
+      <span class="fu">unset</span><span class="ot">(</span><span class="kw">$this</span>-&gt;virheet<span class="ot">[</span><span class="st">&#39;nimi&#39;</span><span class="ot">]);</span>
+    }
+  }
+  <span class="kw">public</span> <span class="kw">function</span> setVari<span class="ot">(</span><span class="kw">$uusivari</span><span class="ot">)</span> {
+    <span class="kw">$this</span>-&gt;vari = <span class="kw">$uusivari</span><span class="ot">;</span>
+
+    <span class="kw">if</span> <span class="ot">(</span><span class="fu">trim</span><span class="ot">(</span><span class="kw">$this</span>-&gt;vari<span class="ot">)</span> == <span class="st">&#39;&#39;</span><span class="ot">)</span> {
+      <span class="kw">$this</span>-&gt;virheet<span class="ot">[</span><span class="st">&#39;vari&#39;</span><span class="ot">]</span> = <span class="st">&quot;Kissalla on oltava väri.&quot;</span><span class="ot">;</span>
+    } <span class="kw">else</span> { 
+      <span class="fu">unset</span><span class="ot">(</span><span class="kw">$this</span>-&gt;virheet<span class="ot">[</span><span class="st">&#39;vari&#39;</span><span class="ot">]);</span>
+    }
+  }
+  <span class="kw">public</span> <span class="kw">function</span> setRotuId<span class="ot">(</span><span class="kw">$uusirotu_id</span><span class="ot">)</span> {
+    <span class="kw">$this</span>-&gt;rotu_id = <span class="kw">$uusirotu_id</span><span class="ot">;</span>
+    
+    <span class="co">//Tarkistetaan, että rotu on olemassa</span>
+    <span class="kw">if</span> <span class="ot">(</span>Kissarotu::etsi<span class="ot">(</span><span class="kw">$uusirotu_id</span><span class="ot">)</span> == <span class="kw">null</span><span class="ot">)</span> {
+      <span class="kw">$this</span>-&gt;rotu_id = <span class="kw">null</span><span class="ot">;</span>
+    }
+
+    <span class="kw">if</span> <span class="ot">(</span><span class="kw">$this</span>-&gt;rotu_id == <span class="kw">null</span><span class="ot">)</span> {
+      <span class="kw">$this</span>-&gt;virheet<span class="ot">[</span><span class="st">&#39;rotu_id&#39;</span><span class="ot">]</span> = <span class="st">&quot;Kissan rotua ei löytynyt tietokannasta&quot;</span><span class="ot">;</span>
+    } <span class="kw">else</span> { 
+      <span class="fu">unset</span><span class="ot">(</span><span class="kw">$this</span>-&gt;virheet<span class="ot">[</span><span class="st">&#39;rotu_id&#39;</span><span class="ot">]);</span>
+    }
+  }
+
+  <span class="co">/* Palauttaa true, jos Kissaan syötetyt arvot ovat järkeviä. */</span>
+  <span class="kw">public</span> <span class="kw">function</span> onkoKelvollinen<span class="ot">()</span> {
+    <span class="kw">return</span> <span class="fu">empty</span><span class="ot">(</span><span class="kw">$this</span>-&gt;virheet<span class="ot">);</span>
+  }
+  <span class="kw">public</span> <span class="kw">function</span> getVirheet<span class="ot">()</span> {
+    <span class="kw">return</span> this-&gt;virheet<span class="ot">;</span>
+  }</code></pre>
+<p>Huomaa toiseen tauluun viittaavan tiedon setterissä (<code>setRotuId</code>) oleva toista mallia käyttävä tietokantahaku, joka tarkistaa, että viitattu tieto on olemassa.</p>
+<p>Mallien välinen viittailu on myös mahdollista rakentaa siten, että sille voidaan antaa setterissä toisen taulun olioita, joista poimitaan id.</p>
 <section id="olion-syöttäminen-kantaan" class="level3">
 <h3>Olion syöttäminen kantaan</h3>
 <ul>
@@ -221,7 +297,47 @@ Tiivistelmä:
 <li>SERIAL-tyyppiä käytettäessä INSERT-lauseeseen ei laiteta id-avaimelle lainkaan arvoa, jolloin kanta laittaa kenttään seuraavan vapaan arvon.</li>
 </ul></li>
 </ul>
+<p><strong>Esimerkkikoodia:</strong></p>
+<pre class="sourceCode php"><code class="sourceCode php">  <span class="kw">public</span> <span class="kw">function</span> lisaaKantaan<span class="ot">()</span> {
+    <span class="kw">$sql</span> = <span class="st">&quot;INSERT INTO Kissat(nimi, vari, rotu_id) VALUES(?,?,?) RETURNING id&quot;</span><span class="ot">;</span>
+    <span class="kw">$kysely</span> = getTietokanta<span class="ot">()</span>-&gt;prepare<span class="ot">(</span><span class="kw">$sql</span><span class="ot">);</span>
+
+    <span class="kw">$ok</span> = <span class="kw">$kysely</span>-&gt;execute<span class="ot">(</span><span class="fu">array</span><span class="ot">(</span><span class="kw">$this</span>-&gt;getNimi<span class="ot">(),</span> <span class="kw">$this</span>-&gt;getVari<span class="ot">(),</span> <span class="kw">$this</span>-&gt;getRotuId<span class="ot">()));</span>
+    <span class="kw">if</span> <span class="ot">(</span><span class="kw">$ok</span><span class="ot">)</span> {
+      <span class="co">//Haetaan RETURNING-määreen palauttama id.</span>
+      <span class="co">//HUOM! Tämä toimii ainoastaan PostgreSQL-kannalla!</span>
+      <span class="kw">$this</span>-&gt;id = <span class="kw">$kysely</span>-&gt;fetchColumn<span class="ot">();</span>
+    }
+    <span class="kw">return</span> <span class="kw">$ok</span><span class="ot">;</span>
+  }</code></pre>
 </section>
+</section>
+<section id="muokkauksen-toteuttaminen" class="level2">
+<h2>Muokkauksen toteuttaminen</h2>
+<p>Tämä tapahtuu pitkälti samalla tavalla kuin tiedon lisääminen. Toteutukseessa on järkevää käyttää samaa tietojen kelpoisuuden tarkistamismekanismia, kuin lisäämisen kanssa.</p>
+</section>
+<section id="muuta" class="level2">
+<h2>Muuta</h2>
+<ul>
+<li>Luokalla voi olla staattisia metodeja, joilla voi hakea olioita eli rivejä kannasta.
+<ul>
+<li>Voi tehdä myös instassimetodeja, jotka hakevat johonkin olioon liittyviä rivejä toisista tietokantatauluista.</li>
+</ul></li>
+<li>Tarvitaan myös metodi(t), jolla voi poistaa rivejä.
+<ul>
+<li>Instanssimetodi poistaa kyseisen olion kannasta.</li>
+<li>Staattisella metodilla voi poistaa useitakin olioita.</li>
+</ul></li>
+</ul>
+<section class="alert alert-success small"><h3>
+Seuraavaksi:
+</h3>
+<p>Kun malli on toteutettu, sitä voi käyttää <a href="muokkausnakymat.html">muokkaus- ja lisäyslomakkeiden tekemiseen</a>.</p>
+</section>
+
+
+
+
 </section>
 </div>
 </div> 

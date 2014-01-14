@@ -200,6 +200,20 @@ $rivit = $kysely->fetchAll(PDO::FETCH_OBJ);
 echo $rivit[0]->tunnus;
 ~~~
 
+Lopuksi on mahdollista hakea yksittäinen arvo `fetchColumn`-metodilla:
+
+~~~inlinephp
+$id = $kysely->fetchColumn(); //Hakee oletuksena ensimmäisen sarakkeen
+echo $id;
+
+//Huomaa! Myös fetchColumn hakee aina seuraavalta tietokannan
+//palauttamalta tulosriviltä.
+//Seuraavalla rivillä haetaan jo aivan eri riviltä tietoja,
+//kuin id-numeroa hakenut metodikutsu!
+$tunnus = $kysely->fetchColumn(1);
+~~~
+
+
 Näillä metodeilla haetut tiedot voidaan nyt tallentaa olioihin, jotka voidaan tallentaa listaan
 ja palauttaa metodin kutsujalle.
 

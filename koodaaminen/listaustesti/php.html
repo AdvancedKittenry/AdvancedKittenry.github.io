@@ -286,6 +286,15 @@ Vinkki
 <p><code>fetchAll</code>-metodille voi antaa parametrin, jolla määritellään palautustyyppi. Listan olioita saa antamalla metodille paremetrina vakion <code>PDO::FETCH_OBJ</code>.</p>
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">$rivit</span> = <span class="kw">$kysely</span>-&gt;fetchAll<span class="ot">(</span><span class="kw">PDO</span>::<span class="kw">FETCH_OBJ</span><span class="ot">);</span>
 <span class="fu">echo</span> <span class="kw">$rivit</span><span class="ot">[</span><span class="dv">0</span><span class="ot">]</span>-&gt;tunnus<span class="ot">;</span></code></pre>
+<p>Lopuksi on mahdollista hakea yksittäinen arvo <code>fetchColumn</code>-metodilla:</p>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">$id</span> = <span class="kw">$kysely</span>-&gt;fetchColumn<span class="ot">();</span> <span class="co">//Hakee oletuksena ensimmäisen sarakkeen</span>
+<span class="fu">echo</span> <span class="kw">$id</span><span class="ot">;</span>
+
+<span class="co">//Huomaa! Myös fetchColumn hakee aina seuraavalta tietokannan</span>
+<span class="co">//palauttamalta tulosriviltä.</span>
+<span class="co">//Seuraavalla rivillä haetaan jo aivan eri riviltä tietoja,</span>
+<span class="co">//kuin id-numeroa hakenut metodikutsu!</span>
+<span class="kw">$tunnus</span> = <span class="kw">$kysely</span>-&gt;fetchColumn<span class="ot">(</span><span class="dv">1</span><span class="ot">);</span></code></pre>
 <p>Näillä metodeilla haetut tiedot voidaan nyt tallentaa olioihin, jotka voidaan tallentaa listaan ja palauttaa metodin kutsujalle.</p>
 <p>Alla on esimerkki valmiista metodista, joka palauttaa jokaisen käyttäjän.</p>
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">public</span> <span class="kw">static</span> <span class="kw">function</span> getKayttajat<span class="ot">()</span> {
