@@ -8,11 +8,14 @@
     "deadline3": "su 2.2 klo 23:00",
     "deadline4": "su 9.2 klo 23:00",
     "deadline5": "su 16.2 klo 23:00",
-    "demodeadline": "Samaan aikaan paja-aikojen kanssa",
+    "demodeadline": "Samaan aikaan ja samassa paikassa kuin pajat: ti 18.2 klo 12 ja ke 19.2 klo 16",
     "palautusdeadline": "su 23.2 klo 23:00",
-    "paja-ajat-intro":"Paja-ajoista pidetään aloitusluennolla selvitys, jonka perusteella päätetään viikottaiset ajat. Pajat pidetään luokassa B221. \
-Myös henkilökohtaisia tapaamisia on mahdollista sopia ohjaajan kanssa.",
-    "paja-ajat-data":"[]"
+    "paja-ajat-intro":"Pajat pidetään pajaluokissa BK107 ja B221. \
+Myös henkilökohtaisia tapaamisia on tarvittaessa mahdollista sopia ohjaajan kanssa.",
+    "paja-ajat-data":"[ \
+      ('ti klo 12-14', 'Lauri Suomalainen','BK107'), \
+      ('ke klo 16-16', 'David Consuegra','B221')  \
+      ]"
   },
   "2013-fall-II": {
     "instancename": "Syksy 2013, periodi II",
