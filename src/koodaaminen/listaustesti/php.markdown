@@ -235,7 +235,7 @@ public static function getKayttajat() {
 }
 ~~~
 
-### Koodin käyttäminen servletissä
+### Koodin käyttäminen kontrollerissa
 
 Malliluokan koodia käyttäen listaesimerkin alku voi näyttää esimerkiksi seuraavalta:
 
