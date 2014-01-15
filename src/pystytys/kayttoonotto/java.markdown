@@ -104,7 +104,7 @@ Tämä on onneksi melko yksinkertainen toimenpide ja siihen on [oma ohjeensa](..
 ## Testitiedoston tekeminen
 
 Luo sovelluksesi internettiin näkyvään kansioon 
-(eli juurikansioon tai NetBeansillä `ẁeb`-kansioon)
+(eli juurikansioon tai NetBeansillä tehdyn projektin tapauksessa `ẁeb`-kansioon)
 tiedosto index.jsp. Sen sisällöksi riittää seuraavantapainen koodi:
 
 ~~~jsp
@@ -117,6 +117,11 @@ tiedosto index.jsp. Sen sisällöksi riittää seuraavantapainen koodi:
 </body>
 </html>
 ~~~
+
+Tiedoston voi luoda esimerkiksi komentorivillä käyttämällä `nano`-tekstieditoria. Voit myös siirtää palvelimelle muualla tekemäsi
+tiedoston käyttämällä
+[nautilusta](../nautilus-ssh.html) tai
+[winSCP:tä](http://winscp.net/eng/index.php).
 
 Sivun pitäisi nyt näyttää tervehdys osoitteessa: \
 [http://t-kayttajatunnuksesi.users.cs.helsinki.fi/sovelluksen_nimi/index.jsp](http://t-kayttajatunnuksesi.users.cs.helsinki.fi/sovelluksen_nimi/index.jsp)

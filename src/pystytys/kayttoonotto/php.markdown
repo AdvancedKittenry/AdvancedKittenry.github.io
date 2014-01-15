@@ -48,6 +48,11 @@ ja sijoita sinne jotain seuraavantapaista:
 </html>
 ```
 
+Tiedoston voi luoda esimerkiksi komentorivillä käyttämällä `nano`-tekstieditoria. Voit myös siirtää palvelimelle muualla tekemäsi
+tiedoston käyttämällä
+[nautilusta](../nautilus-ssh.html) tai
+[winSCP:tä](http://winscp.net/eng/index.php).
+
 Sivun pitäisi näyttää tervehdys osoitteessa:
 [http://kayttajatunnuksesi.users.cs.helsinki.fi/index.php](http://kayttajatunnuksesi.users.cs.helsinki.fi/index.php)
 
