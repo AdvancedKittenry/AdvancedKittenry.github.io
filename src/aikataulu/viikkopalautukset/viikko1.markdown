@@ -18,7 +18,8 @@ osoite [labtooliin][labtool].
 </summary>
 
 Viikon tehtävät jakautuvat seuraavasti.
-Kunkin otsikon alla olevista asioista saa suluissa ilmoitetut aikataulupisteet. Pisteet ovat nähtävillä tietokantasovelluksen [labtoolissa][labtool].
+Kunkin otsikon alla olevista asioista saa suluissa ilmoitetut aikataulupisteet. Pisteet ovat nähtävillä tietokantasovelluksen [labtoolissa][labtool],
+jahka olet ensin [rekisteröinyt itsesi][labtoolreg].
 
 ## Aiheen ja tekniikoiden valinta (puoli pistettä)
 
@@ -139,3 +140,4 @@ johon kaikki tämänkin kurssin palautteet annetaan.
 Varmista, että sovelluksella on toimiva ja internettiin näkyvä esittelysivu.
 
 [labtool]: http://tsoha-labtool.herokuapp.com/
+[labtoolreg]: http://tsoha-labtool.herokuapp.com/register
