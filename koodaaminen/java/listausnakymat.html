@@ -3,11 +3,30 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <title>Listausnäkymän jatkaminen</title>
+  <title>Listaus- ja tietonäkymät</title>
   <style type="text/css">code{white-space: pre;}</style>
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
   <link rel="stylesheet" href="../../css/base.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!--[if lt IE 9]>
@@ -133,7 +152,8 @@
 <li><a href="../../koodaaminen/java/lomakkeet.html">Lomakkeiden käyttö ja vastaanottaminen</a></li>
 <li><a href="../../koodaaminen/java/mallit_tiedonhaku.html">Tietokantahaku ja kyselyn parametrit</a></li>
 <li><a href="../../koodaaminen/java/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
-<li><a href="../../koodaaminen/java/mallit_muokkaustoiminnot.html">Malliluokat ja tiedon muuttaminen</a></li>
+<li class="selected"><a href="../../koodaaminen/java/listausnakymat.html">Listaus- ja tietonäkymät</a></li>
+<li><a href="../../koodaaminen/java/mallit_lisays.html">Tietojen syöttäminen kantaan</a></li>
 <li><a href="../../koodaaminen/java/muokkausnakymat.html">Muokkausnäkymän toteuttaminen</a></li>
 </ul></li>
 <li><a href="../../koodaaminen/php/index.html">PHP-ohjeet</a>
@@ -143,7 +163,8 @@
 <li><a href="../../koodaaminen/php/lomakkeet.html">Lomakkeiden käyttö ja vastaanottaminen</a></li>
 <li><a href="../../koodaaminen/php/mallit_tiedonhaku.html">Tietokantahaku ja kyselyn parametrit</a></li>
 <li><a href="../../koodaaminen/php/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
-<li><a href="../../koodaaminen/php/mallit_muokkaustoiminnot.html">Malliluokat ja tiedon muuttaminen</a></li>
+<li><a href="../../koodaaminen/php/listausnakymat.html">Listaus- ja tietonäkymät</a></li>
+<li><a href="../../koodaaminen/php/mallit_lisays.html">Tietojen syöttäminen kantaan</a></li>
 <li><a href="../../koodaaminen/php/muokkausnakymat.html">Muokkausnäkymän toteuttaminen</a></li>
 </ul></li>
 </ul></li>
@@ -159,13 +180,84 @@
 </div>
 <div class="col-md-6" id="content">
 <header>
-<h1 class="title">Listausnäkymän jatkaminen</h1>
+<h1 class="title">Listaus- ja tietonäkymät</h1>
 </header>
-<!-- order: 7 -->
-<!-- hidden! -->
+<!-- order: 6 -->
+
+
+<div class="wip panel">
+  <div class="panel-body">
+    <h3>
+Work in progress
+</h3>
+    
+Tämän sivun sisältö on vielä työn alla ja saattaa muuttua kurssin edetessä.
+</div>
+</div>
 
 
 
+<p>Tämän sivun Java-versio on valitettavasti tällä hetkellä vielä klooni PHP-versiosta. Samat suunitteluperiaatteet pätevät kuitenkin kummallakin kielellä.</p>
+<ul>
+<li>Listausta laajennetaan viimeistään tässä vaiheessa oikean ulkoasun mukaiseksi</li>
+<li>Jos listattavia kohteita on paljon, voi olla järkevää toteuttaa joko haku tai sivutustoiminto</li>
+<li>Kannattaa näyttää sivulla jokin viesti, jos lista on täysin tyhjä.</li>
+</ul>
+<section id="sivutus" class="level2">
+<h2>Sivutus</h2>
+<ul>
+<li>Sivutukseen käytetään tietokantatasolla <code>LIMIT</code>-käskyä</li>
+<li>se millä sivulla ollaan voidaan ottaa vastaan GET-parametrina
+<ul>
+<li>Esim. sivulle kolme voidaan linkata näin: <code>kissalista.php?sivu=3</code>.</li>
+<li>Sivutuksen sivunvaihtonapit voivat olla tavallisia linkkejä.</li>
+</ul></li>
+<li>Malliluokkaan kannattaa koodata myös metodi, joka kertoo listauksessa olevien olioiden kokonaismäärän, niin tiedetään montako sivullista esim. kissoja meillä on listassa.</li>
+</ul>
+</section>
+<section id="hakulomakkeet" class="level2">
+<h2>Hakulomakkeet</h2>
+<ul>
+<li>Useimmiten on parasta sijoittaa hakulomake samalle sivulle listauksen kanssa.</li>
+<li>Myös haku on kätevä toteuttaa GET-parametrina.</li>
+<li>Jos käytetään sekä hakua, että sivutusta, joudutaan sivutuslinkkehiin sisällyttämään hakusana, ettei sivulta toiselle siirtyminen kadottaisi hakua.</li>
+</ul>
+</section>
+<section id="muut-tietosivut" class="level2">
+<h2>Muut tietosivut</h2>
+<ul>
+<li>Listauksesta halutaan päästä usein katselemaan tarkemmin jonkin asian tietoja.</li>
+<li>Nämä toteutetaan omana kontrolleri/näkymä-parinaan
+<ul>
+<li>Kontrolleri osaa hakea GET-parametrina annetun pääavaimen perusteella oikean olion malliluokalta.</li>
+<li>Olio välitetään suoraan näkymälle, tai kerrotaan ettei kohdetta löytynyt.</li>
+</ul></li>
+</ul>
+<p>Esimerkkisivu; Sivulle linkitetään muodossa <code>kissa.php?kissa_id=3</code>.</p>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>
+  <span class="kw">$id</span> = <span class="kw">$_GET</span><span class="ot">[</span><span class="st">&#39;kissa_id&#39;</span><span class="ot">];</span>
+  <span class="kw">$kissa</span> = Kissa::etsi<span class="ot">(</span><span class="kw">$id</span><span class="ot">);</span>
+
+  <span class="kw">if</span> <span class="ot">(</span><span class="kw">$kissa</span> != <span class="kw">null</span><span class="ot">)</span> {
+    naytaNakymä<span class="ot">(</span><span class="st">&quot;kissa&quot;</span><span class="ot">,</span> <span class="fu">array</span><span class="ot">(</span>
+      <span class="st">&#39;kissa&#39;</span> =&gt; <span class="kw">$kissa</span><span class="ot">,</span>
+    <span class="ot">));</span>
+  } <span class="kw">else</span> {
+    naytaNakymä<span class="ot">(</span><span class="st">&quot;kissa&quot;</span><span class="ot">,</span> <span class="fu">array</span><span class="ot">(</span>
+      <span class="st">&#39;kissa&#39;</span> =&gt; <span class="kw">null</span>
+      <span class="st">&#39;virheet&#39;</span> =&gt; <span class="fu">array</span><span class="ot">(</span><span class="st">&#39;Kissaa ei löytynyt!&#39;</span><span class="ot">)</span>
+    <span class="ot">));</span>
+  }</code></pre>
+<section class="alert alert-success small"><h3>
+Seuraavaksi:
+</h3>
+<p>Listausnäkymien jälkeen on paras toteuttaa <a href="mallit_lisays.html">lisäystoiminto</a>.</p>
+</section>
+
+
+
+
+</section>
 </div>
 </div> 
 </div> 

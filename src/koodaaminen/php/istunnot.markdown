@@ -96,4 +96,7 @@ tiedot kirjautumisesta. Tämän jälkeen käyttäjä ei enää pääse sivuille 
 
 Kun olet toteuttanut kaikki näissä ohjeissa mainitut asiat, olet saanut valmiiksi viikon 3 palautuksen. Varmista vielä, että kaikki tiedostot löytyvät repositoriostasi.
 
+Jos haluat jatkaa seuraavan viikon asiaa, voit siirtyä lukemaan 
+[listauksen ja tietosivujen toteuttamisesta](listausnakymat.html).
+
 </last>

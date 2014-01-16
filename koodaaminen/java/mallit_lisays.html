@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <title>Malliluokat ja tiedon muuttaminen</title>
+  <title>Tietojen syöttäminen kantaan</title>
   <style type="text/css">code{white-space: pre;}</style>
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -152,7 +152,8 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li><a href="../../koodaaminen/java/lomakkeet.html">Lomakkeiden käyttö ja vastaanottaminen</a></li>
 <li><a href="../../koodaaminen/java/mallit_tiedonhaku.html">Tietokantahaku ja kyselyn parametrit</a></li>
 <li><a href="../../koodaaminen/java/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
-<li class="selected"><a href="../../koodaaminen/java/mallit_muokkaustoiminnot.html">Malliluokat ja tiedon muuttaminen</a></li>
+<li><a href="../../koodaaminen/java/listausnakymat.html">Listaus- ja tietonäkymät</a></li>
+<li class="selected"><a href="../../koodaaminen/java/mallit_lisays.html">Tietojen syöttäminen kantaan</a></li>
 <li><a href="../../koodaaminen/java/muokkausnakymat.html">Muokkausnäkymän toteuttaminen</a></li>
 </ul></li>
 <li><a href="../../koodaaminen/php/index.html">PHP-ohjeet</a>
@@ -162,7 +163,8 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li><a href="../../koodaaminen/php/lomakkeet.html">Lomakkeiden käyttö ja vastaanottaminen</a></li>
 <li><a href="../../koodaaminen/php/mallit_tiedonhaku.html">Tietokantahaku ja kyselyn parametrit</a></li>
 <li><a href="../../koodaaminen/php/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
-<li><a href="../../koodaaminen/php/mallit_muokkaustoiminnot.html">Malliluokat ja tiedon muuttaminen</a></li>
+<li><a href="../../koodaaminen/php/listausnakymat.html">Listaus- ja tietonäkymät</a></li>
+<li><a href="../../koodaaminen/php/mallit_lisays.html">Tietojen syöttäminen kantaan</a></li>
 <li><a href="../../koodaaminen/php/muokkausnakymat.html">Muokkausnäkymän toteuttaminen</a></li>
 </ul></li>
 </ul></li>
@@ -178,9 +180,9 @@ code > span.er { color: #ff0000; font-weight: bold; }
 </div>
 <div class="col-md-6" id="content">
 <header>
-<h1 class="title">Malliluokat ja tiedon muuttaminen</h1>
+<h1 class="title">Tietojen syöttäminen kantaan</h1>
 </header>
-<!-- order: 6 -->
+<!-- order: 7 -->
 
 
 <div class="wip panel">
@@ -195,21 +197,32 @@ Tämän sivun sisältö on vielä työn alla ja saattaa muuttua kurssin edetess�
 
 
 
-<p>Tämän sivun Java-versio on valitettavasti tällä hetkellä vielä klooni PHP-versiosta.</p>
+<p>Tämän sivun Java-versio on valitettavasti tällä hetkellä vielä klooni PHP-versiosta. Samat suunitteluperiaatteet pätevät kuitenkin kummallakin kielellä.</p>
 <section class="alert alert-info"><h3>
 Tiivistelmä:
 </h3>
 <ul>
 <li>Malliluokan oliolla kannattaa olla metodi, jolla se osaa syöttää itsensä kantaan (INSERT-lause), sekä metodit, joilla tarkistetaan ovatko syötettävät arvot oikeanlaisia.</li>
-<li>Päivittämiseen tarvitaan vastaavaa metodia, joka ajaa UPDATE-lauseen</li>
-<li>samoin poistamiselle on tarpeen DELETE-lauseen ajava instanssimetodi.</li>
+<li>Lomakkeen kontrolleri ohjaa takaisin esitäytetylle lomakesivulle, mikäli lomake on virheellisesti täytetty.
+<ul>
+<li>Tiedot voidaan näyttää antamalla lomakkeelle näytettäväksi malliluokan olio, johon on asetettu käyttäjän syöttämät lomaketiedot.</li>
+<li>Väärin syötetyt tiedot eritellään virheilmoituksin.</li>
+</ul></li>
+<li>Sekä lomakkeita, että sivunäkymiä näytettäessä kannattaa varmistaa, etteivät käyttäjän syöttämät HTML-koodinpätkät, lainausmerkit yms. sotke sivujen rakennetta.
+<ul>
+<li>PHP:ssä <a href="http://www.php.net/manual/en/function.htmlspecialchars.php">htmlspecialchars-funktio</a> auttaa: <code>&lt;?php echo htmlspecialchars($muuttuja); ?&gt;</code></li>
+<li>Javassa voi käyttää <a href="http://docs.oracle.com/javaee/5/jstl/1.1/docs/tlddocs/">out-tägiä</a>: <code>&lt;c:out value=&quot;${muuttuja}&quot;/&gt;</code></li>
+</ul></li>
+<li>Lomake ohjaa lisäyksen onnistuessa selaimen listaussivulle.</li>
+<li>Onnistumisesta onnistumisviesti</li>
 </ul>
 </section>
 
 <section id="tietojen-syöttäminen-olioon" class="level2">
 <h2>Tietojen syöttäminen olioon</h2>
 <p>Paras tapa toteuttaa jonkin tietokohteen olion, esimerkiksi kissan, syöttäminen tietokantaan, on tehdä siitä oliopohjaista: Ensiksi luodaan kissaolio, jonka jälkeen asetetaan sille settereillä sopivat arvot. Kun olio on luotu, kutsutaan varta vasten tätä tarkoitusta varten tehtyä metodia, joka lisää olion kantaan. Mallia kutsuva koodi voisi näyttää seuraavanlaiselta:</p>
-<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">$uusikatti</span> = <span class="kw">new</span> Kissa<span class="ot">();</span>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>
+<span class="kw">$uusikatti</span> = <span class="kw">new</span> Kissa<span class="ot">();</span>
 <span class="kw">$uusikatti</span>-&gt;setNimi<span class="ot">(</span><span class="kw">$_POST</span><span class="ot">[</span><span class="st">&#39;nimi&#39;</span><span class="ot">]);</span>
 <span class="kw">$uusikatti</span>-&gt;setVari<span class="ot">(</span><span class="kw">$_POST</span><span class="ot">[</span><span class="st">&#39;vari&#39;</span><span class="ot">]);</span>
 <span class="kw">$uusikatti</span>-&gt;setRotuId<span class="ot">(</span><span class="kw">$_POST</span><span class="ot">[</span><span class="st">&#39;rotu_id&#39;</span><span class="ot">]);</span>
@@ -217,20 +230,8 @@ Tiivistelmä:
 <span class="co">//Pyydetään Kissa-oliota tarkastamaan syötetyt tiedot.</span>
 <span class="kw">if</span> <span class="ot">(</span><span class="kw">$uusikatti</span>-&gt;onkoKelvollinen<span class="ot">())</span> {
   <span class="kw">$uusikatti</span>-&gt;lisaaKantaan<span class="ot">();</span>
-  
-  <span class="co">//Kissa lisättiin kantaan onnistuneesti, lähetetään käyttäjä eteenpäin</span>
-  <span class="fu">header</span><span class="ot">(</span><span class="st">&#39;Location: kissalista.php&#39;</span><span class="ot">);</span>
-  <span class="co">//Asetetaan istuntoon ilmoitus siitä, että kissa on lisätty.</span>
-  <span class="co">//Tästä tekniikasta kerrotaan lisää seuraavalla sivulla</span>
-  <span class="kw">$_SESSION</span><span class="ot">[</span><span class="st">&#39;ilmoitus&#39;</span><span class="ot">]</span> = <span class="st">&quot;Kissa lisätty onnistuneesti.&quot;</span><span class="ot">;</span>
 } <span class="kw">else</span> {
   <span class="kw">$virheet</span> = <span class="kw">$uusikatti</span>-&gt;getVirheet<span class="ot">();</span>
-
-  <span class="co">//Virheet voidaan nyt välittää näkymälle syötettyjen tietojen kera</span>
-  naytaNakymä<span class="ot">(</span><span class="st">&quot;kissalomake&quot;</span><span class="ot">,</span> <span class="fu">array</span><span class="ot">(</span>
-    <span class="st">&#39;kissa&#39;</span> =&gt; <span class="kw">$uusikatti</span><span class="ot">,</span>
-    <span class="st">&#39;virheet&#39;</span> =&gt; <span class="kw">$virheet</span>
-  <span class="ot">));</span>
 }</code></pre>
 <p>Huomaa käytetyt metodi <code>onkoKelvollinen</code> ja <code>getVirheet</code>, joista ensimmäinen kertoo, ovatko olioon asetetut tiedot tiedot oikeat ja jälkimmäinen palauttaa kaikki olion tietoihin liittyvät virheet.</p>
 <p>Etenkin jälkimmäisen toteuttamisesta on paljon hyötyä lisäyslomakkeen virheviestien toteuttamisessa.</p>
@@ -253,39 +254,21 @@ Tiivistelmä:
       <span class="fu">unset</span><span class="ot">(</span><span class="kw">$this</span>-&gt;virheet<span class="ot">[</span><span class="st">&#39;nimi&#39;</span><span class="ot">]);</span>
     }
   }
-  <span class="kw">public</span> <span class="kw">function</span> setVari<span class="ot">(</span><span class="kw">$uusivari</span><span class="ot">)</span> {
-    <span class="kw">$this</span>-&gt;vari = <span class="kw">$uusivari</span><span class="ot">;</span>
-
-    <span class="kw">if</span> <span class="ot">(</span><span class="fu">trim</span><span class="ot">(</span><span class="kw">$this</span>-&gt;vari<span class="ot">)</span> == <span class="st">&#39;&#39;</span><span class="ot">)</span> {
-      <span class="kw">$this</span>-&gt;virheet<span class="ot">[</span><span class="st">&#39;vari&#39;</span><span class="ot">]</span> = <span class="st">&quot;Kissalla on oltava väri.&quot;</span><span class="ot">;</span>
-    } <span class="kw">else</span> { 
-      <span class="fu">unset</span><span class="ot">(</span><span class="kw">$this</span>-&gt;virheet<span class="ot">[</span><span class="st">&#39;vari&#39;</span><span class="ot">]);</span>
-    }
-  }
-  <span class="kw">public</span> <span class="kw">function</span> setRotuId<span class="ot">(</span><span class="kw">$uusirotu_id</span><span class="ot">)</span> {
-    <span class="kw">$this</span>-&gt;rotu_id = <span class="kw">$uusirotu_id</span><span class="ot">;</span>
-    
-    <span class="co">//Tarkistetaan, että rotu on olemassa</span>
-    <span class="kw">if</span> <span class="ot">(</span>Kissarotu::etsi<span class="ot">(</span><span class="kw">$uusirotu_id</span><span class="ot">)</span> == <span class="kw">null</span><span class="ot">)</span> {
-      <span class="kw">$this</span>-&gt;rotu_id = <span class="kw">null</span><span class="ot">;</span>
-    }
-
-    <span class="kw">if</span> <span class="ot">(</span><span class="kw">$this</span>-&gt;rotu_id == <span class="kw">null</span><span class="ot">)</span> {
-      <span class="kw">$this</span>-&gt;virheet<span class="ot">[</span><span class="st">&#39;rotu_id&#39;</span><span class="ot">]</span> = <span class="st">&quot;Kissan rotua ei löytynyt tietokannasta&quot;</span><span class="ot">;</span>
-    } <span class="kw">else</span> { 
-      <span class="fu">unset</span><span class="ot">(</span><span class="kw">$this</span>-&gt;virheet<span class="ot">[</span><span class="st">&#39;rotu_id&#39;</span><span class="ot">]);</span>
-    }
-  }
-
-  <span class="co">/* Palauttaa true, jos Kissaan syötetyt arvot ovat järkeviä. */</span>
+  
+  <span class="st">...</span></code></pre>
+<p>Kentissä, jotka viittaavat toisiin tauluihin, voi olla järkevää tehdä tarkistuksia siitä onko viitattu olento olemassa. Tämän voi helposti tehdä tekemällä viitattuun tauluun sopivan hakumetodin, jolla voi hakea tietueita pääavaimen perusteella:</p>
+<pre class="sourceCode php"><code class="sourceCode php">  <span class="co">//Tarkistetaan, että rotu on olemassa</span>
+  <span class="kw">if</span> <span class="ot">(</span>Kissarotu::etsi<span class="ot">(</span><span class="kw">$uusirotu_id</span><span class="ot">)</span> == <span class="kw">null</span><span class="ot">)</span> {
+    <span class="kw">$this</span>-&gt;virheet<span class="ot">[</span><span class="st">&#39;rotu_id&#39;</span><span class="ot">]</span> = <span class="st">&quot;Kissan rotua ei löytynyt tietokannasta&quot;</span><span class="ot">;</span>
+  } <span class="kw">else</span> { 
+    <span class="fu">unset</span><span class="ot">(</span><span class="kw">$this</span>-&gt;virheet<span class="ot">[</span><span class="st">&#39;rotu_id&#39;</span><span class="ot">]);</span>
+  }</code></pre>
+<p>Mallien välinen viittailu on myös mahdollista rakentaa siten, että sille voidaan antaa setterissä toisen taulun olioita, joista poimitaan id.</p>
+<p>onkoKelvollinen-metodin toteutukseksi riittää käytetyn virhelistan tyhjyyden tarkistava <a href="http://www.php.net/empty"><code>empty</code></a>:</p>
+<pre class="sourceCode php"><code class="sourceCode php">  <span class="co">/* Palauttaa true, jos Kissaan syötetyt arvot ovat järkeviä. */</span>
   <span class="kw">public</span> <span class="kw">function</span> onkoKelvollinen<span class="ot">()</span> {
     <span class="kw">return</span> <span class="fu">empty</span><span class="ot">(</span><span class="kw">$this</span>-&gt;virheet<span class="ot">);</span>
-  }
-  <span class="kw">public</span> <span class="kw">function</span> getVirheet<span class="ot">()</span> {
-    <span class="kw">return</span> this-&gt;virheet<span class="ot">;</span>
   }</code></pre>
-<p>Huomaa toiseen tauluun viittaavan tiedon setterissä (<code>setRotuId</code>) oleva toista mallia käyttävä tietokantahaku, joka tarkistaa, että viitattu tieto on olemassa.</p>
-<p>Mallien välinen viittailu on myös mahdollista rakentaa siten, että sille voidaan antaa setterissä toisen taulun olioita, joista poimitaan id.</p>
 <section id="olion-syöttäminen-kantaan" class="level3">
 <h3>Olion syöttäminen kantaan</h3>
 <ul>
@@ -312,9 +295,60 @@ Tiivistelmä:
   }</code></pre>
 </section>
 </section>
-<section id="muokkauksen-toteuttaminen" class="level2">
-<h2>Muokkauksen toteuttaminen</h2>
-<p>Tämä tapahtuu pitkälti samalla tavalla kuin tiedon lisääminen. Toteutukseessa on järkevää käyttää samaa tietojen kelpoisuuden tarkistamismekanismia, kuin lisäämisen kanssa.</p>
+<section id="käytettävä-lisäyslomake" class="level2">
+<h2>Käytettävä lisäyslomake</h2>
+<ul>
+<li>Lomakkeen kontrolleri ohjaa takaisin lomakesivulle, mikäli lomake on virheellisesti täytetty.
+<ul>
+<li>Lomakesivulla tällöin näkyvissä ne tiedot, jotka käyttäjä siihen syötti.
+<ul>
+<li>Tiedot voidaan näyttää antamalla lomakkeelle näytettäväksi malliluokan olio, johon on asetettu käyttäjän syöttämät lomaketiedot.</li>
+</ul></li>
+<li>Väärin syötetyt tiedot eritellään vielä virheilmoituksin. Mieluiten kaikki kerrallaan.</li>
+</ul></li>
+<li>Sekä lomakkeita, että sivunäkymiä näytettäessä kannattaa varmistaa, etteivät käyttäjän syöttämät HTML-koodinpätkät, lainausmerkit yms. sotke sivujen rakennetta.
+<ul>
+<li>PHP:ssä <a href="http://www.php.net/manual/en/function.htmlspecialchars.php">htmlspecialchars-funktio</a> auttaa: <code>&lt;?php echo htmlspecialchars($muuttuja); ?&gt;</code></li>
+<li>Javassa voi käyttää <a href="http://docs.oracle.com/javaee/5/jstl/1.1/docs/tlddocs/">out-tägiä</a>: <code>&lt;c:out value=&quot;${muuttuja}&quot;/&gt;</code></li>
+</ul></li>
+<li>Lomake ohjaa lisäyksen onnistuessa selaimen listaussivulle.</li>
+<li>Onnistumisesta onnistumisviesti</li>
+</ul>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">if</span> <span class="ot">(</span><span class="kw">$uusikatti</span>-&gt;onkoKelvollinen<span class="ot">())</span> {
+  <span class="kw">$uusikatti</span>-&gt;lisaaKantaan<span class="ot">();</span>
+  <span class="co">//Kissa lisättiin kantaan onnistuneesti, lähetetään käyttäjä eteenpäin</span>
+  <span class="fu">header</span><span class="ot">(</span><span class="st">&#39;Location: kissalista.php&#39;</span><span class="ot">);</span>
+  <span class="co">//Asetetaan istuntoon ilmoitus siitä, että kissa on lisätty.</span>
+  <span class="co">//Tästä tekniikasta kerrotaan lisää kohta</span>
+  <span class="kw">$_SESSION</span><span class="ot">[</span><span class="st">&#39;ilmoitus&#39;</span><span class="ot">]</span> = <span class="st">&quot;Kissa lisätty onnistuneesti.&quot;</span><span class="ot">;</span>
+} <span class="kw">else</span> {
+  <span class="kw">$virheet</span> = <span class="kw">$uusikatti</span>-&gt;getVirheet<span class="ot">();</span>
+
+  <span class="co">//Virheet voidaan nyt välittää näkymälle syötettyjen tietojen kera</span>
+  naytaNakymä<span class="ot">(</span><span class="st">&quot;kissalomake&quot;</span><span class="ot">,</span> <span class="fu">array</span><span class="ot">(</span>
+    <span class="st">&#39;kissa&#39;</span> =&gt; <span class="kw">$uusikatti</span><span class="ot">,</span>
+    <span class="st">&#39;virheet&#39;</span> =&gt; <span class="kw">$virheet</span>
+  <span class="ot">));</span>
+}</code></pre>
+<section id="istunnon-käyttäminen-ilmoitusten-ja-virheiden-näyttämiseen" class="level3">
+<h3>Istunnon käyttäminen ilmoitusten ja virheiden näyttämiseen</h3>
+<p>Lyhyt esimerkki, selitykset tulossa:</p>
+<p><strong>Kontrollerissa</strong></p>
+<pre class="sourceCode php"><code class="sourceCode php">  <span class="kw">$uusikatti</span>-&gt;lisaaKantaan<span class="ot">();</span>
+  
+  <span class="co">//Äsken lisättiin kantaan onnistuneesti kissa,</span>
+  <span class="co">//lähetetään käyttäjä eteenpäin listasivulle:</span>
+  <span class="fu">header</span><span class="ot">(</span><span class="st">&#39;Location: kissalista.php&#39;</span><span class="ot">);</span>
+  <span class="co">//Asetetaan istuntoon ilmoitus siitä, että kissa on lisätty:</span>
+  <span class="kw">$_SESSION</span><span class="ot">[</span><span class="st">&#39;ilmoitus&#39;</span><span class="ot">]</span> = <span class="st">&quot;Kissa lisätty onnistuneesti.&quot;</span><span class="ot">;</span></code></pre>
+<p><strong>Näkymien pohjatiedostossa</strong></p>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span> <span class="kw">if</span> <span class="ot">(</span>!<span class="fu">empty</span><span class="ot">(</span><span class="kw">$_SESSION</span><span class="ot">[</span><span class="st">&#39;ilmoitus&#39;</span><span class="ot">]))</span>: <span class="kw">?&gt;</span>
+<span class="kw">&lt;?php</span> <span class="fu">unset</span><span class="ot">(</span><span class="kw">$_SESSION</span><span class="ot">[</span><span class="st">&#39;ilmoitus&#39;</span><span class="ot">]);</span> <span class="kw">?&gt;</span>
+  &lt;div class=&quot;alert alert-danger&quot;&gt;
+    <span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$_SESSION</span><span class="ot">[</span><span class="st">&#39;ilmoitus&#39;</span><span class="ot">];</span> <span class="kw">?&gt;</span>
+  &lt;/div&gt;
+<span class="kw">&lt;?php</span> <span class="kw">endif</span><span class="ot">;</span> <span class="kw">?&gt;</span></code></pre>
+</section>
 </section>
 <section id="muuta" class="level2">
 <h2>Muuta</h2>
@@ -323,16 +357,11 @@ Tiivistelmä:
 <ul>
 <li>Voi tehdä myös instassimetodeja, jotka hakevat johonkin olioon liittyviä rivejä toisista tietokantatauluista.</li>
 </ul></li>
-<li>Tarvitaan myös metodi(t), jolla voi poistaa rivejä.
-<ul>
-<li>Instanssimetodi poistaa kyseisen olion kannasta.</li>
-<li>Staattisella metodilla voi poistaa useitakin olioita.</li>
-</ul></li>
 </ul>
 <section class="alert alert-success small"><h3>
 Seuraavaksi:
 </h3>
-<p>Kun malli on toteutettu, sitä voi käyttää <a href="muokkausnakymat.html">muokkaus- ja lisäyslomakkeiden tekemiseen</a>.</p>
+<p>Kun lisäys on toteutettu, sen pohjalta voidaan toteuttaa myös <a href="muokkausnakymat.html">muokkauslomake</a>.</p>
 </section>
 
 
