@@ -232,6 +232,7 @@ Tämän sivun sisältö on vielä työn alla ja saattaa muuttua kurssin edetess�
 <li>Kontrolleri osaa hakea GET-parametrina annetun pääavaimen perusteella oikean olion malliluokalta.</li>
 <li>Olio välitetään suoraan näkymälle, tai kerrotaan ettei kohdetta löytynyt.</li>
 </ul></li>
+<li>Listauksessa kannattaa olla asioiden nimen tms. kohdalla linkki näille sivuille tai suoraan muokkauslomakkeeseen. Muokkauslomakkeet toteutetaan hyvin samantapaisesti, niistä on enemmän <a href="muokkausnakymat.html">omalla sivullaan</a></li>
 </ul>
 <p>Esimerkkisivu; Sivulle linkitetään muodossa <code>kissa.php?kissa_id=3</code>.</p>
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>
@@ -248,6 +249,7 @@ Tämän sivun sisältö on vielä työn alla ja saattaa muuttua kurssin edetess�
       <span class="st">&#39;virheet&#39;</span> =&gt; <span class="fu">array</span><span class="ot">(</span><span class="st">&#39;Kissaa ei löytynyt!&#39;</span><span class="ot">)</span>
     <span class="ot">));</span>
   }</code></pre>
+<p>Malliluokkaan voi tätä varten rakentaa kirjautumismetodin tapaisen <code>etsi</code>-metodin, joka hakee pääavaimen perusteella olion kannasta, tai palauttaa arvon <code>null</code>, jos tietoa ei löytynyt.</p>
 <section class="alert alert-success small"><h3>
 Seuraavaksi:
 </h3>

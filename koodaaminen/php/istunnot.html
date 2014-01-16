@@ -188,28 +188,26 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <p>Apuun ongelmaan tulee PHP:n istuntotuki. Istunnot ovat ikäänkuin pieniä, käyttäjä- ja selainkohtaisia tietokantoja, joihin voi tallettaa olioita siten, että ne säilyvät sivulataukselta toiselle.</p>
 <p>Kirjautumisen tapauksessa haluamme tallentaa tiedon siitä kuka on kirjautunut sisään. Tieto tallennetaan istuntoon siinä vaiheessa, kun käyttäjä kirjautuu sisään ja sitä käytetään aina kun halutaan tarkastella onko käyttäjä kirjautunut sivulle.</p>
 <p>PHP:ssä istunto alustetaan käyttämällä siihen erikseen tarkoitettua funktiota <a href="http://www.php.net/manual/en/function.session-start.php">session_start</a>. Metodi hakee PHP:n istuntotiedostosta käyttäjän istunnon tai mikäli sellaista ei vielä ole olemassa, luo sen. Samalla se alustaa erityisen superglobaalin <code>$_SESSION</code>-muuttujan assosiaatiotaulukoksi, johon voi tämän jälkeen tallentaa tietoa ja tarkastella siellä olevia tietoja siten että ne automaattisesti tallettuvat istuntotiedostoon ja näkyvät seuraavillakin sivulatauksilla.</p>
-<p>Esimerkkejä:</p>
+<p>Esimerkki kirjautuneen käyttäjän tallentamisesta istuntoon:</p>
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>
   <span class="fu">session_start</span><span class="ot">();</span>
-  <span class="kw">$_SESSION</span><span class="ot">[</span><span class="st">&#39;kirjautunut&#39;</span><span class="ot">]</span> = <span class="kw">new</span> Kayttaja<span class="ot">(</span><span class="st">&quot;Kalle&quot;</span><span class="ot">);</span>
 
-  <span class="co">/* Ohessa kätevä tapa välittää virheviestejä silloin kun käytetään HTTP-redirectiä */</span> 
-  <span class="kw">$_SESSION</span><span class="ot">[</span><span class="st">&#39;virheviesti&#39;</span><span class="ot">]</span> = <span class="st">&#39;Virhe! Kissoja on liikaa!&#39;</span><span class="ot">;</span>
-
-  <span class="co">/* Istuntoon talletetut viestit voi hakea näkymäkoodissa jollain toisella sivulla myöhemmin näin: */</span>
-  <span class="kw">$virheViesti</span> = <span class="kw">null</span><span class="ot">;</span>
-
-  <span class="kw">if</span> <span class="ot">(</span>!<span class="fu">empty</span><span class="ot">(</span><span class="kw">$_SESSION</span><span class="ot">[</span><span class="st">&#39;virheViesti&#39;</span><span class="ot">])</span> {
-    <span class="kw">$virheViesti</span> = <span class="kw">$_SESSION</span><span class="ot">[</span><span class="st">&#39;virheViesti&#39;</span><span class="ot">];</span>
-    
-    <span class="co">// Samalla kun viesti näytetään, se poistetaan istunnosta, ettei se näkyisi myöhemmin</span>
-    <span class="fu">unset</span><span class="ot">(</span><span class="kw">$_SESSION</span><span class="ot">[</span><span class="st">&#39;virheViesti&#39;</span><span class="ot">]);</span>
+  <span class="kw">if</span> <span class="ot">(</span>voikoKirjautua<span class="ot">(</span><span class="st">&#39;kalle&#39;</span><span class="ot">,</span> <span class="kw">$_POST</span><span class="ot">[</span><span class="st">&#39;salasana&#39;</span><span class="ot">]))</span> {
+    <span class="co">//Tallennetaan istuntoon käyttäjäolio</span>
+    <span class="kw">$_SESSION</span><span class="ot">[</span><span class="st">&#39;kirjautunut&#39;</span><span class="ot">]</span> = <span class="kw">new</span> Kayttaja<span class="ot">(</span><span class="st">&quot;Kalle&quot;</span><span class="ot">);</span>
   }</code></pre>
-<p>Käytä istuntoa kirjautumiskontrollerissasi siten, että talletat jokaisen onnistuneen kirjautumisen yhteydessä kirjautuneen käyttäjän tiedot istuntoon.</p>
+<p>Myöhemmin jollain aivan toisella sivulla voidaan tarkistaa onko joku kirjautunut seuraavasti:</p>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>
+  <span class="fu">session_start</span><span class="ot">();</span>
+  <span class="kw">if</span> <span class="ot">(</span><span class="fu">isset</span><span class="ot">(</span><span class="kw">$_SESSION</span><span class="ot">[</span><span class="st">&#39;kayttaja&#39;</span><span class="ot">])</span> {
+    <span class="kw">$kayttaja</span> = <span class="kw">$_SESSION</span><span class="ot">[</span><span class="st">&#39;kayttaja&#39;</span><span class="ot">];</span>
+    <span class="co">//Koodia, jonka vain kirjautunut käyttäjä saa suorittaa</span>
+  }</code></pre>
+<p>Käytä istuntoa kirjautumiskontrollerissasi siten, että talletat jokaisen onnistuneen kirjautumisen yhteydessä kirjautuneen käyttäjän tiedot istuntoon. Useimmiten on järkevää tallentaa joko käyttäjätaulun pääavaimen arvo (id tai käyttäjätunnus) tai kerralla kokonainen käyttäjäolio kaikkinen tietoineen. Kummankin tallentaminen istuntoon onnistuu.</p>
 <section class="alert alert-danger"><h3>
 Pidä mielessä!
 </h3>
-<p>Sivuja tehdessä <code>session_start</code>-funktion kutsuminen on yllättävän helppoa unohtaa. Tällöin <code>$_SESSION</code>-muuttuja ei toimi erityisenä istuntomuuttujana, vaan on aivan normaali muuttuja.</p>
+<p>Sivuja tehdessä <code>session_start</code>-funktion kutsuminen on yllättävän helppoa unohtaa. Tällöin <code>$_SESSION</code>-muuttuja ei toimi erityisenä istuntomuuttujana, vaan on aivan normaali muuttuja ja lisäksi oletuksena tietenkin tyhjä.</p>
 <p>Helpoin tapa estää tämä moka on kutsua <code>session_start</code>-funktiota samassa tiedostossa, johon olet määritellyt yleiskäyttöisiä funktioitasi. Mieluiten niin, että tiedoston ensimmäinen rivi php-tägien jälkeen on <code>session_start();</code>, jotta kaikki varmasti toimii.</p>
 </section>
 

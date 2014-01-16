@@ -29,6 +29,7 @@ Tämän sivun Java-versio on valitettavasti tällä hetkellä vielä klooni PHP-
 * Nämä toteutetaan omana kontrolleri/näkymä-parinaan
     * Kontrolleri osaa hakea GET-parametrina annetun pääavaimen perusteella oikean olion malliluokalta.
     * Olio välitetään suoraan näkymälle, tai kerrotaan ettei kohdetta löytynyt.
+* Listauksessa kannattaa olla asioiden nimen tms. kohdalla linkki näille sivuille tai suoraan muokkauslomakkeeseen. Muokkauslomakkeet toteutetaan hyvin samantapaisesti, niistä on enemmän [omalla sivullaan](muokkausnakymat.html)
 
 Esimerkkisivu; 
 Sivulle linkitetään muodossa `kissa.php?kissa_id=3`.
@@ -48,8 +49,10 @@ Sivulle linkitetään muodossa `kissa.php?kissa_id=3`.
       'virheet' => array('Kissaa ei löytynyt!')
     ));
   }
-
 ~~~
+
+Malliluokkaan voi tätä varten rakentaa kirjautumismetodin tapaisen `etsi`-metodin, joka hakee pääavaimen perusteella olion kannasta,
+tai palauttaa arvon `null`, jos tietoa ei löytynyt.
 
 <next>
 Listausnäkymien jälkeen on paras toteuttaa 

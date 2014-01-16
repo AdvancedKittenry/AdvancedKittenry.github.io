@@ -188,13 +188,19 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <p>Apuun ongelmaan tulee Javan istuntotuki. Istunnot ovat ikäänkuin pieniä, käyttäjä- ja selainkohtaisia tietokantoja, joihin voi tallettaa olioita siten, että ne säilyvät sivulataukselta toiselle.</p>
 <p>Kirjautumisen tapauksessa haluamme tallentaa tiedon siitä kuka on kirjautunut sisään. Tieto tallennetaan istuntoon siinä vaiheessa, kun käyttäjä kirjautuu sisään ja sitä käytetään aina kun halutaan tarkastella onko käyttäjä kirjautunut sivulle.</p>
 <p>Javassa istunto alustetaan käyttämällä HttpServletRequest-olion <a href="http://docs.oracle.com/javaee/6/api/javax/servlet/http/HttpServletRequest.html#getSession(boolean)">getSession-metodia</a>. Metodi palauttaa käyttäjän istunnon tai mikäli sellaista ei vielä ole olemassa, luo sen. Istunto-olioon voi tämän jälkeen tallentaa tietoa ja tarkastella siellä olevia tietoja.</p>
+<p>Esimerkki kirjautuneen käyttäjän tallentamisesta istuntoon:</p>
 <pre class="sourceCode java"><code class="sourceCode java">HttpSession session = request.<span class="fu">getSession</span>();
-session.<span class="fu">setAttribute</span>(<span class="st">&quot;kirjautunut&quot;</span>, <span class="kw">new</span> <span class="fu">Kayttaja</span>(<span class="st">&quot;Kalle&quot;</span>));
 
-<span class="co">// Ohessa kätevä tapa välittää virheviestejä silloin kun käytetään HTTP-redirectiä */</span>
-String lomakekasittelijanVirheviesti = (String)session.<span class="fu">getAttribute</span>(<span class="st">&quot;virheViesti&quot;</span>);
-session.<span class="fu">removeAttribute</span>(<span class="st">&quot;virheViesti&quot;</span>);</code></pre>
-<p>Käytä istunto-oliota kirjautumisservletissäsi siten, että talletat jokaisen onnistuneen kirjautumisen yhteydessä kirjautuneen käyttäjän tiedot istuntoon.</p>
+<span class="kw">if</span> (<span class="fu">voikoKirjautua</span>(&#39;kalle&#39;, request.<span class="fu">getParameter</span>(<span class="st">&quot;salasana&quot;</span>))) {
+  <span class="co">//Tallennetaan istuntoon käyttäjäolio</span>
+  session.<span class="fu">setAttribute</span>(<span class="st">&quot;kirjautunut&quot;</span>, <span class="kw">new</span> <span class="fu">Kayttaja</span>(<span class="st">&quot;Kalle&quot;</span>));
+}</code></pre>
+<p>Myöhemmin jollain aivan toisella sivulla voidaan tarkistaa onko joku kirjautunut seuraavasti:</p>
+<pre class="sourceCode java"><code class="sourceCode java">Kayttaja kirjautunut = (Kayttaja)session.<span class="fu">getAttribute</span>(<span class="st">&quot;kirjautunut&quot;</span>);
+<span class="kw">if</span> (kirjautunut != <span class="kw">null</span>) {
+  <span class="co">//Koodia, jonka vain kirjautunut käyttäjä saa suorittaa</span>
+}</code></pre>
+<p>Käytä istunto-oliota kirjautumisservletissäsi siten, että talletat jokaisen onnistuneen kirjautumisen yhteydessä kirjautuneen käyttäjän tiedot istuntoon. Useimmiten on järkevää tallentaa joko käyttäjätaulun pääavaimen arvo (id tai käyttäjätunnus) tai kerralla kokonainen käyttäjäolio kaikkinen tietoineen. Kummankin tallentaminen istuntoon onnistuu.</p>
 <section id="kirjautumisen-tarkistaminen" class="level2">
 <h2>Kirjautumisen tarkistaminen</h2>
 <p>Lisää yleiskäyttöiseen servlet-yläluokkaasi metodi, joka palauttaa arvon <code>true</code>, mikäli käyttäjä on kirjautunut ja istunnossa on tallennettuna käyttäjän kirjautumistiedot. Metodi voi halutessasi myös ohjata käyttäjän kirjautumissivulle mikäli näin ei ole. Näin kirjautumista vaativat sivut voivat kätevästi tarkistaa onko käyttäjä oikeasti kirjautunut.</p>

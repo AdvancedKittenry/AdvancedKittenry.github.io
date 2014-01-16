@@ -343,7 +343,11 @@ Tiivistelmä:
   <span class="kw">$_SESSION</span><span class="ot">[</span><span class="st">&#39;ilmoitus&#39;</span><span class="ot">]</span> = <span class="st">&quot;Kissa lisätty onnistuneesti.&quot;</span><span class="ot">;</span></code></pre>
 <p><strong>Näkymien pohjatiedostossa</strong></p>
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span> <span class="kw">if</span> <span class="ot">(</span>!<span class="fu">empty</span><span class="ot">(</span><span class="kw">$_SESSION</span><span class="ot">[</span><span class="st">&#39;ilmoitus&#39;</span><span class="ot">]))</span>: <span class="kw">?&gt;</span>
-<span class="kw">&lt;?php</span> <span class="fu">unset</span><span class="ot">(</span><span class="kw">$_SESSION</span><span class="ot">[</span><span class="st">&#39;ilmoitus&#39;</span><span class="ot">]);</span> <span class="kw">?&gt;</span>
+<span class="kw">&lt;?php</span>
+  <span class="co">// Samalla kun viesti näytetään, se poistetaan istunnosta,</span>
+  <span class="co">// ettei se näkyisi myöhemmin jollain toisella sivulla uudestaan.</span>
+  <span class="fu">unset</span><span class="ot">(</span><span class="kw">$_SESSION</span><span class="ot">[</span><span class="st">&#39;ilmoitus&#39;</span><span class="ot">]);</span> 
+<span class="kw">?&gt;</span>
   &lt;div class=&quot;alert alert-danger&quot;&gt;
     <span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$_SESSION</span><span class="ot">[</span><span class="st">&#39;ilmoitus&#39;</span><span class="ot">];</span> <span class="kw">?&gt;</span>
   &lt;/div&gt;

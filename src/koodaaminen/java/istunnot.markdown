@@ -18,17 +18,32 @@ Javassa istunto alustetaan käyttämällä HttpServletRequest-olion
 Metodi palauttaa käyttäjän istunnon tai mikäli sellaista ei vielä ole olemassa, luo sen.
 Istunto-olioon voi tämän jälkeen tallentaa tietoa ja tarkastella siellä olevia tietoja.
 
+Esimerkki kirjautuneen käyttäjän tallentamisesta istuntoon:
+
 ~~~java
 HttpSession session = request.getSession();
-session.setAttribute("kirjautunut", new Kayttaja("Kalle"));
 
-// Ohessa kätevä tapa välittää virheviestejä silloin kun käytetään HTTP-redirectiä */
-String lomakekasittelijanVirheviesti = (String)session.getAttribute("virheViesti");
-session.removeAttribute("virheViesti");
+if (voikoKirjautua('kalle', request.getParameter("salasana"))) {
+  //Tallennetaan istuntoon käyttäjäolio
+  session.setAttribute("kirjautunut", new Kayttaja("Kalle"));
+}
+~~~
+
+Myöhemmin jollain aivan toisella sivulla
+voidaan tarkistaa onko joku kirjautunut seuraavasti:
+
+~~~java
+Kayttaja kirjautunut = (Kayttaja)session.getAttribute("kirjautunut");
+if (kirjautunut != null) {
+  //Koodia, jonka vain kirjautunut käyttäjä saa suorittaa
+}
 ~~~
 
 Käytä istunto-oliota kirjautumisservletissäsi siten, että talletat
-jokaisen onnistuneen kirjautumisen yhteydessä kirjautuneen käyttäjän tiedot istuntoon.
+jokaisen onnistuneen kirjautumisen yhteydessä kirjautuneen käyttäjän tiedot istuntoon. 
+Useimmiten on järkevää tallentaa joko käyttäjätaulun pääavaimen arvo 
+(id tai käyttäjätunnus) tai kerralla kokonainen käyttäjäolio
+kaikkinen tietoineen. Kummankin tallentaminen istuntoon onnistuu.
 
 ## Kirjautumisen tarkistaminen
 

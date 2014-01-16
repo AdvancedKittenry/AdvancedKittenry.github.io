@@ -20,33 +20,39 @@ Samalla se alustaa erityisen superglobaalin `$_SESSION`-muuttujan assosiaatiotau
 johon voi tämän jälkeen tallentaa tietoa ja tarkastella siellä olevia tietoja siten
 että ne automaattisesti tallettuvat istuntotiedostoon ja näkyvät seuraavillakin sivulatauksilla.
 
-Esimerkkejä:
+Esimerkki kirjautuneen käyttäjän tallentamisesta istuntoon:
 
 ~~~php
 <?php
   session_start();
-  $_SESSION['kirjautunut'] = new Kayttaja("Kalle");
 
-  /* Ohessa kätevä tapa välittää virheviestejä silloin kun käytetään HTTP-redirectiä */ 
-  $_SESSION['virheviesti'] = 'Virhe! Kissoja on liikaa!';
+  if (voikoKirjautua('kalle', $_POST['salasana'])) {
+    //Tallennetaan istuntoon käyttäjäolio
+    $_SESSION['kirjautunut'] = new Kayttaja("Kalle");
+  }
+~~~
 
-  /* Istuntoon talletetut viestit voi hakea näkymäkoodissa jollain toisella sivulla myöhemmin näin: */
-  $virheViesti = null;
+Myöhemmin jollain aivan toisella sivulla
+voidaan tarkistaa onko joku kirjautunut seuraavasti:
 
-  if (!empty($_SESSION['virheViesti']) {
-    $virheViesti = $_SESSION['virheViesti'];
-    
-    // Samalla kun viesti näytetään, se poistetaan istunnosta, ettei se näkyisi myöhemmin
-    unset($_SESSION['virheViesti']);
+~~~php
+<?php
+  session_start();
+  if (isset($_SESSION['kayttaja']) {
+    $kayttaja = $_SESSION['kayttaja'];
+    //Koodia, jonka vain kirjautunut käyttäjä saa suorittaa
   }
 ~~~
 
 Käytä istuntoa kirjautumiskontrollerissasi siten, että talletat
 jokaisen onnistuneen kirjautumisen yhteydessä kirjautuneen käyttäjän tiedot istuntoon.
+Useimmiten on järkevää tallentaa joko käyttäjätaulun pääavaimen arvo 
+(id tai käyttäjätunnus) tai kerralla kokonainen käyttäjäolio
+kaikkinen tietoineen. Kummankin tallentaminen istuntoon onnistuu.
 
 <alert>
 Sivuja tehdessä `session_start`-funktion kutsuminen on yllättävän helppoa unohtaa.
-Tällöin `$_SESSION`-muuttuja ei toimi erityisenä istuntomuuttujana, vaan on aivan normaali muuttuja.
+Tällöin `$_SESSION`-muuttuja ei toimi erityisenä istuntomuuttujana, vaan on aivan normaali muuttuja ja lisäksi oletuksena tietenkin tyhjä.
 
 Helpoin tapa estää tämä moka on kutsua `session_start`-funktiota samassa tiedostossa, johon
 olet määritellyt yleiskäyttöisiä funktioitasi. Mieluiten niin, että tiedoston ensimmäinen rivi php-tägien jälkeen on `session_start();`,
