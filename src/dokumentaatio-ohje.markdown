@@ -161,6 +161,10 @@ Komponentit voidaan esitellä esim. ryhmiteltyinä html-sivuihin, servletteihin 
 Lisäksi voi omana osionaan luetella sovelluksessa mahdollisesti käytettävät kuva-, ääni- yms. tiedostot.
 Mikäli sovelluksessa on käytetty jotain kirjastoa, kuten jQuery, tulee eritellä mitkä ovat omia ja mitkä kirjaston komponentteja, käytetyistä kirjastokomponenteista tulee kertoa mihin niitä käyttää.
 
+Käytännössä kyseessä on tiedostotason kuvailu siitä, mitä eri ohjelman osaset kuvailevat. 
+Jokaisesta tiedostosta kerrotaan mihin sitä käytetään ja mitä se tekee.
+Jos ohjelmassa on paljon samantapaisia samaa tarkoitusta ajavia hyvin samankaltaisia tiedostoja, 
+voi niistä kertoa lyhyemminkin yhtenä ryhmänä.
 
 ####Esimerkki
 
@@ -219,13 +223,9 @@ että tästä pääsee eteenpäin vain tunnistettu käyttäjä. Mikäli sivustol
 pääsee mistä vain mihin vain, kannattaa tämä mainita sanallisesti kaavion yhteydessä ja merkitä kaavioon vain sellaiset yhteydet,
 jotka olisivat olemassa ilman navigaatiopalkkiakin.
 
-
 ##9. Asennustiedot
 
-TODOOOOOOOO
-
-yhyehkö ohje, jonka tarkoituksena on toisaalta kertoa, miten sovellus on nyt asennettu ja toisaalta miten sen saisi asennettua uuteen ympäristöön.
-Servlettien sijoittelu riippuu servlettiympäristöstä, joten sitä ei tarvitse määritellä.
+Lyhyehkö ohje, jonka tarkoituksena on toisaalta kertoa, miten sovellus on nyt asennettu ja toisaalta miten sen saisi asennettua uuteen ympäristöön.
 
 Asennusohjeesta tulisi käydä ilmi, minne käytettävän tietokannan asetukset (käytettävä tietokanta, käyttäjätunnus, salasana) tulee ohjelmistoa asentaessa määritellä.
 
@@ -258,7 +258,6 @@ Mitä puutteita tai bugeja ohjelmassa on? Mitä lisäominaisuuksia ohjelmaan voi
 ##12. Omat kokemukset
 
 Mikä oli tietokantasovelluksen teossa helppoa? Mikä vaikeaa? Mitä opit? Muu vapaa sana.
-
 
 ##13. Liitteet
 Dokumentin liitteinä annetaan:
