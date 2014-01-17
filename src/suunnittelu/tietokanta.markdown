@@ -7,6 +7,10 @@
     * [Järjestelmän tietosisältö]({{rootdir}}dokumentaatio-ohje.html#j%C3%A4rjestelm%C3%A4n-tietosis%C3%A4lt%C3%B6)
     * [Relaatiotietokantakaavio]({{rootdir}}dokumentaatio-ohje.html#relaatiotietokantakaavio)
 * Sijoita uudet kappaleet samaan pdf-tiedostoon kuin aikaisempikin dokumentaatio
+* Tee tietokantasuunnitelmistasi myös SQL-muotoinen versio, jonka voi ajaa tietokantaan.
+    * Tiedostot uuteen `sql`-nimiseen hakemistoon.
+    * Luo oma tiedosto taulujen luomiselle, testidatan syöttämiselle ja taulujen poistamiselle: `create-tables.sql`, `drop-tables.sql` ja `add-test-data.sql`.
+* Jos et ole pitkään aikaan käyttänyt SQL-kieltä, kannattaa lukea alla oleva [SQL-opas](#lyhyt-sql-opas).
 </summary>
 
 ## Alustava suunnittelu
@@ -208,6 +212,19 @@ Lisätietoja löytyy kantojen omilta dokumentaatiosivuilta:
 
 * [PostgreSQL:n tietotyypit](http://www.postgresql.org/docs/7.4/static/datatype.html)
 * [MySQL:n tietotyypit](http://dev.mysql.com/doc/refman/5.1/en/data-type-overview.html)
+
+<vinkki>
+Merkkijonokenttien kanssa kannattaa muistaa tehdä kentistä riittävän pitkiä sisältämälleen datalle. Esim. sähköpostit ovat
+helposti 30 merkkiä pitkiä ja nimetkin voivat yhdysnimien yms. myötä 
+yltää yli kahteenkymmeneen merkkiin.
+
+Salasanankentän voi toteuttaa joko paljaana salasanan sisältävänä
+tekstikenttänä tai käyttää salasanojen 
+[*hashausta*](https://crackstation.net/hashing-security.htm), 
+jolloin kenttään pitää varata riittävästi tilaa hash- eli
+*tiivistefunktion* tuottamalle tiivisteelle.
+
+</vinkki>
 
 ## Linkkejä
 

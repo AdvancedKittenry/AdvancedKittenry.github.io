@@ -203,6 +203,20 @@ Tästä seuraa usein ikävä `NullPointerException`, kun erehdytään
 kutsumaan null-arvolta esimerkiksi `equals`-metodia.
 </alert>
 
+## Salasanan tarkistaminen ja tallettaminen turvallisesti
+
+Salasanankentän voi toteuttaa joko paljaana salasanan sisältävänä
+tekstikenttänä tai käyttää salasanojen 
+hashausta
+jossa salasanan sijasta tietokantaan 
+tallennetaan siitä kryptograafisella tiivistefunktiolla
+muodostettu tiiviste. 
+
+Menetelmä on huomattavasti turvallisempi tapa säilyttää salasanoja,
+sillä silloin niitä ei ole mahdollista lukea kannasta suoraan.
+Aiheesta voi lukea lisää mm. 
+[tältä sivulta](https://crackstation.net/hashing-security.htm).
+
 <next>
 Toteuta ylläolevan kaltaiset käytettävyysparannukset myös omaan kirjautumisservlettiisi.
 

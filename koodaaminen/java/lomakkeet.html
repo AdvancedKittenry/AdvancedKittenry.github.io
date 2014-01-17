@@ -321,6 +321,11 @@ Pidä mielessä!
 <p>Kannattaa huomioida etenkin tilanteet, joissa parametria ei ole annettu, sillä <code>getParameter</code> palauttaa silloin arvon null. Tästä seuraa usein ikävä <code>NullPointerException</code>, kun erehdytään kutsumaan null-arvolta esimerkiksi <code>equals</code>-metodia.</p>
 </section>
 
+</section>
+<section id="salasanan-tarkistaminen-ja-tallettaminen-turvallisesti" class="level2">
+<h2>Salasanan tarkistaminen ja tallettaminen turvallisesti</h2>
+<p>Salasanankentän voi toteuttaa joko paljaana salasanan sisältävänä tekstikenttänä tai käyttää salasanojen hashausta jossa salasanan sijasta tietokantaan tallennetaan siitä kryptograafisella tiivistefunktiolla muodostettu tiiviste.</p>
+<p>Menetelmä on huomattavasti turvallisempi tapa säilyttää salasanoja, sillä silloin niitä ei ole mahdollista lukea kannasta suoraan. Aiheesta voi lukea lisää mm. <a href="https://crackstation.net/hashing-security.htm">tältä sivulta</a>.</p>
 <section class="alert alert-success small"><h3>
 Seuraavaksi:
 </h3>

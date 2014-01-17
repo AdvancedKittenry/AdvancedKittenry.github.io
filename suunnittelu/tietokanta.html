@@ -195,6 +195,12 @@ Tiivistelmä:
 <li><a href="../dokumentaatio-ohje.html#relaatiotietokantakaavio">Relaatiotietokantakaavio</a></li>
 </ul></li>
 <li>Sijoita uudet kappaleet samaan pdf-tiedostoon kuin aikaisempikin dokumentaatio</li>
+<li>Tee tietokantasuunnitelmistasi myös SQL-muotoinen versio, jonka voi ajaa tietokantaan.
+<ul>
+<li>Tiedostot uuteen <code>sql</code>-nimiseen hakemistoon.</li>
+<li>Luo oma tiedosto taulujen luomiselle, testidatan syöttämiselle ja taulujen poistamiselle: <code>create-tables.sql</code>, <code>drop-tables.sql</code> ja <code>add-test-data.sql</code>.</li>
+</ul></li>
+<li>Jos et ole pitkään aikaan käyttänyt SQL-kieltä, kannattaa lukea alla oleva <a href="#lyhyt-sql-opas">SQL-opas</a>.</li>
 </ul>
 </section>
 
@@ -396,6 +402,13 @@ Vinkki: Käytä hakukonetta
 <li><a href="http://www.postgresql.org/docs/7.4/static/datatype.html">PostgreSQL:n tietotyypit</a></li>
 <li><a href="http://dev.mysql.com/doc/refman/5.1/en/data-type-overview.html">MySQL:n tietotyypit</a></li>
 </ul>
+<section class="alert alert-warning"><h3>
+Vinkki
+</h3>
+<p>Merkkijonokenttien kanssa kannattaa muistaa tehdä kentistä riittävän pitkiä sisältämälleen datalle. Esim. sähköpostit ovat helposti 30 merkkiä pitkiä ja nimetkin voivat yhdysnimien yms. myötä yltää yli kahteenkymmeneen merkkiin.</p>
+<p>Salasanankentän voi toteuttaa joko paljaana salasanan sisältävänä tekstikenttänä tai käyttää salasanojen <a href="https://crackstation.net/hashing-security.htm"><em>hashausta</em></a>, jolloin kenttään pitää varata riittävästi tilaa hash- eli <em>tiivistefunktion</em> tuottamalle tiivisteelle.</p>
+</section>
+
 </section>
 </section>
 <section id="linkkejä" class="level2">
