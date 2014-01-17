@@ -125,7 +125,7 @@ Käyttämällä luokkia `nav` ja `nav-tabs` saadaan tavallinen ul-elementti toim
 
 Esimerkin lähdekoodi:
 
-~~~~ {#html execute=bash type=block}
+~~~~ {.html execute=bash type=block}
 ./extract-tag.pl body src/{{curdir}}html-esimerkit/tabit.html
 ~~~~
 
@@ -142,7 +142,7 @@ Huomaam myös kätevä `panel`-luokka, jolla saa helposti aikaan nättejä [laat
 
 Esimerkin lähdekoodi:
 
-~~~~ {#html execute=bash type=block}
+~~~~ {.html execute=bash type=block}
 ./extract-tag.pl body src/{{curdir}}html-esimerkit/sivunavi.html | sed -e s/-xs-/-md-/g 
 ~~~~
 
@@ -159,7 +159,7 @@ Listauksessa on myös käytetty hyväksi Bootstrapin tukea [napeille](http://get
 
 Esimerkin lähdekoodi:
 
-~~~~ {#html execute=bash type=block}
+~~~~ {.html execute=bash type=block}
 ./extract-tag.pl body src/{{curdir}}html-esimerkit/table.html | sed -e s/-xs-/-md-/g 
 ~~~~
 
@@ -173,7 +173,7 @@ Myös [monia muita tapoja](http://getbootstrap.com/css/#forms) tyylitellä lomak
 
 Esimerkin lähdekoodi:
 
-~~~~ {#html execute=bash type=block}
+~~~~ {.html execute=bash type=block}
 ./extract-tag.pl body src/{{curdir}}html-esimerkit/lomake.html | sed -e s/-xs-/-md-/g 
 ~~~~
 
