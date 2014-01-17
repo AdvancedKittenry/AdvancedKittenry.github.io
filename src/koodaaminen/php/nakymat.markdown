@@ -86,7 +86,36 @@ pohjatiedosto `require`-funktiolla.
   requre 'views/pohja.php';
 ~~~
 
-Käytännössä ylläoleva koodi on melko virhealtis muuttujanimien vaihdoksille ja kirjoitusvirheille,
+Kun sivupohja on käytössä, jokainen sivu rakentuu kerroksittain kuten tässä kaaviokuvassa:
+
+![Sivupohjan, näkymän ja näkymän näyttävän koodin väliset suhteet]({{imgdir}}koodaaminen/template-selitys-php.png)
+
+Kuvassa esiintyvä HTML-koodi vastaa melko tarkkaan sitä minkä PHP lähettää selaimelle.
+Huomaa, että `<html>`-tägi, navigaatiot yms. toistuvat elementit tarvitsee kirjoittaa vain sivupohjanana toimivaan template.php-tiedostoon.
+Jos ne vahingossa kirjoittaa myös näkymätiedostoon, tuloksena on rikkinäistä HTML:ää:
+
+~~~html
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Otsikko</title>
+  </head>
+  <body>
+    <nav> .... </nav>
+     <div id="content">
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Otsikko</title>
+  </head>
+  <body>
+    <nav> .... </nav>
+     <div id="content">
+       <h1>Otsikko</h1>
+       ...
+~~~
+
+Käytännössä yllä esitetty `require`:een perustuva koodi on melko virhealtis muuttujanimien vaihdoksille ja kirjoitusvirheille,
 joten se kannattaa sijoittaa funktioksi johonkin yksittäiseen paikkaan.
 Tee itsellesi `libs`-kansioon tiedosto tälläisiä yleisiä funktioita varten
 ja laita sinne sisällytyksemme funktioversio:

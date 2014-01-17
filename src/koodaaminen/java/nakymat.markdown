@@ -175,6 +175,34 @@ Kun yllä oleva JSP-koodi ja tägitiedosto ajetaan syntyy sivu, jonka
 otsikko on "Kissalista!" ja 
 jonka sisältönä on sivunavigaatio ja Hello World -toivotus.
 
+Kun sivupohja on käytössä, jokainen sivu rakentuu kerroksittain kuten tässä kaaviokuvassa:
+![Sivupohjan, näkymän ja näkymän näyttävän koodin väliset suhteet]({{imgdir}}koodaaminen/template-selitys-java.png)
+
+Kuvassa esiintyvä HTML-koodi vastaa melko tarkkaan sitä minkä Tomacat lähettää selaimelle.
+Huomaa, että `<html>`-tägi, navigaatiot yms. toistuvat elementit tarvitsee kirjoittaa vain sivupohjanana toimivaan pohja.tag-tiedostoon.
+Jos ne vahingossa kirjoittaa myös näkymätiedostoon, tuloksena on rikkinäistä HTML:ää:
+
+~~~html
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Otsikko</title>
+  </head>
+  <body>
+    <nav> .... </nav>
+     <div id="content">
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Otsikko</title>
+  </head>
+  <body>
+    <nav> .... </nav>
+     <div id="content">
+       <h1>Otsikko</h1>
+       ...
+~~~
+
 ----------
 
 Tee nyt projektillesi HTML-pohjatiedosto kansioon `web/WEB-INF/tags/pohja.tag`. Ja sijoita siihen oma sivupohjasi.
