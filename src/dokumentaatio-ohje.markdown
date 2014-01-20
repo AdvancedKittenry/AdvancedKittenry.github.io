@@ -51,22 +51,23 @@ Annetaan lyhyt kuvaus järjestelmän sidosryhminä toimivista käyttäjäryhmist
 
 **Esimerkki**
 
-  Jokamies
-    Jokamiehellä tarkoitetaan ketä tahansa, joka Internetin välityksellä tulee lukemaan KatonAlle yhtiön www-sivuja. 
-    Kaikki muut sidosryhmät kuuluvat myös tähän sidosryhmään.
+~~~
+Jokamies
+  Jokamiehellä tarkoitetaan ketä tahansa, joka Internetin välityksellä tulee lukemaan KatonAlle yhtiön www-sivuja. 
+  Kaikki muut sidosryhmät kuuluvat myös tähän sidosryhmään.
 
-  Asiakas
-    Asiakas on rekisteröitynyt käyttäjä.
+Asiakas
+  Asiakas on rekisteröitynyt käyttäjä.
 
-  Vuokranantaja
-    Vuokranantaja on rekisteröitynyt henkilö, joka on antanut asunnon KatonAlle yhtiölle välitettäväksi.
+Vuokranantaja
+  Vuokranantaja on rekisteröitynyt henkilö, joka on antanut asunnon KatonAlle yhtiölle välitettäväksi.
 
-  Työntekijä
-    Työntekijä on KatonAlle yhtiön palveluksessa oleva henkilö.
+Työntekijä
+  Työntekijä on KatonAlle yhtiön palveluksessa oleva henkilö.
 
-  Johto
-    Johdolla tarkoitetaan työntekijöitä, joiden tehtävänä on tehtävien anto ja asioista päättäminen.
-
+Johto
+  Johdolla tarkoitetaan työntekijöitä, joiden tehtävänä on tehtävien anto ja asioista päättäminen.
+~~~
 
 ##3. Käyttötapaukset
 
@@ -82,26 +83,28 @@ käyttötapauksia. Käyttötapaukset kannattaa esittää käyttäjittäin ryhmit
 
 ####Esimerkki  
 
-  Jokamiehen käyttötapaukset
+~~~
+Jokamiehen käyttötapaukset
 
-  Yritysinfon lukeminen:
-    Kuka tahansa voi käydä lukemassa yrityksen mainos- ja yleistietoja 
-    mm. työntekijöiden puhelinnumerot ja toimistojen sijainnit.
+Yritysinfon lukeminen:
+  Kuka tahansa voi käydä lukemassa yrityksen mainos- ja yleistietoja 
+  mm. työntekijöiden puhelinnumerot ja toimistojen sijainnit.
 
-  Asuntotilanteen yleiskuvan selvittäminen:
-    Käyttäjälle näytetään, minkä tyyppisiä asuntoja kullakin alueella 
-    kyselyn suoritushetkellä on tarjolla vuokralle ja kuinka monta näitä on tarjolla. 
-    Esimerkki: Millaisia asuntoja on tarjolla Kruunuhaassa?
+Asuntotilanteen yleiskuvan selvittäminen:
+  Käyttäjälle näytetään, minkä tyyppisiä asuntoja kullakin alueella 
+  kyselyn suoritushetkellä on tarjolla vuokralle ja kuinka monta näitä on tarjolla. 
+  Esimerkki: Millaisia asuntoja on tarjolla Kruunuhaassa?
 
-  Rekisteröityminen asiakkaaksi:
-    Rekisteröitymisessä käyttäjä ilmoittautuu yrityksen asiakkaaksi päästen näin 
-    yrityksen muiden asiakaspalveluiden käyttäjäksi ja asiakastiedotteiden saajaksi.
+Rekisteröityminen asiakkaaksi:
+  Rekisteröitymisessä käyttäjä ilmoittautuu yrityksen asiakkaaksi päästen näin 
+  yrityksen muiden asiakaspalveluiden käyttäjäksi ja asiakastiedotteiden saajaksi.
 
-    Jokamiehestä tulee asiakas. Hän antaa henkilötietonsa ja saa asiakastunnuksen, 
-    joka on avain asiakkaille tarkoitettuihin palveluihin. 
+  Jokamiehestä tulee asiakas. Hän antaa henkilötietonsa ja saa asiakastunnuksen, 
+  joka on avain asiakkaille tarkoitettuihin palveluihin. 
 
-    Prototyypissä asiakastunnus aktivoituu heti. 
-    Aktivoinnin voisi kytkeä myös esimerkiksi jäsenmaksun maksamiseen.
+  Prototyypissä asiakastunnus aktivoituu heti. 
+  Aktivoinnin voisi kytkeä myös esimerkiksi jäsenmaksun maksamiseen.
+~~~
 
 
 ##4. Järjestelmän tietosisältö
