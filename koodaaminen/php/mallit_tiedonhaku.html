@@ -201,7 +201,7 @@ Tiivistelmä:
 <p><strong>Esimerkki:</strong></p>
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">$nimi</span> = <span class="kw">$_POST</span><span class="ot">[</span><span class="st">&#39;nimi&#39;</span><span class="ot">];</span>
 
-<span class="kw">$yhteys</span> = Tietokanta::getYhteys<span class="ot">();</span>
+<span class="kw">$yhteys</span> = getTietokantayhteys<span class="ot">();</span>
 <span class="kw">$kysely</span> = <span class="kw">$yhteys</span>-&gt;prepare<span class="ot">(</span><span class="st">&quot;SELECT * FROM users WHERE nimi = &#39;</span><span class="kw">$nimi</span><span class="st">&#39; LIMIT 1&quot;</span><span class="ot">);</span></code></pre>
 <p>Nyt, mikäli nimeksi annetaankin vaikka merkkijono <code>' OR username = 'admin'</code>, hakeekin kysely kannasta aivan eri käyttäjän kuin pitäisi!</p>
 <p>Jos tälläinen virhe eksyy vaikkapa kirjautumislogiikkaan, on sovellus auttamatta haavoittuvainen murtautumisyrityksille.</p>
@@ -210,7 +210,7 @@ Tiivistelmä:
 <p>Näitä parametrien paikkoja ilmaistaan kysymysmerkeillä. PHP:llä parametrit annetaan array-tyyppisenä listana <a href="http://php.net/manual/en/pdostatement.execute.php">kyselyä suoritettaessa</a></p>
 <p><strong>Esimerkki</strong></p>
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">$nimi</span> = <span class="kw">$_POST</span><span class="ot">[</span><span class="st">&#39;nimi&#39;</span><span class="ot">];</span>
-<span class="kw">$yhteys</span> = Tietokanta::getYhteys<span class="ot">();</span>
+<span class="kw">$yhteys</span> = getTietokantayhteys<span class="ot">();</span>
 
 <span class="co">//Etsitään käyttäjää nimellä</span>
 <span class="kw">$sql</span> = <span class="st">&quot;SELECT * FROM users WHERE nimi = ?&quot;</span><span class="ot">;</span>
@@ -234,7 +234,7 @@ Tiivistelmä:
   <span class="co">/* Etsitään kannasta käyttäjätunnuksella ja salasanalla käyttäjäriviä */</span>
   <span class="kw">public</span> <span class="kw">static</span> <span class="kw">function</span> getKayttajaTunnuksilla<span class="ot">(</span><span class="kw">$kayttaja</span><span class="ot">,</span> <span class="kw">$salasana</span><span class="ot">)</span> {
     <span class="kw">$sql</span> = <span class="st">&quot;SELECT id,username, password from users where username = ? AND password = ? LIMIT 1&quot;</span><span class="ot">;</span>
-    <span class="kw">$kysely</span> = getTietokanta<span class="ot">()</span>-&gt;prepare<span class="ot">(</span><span class="kw">$sql</span><span class="ot">);</span>
+    <span class="kw">$kysely</span> = getTietokantayhteys<span class="ot">()</span>-&gt;prepare<span class="ot">(</span><span class="kw">$sql</span><span class="ot">);</span>
     <span class="kw">$kysely</span>-&gt;execute<span class="ot">(</span><span class="fu">array</span><span class="ot">(</span><span class="kw">$kayttaja</span><span class="ot">,</span> <span class="kw">$salasana</span><span class="ot">));</span>
 
     <span class="kw">$tulos</span> = <span class="kw">$kysely</span>-&gt;fetchObject<span class="ot">();</span>

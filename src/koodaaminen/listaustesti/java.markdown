@@ -148,7 +148,7 @@ kaikki tuon tietokohteen taulun rivit tuon luokan olioina.
 Käytetään tähän aiemmin tekemäämme tietokantayhteysluokka, jolta kysymme `Connection`-oliota:
 
 ~~~java
-Connection yhteys = Tietokanta.getTietokanta();
+Connection yhteys = Tietokanta.getYhteys();
 ~~~
 
 Yhteysoliota voi pyytää valmistelemaan SQL-koodia suoritettavaksi kutsumalla sen `prepareStatement`-metodia.
@@ -188,7 +188,7 @@ Alla on esimerkki valmiista metodista, joka palauttaa jokaisen käyttäjän.
 ~~~java
 public static List<Kayttaja> getKayttajat() {
   String sql = "SELECT id, tunnus, salasana from kayttajat";
-  Connection yhteys = Tietokanta.getTietokanta();
+  Connection yhteys = Tietokanta.getYhteys();
   PreparedStatement kysely = yhteys.prepareStatement(sql);
   ResultSet rs = kysely.executeQuery();
 

@@ -270,10 +270,10 @@ Vinkki
 <section id="tietokantahaku" class="level3">
 <h3>Tietokantahaku</h3>
 <p>Tehdään seuraavaksi luokalle staattinen metodi, joka palauttaa kaikki tuon tietokohteen taulun rivit tuon luokan olioina. Käytetään tähän aiemmin tekemäämme tietokantayhteysfunktiota, jolta kysymme <code>PDO</code>-tyyppistä yhteysoliota:</p>
-<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">$yhteys</span> = getTietokanta<span class="ot">();</span></code></pre>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">$yhteys</span> = getTietokantayhteys<span class="ot">();</span></code></pre>
 <p>Yhteysoliota voi pyytää valmistelemaan SQL-koodia suoritettavaksi kutsumalla sen <code>prepare</code>-metodia. Tuloksena saatavan <code>PDOStatement</code>-olion voi taas käskeä sille annetun suorittamaan SQL:n kutsumalla <code>execute</code>-metodia.</p>
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">$sql</span> = <span class="st">&quot;SELECT id,tunnus, password from users&quot;</span><span class="ot">;</span>
-<span class="kw">$kysely</span> = getTietokanta<span class="ot">()</span>-&gt;prepare<span class="ot">(</span><span class="kw">$sql</span><span class="ot">);</span> 
+<span class="kw">$kysely</span> = getTietokantayhteys<span class="ot">()</span>-&gt;prepare<span class="ot">(</span><span class="kw">$sql</span><span class="ot">);</span> 
 <span class="kw">$kysely</span>-&gt;execute<span class="ot">();</span></code></pre>
 <p>Viimeisen kutsun jälkeen <code>$kysely</code>-muuttujalta voi kysellä kannasta saatuja tietoja takaisin. Tietoja voi pyydellä rivi kerrallaan käyttämällä <code>fetch</code> tai <code>fetchObject</code>-metodia. Molemmat hakevat seuraavan tuloksissa olevan rivin.</p>
 <pre class="sourceCode php"><code class="sourceCode php"><span class="co">//Haetaan kaksi riviä eri tyyppisinä ja tulostetaan niiltä tunnus.</span>
@@ -301,7 +301,7 @@ Vinkki
 <p>Alla on esimerkki valmiista metodista, joka palauttaa jokaisen käyttäjän.</p>
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">public</span> <span class="kw">static</span> <span class="kw">function</span> getKayttajat<span class="ot">()</span> {
   <span class="kw">$sql</span> = <span class="st">&quot;SELECT id,tunnus, password from users&quot;</span><span class="ot">;</span>
-  <span class="kw">$kysely</span> = getTietokanta<span class="ot">()</span>-&gt;prepare<span class="ot">(</span><span class="kw">$sql</span><span class="ot">);</span> <span class="kw">$kysely</span>-&gt;execute<span class="ot">();</span>
+  <span class="kw">$kysely</span> = getTietokantayhteys<span class="ot">()</span>-&gt;prepare<span class="ot">(</span><span class="kw">$sql</span><span class="ot">);</span> <span class="kw">$kysely</span>-&gt;execute<span class="ot">();</span>
     
   <span class="kw">$tulokset</span> = <span class="fu">array</span><span class="ot">();</span>
   <span class="kw">foreach</span><span class="ot">(</span><span class="kw">$kysely</span>-&gt;fetchAll<span class="ot">(</span><span class="kw">PDO</span>::<span class="kw">FETCH_OBJ</span><span class="ot">)</span> <span class="kw">as</span> <span class="kw">$tulos</span><span class="ot">)</span> {

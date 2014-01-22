@@ -300,7 +300,7 @@ Tiivistelmä:
   <span class="co">/* Tähän gettereitä ja settereitä */</span>
 }</code></pre>
 <p>Tehdään seuraavaksi luokalle staattinen metodi, joka palauttaa kaikki tuon tietokohteen taulun rivit tuon luokan olioina. Käytetään tähän aiemmin tekemäämme tietokantayhteysluokka, jolta kysymme <code>Connection</code>-oliota:</p>
-<pre class="sourceCode java"><code class="sourceCode java">Connection yhteys = Tietokanta.<span class="fu">getTietokanta</span>();</code></pre>
+<pre class="sourceCode java"><code class="sourceCode java">Connection yhteys = Tietokanta.<span class="fu">getYhteys</span>();</code></pre>
 <p>Yhteysoliota voi pyytää valmistelemaan SQL-koodia suoritettavaksi kutsumalla sen <code>prepareStatement</code>-metodia. Tuloksena saatavan <code>PreparedStatement</code>-olion voi taas käskeä sille annetun suorittamaan SQL:n kutsumalla <code>executeQuery</code>-metodia.</p>
 <pre class="sourceCode java"><code class="sourceCode java">String sql = <span class="st">&quot;SELECT id, tunnus, salasana from kayttajat&quot;</span>;
 PreparedStatement kysely = yhteys.<span class="fu">prepareStatement</span>(sql);
@@ -316,7 +316,7 @@ ResultSet rs = kysely.<span class="fu">executeQuery</span>();</code></pre>
 <p>Alla on esimerkki valmiista metodista, joka palauttaa jokaisen käyttäjän.</p>
 <pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="dt">static</span> List&lt;Kayttaja&gt; <span class="fu">getKayttajat</span>() {
   String sql = <span class="st">&quot;SELECT id, tunnus, salasana from kayttajat&quot;</span>;
-  Connection yhteys = Tietokanta.<span class="fu">getTietokanta</span>();
+  Connection yhteys = Tietokanta.<span class="fu">getYhteys</span>();
   PreparedStatement kysely = yhteys.<span class="fu">prepareStatement</span>(sql);
   ResultSet rs = kysely.<span class="fu">executeQuery</span>();
 

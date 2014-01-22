@@ -158,7 +158,7 @@ kaikki tuon tietokohteen taulun rivit tuon luokan olioina.
 Käytetään tähän aiemmin tekemäämme tietokantayhteysfunktiota, jolta kysymme `PDO`-tyyppistä yhteysoliota:
 
 ~~~inlinephp
-$yhteys = getTietokanta();
+$yhteys = getTietokantayhteys();
 ~~~
 
 Yhteysoliota voi pyytää valmistelemaan SQL-koodia suoritettavaksi kutsumalla sen `prepare`-metodia.
@@ -167,7 +167,7 @@ kutsumalla `execute`-metodia.
 
 ~~~inlinephp
 $sql = "SELECT id,tunnus, password from users";
-$kysely = getTietokanta()->prepare($sql); 
+$kysely = getTietokantayhteys()->prepare($sql); 
 $kysely->execute();
 ~~~
 
@@ -222,7 +222,7 @@ Alla on esimerkki valmiista metodista, joka palauttaa jokaisen käyttäjän.
 ~~~inlinephp
 public static function getKayttajat() {
   $sql = "SELECT id,tunnus, password from users";
-  $kysely = getTietokanta()->prepare($sql); $kysely->execute();
+  $kysely = getTietokantayhteys()->prepare($sql); $kysely->execute();
     
   $tulokset = array();
   foreach($kysely->fetchAll(PDO::FETCH_OBJ) as $tulos) {

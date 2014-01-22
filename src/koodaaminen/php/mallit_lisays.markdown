@@ -123,7 +123,7 @@ olemassa omat kikkansa:
 ~~~inlinephp
   public function lisaaKantaan() {
     $sql = "INSERT INTO Kissat(nimi, vari, rotu_id) VALUES(?,?,?) RETURNING id";
-    $kysely = getTietokanta()->prepare($sql);
+    $kysely = getTietokantayhteys()->prepare($sql);
 
     $ok = $kysely->execute(array($this->getNimi(), $this->getVari(), $this->getRotuId()));
     if ($ok) {

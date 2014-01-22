@@ -252,8 +252,8 @@ Jos et halua tehdä luokkaa, voit PHP:llä käyttää myös lyhyttä funktiota, 
 
 ~~~inlinephp
 <?php
-function getTietokanta() {
-  static $yhteys = null; //Muuttuja, jonka sisältö säilyy getTietokanta-kutsujen välillä.
+function getTietokantayhteys() {
+  static $yhteys = null; //Muuttuja, jonka sisältö säilyy getTietokantayhteys-kutsujen välillä.
 
   if ($yhteys === null) { 
     //Tämä koodi suoritetaan vain kerran, sillä seuraavilla 
@@ -271,7 +271,7 @@ Nyt jossain toisessa tiedostossa funktiota voi käyttää vaikkapa näin:
 ~~~php
 <?php
   require 'libs/tietokantayhteys.php';
-  $kysely = getTietokanta()->prepare("SELECT 1");
+  $kysely = getTietokantayhteys()->prepare("SELECT 1");
   $kysely->execute();
   
   echo $kysely->fetchColumn();

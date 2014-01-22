@@ -199,7 +199,7 @@ Tiivistelmä:
 <p>Olennainen osa järkevää tietokantaohjelmointia on nk. <a href="http://fi.wikipedia.org/wiki/SQL-injektio">SQL-injektioiden</a> välttäminen.</p>
 <p>Sovellukseen on mahdollista tehdä SQL-injektio silloin, kun käyttäjän antamia syötteitä ei tarkisteta kunnolla vaan ne upotetaan SQL-kyselyihin sellaisinaan.</p>
 <p><strong>Esimerkki:</strong></p>
-<pre class="sourceCode java"><code class="sourceCode java">Connection yhteys = TietokantaYhteydet.<span class="fu">getYhteys</span>();
+<pre class="sourceCode java"><code class="sourceCode java">Connection yhteys = Tietokanta.<span class="fu">getYhteys</span>();
 String nimi = request.<span class="fu">getParameter</span>(<span class="st">&quot;nimi&quot;</span>);
 
 <span class="co">//Etsitään käyttäjää nimellä</span>
@@ -217,7 +217,7 @@ PreparedStatement kysely = <span class="kw">null</span>;
 ResultSet tulokset = <span class="kw">null</span>;
 
 String nimi = request.<span class="fu">getParameter</span>(<span class="st">&quot;nimi&quot;</span>);
-yhteys = TietokantaYhteydet.<span class="fu">getYhteys</span>();
+yhteys = Tietokanta.<span class="fu">getYhteys</span>()();
 
 <span class="co">//Etsitään käyttäjää nimellä</span>
 String sql = <span class="st">&quot;SELECT * FROM users WHERE nimi = ?&quot;</span>;
@@ -235,7 +235,7 @@ tulokset = kysely.<span class="fu">executeQuery</span>();</code></pre>
 <p><strong>Ote tiedostosta kissalista/models/Kayttajat.java:</strong></p>
 <pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="dt">static</span> Kayttaja <span class="fu">getKayttajaTunnuksilla</span>(String kayttaja, String salasana) {
   String sql = <span class="st">&quot;SELECT id,username, password from users where username = ? AND password = ?&quot;</span>;
-  Connection yhteys = Tietokanta.<span class="fu">getTietokanta</span>();
+  Connection yhteys = Tietokanta.<span class="fu">getYhteys</span>();
   PreparedStatement kysely = yhteys.<span class="fu">prepareStatement</span>(sql);
   kysely.<span class="fu">setString</span>(<span class="dv">1</span>, kayttaja);
   kysely.<span class="fu">setString</span>(<span class="dv">2</span>, salasana);

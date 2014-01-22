@@ -21,7 +21,7 @@ antamia syötteitä ei tarkisteta kunnolla vaan ne upotetaan SQL-kyselyihin sell
 **Esimerkki:**
 
 ~~~java
-Connection yhteys = TietokantaYhteydet.getYhteys();
+Connection yhteys = Tietokanta.getYhteys();
 String nimi = request.getParameter("nimi");
 
 //Etsitään käyttäjää nimellä
@@ -58,7 +58,7 @@ PreparedStatement kysely = null;
 ResultSet tulokset = null;
 
 String nimi = request.getParameter("nimi");
-yhteys = TietokantaYhteydet.getYhteys();
+yhteys = Tietokanta.getYhteys()();
 
 //Etsitään käyttäjää nimellä
 String sql = "SELECT * FROM users WHERE nimi = ?";
@@ -87,7 +87,7 @@ Palautettua arvoa voidaan käyttää myös myöhemmin kirjautuneen käyttäjän 
 ~~~java
 public static Kayttaja getKayttajaTunnuksilla(String kayttaja, String salasana) {
   String sql = "SELECT id,username, password from users where username = ? AND password = ?";
-  Connection yhteys = Tietokanta.getTietokanta();
+  Connection yhteys = Tietokanta.getYhteys();
   PreparedStatement kysely = yhteys.prepareStatement(sql);
   kysely.setString(1, kayttaja);
   kysely.setString(2, salasana);

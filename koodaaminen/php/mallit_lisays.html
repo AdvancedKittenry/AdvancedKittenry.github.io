@@ -283,7 +283,7 @@ Tiivistelmä:
 <p><strong>Esimerkkikoodia:</strong></p>
 <pre class="sourceCode php"><code class="sourceCode php">  <span class="kw">public</span> <span class="kw">function</span> lisaaKantaan<span class="ot">()</span> {
     <span class="kw">$sql</span> = <span class="st">&quot;INSERT INTO Kissat(nimi, vari, rotu_id) VALUES(?,?,?) RETURNING id&quot;</span><span class="ot">;</span>
-    <span class="kw">$kysely</span> = getTietokanta<span class="ot">()</span>-&gt;prepare<span class="ot">(</span><span class="kw">$sql</span><span class="ot">);</span>
+    <span class="kw">$kysely</span> = getTietokantayhteys<span class="ot">()</span>-&gt;prepare<span class="ot">(</span><span class="kw">$sql</span><span class="ot">);</span>
 
     <span class="kw">$ok</span> = <span class="kw">$kysely</span>-&gt;execute<span class="ot">(</span><span class="fu">array</span><span class="ot">(</span><span class="kw">$this</span>-&gt;getNimi<span class="ot">(),</span> <span class="kw">$this</span>-&gt;getVari<span class="ot">(),</span> <span class="kw">$this</span>-&gt;getRotuId<span class="ot">()));</span>
     <span class="kw">if</span> <span class="ot">(</span><span class="kw">$ok</span><span class="ot">)</span> {

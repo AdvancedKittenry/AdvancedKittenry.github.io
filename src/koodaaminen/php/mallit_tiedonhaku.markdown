@@ -23,7 +23,7 @@ antamia syötteitä ei tarkisteta kunnolla vaan ne upotetaan SQL-kyselyihin sell
 ~~~inlinephp
 $nimi = $_POST['nimi'];
 
-$yhteys = Tietokanta::getYhteys();
+$yhteys = getTietokantayhteys();
 $kysely = $yhteys->prepare("SELECT * FROM users WHERE nimi = '$nimi' LIMIT 1");
 ~~~
 
@@ -49,7 +49,7 @@ PHP:llä parametrit annetaan array-tyyppisenä listana [kyselyä suoritettaessa]
 
 ~~~inlinephp
 $nimi = $_POST['nimi'];
-$yhteys = Tietokanta::getYhteys();
+$yhteys = getTietokantayhteys();
 
 //Etsitään käyttäjää nimellä
 $sql = "SELECT * FROM users WHERE nimi = ?";
@@ -84,7 +84,7 @@ class Kayttaja {
   /* Etsitään kannasta käyttäjätunnuksella ja salasanalla käyttäjäriviä */
   public static function getKayttajaTunnuksilla($kayttaja, $salasana) {
     $sql = "SELECT id,username, password from users where username = ? AND password = ? LIMIT 1";
-    $kysely = getTietokanta()->prepare($sql);
+    $kysely = getTietokantayhteys()->prepare($sql);
     $kysely->execute(array($kayttaja, $salasana));
 
     $tulos = $kysely->fetchObject();

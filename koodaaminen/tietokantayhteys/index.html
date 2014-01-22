@@ -345,8 +345,8 @@ Pidä mielessä!
 <p>Voit tehdä yhteydelle halutessasi luokan, johon voi sijoittaa muitakin toistuvia tietokantaan liittyviä koodinpätkiä. Jos et halua tehdä luokkaa, voit PHP:llä käyttää myös lyhyttä funktiota, jossa on funktion sisäinen <a href="http://php.net/manual/en/language.variables.scope.php#language.variables.scope.static">staattinen muuttuja</a>:</p>
 <p><strong>libs/tietokantayhteys.php</strong></p>
 <pre class="sourceCode php"><code class="sourceCode php">&lt;<span class="ot">?</span>php
-<span class="kw">function</span> getTietokanta<span class="ot">()</span> {
-  <span class="kw">static</span> <span class="kw">$yhteys</span> = <span class="kw">null</span><span class="ot">;</span> <span class="co">//Muuttuja, jonka sisältö säilyy getTietokanta-kutsujen välillä.</span>
+<span class="kw">function</span> getTietokantayhteys<span class="ot">()</span> {
+  <span class="kw">static</span> <span class="kw">$yhteys</span> = <span class="kw">null</span><span class="ot">;</span> <span class="co">//Muuttuja, jonka sisältö säilyy getTietokantayhteys-kutsujen välillä.</span>
 
   <span class="kw">if</span> <span class="ot">(</span><span class="kw">$yhteys</span> === <span class="kw">null</span><span class="ot">)</span> { 
     <span class="co">//Tämä koodi suoritetaan vain kerran, sillä seuraavilla </span>
@@ -360,7 +360,7 @@ Pidä mielessä!
 <p>Nyt jossain toisessa tiedostossa funktiota voi käyttää vaikkapa näin:</p>
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>
   <span class="kw">require</span> <span class="st">&#39;libs/tietokantayhteys.php&#39;</span><span class="ot">;</span>
-  <span class="kw">$kysely</span> = getTietokanta<span class="ot">()</span>-&gt;prepare<span class="ot">(</span><span class="st">&quot;SELECT 1&quot;</span><span class="ot">);</span>
+  <span class="kw">$kysely</span> = getTietokantayhteys<span class="ot">()</span>-&gt;prepare<span class="ot">(</span><span class="st">&quot;SELECT 1&quot;</span><span class="ot">);</span>
   <span class="kw">$kysely</span>-&gt;execute<span class="ot">();</span>
   
   <span class="fu">echo</span> <span class="kw">$kysely</span>-&gt;fetchColumn<span class="ot">();</span></code></pre>
