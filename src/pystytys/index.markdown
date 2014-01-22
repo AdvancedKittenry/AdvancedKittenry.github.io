@@ -30,12 +30,6 @@ Ohjelma kysyy cs-tunnuksesi salasanaa ja päästää sinut sisälle palvelimeen.
 ssh kayttajatunnuksesi@users.cs.helsinki.fi
 ~~~~
 
-Laitoksen koneilla toimii myös lyhyempi ja kätevämpi muoto:
-
-~~~~bash
-ssh users
-~~~~
-
 ### SSH-yhteydet Windowsilla
 
 Windowsin oma komentorivi on senverran kömpelö, että SSH-yhteyksiä varten on 
