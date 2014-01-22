@@ -242,8 +242,8 @@ Malliluokan koodia käyttäen listaesimerkin alku voi näyttää esimerkiksi seu
 ~~~php
 <?php
 //require_once sisällyttää annetun tiedoston vain kerran
-require_once "utils/tietokanta.php"; 
-require_once "models/kayttaja.php";
+require_once "libs/tietokanta.php"; 
+require_once "libs/models/kayttaja.php";
 
 //Lista asioista array-tietotyyppiin laitettuna:
 $lista = Kayttaja::getKayttajat();
