@@ -69,10 +69,15 @@ Yleensä ne toteutetaan jonkinlaisella näkymäluokalla.
 
 Eräs suhteellisen yksinkertainen tapa on toteuttaa pohja siten
 että sijoitetaan pohjatiedostoon kaikki sivujen sisällön 
-ympärillä pyörivä HTML-koodi ja laitetaan itse sisällön paikalle koodi:
+ympärillä pyörivä HTML-koodi ja laitetaan itse sisällön paikalle require-kutsu:
 
 ~~~php
-<?php require $sivu; ?>
+<!DOCTYPE HTML>
+<html>
+...html-koodia...
+  <?php require $sivu; ?>
+...html-koodia...
+</html>
 ~~~
 
 Nyt pohjan ja näkymätiedoston yhdessä käyttämiseen riittää, että tallennetaan näkymätiedoston nimi 
@@ -81,7 +86,6 @@ pohjatiedosto `require`-funktiolla.
 
 ~~~php
 <?php
-  
   $sivu = 'login.php';
   requre 'views/pohja.php';
 ~~~
@@ -151,8 +155,17 @@ Useimmat sovelluksemme näkymistä ovat
 hieman elävämpiä kuin yksinkertainen kirjautumislomake,
 ja muuttuvat sen mukaan mitä tietokannasta löytyy.
 
-Tätä varten haluamme pystyä välittämään tietoa kontrollereiden
-ja näkymien välillä. Tämä onnistuu helpoiten laittamalla
+Yhdellä sivulla voi olla esimerkiksi muuttuvina elementteinä
+navigaatio, josta on valittu jokin linkki,
+esitäytetty lomake ja tieto siitä millä hakusanalla käyttäjä on päätynyt
+tälle sivulle.
+
+Koska MVC-mallissa kontrollerien tehtävänä on selvittää mitä tietoja jollakin
+sivulla näytetään ja näkymien tehtävänä näyttää se, tarvitaan jokin
+tapa välittää  tietoa kontrollereiden
+ja näkymien välillä. 
+
+Tämä onnistuu helpoiten laittamalla
 `naytaNakyma`-funktioon toinen parametri ja hieman lisää koodia.
 
 ~~~php
@@ -173,12 +186,14 @@ Funktion ensimmäinen rivi muuntaa array-tietotyypin
 luokattomaksi olioksi, sillä olioiden kenttien käyttösyntaksi on huomattavasti miellyttävämpi.
 
 Käyttäminen on yksinkertaista.
-Voimme esimerkiksi asettaa näkymälle lähetettävän virheviestin näin:
+Voimme esimerkiksi asettaa näkymälle lähetettäväksi malliluokan olion, virheviestin ja hakusanan:
 
 ~~~~php
 <?php 
   naytaNakyma('kissat.php', array(
-    'virhe' => "Et voi ruokkia kissaa, joka on syönyt alle kolme tuntia sitten!"
+    'virhe' => "Et voi ruokkia kissaa, joka on syönyt alle kolme tuntia sitten!",
+    'kissa' => Kissat::hae($id),
+    'hakusana' => $_GET['hakusana']
   ));
 }
 ~~~~
@@ -186,11 +201,10 @@ Voimme esimerkiksi asettaa näkymälle lähetettävän virheviestin näin:
 Jolloin näkymässä voimme kirjoittaa HTML-koodin sekaan:
 
 ~~~php
-<?php if (!empty($data->virhe)): ?>
-  <div class="alert alert-danger"><?php echo $data->virhe; ?></div>
-<?php endif; ?>
+<div class="alert alert-danger"><?php echo $data->virhe; ?></div>
 ~~~
 
+<comment>
 <info>
 
 Vastaava koodinpätkä array-tietorakenteella on:
@@ -201,6 +215,7 @@ Vastaava koodinpätkä array-tietorakenteella on:
 
 Tämä on ainakin ohjeiden kirjoittajan mielestä ikävä kirjoittaa monta kertaa.
 </info>
+</comment>
 
 Näkymissä voi käyttää myös erilaisia koodirakenteita kuten ehtolausekkeita:
 

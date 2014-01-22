@@ -229,11 +229,15 @@ Lisätietoa
 <p>Käytännössä suurin osa ohjelmaasi tulevista sivuista tulee sisältämään samanlaisen HTML-rungon, johon sisältyvät sivunavigaatio sekä head-tägin sisältämät otsakkeet ja tyylitiedostolinkit.</p>
 <p>Tämän rungon koodia ei turhaan kannata toistaa, vaan se kannattaa sijoittaa omaan uudelleenkäytettävään tiedostoonsa.</p>
 <p>PHP:llä tälläisille uudelleenkäytettävät HTML-pohjille ei ole mitään yleisesti käytettyä standarditoteutusta. Yleensä ne toteutetaan jonkinlaisella näkymäluokalla.</p>
-<p>Eräs suhteellisen yksinkertainen tapa on toteuttaa pohja siten että sijoitetaan pohjatiedostoon kaikki sivujen sisällön ympärillä pyörivä HTML-koodi ja laitetaan itse sisällön paikalle koodi:</p>
-<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span> <span class="kw">require</span> <span class="kw">$sivu</span><span class="ot">;</span> <span class="kw">?&gt;</span></code></pre>
+<p>Eräs suhteellisen yksinkertainen tapa on toteuttaa pohja siten että sijoitetaan pohjatiedostoon kaikki sivujen sisällön ympärillä pyörivä HTML-koodi ja laitetaan itse sisällön paikalle require-kutsu:</p>
+<pre class="sourceCode php"><code class="sourceCode php">&lt;!DOCTYPE HTML&gt;
+&lt;html&gt;
+...html-koodia...
+  <span class="kw">&lt;?php</span> <span class="kw">require</span> <span class="kw">$sivu</span><span class="ot">;</span> <span class="kw">?&gt;</span>
+...html-koodia...
+&lt;/html&gt;</code></pre>
 <p>Nyt pohjan ja näkymätiedoston yhdessä käyttämiseen riittää, että tallennetaan näkymätiedoston nimi näkymää käyttävässä sivussa muuttujaan <code>$sivu</code> ja sisällytetään pohjatiedosto <code>require</code>-funktiolla.</p>
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>
-  
   <span class="kw">$sivu</span> = <span class="st">&#39;login.php&#39;</span><span class="ot">;</span>
   requre <span class="st">&#39;views/pohja.php&#39;</span><span class="ot">;</span></code></pre>
 <p>Kun sivupohja on käytössä, jokainen sivu rakentuu kerroksittain kuten tässä kaaviokuvassa:</p>
@@ -276,7 +280,9 @@ Lisätietoa
 <section id="muuttujien-käyttö" class="level3">
 <h3>Muuttujien käyttö</h3>
 <p>Useimmat sovelluksemme näkymistä ovat hieman elävämpiä kuin yksinkertainen kirjautumislomake, ja muuttuvat sen mukaan mitä tietokannasta löytyy.</p>
-<p>Tätä varten haluamme pystyä välittämään tietoa kontrollereiden ja näkymien välillä. Tämä onnistuu helpoiten laittamalla <code>naytaNakyma</code>-funktioon toinen parametri ja hieman lisää koodia.</p>
+<p>Yhdellä sivulla voi olla esimerkiksi muuttuvina elementteinä navigaatio, josta on valittu jokin linkki, esitäytetty lomake ja tieto siitä millä hakusanalla käyttäjä on päätynyt tälle sivulle.</p>
+<p>Koska MVC-mallissa kontrollerien tehtävänä on selvittää mitä tietoja jollakin sivulla näytetään ja näkymien tehtävänä näyttää se, tarvitaan jokin tapa välittää tietoa kontrollereiden ja näkymien välillä.</p>
+<p>Tämä onnistuu helpoiten laittamalla <code>naytaNakyma</code>-funktioon toinen parametri ja hieman lisää koodia.</p>
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>
   
   <span class="co">/* Näyttää näkymätiedoston ja lähettää sille muuttujat */</span>
@@ -286,25 +292,16 @@ Lisätietoa
     <span class="fu">die</span><span class="ot">();</span>
   }</code></pre>
 <p>Ylimääräinen parametrimme on oletuksena tyhjä array, ja koodin kutsuja voi sijoittaa sinne minkälaisen assosiaatiotaulun haluaa. Funktion ensimmäinen rivi muuntaa array-tietotyypin luokattomaksi olioksi, sillä olioiden kenttien käyttösyntaksi on huomattavasti miellyttävämpi.</p>
-<p>Käyttäminen on yksinkertaista. Voimme esimerkiksi asettaa näkymälle lähetettävän virheviestin näin:</p>
+<p>Käyttäminen on yksinkertaista. Voimme esimerkiksi asettaa näkymälle lähetettäväksi malliluokan olion, virheviestin ja hakusanan:</p>
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span> 
   naytaNakyma<span class="ot">(</span><span class="st">&#39;kissat.php&#39;</span><span class="ot">,</span> <span class="fu">array</span><span class="ot">(</span>
-    <span class="st">&#39;virhe&#39;</span> =&gt; <span class="st">&quot;Et voi ruokkia kissaa, joka on syönyt alle kolme tuntia sitten!&quot;</span>
+    <span class="st">&#39;virhe&#39;</span> =&gt; <span class="st">&quot;Et voi ruokkia kissaa, joka on syönyt alle kolme tuntia sitten!&quot;</span><span class="ot">,</span>
+    <span class="st">&#39;kissa&#39;</span> =&gt; Kissat::hae<span class="ot">(</span><span class="kw">$id</span><span class="ot">),</span>
+    <span class="st">&#39;hakusana&#39;</span> =&gt; <span class="kw">$_GET</span><span class="ot">[</span><span class="st">&#39;hakusana&#39;</span><span class="ot">]</span>
   <span class="ot">));</span>
 }</code></pre>
 <p>Jolloin näkymässä voimme kirjoittaa HTML-koodin sekaan:</p>
-<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span> <span class="kw">if</span> <span class="ot">(</span>!<span class="fu">empty</span><span class="ot">(</span><span class="kw">$data</span>-&gt;virhe<span class="ot">))</span>: <span class="kw">?&gt;</span>
-  &lt;div class=&quot;alert alert-danger&quot;&gt;<span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$data</span>-&gt;virhe<span class="ot">;</span> <span class="kw">?&gt;</span>&lt;/div&gt;
-<span class="kw">&lt;?php</span> <span class="kw">endif</span><span class="ot">;</span> <span class="kw">?&gt;</span></code></pre>
-<section class="alert alert-info"><h3>
-Lisätietoa
-</h3>
-
-<p>Vastaava koodinpätkä array-tietorakenteella on:</p>
-<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$data</span><span class="ot">[</span><span class="st">&#39;virheViesti&#39;</span><span class="ot">];</span> <span class="kw">?&gt;</span></code></pre>
-<p>Tämä on ainakin ohjeiden kirjoittajan mielestä ikävä kirjoittaa monta kertaa.</p>
-</section>
-
+<pre class="sourceCode php"><code class="sourceCode php">&lt;div class=&quot;alert alert-danger&quot;&gt;<span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$data</span>-&gt;virhe<span class="ot">;</span> <span class="kw">?&gt;</span>&lt;/div&gt;</code></pre>
 <p>Näkymissä voi käyttää myös erilaisia koodirakenteita kuten ehtolausekkeita:</p>
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span> <span class="kw">if</span> <span class="ot">(</span>!<span class="fu">empty</span><span class="ot">(</span><span class="kw">$data</span>-&gt;virheViesti<span class="ot">))</span>: <span class="kw">?&gt;</span>
   &lt;div class=&quot;alert alert-danger&quot;&gt;Virhe! <span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$data</span>-&gt;virheViesti<span class="ot">;</span> <span class="kw">?&gt;</span>&lt;/div&gt;

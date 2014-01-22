@@ -61,7 +61,7 @@ Aloita sivulta
 * Otetaan käyttöön [tietokantatestisovellus]({{rootdir}}koodaaminen/testisovellus.html)
     * Sovellus näyttää tietokannan taulut ja niiden sisältöä. Ohjaaja käyttää tätä pysyäkseen paremmin kärryillä tietokannan tilasta.
     * Tämän tulee olla näkyvillä usersin palvelintilassa.
-* Tarvitset koodaamiseen [tietokantayhteyden muodostavan koodin]({{rootdir}}koodaaminen/tietokantayhteys/index.html), joka kannattaa sijoittaa omaan tiedostoonsa.
+* Tarvitset koodaamiseen [tietokantayhteyden muodostavan koodin]({{rootdir}}koodaaminen/tietokantayhteys/index.html), joka pitää sijoittaa omaan tiedostoonsa.
 * Tee yhteyttä käyttävä [kevyt testisivu]({{rootdir}}koodaaminen/listaustesti/index.html), joka listaa jonkin tietokantataulun sisällön.
     * Käytä tietokannan täyttämiseen `add-test-data.sql`-tiedostoa, niin sivulla on jotain näytettävää.
 
@@ -142,6 +142,8 @@ html-demo/
   muokkaakissaa.html
 js/
   ...
+libs/
+  tietokantayhteys.php
 sql/
   create-tables.sql
   drop-tables.sql
@@ -167,6 +169,8 @@ src/
   conf/
   java/
     Kissalista/
+      Models/
+        Tietokanta.java
       Servlets/
         Listaservlet.java
     ...
@@ -217,6 +221,8 @@ sql/
   add-test-data.sql
 src/
   Kissalista/
+    Models/
+      Tietokanta.java
     Servlets/
       Listaservlet.java
   ...
