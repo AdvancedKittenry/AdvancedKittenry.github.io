@@ -55,14 +55,14 @@ sekä sanallisella että kooditasolla.
 Aloita sivulta 
 [tietokannan suunnittelu]({{rootdir}}suunnittelu/tietokanta.html).
 
-
 * [Tietokannan pystyttäminen palvelimelle]({{rootdir}}koodaaminen/kannan-alustus.html)
     * Luodaan SQL-tiedostot, joilla kannan rakenteen saa vedettyä ylös ja alas.
     * Käytetään luotuja tiedostoja tietokannan pystyttämiseen
 * Otetaan käyttöön [tietokantatestisovellus]({{rootdir}}koodaaminen/testisovellus.html)
     * Sovellus näyttää tietokannan taulut ja niiden sisältöä. Ohjaaja käyttää tätä pysyäkseen paremmin kärryillä tietokannan tilasta.
     * Tämän tulee olla näkyvillä usersin palvelintilassa.
-* [Kevyt testisivu]({{rootdir}}koodaaminen/listaustesti/index.html), joka listaa jonkin tietokantataulun sisällön.
+* Tarvitset koodaamiseen [tietokantayhteyden muodostavan koodin]({{rootdir}}koodaaminen/tietokantayhteys/index.html), joka kannattaa sijoittaa omaan tiedostoonsa.
+* Tee yhteyttä käyttävä [kevyt testisivu]({{rootdir}}koodaaminen/listaustesti/index.html), joka listaa jonkin tietokantataulun sisällön.
     * Käytä tietokannan täyttämiseen `add-test-data.sql`-tiedostoa, niin sivulla on jotain näytettävää.
 
 ## Tietokannan rakenteen dokumentoiminen (puoli pistettä)
