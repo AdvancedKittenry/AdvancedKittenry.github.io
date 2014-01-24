@@ -212,6 +212,8 @@ Muita vastaavia tägejä ovat mm. `<br>`, `<hr>`, `<link>`, `<meta>` ja `<img>`.
 ## Linkkejä
 
 * [W3schools-sivuston HTML-intro](http://w3schools.com/html/html_intro.asp).
+* [Suomenkielinen sivu HTML-sivujen rakenteesta](http://salakapakka.net/oppaat/html-ja-css-opas/html_opas_dokumentti.php#dokumentin_rakenne)
+* [Saman sivuston sivupohjantekoohjeita](http://salakapakka.net/oppaat/html-ja-css-opas/sivupohjaopas.php)
 * [tietokone työvälineenä -kurssin HTML-materiaalit](https://docs.google.com/document/d/1GhmkqP86f1q4tYIP6EsxXAnM6Ntlc0SiUcitWC3RcoE/pub).
 * [Learn the Basic HTML Tags!](http://www.htmlgoodies.com/primers/html/article.php/3478151)
 * [Twitter Bootstrap](http://getbootstrap.com/)
