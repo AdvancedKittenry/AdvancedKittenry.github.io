@@ -44,6 +44,10 @@ tietokantayhteyttä kuvaava resurssi.
 
 ~~~xml<include src="../../suunnittelu/esimerkit/context.xml" />~~~
 
+Viimeinen attribuuttti, `url` 
+kertoo Tomcatille tietokannan sijainnin ja nimen. 
+Users-palvelimella tietokannan nimi on aina oma käyttäjätunnuksesi.
+
 <alert>
 Joudut syöttämään tiedostoon
 tietokantatunnustesi salasanan, että saat koodin toimimaan.

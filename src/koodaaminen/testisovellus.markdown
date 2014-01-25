@@ -61,6 +61,9 @@ Tomcat tekee tiedostosta oman kopionsa oletuksena polkuun
 Avaa tämä XML-tiedosto jollain ohjelmalla (esim. nano) ja korjaa
 siinä olevat tietokantatunnukset omiksesi.
 Korjausta vaativia kohtia on kolme ja niissä lukee isolla FIXME.
+Viimeinen kohta, `url="jdbc:postgresql://localhost/FIXME_dbname"` 
+kertoo Tomcatille tietokannan sijainnin ja nimen. 
+Users-palvelimella tietokannan nimi on aina oma käyttäjätunnuksesi.
 
 Muista käynnistää tomcat uudelleen asetusten säätämisen jälkeen.
 
