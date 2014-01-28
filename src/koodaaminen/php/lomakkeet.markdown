@@ -222,7 +222,7 @@ Muista aina testata koodiasi erilaisilla syötteillä niin varmistat ettei se ka
 </alert>
 
 <next>
-Toteuta ylläolevan kaltaiset käytettävyysparannukset myös omaan kirjautumisservlettiisi.
+Toteuta ylläolevan kaltaiset käytettävyysparannukset myös omaan kirjautumiskontrolleriisi.
 
-Lisää sitten kirjautumisen taustalle [käyttäjän hakeminen tietokannasta](tietokanta_kirjautuminen.html).
+Lisää sitten kirjautumisen taustalle [käyttäjän hakeminen tietokannasta](mallit_tiedonhaku.html).
 </next>

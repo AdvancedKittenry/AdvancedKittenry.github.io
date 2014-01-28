@@ -220,5 +220,5 @@ Aiheesta voi lukea lisää mm.
 <next>
 Toteuta ylläolevan kaltaiset käytettävyysparannukset myös omaan kirjautumisservlettiisi.
 
-Lisää sitten kirjautumisen taustalle [käyttäjän hakeminen tietokannasta](tietokanta_kirjautuminen.html).
+Lisää sitten kirjautumisen taustalle [käyttäjän hakeminen tietokannasta](mallit_tiedonhaku.html).
 </next>
