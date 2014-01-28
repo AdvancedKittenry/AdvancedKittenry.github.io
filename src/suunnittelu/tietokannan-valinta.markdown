@@ -16,6 +16,8 @@ Sitä on parasta käyttää ainoastaan, jos saat myös lokaaliin koodausympäris
 Syy tähän on siinä, että kannan saa käynnistää users:illa vain unix-socketteja
 kuuntelevaan tilaan, sillä usersin sisäiset TCP-portit on varattu tomcatin yhteyksille.
 
+Samasta syystä MySQL:n käyttäminen Javalla users-palvelimella on hankalaa, sillä käytössä olevat kirjastot eivät tue suoria socket-yhteyksiä.
+
 <next>
 Kun olet valinnut aiheen ja haluamasi toteutustekniikat [pystytä itsellesi palvelin ja tietokanta](../pystytys/index.html).
 </next>
