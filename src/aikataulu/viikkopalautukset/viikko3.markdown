@@ -39,8 +39,8 @@ Kirjautumista toteuttaessa kannattaa koota yleisesti käytetyt toiminnot koottun
 * PHP:llä `[session_start](http://www.php.net/session_start)`-funktion kutsuminen kannattaa sijoittaa tähän tiedostoon.
 
 Laita linkki kirjautumissivuusi myös [esittelysivusi](esittelysivu.html)
-linkkilistaan.
-Mallia linkkeihin voi katsoa 
+linkkilistaan. Lisää sivulle myös kappale tunnuksista, joilla sovellusta voi testata.
+Mallia voi katsoa 
 [valmiin sivun näköisversiosta]({{rootdir}}src/{{curdir}}esittelysivu/esittelysivu-lopullinen.html).
 
 Mikäli sovelluksessa ei ole lainkaan kirjautumistoimintoja, sovi ohjaajasi kanssa jokin toinen tavoite viikolle 3.
