@@ -271,8 +271,8 @@ request.<span class="fu">setAttribute</span>(<span class="st">&quot;kissat&quot;
 <pre class="sourceCode jsp"><code class="sourceCode jsp">&lt;%@include<span class="ot"> file</span>=<span class="st">&quot;navigaatio.jspf&quot;</span><span class="ot"> </span>%&gt;</code></pre>
 <p>Sisällytetyn tiedoston sisältö tulee include-lauseen kohtaan sellaisenaan ikäänkuin tiedosto olisi copy-pastettu siihen suoraan.</p>
 </section>
-<section id="template-pohjatiedoston-käyttö" class="level2">
-<h2>Template-pohjatiedoston käyttö</h2>
+<section id="tag-pohjatiedoston-käyttö" class="level2">
+<h2>Tag-pohjatiedoston käyttö</h2>
 <p>Käytännössä suurin osa ohjelmaasi tulevista sivuista tulee sisältämään samanlaisen HTML-rungon, johon sisältyvät sivunavigaatio sekä head-tägin sisältämät otsakkeet ja tyylitiedostolinkit.</p>
 <p>Tämän rungon koodia ei turhaan kannata toistaa, vaan se kannattaa sijoittaa omaan uudelleenkäytettävään tiedostoonsa. Javalla tälläiset uudelleenkäytettävät HTML-pätkät kannattaa toteuttaa erityisinä JSP-tägitiedostoina.</p>
 <p>Tagitiedoston sisälle voi laittaa mitä tahansa HTML-koodia aivan kuten JSP-tiedostoonkin. Tärkein kohta koodissa on kuitenkin käsky <code>&lt;jsp:doBody/&gt;</code>, jolla voi upottaa tägiin jotain tägin käyttäjän määrittelemää sisältöä.</p>

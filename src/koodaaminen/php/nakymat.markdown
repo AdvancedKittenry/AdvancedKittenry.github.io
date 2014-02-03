@@ -53,7 +53,7 @@ Jos teet työtä usersilla URL on todennäköisesti
 Selaimeesi pitäisi tulla sama kirjautumislomake kuin aikaisemminkin. 
 Tämä on vielä melko tylsää, mutta jatketaan tekemällä näkymien tekemisestä helpompaa.
 
-## Template-pohjatiedoston käyttö
+## HTML-runko ja pohjatiedoston käyttö
 
 Käytännössä suurin osa ohjelmaasi tulevista sivuista
 tulee sisältämään samanlaisen HTML-rungon,
@@ -61,7 +61,7 @@ johon sisältyvät sivunavigaatio sekä
 head-tägin sisältämät otsakkeet ja tyylitiedostolinkit.
 
 Tämän rungon koodia ei turhaan kannata toistaa, 
-vaan se kannattaa sijoittaa omaan uudelleenkäytettävään tiedostoonsa.
+vaan se sijoitetaan omaan uudelleenkäytettävään tiedostoonsa.
 
 PHP:llä tälläisille uudelleenkäytettävät HTML-pohjille
 ei ole mitään yleisesti käytettyä standarditoteutusta.
@@ -75,7 +75,13 @@ ympärillä pyörivä HTML-koodi ja laitetaan itse sisällön paikalle require-k
 <!DOCTYPE HTML>
 <html>
 ...html-koodia...
-  <?php require $sivu; ?>
+  <?php 
+    /* HTML-rungon keskellä on sivun sisältö, 
+     * joka haetaan sopivasta näkymätiedostosta.
+     * Oikean näkymän tiedostonimi on tallennettu muuttujaan $sivu.
+     */
+    require 'views/'.$sivu; 
+  ?>
 ...html-koodia...
 </html>
 ~~~
@@ -87,7 +93,10 @@ pohjatiedosto `require`-funktiolla.
 ~~~php
 <?php
   $sivu = 'login.php';
-  requre 'views/pohja.php';
+
+  //Pohjatiedosto huolehtii sekä HTML-rungon, 
+  //että oikean näkymän näyttämisestä
+  require 'views/pohja.php';
 ~~~
 
 Kun sivupohja on käytössä, jokainen sivu rakentuu kerroksittain kuten tässä kaaviokuvassa:

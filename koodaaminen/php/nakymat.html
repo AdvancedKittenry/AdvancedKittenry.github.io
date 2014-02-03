@@ -224,22 +224,31 @@ Lisätietoa
 <p>Kokeile avata tämä sivu selaimella. Jos teet työtä usersilla URL on todennäköisesti <a href="http://tunnuksesi.users.cs.helsinki.fi/login.php">http://tunnuksesi.users.cs.helsinki.fi/login.php</a>.</p>
 <p>Selaimeesi pitäisi tulla sama kirjautumislomake kuin aikaisemminkin. Tämä on vielä melko tylsää, mutta jatketaan tekemällä näkymien tekemisestä helpompaa.</p>
 </section>
-<section id="template-pohjatiedoston-käyttö" class="level2">
-<h2>Template-pohjatiedoston käyttö</h2>
+<section id="html-runko-ja-pohjatiedoston-käyttö" class="level2">
+<h2>HTML-runko ja pohjatiedoston käyttö</h2>
 <p>Käytännössä suurin osa ohjelmaasi tulevista sivuista tulee sisältämään samanlaisen HTML-rungon, johon sisältyvät sivunavigaatio sekä head-tägin sisältämät otsakkeet ja tyylitiedostolinkit.</p>
-<p>Tämän rungon koodia ei turhaan kannata toistaa, vaan se kannattaa sijoittaa omaan uudelleenkäytettävään tiedostoonsa.</p>
+<p>Tämän rungon koodia ei turhaan kannata toistaa, vaan se sijoitetaan omaan uudelleenkäytettävään tiedostoonsa.</p>
 <p>PHP:llä tälläisille uudelleenkäytettävät HTML-pohjille ei ole mitään yleisesti käytettyä standarditoteutusta. Yleensä ne toteutetaan jonkinlaisella näkymäluokalla.</p>
 <p>Eräs suhteellisen yksinkertainen tapa on toteuttaa pohja siten että sijoitetaan pohjatiedostoon kaikki sivujen sisällön ympärillä pyörivä HTML-koodi ja laitetaan itse sisällön paikalle require-kutsu:</p>
 <pre class="sourceCode php"><code class="sourceCode php">&lt;!DOCTYPE HTML&gt;
 &lt;html&gt;
 ...html-koodia...
-  <span class="kw">&lt;?php</span> <span class="kw">require</span> <span class="kw">$sivu</span><span class="ot">;</span> <span class="kw">?&gt;</span>
+  <span class="kw">&lt;?php</span> 
+    <span class="co">/* HTML-rungon keskellä on sivun sisältö, </span>
+<span class="co">     * joka haetaan sopivasta näkymätiedostosta.</span>
+<span class="co">     * Oikean näkymän tiedostonimi on tallennettu muuttujaan $sivu.</span>
+<span class="co">     */</span>
+    <span class="kw">require</span> <span class="st">&#39;views/&#39;</span>.<span class="kw">$sivu</span><span class="ot">;</span> 
+  <span class="kw">?&gt;</span>
 ...html-koodia...
 &lt;/html&gt;</code></pre>
 <p>Nyt pohjan ja näkymätiedoston yhdessä käyttämiseen riittää, että tallennetaan näkymätiedoston nimi näkymää käyttävässä sivussa muuttujaan <code>$sivu</code> ja sisällytetään pohjatiedosto <code>require</code>-funktiolla.</p>
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>
   <span class="kw">$sivu</span> = <span class="st">&#39;login.php&#39;</span><span class="ot">;</span>
-  requre <span class="st">&#39;views/pohja.php&#39;</span><span class="ot">;</span></code></pre>
+
+  <span class="co">//Pohjatiedosto huolehtii sekä HTML-rungon, </span>
+  <span class="co">//että oikean näkymän näyttämisestä</span>
+  <span class="kw">require</span> <span class="st">&#39;views/pohja.php&#39;</span><span class="ot">;</span></code></pre>
 <p>Kun sivupohja on käytössä, jokainen sivu rakentuu kerroksittain kuten tässä kaaviokuvassa:</p>
 <figure>
 <img src="../../images/koodaaminen/template-selitys-php.png" alt="Sivupohjan, näkymän ja näkymän näyttävän koodin väliset suhteet" /><figcaption>Sivupohjan, näkymän ja näkymän näyttävän koodin väliset suhteet</figcaption>

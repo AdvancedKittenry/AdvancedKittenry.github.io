@@ -130,7 +130,7 @@ tiedostopäätettä JSPF, eli JSP Fragment.
 Sisällytetyn tiedoston sisältö tulee include-lauseen kohtaan
 sellaisenaan ikäänkuin tiedosto olisi copy-pastettu siihen suoraan.
 
-## Template-pohjatiedoston käyttö
+## Tag-pohjatiedoston käyttö
 
 Käytännössä suurin osa ohjelmaasi tulevista sivuista
 tulee sisältämään samanlaisen HTML-rungon,
