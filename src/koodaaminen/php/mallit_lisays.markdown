@@ -26,6 +26,8 @@ settereillä sopivat arvot.
 Kun olio on luotu, kutsutaan varta vasten tätä tarkoitusta varten
 tehtyä metodia, joka lisää olion kantaan. Mallia kutsuva koodi voisi näyttää seuraavanlaiselta:
 
+**Esimerkki lisäyskontrollerista**
+
 ~~~php
 <?php
 $uusikatti = new Kissa();

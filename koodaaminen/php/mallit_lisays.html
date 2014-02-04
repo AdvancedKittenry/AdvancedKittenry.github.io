@@ -221,6 +221,7 @@ Tiivistelmä:
 <section id="tietojen-syöttäminen-olioon" class="level2">
 <h2>Tietojen syöttäminen olioon</h2>
 <p>Paras tapa toteuttaa jonkin tietokohteen olion, esimerkiksi kissan, syöttäminen tietokantaan, on tehdä siitä oliopohjaista: Ensiksi luodaan kissaolio, jonka jälkeen asetetaan sille settereillä sopivat arvot. Kun olio on luotu, kutsutaan varta vasten tätä tarkoitusta varten tehtyä metodia, joka lisää olion kantaan. Mallia kutsuva koodi voisi näyttää seuraavanlaiselta:</p>
+<p><strong>Esimerkki lisäyskontrollerista</strong></p>
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>
 <span class="kw">$uusikatti</span> = <span class="kw">new</span> Kissa<span class="ot">();</span>
 <span class="kw">$uusikatti</span>-&gt;setNimi<span class="ot">(</span><span class="kw">$_POST</span><span class="ot">[</span><span class="st">&#39;nimi&#39;</span><span class="ot">]);</span>

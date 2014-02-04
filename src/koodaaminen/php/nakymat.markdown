@@ -288,7 +288,7 @@ Yleensä erityyppisiä avaimia ei kuitenkaan kannata sekoittaa. Esimerkkejä:
   echo $kissa["nimi"]; //Tulostaa nimen Kasper.
 ~~~
 
-Käsittelijässä luotuja taulukoita voi käyttää 
+Kontrollerissa luotuja taulukoita voi käyttää 
 näkymässä tiedon näyttämiseen. 
 Oletetaan että kontrolleri on asettanut muuttujaan `$kissat` listan nimiä:
 

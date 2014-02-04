@@ -113,7 +113,7 @@ Ohjaajien toiveet sijoittelusta ovat alla:
 
 PHP:tä käytettäessä sijoita kaikki mallit 
 ja näkymät omaan kansioonsa.
-Käsittelijät taas sijoitetaan projektin juureen.
+Kontrollerit taas sijoitetaan projektin juureen.
 Näkymät sijoitetaan kansioon `views`.
 
 Useimmiten on tarpeen luoda vielä oma kansionsa
