@@ -78,8 +78,8 @@ Palautuspäivämäärään mennessä työn on täytettävä seuraavat vaatimukse
 <ohje>
 Aloita menemällä oman kielesi malliluokkaohjeistukseen ja seuraa vihreitä ohjelaatikoita:
 
-* [PHP: Malliluokat ja tiedon muuttaminen]({{rootdir}}koodaaminen/php/mallit_muokkaustoiminnot.html)
-* [Java: Malliluokat ja tiedon muuttaminen]({{rootdir}}koodaaminen/java/mallit_muokkaustoiminnot.html)
+* [PHP: Listausnäkymien luominen]({{rootdir}}koodaaminen/php/listausnakymat.html)
+* [Java: Listausnäkymien luominen]({{rootdir}}koodaaminen/java/listausnakymat.html)
 
 Tehtyäsi kaiken varmista, että kaikki tekemäsi muutokset näkyvät sekä GitHub-repositoriossasi, että testipalvelimella antamassasi osoitteessa.
 </ohje>
