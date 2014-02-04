@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title>Tietokantayhteyden pystytys</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
+  <link rel="stylesheet" href="../../css/base.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <script src="../../javascript/jquery.min.js"></script>
+  <script src="../../javascript/bootstrap.js"></script>
+  <script src="../../javascript/jquery.treeview.js"></script>
+  <script src="../../javascript/jquery.scrollTo.js"></script>
+  <script src="../../javascript/jquery.nav.js"></script>
+  <script src="../../javascript/navi.js"></script>
+</head>
+<body>
+<div class="titlebar">
+  <div class="container">
+    <div class="row">
+      <h1 class="col-md-6 col-md-offset-3">Advanced Kittenry - Tietokantasovellusohjeet</h1>
+    </div>
+  </div>
+</div>
+<div class="container">
+<div class="row">
+<div class="navcontainer col-md-3">
+<nav>
+<ul>
+<li><a href="../../index.html">Tietokantasovellus</a>
+<ul>
+<li><a href="../../aikataulu/index.html">Aikataulu</a>
+<ul>
+<li><a href="../../aikataulu/viikkopalautukset/index.html">Viikottaiset palautukset</a>
+<ul>
+<li><a href="../../aikataulu/viikkopalautukset/esittelysivu.html">Työn esittelysivu</a></li>
+<li><a href="../../aikataulu/viikkopalautukset/viikko1.html">Viikko 1</a></li>
+<li><a href="../../aikataulu/viikkopalautukset/viikko2.html">Viikko 2</a></li>
+<li><a href="../../aikataulu/viikkopalautukset/viikko3.html">Viikko 3</a></li>
+<li><a href="../../aikataulu/viikkopalautukset/viikko4.html">Viikko 4</a></li>
+<li><a href="../../aikataulu/viikkopalautukset/viikko5.html">Viikko 5</a></li>
+</ul></li>
+<li><a href="../../aikataulu/demo.html">Demotilaisuus</a></li>
+<li><a href="../../aikataulu/palautus.html">Työn palautus</a></li>
+</ul></li>
+<li><a href="../../suunnittelu/index.html">Työn suunnittelu</a>
+<ul>
+<li><a href="../../suunnittelu/aiheet/index.html">Työaiheet</a>
+<ul>
+<li><a href="../../suunnittelu/aiheet/Drinkkiarkisto.html">Drinkkiarkisto</a></li>
+<li><a href="../../suunnittelu/aiheet/Elektroninen_keittokirja.html">Elektroninen keittokirja</a></li>
+<li><a href="../../suunnittelu/aiheet/Graduaiheet.html">Graduaiheet</a></li>
+<li><a href="../../suunnittelu/aiheet/Hiihtokisojen_tulospalvelu.html">Hiihtokisojen tulospalvelu</a></li>
+<li><a href="../../suunnittelu/aiheet/Huutokauppa.html">Huutokauppa</a></li>
+<li><a href="../../suunnittelu/aiheet/Kennelkerho.html">Kennelkerho</a></li>
+<li><a href="../../suunnittelu/aiheet/Keskustelufoorumi.html">Keskustelufoorumi</a></li>
+<li><a href="../../suunnittelu/aiheet/Kurssikysely.html">Kurssikysely</a></li>
+<li><a href="../../suunnittelu/aiheet/Kurssin_kotisivu.html">Kurssin kotisivu</a></li>
+<li><a href="../../suunnittelu/aiheet/Kurssitarjonta_ja_kurssipaikan_varaus.html">Kurssitarjonta ja kurssipaikan varaus</a></li>
+<li><a href="../../suunnittelu/aiheet/Laakariaseman_tyovuorolista.html">Lääkäriaseman työvuorolista</a></li>
+<li><a href="../../suunnittelu/aiheet/Laakarin_kotikaynnit.html">Lääkärin kotikäynnit</a></li>
+<li><a href="../../suunnittelu/aiheet/Matkojen_markkinointi.html">Matkojen markkinointi</a></li>
+<li><a href="../../suunnittelu/aiheet/Muistilista.html">Muistilista</a></li>
+<li><a href="../../suunnittelu/aiheet/Ostoskassi.html">Ostoskassi</a></li>
+<li><a href="../../suunnittelu/aiheet/Palvelubisnes.html">Palvelubisnes</a></li>
+<li><a href="../../suunnittelu/aiheet/Parturi-Kampaamo.html">Parturi-Kampaamo</a></li>
+<li><a href="../../suunnittelu/aiheet/Pizzapalvelu.html">Pizzapalvelu</a></li>
+<li><a href="../../suunnittelu/aiheet/Pokemon-kanta.html">Pokémon-tietokanta</a></li>
+<li><a href="../../suunnittelu/aiheet/Projektin_tyoaikaseuranta.html">Projektin työaikaseuranta</a></li>
+<li><a href="../../suunnittelu/aiheet/Rankkauslista.html">Rankkauslista</a></li>
+<li><a href="../../suunnittelu/aiheet/Taloyhtion_palvelut.html">Taloyhtiön palvelut</a></li>
+<li><a href="../../suunnittelu/aiheet/Tavaranvaihto.html">Tavaranvaihto</a></li>
+<li><a href="../../suunnittelu/aiheet/Tukkuliikkeen_tilaustenksittely.html">Tukkuliikkeen tilaustenkäsittely</a></li>
+<li><a href="../../suunnittelu/aiheet/Tutkimusaineston_kerays.html">Tutkimusaineiston keräys</a></li>
+<li><a href="../../suunnittelu/aiheet/Tyoaihekanta.html">Työaihekanta</a></li>
+<li><a href="../../suunnittelu/aiheet/Opintoneuvonnan_usein_kysytyt_kysymykset.html">Usein kysytyt kysymykset</a></li>
+<li><a href="../../suunnittelu/aiheet/Vedonlyonti.html">Vedonlyönti</a></li>
+<li><a href="../../suunnittelu/aiheet/Vuokra-asuntojen_valitys.html">Vuokra-asuntojen välitys</a></li>
+<li><a href="../../suunnittelu/aiheet/Ystavanvalityspalvelu.html">Ystävänvälityspalvelu</a></li>
+<li><a href="../../suunnittelu/aiheet/Aanestys.html">Äänestys</a></li>
+</ul></li>
+<li><a href="../../suunnittelu/ohjelmointikielet.html">Ohjelmointikielen valinta</a></li>
+<li><a href="../../suunnittelu/tietokannan-valinta.html">Tietokannan valinta</a></li>
+<li><a href="../../suunnittelu/kayttoliittyma.html">Käyttöliittymän suunnittelu</a></li>
+<li><a href="../../suunnittelu/tietokanta.html">Tietokannan suunnittelu</a></li>
+</ul></li>
+<li><a href="../../pystytys/index.html">Users-palvelin ja töiden pystyttäminen</a>
+<ul>
+<li><a href="../../pystytys/kayttoonotto/index.html">Palvelujen käynnistäminen ja käyttöönotto</a>
+<ul>
+<li><a href="../../pystytys/kayttoonotto/java.html">Java ja Tomcatin käyttöönotto</a></li>
+<li><a href="../../pystytys/kayttoonotto/mysql.html">MySql-tietokannan käyttöönotto</a></li>
+<li><a href="../../pystytys/kayttoonotto/php.html">PHP-tuen käyttöönotto</a></li>
+<li><a href="../../pystytys/kayttoonotto/postgresql.html">PostgreSQL-tietokannan käyttöönotto</a></li>
+</ul></li>
+<li><a href="../../pystytys/netbeans/index.html">NetBeansin käyttöönotto</a>
+<ul>
+<li><a href="../../pystytys/netbeans/java.html">NetBeansin käyttö Javan kanssa</a></li>
+<li><a href="../../pystytys/netbeans/php.html">NetBeansin käyttö PHP:n kanssa</a></li>
+<li><a href="../../pystytys/netbeans/keyring-reset.html">Unlock your keyring? - Avainnippujen nollaus</a></li>
+</ul></li>
+<li><a href="../../pystytys/postgres-ssh-tunneli.html">PostgreSql-kannan etäkäyttö</a></li>
+<li><a href="../../pystytys/java-war-paketit.html">Kotikoneella tehdyn Java-työn julkaisu</a></li>
+<li><a href="../../pystytys/php-virheet.html">PHP:n virheilmoitusten katselu</a></li>
+<li><a href="../../pystytys/nautilus-ssh.html">Tiedostojen etämuokkaus Linuxilla</a></li>
+</ul></li>
+<li><a href="../../koodaaminen/index.html">Ohjelmointiohjeistus</a>
+<ul>
+<li><a href="../../koodaaminen/html-opas.html">HTML-opas</a></li>
+<li><a href="../../koodaaminen/kannan-alustus.html">Tietokantataulujen pystyttäminen</a></li>
+<li><a href="../../koodaaminen/testisovellus.html">ConnectionTest-testisovellus</a></li>
+<li><a href="../../koodaaminen/git-ja-salasanat.html">Git-repositoriot ja salasanat</a></li>
+<li><a href="../../koodaaminen/arkkitehtuuri/index.html">Arkkitehtuuri ja MVC</a>
+<ul>
+<li><a href="../../koodaaminen/arkkitehtuuri/nyrkkisaannot.html">MVC-mallin nyrkisääntöjä</a></li>
+</ul></li>
+<li><a href="../../koodaaminen/java/index.html">Java-ohjeet</a>
+<ul>
+<li class="selected"><a href="../../koodaaminen/java/tietokantayhteys.html">Tietokantayhteyden pystytys</a></li>
+<li><a href="../../koodaaminen/java/listaustesti.html">Listaustesti</a></li>
+<li><a href="../../koodaaminen/java/rakenne.html">Sovelluksen rakenne ja servletit</a></li>
+<li><a href="../../koodaaminen/java/nakymat.html">Näkymien tekeminen ja JSP</a></li>
+<li><a href="../../koodaaminen/java/lomakkeet.html">Lomakkeiden käyttö ja vastaanottaminen</a></li>
+<li><a href="../../koodaaminen/java/mallit_tiedonhaku.html">Tietokantahaku ja kyselyn parametrit</a></li>
+<li><a href="../../koodaaminen/java/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
+<li><a href="../../koodaaminen/java/listausnakymat.html">Listaus- ja tietonäkymät</a></li>
+<li><a href="../../koodaaminen/java/mallit_lisays.html">Tietojen syöttäminen kantaan</a></li>
+<li><a href="../../koodaaminen/java/muokkausnakymat.html">Muokkausnäkymän toteuttaminen</a></li>
+</ul></li>
+<li><a href="../../koodaaminen/php/index.html">PHP-ohjeet</a>
+<ul>
+<li><a href="../../koodaaminen/php/tietokantayhteys.html">Tietokantayhteyden pystytys</a></li>
+<li><a href="../../koodaaminen/php/listaustesti.html">Listaustesti</a></li>
+<li><a href="../../koodaaminen/php/rakenne.html">Sovelluksen rakenne ja kontrollerit</a></li>
+<li><a href="../../koodaaminen/php/nakymat.html">Näkymien tekeminen</a></li>
+<li><a href="../../koodaaminen/php/lomakkeet.html">Lomakkeiden käyttö ja vastaanottaminen</a></li>
+<li><a href="../../koodaaminen/php/mallit_tiedonhaku.html">Tietokantahaku ja kyselyn parametrit</a></li>
+<li><a href="../../koodaaminen/php/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
+<li><a href="../../koodaaminen/php/listausnakymat.html">Listaus- ja tietonäkymät</a></li>
+<li><a href="../../koodaaminen/php/mallit_lisays.html">Tietojen syöttäminen kantaan</a></li>
+<li><a href="../../koodaaminen/php/muokkausnakymat.html">Muokkausnäkymän toteuttaminen</a></li>
+</ul></li>
+</ul></li>
+<li><a href="../../arvosteluperusteet.html">Arvosteluperusteet</a></li>
+<li><a href="../../dokumentaatio-ohje.html">Dokumentaatio-ohje</a></li>
+<li><a href="../../cleancode.html">Hyvä ohjelmointityyli</a></li>
+<li><a href="../../kaytettavyys.html">Käytettävyys</a></li>
+<li><a href="../../sivukartta.html">Sivukartta</a></li>
+<li><a href="../../web-sovelluksista.html">Web-sovelluksien toiminta</a></li>
+</ul></li>
+</ul>
+</nav>
+</div>
+<div class="col-md-6" id="content">
+<header>
+<h1 class="title">Tietokantayhteyden pystytys</h1>
+</header>
+<!-- order: 1 -->
+
+<p>Seuraavaksi pyrimme luomaan tiedoston, jossa on tarvittava koodi tietokantayhteyden luomiseen. Samoin esitetään lyhyet testiohjelma, jolla yhteyttä voi testata.</p>
+<section class="alert alert-info"><h3>
+Tiivistelmä:
+</h3>
+<ul>
+<li>Varmista että aikaisemmin kirjoittamasi SQL-lauseet toimivat siten tietokantataulusi ovat nyt pystyssä kannassa.</li>
+<li>Jotta tietokantaa pystyy käyttämään, pitää siihen ottaa yhteys
+<ul>
+<li>Yhteyttä mallinnetaan Javan JDBC-kirjaston tarjoamalla Connection-oliolla.</li>
+<li>Luominen pitää sijoittaa omaan metodiinsa, jota käyttämällä muu voi ohjelmakoodi käyttää tietokantaoliota.</li>
+<li>Metodi sijoitetaan omaan luokkaansa, joka sijoitetaan omaan tietokantakirjastoille tarkoitettuun pakettiinsa.</li>
+</ul></li>
+<li>Jos käytät tietokantayhteyden autentikointiin salasanaa, <a href="../git-ja-salasanat.html#salasanojen-tallentaminen-ja-github">älä laita sitä GitHubiin sellaisenaan</a>.</li>
+</ul>
+</section>
+
+<p>Sekä Javalla että PHP:llä tietokantayhteyksiä edustaa erillinen luokka, jonka olio muodostetaan kutsumalla sopivaa metodia/konstruktoria. Kummallekin annetaan merkkijonona tietokantayhteyttä kuvaava osoite, jonka perusteella yhteys muodostetaan.</p>
+<p>Alla on esimerkkikoodia tietokantayhteyden muodostamisesta tilanteessa, jossa työ pyörii users-palvelimella.</p>
+<p>Tee itsellesi ohjeita noudattaen tiedosto, johon sijoitat tietokannan muodostamisen. Laita tämä tiedosto omaan pakettiinsa ja/tai kansioonsa. Hyviä nimiä paketille voivat olla esim. “Tietokanta” tai “Models”. Sovelluksesta tulee huomattavasti selkeämpi, jos kaikki tietokantaa käsittelevä koodi on sijoitettu yhteen paikkaan.</p>
+<section id="tietokantayhteys-jdbc-ja-context.xml" class="level2">
+<h2>Tietokantayhteys: JDBC ja context.xml</h2>
+<p>Javalla tietokantayhteyksien avaamiseen käytetään DataSource-tyyppistä tietokantayhteysvarastoa, joka huolehtii koko sovelluksen yhteyksien ylläpidosta ja kierrättämisestä eri aineistopyyntöjen välillä.</p>
+<p>Ensiksi pitää kuitenkin määritellä Java-koodin rinnalle context.xml-tiedostoon tietokantayhteyttä kuvaava resurssi.</p>
+<p><strong>web/META-INF/context.xml</strong></p>
+<pre class="sourceCode xml"><code class="sourceCode xml"><span class="kw">&lt;?xml</span> version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;<span class="kw">?&gt;</span>
+<span class="kw">&lt;Context</span><span class="ot"> antiJARLocking=</span><span class="st">&quot;true&quot;</span><span class="ot"> path=</span><span class="st">&quot;/Kissalista-java&quot;</span><span class="kw">&gt;</span>
+    <span class="kw">&lt;Resource</span><span class="ot"> name=</span><span class="st">&quot;jdbc/tietokanta&quot;</span><span class="ot"> auth=</span><span class="st">&quot;Container&quot;</span>
+<span class="ot">        type=</span><span class="st">&quot;javax.sql.DataSource&quot;</span><span class="ot"> removeAbandoned=</span><span class="st">&quot;true&quot;</span>
+<span class="ot">        removeAbandonedTimeout=</span><span class="st">&quot;30&quot;</span><span class="ot"> maxActive=</span><span class="st">&quot;100&quot;</span>
+<span class="ot">        maxIdle=</span><span class="st">&quot;30&quot;</span><span class="ot"> maxWait=</span><span class="st">&quot;10000&quot;</span><span class="ot"> username=</span><span class="st">&quot;tunnus&quot;</span>
+<span class="ot">        password=</span><span class="st">&quot;salasana&quot;</span>
+<span class="ot">        driverClassName=</span><span class="st">&quot;org.postgresql.Driver&quot;</span>
+<span class="ot">        url=</span><span class="st">&quot;jdbc:postgresql://localhost/tietokannan_nimi&quot;</span> <span class="kw">/&gt;</span>
+<span class="kw">&lt;/Context&gt;</span></code></pre>
+<p>Viimeinen attribuuttti, <code>url</code> kertoo Tomcatille tietokannan sijainnin ja nimen. Users-palvelimella tietokannan nimi on aina oma käyttäjätunnuksesi.</p>
+<section class="alert alert-danger"><h3>
+Pidä mielessä!
+</h3>
+<p>Joudut syöttämään tiedostoon tietokantatunnustesi salasanan, että saat koodin toimimaan. Salasanoja ei kannata laittaa repositorioon sellaisenaan. Käytä sen sijaan <a href="../git-ja-salasanat.html">nk. dist-tiedostoja</a></p>
+</section>
+
+<p>Kun resurssi on määritelty, voidaan Javan kirjastoilla hakea se:</p>
+<p><strong>Yhteysvaraston pystytyskoodi, sijoitetaan omaan luokkansa, esim. Kissalista.Tietokanta.Yhteys</strong></p>
+<pre class="sourceCode java"><code class="sourceCode java"><span class="co">//Haetaan context-xml-tiedostosta tietokannan yhteystiedot</span>
+<span class="co">//HUOM! Tämä esimerkki ei toimi sellaisenaan ilman Tomcat-palvelinta!</span>
+InitialContext cxt = <span class="kw">new</span> InitialContext();
+DataSource yhteysVarasto = (DataSource) cxt.<span class="fu">lookup</span>(<span class="st">&quot;java:/comp/env/jdbc/tietokanta&quot;</span>);</code></pre>
+<button type='button' class='btn-link expandable collapsed' data-toggle='collapse' data-target='#expandable_1'>
+Yllä olevan koodin vaatimat importit
+</button>
+  <div id='expandable_1' class='collapse'><section>
+
+<pre class="sourceCode java"><code class="sourceCode java"><span class="kw">import java.sql.Connection;</span>
+<span class="kw">import java.sql.SQLException;</span>
+<span class="kw">import javax.naming.Context;</span>
+<span class="kw">import javax.naming.InitialContext;</span>
+<span class="kw">import javax.naming.NamingException;</span>
+<span class="kw">import javax.sql.DataSource;</span></code></pre>
+</section></div>
+
+<p>Kun yhteysvarasto on kerran luotu, saa siltä uusia yhteyksiä suorittamalla getConnection-metodin:</p>
+<pre class="sourceCode java"><code class="sourceCode java">Connection yhteys = yhteysVarasto.<span class="fu">getConnection</span>(); </code></pre>
+<p>Menetelmän etuna on, ettei yhteyksien avaamisia tarvitse erikseen hallinnoida, vaan varasto avaa niitä lisää sitä mukaa kun tarvetta on.</p>
+</section>
+<section id="yhteyden-sulkeminen" class="level2">
+<h2>Yhteyden sulkeminen</h2>
+<p>Kun olet suorittanut haluamasi SQL-kyselyn, yhteys pitää sulkea, jolloin se palaa takaisiin varastoon käytettäväksi:</p>
+<pre class="sourceCode java"><code class="sourceCode java"><span class="kw">try</span> { yhteys.<span class="fu">close</span>(); } <span class="kw">catch</span> (Exception e) {  }</code></pre>
+<p>Itse varasto-oliota ei tarvitse erikseen sulkea, sillä Tomcat huolehtii sen hallinnoinnista.</p>
+<section class="alert alert-danger"><h3>
+Pidä mielessä!
+</h3>
+<p>Jos yhteyttä ei suljeta aina käytön jälkeen, kasautuu avoimia yhteyksiä varatoon niin kauan kunnes tietokanta ei enää anna ottaa useampia yhteyksiä jolloin sovellus kaatuu.</p>
+</section>
+
+</section>
+<section id="kannan-etäkäyttö-netbeansin-kanssa" class="level2">
+<h2>Kannan etäkäyttö NetBeansin kanssa</h2>
+<p>Jos haluat testata kantaa omalta koneeltasi käsin joudut <a href="../../pystytys/postgres-ssh-tunneli.html">muodostamaan ssh-tunnelin users-palvelimeen</a>. Et saa kantaan yhteyttä ilman sitä (ellet asenna omaa palvelinta).</p>
+<p>Tämän lisäksi joudut lisäämään projektiisi PostgreSQL-kannan ajurikirjaston. NetBeansia käyttäessäsi tämä hoituu samasta kohtaa, kuin JSTL-kirjaston lisääminen: avaa valikosta <code>File-&gt;Project Properties</code>, paina <em>Libraries</em>-kategoriassa nappia <em>Add Library</em> ja lisää listasta projektiin kirjasto nimeltä <code>PostgreSQL JDBC Driver</code>.</p>
+<figure>
+<img src="../../images/koodaaminen/java/postgres-ajuri.png" alt="PostgreSQL-ajurin asennus" /><figcaption>PostgreSQL-ajurin asennus</figcaption>
+</figure>
+<p>Samanlaiset huomiot koskevat MySQL-tietokantaa.</p>
+<p>Jos koodaat suoraan Users-palvelimella, sinun ei tarvitse tehdä tietokanta-ajurin käyttämiseksi mitään.</p>
+</section>
+<section id="yhteyden-testaaminen" class="level2">
+<h2>Yhteyden testaaminen</h2>
+<p>Javalla yhteyden testaamista varten pitää luoda oma Servlet-luokka. NetBeans sisältää niitä varten varsin toimivan mallirungon, josta riittää vaihtaa <code>processRequest</code>-metodin sisältö:</p>
+<pre class="sourceCode java"><code class="sourceCode java"><span class="co">//HttpServlet-luokan perivään servlettiin menevä metodi:</span>
+<span class="kw">protected</span> <span class="dt">void</span> <span class="fu">processRequest</span>(HttpServletRequest request, HttpServletResponse response)
+      <span class="kw">throws</span> ServletException, IOException {
+  Connection yhteys = Tietokanta.<span class="fu">getYhteys</span>(); <span class="co">//Haetaan tietokantaluokalta yhteysolio</span>
+  PreparedStatement kysely;
+  ResultSet tulokset;
+  PrintWriter out = response.<span class="fu">getWriter</span>(); 
+  response.<span class="fu">setContentType</span>(<span class="st">&quot;text/plain;charset=UTF-8&quot;</span>);
+
+  <span class="kw">try</span> {
+    String sql = <span class="st">&quot;SELECT 1+1 as two&quot;</span>;
+    kysely = yhteys.<span class="fu">prepareStatement</span>(sql);
+    tulokset = kysely.<span class="fu">executeQuery</span>();
+    <span class="kw">if</span>(tulokset.<span class="fu">next</span>()) {
+      <span class="dt">int</span> kakkonen = tulokset.<span class="fu">getInt</span>(<span class="st">&quot;two&quot;</span>);
+      out.<span class="fu">println</span>(<span class="st">&quot;Tulos: &quot;</span>+kakkonen<span class="st">&quot;); </span>
+    } <span class="kw">else</span> {
+      out.<span class="fu">println</span>(<span class="st">&quot;Virhe!&quot;</span>); 
+    }
+  } <span class="kw">catch</span> (Exception e) {
+    out.<span class="fu">println</span>(<span class="st">&quot;Virhe: &quot;</span>+e.<span class="fu">getMessage</span>()<span class="st">&quot;); </span>
+  }
+
+  tulokset.<span class="fu">close</span>(); kysely.<span class="fu">close</span>();
+}</code></pre>
+<p>Koodin pitäisi lähettää selaimelle teksti “Tulos: 2”.</p>
+<p>Jos et käytä NetBeansia, voit katsoa kontrolleriesimerkkejä <a href="listaustesti.html">listauksen toteuttamisohjeista</a>.</p>
+<p>Kun olet saanut saanut yhteyden toimimaan ja palauttamaan kannasta tietoa, laita se omaan luokkaansa, jossa on metodi, joka palauttaa yhteyden. Voit sijoittaa luokkaan muitakin toistuvia tietokantaan liittyviä koodinpätkiä, kuten vaikkapa yhteyden sulkemisen toteuttavan metodin.</p>
+<section class="alert alert-success small"><h3>
+Seuraavaksi:
+</h3>
+<p>Kun olet saanut tietokantaan toimivan yhteyden ja laittanut sen omaan tiedostoonsa, voit jatkaa tietokantaohjelmointia tekemällä <a href="listaustesti.html">yksinkertaisen listauksen</a>.</p>
+</section>
+
+
+
+
+</section>
+</div>
+</div> 
+</div> 
+<footer>
+  <a href="../../sivukartta.html">Sivukartta</a> - 
+  <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">AdvancedKittenry</span> 
+  by
+  <a xmlns:cc="http://creativecommons.org/ns#" href="http://advancedkittenry.github.io/credits.html" property="cc:attributionName" rel="cc:attributionURL">David Consuegra and others</a>
+  is licensed under a 
+  <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.
+  <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">
+    <img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png" />
+  </a>
+</footer>
+</body>
+</html>

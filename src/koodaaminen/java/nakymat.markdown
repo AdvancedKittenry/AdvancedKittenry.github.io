@@ -1,5 +1,5 @@
 % Näkymien tekeminen ja JSP
-<!-- order: 2 -->
+<!-- order: 4 -->
 <!-- addHeaderNavigation -->
 
 <summary>

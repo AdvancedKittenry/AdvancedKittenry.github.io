@@ -1,5 +1,5 @@
 % Lomakkeiden käyttö ja vastaanottaminen
-<!-- order: 3 -->
+<!-- order: 5 -->
 
 <summary>
 * Tehdään kirjautumisen vastaanottamista varten oma kontrolleri, joka käyttää aiemmin tehtyä kirjautumisen html-demokoodia näkymänään.

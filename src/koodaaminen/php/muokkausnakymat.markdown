@@ -1,5 +1,5 @@
 % Muokkausnäkymän toteuttaminen
-<!-- order: 8 -->
+<!-- order: 10 -->
 
 <wip />
 

@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title>Listaustesti</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
+  <link rel="stylesheet" href="../../css/base.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <script src="../../javascript/jquery.min.js"></script>
+  <script src="../../javascript/bootstrap.js"></script>
+  <script src="../../javascript/jquery.treeview.js"></script>
+  <script src="../../javascript/jquery.scrollTo.js"></script>
+  <script src="../../javascript/jquery.nav.js"></script>
+  <script src="../../javascript/navi.js"></script>
+</head>
+<body>
+<div class="titlebar">
+  <div class="container">
+    <div class="row">
+      <h1 class="col-md-6 col-md-offset-3">Advanced Kittenry - Tietokantasovellusohjeet</h1>
+    </div>
+  </div>
+</div>
+<div class="container">
+<div class="row">
+<div class="navcontainer col-md-3">
+<nav>
+<ul>
+<li><a href="../../index.html">Tietokantasovellus</a>
+<ul>
+<li><a href="../../aikataulu/index.html">Aikataulu</a>
+<ul>
+<li><a href="../../aikataulu/viikkopalautukset/index.html">Viikottaiset palautukset</a>
+<ul>
+<li><a href="../../aikataulu/viikkopalautukset/esittelysivu.html">Työn esittelysivu</a></li>
+<li><a href="../../aikataulu/viikkopalautukset/viikko1.html">Viikko 1</a></li>
+<li><a href="../../aikataulu/viikkopalautukset/viikko2.html">Viikko 2</a></li>
+<li><a href="../../aikataulu/viikkopalautukset/viikko3.html">Viikko 3</a></li>
+<li><a href="../../aikataulu/viikkopalautukset/viikko4.html">Viikko 4</a></li>
+<li><a href="../../aikataulu/viikkopalautukset/viikko5.html">Viikko 5</a></li>
+</ul></li>
+<li><a href="../../aikataulu/demo.html">Demotilaisuus</a></li>
+<li><a href="../../aikataulu/palautus.html">Työn palautus</a></li>
+</ul></li>
+<li><a href="../../suunnittelu/index.html">Työn suunnittelu</a>
+<ul>
+<li><a href="../../suunnittelu/aiheet/index.html">Työaiheet</a>
+<ul>
+<li><a href="../../suunnittelu/aiheet/Drinkkiarkisto.html">Drinkkiarkisto</a></li>
+<li><a href="../../suunnittelu/aiheet/Elektroninen_keittokirja.html">Elektroninen keittokirja</a></li>
+<li><a href="../../suunnittelu/aiheet/Graduaiheet.html">Graduaiheet</a></li>
+<li><a href="../../suunnittelu/aiheet/Hiihtokisojen_tulospalvelu.html">Hiihtokisojen tulospalvelu</a></li>
+<li><a href="../../suunnittelu/aiheet/Huutokauppa.html">Huutokauppa</a></li>
+<li><a href="../../suunnittelu/aiheet/Kennelkerho.html">Kennelkerho</a></li>
+<li><a href="../../suunnittelu/aiheet/Keskustelufoorumi.html">Keskustelufoorumi</a></li>
+<li><a href="../../suunnittelu/aiheet/Kurssikysely.html">Kurssikysely</a></li>
+<li><a href="../../suunnittelu/aiheet/Kurssin_kotisivu.html">Kurssin kotisivu</a></li>
+<li><a href="../../suunnittelu/aiheet/Kurssitarjonta_ja_kurssipaikan_varaus.html">Kurssitarjonta ja kurssipaikan varaus</a></li>
+<li><a href="../../suunnittelu/aiheet/Laakariaseman_tyovuorolista.html">Lääkäriaseman työvuorolista</a></li>
+<li><a href="../../suunnittelu/aiheet/Laakarin_kotikaynnit.html">Lääkärin kotikäynnit</a></li>
+<li><a href="../../suunnittelu/aiheet/Matkojen_markkinointi.html">Matkojen markkinointi</a></li>
+<li><a href="../../suunnittelu/aiheet/Muistilista.html">Muistilista</a></li>
+<li><a href="../../suunnittelu/aiheet/Ostoskassi.html">Ostoskassi</a></li>
+<li><a href="../../suunnittelu/aiheet/Palvelubisnes.html">Palvelubisnes</a></li>
+<li><a href="../../suunnittelu/aiheet/Parturi-Kampaamo.html">Parturi-Kampaamo</a></li>
+<li><a href="../../suunnittelu/aiheet/Pizzapalvelu.html">Pizzapalvelu</a></li>
+<li><a href="../../suunnittelu/aiheet/Pokemon-kanta.html">Pokémon-tietokanta</a></li>
+<li><a href="../../suunnittelu/aiheet/Projektin_tyoaikaseuranta.html">Projektin työaikaseuranta</a></li>
+<li><a href="../../suunnittelu/aiheet/Rankkauslista.html">Rankkauslista</a></li>
+<li><a href="../../suunnittelu/aiheet/Taloyhtion_palvelut.html">Taloyhtiön palvelut</a></li>
+<li><a href="../../suunnittelu/aiheet/Tavaranvaihto.html">Tavaranvaihto</a></li>
+<li><a href="../../suunnittelu/aiheet/Tukkuliikkeen_tilaustenksittely.html">Tukkuliikkeen tilaustenkäsittely</a></li>
+<li><a href="../../suunnittelu/aiheet/Tutkimusaineston_kerays.html">Tutkimusaineiston keräys</a></li>
+<li><a href="../../suunnittelu/aiheet/Tyoaihekanta.html">Työaihekanta</a></li>
+<li><a href="../../suunnittelu/aiheet/Opintoneuvonnan_usein_kysytyt_kysymykset.html">Usein kysytyt kysymykset</a></li>
+<li><a href="../../suunnittelu/aiheet/Vedonlyonti.html">Vedonlyönti</a></li>
+<li><a href="../../suunnittelu/aiheet/Vuokra-asuntojen_valitys.html">Vuokra-asuntojen välitys</a></li>
+<li><a href="../../suunnittelu/aiheet/Ystavanvalityspalvelu.html">Ystävänvälityspalvelu</a></li>
+<li><a href="../../suunnittelu/aiheet/Aanestys.html">Äänestys</a></li>
+</ul></li>
+<li><a href="../../suunnittelu/ohjelmointikielet.html">Ohjelmointikielen valinta</a></li>
+<li><a href="../../suunnittelu/tietokannan-valinta.html">Tietokannan valinta</a></li>
+<li><a href="../../suunnittelu/kayttoliittyma.html">Käyttöliittymän suunnittelu</a></li>
+<li><a href="../../suunnittelu/tietokanta.html">Tietokannan suunnittelu</a></li>
+</ul></li>
+<li><a href="../../pystytys/index.html">Users-palvelin ja töiden pystyttäminen</a>
+<ul>
+<li><a href="../../pystytys/kayttoonotto/index.html">Palvelujen käynnistäminen ja käyttöönotto</a>
+<ul>
+<li><a href="../../pystytys/kayttoonotto/java.html">Java ja Tomcatin käyttöönotto</a></li>
+<li><a href="../../pystytys/kayttoonotto/mysql.html">MySql-tietokannan käyttöönotto</a></li>
+<li><a href="../../pystytys/kayttoonotto/php.html">PHP-tuen käyttöönotto</a></li>
+<li><a href="../../pystytys/kayttoonotto/postgresql.html">PostgreSQL-tietokannan käyttöönotto</a></li>
+</ul></li>
+<li><a href="../../pystytys/netbeans/index.html">NetBeansin käyttöönotto</a>
+<ul>
+<li><a href="../../pystytys/netbeans/java.html">NetBeansin käyttö Javan kanssa</a></li>
+<li><a href="../../pystytys/netbeans/php.html">NetBeansin käyttö PHP:n kanssa</a></li>
+<li><a href="../../pystytys/netbeans/keyring-reset.html">Unlock your keyring? - Avainnippujen nollaus</a></li>
+</ul></li>
+<li><a href="../../pystytys/postgres-ssh-tunneli.html">PostgreSql-kannan etäkäyttö</a></li>
+<li><a href="../../pystytys/java-war-paketit.html">Kotikoneella tehdyn Java-työn julkaisu</a></li>
+<li><a href="../../pystytys/php-virheet.html">PHP:n virheilmoitusten katselu</a></li>
+<li><a href="../../pystytys/nautilus-ssh.html">Tiedostojen etämuokkaus Linuxilla</a></li>
+</ul></li>
+<li><a href="../../koodaaminen/index.html">Ohjelmointiohjeistus</a>
+<ul>
+<li><a href="../../koodaaminen/html-opas.html">HTML-opas</a></li>
+<li><a href="../../koodaaminen/kannan-alustus.html">Tietokantataulujen pystyttäminen</a></li>
+<li><a href="../../koodaaminen/testisovellus.html">ConnectionTest-testisovellus</a></li>
+<li><a href="../../koodaaminen/git-ja-salasanat.html">Git-repositoriot ja salasanat</a></li>
+<li><a href="../../koodaaminen/arkkitehtuuri/index.html">Arkkitehtuuri ja MVC</a>
+<ul>
+<li><a href="../../koodaaminen/arkkitehtuuri/nyrkkisaannot.html">MVC-mallin nyrkisääntöjä</a></li>
+</ul></li>
+<li><a href="../../koodaaminen/java/index.html">Java-ohjeet</a>
+<ul>
+<li><a href="../../koodaaminen/java/tietokantayhteys.html">Tietokantayhteyden pystytys</a></li>
+<li class="selected"><a href="../../koodaaminen/java/listaustesti.html">Listaustesti</a></li>
+<li><a href="../../koodaaminen/java/rakenne.html">Sovelluksen rakenne ja servletit</a></li>
+<li><a href="../../koodaaminen/java/nakymat.html">Näkymien tekeminen ja JSP</a></li>
+<li><a href="../../koodaaminen/java/lomakkeet.html">Lomakkeiden käyttö ja vastaanottaminen</a></li>
+<li><a href="../../koodaaminen/java/mallit_tiedonhaku.html">Tietokantahaku ja kyselyn parametrit</a></li>
+<li><a href="../../koodaaminen/java/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
+<li><a href="../../koodaaminen/java/listausnakymat.html">Listaus- ja tietonäkymät</a></li>
+<li><a href="../../koodaaminen/java/mallit_lisays.html">Tietojen syöttäminen kantaan</a></li>
+<li><a href="../../koodaaminen/java/muokkausnakymat.html">Muokkausnäkymän toteuttaminen</a></li>
+</ul></li>
+<li><a href="../../koodaaminen/php/index.html">PHP-ohjeet</a>
+<ul>
+<li><a href="../../koodaaminen/php/tietokantayhteys.html">Tietokantayhteyden pystytys</a></li>
+<li><a href="../../koodaaminen/php/listaustesti.html">Listaustesti</a></li>
+<li><a href="../../koodaaminen/php/rakenne.html">Sovelluksen rakenne ja kontrollerit</a></li>
+<li><a href="../../koodaaminen/php/nakymat.html">Näkymien tekeminen</a></li>
+<li><a href="../../koodaaminen/php/lomakkeet.html">Lomakkeiden käyttö ja vastaanottaminen</a></li>
+<li><a href="../../koodaaminen/php/mallit_tiedonhaku.html">Tietokantahaku ja kyselyn parametrit</a></li>
+<li><a href="../../koodaaminen/php/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
+<li><a href="../../koodaaminen/php/listausnakymat.html">Listaus- ja tietonäkymät</a></li>
+<li><a href="../../koodaaminen/php/mallit_lisays.html">Tietojen syöttäminen kantaan</a></li>
+<li><a href="../../koodaaminen/php/muokkausnakymat.html">Muokkausnäkymän toteuttaminen</a></li>
+</ul></li>
+</ul></li>
+<li><a href="../../arvosteluperusteet.html">Arvosteluperusteet</a></li>
+<li><a href="../../dokumentaatio-ohje.html">Dokumentaatio-ohje</a></li>
+<li><a href="../../cleancode.html">Hyvä ohjelmointityyli</a></li>
+<li><a href="../../kaytettavyys.html">Käytettävyys</a></li>
+<li><a href="../../sivukartta.html">Sivukartta</a></li>
+<li><a href="../../web-sovelluksista.html">Web-sovelluksien toiminta</a></li>
+</ul></li>
+</ul>
+</nav>
+</div>
+<div class="col-md-6" id="content">
+<header>
+<h1 class="title">Listaustesti</h1>
+</header>
+<!-- order: 2 -->
+
+<section class="alert alert-info"><h3>
+Tiivistelmä:
+</h3>
+<ul>
+<li>Servlettien käyttämisen alkeet
+<ul>
+<li>Javalla käytännössä kaikki nettisivut toteutetaan Servletteinä</li>
+<li>Servletissä voi tulostaa HTML:ää suoraan samanlaisella rajapinnalla kuin <code>System.out.println</code>. Tämä on yksinkertaisin, mutta ei kuitenkaan paras mahdollinen tapa.</li>
+<li>Myöhemmin HTML-sivut toteutetaan JSP-kielellä</li>
+</ul></li>
+<li>Tietokannan käsittely keskitetään omiin luokkiinsa eli <em>malleihin</em>.</li>
+<li>Käytännössä jokaista tietokohdetta vastaa yksi malliluokka.
+<ul>
+<li>Puhtaille välitauluille harvemmin tarvitaan omaa luokkaansa, vaan niiden toiminnot hoidetaan itse tietokohteiden kautta.</li>
+<li>Luokka sisältää tarvittavat taulun käsittelyyn metodit.</li>
+</ul></li>
+</ul>
+</section>
+
+<p>Varmista ensin, että sinulla on luokka tai funktio, jolla saat <a href="../java/tietokantayhteys.html">yhteyden tietokantaan</a>. Nyt käytämme tietokantayhteyttä luodaksemme hyvin yksinkertaisen sivun, jolla listataan jonkun taulun sisältöä. Teemme tämän kahdessa vaiheessa: Ensin luomme yksinkertaisen servletin, joka lähettää selaimelle yksinkertaista HTML:ää, sitten laitamme tämän servletin näyttämään listan. Lopulta luomme koodin, joka hakee tuon listan tietokannasta.</p>
+<p>Tässä vaiheessa ymmärtämistä saattaa helpottaa <a href="../arkkitehtuuri/index.html">MVC-mallin rakenteen tunteminen</a>.</p>
+<section id="servletit" class="level2">
+<h2>Servletit</h2>
+<p>Tomcatille koodatessa kaikki dynaamista toiminnallisuutta vaativat sivut koodataan <em>Servletteinä</em>.</p>
+<p>Servletit ovat Java EE:ssä eli Javan nettipuolessa käytettäviä luokkia, jotka edustavat jonkin nettisivun tai toiminnon <em>kontrollereita</em>. Servletit ja kontrollerit ovat Javan näkökulmasta useimmiten käytännössä sama asia.</p>
+<p>Jokainen Servlet-luokka on sidottu johonkin URL-osoitteeseen, johon ohjattu aineistopyyntö aktivoi sen. Sitomiset on käyttämässämme Java-ympäristön versiossa määritelty XML-pohjaisesti tiedostossa <code>web/WEB-INF/web.xml</code>. Tiedoston muokkaus on hieman monimutkaista, mutta esimerkiksi NetBeans osaa muokata tämän tiedoston määrityksiä kätevällä käyttöliittymällä ja liittää esimerkiksi uusien Servlettien URL-osoitteet sinne samalla kun Servlettiä luodaan, jolloin käytännössä tiedostoon tarvitsee koskea käsin aika harvoin.</p>
+<section id="servletin-toiminta" class="level3">
+<h3>Servletin toiminta</h3>
+<p>Servletin toiminnan ytimessä ovat <code>doGet</code>- ja <code>doPost</code>-metodit, jotka ottavat vastaan servletin osoitteeeseen <a href="../../web-sovelluksista.html#get-ja-post">GET- ja POST-metodeilla</a> tehtyjä aineistopyyntöjä. NetBeansin vakiopohja Servlet-luokille luo nämä metodit automaattisesti ja laittaa ne molemmat kutsumaan samaa <code>processRequest</code>-metodia. Metodilla on parametreina HttpServletRequest-olio, joka sisältää pyynnön tiedot, ja HttpServletResponse-olio, johon voidaan määrittää pyynnölle vastaus.</p>
+<p><strong>Esimerkki Netbeansillä tuotetusta Servlet-luokasta:</strong></p>
+<pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="kw">class</span> TestiServlet <span class="kw">extends</span> HttpServlet {
+
+  <span class="co">/**</span>
+<span class="co">   * Processes requests for both HTTP</span>
+<span class="co">   * &lt;code</span><span class="kw">&gt;</span><span class="co">GET&lt;/code</span><span class="kw">&gt;</span><span class="co"> and &lt;code</span><span class="kw">&gt;</span><span class="co">POST&lt;/code</span><span class="kw">&gt;</span><span class="co"> methods.</span>
+<span class="co">   *</span>
+<span class="co">   * </span><span class="kw">@param request </span><span class="co">servlet request</span>
+<span class="co">   * </span><span class="kw">@param response </span><span class="co">servlet response</span>
+<span class="co">   * </span><span class="kw">@throws ServletException </span><span class="co">if a servlet-specific error occurs</span>
+<span class="co">   * </span><span class="kw">@throws IOException </span><span class="co">if an I/O error occurs</span>
+<span class="co">   */</span>
+  <span class="kw">protected</span> <span class="dt">void</span> <span class="fu">processRequest</span>(HttpServletRequest request, HttpServletResponse response)
+      <span class="kw">throws</span> ServletException, IOException {
+    response.<span class="fu">setContentType</span>(<span class="st">&quot;text/html;charset=UTF-8&quot;</span>);
+    PrintWriter out = response.<span class="fu">getWriter</span>(); 
+    <span class="kw">try</span> {
+      <span class="co">/* TODO output your page here. You may use following sample code. */</span>
+      out.<span class="fu">println</span>(<span class="st">&quot;&lt;html&gt;&quot;</span>); 
+      out.<span class="fu">println</span>(<span class="st">&quot;&lt;head&gt;&lt;title&gt;Servlet TestiServlet&lt;/title&gt;&lt;/head&gt;&quot;</span>);
+      out.<span class="fu">println</span>(<span class="st">&quot;&lt;body&gt;&quot;</span>);
+      out.<span class="fu">println</span>(<span class="st">&quot;&lt;h1&gt;Servlet TestiServlet at &quot;</span> + 
+        request.<span class="fu">getContextPath</span>() + <span class="st">&quot;&lt;/h1&gt;&quot;</span>);
+      out.<span class="fu">println</span>(<span class="st">&quot;&lt;/body&gt;&quot;</span>);
+      out.<span class="fu">println</span>(<span class="st">&quot;&lt;/html&gt;&quot;</span>);
+    } <span class="kw">finally</span> {            
+      out.<span class="fu">close</span>();
+    }
+  }
+  
+  <span class="co">/* NetBeansin piilottamat doGet- ja doPost-metodit, jotka kutsuvat processRequest-metodia. */</span>
+
+}</code></pre>
+<p>Valmiin pohjan sisältämä vastauksen tuottava koodi sisältää suoraan kontrolleriin upotettua HTML-koodia. Tälläistä koodia ei pidemmän päälle kannata käyttää, mutta testitiedoston luomisen kannalta voimme muokata sen tuottamaan seuraavanlaisen listan:</p>
+<pre class="sourceCode java"><code class="sourceCode java"><span class="kw">protected</span> <span class="dt">void</span> <span class="fu">processRequest</span>(HttpServletRequest request, HttpServletResponse response)
+    <span class="kw">throws</span> ServletException, IOException {
+  List&lt;String&gt; asiat = <span class="kw">new</span> ArrayList&lt;String&gt;();
+  asiat.<span class="fu">add</span>(<span class="st">&quot;Kirahvi&quot;</span>);
+  asiat.<span class="fu">add</span>(<span class="st">&quot;Trumpetti&quot;</span>);
+  asiat.<span class="fu">add</span>(<span class="st">&quot;Jeesus&quot;</span>);
+  asiat.<span class="fu">add</span>(<span class="st">&quot;Parta&quot;</span>);
+
+  response.<span class="fu">setContentType</span>(<span class="st">&quot;text/html;charset=UTF-8&quot;</span>);
+  PrintWriter out = response.<span class="fu">getWriter</span>(); 
+  <span class="kw">try</span> {
+    out.<span class="fu">println</span>(<span class="st">&quot;&lt;html&gt;&quot;</span>); 
+    out.<span class="fu">println</span>(<span class="st">&quot;&lt;head&gt;&lt;title&gt;Servlet TestiServlet&lt;/title&gt;&lt;/head&gt;&quot;</span>);
+    out.<span class="fu">println</span>(<span class="st">&quot;&lt;body&gt;&quot;</span>);
+    out.<span class="fu">println</span>(<span class="st">&quot;&lt;ul&gt;&quot;</span>);
+    <span class="kw">for</span> (String asia : asiat) {
+      out.<span class="fu">println</span>(<span class="st">&quot;&lt;li&gt;&quot;</span>+asia+<span class="st">&quot;&lt;/li&gt;&quot;</span>);
+    }
+    out.<span class="fu">println</span>(<span class="st">&quot;&lt;/ul&gt;&quot;</span>);
+    out.<span class="fu">println</span>(<span class="st">&quot;&lt;/body&gt;&quot;</span>);
+    out.<span class="fu">println</span>(<span class="st">&quot;&lt;/html&gt;&quot;</span>);
+  } <span class="kw">finally</span> {            
+    out.<span class="fu">close</span>();
+  }
+}</code></pre>
+<p>Ohjeisen servletin pitäisi tuottaa selaimelle lista, jossa on asiat-listaan lisätyt neljä asiaa. Testaa tätä selaimessa nyt.</p>
+<p>HTML:n upottaminen Java-koodiin on melko kömpelöä. Jatkossa kurssilla käytetään hieman edistyneempiä tekniikoita, mutta tietokantatestin kannalta tämä on yksinkertaisempaa.</p>
+<p>Voit halutessasi katsoa miten esimerkki toteutetaan oikein <a href="../java/rakenne.html">viikon 3 materiaaleista</a>.</p>
+</section>
+</section>
+<section id="tietokannan-käyttö-ja-mallit" class="level2">
+<h2>Tietokannan käyttö ja mallit</h2>
+<p>Nyt kun meillä on tapa laittaa lista näkyville, voimme kirjoittaa koodia, joka tuottaa meille listan tietokannassa olevista asioista, vaikkapa kissoista.</p>
+<p>Aivan kuten tietokantayhteydenkin muodostamisenkin kirjoitamme tietokantaa käsittelevän koodin omaan tiedostoonsa. Tapana on jakaa tietokantaa käsittelevä koodi tietokohteittain siten, että kutakin tietokantataulua käsittelevä koodi on omassa luokassaan. Näitä luokkia kutsutaan malleiksi. (Malleista ja sovelluksen arkkitehtuurista voi lukea lisää <a href="../../koodaaminen/arkkitehtuuri/index.html">kolmosviikon materiaalista</a>)</p>
+<p>Poikkeuksena tietokantataulujen ja malliluokkien vastaavuuteen ovat tosin välitaulut, joille ei välttämättä aina tarvitse tehdä omaa tietokantatauluaan.</p>
+<p>Tässä materiaalissa rakennamme mallit niin, että kunkin malliluokan oliot vastaavat mallin kuvaaman tietokantataulun rivejä ja mallissa on staattisia metodeja, joilla on mahdollista hakea näitä olioita tietokannasta.</p>
+<section id="mallin-tekeminen-käyttäjille" class="level3">
+<h3>Mallin tekeminen käyttäjille</h3>
+<p>Tehdän ensi viikon kirjautumisen toteuttamista silmälläpitäen jo valmiiksi käyttäjille oma malliluokkansa. Lisätään luokalle attribuuteiksi käyttäjätaulun kentät, sekä konstruktori:</p>
+<pre class="sourceCode java"><code class="sourceCode java"><span class="kw">package Kissalista.Mallit;</span>
+
+<span class="kw">public</span> <span class="kw">class</span> Kayttaja {
+  <span class="kw">private</span> <span class="dt">int</span> id;
+  <span class="kw">private</span> String tunnus;
+  <span class="kw">private</span> String salasana;
+
+  <span class="kw">public</span> <span class="fu">Kayttaja</span>(<span class="dt">int</span> id, String tunnus, String salasana) {
+    <span class="kw">this</span>.<span class="fu">id</span> = id;
+    <span class="kw">this</span>.<span class="fu">tunnus</span> = tunnus;
+    <span class="kw">this</span>.<span class="fu">salasana</span> = salasana;
+  }
+
+  <span class="co">/* Tähän gettereitä ja settereitä */</span>
+}</code></pre>
+<p>Tehdään seuraavaksi luokalle staattinen metodi, joka palauttaa kaikki tuon tietokohteen taulun rivit tuon luokan olioina. Käytetään tähän aiemmin tekemäämme tietokantayhteysluokka, jolta kysymme <code>Connection</code>-oliota:</p>
+<pre class="sourceCode java"><code class="sourceCode java">Connection yhteys = Tietokanta.<span class="fu">getYhteys</span>();</code></pre>
+<p>Yhteysoliota voi pyytää valmistelemaan SQL-koodia suoritettavaksi kutsumalla sen <code>prepareStatement</code>-metodia. Tuloksena saatavan <code>PreparedStatement</code>-olion voi taas käskeä sille annetun suorittamaan SQL:n kutsumalla <code>executeQuery</code>-metodia.</p>
+<pre class="sourceCode java"><code class="sourceCode java">String sql = <span class="st">&quot;SELECT id, tunnus, salasana from kayttajat&quot;</span>;
+PreparedStatement kysely = yhteys.<span class="fu">prepareStatement</span>(sql);
+ResultSet rs = kysely.<span class="fu">executeQuery</span>();</code></pre>
+<p>Tuloksena on <code>ResultSet</code>-olio, joka kuvaa sarjaa tietokannasta haettuja rivejä. Olio viittaa aina kerrallaan yhteen tuloksena saaduista riveistä, jossa olevia arvoja siltä voi kysellä erinäköisillä tietotyyppikohtaisilal gettereillä. Seuraavan rivin saa kutsumalla <code>next</code>-metodia. Aluksi <code>ResultSet</code>-olio on kuitenkin aina tuloksen ns. nollannella rivillä, jolla ei ole arvoja ollenkaan. Se pitää siis heti kättelyssä siirtää ensimmäiselle oikealle riville. Jos tuloksia odotetaan useita, tämä hoituu kätevästi while-loopilla:</p>
+<pre class="sourceCode java"><code class="sourceCode java"><span class="kw">while</span>(rs.<span class="fu">next</span>()) {
+  <span class="co">//Haetaan tietoa riviltä</span>
+  <span class="dt">int</span> id = rs.<span class="fu">getInt</span>(<span class="st">&quot;id&quot;</span>);
+  String tunnus = rs.<span class="fu">getString</span>(<span class="st">&quot;tunnus&quot;</span>);
+  String salasana = rs.<span class="fu">getString</span>(<span class="st">&quot;salasana&quot;</span>);
+}</code></pre>
+<p>Nämä arvot voidaan nyt tallentaa olioihin, jotka voidaan tallentaa listaan ja palauttaa metodin kutsujalle. Lopuksi pitää muistaa sulkea kaikki kolme resurssia: ResultSet, PreparedStatement ja Connection. Jos näin ei muisteta tehdä, sovellus lakkaa ennenpitkää toimimasta kunnolla, sillä yhteyksiä on mahdollista pitää yllä vain rajallinen määrä.</p>
+<p>Alla on esimerkki valmiista metodista, joka palauttaa jokaisen käyttäjän.</p>
+<pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="dt">static</span> List&lt;Kayttaja&gt; <span class="fu">getKayttajat</span>() {
+  String sql = <span class="st">&quot;SELECT id, tunnus, salasana from kayttajat&quot;</span>;
+  Connection yhteys = Tietokanta.<span class="fu">getYhteys</span>();
+  PreparedStatement kysely = yhteys.<span class="fu">prepareStatement</span>(sql);
+  ResultSet rs = kysely.<span class="fu">executeQuery</span>();
+
+  ArrayList&lt;Kayttaja&gt; kayttajat = <span class="kw">new</span> ArrayList&lt;Kayttaja&gt;();
+  <span class="kw">while</span> (rs.<span class="fu">next</span>()) {
+    <span class="co">//Kutsutaan sopivat tiedot vastaanottavaa konstruktoria ja palautetaan olio:</span>
+    Kayttaja k = <span class="kw">new</span> <span class="fu">Kayttaja</span>(rs.<span class="fu">getInt</span>(<span class="st">&quot;id&quot;</span>), rs.<span class="fu">getString</span>(<span class="st">&quot;tunnus&quot;</span>), rs.<span class="fu">getString</span>(<span class="st">&quot;salasana&quot;</span>));
+    kayttajat.<span class="fu">add</span>(k);
+  }   
+  <span class="co">//Suljetaan kaikki resurssit:</span>
+  <span class="kw">try</span> { rs.<span class="fu">close</span>(); } <span class="kw">catch</span> (Exception e) {}
+  <span class="kw">try</span> { kysely.<span class="fu">close</span>(); } <span class="kw">catch</span> (Exception e) {}
+  <span class="kw">try</span> { yhteys.<span class="fu">close</span>(); } <span class="kw">catch</span> (Exception e) {}
+
+  <span class="kw">return</span> kayttajat;
+}</code></pre>
+</section>
+<section id="koodin-käyttäminen-servletissä" class="level3">
+<h3>Koodin käyttäminen servletissä</h3>
+<p>Malliluokan koodia käyttäen listaesimerkin alku voi näyttää esimerkiksi seuraavalta:</p>
+<pre class="sourceCode java"><code class="sourceCode java">List&lt;Kayttaja&gt; kayttajat = Kayttaja.<span class="fu">getKayttajat</span>();</code></pre>
+<p>Ja koska kyseessä ovat oliot, pitää niitä listatessa tulostaa jokin merkkijono eikä itse oliota:</p>
+<pre class="sourceCode php"><code class="sourceCode php">for (Kayttaja kayttaja : kayttajat) {
+  out.println(&quot;&lt;li&gt;&quot;+kayttaja.getUsername()+&quot;&lt;/li&gt;&quot;);
+}</code></pre>
+<section class="alert alert-warning"><h3>
+Hyvä tietää
+</h3>
+<p>Tällä viikolla tehtävä listaus on tahallaan melko yksinkertainen, sillä tarkoitus on vain testata tietokantaohjelmointia. Lopulliset sivut tulevat noudattamaan läheisemmin <a href="../../koodaaminen/arkkitehtuuri/index.html">MVC-arkkitehtuuria</a>.</p>
+</section>
+
+<section class="alert alert-success small"><h3>
+Seuraavaksi:
+</h3>
+<p>Testisovelluksen tehtyäsi voit tustustua tarkemmin viikon 3 materiaaliin: <a href="../../koodaaminen/arkkitehtuuri/index.html">MVC-arkkitehtuuriin</a> ja sen jälkeen <a href="../java/index.html">kirjautumisen toteuttamiseen</a>.</p>
+</section>
+
+
+
+</section>
+</section>
+</div>
+</div> 
+</div> 
+<footer>
+  <a href="../../sivukartta.html">Sivukartta</a> - 
+  <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">AdvancedKittenry</span> 
+  by
+  <a xmlns:cc="http://creativecommons.org/ns#" href="http://advancedkittenry.github.io/credits.html" property="cc:attributionName" rel="cc:attributionURL">David Consuegra and others</a>
+  is licensed under a 
+  <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.
+  <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">
+    <img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png" />
+  </a>
+</footer>
+</body>
+</html>

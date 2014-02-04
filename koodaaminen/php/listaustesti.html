@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title>Listaustesti</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
+  <link rel="stylesheet" href="../../css/base.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <script src="../../javascript/jquery.min.js"></script>
+  <script src="../../javascript/bootstrap.js"></script>
+  <script src="../../javascript/jquery.treeview.js"></script>
+  <script src="../../javascript/jquery.scrollTo.js"></script>
+  <script src="../../javascript/jquery.nav.js"></script>
+  <script src="../../javascript/navi.js"></script>
+</head>
+<body>
+<div class="titlebar">
+  <div class="container">
+    <div class="row">
+      <h1 class="col-md-6 col-md-offset-3">Advanced Kittenry - Tietokantasovellusohjeet</h1>
+    </div>
+  </div>
+</div>
+<div class="container">
+<div class="row">
+<div class="navcontainer col-md-3">
+<nav>
+<ul>
+<li><a href="../../index.html">Tietokantasovellus</a>
+<ul>
+<li><a href="../../aikataulu/index.html">Aikataulu</a>
+<ul>
+<li><a href="../../aikataulu/viikkopalautukset/index.html">Viikottaiset palautukset</a>
+<ul>
+<li><a href="../../aikataulu/viikkopalautukset/esittelysivu.html">Työn esittelysivu</a></li>
+<li><a href="../../aikataulu/viikkopalautukset/viikko1.html">Viikko 1</a></li>
+<li><a href="../../aikataulu/viikkopalautukset/viikko2.html">Viikko 2</a></li>
+<li><a href="../../aikataulu/viikkopalautukset/viikko3.html">Viikko 3</a></li>
+<li><a href="../../aikataulu/viikkopalautukset/viikko4.html">Viikko 4</a></li>
+<li><a href="../../aikataulu/viikkopalautukset/viikko5.html">Viikko 5</a></li>
+</ul></li>
+<li><a href="../../aikataulu/demo.html">Demotilaisuus</a></li>
+<li><a href="../../aikataulu/palautus.html">Työn palautus</a></li>
+</ul></li>
+<li><a href="../../suunnittelu/index.html">Työn suunnittelu</a>
+<ul>
+<li><a href="../../suunnittelu/aiheet/index.html">Työaiheet</a>
+<ul>
+<li><a href="../../suunnittelu/aiheet/Drinkkiarkisto.html">Drinkkiarkisto</a></li>
+<li><a href="../../suunnittelu/aiheet/Elektroninen_keittokirja.html">Elektroninen keittokirja</a></li>
+<li><a href="../../suunnittelu/aiheet/Graduaiheet.html">Graduaiheet</a></li>
+<li><a href="../../suunnittelu/aiheet/Hiihtokisojen_tulospalvelu.html">Hiihtokisojen tulospalvelu</a></li>
+<li><a href="../../suunnittelu/aiheet/Huutokauppa.html">Huutokauppa</a></li>
+<li><a href="../../suunnittelu/aiheet/Kennelkerho.html">Kennelkerho</a></li>
+<li><a href="../../suunnittelu/aiheet/Keskustelufoorumi.html">Keskustelufoorumi</a></li>
+<li><a href="../../suunnittelu/aiheet/Kurssikysely.html">Kurssikysely</a></li>
+<li><a href="../../suunnittelu/aiheet/Kurssin_kotisivu.html">Kurssin kotisivu</a></li>
+<li><a href="../../suunnittelu/aiheet/Kurssitarjonta_ja_kurssipaikan_varaus.html">Kurssitarjonta ja kurssipaikan varaus</a></li>
+<li><a href="../../suunnittelu/aiheet/Laakariaseman_tyovuorolista.html">Lääkäriaseman työvuorolista</a></li>
+<li><a href="../../suunnittelu/aiheet/Laakarin_kotikaynnit.html">Lääkärin kotikäynnit</a></li>
+<li><a href="../../suunnittelu/aiheet/Matkojen_markkinointi.html">Matkojen markkinointi</a></li>
+<li><a href="../../suunnittelu/aiheet/Muistilista.html">Muistilista</a></li>
+<li><a href="../../suunnittelu/aiheet/Ostoskassi.html">Ostoskassi</a></li>
+<li><a href="../../suunnittelu/aiheet/Palvelubisnes.html">Palvelubisnes</a></li>
+<li><a href="../../suunnittelu/aiheet/Parturi-Kampaamo.html">Parturi-Kampaamo</a></li>
+<li><a href="../../suunnittelu/aiheet/Pizzapalvelu.html">Pizzapalvelu</a></li>
+<li><a href="../../suunnittelu/aiheet/Pokemon-kanta.html">Pokémon-tietokanta</a></li>
+<li><a href="../../suunnittelu/aiheet/Projektin_tyoaikaseuranta.html">Projektin työaikaseuranta</a></li>
+<li><a href="../../suunnittelu/aiheet/Rankkauslista.html">Rankkauslista</a></li>
+<li><a href="../../suunnittelu/aiheet/Taloyhtion_palvelut.html">Taloyhtiön palvelut</a></li>
+<li><a href="../../suunnittelu/aiheet/Tavaranvaihto.html">Tavaranvaihto</a></li>
+<li><a href="../../suunnittelu/aiheet/Tukkuliikkeen_tilaustenksittely.html">Tukkuliikkeen tilaustenkäsittely</a></li>
+<li><a href="../../suunnittelu/aiheet/Tutkimusaineston_kerays.html">Tutkimusaineiston keräys</a></li>
+<li><a href="../../suunnittelu/aiheet/Tyoaihekanta.html">Työaihekanta</a></li>
+<li><a href="../../suunnittelu/aiheet/Opintoneuvonnan_usein_kysytyt_kysymykset.html">Usein kysytyt kysymykset</a></li>
+<li><a href="../../suunnittelu/aiheet/Vedonlyonti.html">Vedonlyönti</a></li>
+<li><a href="../../suunnittelu/aiheet/Vuokra-asuntojen_valitys.html">Vuokra-asuntojen välitys</a></li>
+<li><a href="../../suunnittelu/aiheet/Ystavanvalityspalvelu.html">Ystävänvälityspalvelu</a></li>
+<li><a href="../../suunnittelu/aiheet/Aanestys.html">Äänestys</a></li>
+</ul></li>
+<li><a href="../../suunnittelu/ohjelmointikielet.html">Ohjelmointikielen valinta</a></li>
+<li><a href="../../suunnittelu/tietokannan-valinta.html">Tietokannan valinta</a></li>
+<li><a href="../../suunnittelu/kayttoliittyma.html">Käyttöliittymän suunnittelu</a></li>
+<li><a href="../../suunnittelu/tietokanta.html">Tietokannan suunnittelu</a></li>
+</ul></li>
+<li><a href="../../pystytys/index.html">Users-palvelin ja töiden pystyttäminen</a>
+<ul>
+<li><a href="../../pystytys/kayttoonotto/index.html">Palvelujen käynnistäminen ja käyttöönotto</a>
+<ul>
+<li><a href="../../pystytys/kayttoonotto/java.html">Java ja Tomcatin käyttöönotto</a></li>
+<li><a href="../../pystytys/kayttoonotto/mysql.html">MySql-tietokannan käyttöönotto</a></li>
+<li><a href="../../pystytys/kayttoonotto/php.html">PHP-tuen käyttöönotto</a></li>
+<li><a href="../../pystytys/kayttoonotto/postgresql.html">PostgreSQL-tietokannan käyttöönotto</a></li>
+</ul></li>
+<li><a href="../../pystytys/netbeans/index.html">NetBeansin käyttöönotto</a>
+<ul>
+<li><a href="../../pystytys/netbeans/java.html">NetBeansin käyttö Javan kanssa</a></li>
+<li><a href="../../pystytys/netbeans/php.html">NetBeansin käyttö PHP:n kanssa</a></li>
+<li><a href="../../pystytys/netbeans/keyring-reset.html">Unlock your keyring? - Avainnippujen nollaus</a></li>
+</ul></li>
+<li><a href="../../pystytys/postgres-ssh-tunneli.html">PostgreSql-kannan etäkäyttö</a></li>
+<li><a href="../../pystytys/java-war-paketit.html">Kotikoneella tehdyn Java-työn julkaisu</a></li>
+<li><a href="../../pystytys/php-virheet.html">PHP:n virheilmoitusten katselu</a></li>
+<li><a href="../../pystytys/nautilus-ssh.html">Tiedostojen etämuokkaus Linuxilla</a></li>
+</ul></li>
+<li><a href="../../koodaaminen/index.html">Ohjelmointiohjeistus</a>
+<ul>
+<li><a href="../../koodaaminen/html-opas.html">HTML-opas</a></li>
+<li><a href="../../koodaaminen/kannan-alustus.html">Tietokantataulujen pystyttäminen</a></li>
+<li><a href="../../koodaaminen/testisovellus.html">ConnectionTest-testisovellus</a></li>
+<li><a href="../../koodaaminen/git-ja-salasanat.html">Git-repositoriot ja salasanat</a></li>
+<li><a href="../../koodaaminen/arkkitehtuuri/index.html">Arkkitehtuuri ja MVC</a>
+<ul>
+<li><a href="../../koodaaminen/arkkitehtuuri/nyrkkisaannot.html">MVC-mallin nyrkisääntöjä</a></li>
+</ul></li>
+<li><a href="../../koodaaminen/java/index.html">Java-ohjeet</a>
+<ul>
+<li><a href="../../koodaaminen/java/tietokantayhteys.html">Tietokantayhteyden pystytys</a></li>
+<li><a href="../../koodaaminen/java/listaustesti.html">Listaustesti</a></li>
+<li><a href="../../koodaaminen/java/rakenne.html">Sovelluksen rakenne ja servletit</a></li>
+<li><a href="../../koodaaminen/java/nakymat.html">Näkymien tekeminen ja JSP</a></li>
+<li><a href="../../koodaaminen/java/lomakkeet.html">Lomakkeiden käyttö ja vastaanottaminen</a></li>
+<li><a href="../../koodaaminen/java/mallit_tiedonhaku.html">Tietokantahaku ja kyselyn parametrit</a></li>
+<li><a href="../../koodaaminen/java/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
+<li><a href="../../koodaaminen/java/listausnakymat.html">Listaus- ja tietonäkymät</a></li>
+<li><a href="../../koodaaminen/java/mallit_lisays.html">Tietojen syöttäminen kantaan</a></li>
+<li><a href="../../koodaaminen/java/muokkausnakymat.html">Muokkausnäkymän toteuttaminen</a></li>
+</ul></li>
+<li><a href="../../koodaaminen/php/index.html">PHP-ohjeet</a>
+<ul>
+<li><a href="../../koodaaminen/php/tietokantayhteys.html">Tietokantayhteyden pystytys</a></li>
+<li class="selected"><a href="../../koodaaminen/php/listaustesti.html">Listaustesti</a></li>
+<li><a href="../../koodaaminen/php/rakenne.html">Sovelluksen rakenne ja kontrollerit</a></li>
+<li><a href="../../koodaaminen/php/nakymat.html">Näkymien tekeminen</a></li>
+<li><a href="../../koodaaminen/php/lomakkeet.html">Lomakkeiden käyttö ja vastaanottaminen</a></li>
+<li><a href="../../koodaaminen/php/mallit_tiedonhaku.html">Tietokantahaku ja kyselyn parametrit</a></li>
+<li><a href="../../koodaaminen/php/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
+<li><a href="../../koodaaminen/php/listausnakymat.html">Listaus- ja tietonäkymät</a></li>
+<li><a href="../../koodaaminen/php/mallit_lisays.html">Tietojen syöttäminen kantaan</a></li>
+<li><a href="../../koodaaminen/php/muokkausnakymat.html">Muokkausnäkymän toteuttaminen</a></li>
+</ul></li>
+</ul></li>
+<li><a href="../../arvosteluperusteet.html">Arvosteluperusteet</a></li>
+<li><a href="../../dokumentaatio-ohje.html">Dokumentaatio-ohje</a></li>
+<li><a href="../../cleancode.html">Hyvä ohjelmointityyli</a></li>
+<li><a href="../../kaytettavyys.html">Käytettävyys</a></li>
+<li><a href="../../sivukartta.html">Sivukartta</a></li>
+<li><a href="../../web-sovelluksista.html">Web-sovelluksien toiminta</a></li>
+</ul></li>
+</ul>
+</nav>
+</div>
+<div class="col-md-6" id="content">
+<header>
+<h1 class="title">Listaustesti</h1>
+</header>
+<!-- order: 2 -->
+
+<section class="alert alert-info"><h3>
+Tiivistelmä:
+</h3>
+<ul>
+<li>PHP-tilan ja tekstitilan välillä pomppiminen ja miten HTML-koodia tulostetaan.</li>
+<li>Tietokannan käsittely keskitetään omiin luokkiinsa eli <em>malleihin</em>.</li>
+<li>Käytännössä jokaista tietokohdetta vastaa yksi malliluokka.
+<ul>
+<li>Puhtaille välitauluille harvemmin tarvitaan omaa luokkaansa, vaan niiden toiminnot hoidetaan itse tietokohteiden kautta.</li>
+<li>Luokka sisältää tarvittavat taulun käsittelyyn metodit.</li>
+</ul></li>
+</ul>
+</section>
+
+<p>Varmista ensin, että sinulla on omassa tiedossaan luokka tai funktio, jolla saat <a href="../php/tietokantayhteys.html">yhteyden tietokantaan</a>. Nyt käytämme tietokantayhteyttä luokaksemme hyvin yksinkertaisen sivun, jolla listataan jonkun taulun sisältöä. Teemme tämän kahdessa vaiheessa: Ensin luomme yksinkertaisen sivun, joka näyttää listan asioista sitten luomme koodin, joka hakee tuon listan tietokannasta.</p>
+<section id="asioiden-listaaminen-ja-html" class="level2">
+<h2>Asioiden listaaminen ja HTML</h2>
+<p>Jotta saamme näkyviin listan asioita, meidän pitää käyttää HTML:ää. Tämä on PHP:llä onneksi hyvin helppoa.</p>
+<p>Kielessä on käytössä kaksi tilaa, joita kontrolloidaan <code>&lt;?php ?&gt;</code>-tägien avulla. Tägien ulkopuolella oleva teksti lähetetään sellaisenaan suoraan selaimelle, niiden sisällä taas tulkitaan PHP-ohjelmakoodina.</p>
+<p>PHP-tilassa on myös mahdollista lähettää selaimelle tekstiä käyttämällä <a href="http://www.php.net/echo">echo-konstruktiota</a>:</p>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="st">&quot;Hei maailma!&quot;</span><span class="ot">,</span> <span class="st">&quot;Hei &quot;</span><span class="ot">,</span> <span class="kw">$nimi</span><span class="ot">;</span> <span class="kw">?&gt;</span></code></pre>
+<p>PHP- ja HTML-tilojen välillä voi myös hyppiä koska tahansa. Esimerkiksi for-luupin sisällä on täysin laillista lopettaa php-tägi ja siirtyä HTML-tilaan.</p>
+<p>Oikeastaan voidaan ajatella että kaikki php-tägien ulkopuolinen on oikeastaan vain yhtä suurta echo-lausetta.</p>
+<p>Tämä mielessä pitäen yksinkertainen lista voidaan toteuttaa suhteellisen helposti:</p>
+<p><strong>Esimerkki</strong></p>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>
+<span class="co">//Lista asioista array-tietotyyppiin laitettuna:</span>
+<span class="kw">$lista</span> = <span class="fu">array</span><span class="ot">(</span><span class="st">&quot;Kirahvi&quot;</span><span class="ot">,</span> <span class="st">&quot;Trumpetti&quot;</span><span class="ot">,</span> <span class="st">&quot;Jeesus&quot;</span><span class="ot">,</span> <span class="st">&quot;Parta&quot;</span><span class="ot">);</span>
+<span class="kw">?&gt;</span>&lt;!DOCTYPE HTML&gt;
+&lt;html&gt;
+  &lt;head&gt;&lt;title&gt;Otsikko&lt;/title&gt;&lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Listaelementtitesti&lt;/h1&gt;
+    &lt;ul&gt;
+    <span class="kw">&lt;?php</span> <span class="kw">foreach</span><span class="ot">(</span><span class="kw">$lista</span> <span class="kw">as</span> <span class="kw">$asia</span><span class="ot">)</span> { <span class="kw">?&gt;</span>
+      &lt;li&gt;<span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$asia</span><span class="ot">;</span> <span class="kw">?&gt;</span>&lt;/li&gt;
+    <span class="kw">&lt;?php</span> } <span class="kw">?&gt;</span>
+    &lt;/ul&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p>Ohjeisen koodin pitäisi tuottaa selaimelle lista, jossa on asiat-listaan lisätyt neljä asiaa. Testaa tätä selaimessa nyt.</p>
+<p>Tätä nimenomaista HTML-koodin seassa koodausta varten PHP:ssä on olemassa myös hieman <a href="http://php.net/manual/en/control-structures.alternative-syntax.php">erilaiset versiot useimmista kielen rakenteista</a>:</p>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span> <span class="kw">foreach</span><span class="ot">(</span><span class="kw">$lista</span> <span class="kw">as</span> <span class="kw">$asia</span><span class="ot">)</span>: <span class="kw">?&gt;</span>
+  &lt;li&gt;<span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$asia</span><span class="ot">;</span> <span class="kw">?&gt;</span>&lt;/li&gt;
+<span class="kw">&lt;?php</span> <span class="kw">endforeach</span><span class="ot">;</span> <span class="kw">?&gt;</span></code></pre>
+<p>Huomaa kaksoispiste for-luupin jälkeen ja puolipiste endforeach-sanan jälkeen.</p>
+<p>HTML-koodin seassa nämä tavat ilmaista luuppeja ja muita kontrollirakenteita tekevät koodin tulkitsemisesta usein helpompaa, sillä lopetussanasta näkee heti minkä rakenteen se lopettaa.</p>
+<p>Jos haluat tutustua näkymäkoodin kirjoittamiseen tarkemmin, voit tutustua <a href="../php/rakenne.html">kolmosviikon ohjeisiin</a>.</p>
+</section>
+<section id="tietokannan-käyttö-ja-mallit" class="level2">
+<h2>Tietokannan käyttö ja mallit</h2>
+<p>Nyt kun meillä on tapa laittaa lista näkyville, voimme kirjoittaa koodia, joka tuottaa meille listan tietokannassa olevista asioista, vaikkapa kissoista.</p>
+<p>Aivan kuten tietokantayhteydenkin muodostamisenkin kirjoitamme tietokantaa käsittelevän koodin omaan tiedostoonsa. Tapana on jakaa tietokantaa käsittelevä koodi tietokohteittain siten, että kutakin tietokantataulua käsittelevä koodi on omassa luokassaan. Näitä luokkia kutsutaan malleiksi. (Malleista ja sovelluksen arkkitehtuurista voi lukea lisää <a href="../../koodaaminen/arkkitehtuuri/index.html">kolmosviikon materiaalista</a>)</p>
+<p>Poikkeuksena tietokantataulujen ja malliluokkien vastaavuuteen ovat tosin välitaulut, joille ei välttämättä aina tarvitse tehdä omaa tietokantatauluaan.</p>
+<p>Tässä materiaalissa rakennamme mallit niin, että kunkin malliluokan oliot vastaavat mallin kuvaaman tietokantataulun rivejä ja mallissa on staattisia metodeja, joilla on mahdollista hakea näitä olioita tietokannasta.</p>
+<section id="mallin-tekeminen-käyttäjille" class="level3">
+<h3>Mallin tekeminen käyttäjille</h3>
+<p>Tehdän ensi viikon kirjautumisen toteuttamista silmälläpitäen jo valmiiksi käyttäjille oma malliluokkansa. Lisätään luokalle attribuuteiksi käyttäjätaulun kentät, sekä konstruktori:</p>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>
+<span class="kw">class</span> Kayttaja {
+  
+  <span class="kw">private</span> <span class="kw">$id</span><span class="ot">;</span>
+  <span class="kw">private</span> <span class="kw">$tunnus</span><span class="ot">;</span>
+  <span class="kw">private</span> <span class="kw">$password</span><span class="ot">;</span>
+
+  <span class="kw">public</span> <span class="kw">function</span> <span class="fu">__construct</span><span class="ot">(</span><span class="kw">$id</span><span class="ot">,</span> <span class="kw">$tunnus</span><span class="ot">,</span> <span class="kw">$salasana</span><span class="ot">)</span> {
+    <span class="kw">$this</span>-&gt;id = <span class="kw">$id</span><span class="ot">;</span>
+    <span class="kw">$this</span>-&gt;tunnus = <span class="kw">$tunnus</span><span class="ot">;</span>
+    <span class="kw">$this</span>-&gt;salasana = <span class="kw">$salasana</span><span class="ot">;</span>
+  }
+
+  <span class="co">/* Tähän gettereitä ja settereitä */</span>
+}</code></pre>
+<p>Tälläinen omaan tiedostoonsa kirjoitettu kirjastoluokka, haetaan käyttöön <a href="http://php.net/manual/en/function.include.php">include tai require-funktiolla</a>.</p>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>
+  <span class="kw">require</span> <span class="st">&#39;kirjastot/kayttaja.php&#39;</span><span class="ot">;</span></code></pre>
+<p>Include ja require ovat hieman samanlaisia kuin Javan import, mutta ovat teknisesti lähemänä C-kielen includea. Molemmat lähinnä ikäänkuin upottavat kysytyn tiedoston siihen kohtaan koodia, missä niitä kutsutaan.</p>
+<p>Kirjastoja hakiessa kannattaa käyttää once-päätteisiä versioita, jotka eivät koskaan hae samaa tiedostoa kahdesti. PHP:ssä saman tiedoston voi hakea kahdesti, mutta jos tiedostossa on luokkamäärittely kaatuu suoritus siihen, että toisella kerralla jo olemassa olevaa luokkaa yritettään luoda uusiksi.</p>
+<section class="alert alert-warning"><h3>
+Vinkki
+</h3>
+<p>Näitä luokkia sisältäviä kirjastoina toimivia php-tiedostoja ei tarvitse päättää <code>?&gt;</code>-lopputägiin. Lopputägin laittaminen on itseasiassa huono idea, sillä niiden jälkeen saattaa tällöin eksyä rivinvaihtoja ja välilyöntejä, jotka PHP lähettää empimättä selaimelle. Tällä on ikävä tapa sotkea istuntojen ja sivujen välisten ohjausten ym. HTTP-otsakkeita käyttävien toimintojen toimintaa.</p>
+</section>
+
+</section>
+<section id="tietokantahaku" class="level3">
+<h3>Tietokantahaku</h3>
+<p>Tehdään seuraavaksi luokalle staattinen metodi, joka palauttaa kaikki tuon tietokohteen taulun rivit tuon luokan olioina. Käytetään tähän aiemmin tekemäämme tietokantayhteysfunktiota, jolta kysymme <code>PDO</code>-tyyppistä yhteysoliota:</p>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">$yhteys</span> = getTietokantayhteys<span class="ot">();</span></code></pre>
+<p>Yhteysoliota voi pyytää valmistelemaan SQL-koodia suoritettavaksi kutsumalla sen <code>prepare</code>-metodia. Tuloksena saatavan <code>PDOStatement</code>-olion voi taas käskeä sille annetun suorittamaan SQL:n kutsumalla <code>execute</code>-metodia.</p>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">$sql</span> = <span class="st">&quot;SELECT id,tunnus, password from users&quot;</span><span class="ot">;</span>
+<span class="kw">$kysely</span> = getTietokantayhteys<span class="ot">()</span>-&gt;prepare<span class="ot">(</span><span class="kw">$sql</span><span class="ot">);</span> 
+<span class="kw">$kysely</span>-&gt;execute<span class="ot">();</span></code></pre>
+</section>
+<section id="tiedon-hakeminen-kyselyoliolta" class="level3">
+<h3>Tiedon hakeminen kyselyoliolta</h3>
+<p>Viimeisen kutsun jälkeen <code>$kysely</code>-muuttujalta voi kysellä kannasta saatuja tietoja takaisin. Tietoja voi pyydellä rivi kerrallaan käyttämällä <code>fetch</code> tai <code>fetchObject</code>-metodia. Molemmat hakevat seuraavan tuloksissa olevan rivin.</p>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="co">//Haetaan kaksi riviä eri tyyppisinä ja tulostetaan niiltä tunnus.</span>
+<span class="kw">$assosiaatiotaulu</span> = <span class="kw">$kysely</span>-&gt;fetch<span class="ot">();</span>
+<span class="fu">echo</span> <span class="kw">$assosiaatiotaulu</span><span class="ot">[</span><span class="st">&#39;tunnus&#39;</span><span class="ot">];</span>
+
+<span class="kw">$nimeton_olio</span> = <span class="kw">$kysely</span>-&gt;fetchObject<span class="ot">();</span>
+<span class="fu">echo</span> <span class="kw">$nimeton_olio</span>-&gt;tunnus<span class="ot">;</span></code></pre>
+<p>Tiedot voi myös hakea kaikki rivit kerralla <code>fetchAll</code>-metodilla.</p>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">$rivit</span> = <span class="kw">$kysely</span>-&gt;fetchAll<span class="ot">();</span>
+<span class="fu">echo</span> <span class="kw">$rivit</span><span class="ot">[</span><span class="dv">0</span><span class="ot">][</span><span class="st">&#39;tunnus&#39;</span><span class="ot">];</span></code></pre>
+<p><code>fetchAll</code>-metodille voi antaa parametrin, jolla määritellään palautustyyppi. Listan olioita saa antamalla metodille paremetrina vakion <code>PDO::FETCH_OBJ</code>.</p>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">$rivit</span> = <span class="kw">$kysely</span>-&gt;fetchAll<span class="ot">(</span><span class="kw">PDO</span>::<span class="kw">FETCH_OBJ</span><span class="ot">);</span>
+<span class="fu">echo</span> <span class="kw">$rivit</span><span class="ot">[</span><span class="dv">0</span><span class="ot">]</span>-&gt;tunnus<span class="ot">;</span></code></pre>
+<p>Lopuksi on mahdollista hakea yksittäinen arvo <code>fetchColumn</code>-metodilla:</p>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">$id</span> = <span class="kw">$kysely</span>-&gt;fetchColumn<span class="ot">();</span> <span class="co">//Hakee oletuksena ensimmäisen sarakkeen</span>
+<span class="fu">echo</span> <span class="kw">$id</span><span class="ot">;</span>
+
+<span class="co">//Huomaa! Myös fetchColumn hakee aina seuraavalta tietokannan</span>
+<span class="co">//palauttamalta tulosriviltä.</span>
+<span class="co">//Seuraavalla rivillä haetaan jo aivan eri riviltä tietoja,</span>
+<span class="co">//kuin id-numeroa hakenut metodikutsu!</span>
+<span class="kw">$tunnus</span> = <span class="kw">$kysely</span>-&gt;fetchColumn<span class="ot">(</span><span class="dv">1</span><span class="ot">);</span></code></pre>
+<p>Näillä metodeilla haetut tiedot voidaan nyt tallentaa olioihin, jotka voidaan tallentaa listaan ja palauttaa metodin kutsujalle.</p>
+<p>Alla on esimerkki valmiista metodista, joka palauttaa jokaisen käyttäjän.</p>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">public</span> <span class="kw">static</span> <span class="kw">function</span> getKayttajat<span class="ot">()</span> {
+  <span class="kw">$sql</span> = <span class="st">&quot;SELECT id,tunnus, password from users&quot;</span><span class="ot">;</span>
+  <span class="kw">$kysely</span> = getTietokantayhteys<span class="ot">()</span>-&gt;prepare<span class="ot">(</span><span class="kw">$sql</span><span class="ot">);</span> <span class="kw">$kysely</span>-&gt;execute<span class="ot">();</span>
+    
+  <span class="kw">$tulokset</span> = <span class="fu">array</span><span class="ot">();</span>
+  <span class="kw">foreach</span><span class="ot">(</span><span class="kw">$kysely</span>-&gt;fetchAll<span class="ot">(</span><span class="kw">PDO</span>::<span class="kw">FETCH_OBJ</span><span class="ot">)</span> <span class="kw">as</span> <span class="kw">$tulos</span><span class="ot">)</span> {
+    <span class="kw">$kayttaja</span> = <span class="kw">new</span> Kayttaja<span class="ot">(</span><span class="kw">$tulos</span>-&gt;id<span class="ot">,</span> <span class="kw">$tulos</span>-&gt;tunnus<span class="ot">,</span> <span class="kw">$tulos</span>-&gt;salasana<span class="ot">);</span> 
+    <span class="co">//$array[] = $muuttuja; lisää muuttujan arrayn perään. </span>
+    <span class="co">//Se vastaa melko suoraan ArrayList:in add-metodia.</span>
+    <span class="kw">$tulokset</span><span class="ot">[]</span> = <span class="kw">$kayttaja</span><span class="ot">;</span>
+  }
+  <span class="kw">return</span> <span class="kw">$tulokset</span><span class="ot">;</span>
+}</code></pre>
+</section>
+<section id="koodin-käyttäminen-kontrollerissa" class="level3">
+<h3>Koodin käyttäminen kontrollerissa</h3>
+<p>Malliluokan koodia käyttäen listaesimerkin alku voi näyttää esimerkiksi seuraavalta:</p>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>
+<span class="co">//require_once sisällyttää annetun tiedoston vain kerran</span>
+<span class="kw">require_once</span> <span class="st">&quot;libs/tietokanta.php&quot;</span><span class="ot">;</span> 
+<span class="kw">require_once</span> <span class="st">&quot;libs/models/kayttaja.php&quot;</span><span class="ot">;</span>
+
+<span class="co">//Lista asioista array-tietotyyppiin laitettuna:</span>
+<span class="kw">$lista</span> = Kayttaja::getKayttajat<span class="ot">();</span>
+<span class="kw">?&gt;</span>&lt;!DOCTYPE HTML&gt;
+...</code></pre>
+<p>Ja koska kyseessä ovat oliot, pitää niitä listatessa tulostaa jokin merkkijono eikä itse oliota:</p>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$asia</span>-&gt;getUsername<span class="ot">();</span> <span class="kw">?&gt;</span></code></pre>
+<section class="alert alert-warning"><h3>
+Hyvä tietää
+</h3>
+<p>Tällä viikolla tehtävä listaus on tahallaan melko yksinkertainen, sillä tarkoitus on vain testata tietokantaohjelmointia. Lopulliset sivut tulevat noudattamaan läheisemmin <a href="../../koodaaminen/arkkitehtuuri/index.html">MVC-arkkitehtuuria</a>.</p>
+</section>
+</section>
+</section>
+<section id="linkkejä" class="level2">
+<h2>Linkkejä</h2>
+<ul>
+<li><a href="http://www.php.net/manual/en/language.basic-syntax.phpmode.php">Esimerkkejä PHP-tilasta kielen omassa dokumentaatiossa</a></li>
+<li><a href="http://php.net/manual/en/function.include.php">Include ja require</a></li>
+</ul>
+<section class="alert alert-success small"><h3>
+Seuraavaksi:
+</h3>
+<p>Testisovelluksen tehtyäsi voit tustustua tarkemmin viikon 3 materiaaliin: <a href="../../koodaaminen/arkkitehtuuri/index.html">MVC-arkkitehtuuriin</a> ja sen jälkeen <a href="../php/index.html">kirjautumisen toteuttamiseen</a>.</p>
+</section>
+
+
+
+
+</section>
+</div>
+</div> 
+</div> 
+<footer>
+  <a href="../../sivukartta.html">Sivukartta</a> - 
+  <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">AdvancedKittenry</span> 
+  by
+  <a xmlns:cc="http://creativecommons.org/ns#" href="http://advancedkittenry.github.io/credits.html" property="cc:attributionName" rel="cc:attributionURL">David Consuegra and others</a>
+  is licensed under a 
+  <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.
+  <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">
+    <img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png" />
+  </a>
+</footer>
+</body>
+</html>

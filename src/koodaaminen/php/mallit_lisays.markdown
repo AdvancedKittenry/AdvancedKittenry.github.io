@@ -1,5 +1,5 @@
 % Tietojen syöttäminen kantaan
-<!-- order: 7 -->
+<!-- order: 9 -->
 
 <wip />
 
@@ -65,6 +65,8 @@ laittamalla toisteista koodia luuppeihin.
 
 Alla esimerkki siitä miten virheentarkistuksen voi toteuttaa
 settereillä, jotka muokkaavat privaattikentäksi määriteltyä virhetaulukkoa.
+
+**Ote kissojen malliluokasta**
 
 ~~~inlinephp
 class Kissa {
@@ -149,6 +151,8 @@ olemassa omat kikkansa:
     * Javassa voi käyttää [out-tägiä](http://docs.oracle.com/javaee/5/jstl/1.1/docs/tlddocs/): `<c:out value="${muuttuja}"/>`
 * Lomake ohjaa lisäyksen onnistuessa selaimen listaussivulle.
   * Onnistumisesta onnistumisviesti
+
+**Kontrollerikoodia**
 
 ~~~inlinephp
 if ($uusikatti->onkoKelvollinen()) {

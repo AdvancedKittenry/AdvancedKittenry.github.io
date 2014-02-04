@@ -52,8 +52,6 @@ Toteutettuna pitää olla HTML-versiot seuraavista aiemmin suunnitelluista sivui
 
 Suunnittele ja dokumentoi sovelluksellesi tietokanta
 sekä sanallisella että kooditasolla.
-Aloita sivulta 
-[tietokannan suunnittelu]({{rootdir}}suunnittelu/tietokanta.html).
 
 * [Tietokannan pystyttäminen palvelimelle]({{rootdir}}koodaaminen/kannan-alustus.html)
     * Luodaan SQL-tiedostot, joilla kannan rakenteen saa vedettyä ylös ja alas.
@@ -61,9 +59,13 @@ Aloita sivulta
 * Otetaan käyttöön [tietokantatestisovellus]({{rootdir}}koodaaminen/testisovellus.html)
     * Sovellus näyttää tietokannan taulut ja niiden sisältöä. Ohjaaja käyttää tätä pysyäkseen paremmin kärryillä tietokannan tilasta.
     * Tämän tulee olla näkyvillä usersin palvelintilassa.
-* Tarvitset koodaamiseen [tietokantayhteyden muodostavan koodin]({{rootdir}}koodaaminen/tietokantayhteys/index.html), joka pitää sijoittaa omaan tiedostoonsa.
-* Tee yhteyttä käyttävä [kevyt testisivu]({{rootdir}}koodaaminen/listaustesti/index.html), joka listaa jonkin tietokantataulun sisällön.
+* Tarvitset koodaamiseen tietokantayhteyden muodostavan koodi, joka pitää sijoittaa omaan tiedostoonsa.
+* Tee lopuksi yhteyttä käyttävä kevyt testisivu, joka listaa jonkin tietokantataulun kaikkilta riveiltä jotakin, esimerkiksi jokaisen käyttäjän nimen.
     * Käytä tietokannan täyttämiseen `add-test-data.sql`-tiedostoa, niin sivulla on jotain näytettävää.
+
+Aloita sivulta 
+[tietokannan suunnittelu]({{rootdir}}suunnittelu/tietokanta.html).
+ja seuraa vihreitä ohjelaatikoita.
 
 ## Tietokannan rakenteen dokumentoiminen (puoli pistettä)
 
@@ -139,8 +141,7 @@ fonts/
 html-demo/
   index.html
   kissalista.html
-  muokkaakissaa.html
-js/
+  muokkaakissaa.html js/
   ...
 libs/
   tietokantayhteys.php

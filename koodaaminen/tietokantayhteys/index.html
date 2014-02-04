@@ -8,25 +8,6 @@
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
-  <style type="text/css">
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; }
-code > span.dt { color: #902000; }
-code > span.dv { color: #40a070; }
-code > span.bn { color: #40a070; }
-code > span.fl { color: #40a070; }
-code > span.ch { color: #4070a0; }
-code > span.st { color: #4070a0; }
-code > span.co { color: #60a0b0; font-style: italic; }
-code > span.ot { color: #007020; }
-code > span.al { color: #ff0000; font-weight: bold; }
-code > span.fu { color: #06287e; }
-code > span.er { color: #ff0000; font-weight: bold; }
-  </style>
   <link rel="stylesheet" href="../../css/base.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!--[if lt IE 9]>
@@ -134,19 +115,15 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li><a href="../../koodaaminen/html-opas.html">HTML-opas</a></li>
 <li><a href="../../koodaaminen/kannan-alustus.html">Tietokantataulujen pystyttäminen</a></li>
 <li><a href="../../koodaaminen/testisovellus.html">ConnectionTest-testisovellus</a></li>
-<li class="selected"><a href="../../koodaaminen/tietokantayhteys/index.html">Tietokantayhteyden pystytys</a></li>
 <li><a href="../../koodaaminen/git-ja-salasanat.html">Git-repositoriot ja salasanat</a></li>
-<li><a href="../../koodaaminen/listaustesti/index.html">Yksinkertainen tietokantalistaus</a>
-<ul>
-<li><a href="../../koodaaminen/listaustesti/java.html">Listaus Javalla</a></li>
-<li><a href="../../koodaaminen/listaustesti/php.html">Listaus PHP:llä</a></li>
-</ul></li>
 <li><a href="../../koodaaminen/arkkitehtuuri/index.html">Arkkitehtuuri ja MVC</a>
 <ul>
 <li><a href="../../koodaaminen/arkkitehtuuri/nyrkkisaannot.html">MVC-mallin nyrkisääntöjä</a></li>
 </ul></li>
 <li><a href="../../koodaaminen/java/index.html">Java-ohjeet</a>
 <ul>
+<li><a href="../../koodaaminen/java/tietokantayhteys.html">Tietokantayhteyden pystytys</a></li>
+<li><a href="../../koodaaminen/java/listaustesti.html">Listaustesti</a></li>
 <li><a href="../../koodaaminen/java/rakenne.html">Sovelluksen rakenne ja servletit</a></li>
 <li><a href="../../koodaaminen/java/nakymat.html">Näkymien tekeminen ja JSP</a></li>
 <li><a href="../../koodaaminen/java/lomakkeet.html">Lomakkeiden käyttö ja vastaanottaminen</a></li>
@@ -158,6 +135,8 @@ code > span.er { color: #ff0000; font-weight: bold; }
 </ul></li>
 <li><a href="../../koodaaminen/php/index.html">PHP-ohjeet</a>
 <ul>
+<li><a href="../../koodaaminen/php/tietokantayhteys.html">Tietokantayhteyden pystytys</a></li>
+<li><a href="../../koodaaminen/php/listaustesti.html">Listaustesti</a></li>
 <li><a href="../../koodaaminen/php/rakenne.html">Sovelluksen rakenne ja kontrollerit</a></li>
 <li><a href="../../koodaaminen/php/nakymat.html">Näkymien tekeminen</a></li>
 <li><a href="../../koodaaminen/php/lomakkeet.html">Lomakkeiden käyttö ja vastaanottaminen</a></li>
@@ -183,199 +162,13 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <h1 class="title">Tietokantayhteyden pystytys</h1>
 </header>
 <!-- order: 3 -->
+<!-- hidden! -->
 
-<p>Seuraavaksi pyrimme luomaan tiedoston, jossa on tarvittava koodi tietokantayhteyden luomiseen. Samoin esitetään lyhyet testiohjelma, jolla yhteyttä voi testata.</p>
-<section class="alert alert-info"><h3>
-Tiivistelmä:
-</h3>
+<p>Tämä sivu on siirretty eri paikkaan. Siitä on nykyisin olemassa PHP- ja Java-versiot:</p>
 <ul>
-<li>Varmista että aikaisemmin kirjoittamasi SQL-lauseet toimivat siten tietokantataulusi ovat nyt pystyssä kannassa.</li>
-<li>Jotta tietokantaa pystyy käyttämään, pitää siihen ottaa yhteys
-<ul>
-<li>Yhteyttä mallinnetaan käytetyn kielen tietokantakirjaston tarjoamalla oliolla.</li>
-<li>Luominen pitää sijoittaa omaan metodiinsa, jota käyttämällä muu voi ohjelmakoodi käyttää tietokantaoliota.</li>
-<li>Metodi sijoitetaan omaan luokkaansa ja tiedostoonsa, joka sijoitetaan omaan tietokantakirjastoille tarkoitettuun pakettiinsa ja hakemistoonsa.</li>
-</ul></li>
-<li>Jos käytät tietokantayhteyden autentikointiin salasanaa, <a href="../git-ja-salasanat.html#salasanojen-tallentaminen-ja-github">älä laita sitä GitHubiin sellaisenaan</a>.</li>
+<li><a href="../php/tietokantayhteys.html">PHP-versio</a></li>
+<li><a href="../java/tietokantayhteys.html">Java-versio</a></li>
 </ul>
-</section>
-
-<p>Sekä Javalla että PHP:llä tietokantayhteyksiä edustaa erillinen luokka, jonka olio muodostetaan kutsumalla sopivaa metodia/konstruktoria. Kummallekin annetaan merkkijonona tietokantayhteyttä kuvaava osoite, jonka perusteella yhteys muodostetaan.</p>
-<p>Alla esimerkit tietokantayhteyden muodostamisesta Javalla ja PHP:llä tilanteessa, jossa työ pyörii users-palvelimella.</p>
-<p>Tee itsellesi ohjeita noudattaen tiedosto, johon sijoitat tietokannan muodostamisen. Laita tämä tiedosto omaan pakettiinsa ja/tai kansioonsa. Hyviä nimiä paketille/hakemistolle voivat olla esim. “Tietokanta” tai “Models”. Sovelluksesta tulee huomattavasti selkeämpi, jos kaikki tietokantaa käsittelevä koodi on sijoitettu yhteen paikkaan.</p>
-<ul class='nav nav-tabs nav-justified'><li class='active'>
-<a href='#tab_1_0' data-toggle='tab'>Java, JDBC ja context.xml</a>
-</li>
-<li>
-<a href='#tab_1_1' data-toggle='tab'>PHP ja PDO</a>
-</li></ul><div class='panel panel-default'><div class='panel-body'><div class='tab-content'>
-<section class='tab-pane active' id='tab_1_0' >
-
-<p>Javalla tietokantayhteyksien avaamiseen käytetään DataSource-tyyppistä tietokantayhteysvarastoa, joka huolehtii koko sovelluksen yhteyksien ylläpidosta ja kierrättämisestä eri aineistopyyntöjen välillä.</p>
-<p>Ensiksi pitää kuitenkin määritellä Java-koodin rinnalle context.xml-tiedostoon tietokantayhteyttä kuvaava resurssi.</p>
-<p><strong>web/META-INF/context.xml</strong></p>
-<pre class="sourceCode xml"><code class="sourceCode xml"><span class="kw">&lt;?xml</span> version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;<span class="kw">?&gt;</span>
-<span class="kw">&lt;Context</span><span class="ot"> antiJARLocking=</span><span class="st">&quot;true&quot;</span><span class="ot"> path=</span><span class="st">&quot;/Kissalista-java&quot;</span><span class="kw">&gt;</span>
-    <span class="kw">&lt;Resource</span><span class="ot"> name=</span><span class="st">&quot;jdbc/tietokanta&quot;</span><span class="ot"> auth=</span><span class="st">&quot;Container&quot;</span>
-<span class="ot">        type=</span><span class="st">&quot;javax.sql.DataSource&quot;</span><span class="ot"> removeAbandoned=</span><span class="st">&quot;true&quot;</span>
-<span class="ot">        removeAbandonedTimeout=</span><span class="st">&quot;30&quot;</span><span class="ot"> maxActive=</span><span class="st">&quot;100&quot;</span>
-<span class="ot">        maxIdle=</span><span class="st">&quot;30&quot;</span><span class="ot"> maxWait=</span><span class="st">&quot;10000&quot;</span><span class="ot"> username=</span><span class="st">&quot;tunnus&quot;</span>
-<span class="ot">        password=</span><span class="st">&quot;salasana&quot;</span>
-<span class="ot">        driverClassName=</span><span class="st">&quot;org.postgresql.Driver&quot;</span>
-<span class="ot">        url=</span><span class="st">&quot;jdbc:postgresql://localhost/tietokannan_nimi&quot;</span> <span class="kw">/&gt;</span>
-<span class="kw">&lt;/Context&gt;</span></code></pre>
-<p>Viimeinen attribuuttti, <code>url</code> kertoo Tomcatille tietokannan sijainnin ja nimen. Users-palvelimella tietokannan nimi on aina oma käyttäjätunnuksesi.</p>
-<section class="alert alert-danger"><h3>
-Pidä mielessä!
-</h3>
-<p>Joudut syöttämään tiedostoon tietokantatunnustesi salasanan, että saat koodin toimimaan. Salasanoja ei kannata laittaa repositorioon sellaisenaan. Käytä sen sijaan <a href="../git-ja-salasanat.html">nk. dist-tiedostoja</a></p>
-</section>
-
-<p>Kun resurssi on määritelty, voidaan Javan kirjastoilla hakea se:</p>
-<p><strong>Yhteysvaraston pystytyskoodi, sijoitetaan omaan luokkansa, esim. Kissalista.Tietokanta.Yhteys</strong></p>
-<pre class="sourceCode java"><code class="sourceCode java"><span class="co">//Haetaan context-xml-tiedostosta tietokannan yhteystiedot</span>
-<span class="co">//HUOM! Tämä esimerkki ei toimi sellaisenaan ilman Tomcat-palvelinta!</span>
-InitialContext cxt = <span class="kw">new</span> InitialContext();
-DataSource yhteysVarasto = (DataSource) cxt.<span class="fu">lookup</span>(<span class="st">&quot;java:/comp/env/jdbc/tietokanta&quot;</span>);</code></pre>
-<button type='button' class='btn-link expandable collapsed' data-toggle='collapse' data-target='#expandable_1'>
-Yllä olevan koodin vaatimat importit
-</button>
-  <div id='expandable_1' class='collapse'><section>
-
-<pre class="sourceCode java"><code class="sourceCode java"><span class="kw">import java.sql.Connection;</span>
-<span class="kw">import java.sql.SQLException;</span>
-<span class="kw">import javax.naming.Context;</span>
-<span class="kw">import javax.naming.InitialContext;</span>
-<span class="kw">import javax.naming.NamingException;</span>
-<span class="kw">import javax.sql.DataSource;</span></code></pre>
-</section></div>
-
-<p>Kun yhteysvarasto on kerran luotu, saa siltä uusia yhteyksiä suorittamalla getConnection-metodin:</p>
-<pre class="sourceCode java"><code class="sourceCode java">Connection yhteys = yhteysVarasto.<span class="fu">getConnection</span>(); </code></pre>
-<p>Menetelmän etuna on, ettei yhteyksien avaamisia tarvitse erikseen hallinnoida, vaan varasto avaa niitä lisää sitä mukaa kun tarvetta on.</p>
-<h2>Yhteyden sulkeminen</h2>
-<p>Kun olet suorittanut haluamasi SQL-kyselyn, yhteys pitää sulkea, jolloin se palaa takaisiin varastoon käytettäväksi:</p>
-<pre class="sourceCode java"><code class="sourceCode java"><span class="kw">try</span> { yhteys.<span class="fu">close</span>(); } <span class="kw">catch</span> (Exception e) {  }</code></pre>
-<p>Itse varasto-oliota ei tarvitse erikseen sulkea, sillä Tomcat huolehtii sen hallinnoinnista.</p>
-<section class="alert alert-danger"><h3>
-Pidä mielessä!
-</h3>
-<p>Jos yhteyttä ei suljeta aina käytön jälkeen, kasautuu avoimia yhteyksiä varatoon niin kauan kunnes tietokanta ei enää anna ottaa useampia yhteyksiä jolloin sovellus kaatuu.</p>
-</section>
-
-<h2>Kannan etäkäyttö NetBeansin kanssa</h2>
-<p>Jos haluat testata kantaa omalta koneeltasi käsin joudut <a href="../../pystytys/postgres-ssh-tunneli.html">muodostamaan ssh-tunnelin users-palvelimeen</a>. Et saa kantaan yhteyttä ilman sitä (ellet asenna omaa palvelinta).</p>
-<p>Tämän lisäksi joudut lisäämään projektiisi PostgreSQL-kannan ajurikirjaston. NetBeansia käyttäessäsi tämä hoituu samasta kohtaa, kuin JSTL-kirjaston lisääminen: avaa valikosta <code>File-&gt;Project Properties</code>, paina <em>Libraries</em>-kategoriassa nappia <em>Add Library</em> ja lisää listasta projektiin kirjasto nimeltä <code>PostgreSQL JDBC Driver</code>.</p>
-<figure>
-<img src="../../images/koodaaminen/tietokantayhteys/postgres-ajuri.png" alt="PostgreSQL-ajurin asennus" /><figcaption>PostgreSQL-ajurin asennus</figcaption>
-</figure>
-<p>Samanlaiset huomiot koskevat MySQL-tietokantaa.</p>
-<p>Jos koodaat suoraan Users-palvelimella, sinun ei tarvitse tehdä tietokanta-ajurin käyttämiseksi mitään.</p>
-<h2>Yhteyden testaaminen</h2>
-<p>Javalla yhteyden testaamista varten pitää luoda oma Servlet-luokka. NetBeans sisältää niitä varten varsin toimivan mallirungon, josta riittää vaihtaa <code>processRequest</code>-metodin sisältö:</p>
-<pre class="sourceCode java"><code class="sourceCode java"><span class="co">//HttpServlet-luokan perivään servlettiin menevä metodi:</span>
-<span class="kw">protected</span> <span class="dt">void</span> <span class="fu">processRequest</span>(HttpServletRequest request, HttpServletResponse response)
-      <span class="kw">throws</span> ServletException, IOException {
-  Connection yhteys = Tietokanta.<span class="fu">getYhteys</span>(); <span class="co">//Haetaan tietokantaluokalta yhteysolio</span>
-  PreparedStatement kysely;
-  ResultSet tulokset;
-  PrintWriter out = response.<span class="fu">getWriter</span>(); 
-  response.<span class="fu">setContentType</span>(<span class="st">&quot;text/plain;charset=UTF-8&quot;</span>);
-
-  <span class="kw">try</span> {
-    String sql = <span class="st">&quot;SELECT 1+1 as two&quot;</span>;
-    kysely = yhteys.<span class="fu">prepareStatement</span>(sql);
-    tulokset = kysely.<span class="fu">executeQuery</span>();
-    <span class="kw">if</span>(tulokset.<span class="fu">next</span>()) {
-      <span class="dt">int</span> kakkonen = tulokset.<span class="fu">getInt</span>(<span class="st">&quot;two&quot;</span>);
-      out.<span class="fu">println</span>(<span class="st">&quot;Tulos: &quot;</span>+kakkonen<span class="st">&quot;); </span>
-    } <span class="kw">else</span> {
-      out.<span class="fu">println</span>(<span class="st">&quot;Virhe!&quot;</span>); 
-    }
-  } <span class="kw">catch</span> (Exception e) {
-    out.<span class="fu">println</span>(<span class="st">&quot;Virhe: &quot;</span>+e.<span class="fu">getMessage</span>()<span class="st">&quot;); </span>
-  }
-
-  tulokset.<span class="fu">close</span>(); kysely.<span class="fu">close</span>();
-}</code></pre>
-<p>Koodin pitäisi lähettää selaimelle teksti “Tulos: 2”.</p>
-<p>Jos et käytä NetBeansia, voit katsoa kontrolleriesimerkkejä <a href="../../koodaaminen/listaustesti/java.html">listauksen toteuttamisohjeista</a>.</p>
-<p>Kun olet saanut saanut yhteyden toimimaan ja palauttamaan kannasta tietoa, laita se omaan luokkaansa, jossa on metodi, joka palauttaa yhteyden. Voit sijoittaa luokkaan muitakin toistuvia tietokantaan liittyviä koodinpätkiä, kuten vaikkapa yhteyden sulkemisen toteuttavan metodin.</p>
-</section>
-<section class='tab-pane' id='tab_1_1' >
-
-<p>Sijoita allaolevat koodit ensiksi omaan testausta varten tekemääsi tiedostoon, esim. <code>yhteystesti.php</code>.</p>
-<p>Yhteyden avaaminen onnistuu seuraavalla tavalla.</p>
-<p><strong>yhteystesti.php</strong></p>
-<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>
-<span class="co">//Tietokannan tunnukset:</span>
-<span class="kw">$tunnus</span> = <span class="st">&quot;kayttajatunnuksesi&quot;</span><span class="ot">;</span>
-<span class="kw">$salasana</span>= <span class="st">&quot;psql-salasana&quot;</span><span class="ot">;</span>
-
-<span class="co">//Yhteysolion luominen</span>
-<span class="kw">$yhteys</span> = <span class="kw">new</span> <span class="kw">PDO</span><span class="ot">(</span><span class="st">&quot;pgsql:host=localhost;port=5432;dbname=</span><span class="kw">$tunnus</span><span class="st">&quot;</span><span class="ot">,</span> <span class="kw">$tunnus</span><span class="ot">,</span> <span class="kw">$salasana</span><span class="ot">);</span>
-
-<span class="co">//Seuravaa komento pyytää PDO:ta tuottamaan poikkeuksen aina kun jossain on virhe.</span>
-<span class="co">//Kannattaa käyttää, oletuksena luokka ei raportoi virhetiloja juuri mitenkään!</span>
-<span class="kw">$yhteys</span>-&gt;setAttribute<span class="ot">(</span><span class="kw">PDO</span>::<span class="kw">ATTR_ERRMODE</span><span class="ot">,</span><span class="kw">PDO</span>::<span class="kw">ERRMODE_EXCEPTION</span><span class="ot">);</span></code></pre>
-<p>Koodatessa PostgreSQL:llä users-palvelimella voidaan käyttää myös lyhyempää yhteysosoitetta, johon ei laiteta salasanaa:</p>
-<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>
-<span class="kw">$yhteys</span> = <span class="kw">new</span> <span class="kw">PDO</span><span class="ot">(</span><span class="st">&quot;pgsql:&quot;</span><span class="ot">);</span>
-<span class="kw">$yhteys</span>-&gt;setAttribute<span class="ot">(</span><span class="kw">PDO</span>::<span class="kw">ATTR_ERRMODE</span><span class="ot">,</span><span class="kw">PDO</span>::<span class="kw">ERRMODE_EXCEPTION</span><span class="ot">);</span></code></pre>
-<section class="alert alert-danger"><h3>
-Pidä mielessä!
-</h3>
-<p>Jos käytät koodista sitä versiota, joka tarvitsee salasanan, älä laita sitä repositorioosi suoraan. Käytä sen sijaan <a href="../git-ja-salasanat.html">dist-tiedostoja</a></p>
-</section>
-
-<h2>Yhteyden testaaminen</h2>
-<p>Tietokannan nopeaan testaamisen voi käyttää seuraavanlaista koodia, jonka voi sijoittaa suoraan yllä esitetyn yhteyden muodotamisen perään:</p>
-<p><strong>yhteystesti.php</strong></p>
-<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">$sql</span> = <span class="st">&quot;select 1+1 as two&quot;</span><span class="ot">;</span>
-<span class="kw">$kysely</span> = <span class="kw">$yhteys</span>-&gt;prepare<span class="ot">(</span><span class="kw">$sql</span><span class="ot">);</span>
-
-
-<span class="kw">if</span> <span class="ot">(</span><span class="kw">$kysely</span>-&gt;execute<span class="ot">())</span> {
-  <span class="kw">$kakkonen</span> = <span class="kw">$kysely</span>-&gt;fetchColumn<span class="ot">();</span>
-  <span class="fu">var_dump</span><span class="ot">(</span><span class="kw">$kakkonen</span><span class="ot">);</span>
-}</code></pre>
-<p>Koodin pitäisi tulostaa seuraava teksti debug-koodaukseen tarkoitettua <a href="http://php.net/manual/en/function.var-dump.php">var_dump</a>-funktiota käyttäen:</p>
-<pre><code>int(2)</code></pre>
-<p>Kun olet saanut saanut yhteyden toimimaan ja palauttamaan kannasta tietoa, tee yhteyden muodostamista varten oma tiedostonsa ja luo sitä ja muita tietokantaan liittyviä tiedostoja varten oma hakemistonsa, jonka nimi voi olla vaikkapa <code>libs</code> tai <code>kirjastot</code>. Tähän tiedostoon sijoitetaan joko luokkaan tai funktioon yllä esitetty yhteyskoodi.</p>
-<p>Huomaa, että on tärkeää, että yhteys luodaan vain kerran, sillä sen luominen on verraten hidasta.</p>
-<p>Voit tehdä yhteydelle halutessasi luokan, johon voi sijoittaa muitakin toistuvia tietokantaan liittyviä koodinpätkiä. Jos et halua tehdä luokkaa, voit PHP:llä käyttää myös lyhyttä funktiota, jossa on funktion sisäinen <a href="http://php.net/manual/en/language.variables.scope.php#language.variables.scope.static">staattinen muuttuja</a>:</p>
-<p><strong>libs/tietokantayhteys.php</strong></p>
-<pre class="sourceCode php"><code class="sourceCode php">&lt;<span class="ot">?</span>php
-<span class="kw">function</span> getTietokantayhteys<span class="ot">()</span> {
-  <span class="kw">static</span> <span class="kw">$yhteys</span> = <span class="kw">null</span><span class="ot">;</span> <span class="co">//Muuttuja, jonka sisältö säilyy getTietokantayhteys-kutsujen välillä.</span>
-
-  <span class="kw">if</span> <span class="ot">(</span><span class="kw">$yhteys</span> === <span class="kw">null</span><span class="ot">)</span> { 
-    <span class="co">//Tämä koodi suoritetaan vain kerran, sillä seuraavilla </span>
-    <span class="co">//funktion suorituskerroilla $yhteys-muuttujassa on sisältöä.</span>
-    <span class="kw">$yhteys</span> = <span class="kw">new</span> <span class="kw">PDO</span><span class="ot">(</span><span class="st">&#39;pgsql:&#39;</span><span class="ot">);</span>
-    <span class="kw">$yhteys</span>-&gt;setAttribute<span class="ot">(</span><span class="kw">PDO</span>::<span class="kw">ATTR_ERRMODE</span><span class="ot">,</span><span class="kw">PDO</span>::<span class="kw">ERRMODE_EXCEPTION</span><span class="ot">);</span>
-  }
-
-  <span class="kw">return</span> <span class="kw">$yhteys</span><span class="ot">;</span>
-}</code></pre>
-<p>Nyt jossain toisessa tiedostossa funktiota voi käyttää vaikkapa näin:</p>
-<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>
-  <span class="kw">require</span> <span class="st">&#39;libs/tietokantayhteys.php&#39;</span><span class="ot">;</span>
-  <span class="kw">$kysely</span> = getTietokantayhteys<span class="ot">()</span>-&gt;prepare<span class="ot">(</span><span class="st">&quot;SELECT 1&quot;</span><span class="ot">);</span>
-  <span class="kw">$kysely</span>-&gt;execute<span class="ot">();</span>
-  
-  <span class="fu">echo</span> <span class="kw">$kysely</span>-&gt;fetchColumn<span class="ot">();</span></code></pre>
-</section>
-</div></div></div>
-
-<section class="alert alert-success small"><h3>
-Seuraavaksi:
-</h3>
-<p>Kun olet saanut tietokantaan toimivan yhteyden ja laittanut sen omaan tiedostoonsa, voit jatkaa tietokantaohjelmointia tekemällä <a href="../listaustesti/index.html">yksinkertaisen listauksen</a>.</p>
-</section>
-
-
-
 </div>
 </div> 
 </div> 

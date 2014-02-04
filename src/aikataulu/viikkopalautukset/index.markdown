@@ -13,7 +13,7 @@ Palautukset suoritetaan ensimmäisellä viikolla rekisteröitymällä
 ja siitä eteenpäin git-versionhallinnan ja githubin kautta.
 
 Jokaisella viikolla sovelluksen kannalta olennaisimmat tiedot ja linkit kootaan 
-[erillisille työn esittelysivulle](esittelysivu.html), joka myös syötetään labtoolin testiosoitteeksi.
+[erillisille työn esittelysivulle]({{rootdir}}aikataulu/viikkopalautukset/esittelysivu.html), joka myös syötetään labtoolin testiosoitteeksi.
 Muista pitää esittelysivusi ajan tasalla. 
 Sen päivittämättä jättämisestä voi menettää hyvinkin helposti pisteitä.
 

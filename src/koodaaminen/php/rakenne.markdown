@@ -1,5 +1,5 @@
 % Sovelluksen rakenne ja kontrollerit
-<!-- order: 1 -->
+<!-- order: 3 -->
 <!-- addHeaderNavigation -->
 
 <summary>

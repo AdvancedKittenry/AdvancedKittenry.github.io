@@ -1,13 +1,16 @@
 % Listaus- ja tietonäkymät
-<!-- order: 6 -->
+<!-- order: 8 -->
 
 <wip />
 
 Tämän sivun Java-versio on valitettavasti tällä hetkellä vielä klooni PHP-versiosta. Samat suunitteluperiaatteet pätevät kuitenkin kummallakin kielellä.
 
-* Listausta laajennetaan viimeistään tässä vaiheessa oikean ulkoasun mukaiseksi
+Viikon neljä aluksi otetaan kolmosviikon listaustesti, ja laajennetaan se täysipainoiseksi
+sivuksi muiden joukossa. Tehtävää on ainakin:
+
+* Sivupohjan ja näkymän käyttöönotto
 * Jos listattavia kohteita on paljon, voi olla järkevää toteuttaa joko haku tai sivutustoiminto
-* Kannattaa näyttää sivulla jokin viesti, jos lista on täysin tyhjä.
+* Sivulla tulee näyttää viesti, jos lista on täysin tyhjä.
 
 ## Sivutus
 

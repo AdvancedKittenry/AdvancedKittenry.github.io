@@ -1,5 +1,5 @@
 % Tietokantahaku ja kyselyn parametrit
-<!-- order: 4 -->
+<!-- order: 6 -->
 
 <summary>
 * Lisätään aiemmin tehtyyn malliluokkaan haeKayttajaTunnuksilla-metodi.

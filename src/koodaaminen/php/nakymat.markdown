@@ -1,5 +1,5 @@
 % Näkymien tekeminen
-<!-- order: 2 -->
+<!-- order: 4 -->
 <!-- addHeaderNavigation -->
 
 <summary>
