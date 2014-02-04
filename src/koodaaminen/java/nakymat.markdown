@@ -89,47 +89,6 @@ Tämän jälkeen voimme näyttää virheviestin ehtolausekkeen avulla:
 Yllä oleva koodi näyttää virheviestin ja siihen liittyvän div-elementin
 vain jos attribuutti `virheViesti` on asetettu. 
 
-## Listojen läpikäynti
-
-Attribuutteihin voidaan laittaa käytännössä mitä tahansa olioita:
-
-~~~~java
-/* Oletetaan että Kissa on luokka, joka tallettaa nimettyjä kissoja.
- * Jokaisella kissalla on konstruktori, joka ottaa parametrina kissan nimen.
- * Nimen saa kissasta ulos getNimi()-metodilla
- */
-List<Kissa> katit = new ArrayList<Kissa>();
-katit.add(new Kissa("Ville"));
-katit.add(new Kissa("Minttu"));
-
-request.setAttribute("kissat", katit);  
-~~~~
-
-Yllä olevan kissalistan voi näyttää seuraavanlaisella silmukalla:
-
-~~~~jsp
-<c:forEach var="kissa" items="${kissat}">
-  <div class="kissa">{kissa.nimi}</div>
-</c:forEach>
-~~~~
-
-Yllä oleva komento `${kissa.nimi}` kutsuu käsiteltävän Kissa-olion
-`getNimi`-metodia, ja tulostaa sen palauttaman arvon.
-
-## Toisen tiedoston sisällön upottaminen koodiin
-
-Myös muita tiedostoja on mahdollista sisällyttää
-yhteen JSP-tiedostoon. 
-Nämä sisällytettävät tiedostot käyttävät yleensä
-tiedostopäätettä JSPF, eli JSP Fragment.
-
-~~~jsp
-<%@include file="navigaatio.jspf" %>
-~~~
-
-Sisällytetyn tiedoston sisältö tulee include-lauseen kohtaan
-sellaisenaan ikäänkuin tiedosto olisi copy-pastettu siihen suoraan.
-
 ## Tag-pohjatiedoston käyttö
 
 Käytännössä suurin osa ohjelmaasi tulevista sivuista

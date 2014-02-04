@@ -3,14 +3,61 @@
 
 <wip />
 
-Tämän sivun Java-versio on valitettavasti tällä hetkellä vielä klooni PHP-versiosta. Samat suunitteluperiaatteet pätevät kuitenkin kummallakin kielellä.
-
 Viikon neljä aluksi otetaan kolmosviikon listaustesti, ja laajennetaan se täysipainoiseksi
 sivuksi muiden joukossa. Tehtävää on ainakin:
 
 * Sivupohjan ja näkymän käyttöönotto
 * Jos listattavia kohteita on paljon, voi olla järkevää toteuttaa joko haku tai sivutustoiminto
 * Sivulla tulee näyttää viesti, jos lista on täysin tyhjä.
+
+## Listojen läpikäynti
+
+PHP:ssä listojen ja erilaisten assosiaatiotaulujen virkaa hoitaa yleiskäyttöinen
+[array](http://php.net/manual/en/language.types.array.php)-tietotyyppi.
+Arraytä käytetään hieman kuin javan taulukoita, mutta avaimena voi käyttää sekä kokonaislukuja, että merkkijonoja.
+Yleensä erityyppisiä avaimia ei kuitenkaan kannata sekoittaa. Esimerkkejä:
+
+~~~php
+<?php 
+  $a = array();
+  $a[0] = "arvo";
+  $a[1] = "toinen arvo";
+
+  //Taulukkoja voi myös alustaa luodessa. Oletuksena indeksointi alkaa nollasta.
+  $m = array(1,2,3,4);
+  $m[0] == 1; //tosi
+
+  //Taulukon perään voi lisätä arvoja jättämällä avaimen pois.
+  $m[] = 5; //Sama kuin sanoisi: $m[4] = 5;
+
+  //Alustaessa voi myös antaa avaimia.
+  $kissa = array("nimi" => "Kasper", "rotu" => "Siamilainen");
+  echo $kissa["nimi"]; //Tulostaa nimen Kasper.
+~~~
+
+Kontrollerissa luotuja taulukoita voi käyttää 
+näkymässä tiedon näyttämiseen. 
+Oletetaan että kontrolleri on asettanut muuttujaan `$kissat` listan nimiä
+ja lähettää sen näkymälle:
+
+~~~php
+<?php
+  $kissat' => array("Matleena", "Iiris", "Inari");
+  naytaNakyma('kissalista.php', array(
+    'kissat' => $kissat
+  ));
+~~~
+
+Nyt jos tämä muuttuja on käytettävissä näkymätiedostossa, voimme näyttää nimet näin:
+
+~~~php
+<?php foreach($data->kissat as $kissa): ?>
+<div class="kissa">
+  Kissan nimi on
+  <?php echo $kissa; ?>
+</div>
+<?php endforeach; ?>
+~~~
 
 ## Sivutus
 
