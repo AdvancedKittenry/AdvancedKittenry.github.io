@@ -245,30 +245,6 @@ Tiivistelmä:
 <span class="kw">&lt;/c:if&gt;</span></code></pre>
 <p>Yllä oleva koodi näyttää virheviestin ja siihen liittyvän div-elementin vain jos attribuutti <code>virheViesti</code> on asetettu.</p>
 </section>
-<section id="listojen-läpikäynti" class="level2">
-<h2>Listojen läpikäynti</h2>
-<p>Attribuutteihin voidaan laittaa käytännössä mitä tahansa olioita:</p>
-<pre class="sourceCode java"><code class="sourceCode java"><span class="co">/* Oletetaan että Kissa on luokka, joka tallettaa nimettyjä kissoja.</span>
-<span class="co"> * Jokaisella kissalla on konstruktori, joka ottaa parametrina kissan nimen.</span>
-<span class="co"> * Nimen saa kissasta ulos getNimi()-metodilla</span>
-<span class="co"> */</span>
-List&lt;Kissa&gt; katit = <span class="kw">new</span> ArrayList&lt;Kissa&gt;();
-katit.<span class="fu">add</span>(<span class="kw">new</span> <span class="fu">Kissa</span>(<span class="st">&quot;Ville&quot;</span>));
-katit.<span class="fu">add</span>(<span class="kw">new</span> <span class="fu">Kissa</span>(<span class="st">&quot;Minttu&quot;</span>));
-
-request.<span class="fu">setAttribute</span>(<span class="st">&quot;kissat&quot;</span>, katit);  </code></pre>
-<p>Yllä olevan kissalistan voi näyttää seuraavanlaisella silmukalla:</p>
-<pre class="sourceCode jsp"><code class="sourceCode jsp"><span class="kw">&lt;c:forEach</span><span class="ot"> var</span>=<span class="dt">&quot;kissa&quot;</span><span class="ot"> items</span>=<span class="dt">&quot;</span>${kissat}<span class="dt">&quot;</span><span class="kw">&gt;</span>
-  &lt;div<span class="ot"> class</span>=<span class="dt">&quot;kissa&quot;</span>&gt;{kissa.nimi}&lt;/div&gt;
-<span class="kw">&lt;/c:forEach&gt;</span></code></pre>
-<p>Yllä oleva komento <code>${kissa.nimi}</code> kutsuu käsiteltävän Kissa-olion <code>getNimi</code>-metodia, ja tulostaa sen palauttaman arvon.</p>
-</section>
-<section id="toisen-tiedoston-sisällön-upottaminen-koodiin" class="level2">
-<h2>Toisen tiedoston sisällön upottaminen koodiin</h2>
-<p>Myös muita tiedostoja on mahdollista sisällyttää yhteen JSP-tiedostoon. Nämä sisällytettävät tiedostot käyttävät yleensä tiedostopäätettä JSPF, eli JSP Fragment.</p>
-<pre class="sourceCode jsp"><code class="sourceCode jsp">&lt;%@include<span class="ot"> file</span>=<span class="st">&quot;navigaatio.jspf&quot;</span><span class="ot"> </span>%&gt;</code></pre>
-<p>Sisällytetyn tiedoston sisältö tulee include-lauseen kohtaan sellaisenaan ikäänkuin tiedosto olisi copy-pastettu siihen suoraan.</p>
-</section>
 <section id="tag-pohjatiedoston-käyttö" class="level2">
 <h2>Tag-pohjatiedoston käyttö</h2>
 <p>Käytännössä suurin osa ohjelmaasi tulevista sivuista tulee sisältämään samanlaisen HTML-rungon, johon sisältyvät sivunavigaatio sekä head-tägin sisältämät otsakkeet ja tyylitiedostolinkit.</p>

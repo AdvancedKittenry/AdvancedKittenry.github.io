@@ -195,13 +195,30 @@ Tämän sivun sisältö on vielä työn alla ja saattaa muuttua kurssin edetess�
 
 
 
-<p>Tämän sivun Java-versio on valitettavasti tällä hetkellä vielä klooni PHP-versiosta. Samat suunitteluperiaatteet pätevät kuitenkin kummallakin kielellä.</p>
 <p>Viikon neljä aluksi otetaan kolmosviikon listaustesti, ja laajennetaan se täysipainoiseksi sivuksi muiden joukossa. Tehtävää on ainakin:</p>
 <ul>
 <li>Sivupohjan ja näkymän käyttöönotto</li>
 <li>Jos listattavia kohteita on paljon, voi olla järkevää toteuttaa joko haku tai sivutustoiminto</li>
 <li>Sivulla tulee näyttää viesti, jos lista on täysin tyhjä.</li>
 </ul>
+<section id="listojen-läpikäynti" class="level2">
+<h2>Listojen läpikäynti</h2>
+<p>Aiemmin <a href="nakymat.html">näkymien</a> oheessa käsitellylle request-olion <code>setAttribute</code>-metodille voidaan antaa käytännössä mitä tahansa olioita mukaanlukien erilaisia listoja.</p>
+<p><strong>Servletin processRequest-koodia</strong></p>
+<pre class="sourceCode java"><code class="sourceCode java"><span class="co">/* Kissa-luokka hakee kaikki kissat </span>
+<span class="co"> * tietokannasta getKaikkiKissat-metodilla.</span>
+<span class="co"> * Nimen saa kissasta ulos getNimi()-metodilla.</span>
+<span class="co"> */</span>
+List&lt;Kissa&gt; katit = Kissa.<span class="fu">getKaikkiKissat</span>();
+request.<span class="fu">setAttribute</span>(<span class="st">&quot;kissat&quot;</span>, katit);  </code></pre>
+<p>Nämä listat ovat suoraan käytettävissä JSP-tiedostoissa. Niiden läpikäyntiä varten pitää tosin jälleen ottaa käyttöön JSTL-tägikirjasto:</p>
+<pre class="sourceCode jsp"><code class="sourceCode jsp">&lt;%@ taglib<span class="ot"> prefix</span>=<span class="st">&quot;c&quot;</span><span class="ot"> uri</span>=<span class="st">&quot;http://java.sun.com/jsp/jstl/core&quot;</span><span class="ot"> </span>%&gt;</code></pre>
+<p>Kun kirjasto on käytössä yllä attribuutiksi määritellyn kissalistan voi näyttää seuraavanlaisella silmukalla:</p>
+<pre class="sourceCode jsp"><code class="sourceCode jsp"><span class="kw">&lt;c:forEach</span><span class="ot"> var</span>=<span class="dt">&quot;kissa&quot;</span><span class="ot"> items</span>=<span class="dt">&quot;</span>${kissat}<span class="dt">&quot;</span><span class="kw">&gt;</span>
+  &lt;div<span class="ot"> class</span>=<span class="dt">&quot;kissa&quot;</span>&gt;{kissa.nimi}&lt;/div&gt;
+<span class="kw">&lt;/c:forEach&gt;</span></code></pre>
+<p>Yllä oleva komento <code>${kissa.nimi}</code> kutsuu käsiteltävän Kissa-olion <code>getNimi</code>-metodia, ja tulostaa sen palauttaman arvon.</p>
+</section>
 <section id="sivutus" class="level2">
 <h2>Sivutus</h2>
 <ul>

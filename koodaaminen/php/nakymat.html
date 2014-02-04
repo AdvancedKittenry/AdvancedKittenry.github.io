@@ -326,37 +326,6 @@ Lisätietoa
   }</code></pre>
 </section>
 
-</section>
-<section id="listojen-läpikäynti" class="level3">
-<h3>Listojen läpikäynti</h3>
-<p>PHP:ssä listojen ja erilaisten assosiaatiotaulujen virkaa hoitaa yleiskäyttöinen <a href="http://php.net/manual/en/language.types.array.php">array</a>-tietotyyppi. Arraytä käytetään hieman kuin javan taulukoita, mutta avaimena voi käyttää sekä kokonaislukuja, että merkkijonoja. Yleensä erityyppisiä avaimia ei kuitenkaan kannata sekoittaa. Esimerkkejä:</p>
-<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span> 
-  <span class="kw">$a</span> = <span class="fu">array</span><span class="ot">();</span>
-  <span class="kw">$a</span><span class="ot">[</span><span class="dv">0</span><span class="ot">]</span> = <span class="st">&quot;arvo&quot;</span><span class="ot">;</span>
-  <span class="kw">$a</span><span class="ot">[</span><span class="dv">1</span><span class="ot">]</span> = <span class="st">&quot;toinen arvo&quot;</span><span class="ot">;</span>
-
-  <span class="co">//Taulukkoja voi myös alustaa luodessa. Oletuksena indeksointi alkaa nollasta.</span>
-  <span class="kw">$m</span> = <span class="fu">array</span><span class="ot">(</span><span class="dv">1</span><span class="ot">,</span><span class="dv">2</span><span class="ot">,</span><span class="dv">3</span><span class="ot">,</span><span class="dv">4</span><span class="ot">);</span>
-  <span class="kw">$m</span><span class="ot">[</span><span class="dv">0</span><span class="ot">]</span> == <span class="dv">1</span><span class="ot">;</span> <span class="co">//tosi</span>
-
-  <span class="co">//Taulukon perään voi lisätä arvoja jättämällä avaimen pois.</span>
-  <span class="kw">$m</span><span class="ot">[]</span> = <span class="dv">5</span><span class="ot">;</span> <span class="co">//Sama kuin sanoisi: $m[4] = 5;</span>
-
-  <span class="co">//Alustaessa voi myös antaa avaimia.</span>
-  <span class="kw">$kissa</span> = <span class="fu">array</span><span class="ot">(</span><span class="st">&quot;nimi&quot;</span> =&gt; <span class="st">&quot;Kasper&quot;</span><span class="ot">,</span> <span class="st">&quot;rotu&quot;</span> =&gt; <span class="st">&quot;Siamilainen&quot;</span><span class="ot">);</span>
-  <span class="fu">echo</span> <span class="kw">$kissa</span><span class="ot">[</span><span class="st">&quot;nimi&quot;</span><span class="ot">];</span> <span class="co">//Tulostaa nimen Kasper.</span></code></pre>
-<p>Kontrollerissa luotuja taulukoita voi käyttää näkymässä tiedon näyttämiseen. Oletetaan että kontrolleri on asettanut muuttujaan <code>$kissat</code> listan nimiä:</p>
-<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>
-  naytaNakyma<span class="ot">(</span><span class="st">&#39;kissalista.php&#39;</span><span class="ot">,</span> <span class="fu">array</span><span class="ot">(</span>
-    <span class="st">&#39;kissat&#39;</span> =&gt; <span class="fu">array</span><span class="ot">(</span><span class="st">&quot;Matleena&quot;</span><span class="ot">,</span> <span class="st">&quot;Iiris&quot;</span><span class="ot">,</span> <span class="st">&quot;Inari&quot;</span><span class="ot">);</span>
-  <span class="ot">));</span></code></pre>
-<p>Nyt jos tämä muuttuja on käytettävissä näkymätiedostossa, voimme näyttää nimet näin:</p>
-<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span> <span class="kw">foreach</span><span class="ot">(</span><span class="kw">$data</span>-&gt;kissat <span class="kw">as</span> <span class="kw">$kissa</span><span class="ot">)</span>: <span class="kw">?&gt;</span>
-&lt;div class=&quot;kissa&quot;&gt;
-  Kissan nimi on
-  <span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$kissa</span><span class="ot">;</span> <span class="kw">?&gt;</span>
-&lt;/div&gt;
-<span class="kw">&lt;?php</span> <span class="kw">endforeach</span><span class="ot">;</span> <span class="kw">?&gt;</span></code></pre>
 <section class="alert alert-success small"><h3>
 Seuraavaksi:
 </h3>

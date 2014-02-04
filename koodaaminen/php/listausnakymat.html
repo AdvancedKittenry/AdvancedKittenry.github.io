@@ -195,13 +195,44 @@ Tämän sivun sisältö on vielä työn alla ja saattaa muuttua kurssin edetess�
 
 
 
-<p>Tämän sivun Java-versio on valitettavasti tällä hetkellä vielä klooni PHP-versiosta. Samat suunitteluperiaatteet pätevät kuitenkin kummallakin kielellä.</p>
 <p>Viikon neljä aluksi otetaan kolmosviikon listaustesti, ja laajennetaan se täysipainoiseksi sivuksi muiden joukossa. Tehtävää on ainakin:</p>
 <ul>
 <li>Sivupohjan ja näkymän käyttöönotto</li>
 <li>Jos listattavia kohteita on paljon, voi olla järkevää toteuttaa joko haku tai sivutustoiminto</li>
 <li>Sivulla tulee näyttää viesti, jos lista on täysin tyhjä.</li>
 </ul>
+<section id="listojen-läpikäynti" class="level2">
+<h2>Listojen läpikäynti</h2>
+<p>PHP:ssä listojen ja erilaisten assosiaatiotaulujen virkaa hoitaa yleiskäyttöinen <a href="http://php.net/manual/en/language.types.array.php">array</a>-tietotyyppi. Arraytä käytetään hieman kuin javan taulukoita, mutta avaimena voi käyttää sekä kokonaislukuja, että merkkijonoja. Yleensä erityyppisiä avaimia ei kuitenkaan kannata sekoittaa. Esimerkkejä:</p>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span> 
+  <span class="kw">$a</span> = <span class="fu">array</span><span class="ot">();</span>
+  <span class="kw">$a</span><span class="ot">[</span><span class="dv">0</span><span class="ot">]</span> = <span class="st">&quot;arvo&quot;</span><span class="ot">;</span>
+  <span class="kw">$a</span><span class="ot">[</span><span class="dv">1</span><span class="ot">]</span> = <span class="st">&quot;toinen arvo&quot;</span><span class="ot">;</span>
+
+  <span class="co">//Taulukkoja voi myös alustaa luodessa. Oletuksena indeksointi alkaa nollasta.</span>
+  <span class="kw">$m</span> = <span class="fu">array</span><span class="ot">(</span><span class="dv">1</span><span class="ot">,</span><span class="dv">2</span><span class="ot">,</span><span class="dv">3</span><span class="ot">,</span><span class="dv">4</span><span class="ot">);</span>
+  <span class="kw">$m</span><span class="ot">[</span><span class="dv">0</span><span class="ot">]</span> == <span class="dv">1</span><span class="ot">;</span> <span class="co">//tosi</span>
+
+  <span class="co">//Taulukon perään voi lisätä arvoja jättämällä avaimen pois.</span>
+  <span class="kw">$m</span><span class="ot">[]</span> = <span class="dv">5</span><span class="ot">;</span> <span class="co">//Sama kuin sanoisi: $m[4] = 5;</span>
+
+  <span class="co">//Alustaessa voi myös antaa avaimia.</span>
+  <span class="kw">$kissa</span> = <span class="fu">array</span><span class="ot">(</span><span class="st">&quot;nimi&quot;</span> =&gt; <span class="st">&quot;Kasper&quot;</span><span class="ot">,</span> <span class="st">&quot;rotu&quot;</span> =&gt; <span class="st">&quot;Siamilainen&quot;</span><span class="ot">);</span>
+  <span class="fu">echo</span> <span class="kw">$kissa</span><span class="ot">[</span><span class="st">&quot;nimi&quot;</span><span class="ot">];</span> <span class="co">//Tulostaa nimen Kasper.</span></code></pre>
+<p>Kontrollerissa luotuja taulukoita voi käyttää näkymässä tiedon näyttämiseen. Oletetaan että kontrolleri on asettanut muuttujaan <code>$kissat</code> listan nimiä ja lähettää sen näkymälle:</p>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>
+  <span class="kw">$kissat</span><span class="st">&#39; =&gt; array(&quot;Matleena&quot;, &quot;Iiris&quot;, &quot;Inari&quot;);</span>
+<span class="st">  naytaNakyma(&#39;</span>kissalista.php<span class="st">&#39;, array(</span>
+<span class="st">    &#39;</span>kissat<span class="st">&#39; =&gt; $kissat</span>
+<span class="st">  ));</span></code></pre>
+<p>Nyt jos tämä muuttuja on käytettävissä näkymätiedostossa, voimme näyttää nimet näin:</p>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span> <span class="kw">foreach</span><span class="ot">(</span><span class="kw">$data</span>-&gt;kissat <span class="kw">as</span> <span class="kw">$kissa</span><span class="ot">)</span>: <span class="kw">?&gt;</span>
+&lt;div class=&quot;kissa&quot;&gt;
+  Kissan nimi on
+  <span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$kissa</span><span class="ot">;</span> <span class="kw">?&gt;</span>
+&lt;/div&gt;
+<span class="kw">&lt;?php</span> <span class="kw">endforeach</span><span class="ot">;</span> <span class="kw">?&gt;</span></code></pre>
+</section>
 <section id="sivutus" class="level2">
 <h2>Sivutus</h2>
 <ul>
