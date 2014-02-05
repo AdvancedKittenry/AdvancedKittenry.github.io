@@ -7,10 +7,12 @@ Viikon neljä aluksi otetaan kolmosviikon listaustesti, ja laajennetaan se täys
 sivuksi muiden joukossa. Tehtävää on ainakin:
 
 * Sivupohjan ja näkymän käyttöönotto
-* Jos listattavia kohteita on paljon, voi olla järkevää toteuttaa joko haku tai sivutustoiminto
+* Listattavat asiat kannattaa aina järjestää 
+  [`ORDER BY`-käskyllä](http://www.postgresql.org/docs/9.2/static/queries-order.html)
+* Jos listattavia kohteita on paljon, voi olla järkevää toteuttaa joko [haku tai sivutustoiminto](sivutusjahaut.html)
 * Sivulla tulee näyttää viesti, jos lista on täysin tyhjä.
 
-## Listojen läpikäynti
+## Array
 
 PHP:ssä listojen ja erilaisten assosiaatiotaulujen virkaa hoitaa yleiskäyttöinen
 [array](http://php.net/manual/en/language.types.array.php)-tietotyyppi.
@@ -34,6 +36,8 @@ Yleensä erityyppisiä avaimia ei kuitenkaan kannata sekoittaa. Esimerkkejä:
   $kissa = array("nimi" => "Kasper", "rotu" => "Siamilainen");
   echo $kissa["nimi"]; //Tulostaa nimen Kasper.
 ~~~
+
+## Listojen läpikäynti
 
 Kontrollerissa luotuja taulukoita voi käyttää 
 näkymässä tiedon näyttämiseen. 
@@ -59,20 +63,6 @@ Nyt jos tämä muuttuja on käytettävissä näkymätiedostossa, voimme näyttä
 <?php endforeach; ?>
 ~~~
 
-## Sivutus
-
-* Sivutukseen käytetään tietokantatasolla `LIMIT`-käskyä
-* se millä sivulla ollaan voidaan ottaa vastaan GET-parametrina
-    * Esim. sivulle kolme voidaan linkata näin: `kissalista.php?sivu=3`.
-    * Sivutuksen sivunvaihtonapit voivat olla tavallisia linkkejä.
-* Malliluokkaan kannattaa koodata myös metodi, joka kertoo listauksessa olevien olioiden kokonaismäärän, niin tiedetään montako sivullista esim. kissoja meillä on listassa.
-
-## Hakulomakkeet
-
-* Useimmiten on parasta sijoittaa hakulomake samalle sivulle listauksen kanssa.
-* Myös haku on kätevä toteuttaa GET-parametrina. 
-* Jos käytetään sekä hakua, että sivutusta, joudutaan sivutuslinkkehiin sisällyttämään hakusana, ettei sivulta toiselle siirtyminen kadottaisi hakua.
-
 ## Muut tietosivut
 
 * Listauksesta halutaan päästä usein katselemaan tarkemmin jonkin asian tietoja.
@@ -82,11 +72,11 @@ Nyt jos tämä muuttuja on käytettävissä näkymätiedostossa, voimme näyttä
 * Listauksessa kannattaa olla asioiden nimen tms. kohdalla linkki näille sivuille tai suoraan muokkauslomakkeeseen. Muokkauslomakkeet toteutetaan hyvin samantapaisesti, niistä on enemmän [omalla sivullaan](muokkausnakymat.html)
 
 Esimerkkisivu; 
-Sivulle linkitetään muodossa `kissa.php?kissa_id=3`.
+Sivulle linkitetään muodossa `kissa.php?id=3`.
 
 ~~~php
 <?php
-  $id = $_GET['kissa_id'];
+  $id = $_GET['id'];
   $kissa = Kissa::etsi($id);
 
   if ($kissa != null) {
@@ -105,6 +95,9 @@ Malliluokkaan voi tätä varten rakentaa kirjautumismetodin tapaisen `etsi`-meto
 tai palauttaa arvon `null`, jos tietoa ei löytynyt.
 
 <next>
-Listausnäkymien jälkeen on paras toteuttaa 
-[lisäystoiminto](mallit_lisays.html).
+Jos näytettäviä asioita on paljon, lisää listallesi 
+[sivutus tai hakutoiminto](sivutusjahaut.html).
+
+Tämän jälkeen voit toteuttaa 
+[lisäystoiminnon](mallit_lisays.html).
 </next>

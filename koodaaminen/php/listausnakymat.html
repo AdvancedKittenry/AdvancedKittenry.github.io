@@ -149,6 +149,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li><a href="../../koodaaminen/java/mallit_tiedonhaku.html">Tietokantahaku ja kyselyn parametrit</a></li>
 <li><a href="../../koodaaminen/java/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
 <li><a href="../../koodaaminen/java/listausnakymat.html">Listaus- ja tietonäkymät</a></li>
+<li><a href="../../koodaaminen/java/sivutusjahaut.html">Sivutus ja hakulomakkeet</a></li>
 <li><a href="../../koodaaminen/java/mallit_lisays.html">Tietojen syöttäminen kantaan</a></li>
 <li><a href="../../koodaaminen/java/muokkausnakymat.html">Muokkausnäkymän toteuttaminen</a></li>
 </ul></li>
@@ -162,6 +163,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li><a href="../../koodaaminen/php/mallit_tiedonhaku.html">Tietokantahaku ja kyselyn parametrit</a></li>
 <li><a href="../../koodaaminen/php/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
 <li class="selected"><a href="../../koodaaminen/php/listausnakymat.html">Listaus- ja tietonäkymät</a></li>
+<li><a href="../../koodaaminen/php/sivutusjahaut.html">Sivutus ja hakulomakkeet</a></li>
 <li><a href="../../koodaaminen/php/mallit_lisays.html">Tietojen syöttäminen kantaan</a></li>
 <li><a href="../../koodaaminen/php/muokkausnakymat.html">Muokkausnäkymän toteuttaminen</a></li>
 </ul></li>
@@ -198,11 +200,12 @@ Tämän sivun sisältö on vielä työn alla ja saattaa muuttua kurssin edetess�
 <p>Viikon neljä aluksi otetaan kolmosviikon listaustesti, ja laajennetaan se täysipainoiseksi sivuksi muiden joukossa. Tehtävää on ainakin:</p>
 <ul>
 <li>Sivupohjan ja näkymän käyttöönotto</li>
-<li>Jos listattavia kohteita on paljon, voi olla järkevää toteuttaa joko haku tai sivutustoiminto</li>
+<li>Listattavat asiat kannattaa aina järjestää <a href="http://www.postgresql.org/docs/9.2/static/queries-order.html"><code>ORDER BY</code>-käskyllä</a></li>
+<li>Jos listattavia kohteita on paljon, voi olla järkevää toteuttaa joko <a href="sivutusjahaut.html">haku tai sivutustoiminto</a></li>
 <li>Sivulla tulee näyttää viesti, jos lista on täysin tyhjä.</li>
 </ul>
-<section id="listojen-läpikäynti" class="level2">
-<h2>Listojen läpikäynti</h2>
+<section id="array" class="level2">
+<h2>Array</h2>
 <p>PHP:ssä listojen ja erilaisten assosiaatiotaulujen virkaa hoitaa yleiskäyttöinen <a href="http://php.net/manual/en/language.types.array.php">array</a>-tietotyyppi. Arraytä käytetään hieman kuin javan taulukoita, mutta avaimena voi käyttää sekä kokonaislukuja, että merkkijonoja. Yleensä erityyppisiä avaimia ei kuitenkaan kannata sekoittaa. Esimerkkejä:</p>
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span> 
   <span class="kw">$a</span> = <span class="fu">array</span><span class="ot">();</span>
@@ -219,6 +222,9 @@ Tämän sivun sisältö on vielä työn alla ja saattaa muuttua kurssin edetess�
   <span class="co">//Alustaessa voi myös antaa avaimia.</span>
   <span class="kw">$kissa</span> = <span class="fu">array</span><span class="ot">(</span><span class="st">&quot;nimi&quot;</span> =&gt; <span class="st">&quot;Kasper&quot;</span><span class="ot">,</span> <span class="st">&quot;rotu&quot;</span> =&gt; <span class="st">&quot;Siamilainen&quot;</span><span class="ot">);</span>
   <span class="fu">echo</span> <span class="kw">$kissa</span><span class="ot">[</span><span class="st">&quot;nimi&quot;</span><span class="ot">];</span> <span class="co">//Tulostaa nimen Kasper.</span></code></pre>
+</section>
+<section id="listojen-läpikäynti" class="level2">
+<h2>Listojen läpikäynti</h2>
 <p>Kontrollerissa luotuja taulukoita voi käyttää näkymässä tiedon näyttämiseen. Oletetaan että kontrolleri on asettanut muuttujaan <code>$kissat</code> listan nimiä ja lähettää sen näkymälle:</p>
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>
   <span class="kw">$kissat</span><span class="st">&#39; =&gt; array(&quot;Matleena&quot;, &quot;Iiris&quot;, &quot;Inari&quot;);</span>
@@ -233,26 +239,6 @@ Tämän sivun sisältö on vielä työn alla ja saattaa muuttua kurssin edetess�
 &lt;/div&gt;
 <span class="kw">&lt;?php</span> <span class="kw">endforeach</span><span class="ot">;</span> <span class="kw">?&gt;</span></code></pre>
 </section>
-<section id="sivutus" class="level2">
-<h2>Sivutus</h2>
-<ul>
-<li>Sivutukseen käytetään tietokantatasolla <code>LIMIT</code>-käskyä</li>
-<li>se millä sivulla ollaan voidaan ottaa vastaan GET-parametrina
-<ul>
-<li>Esim. sivulle kolme voidaan linkata näin: <code>kissalista.php?sivu=3</code>.</li>
-<li>Sivutuksen sivunvaihtonapit voivat olla tavallisia linkkejä.</li>
-</ul></li>
-<li>Malliluokkaan kannattaa koodata myös metodi, joka kertoo listauksessa olevien olioiden kokonaismäärän, niin tiedetään montako sivullista esim. kissoja meillä on listassa.</li>
-</ul>
-</section>
-<section id="hakulomakkeet" class="level2">
-<h2>Hakulomakkeet</h2>
-<ul>
-<li>Useimmiten on parasta sijoittaa hakulomake samalle sivulle listauksen kanssa.</li>
-<li>Myös haku on kätevä toteuttaa GET-parametrina.</li>
-<li>Jos käytetään sekä hakua, että sivutusta, joudutaan sivutuslinkkehiin sisällyttämään hakusana, ettei sivulta toiselle siirtyminen kadottaisi hakua.</li>
-</ul>
-</section>
 <section id="muut-tietosivut" class="level2">
 <h2>Muut tietosivut</h2>
 <ul>
@@ -264,9 +250,9 @@ Tämän sivun sisältö on vielä työn alla ja saattaa muuttua kurssin edetess�
 </ul></li>
 <li>Listauksessa kannattaa olla asioiden nimen tms. kohdalla linkki näille sivuille tai suoraan muokkauslomakkeeseen. Muokkauslomakkeet toteutetaan hyvin samantapaisesti, niistä on enemmän <a href="muokkausnakymat.html">omalla sivullaan</a></li>
 </ul>
-<p>Esimerkkisivu; Sivulle linkitetään muodossa <code>kissa.php?kissa_id=3</code>.</p>
+<p>Esimerkkisivu; Sivulle linkitetään muodossa <code>kissa.php?id=3</code>.</p>
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>
-  <span class="kw">$id</span> = <span class="kw">$_GET</span><span class="ot">[</span><span class="st">&#39;kissa_id&#39;</span><span class="ot">];</span>
+  <span class="kw">$id</span> = <span class="kw">$_GET</span><span class="ot">[</span><span class="st">&#39;id&#39;</span><span class="ot">];</span>
   <span class="kw">$kissa</span> = Kissa::etsi<span class="ot">(</span><span class="kw">$id</span><span class="ot">);</span>
 
   <span class="kw">if</span> <span class="ot">(</span><span class="kw">$kissa</span> != <span class="kw">null</span><span class="ot">)</span> {
@@ -283,7 +269,8 @@ Tämän sivun sisältö on vielä työn alla ja saattaa muuttua kurssin edetess�
 <section class="alert alert-success small"><h3>
 Seuraavaksi:
 </h3>
-<p>Listausnäkymien jälkeen on paras toteuttaa <a href="mallit_lisays.html">lisäystoiminto</a>.</p>
+<p>Jos näytettäviä asioita on paljon, lisää listallesi <a href="sivutusjahaut.html">sivutus tai hakutoiminto</a>.</p>
+<p>Tämän jälkeen voit toteuttaa <a href="mallit_lisays.html">lisäystoiminnon</a>.</p>
 </section>
 
 

@@ -3,11 +3,30 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <title>NetBeansin käyttöönotto</title>
+  <title>Sivutus ja hakulomakkeet</title>
   <style type="text/css">code{white-space: pre;}</style>
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
   <link rel="stylesheet" href="../../css/base.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!--[if lt IE 9]>
@@ -99,7 +118,7 @@
 <li><a href="../../pystytys/kayttoonotto/php.html">PHP-tuen käyttöönotto</a></li>
 <li><a href="../../pystytys/kayttoonotto/postgresql.html">PostgreSQL-tietokannan käyttöönotto</a></li>
 </ul></li>
-<li class="selected"><a href="../../pystytys/netbeans/index.html">NetBeansin käyttöönotto</a>
+<li><a href="../../pystytys/netbeans/index.html">NetBeansin käyttöönotto</a>
 <ul>
 <li><a href="../../pystytys/netbeans/java.html">NetBeansin käyttö Javan kanssa</a></li>
 <li><a href="../../pystytys/netbeans/php.html">NetBeansin käyttö PHP:n kanssa</a></li>
@@ -144,7 +163,7 @@
 <li><a href="../../koodaaminen/php/mallit_tiedonhaku.html">Tietokantahaku ja kyselyn parametrit</a></li>
 <li><a href="../../koodaaminen/php/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
 <li><a href="../../koodaaminen/php/listausnakymat.html">Listaus- ja tietonäkymät</a></li>
-<li><a href="../../koodaaminen/php/sivutusjahaut.html">Sivutus ja hakulomakkeet</a></li>
+<li class="selected"><a href="../../koodaaminen/php/sivutusjahaut.html">Sivutus ja hakulomakkeet</a></li>
 <li><a href="../../koodaaminen/php/mallit_lisays.html">Tietojen syöttäminen kantaan</a></li>
 <li><a href="../../koodaaminen/php/muokkausnakymat.html">Muokkausnäkymän toteuttaminen</a></li>
 </ul></li>
@@ -161,29 +180,83 @@
 </div>
 <div class="col-md-6" id="content">
 <header>
-<h1 class="title">NetBeansin käyttöönotto</h1>
+<h1 class="title">Sivutus ja hakulomakkeet</h1>
 </header>
-<!-- order: 2 -->
+<!-- order: 8.5 -->
 
-<p>Mikäli haluat ottaa NetBeansin käyttöön, asenna ensiksi siihen web-tuki jonka jälkeen voit aloittaa projektin haluamallais kielellä.</p>
-<p>Nämä ohjeet on testattu toimiviksi laitoksen Linux-ympäristössä NetBeansin versiolla 7.2.</p>
-<p>Jos ohjeita seuratessa NetBeans kysyy sinulta keyringin salasanaa, joka on vaihtunut, etkä tiedä mitä tehdä, sinun pitää <a href="keyring-reset.html">nollata Ubuntun oletusavainnippu</a>. Tämä on hyvin yleinen ongelma laitoksen ympäristöissä, joissa salasanoja on vaihdettava usein.</p>
-<section id="web-tuen-asentaminen" class="level2">
-<h2>Web-tuen asentaminen</h2>
-<p>Mikäli et ole ladannut itsellesi web-tuen sisältävää NetBeansia joudut tässä vaiheessa asentaaman NetBeansiisii käyttämäsi kielen web-tuen.</p>
-<p>Tämä on melko helppoa, etsi <code>Tools</code>-valikosta kohta <code>Plugins</code> ja avaa se. Tarkista välilehdeltä <code>Installed</code>, onko Java Web and EE tai PHP jo asennettuna. Jos on, riittää että aktivoit sen.</p>
-<figure>
-<img src="../../images/pystytys/netbeans/activate-plugins.png" alt="Laajennosten aktivoiminen" /><figcaption>Laajennosten aktivoiminen</figcaption>
-</figure>
-<p>Mikäli laajennokset eivät ole jo asennettuina, joudut etsimään ne <code>Available Plugins</code>-välilehden listasta ja asentamaan ne sieltä. Javan tapauksessa etsi käsiisi laajennos Java EE Base, joka on kategoriassa Java Web and EE. PHP-tukea varten riittää asentaa laajennos nimeltä PHP.</p>
-<p>Saatat joutua ottamaan NetBeansin Update Centereitä käyttöön <code>Settings</code>-välilehdeltä käsin ja päivittämään laajennosten listan, että saat oikeat vaihtoehdot näkyviin.</p>
+<p>Jos tietokannassa on paljon kohteita, kannattaa useimmiten yhdellä sivulla näyttää vain rajattu osajoukko kaikista kohteista. Tähän on käytännössä kaksi tapaa: sivutus ja hakutoiminnon tekeminen. Tavat voi myös yhdistää.</p>
+<section id="sivutus" class="level2">
+<h2>Sivutus</h2>
+<p>Sivutukseen käytetään tietokantatasolla <code>LIMIT</code>-käskyä. Jos halutaan hakea tietokannasta kymmenen kissaa, mallikoodiin laitetaan:</p>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="co">/* Haetaan tietokannasta kasa kissoja */</span>
+<span class="kw">$montako</span> = <span class="dv">10</span><span class="ot">;</span>
+
+<span class="kw">$sql</span> = <span class="st">&quot;SELECT * FROM kissat LIMIT ?&quot;</span><span class="ot">;</span>
+<span class="kw">$kysely</span> = getTietokantayhteys<span class="ot">()</span>-&gt;prepare<span class="ot">(</span><span class="kw">$sql</span><span class="ot">);</span>
+<span class="kw">$kysely</span>-&gt;execute<span class="ot">(</span><span class="fu">array</span><span class="ot">(</span><span class="kw">$montako</span><span class="ot">));</span></code></pre>
+<p>Yleensä halutaan määrän rajoittamisen lisäksi myös kertoa mistä kohtaa listaaminen aloitetaan eli monettako sivua haetaan. Tätä varten lista on pakko järjestää, sillä ilman järjestämistä SQL palauttaa tietokantarivit mielivaltaisessa järjestyksessä, mikä tietenkin tekee sivutuksesta täysin hyödyttömän.</p>
+<p>Sivun kertomisen ja järjestämisen saa aikaan <code>OFFSET</code>- ja <code>ORDER BY</code>-käskyillä:</p>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">$montako</span> = <span class="dv">10</span><span class="ot">;</span>
+<span class="kw">$sivu</span> = <span class="dv">2</span><span class="ot">;</span>
+
+<span class="kw">$sql</span> = <span class="st">&quot;SELECT * FROM kissat LIMIT ? OFFSET ? ORDER by nimi&quot;</span><span class="ot">;</span>
+<span class="kw">$kysely</span> = getTietokantayhteys<span class="ot">()</span>-&gt;prepare<span class="ot">(</span><span class="kw">$sql</span><span class="ot">);</span>
+<span class="kw">$kysely</span>-&gt;execute<span class="ot">(</span><span class="fu">array</span><span class="ot">(</span><span class="kw">$montako</span><span class="ot">,</span> <span class="ot">(</span><span class="kw">$sivu</span><span class="dv">-1</span><span class="ot">)</span>*<span class="kw">$montako</span><span class="ot">));</span></code></pre>
+<p>Malliluokkaan kannattaa koodata myös metodi, joka kertoo listauksessa olevien olioiden kokonaismäärän, näin on mahdollista laskea montako sivua listaan tulee:</p>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">public</span> <span class="kw">static</span> <span class="kw">function</span> lukumaara<span class="ot">()</span> {
+  <span class="kw">$sql</span> = <span class="st">&quot;SELECT count(*) FROM kissat&quot;</span><span class="ot">;</span>
+  <span class="kw">$kysely</span> = getTietokantayhteys<span class="ot">()</span>-&gt;prepare<span class="ot">(</span><span class="kw">$sql</span><span class="ot">);</span>
+  <span class="kw">$kysely</span>-&gt;execute<span class="ot">();</span>
+  <span class="kw">return</span> <span class="kw">$kysely</span>-&gt;fetchColumn<span class="ot">();</span>
+}</code></pre>
+<section id="sivutus-kontrollerissa-ja-näkymässä" class="level3">
+<h3>Sivutus kontrollerissa ja näkymässä</h3>
+<p>Kun malliluokkaan on koodattu sopivat metodit, voidaan niitä käyttää kontrollerissa. Se millä sivulla ollaan voidaan ottaa vastaan GET-parametrina ja käyttää sitä määrittämään millä sivulla ollaan:</p>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>
+  <span class="kw">$sivu</span> = <span class="dv">1</span><span class="ot">;</span>
+  <span class="kw">if</span> <span class="ot">(</span><span class="fu">isset</span><span class="ot">(</span><span class="kw">$_GET</span><span class="ot">[</span><span class="st">&#39;sivu&#39;</span><span class="ot">]))</span> {
+    <span class="kw">$sivu</span> = <span class="dt">(int)</span><span class="kw">$_GET</span><span class="ot">[</span><span class="st">&#39;sivu&#39;</span><span class="ot">];</span>
+
+    <span class="co">//Sivunumero ei saa olla pienempi kuin yksi</span>
+    <span class="kw">if</span> <span class="ot">(</span><span class="kw">$sivu</span> &lt; <span class="dv">1</span><span class="ot">)</span> <span class="kw">$sivu</span> = <span class="dv">1</span><span class="ot">;</span>
+  }
+  <span class="kw">$montakokissaasivulla</span> = <span class="dv">10</span><span class="ot">;</span>
+  
+  <span class="co">//Kysytään mallilta kissoja sivulla $sivu, </span>
+  <span class="kw">$kissat</span> = Kissa::getKissatSivulla<span class="ot">(</span><span class="kw">$sivu</span><span class="ot">,</span> <span class="kw">$montakokissaasivulla</span><span class="ot">);</span>
+
+  <span class="co">//Kissojen kokonaislukumäärä haetaan, jotta tiedetään montako sivua kissoja kokonaisuudessa on:</span>
+  <span class="kw">$kissaLkm</span> = Kissa::lukumaara<span class="ot">();</span>
+  <span class="kw">$sivuja</span> = <span class="fu">ceil</span><span class="ot">(</span><span class="kw">$kissaLkm</span>/<span class="kw">$montakokissaasivulla</span><span class="ot">);</span></code></pre>
+<p>Itse sivunavigaatio voi koostua aivan tavallisista linkeistä:</p>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span> <span class="kw">if</span> <span class="ot">(</span><span class="kw">$data</span>-&gt;sivu &gt; <span class="dv">0</span><span class="ot">)</span>: <span class="kw">?&gt;</span>
+&lt;a href=&quot;kissalista.php?sivu=<span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$data</span>-&gt;sivu - <span class="dv">1</span><span class="ot">;</span> <span class="kw">?&gt;</span>&quot;&gt;Edellinen sivu&lt;/a&gt;
+<span class="kw">&lt;?php</span> <span class="kw">endif</span><span class="ot">;</span> <span class="kw">?&gt;</span>
+<span class="kw">&lt;?php</span> <span class="kw">if</span> <span class="ot">(</span><span class="kw">$data</span>-&gt;sivu &lt; <span class="kw">$data</span>-&gt;sivuja<span class="ot">)</span>: <span class="kw">?&gt;</span>
+&lt;a href=&quot;kissalista.php?sivu=<span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$data</span>-&gt;sivu + <span class="dv">1</span><span class="ot">;</span> <span class="kw">?&gt;</span>&quot;&gt;Seuraava sivu&lt;/a&gt;
+<span class="kw">&lt;?php</span> <span class="kw">endif</span><span class="ot">;</span> <span class="kw">?&gt;</span></code></pre>
+<p>On myös hyödyllistä kertoa käyttäjälle monennellako sivulla ollaan ja paljonko kissoja on:</p>
+<pre class="sourceCode php"><code class="sourceCode php">Yhteensä <span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$kissaLkm</span><span class="ot">;</span> <span class="kw">?&gt;</span> kissaa. 
+Olet sivulla <span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$data</span>-&gt;sivu<span class="ot">;</span> <span class="kw">?&gt;</span>/<span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$data</span>-&gt;sivuja<span class="ot">;</span> <span class="kw">?&gt;</span>.</code></pre>
 </section>
-<section id="kielikohtaiset-ohjeet" class="level2">
-<h2>Kielikohtaiset ohjeet</h2>
+</section>
+<section id="hakulomakkeet" class="level2">
+<h2>Hakulomakkeet</h2>
 <ul>
-<li><a href="php.html">PHP-ohje</a></li>
-<li><a href="java.html">Java-ohje</a></li>
+<li>Useimmiten on parasta sijoittaa hakulomake samalle sivulle listauksen kanssa.</li>
+<li>Haku on kätevä toteuttaa GET-parametrina.</li>
+<li>Jos käytetään sekä hakua, että sivutusta, joudutaan sivutuslinkkehiin sisällyttämään hakusana, ettei sivulta toiselle siirtyminen kadottaisi hakua.</li>
+<li>Vastaavasti hausta huolehtivan malliluokan metodin pitää tarvittaessa tukea sivutusta.</li>
 </ul>
+<section class="alert alert-success small"><h3>
+Seuraavaksi:
+</h3>
+<p>Listausnäkymän viimeistelyn jälkeen toteuta <a href="mallit_lisays.html">lisäystoiminto</a>.</p>
+</section>
+
+
+
+
 </section>
 </div>
 </div> 

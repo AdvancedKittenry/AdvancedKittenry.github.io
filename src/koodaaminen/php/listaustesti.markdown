@@ -224,7 +224,7 @@ Alla on esimerkki valmiista metodista, joka palauttaa jokaisen käyttäjän.
 
 ~~~inlinephp
 public static function getKayttajat() {
-  $sql = "SELECT id,tunnus, password from users";
+  $sql = "SELECT id,tunnus, password FROM users";
   $kysely = getTietokantayhteys()->prepare($sql); $kysely->execute();
     
   $tulokset = array();
