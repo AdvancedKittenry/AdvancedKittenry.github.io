@@ -1,8 +1,6 @@
 % Listaus- ja tietonäkymät
 <!-- order: 8 -->
 
-<wip />
-
 Viikon neljä aluksi otetaan kolmosviikon listaustesti, ja laajennetaan se täysipainoiseksi
 sivuksi muiden joukossa. Tehtävää on ainakin:
 
@@ -63,7 +61,7 @@ Nyt jos tämä muuttuja on käytettävissä näkymätiedostossa, voimme näyttä
 <?php endforeach; ?>
 ~~~
 
-## Muut tietosivut
+## Muut tietosivut {#tietosivut}
 
 Listauksesta halutaan päästä usein katselemaan tarkemmin jonkin asian tietoja, siten että nämä yksityiskohtaisemmat tiedot
 ovat omalla sivullaan.

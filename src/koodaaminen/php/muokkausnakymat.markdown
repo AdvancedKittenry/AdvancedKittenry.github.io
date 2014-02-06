@@ -22,6 +22,7 @@ Tehdään koko setti:
 * Lisäys- ja muokkauslomakkeet kannattaa toteuttaa samalla tai ainakin hyvin samanlaisella koodilla.
 * Muokkaustoiminnot toteutetaan niin, että sivun kontrolleri ottaa muokattavan tietokohteen id:n tai muun avaimen GET-parametrina ja näyttää sen perusteella oikean kohteen.
     * Poisto ym. vastaavat toiminnot toimivat käytännössä samoin. Usein niiden aktivointii kannattaa tosin käyttää lomakkeisiin upotettuja nappeja ja POST-metodia.
+    * Kannattaa ottaa esimerkkiä [tietosivujen toteuttamisesta](listausnakymat.html#tietosivut)
 * Muokkauslomake koodataan näyttämään GET-parametrin määrittämän olion tiedot valmiina kentissä. 
     * Olio haetaan mallilta sopivalla metodilla.
     * Malli ei koskaan käsittele GET- tai POST-parametreja suoraan vaan ne kontrolleri välittää ne parametreina mallin metodeille.

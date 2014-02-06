@@ -184,19 +184,6 @@ code > span.er { color: #ff0000; font-weight: bold; }
 </header>
 <!-- order: 8 -->
 
-
-<div class="wip panel">
-  <div class="panel-body">
-    <h3>
-Work in progress
-</h3>
-    
-Tämän sivun sisältö on vielä työn alla ja saattaa muuttua kurssin edetessä.
-</div>
-</div>
-
-
-
 <p>Viikon neljä aluksi otetaan kolmosviikon listaustesti, ja laajennetaan se täysipainoiseksi sivuksi muiden joukossa. Tehtävää on ainakin:</p>
 <ul>
 <li>Sivupohjan ja näkymän käyttöönotto</li>
@@ -222,7 +209,7 @@ request.<span class="fu">setAttribute</span>(<span class="st">&quot;kissat&quot;
 <p>Kannattaa huomata, että listojenkin läpikäyntiä varten pitää ottaa käyttöön JSTL-tägikirjasto laittamalla JSP-sivun alkuun:</p>
 <pre class="sourceCode jsp"><code class="sourceCode jsp">&lt;%@ taglib<span class="ot"> prefix</span>=<span class="st">&quot;c&quot;</span><span class="ot"> uri</span>=<span class="st">&quot;http://java.sun.com/jsp/jstl/core&quot;</span><span class="ot"> </span>%&gt;</code></pre>
 </section>
-<section id="muut-tietosivut" class="level2">
+<section id="tietosivut" class="level2">
 <h2>Muut tietosivut</h2>
 <p>Listauksesta halutaan päästä usein katselemaan tarkemmin jonkin asian tietoja, siten että nämä yksityiskohtaisemmat tiedot ovat omalla sivullaan.</p>
 <p>Nämä sivut toteutetaan omana kontrolleri/näkymä-parinaan, jotka ottavat GET-parametrina vastaan tiedon siitä mitä asiaa tarkkaanottaen halutaan sivulla näytettävän. Parametrissa välitetään tietokohteen pääavaimen arvo, eli yleensä jonkinsorttinen id-numero</p>
