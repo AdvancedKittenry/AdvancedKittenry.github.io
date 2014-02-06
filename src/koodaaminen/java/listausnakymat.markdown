@@ -53,44 +53,64 @@ ottaa käyttöön JSTL-tägikirjasto laittamalla JSP-sivun alkuun:
 
 ## Muut tietosivut
 
-* Listauksesta halutaan päästä usein katselemaan tarkemmin jonkin asian tietoja.
-* Nämä toteutetaan omana kontrolleri/näkymä-parinaan
-    * Kontrolleri osaa hakea GET-parametrina annetun pääavaimen perusteella oikean olion malliluokalta.
-    * Olio välitetään suoraan näkymälle, tai kerrotaan ettei kohdetta löytynyt.
-* Listauksessa kannattaa olla asioiden nimen tms. kohdalla linkki näille sivuille tai suoraan muokkauslomakkeeseen. Muokkauslomakkeet toteutetaan hyvin samantapaisesti, niistä on enemmän [omalla sivullaan](muokkausnakymat.html)
+Listauksesta halutaan päästä usein katselemaan tarkemmin jonkin asian tietoja, siten että nämä yksityiskohtaisemmat tiedot
+ovat omalla sivullaan.
 
-Esimerkkisivu; 
-Sivulle linkitetään muodossa `Kissa?id=3`.
+Nämä sivut toteutetaan omana kontrolleri/näkymä-parinaan,
+jotka ottavat GET-parametrina vastaan tiedon
+siitä mitä asiaa tarkkaanottaen halutaan sivulla näytettävän.
+Parametrissa välitetään tietokohteen pääavaimen arvo,
+eli yleensä jonkinsorttinen id-numero
 
-~~~php
-<?php
-  String idParam = request.getParameter("id");
-  int id;
-  try {
-    id = Integer.parseInt(idParam);
-  } catch(Exception e) {
-    // Id-numero nolla ei käytännössä koskaan löydy kannasta, 
-    // joten koodin suoritus päätyy
-    // alla olevan if-lauseen else-haaraan
-    id = 0;
-  }
+Alla esimerkki linkistä tietosivulle. Usein linkit tietosivuille
+sijoitetaan listauksessa siihen, missä listatun asian nimi näkyy:
 
-  Kissa kissa = Kissa.etsi(id);
-
-  if (kissa != null) {
-    request.setAttribute("kissa", kissa);
-    naytaJSP("kissa.jsp", request, response);
-  } else {
-    request.setAttribute("virhe", "Kissaa ei löytynyt!");
-    naytaJSP("kissa.jsp", request, response);
-  }
+~~~jsp
+<a href="Kissa?id=${kissa.id}">${kissa.nimi}</a>
 ~~~
 
-Malliluokkaan voi tätä varten rakentaa kirjautumismetodin tapaisen `etsi`-metodin, joka hakee pääavaimen perusteella olion kannasta,
+Parametri otetaan vastaan `request`-olion `getParameter`-metodilla.
+Koska haluamme id-numeron, pitää parametrina saatu merkkijono erikseen parsia:
+
+~~~java
+String idParam = request.getParameter("id");
+int id;
+try {
+  id = Integer.parseInt(idParam);
+} catch(Exception e) {
+  // Id-numero nolla ei käytännössä koskaan löydy kannasta, 
+  // joten koodin suoritus päätyy
+  // alla olevan if-lauseen else-haaraan
+  id = 0;
+}
+~~~
+
+Kun id-numero on parsittu pyydetään malliluokkaa etsimään 
+numeroa vastaava rivi kannasta ja palauttamaan se oliona.
+
+Malliluokkaan täytyy tätä varten rakentaa 
+metodi, joka hakee pääavaimen perusteella olion kannasta,
 tai palauttaa arvon `null`, jos tietoa ei löytynyt.
 
+~~~java
+Kissa kissa = Kissa.etsi(id);
+
+if (kissa != null) {
+  request.setAttribute("kissa", kissa);
+  naytaJSP("kissa.jsp", request, response);
+} else {
+  request.setAttribute("kissa", null);
+  request.setAttribute("virhe", "Kissaa ei löytynyt!");
+  naytaJSP("kissa.jsp", request, response);
+}
+~~~
+
+Kun olio on välitetty JSP-näkymälle, voidaan sen tiedot näyttää 
+tai vaihtoehtoisesti näyttää pelkkä tyhjä virhesivu, jos
+haluttua oliota ei löytynyt.
+
 <next>
-Jos näytettäviä asioita on paljon, lisää listallesi 
+Jos listalla näytettäviä kohteita on paljon, lisää listallesi 
 [sivutus tai hakutoiminto](sivutusjahaut.html).
 
 Tämän jälkeen voit toteuttaa 

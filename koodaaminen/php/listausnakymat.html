@@ -204,8 +204,8 @@ Tämän sivun sisältö on vielä työn alla ja saattaa muuttua kurssin edetess�
 <li>Jos listattavia kohteita on paljon, voi olla järkevää toteuttaa joko <a href="sivutusjahaut.html">haku tai sivutustoiminto</a></li>
 <li>Sivulla tulee näyttää viesti, jos lista on täysin tyhjä.</li>
 </ul>
-<section id="array" class="level2">
-<h2>Array</h2>
+<section id="array-phpn-lista--ja-assosiaatiotaulutietorakenne" class="level2">
+<h2>Array, PHP:n lista- ja assosiaatiotaulutietorakenne</h2>
 <p>PHP:ssä listojen ja erilaisten assosiaatiotaulujen virkaa hoitaa yleiskäyttöinen <a href="http://php.net/manual/en/language.types.array.php">array</a>-tietotyyppi. Arraytä käytetään hieman kuin javan taulukoita, mutta avaimena voi käyttää sekä kokonaislukuja, että merkkijonoja. Yleensä erityyppisiä avaimia ei kuitenkaan kannata sekoittaa. Esimerkkejä:</p>
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span> 
   <span class="kw">$a</span> = <span class="fu">array</span><span class="ot">();</span>
@@ -241,35 +241,31 @@ Tämän sivun sisältö on vielä työn alla ja saattaa muuttua kurssin edetess�
 </section>
 <section id="muut-tietosivut" class="level2">
 <h2>Muut tietosivut</h2>
-<ul>
-<li>Listauksesta halutaan päästä usein katselemaan tarkemmin jonkin asian tietoja.</li>
-<li>Nämä toteutetaan omana kontrolleri/näkymä-parinaan
-<ul>
-<li>Kontrolleri osaa hakea GET-parametrina annetun pääavaimen perusteella oikean olion malliluokalta.</li>
-<li>Olio välitetään suoraan näkymälle, tai kerrotaan ettei kohdetta löytynyt.</li>
-</ul></li>
-<li>Listauksessa kannattaa olla asioiden nimen tms. kohdalla linkki näille sivuille tai suoraan muokkauslomakkeeseen. Muokkauslomakkeet toteutetaan hyvin samantapaisesti, niistä on enemmän <a href="muokkausnakymat.html">omalla sivullaan</a></li>
-</ul>
-<p>Esimerkkisivu; Sivulle linkitetään muodossa <code>kissa.php?id=3</code>.</p>
-<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>
-  <span class="kw">$id</span> = <span class="kw">$_GET</span><span class="ot">[</span><span class="st">&#39;id&#39;</span><span class="ot">];</span>
-  <span class="kw">$kissa</span> = Kissa::etsi<span class="ot">(</span><span class="kw">$id</span><span class="ot">);</span>
+<p>Listauksesta halutaan päästä usein katselemaan tarkemmin jonkin asian tietoja, siten että nämä yksityiskohtaisemmat tiedot ovat omalla sivullaan.</p>
+<p>Nämä sivut toteutetaan omana kontrolleri/näkymä-parinaan, jotka ottavat GET-parametrina vastaan tiedon siitä mitä asiaa tarkkaanottaen halutaan sivulla näytettävän. Parametrissa välitetään tietokohteen pääavaimen arvo, eli yleensä jonkinsorttinen id-numero</p>
+<p>Alla esimerkki linkistä tietosivulle. Usein linkit tietosivuille sijoitetaan listauksessa siihen, missä listatun asian nimi näkyy:</p>
+<pre class="sourceCode php"><code class="sourceCode php">&lt;a href=&quot;Kissa?id=<span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$kissa</span>-&gt;getId<span class="ot">()</span> <span class="kw">?&gt;</span>&quot;&gt;<span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$kissa</span>-&gt;getNimi<span class="ot">()</span> <span class="kw">?&gt;</span>&lt;/a&gt;</code></pre>
+<p>Parametri otetaan vastaan <code>$_GET</code>-taulukosta. Koska haluamme id-numeron, kannattaa parametrina saatu merkkijono erikseen tyyppimuuntaa sellaiseksi:</p>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">$id</span> = <span class="dt">(int)</span><span class="kw">$_GET</span><span class="ot">[</span><span class="st">&#39;id&#39;</span><span class="ot">];</span></code></pre>
+<p>Kun id-numero on parsittu pyydetään malliluokkaa etsimään numeroa vastaava rivi kannasta ja palauttamaan se oliona.</p>
+<p>Malliluokkaan täytyy tätä varten rakentaa metodi, joka hakee pääavaimen perusteella olion kannasta, tai palauttaa arvon <code>null</code>, jos tietoa ei löytynyt.</p>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">$kissa</span> = Kissa::etsi<span class="ot">(</span><span class="kw">$id</span><span class="ot">);</span>
 
-  <span class="kw">if</span> <span class="ot">(</span><span class="kw">$kissa</span> != <span class="kw">null</span><span class="ot">)</span> {
-    naytaNakymä<span class="ot">(</span><span class="st">&quot;kissa&quot;</span><span class="ot">,</span> <span class="fu">array</span><span class="ot">(</span>
-      <span class="st">&#39;kissa&#39;</span> =&gt; <span class="kw">$kissa</span><span class="ot">,</span>
-    <span class="ot">));</span>
-  } <span class="kw">else</span> {
-    naytaNakymä<span class="ot">(</span><span class="st">&quot;kissa&quot;</span><span class="ot">,</span> <span class="fu">array</span><span class="ot">(</span>
-      <span class="st">&#39;kissa&#39;</span> =&gt; <span class="kw">null</span>
-      <span class="st">&#39;virheet&#39;</span> =&gt; <span class="fu">array</span><span class="ot">(</span><span class="st">&#39;Kissaa ei löytynyt!&#39;</span><span class="ot">)</span>
-    <span class="ot">));</span>
-  }</code></pre>
-<p>Malliluokkaan voi tätä varten rakentaa kirjautumismetodin tapaisen <code>etsi</code>-metodin, joka hakee pääavaimen perusteella olion kannasta, tai palauttaa arvon <code>null</code>, jos tietoa ei löytynyt.</p>
+<span class="kw">if</span> <span class="ot">(</span><span class="kw">$kissa</span> != <span class="kw">null</span><span class="ot">)</span> {
+  naytaNakymä<span class="ot">(</span><span class="st">&quot;kissa&quot;</span><span class="ot">,</span> <span class="fu">array</span><span class="ot">(</span>
+    <span class="st">&#39;kissa&#39;</span> =&gt; <span class="kw">$kissa</span><span class="ot">,</span>
+  <span class="ot">));</span>
+} <span class="kw">else</span> {
+  naytaNakymä<span class="ot">(</span><span class="st">&quot;kissa&quot;</span><span class="ot">,</span> <span class="fu">array</span><span class="ot">(</span>
+    <span class="st">&#39;kissa&#39;</span> =&gt; <span class="kw">null</span>
+    <span class="st">&#39;virheet&#39;</span> =&gt; <span class="fu">array</span><span class="ot">(</span><span class="st">&#39;Kissaa ei löytynyt!&#39;</span><span class="ot">)</span>
+  <span class="ot">));</span>
+}</code></pre>
+<p>Kun olio on välitetty näkymälle, voidaan sen tiedot näyttää tai vaihtoehtoisesti näyttää pelkkä tyhjä virhesivu, jos haluttua oliota ei löytynyt.</p>
 <section class="alert alert-success small"><h3>
 Seuraavaksi:
 </h3>
-<p>Jos näytettäviä asioita on paljon, lisää listallesi <a href="sivutusjahaut.html">sivutus tai hakutoiminto</a>.</p>
+<p>Jos listalla näytettäviä kohteita on paljon, lisää listallesi <a href="sivutusjahaut.html">sivutus tai hakutoiminto</a>.</p>
 <p>Tämän jälkeen voit toteuttaa <a href="mallit_lisays.html">lisäystoiminnon</a>.</p>
 </section>
 

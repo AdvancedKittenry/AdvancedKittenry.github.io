@@ -224,42 +224,38 @@ request.<span class="fu">setAttribute</span>(<span class="st">&quot;kissat&quot;
 </section>
 <section id="muut-tietosivut" class="level2">
 <h2>Muut tietosivut</h2>
-<ul>
-<li>Listauksesta halutaan päästä usein katselemaan tarkemmin jonkin asian tietoja.</li>
-<li>Nämä toteutetaan omana kontrolleri/näkymä-parinaan
-<ul>
-<li>Kontrolleri osaa hakea GET-parametrina annetun pääavaimen perusteella oikean olion malliluokalta.</li>
-<li>Olio välitetään suoraan näkymälle, tai kerrotaan ettei kohdetta löytynyt.</li>
-</ul></li>
-<li>Listauksessa kannattaa olla asioiden nimen tms. kohdalla linkki näille sivuille tai suoraan muokkauslomakkeeseen. Muokkauslomakkeet toteutetaan hyvin samantapaisesti, niistä on enemmän <a href="muokkausnakymat.html">omalla sivullaan</a></li>
-</ul>
-<p>Esimerkkisivu; Sivulle linkitetään muodossa <code>Kissa?id=3</code>.</p>
-<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>
-  String idParam = request.getParameter<span class="ot">(</span><span class="st">&quot;id&quot;</span><span class="ot">);</span>
-  int id<span class="ot">;</span>
-  <span class="kw">try</span> {
-    id = Integer.parseInt<span class="ot">(</span>idParam<span class="ot">);</span>
-  } <span class="kw">catch</span><span class="ot">(</span><span class="kw">Exception</span> e<span class="ot">)</span> {
-    <span class="co">// Id-numero nolla ei käytännössä koskaan löydy kannasta, </span>
-    <span class="co">// joten koodin suoritus päätyy</span>
-    <span class="co">// alla olevan if-lauseen else-haaraan</span>
-    id = <span class="dv">0</span><span class="ot">;</span>
-  }
+<p>Listauksesta halutaan päästä usein katselemaan tarkemmin jonkin asian tietoja, siten että nämä yksityiskohtaisemmat tiedot ovat omalla sivullaan.</p>
+<p>Nämä sivut toteutetaan omana kontrolleri/näkymä-parinaan, jotka ottavat GET-parametrina vastaan tiedon siitä mitä asiaa tarkkaanottaen halutaan sivulla näytettävän. Parametrissa välitetään tietokohteen pääavaimen arvo, eli yleensä jonkinsorttinen id-numero</p>
+<p>Alla esimerkki linkistä tietosivulle. Usein linkit tietosivuille sijoitetaan listauksessa siihen, missä listatun asian nimi näkyy:</p>
+<pre class="sourceCode jsp"><code class="sourceCode jsp">&lt;a<span class="ot"> href</span>=<span class="dt">&quot;Kissa?id=</span>${kissa.id}<span class="dt">&quot;</span>&gt;${kissa.nimi}&lt;/a&gt;</code></pre>
+<p>Parametri otetaan vastaan <code>request</code>-olion <code>getParameter</code>-metodilla. Koska haluamme id-numeron, pitää parametrina saatu merkkijono erikseen parsia:</p>
+<pre class="sourceCode java"><code class="sourceCode java">String idParam = request.<span class="fu">getParameter</span>(<span class="st">&quot;id&quot;</span>);
+<span class="dt">int</span> id;
+<span class="kw">try</span> {
+  id = Integer.<span class="fu">parseInt</span>(idParam);
+} <span class="kw">catch</span>(Exception e) {
+  <span class="co">// Id-numero nolla ei käytännössä koskaan löydy kannasta, </span>
+  <span class="co">// joten koodin suoritus päätyy</span>
+  <span class="co">// alla olevan if-lauseen else-haaraan</span>
+  id = <span class="dv">0</span>;
+}</code></pre>
+<p>Kun id-numero on parsittu pyydetään malliluokkaa etsimään numeroa vastaava rivi kannasta ja palauttamaan se oliona.</p>
+<p>Malliluokkaan täytyy tätä varten rakentaa metodi, joka hakee pääavaimen perusteella olion kannasta, tai palauttaa arvon <code>null</code>, jos tietoa ei löytynyt.</p>
+<pre class="sourceCode java"><code class="sourceCode java">Kissa kissa = Kissa.<span class="fu">etsi</span>(id);
 
-  Kissa kissa = Kissa.etsi<span class="ot">(</span>id<span class="ot">);</span>
-
-  <span class="kw">if</span> <span class="ot">(</span>kissa != <span class="kw">null</span><span class="ot">)</span> {
-    request.setAttribute<span class="ot">(</span><span class="st">&quot;kissa&quot;</span><span class="ot">,</span> kissa<span class="ot">);</span>
-    naytaJSP<span class="ot">(</span><span class="st">&quot;kissa.jsp&quot;</span><span class="ot">,</span> request<span class="ot">,</span> response<span class="ot">);</span>
-  } <span class="kw">else</span> {
-    request.setAttribute<span class="ot">(</span><span class="st">&quot;virhe&quot;</span><span class="ot">,</span> <span class="st">&quot;Kissaa ei löytynyt!&quot;</span><span class="ot">);</span>
-    naytaJSP<span class="ot">(</span><span class="st">&quot;kissa.jsp&quot;</span><span class="ot">,</span> request<span class="ot">,</span> response<span class="ot">);</span>
-  }</code></pre>
-<p>Malliluokkaan voi tätä varten rakentaa kirjautumismetodin tapaisen <code>etsi</code>-metodin, joka hakee pääavaimen perusteella olion kannasta, tai palauttaa arvon <code>null</code>, jos tietoa ei löytynyt.</p>
+<span class="kw">if</span> (kissa != <span class="kw">null</span>) {
+  request.<span class="fu">setAttribute</span>(<span class="st">&quot;kissa&quot;</span>, kissa);
+  <span class="fu">naytaJSP</span>(<span class="st">&quot;kissa.jsp&quot;</span>, request, response);
+} <span class="kw">else</span> {
+  request.<span class="fu">setAttribute</span>(<span class="st">&quot;kissa&quot;</span>, <span class="kw">null</span>);
+  request.<span class="fu">setAttribute</span>(<span class="st">&quot;virhe&quot;</span>, <span class="st">&quot;Kissaa ei löytynyt!&quot;</span>);
+  <span class="fu">naytaJSP</span>(<span class="st">&quot;kissa.jsp&quot;</span>, request, response);
+}</code></pre>
+<p>Kun olio on välitetty JSP-näkymälle, voidaan sen tiedot näyttää tai vaihtoehtoisesti näyttää pelkkä tyhjä virhesivu, jos haluttua oliota ei löytynyt.</p>
 <section class="alert alert-success small"><h3>
 Seuraavaksi:
 </h3>
-<p>Jos näytettäviä asioita on paljon, lisää listallesi <a href="sivutusjahaut.html">sivutus tai hakutoiminto</a>.</p>
+<p>Jos listalla näytettäviä kohteita on paljon, lisää listallesi <a href="sivutusjahaut.html">sivutus tai hakutoiminto</a>.</p>
 <p>Tämän jälkeen voit toteuttaa <a href="mallit_lisays.html">lisäystoiminnon</a>.</p>
 </section>
 

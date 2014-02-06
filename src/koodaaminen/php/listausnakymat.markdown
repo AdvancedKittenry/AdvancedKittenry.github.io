@@ -12,7 +12,7 @@ sivuksi muiden joukossa. Tehtävää on ainakin:
 * Jos listattavia kohteita on paljon, voi olla järkevää toteuttaa joko [haku tai sivutustoiminto](sivutusjahaut.html)
 * Sivulla tulee näyttää viesti, jos lista on täysin tyhjä.
 
-## Array
+## Array, PHP:n lista- ja assosiaatiotaulutietorakenne
 
 PHP:ssä listojen ja erilaisten assosiaatiotaulujen virkaa hoitaa yleiskäyttöinen
 [array](http://php.net/manual/en/language.types.array.php)-tietotyyppi.
@@ -65,37 +65,58 @@ Nyt jos tämä muuttuja on käytettävissä näkymätiedostossa, voimme näyttä
 
 ## Muut tietosivut
 
-* Listauksesta halutaan päästä usein katselemaan tarkemmin jonkin asian tietoja.
-* Nämä toteutetaan omana kontrolleri/näkymä-parinaan
-    * Kontrolleri osaa hakea GET-parametrina annetun pääavaimen perusteella oikean olion malliluokalta.
-    * Olio välitetään suoraan näkymälle, tai kerrotaan ettei kohdetta löytynyt.
-* Listauksessa kannattaa olla asioiden nimen tms. kohdalla linkki näille sivuille tai suoraan muokkauslomakkeeseen. Muokkauslomakkeet toteutetaan hyvin samantapaisesti, niistä on enemmän [omalla sivullaan](muokkausnakymat.html)
+Listauksesta halutaan päästä usein katselemaan tarkemmin jonkin asian tietoja, siten että nämä yksityiskohtaisemmat tiedot
+ovat omalla sivullaan.
 
-Esimerkkisivu; 
-Sivulle linkitetään muodossa `kissa.php?id=3`.
+Nämä sivut toteutetaan omana kontrolleri/näkymä-parinaan,
+jotka ottavat GET-parametrina vastaan tiedon
+siitä mitä asiaa tarkkaanottaen halutaan sivulla näytettävän.
+Parametrissa välitetään tietokohteen pääavaimen arvo,
+eli yleensä jonkinsorttinen id-numero
+
+Alla esimerkki linkistä tietosivulle. Usein linkit tietosivuille
+sijoitetaan listauksessa siihen, missä listatun asian nimi näkyy:
 
 ~~~php
-<?php
-  $id = $_GET['id'];
-  $kissa = Kissa::etsi($id);
-
-  if ($kissa != null) {
-    naytaNakymä("kissa", array(
-      'kissa' => $kissa,
-    ));
-  } else {
-    naytaNakymä("kissa", array(
-      'kissa' => null
-      'virheet' => array('Kissaa ei löytynyt!')
-    ));
-  }
+<a href="Kissa?id=<?php echo $kissa->getId() ?>"><?php echo $kissa->getNimi() ?></a>
 ~~~
 
-Malliluokkaan voi tätä varten rakentaa kirjautumismetodin tapaisen `etsi`-metodin, joka hakee pääavaimen perusteella olion kannasta,
+Parametri otetaan vastaan `$_GET`-taulukosta.
+Koska haluamme id-numeron, kannattaa parametrina saatu merkkijono erikseen tyyppimuuntaa sellaiseksi:
+
+
+~~~inlinephp
+$id = (int)$_GET['id'];
+~~~
+
+Kun id-numero on parsittu pyydetään malliluokkaa etsimään 
+numeroa vastaava rivi kannasta ja palauttamaan se oliona.
+
+Malliluokkaan täytyy tätä varten rakentaa 
+metodi, joka hakee pääavaimen perusteella olion kannasta,
 tai palauttaa arvon `null`, jos tietoa ei löytynyt.
 
+~~~inlinephp
+$kissa = Kissa::etsi($id);
+
+if ($kissa != null) {
+  naytaNakymä("kissa", array(
+    'kissa' => $kissa,
+  ));
+} else {
+  naytaNakymä("kissa", array(
+    'kissa' => null
+    'virheet' => array('Kissaa ei löytynyt!')
+  ));
+}
+~~~
+
+Kun olio on välitetty näkymälle, voidaan sen tiedot näyttää 
+tai vaihtoehtoisesti näyttää pelkkä tyhjä virhesivu, jos
+haluttua oliota ei löytynyt.
+
 <next>
-Jos näytettäviä asioita on paljon, lisää listallesi 
+Jos listalla näytettäviä kohteita on paljon, lisää listallesi 
 [sivutus tai hakutoiminto](sivutusjahaut.html).
 
 Tämän jälkeen voit toteuttaa 
