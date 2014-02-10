@@ -229,12 +229,16 @@ jotka olisivat olemassa ilman navigaatiopalkkiakin.
 ##9. Asennustiedot
 
 Lyhyehkö ohje, jonka tarkoituksena on toisaalta kertoa, miten sovellus on nyt asennettu ja toisaalta miten sen saisi asennettua uuteen ympäristöön.
+Uudella ympäristöllä tarkitetaan tässä jotakin usersin kaltaista palvelinta, jonka nettisivutila ja tietokanta on jo pystytetty,
+mutta varsinaista sovellusta ei ole kopioitu vielä palvelimelle, eikä tietokantayhteyden asetuksia säädetty oikeiksi.
 
-Asennusohjeesta tulisi käydä ilmi, minne käytettävän tietokannan asetukset (käytettävä tietokanta, käyttäjätunnus, salasana) tulee ohjelmistoa asentaessa määritellä.
+Users-palvelimella tämä vastaa tilannetta, jossa kaikki wanna-alkuiset komennot ajettu, mutta nettisovelluskansioissa ei ole vielä mitään.
+
+Asennusohjeesta tulisi ainakin käydä ilmi, minne käytettävän tietokannan asetukset (käytettävä tietokanta, käyttäjätunnus, salasana) tulee ohjelmistoa asentaessa määritellä.
 
 **Esimerkki PHP-sovelluksen asennustiedoista:**
 
-> Asenna sovellus kopioimalla sen tiedostot palvelimesi nettiin näkyvään hakemistoon 
+> Asenna sovellus kopioimalla sen tiedostot palvelimen nettiin näkyvään hakemistoon 
 > (esim. usersin htdocs-hakemisto). 
 > Aseta sen jälkeen tietokannan yhteystiedot oikeaksi tiedostoon
 > `libs/config.php`. Voit kopioida asetustiedoston mallin tiedostosta `libs/config.php.dist`
