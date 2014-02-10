@@ -18,7 +18,7 @@ Opiskelijoille
 yhteisiä tilaisuuksia ovat aloitustilaisuus {{aloitusluentopvm}} ja
 lopussa oleva demo-tilaisuus, jossa opiskelijat esittelevät työnsä muille
 ohjausryhmän jäsenille. 
-Kurssiin kuuluu lisäksi erillinen [koodikatselmointi](aikataulu/koodikatselmointi.html).
+Kurssiin kuuluu lisäksi erillinen [koodikatselmointi]({{rootdir}}aikataulu/koodikatselmointi.html).
 
 ### Paja-ajat
 
