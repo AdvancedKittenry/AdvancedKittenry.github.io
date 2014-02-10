@@ -25,7 +25,7 @@ Sen päivittämättä jättämisestä voi menettää hyvinkin helposti pisteitä
 | [Viikko II][viikko2]   | Sovelluksen suunnittelu, HTML-kieli, tietokantayhteyden muodostaminen  | {{deadline2}}         |
 | [Viikko III][viikko3]  | MVC-malli ja kirjautuminen                                             | {{deadline3}}         |
 | [Viikko IV][viikko4]   | Muokkaustoiminnot, sovellus etenee                                     | {{deadline4}}         |
-| [Viikko V][viikko5]    | Sovellus on lähes valmis                                               | {{deadline5}}         |
+| [Viikko V][viikko5]    | Sovellus on lähes valmis, [koodikatselmointi][codereview]              | {{deadline5}}         |
 | [Demotilaisuus][demo]  | Esitellään työtä ja sen koodia muille opiskelijoille                   | {{demodeadline}}      |
 | [Palautus][palautus]   | Valmis työ palautetaan ohjaajalle                                      | {{palautusdeadline}}  |
 
@@ -34,5 +34,6 @@ Sen päivittämättä jättämisestä voi menettää hyvinkin helposti pisteitä
 [viikko3]: {{rootdir}}aikataulu/viikkopalautukset/viikko3.html
 [viikko4]: {{rootdir}}aikataulu/viikkopalautukset/viikko4.html
 [viikko5]: {{rootdir}}aikataulu/viikkopalautukset/viikko5.html
+[codereview]: {{rootdir}}aikataulu/koodikatselmointi.html
 [demo]: {{rootdir}}aikataulu/demo.html
 [palautus]: {{rootdir}}aikataulu/palautus.html

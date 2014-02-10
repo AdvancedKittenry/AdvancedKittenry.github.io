@@ -5,34 +5,47 @@
 
 Tämän sivun Java-versio on valitettavasti tällä hetkellä vielä klooni PHP-versiosta. Samat suunitteluperiaatteet pätevät kuitenkin kummallakin kielellä.
 
-<comment>
-Tehdään koko setti:
-  Listaus
-  Tietosivu
-  Lomake
-    Lisäys
-    Muokkaus
-    Käytettävyys!!
-  Poisto
+Yleensä lisäys- ja muokkauslomakkeet kannattaa toteuttaa samalla tai ainakin hyvin samanlaisella koodilla.
+Kumpaankin käytetyt lomakkeet ovat useimmiten lähes samanlaisia, mutta lisäyksestä poiketen
+lomake on esitäytetty muokattavan olion tietojen mukaan. 
 
-* Päivittämiseen tarvitaan vastaavaa metodia, joka ajaa UPDATE-lauseen
-* samoin poistamiselle on tarpeen DELETE-lauseen ajava instanssimetodi.
-</comment>
+Tämä toteutetaan siten, että sivun kontrolleri ottaa muokattavan tietokohteen pääavaimen arvon GET-parametrina ja 
+pyytää mallilta oikeaa riviä vastaavaan olion, joka sitten näytetään näkymässä.
+Periaate on siis samanlainen, kuin 
+[tietosivujen toteuttamisesta](listausnakymat.html#tietosivut)
 
-* Lisäys- ja muokkauslomakkeet kannattaa toteuttaa samalla tai ainakin hyvin samanlaisella koodilla.
-* Muokkaustoiminnot toteutetaan niin, että sivun kontrolleri ottaa muokattavan tietokohteen id:n tai muun avaimen GET-parametrina ja näyttää sen perusteella oikean kohteen.
-    * Poisto ym. vastaavat toiminnot toimivat käytännössä samoin. Usein niiden aktivointii kannattaa tosin käyttää lomakkeisiin upotettuja nappeja ja POST-metodia.
-    * Kannattaa ottaa esimerkkiä [tietosivujen toteuttamisesta](listausnakymat.html#tietosivut)
-* Muokkauslomake koodataan näyttämään GET-parametrin määrittämän olion tiedot valmiina kentissä. 
-    * Olio haetaan mallilta sopivalla metodilla.
-    * Malli ei koskaan käsittele GET- tai POST-parametreja suoraan vaan ne kontrolleri välittää ne parametreina mallin metodeille.
-* Toteutukseessa on järkevää käyttää samaa tietojen kelpoisuuden tarkistamismekanismia, kuin lisäämisen kanssa.
+Erona lisäykseen on tietenkin myös suoritettava SQL-koodi, jolle pitää muutettavien tietojen lisäksi kertoa `WHERE`-ehdossa muutettavan rivin pääavaimen arvo.
+
+Päivityksen toteutukseessa on järkevää käyttää samaa tietojen kelpoisuuden tarkistamismekanismia, kuin lisäämisen kanssa.
+
+~~~sql
+UPDATE kissat SET nimi = ?, vari = ?, karvaisuus = ? WHERE id = ?
+~~~
+
+Tämä pääavain pitää myös välittää lomakkeesta jotenkin päivitystä suorittavalle kontrollerille. 
+Helpoin tapa on käyttää käyttäjälle näkymätöntä input-kenttää, jonka tyypiksi merkitään `"hidden"`:
+
+~~~php
+<input type="hidden" name="id" value="<?php echo $data->kissa->getId(); ?>">
+~~~
 
 ## Poistotoiminnot
 
-* Tarvitaan myös metodi(t), jolla voi poistaa rivejä.
-    * Instanssimetodi poistaa kyseisen olion kannasta.
-    * Staattisella metodilla voi poistaa useitakin olioita.
+Poisto toimii käytännössä samoin, kuin muokkaus, lomakkeen näyttäminen vain jätetään välistä ja suoritetaan suoraan poistokäsky kontrollerille välitetyn pääavaimen arvon perusteella.
+Usein poiston aktivointiin kannattaa käyttää lomakkeisiin upotettuja poistonappeja ja POST-metodia.
+Kannattaa myös varmistaa, että kulloisella käyttäjällä on oikeus tehdä poisto!
+
+Malliluokan puolelle tarvitaan myös metodi(t), jolla voi poistaa rivejä.
+Toteutustapoja on kaksi:
+
+  * Instanssimetodi poistaa yhden olion kannasta.
+  * Staattisella metodilla voi poistaa useitakin olioita.
+ 
+SQL-syntaksi:
+
+~~~sql
+DELETE FROM kissat WHERE id = ?
+~~~
 
 <last>
 Kun olet tehnyt täyden setin sivuja yhtä tietokohdetta varten, viikon 4 työsi on valmis.

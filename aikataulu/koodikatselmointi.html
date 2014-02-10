@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <title>Tietokannan valinta</title>
+  <title>Koodikatselmointi</title>
   <style type="text/css">code{white-space: pre;}</style>
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -46,7 +46,7 @@
 <li><a href="../aikataulu/viikkopalautukset/viikko4.html">Viikko 4</a></li>
 <li><a href="../aikataulu/viikkopalautukset/viikko5.html">Viikko 5</a></li>
 </ul></li>
-<li><a href="../aikataulu/koodikatselmointi.html">Koodikatselmointi</a></li>
+<li class="selected"><a href="../aikataulu/koodikatselmointi.html">Koodikatselmointi</a></li>
 <li><a href="../aikataulu/demo.html">Demotilaisuus</a></li>
 <li><a href="../aikataulu/palautus.html">Työn palautus</a></li>
 </ul></li>
@@ -87,7 +87,7 @@
 <li><a href="../suunnittelu/aiheet/Aanestys.html">Äänestys</a></li>
 </ul></li>
 <li><a href="../suunnittelu/ohjelmointikielet.html">Ohjelmointikielen valinta</a></li>
-<li class="selected"><a href="../suunnittelu/tietokannan-valinta.html">Tietokannan valinta</a></li>
+<li><a href="../suunnittelu/tietokannan-valinta.html">Tietokannan valinta</a></li>
 <li><a href="../suunnittelu/kayttoliittyma.html">Käyttöliittymän suunnittelu</a></li>
 <li><a href="../suunnittelu/tietokanta.html">Tietokannan suunnittelu</a></li>
 </ul></li>
@@ -162,24 +162,57 @@
 </div>
 <div class="col-md-6" id="content">
 <header>
-<h1 class="title">Tietokannan valinta</h1>
+<h1 class="title">Koodikatselmointi</h1>
 </header>
-<!-- order: 3 -->
+<!-- order: 9 -->
 
-<p>Laitoksen palvelimilla on käytössä kolme tietokantapalvelinta: Oracle, <a href="http://www.mysql.com/">MySQL</a> ja <a href="http://www.postgresql.org/">PostgreSQL</a>.</p>
-<p>Näistä Oracle on jo varsin vanhentunut, eikä sitä ole tietokantasovelluksessa käytetty aikoihin. Sensijaan MySQL ja PostgreSQL ovat täysin tuettuja. Tämän kurssin näkökulmasta niillä ei ole juurikaan eroa. MySQL on hieman yleisempi työmaailmassa, PostgreSQL taas on hieman edistyneempi joiltakin ominaisuuksiltaan.</p>
-<p>Mikäli sinulla ei ole ennestään syytä valita jompaakumpaa, suositeltavaa on valita PostgreSQL, sillä se on huomattavasti nätimmin tuettu laitoksen palvelimilla, sillä tarvitse erikseen käynnnistää ja sammuttaa siellä ja siihen saa myös etäyhteyden melko helposti, mikä on etenkin Javalla koodatessa kätevää.</p>
-<p>MySql-tietokantaa ei pysty etäkäyttämään laitoksen tietokantasovelluspalvelimen ulkopuolelta. Sitä on parasta käyttää ainoastaan, jos saat myös lokaaliin koodausympäristöösi MySql-tietokannan asennettua tai jos käytät esimerkiksi NetBeansia siirtääksesi PHP-sovelluksesi automaattisesti laitoksen palvelimelle, joka kerta kun testaat sitä.</p>
-<p>Syy tähän on siinä, että kannan saa käynnistää users:illa vain unix-socketteja kuuntelevaan tilaan, sillä usersin sisäiset TCP-portit on varattu tomcatin yhteyksille.</p>
-<p>Samasta syystä MySQL:n käyttäminen Javalla users-palvelimella on hankalaa, sillä käytössä olevat kirjastot eivät tue suoria socket-yhteyksiä.</p>
-<section class="alert alert-success small"><h3>
-Seuraavaksi:
-</h3>
-<p>Kun olet valinnut aiheen ja haluamasi toteutustekniikat <a href="../pystytys/index.html">pystytä itsellesi palvelin ja tietokanta</a>.</p>
+<p>Koodikatselmointi on osa harjoitustyötä. Katselmointi suoritetaan kerran kurssiviikolla 5. Katselmoinnista voi saada maksimissaan 2 lisäpistettä, joilla voi korvata puutteita kurssin muilla osa-alueilla. Kurssin maksimipistemäärä on siis edelleen 60.</p>
+<section id="katselmoinnin-ajankohta" class="level3">
+<h3>Katselmoinnin ajankohta</h3>
+<ul>
+<li>Koodikatselmoinnin DL on viikolla 5: <span class="coursekeyword codereviewdeadline">ke 18.2 klo 23:00</span></li>
+</ul>
+<p>Tämän katselmoinnin perimmäinen tarkoitus on oppia hahmottamaan toisen henkilön kirjoittamaa koodia ja kokonaista ohjelmointiprojektia. Toisten koodia luetaan kursseilla toistaiseksi valitettavan vähän, vaikka sujuva koodinlukutaito on välttämätön taito ohjelmoijan työssä. Hyvin suoritettu katselmointi on tehokas tapa havaita ongelmakohtia ja korjata virheitä mahdollisimman varhaisessa vaiheessa ohjelmointiprojektia.</p>
 </section>
-
-
-
+<section id="ohjeet" class="level2">
+<h2>Ohjeet</h2>
+<p>Näet sinulle osoitetun katselmointikohteen repositoriolinkin labtoolista koodikatselmoinnin käynnistyttyä <a href="http://tsoha-labtool.herokuapp.com/mypage">http://tsoha-labtool.herokuapp.com/mypage</a>. Sinun tehtävänäsi on lukea läpi toisen opiskelijan harjoitustyö ja antaa siitä rakentavaa palautetta. Ohjelmaa kannattaa kokeilla myös suorittaa. Jos projekti on kuitenkin täysin tyhjä runko, niin ota yhteyttä ohjaajiin, niin valitsemme sinulle toisen katselmointikohteen.</p>
+<ul>
+<li>Lataa zip-pakattu projekti koneellesi annetun repositorion <em>ZIP</em> -painikkeesta</li>
+<li>Ota talteen kellonaika ja päivä, jolloin latasit projektin</li>
+<li>Pura projekti</li>
+<li>Lue ensimmäiseksi projektin aihemäärittely</li>
+<li>Tutustu mahdollisimman kattavasti ohjelmakoodiin sekä testeihin</li>
+<li>Yritä ymmärtää, mitä mikäkin luokka ja metodi tekee
+<ul>
+<li>Ole sinnikäs: Kaikkea ei aina osaa, eikä tarvitsekaan ymmärtää!</li>
+<li>Haastavin osuus lienee luokkien suhde toisiinsa. Käytä hyväksesi toisen piirtämiä luokkakaavioita</li>
+</ul></li>
+</ul>
+<p>Kun olet tutustunut riittävän tarkasti toisen projektiin, on aika antaa toiselle henkilölle palaute. Palautteessa ei tarvitse ottaa kantaa ohjelman dokumentointiin, ulkonäköön tai toimivuuteen. Tärkeintä on kiinnittää huomiota Ohjelmoinnin Perusteissa, Ohjelmoinnin Jatkokurssilla sekä Ohjelmistotekniikan menetelmien kurssilla opittuihin hyviin käytänteisiin sekä tällä kurssilla noudatettaviin <a href="../cleancode.html">Clean code -periaatteisiin</a>.</p>
+<section id="palautteenanto" class="level3">
+<h3>Palautteenanto</h3>
+<p>Palautteessasi kerro toiselle opiskelijalle, missä on parannettavaa. Mitä tarkempi palaute, sen arvokkaampaa se on palautteen saajalle. Osatessasi voit antaa vinkkejä siitä, miten asioita voisi tehdä toisin tai onko ohjelman rakenteessa parannettavaa. Jos havaitsit selkeitä bugeja tai virheellistä koodia, kerro siitä. Kannattaa kertoa myös, jos jotkin ohjelman osat eivät toimineet tai projekti ei käänny. Tarkoitus ei ole tehdä labtoolin-tyylisiä hieman pintapuolisia mainintoja, vaan tutkia koodia tarkasti ja antaa täsmällisiä parannusehdotuksia. <em>Muista myös positiivinen palaute!</em></p>
+<p>Palaute annetaan Githubin Issuena:</p>
+<ul>
+<li>Mene selaimellasi toisen opiskelijan repositorioon</li>
+<li>Valitse välilehti <em>Issues</em></li>
+<li>Valitse oikeasta reunasta <em>New Issue</em></li>
+<li>Anna otsikko “Koodikatselmointi”</li>
+<li>Kirjoita palautteesi kommenttilaatikkoon, Preview -välilehdestä näet palautteesi ulkomuodon
+<ul>
+<li>Kommenttilaatikon yläpuolella on linkki tekstin muotoiluohjeisiin</li>
+<li>Palautelaatikko tukee myös kuvia</li>
+<li>Varmuuden vuoksi kopioi kirjoittamasi palaute koneellesi tekstitiedostoon</li>
+</ul></li>
+<li>Lisää palautteen alkuun päivä ja kellonaika, jolloin latasit annetun projektin</li>
+<li>Lähetä palaute valitsemalla <em>Submit new issue</em></li>
+</ul>
+<p>Issue eli tässä tapauksessa palaute on koko repositorion tapaan julkinen, joten sen voi lukea kuka tahansa. Ohjaajat lukevat ja pisteyttävät annetun palautteen mahdollisimman pian deadlinen jälkeen.</p>
+<p>Katselmoinnista jaetaan 0-2 pistettä. 5-10 laadukasta rakentavaa palautekommenttia riittää 2 pisteeseen. Palaute kirjoitetaan vapaamuotoisena, mutta yritä kirjoittaa selkeästi. Jaa palaute eri luokista eri kappaleisiin. Jos kirjoitat ranskalaisia viivoja, kirjoita kokonaisia lauseita tai mieluiten useita lauseita. Älä hyökkää palautteessa toista kohtaan! Toisaalta älä ota annettua palautetta itseesi - projektisihan on yhä kesken ja muokattavissa. Palautteen antajakin toisinaan ymmärtää väärin tai antaa virheellisiä ohjeita.</p>
+<p><em>Huom.</em> Katselmoinnin kohteen projekti saattaa elää tai päivittyä sillä aikaa, kun kirjoitat palautetta. Tämän vuoksi palautteeseen liitetään aika, jolloin projektin kävi lataamassa itsellensä. Muulla tavalla asiaan ei kiinnitetä tällä kurssilla huomiota, eikä katselmoijan tarvitse aktiivisesti yrittää tarkistaa, jos jokin asia onkin ehtinyt jo muuttumaan. Palaute voi siis olla osin jo vanhentunutta.</p>
+</section>
+</section>
 </div>
 </div> 
 </div> 

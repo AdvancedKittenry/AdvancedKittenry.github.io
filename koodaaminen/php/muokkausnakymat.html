@@ -8,6 +8,25 @@
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
   <link rel="stylesheet" href="../../css/base.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!--[if lt IE 9]>
@@ -46,6 +65,7 @@
 <li><a href="../../aikataulu/viikkopalautukset/viikko4.html">Viikko 4</a></li>
 <li><a href="../../aikataulu/viikkopalautukset/viikko5.html">Viikko 5</a></li>
 </ul></li>
+<li><a href="../../aikataulu/koodikatselmointi.html">Koodikatselmointi</a></li>
 <li><a href="../../aikataulu/demo.html">Demotilaisuus</a></li>
 <li><a href="../../aikataulu/palautus.html">Työn palautus</a></li>
 </ul></li>
@@ -179,29 +199,23 @@ Tämän sivun sisältö on vielä työn alla ja saattaa muuttua kurssin edetess�
 
 
 <p>Tämän sivun Java-versio on valitettavasti tällä hetkellä vielä klooni PHP-versiosta. Samat suunitteluperiaatteet pätevät kuitenkin kummallakin kielellä.</p>
-<ul>
-<li>Lisäys- ja muokkauslomakkeet kannattaa toteuttaa samalla tai ainakin hyvin samanlaisella koodilla.</li>
-<li>Muokkaustoiminnot toteutetaan niin, että sivun kontrolleri ottaa muokattavan tietokohteen id:n tai muun avaimen GET-parametrina ja näyttää sen perusteella oikean kohteen.
-<ul>
-<li>Poisto ym. vastaavat toiminnot toimivat käytännössä samoin. Usein niiden aktivointii kannattaa tosin käyttää lomakkeisiin upotettuja nappeja ja POST-metodia.</li>
-<li>Kannattaa ottaa esimerkkiä <a href="listausnakymat.html#tietosivut">tietosivujen toteuttamisesta</a></li>
-</ul></li>
-<li>Muokkauslomake koodataan näyttämään GET-parametrin määrittämän olion tiedot valmiina kentissä.
-<ul>
-<li>Olio haetaan mallilta sopivalla metodilla.</li>
-<li>Malli ei koskaan käsittele GET- tai POST-parametreja suoraan vaan ne kontrolleri välittää ne parametreina mallin metodeille.</li>
-</ul></li>
-<li>Toteutukseessa on järkevää käyttää samaa tietojen kelpoisuuden tarkistamismekanismia, kuin lisäämisen kanssa.</li>
-</ul>
+<p>Yleensä lisäys- ja muokkauslomakkeet kannattaa toteuttaa samalla tai ainakin hyvin samanlaisella koodilla. Kumpaankin käytetyt lomakkeet ovat useimmiten lähes samanlaisia, mutta lisäyksestä poiketen lomake on esitäytetty muokattavan olion tietojen mukaan.</p>
+<p>Tämä toteutetaan siten, että sivun kontrolleri ottaa muokattavan tietokohteen pääavaimen arvon GET-parametrina ja pyytää mallilta oikeaa riviä vastaavaan olion, joka sitten näytetään näkymässä. Periaate on siis samanlainen, kuin <a href="listausnakymat.html#tietosivut">tietosivujen toteuttamisesta</a></p>
+<p>Erona lisäykseen on tietenkin myös suoritettava SQL-koodi, jolle pitää muutettavien tietojen lisäksi kertoa <code>WHERE</code>-ehdossa muutettavan rivin pääavaimen arvo.</p>
+<p>Päivityksen toteutukseessa on järkevää käyttää samaa tietojen kelpoisuuden tarkistamismekanismia, kuin lisäämisen kanssa.</p>
+<pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">UPDATE</span> kissat <span class="kw">SET</span> nimi = ?, vari = ?, karvaisuus = ? <span class="kw">WHERE</span> <span class="kw">id</span> = ?</code></pre>
+<p>Tämä pääavain pitää myös välittää lomakkeesta jotenkin päivitystä suorittavalle kontrollerille. Helpoin tapa on käyttää käyttäjälle näkymätöntä input-kenttää, jonka tyypiksi merkitään <code>&quot;hidden&quot;</code>:</p>
+<pre class="sourceCode php"><code class="sourceCode php">&lt;input type=&quot;hidden&quot; name=&quot;id&quot; value=&quot;<span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$data</span>-&gt;kissa-&gt;getId<span class="ot">();</span> <span class="kw">?&gt;</span>&quot;&gt;</code></pre>
 <section id="poistotoiminnot" class="level2">
 <h2>Poistotoiminnot</h2>
+<p>Poisto toimii käytännössä samoin, kuin muokkaus, lomakkeen näyttäminen vain jätetään välistä ja suoritetaan suoraan poistokäsky kontrollerille välitetyn pääavaimen arvon perusteella. Usein poiston aktivointiin kannattaa käyttää lomakkeisiin upotettuja poistonappeja ja POST-metodia. Kannattaa myös varmistaa, että kulloisella käyttäjällä on oikeus tehdä poisto!</p>
+<p>Malliluokan puolelle tarvitaan myös metodi(t), jolla voi poistaa rivejä. Toteutustapoja on kaksi:</p>
 <ul>
-<li>Tarvitaan myös metodi(t), jolla voi poistaa rivejä.
-<ul>
-<li>Instanssimetodi poistaa kyseisen olion kannasta.</li>
+<li>Instanssimetodi poistaa yhden olion kannasta.</li>
 <li>Staattisella metodilla voi poistaa useitakin olioita.</li>
-</ul></li>
 </ul>
+<p>SQL-syntaksi:</p>
+<pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">DELETE</span> <span class="kw">FROM</span> kissat <span class="kw">WHERE</span> <span class="kw">id</span> = ?</code></pre>
 <section class="alert alert-info small"><h3>
 Valmista!
 </h3>

@@ -65,6 +65,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li><a href="../../aikataulu/viikkopalautukset/viikko4.html">Viikko 4</a></li>
 <li><a href="../../aikataulu/viikkopalautukset/viikko5.html">Viikko 5</a></li>
 </ul></li>
+<li><a href="../../aikataulu/koodikatselmointi.html">Koodikatselmointi</a></li>
 <li><a href="../../aikataulu/demo.html">Demotilaisuus</a></li>
 <li><a href="../../aikataulu/palautus.html">Työn palautus</a></li>
 </ul></li>
@@ -218,25 +219,40 @@ Tiivistelmä:
 </ul>
 </section>
 
+
+
 <section id="tietojen-syöttäminen-olioon" class="level2">
 <h2>Tietojen syöttäminen olioon</h2>
-<p>Paras tapa toteuttaa jonkin tietokohteen olion, esimerkiksi kissan, syöttäminen tietokantaan, on tehdä siitä oliopohjaista: Ensiksi luodaan kissaolio, jonka jälkeen asetetaan sille settereillä sopivat arvot. Kun olio on luotu, kutsutaan varta vasten tätä tarkoitusta varten tehtyä metodia, joka lisää olion kantaan. Mallia kutsuva koodi voisi näyttää seuraavanlaiselta:</p>
+<p>Paras tapa toteuttaa jonkin tietokohteen olion, esimerkiksi kissan, syöttäminen tietokantaan, on tehdä siitä oliopohjaista: Ensiksi luodaan kissaolio, jonka jälkeen asetetaan sille settereillä sopivat arvot.</p>
 <p><strong>Esimerkki lisäyskontrollerista</strong></p>
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>
 <span class="kw">$uusikatti</span> = <span class="kw">new</span> Kissa<span class="ot">();</span>
 <span class="kw">$uusikatti</span>-&gt;setNimi<span class="ot">(</span><span class="kw">$_POST</span><span class="ot">[</span><span class="st">&#39;nimi&#39;</span><span class="ot">]);</span>
 <span class="kw">$uusikatti</span>-&gt;setVari<span class="ot">(</span><span class="kw">$_POST</span><span class="ot">[</span><span class="st">&#39;vari&#39;</span><span class="ot">]);</span>
-<span class="kw">$uusikatti</span>-&gt;setRotuId<span class="ot">(</span><span class="kw">$_POST</span><span class="ot">[</span><span class="st">&#39;rotu_id&#39;</span><span class="ot">]);</span>
-
-<span class="co">//Pyydetään Kissa-oliota tarkastamaan syötetyt tiedot.</span>
+<span class="kw">$uusikatti</span>-&gt;setRotuId<span class="ot">(</span><span class="kw">$_POST</span><span class="ot">[</span><span class="st">&#39;rotu_id&#39;</span><span class="ot">]);</span></code></pre>
+<p>Kun olio on luotu, kutsutaan varta vasten tätä tarkoitusta varten tehtyä metodia, joka lisää olion kantaan. Mallia kutsuva koodi voisi näyttää seuraavanlaiselta:</p>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="co">//Pyydetään Kissa-oliota tarkastamaan syötetyt tiedot.</span>
 <span class="kw">if</span> <span class="ot">(</span><span class="kw">$uusikatti</span>-&gt;onkoKelvollinen<span class="ot">())</span> {
   <span class="kw">$uusikatti</span>-&gt;lisaaKantaan<span class="ot">();</span>
+  
+  <span class="co">//Kissa lisättiin kantaan onnistuneesti, lähetetään käyttäjä eteenpäin</span>
+  <span class="fu">header</span><span class="ot">(</span><span class="st">&#39;Location: kissalista.php&#39;</span><span class="ot">);</span>
+  <span class="co">//Asetetaan istuntoon ilmoitus siitä, että kissa on lisätty.</span>
+  <span class="co">//Tästä tekniikasta kerrotaan lisää kohta</span>
+  <span class="kw">$_SESSION</span><span class="ot">[</span><span class="st">&#39;ilmoitus&#39;</span><span class="ot">]</span> = <span class="st">&quot;Kissa lisätty onnistuneesti.&quot;</span><span class="ot">;</span>
+
 } <span class="kw">else</span> {
   <span class="kw">$virheet</span> = <span class="kw">$uusikatti</span>-&gt;getVirheet<span class="ot">();</span>
+
+  <span class="co">//Virheet voidaan nyt välittää näkymälle syötettyjen tietojen kera</span>
+  naytaNakymä<span class="ot">(</span><span class="st">&quot;kissalomake&quot;</span><span class="ot">,</span> <span class="fu">array</span><span class="ot">(</span>
+    <span class="st">&#39;kissa&#39;</span> =&gt; <span class="kw">$uusikatti</span><span class="ot">,</span>
+    <span class="st">&#39;virheet&#39;</span> =&gt; <span class="kw">$virheet</span>
+  <span class="ot">));</span>
 }</code></pre>
+<p>Riippuen siitä onko olioon laitettu järkeviä tietoja, voidaan se joko syöttää kantaan, tai näyttää käyttäjälle virheilmoituksin varustettu lisäyslomake, jotta käyttäjä voi korjata virheensä.</p>
 <p>Huomaa käytetyt metodi <code>onkoKelvollinen</code> ja <code>getVirheet</code>, joista ensimmäinen kertoo, ovatko olioon asetetut tiedot tiedot oikeat ja jälkimmäinen palauttaa kaikki olion tietoihin liittyvät virheet.</p>
-<p>Etenkin jälkimmäisen toteuttamisesta on paljon hyötyä lisäyslomakkeen virheviestien toteuttamisessa.</p>
-<p>Nämä metodit voi toteuttaa käytännössä kahdella tavalla riippuen siitä missä tarkistuksen haluaa tehdä:</p>
+<p>Nämä virheentarkistusmetodit voi toteuttaa käytännössä kahdella tavalla riippuen siitä missä tarkistuksen haluaa tehdä:</p>
 <ol type="1">
 <li>Laitetaan tarkistukset suoraan settereihin ja pidetään jatkuvasti yllä tietorakennetta siitä mitkä tiedot ovat kelvollisia.</li>
 <li>Laitetaan tarkistukset <code>onkoKelvollinen</code>-metodiin ja tarkistetaan kaikki kentät kerralla.</li>
@@ -316,23 +332,6 @@ Tiivistelmä:
 <li>Lomake ohjaa lisäyksen onnistuessa selaimen listaussivulle.</li>
 <li>Onnistumisesta onnistumisviesti</li>
 </ul>
-<p><strong>Kontrollerikoodia</strong></p>
-<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">if</span> <span class="ot">(</span><span class="kw">$uusikatti</span>-&gt;onkoKelvollinen<span class="ot">())</span> {
-  <span class="kw">$uusikatti</span>-&gt;lisaaKantaan<span class="ot">();</span>
-  <span class="co">//Kissa lisättiin kantaan onnistuneesti, lähetetään käyttäjä eteenpäin</span>
-  <span class="fu">header</span><span class="ot">(</span><span class="st">&#39;Location: kissalista.php&#39;</span><span class="ot">);</span>
-  <span class="co">//Asetetaan istuntoon ilmoitus siitä, että kissa on lisätty.</span>
-  <span class="co">//Tästä tekniikasta kerrotaan lisää kohta</span>
-  <span class="kw">$_SESSION</span><span class="ot">[</span><span class="st">&#39;ilmoitus&#39;</span><span class="ot">]</span> = <span class="st">&quot;Kissa lisätty onnistuneesti.&quot;</span><span class="ot">;</span>
-} <span class="kw">else</span> {
-  <span class="kw">$virheet</span> = <span class="kw">$uusikatti</span>-&gt;getVirheet<span class="ot">();</span>
-
-  <span class="co">//Virheet voidaan nyt välittää näkymälle syötettyjen tietojen kera</span>
-  naytaNakymä<span class="ot">(</span><span class="st">&quot;kissalomake&quot;</span><span class="ot">,</span> <span class="fu">array</span><span class="ot">(</span>
-    <span class="st">&#39;kissa&#39;</span> =&gt; <span class="kw">$uusikatti</span><span class="ot">,</span>
-    <span class="st">&#39;virheet&#39;</span> =&gt; <span class="kw">$virheet</span>
-  <span class="ot">));</span>
-}</code></pre>
 <section id="istunnon-käyttäminen-ilmoitusten-ja-virheiden-näyttämiseen" class="level3">
 <h3>Istunnon käyttäminen ilmoitusten ja virheiden näyttämiseen</h3>
 <p>Lyhyt esimerkki, selitykset tulossa:</p>

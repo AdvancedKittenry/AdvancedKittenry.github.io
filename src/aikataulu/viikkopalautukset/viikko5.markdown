@@ -5,6 +5,7 @@
 
 Palautuspäivämäärään mennessä työn on täytettävä alla listatut vaatimukset.
 Kunkin otsikon alla olevista asioista saa suluissa määritellyt aikataulupisteet.
+Muista myös osallistua [koodikatselmointiin](../koodikatselmointi.html)!
 
 ## Työn eteneminen (1p)
 
@@ -17,9 +18,9 @@ järkeviä virheilmoituksia käyttäjälle.
 
 ## Hyvä ohjelmointityyli ja arkkitehtuuri (1p)
 
-Koodisi noudattaa hyvää ohjelmointityyliä ja on selkeää lukea. 
+Koodisi noudattaa [hyvää ohjelmointityyliä]({{rootdir}}cleancode.html) ja on selkeää lukea. 
 Sovelluksen toiminnot on järjestetty järkevästi eri
-tiedostoihin MVC-arkkitehtuurin mukaisesti.
+tiedostoihin [MVC-arkkitehtuurin mukaisesti]({{rootdir}}koodaaminen/arkkitehtuuri/index.html).
 
 ## Dokumentaatio (1p)
 
@@ -33,10 +34,17 @@ Uutta kirjoitettava siis ainakin:
 
 Huolehdi myös siitä, että koodisi on kommentoitu siellä missä se on epäselvempää.
 
-<comment>
-<ohje>
-Aloita [tästä](404.html) ja seuraa vihreitä ohjelaatikoita.
+## Koodikatselmointi (0-2p)
 
-Tehtyäsi kaiken varmista, että kaikki tekemäsi muutokset näkyvät GitHub-repositoriossasi.
+Viimeisellä viikolla on normaalien koodaustehtävien lisäksi lisäosiona koodikatselmointi,
+josta voi saada kaksi ylimääräistä aikataulupistettä.
+Ohjeet osallistumiseen ovat [omalla sivullaan](../koodikatselmointi.html)!
+
+<ohje>
+Viidennelle viikolle ei ole omia materiaalisivujaan, vaan tarkoitus on jatkaa edellisten viikkojen työtä.
+Käy kuitenkin läpi [hyvää ohjelmointityyliä]({{rootdir}}cleancode.html) ja
+[MVC-arkkitehtuuria]({{rootdir}}koodaaminen/arkkitehtuuri/index.html)
+käsittelevät sivut ja pyri tekemään työstäsi mahdollisuuksien mukaan siistimpi.
+
+Muista myös osallistua [koodikatselmointiin](../koodikatselmointi.html)!
 </ohje>
-</comment>

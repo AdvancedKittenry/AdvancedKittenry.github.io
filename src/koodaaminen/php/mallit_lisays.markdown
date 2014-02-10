@@ -18,13 +18,28 @@ Tämän sivun Java-versio on valitettavasti tällä hetkellä vielä klooni PHP-
   * Onnistumisesta onnistumisviesti
 </summary>
 
+<comment>
+TODO:
+Yleinen rakenne
+  Näkymä, jossa on lomake
+  Kontrolleri, joka ottaa lomakkeen vastaan
+    Pitää näyttää tyhjä lomake, jos ei postia
+    Olio, jonka kenttiä täytetään tarpeen mukaan
+    Lomakkeelle olio
+  Mallipuolen toteutus 
+
+  Kappaleet:
+    Malliluokka
+    Lisääminen
+    Käytettävyydeltään hyvä lomake ja virheet
+    Sessiovirhepaska
+</comment>
+
 ## Tietojen syöttäminen olioon
 
 Paras tapa toteuttaa jonkin tietokohteen olion, esimerkiksi kissan, syöttäminen tietokantaan, on tehdä siitä oliopohjaista:
 Ensiksi luodaan kissaolio, jonka jälkeen asetetaan sille 
 settereillä sopivat arvot. 
-Kun olio on luotu, kutsutaan varta vasten tätä tarkoitusta varten
-tehtyä metodia, joka lisää olion kantaan. Mallia kutsuva koodi voisi näyttää seuraavanlaiselta:
 
 **Esimerkki lisäyskontrollerista**
 
@@ -34,23 +49,43 @@ $uusikatti = new Kissa();
 $uusikatti->setNimi($_POST['nimi']);
 $uusikatti->setVari($_POST['vari']);
 $uusikatti->setRotuId($_POST['rotu_id']);
+~~~
 
+Kun olio on luotu, kutsutaan varta vasten tätä tarkoitusta varten
+tehtyä metodia, joka lisää olion kantaan. Mallia kutsuva koodi voisi näyttää seuraavanlaiselta:
+
+~~~inlinephp
 //Pyydetään Kissa-oliota tarkastamaan syötetyt tiedot.
 if ($uusikatti->onkoKelvollinen()) {
   $uusikatti->lisaaKantaan();
+  
+  //Kissa lisättiin kantaan onnistuneesti, lähetetään käyttäjä eteenpäin
+  header('Location: kissalista.php');
+  //Asetetaan istuntoon ilmoitus siitä, että kissa on lisätty.
+  //Tästä tekniikasta kerrotaan lisää kohta
+  $_SESSION['ilmoitus'] = "Kissa lisätty onnistuneesti.";
+
 } else {
   $virheet = $uusikatti->getVirheet();
+
+  //Virheet voidaan nyt välittää näkymälle syötettyjen tietojen kera
+  naytaNakymä("kissalomake", array(
+    'kissa' => $uusikatti,
+    'virheet' => $virheet
+  ));
 }
 ~~~
+
+Riippuen siitä onko olioon laitettu järkeviä tietoja,
+voidaan se joko syöttää kantaan, tai näyttää käyttäjälle
+virheilmoituksin varustettu lisäyslomake, jotta käyttäjä 
+voi korjata virheensä.
 
 Huomaa käytetyt metodi `onkoKelvollinen` ja `getVirheet`, joista
 ensimmäinen kertoo, ovatko olioon asetetut tiedot tiedot oikeat ja
 jälkimmäinen palauttaa kaikki olion tietoihin liittyvät virheet.
 
-Etenkin jälkimmäisen toteuttamisesta on paljon hyötyä lisäyslomakkeen
-virheviestien toteuttamisessa.
-
-Nämä metodit voi toteuttaa käytännössä kahdella tavalla riippuen siitä
+Nämä virheentarkistusmetodit voi toteuttaa käytännössä kahdella tavalla riippuen siitä
 missä tarkistuksen haluaa tehdä:
 
 1. Laitetaan tarkistukset suoraan settereihin ja pidetään jatkuvasti yllä
@@ -151,27 +186,6 @@ olemassa omat kikkansa:
     * Javassa voi käyttää [out-tägiä](http://docs.oracle.com/javaee/5/jstl/1.1/docs/tlddocs/): `<c:out value="${muuttuja}"/>`
 * Lomake ohjaa lisäyksen onnistuessa selaimen listaussivulle.
   * Onnistumisesta onnistumisviesti
-
-**Kontrollerikoodia**
-
-~~~inlinephp
-if ($uusikatti->onkoKelvollinen()) {
-  $uusikatti->lisaaKantaan();
-  //Kissa lisättiin kantaan onnistuneesti, lähetetään käyttäjä eteenpäin
-  header('Location: kissalista.php');
-  //Asetetaan istuntoon ilmoitus siitä, että kissa on lisätty.
-  //Tästä tekniikasta kerrotaan lisää kohta
-  $_SESSION['ilmoitus'] = "Kissa lisätty onnistuneesti.";
-} else {
-  $virheet = $uusikatti->getVirheet();
-
-  //Virheet voidaan nyt välittää näkymälle syötettyjen tietojen kera
-  naytaNakymä("kissalomake", array(
-    'kissa' => $uusikatti,
-    'virheet' => $virheet
-  ));
-}
-~~~
 
 ### Istunnon käyttäminen ilmoitusten ja virheiden näyttämiseen
 
