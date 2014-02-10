@@ -48,5 +48,7 @@ DELETE FROM kissat WHERE id = ?
 ~~~
 
 <last>
-Kun olet tehnyt täyden setin sivuja yhtä tietokohdetta varten, viikon 4 työsi on valmis.
+Kun olet tehnyt täyden setin sivuja yhtä tietokohdetta varten, ja kirjoittanut dokumentaatioosi työsi 
+[asennus- ja käyttöohjeen]({{rootdir}}dokumentaatio-ohje.html#asennustiedot),
+viikon 4 työsi on valmis.
 </last>
