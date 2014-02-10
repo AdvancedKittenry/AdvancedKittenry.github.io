@@ -1,7 +1,7 @@
 % Viikottaiset palautukset
 <!-- order: 1 -->
 
-Tällä kurssilla on käytössä viikottaiset palautukset.
+Kurssilla on käytössä viikottaiset palautukset.
 Jokainen ajoissa tehty palautus on kolmen pisteen arvoinen.
 Myöhästynyt ei pisteitä saa ja yli kahdesta myöhästymisestä kurssin suorius keskeytyy.
 

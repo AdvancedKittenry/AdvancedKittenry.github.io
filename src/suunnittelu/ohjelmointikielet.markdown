@@ -7,7 +7,8 @@ ja niillä tekemiseen pyritään kirjoittamaan ajantasaista dokumentaatiota.
 Tämä sivu käsittelee lähinnä näitä kahta kieltä. 
 Sovelluksen voi halutessaan kirjoittaa myös esim. Pythonilla tai Rubyllä, 
 kunhan sopii asiasta ohjaajan kanssa. 
-Mitään kovin raskaita web-kirjastoja ei tällöinkään saa käyttää.
+
+Etenkin muiden kuin kevyiden web-sovelluskehysten (frameworkkien) käyttäminen vaatii ohjaajan erityisluvan. Tietokanta-abstraktiokerroksia ei myöskään saa käyttää ellei sellaista halua kirjoittaa itse.
 Esim. Ruby on Rails ei käy. 
 
 Miettiessäsi jotain tuettujen kielien ulkopuolista kieltä, 
