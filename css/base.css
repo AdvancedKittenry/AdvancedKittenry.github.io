@@ -241,6 +241,11 @@ header + .wip {
 .alert-info pre code {
   background-color: inherit;
 }
+.alert-info a:link,
+.alert-info a:visited,
+.alert-info a:active {
+  color: #007020;
+}
 
 iframe {
   width: 100%;
