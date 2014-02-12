@@ -14,20 +14,14 @@ Tämän sivun Java-versio on valitettavasti tällä hetkellä vielä klooni PHP-
   sotke sivujen rakennetta.
     * PHP:ssä [htmlspecialchars-funktio](http://www.php.net/manual/en/function.htmlspecialchars.php) auttaa: `<?php echo htmlspecialchars($muuttuja); ?>`
     * Javassa voi käyttää [out-tägiä](http://docs.oracle.com/javaee/5/jstl/1.1/docs/tlddocs/): `<c:out value="${muuttuja}"/>`
+* Jos lomakkeessa käsitellään viiteavaimia, käytä [SELECT-tägiä](#selecttag)
 * Lomake ohjaa lisäyksen onnistuessa selaimen listaussivulle.
   * Onnistumisesta onnistumisviesti
+  * Viesti kannattaa välittää [istunnossa](#sessionmessages)
 </summary>
 
 <comment>
 TODO:
-Yleinen rakenne
-  Näkymä, jossa on lomake
-  Kontrolleri, joka ottaa lomakkeen vastaan
-    Pitää näyttää tyhjä lomake, jos ei postia
-    Olio, jonka kenttiä täytetään tarpeen mukaan
-    Lomakkeelle olio
-  Mallipuolen toteutus 
-
   Kappaleet:
     Malliluokka
     Lisääminen
@@ -35,13 +29,13 @@ Yleinen rakenne
     Sessiovirhepaska
 </comment>
 
-## Tietojen syöttäminen olioon
+## Tietojen syöttäminen malliluokan olioon
 
 Paras tapa toteuttaa jonkin tietokohteen olion, esimerkiksi kissan, syöttäminen tietokantaan, on tehdä siitä oliopohjaista:
 Ensiksi luodaan kissaolio, jonka jälkeen asetetaan sille 
 settereillä sopivat arvot. 
 
-**Esimerkki lisäyskontrollerista**
+**Esimerkki lisäyskontrollerin alusta**
 
 ~~~php
 <?php
@@ -51,8 +45,58 @@ $uusikatti->setVari($_POST['vari']);
 $uusikatti->setRotuId($_POST['rotu_id']);
 ~~~
 
+### Olion syöttäminen kantaan
+
 Kun olio on luotu, kutsutaan varta vasten tätä tarkoitusta varten
-tehtyä metodia, joka lisää olion kantaan. Mallia kutsuva koodi voisi näyttää seuraavanlaiselta:
+tehtyä metodia, joka lisää olion kantaan. 
+Malliin kannattaa rakentaa seuraavankaltainen [INSERT-lausetta][insert] kutsuva koodinpätkä:
+
+~~~inlinephp
+  public function lisaaKantaan() {
+    $sql = "INSERT INTO Kissat(nimi, vari, rotu_id) VALUES(?,?,?) RETURNING id";
+    $kysely = getTietokantayhteys()->prepare($sql);
+
+    $ok = $kysely->execute(array($this->getNimi(), $this->getVari(), $this->getRotuId()));
+    if ($ok) {
+      //Haetaan RETURNING-määreen palauttama id.
+      //HUOM! Tämä toimii ainoastaan PostgreSQL-kannalla!
+      $this->id = $kysely->fetchColumn();
+    }
+    return $ok;
+  }
+~~~
+
+Huomaa miten 
+[SERIAL-tyyppistä][serial] pääavainta käytettäessä INSERT-lauseeseen ei laiteta id-avaimelle lainkaan arvoa, jolloin kanta laittaa kenttään seuraavan vapaan arvon.
+Tämän numeroon noutamista varten on olemassa omat kikkansa:
+
+* PostgreSQL:llä voidaan INSERT-lauseen jälkeen laittaa käsky `RETURNING id`, jolloin kysely palauttaa kentän `id` arvon ikään kuin se olisi SELECT-kysely.
+* MySQL:llä olemassa PHP:llä PDO:n [lastInsertId-metodi](http://php.net/manual/en/pdo.lastinsertid.php).
+* Javalle olemassa [vastaava tekniikka](http://www.technicalkeeda.com/details/how-to-get-mysql-auto-increment-key-value-using-java-jdbc).
+
+[serial]: http://www.postgresql.org/docs/9.2/static/datatype-numeric.html#DATATYPE-SERIAL
+[insert]: http://www.postgresql.org/docs/8.4/static/sql-insert.html
+
+## Virheiden tarkistaminen
+
+Yllä esitetyssä koodissa on yksi puute: virheellisiä syötteitä ei tarkisteta
+mitenkään ja pahimmassa tapauksessa kysely saattaa jopa kaatua, jos kantaan
+syötetään jotakin, mikä sinne ei kuulu.
+
+Tarvitaan mekanismi, joka tarkistaa ovatko olioon syötetyt
+tiedot järkeviä. Tiedoista riippuen
+pitää olio joko syöttää kantaan, tai näyttää käyttäjälle
+virheilmoituksin varustettu lisäyslomake, jotta käyttäjä 
+voi korjata virheensä.
+
+Selkeä tapa toteuttaa tämä on lisätä malliluokan
+rajapintaan kaksi metodia, jotka voi nimetä vaikkapa
+`onkoKelvollinen` ja `getVirheet`.
+Näistä 
+ensimmäinen kertoo, ovatko olioon asetetut tiedot tiedot oikeat ja
+jälkimmäinen palauttaa kaikki olion tietoihin liittyvät virheet.
+
+Virheentarkistusmetodeja voi sitten kontrollerissa käyttää näin:
 
 ~~~inlinephp
 //Pyydetään Kissa-oliota tarkastamaan syötetyt tiedot.
@@ -76,16 +120,7 @@ if ($uusikatti->onkoKelvollinen()) {
 }
 ~~~
 
-Riippuen siitä onko olioon laitettu järkeviä tietoja,
-voidaan se joko syöttää kantaan, tai näyttää käyttäjälle
-virheilmoituksin varustettu lisäyslomake, jotta käyttäjä 
-voi korjata virheensä.
-
-Huomaa käytetyt metodi `onkoKelvollinen` ja `getVirheet`, joista
-ensimmäinen kertoo, ovatko olioon asetetut tiedot tiedot oikeat ja
-jälkimmäinen palauttaa kaikki olion tietoihin liittyvät virheet.
-
-Nämä virheentarkistusmetodit voi toteuttaa käytännössä kahdella tavalla riippuen siitä
+Virheentarkistusmetodit voi toteuttaa käytännössä kahdella tavalla riippuen siitä
 missä tarkistuksen haluaa tehdä:
 
 1. Laitetaan tarkistukset suoraan settereihin ja pidetään jatkuvasti yllä
@@ -135,7 +170,7 @@ hakumetodin, jolla voi hakea tietueita pääavaimen perusteella:
 ~~~
 
 Mallien välinen viittailu on myös mahdollista
-rakentaa siten, että sille voidaan antaa setterissä toisen taulun 
+rakentaa siten, että oliolle annnetaan setterissä toisen taulun 
 olioita, joista poimitaan id.
 
 onkoKelvollinen-metodin toteutukseksi riittää käytetyn virhelistan
@@ -148,81 +183,122 @@ tyhjyyden tarkistava [`empty`](http://www.php.net/empty):
   }
 ~~~
 
-### Olion syöttäminen kantaan
-
-* Autogeneroituja id-numeroita (esim. PostgreSQL:n [SERIAL-tietotyyppi](http://www.postgresql.org/docs/9.2/static/datatype-numeric.html#DATATYPE-SERIAL)) varten
-olemassa omat kikkansa:
-    * PostgreSQL:llä voidaan INSERT-lauseen jälkeen laittaa käsky `RETURNING id`, jolloin kysely palauttaa kentän `id` arvon ikään kuin se olisi SELECT-kysely.
-    * MySQL:llä olemassa PHP:llä PDO:n [lastInsertId-metodi](http://php.net/manual/en/pdo.lastinsertid.php).
-    * Javalle olemassa [vastaava tekniikka](http://www.technicalkeeda.com/details/how-to-get-mysql-auto-increment-key-value-using-java-jdbc).
-    * SERIAL-tyyppiä käytettäessä INSERT-lauseeseen ei laiteta id-avaimelle lainkaan arvoa, jolloin kanta laittaa kenttään seuraavan vapaan arvon.
-
-**Esimerkkikoodia:**
-
-~~~inlinephp
-  public function lisaaKantaan() {
-    $sql = "INSERT INTO Kissat(nimi, vari, rotu_id) VALUES(?,?,?) RETURNING id";
-    $kysely = getTietokantayhteys()->prepare($sql);
-
-    $ok = $kysely->execute(array($this->getNimi(), $this->getVari(), $this->getRotuId()));
-    if ($ok) {
-      //Haetaan RETURNING-määreen palauttama id.
-      //HUOM! Tämä toimii ainoastaan PostgreSQL-kannalla!
-      $this->id = $kysely->fetchColumn();
-    }
-    return $ok;
-  }
-~~~
-
 ## Käytettävä lisäyslomake
 
-* Lomakkeen kontrolleri ohjaa takaisin lomakesivulle, mikäli lomake on virheellisesti täytetty.
-    * Lomakesivulla tällöin näkyvissä ne tiedot, jotka käyttäjä siihen syötti.
-        * Tiedot voidaan näyttää antamalla lomakkeelle näytettäväksi malliluokan olio, johon on asetettu käyttäjän syöttämät lomaketiedot.
-    * Väärin syötetyt tiedot eritellään vielä virheilmoituksin. Mieluiten kaikki kerrallaan.
-* Sekä lomakkeita, että sivunäkymiä näytettäessä kannattaa varmistaa, etteivät käyttäjän syöttämät HTML-koodinpätkät, lainausmerkit yms.
-  sotke sivujen rakennetta.
-    * PHP:ssä [htmlspecialchars-funktio](http://www.php.net/manual/en/function.htmlspecialchars.php) auttaa: `<?php echo htmlspecialchars($muuttuja); ?>`
-    * Javassa voi käyttää [out-tägiä](http://docs.oracle.com/javaee/5/jstl/1.1/docs/tlddocs/): `<c:out value="${muuttuja}"/>`
-* Lomake ohjaa lisäyksen onnistuessa selaimen listaussivulle.
-  * Onnistumisesta onnistumisviesti
+Lomakkeen kontrolleri ohjaa aina takaisin lomakesivulle, mikäli lomake on virheellisesti täytetty.
+Lomakkeessa on tällöin näkyvissä ne tiedot, jotka käyttäjä siihen syötti.
 
-### Istunnon käyttäminen ilmoitusten ja virheiden näyttämiseen
+Tämän takia lomake kannatta toteuttaa siten, että sille annetaan aina jokin olio, jonka
+tietoja lomakken input-tägit näyttävät. 
 
-Lyhyt esimerkki, selitykset tulossa:
+~~~php
+<input type="text" class="form-control" name="nimi" placeholder="Kissan nimi" 
+value="<?php echo $data->kissa->getNimi(); ?>">
+~~~
+
+Silloin kun käyttäjä ei ole vielä laittanut lomakkeeseen mitään, voi siinä
+näyttää vain tyhjän olion:
+
+~~~inlinephp
+naytaNakymä("kissalomake", array(
+  'kissa' => new Kissa(),
+));
+~~~
+
+Jos käyttäjä taas on syöttänyt tietoja, mutta tiedot eivät ole käypiä,
+näytetään olio, johon tietoja on koetettu syöttää, sekä
+samalla olion kelpoisuuden tarkistamisesta saadut virheviestit.
+
+~~~inlinephp
+naytaNakymä("kissalomake", array(
+  'kissa' => $uusikatti,
+  'virheet' => $uusikatti->getVirheet()
+));
+~~~
+
+### Syötteiden sanitointi
+
+Sekä lomakkeita, että sivunäkymiä näytettäessä kannattaa varmistaa, etteivät
+käyttäjän syöttämät HTML-koodinpätkät, lainausmerkit yms. sotke sivujen
+rakennetta.
+
+* PHP:ssä [htmlspecialchars-funktio](http://www.php.net/manual/en/function.htmlspecialchars.php) auttaa: `<?php echo htmlspecialchars($muuttuja); ?>`
+* Javassa voi käyttää [out-tägiä](http://docs.oracle.com/javaee/5/jstl/1.1/docs/tlddocs/): `<c:out value="${muuttuja}"/>`
+
+### Viiteavaimet lomakkeissa {#selecttag}
+
+Jos muokattavassa oliossa on viite johonkin toiseen tauluun
+täytyy käyttäjälle näyttää lomakkeessa jonkinlainen valinta
+eri vaihtoehtojen välillä. Helpoin tapa on käyttää [select-elementin][htmlselect]
+kautta tehtävää pudotusvalikkoa:
+
+~~~php
+<label>Rotu</label>
+<select name="rotu_id">
+<?php foreach(Kissarodut::haeKaikki() as $rotu): ?>
+  <option value="<?php echo $rotu->getId(); ?>"><?php echo $rotu->getNimi(); ?></option>
+<?php endforeach; ?>
+</select>
+~~~
+
+Lopputulos näyttää osapuilleen seuraavalta ja on hyvin helppokäyttöinen:
+
+<label>Rotu</label>
+<select name="rotu_id">
+  <option value="1">Maatiaiskissa</option>
+  <option value="2">Persialainen</option>
+  <option value="3">Kissabussi</option>
+  <option value="4">Siperiankissa</option>
+  <option value="5">Pyhä birma</option>
+  <option value="6">Elävä lelutiikeri</option>
+</select>
+
+[htmlselect]: http://www.w3schools.com/TAGS/tag_select.asp
+
+### Viestien näyttäminen lisäyksen jälkeen {#sessionmessages}
+
+Lisäyksen onnistuttua lomake ohjaa selaimen listaussivulle. 
+Onnistumisesta näytetään tällöin käyttäjälle viesti.
+
+Jos käytät `Location`-otsaketta siirtymiseen sivulta toiselle,
+tarvitset tavan välittää siirryttävälle sivulle
+viestejä. Tähän tarkoitukseen istunto on mitä kätevin työkalu:
 
 **Kontrollerissa**
 
 ~~~inlinephp
+  //Lisätään kantaan kissa:
   $uusikatti->lisaaKantaan();
   
-  //Äsken lisättiin kantaan onnistuneesti kissa,
-  //lähetetään käyttäjä eteenpäin listasivulle:
-  header('Location: kissalista.php');
   //Asetetaan istuntoon ilmoitus siitä, että kissa on lisätty:
   $_SESSION['ilmoitus'] = "Kissa lisätty onnistuneesti.";
+
+  //Lähetetään käyttäjä eteenpäin listasivulle:
+  header('Location: kissalista.php');
 ~~~
+
+Kun istuntoon on asetettu virhe, näkyy se seuraavalla
+käyttäjän avaamalla sivulla.
+Toteutuksen voi tehdä esim. pohjatiedostossa olevalla koodilla:
 
 **Näkymien pohjatiedostossa**
 
 ~~~php
 <?php if (!empty($_SESSION['ilmoitus'])): ?>
+  <div class="alert alert-danger">
+    <?php echo $_SESSION['ilmoitus']; ?>
+  </div>
 <?php
   // Samalla kun viesti näytetään, se poistetaan istunnosta,
   // ettei se näkyisi myöhemmin jollain toisella sivulla uudestaan.
   unset($_SESSION['ilmoitus']); 
+  endif;
 ?>
-  <div class="alert alert-danger">
-    <?php echo $_SESSION['ilmoitus']; ?>
-  </div>
-<?php endif; ?>
 ~~~
 
-
-## Muuta
-
-* Luokalla voi olla staattisia metodeja, joilla voi hakea olioita eli rivejä kannasta.
-    * Voi tehdä myös instassimetodeja, jotka hakevat johonkin olioon liittyviä rivejä toisista tietokantatauluista.
+Viestin näyttämisen jälkeen on tietenkin huolehdittava siitä, ettei viesti jää
+istuntoon roikkumaan, joten se poistetaan istunnosta heti näyttämisen jälkeen.
+Tämänkaltaisen koodin ympärille kannattaa yleensä rakentaa jonkinlainen oma rajapintansa.
 
 <next>
 Kun lisäys on toteutettu, sen pohjalta voidaan toteuttaa myös
