@@ -185,7 +185,6 @@ code > span.er { color: #ff0000; font-weight: bold; }
 </header>
 <!-- order: 9 -->
 
-
 <section class="alert alert-info"><h3>
 Tiivistelmä:
 </h3>
@@ -214,7 +213,7 @@ Tiivistelmä:
 <pre class="sourceCode java"><code class="sourceCode java">Kissa uusikatti = <span class="kw">new</span> <span class="fu">Kissa</span>();
 uusikatti.<span class="fu">setNimi</span>(request.<span class="fu">getParameter</span>(<span class="st">&quot;nimi&quot;</span>));
 uusikatti.<span class="fu">setVari</span>(request.<span class="fu">getParameter</span>(<span class="st">&quot;vari&quot;</span>));
-uusikatti.<span class="fu">setRotuId</span>(Integer.<span class="fu">parseInt</span>(request.<span class="fu">getParameter</span>(<span class="st">&quot;rotu_id&quot;</span>)));</code></pre>
+uusikatti.<span class="fu">setRotuId</span>(request.<span class="fu">getParameter</span>(<span class="st">&quot;rotu_id&quot;</span>));</code></pre>
 <section id="olion-syöttäminen-kantaan" class="level3">
 <h3>Olion syöttäminen kantaan</h3>
 <p>Kun olio on luotu, kutsutaan varta vasten tätä tarkoitusta varten tehtyä metodia, joka lisää olion kantaan. Malliin kannattaa rakentaa seuraavankaltainen <a href="http://www.postgresql.org/docs/8.4/static/sql-insert.html">INSERT-lausetta</a> kutsuva koodinpätkä:</p>
@@ -222,7 +221,7 @@ uusikatti.<span class="fu">setRotuId</span>(Integer.<span class="fu">parseInt</s
   String sql = <span class="st">&quot;INSERT INTO Kissat(nimi, vari, rotu_id) VALUES(?,?,?) RETURNING id&quot;</span>;
   Connection yhteys = Tietokanta.<span class="fu">getYhteys</span>();
   PreparedStatement kysely = yhteys.<span class="fu">prepareStatement</span>(sql);
-  
+
   kysely.<span class="fu">setString</span>(<span class="dv">1</span>, <span class="kw">this</span>.<span class="fu">getNimi</span>());
   kysely.<span class="fu">setString</span>(<span class="dv">2</span>, <span class="kw">this</span>.<span class="fu">getVari</span>());
   kysely.<span class="fu">setInt</span>(<span class="dv">3</span>, <span class="kw">this</span>.<span class="fu">getRotuId</span>());
@@ -255,7 +254,7 @@ uusikatti.<span class="fu">setRotuId</span>(Integer.<span class="fu">parseInt</s
 <pre class="sourceCode java"><code class="sourceCode java"><span class="co">//Pyydetään Kissa-oliota tarkastamaan syötetyt tiedot.</span>
 <span class="kw">if</span> (uusikatti.<span class="fu">onkoKelvollinen</span>()) {
   uusikatti.<span class="fu">lisaaKantaan</span>();
-  
+
   <span class="co">//Kissa lisättiin kantaan onnistuneesti, lähetetään käyttäjä eteenpäin</span>
   response.<span class="fu">sendRedirect</span>(<span class="st">&quot;kissalista&quot;</span>);
 
@@ -267,7 +266,7 @@ uusikatti.<span class="fu">setRotuId</span>(Integer.<span class="fu">parseInt</s
 } <span class="kw">else</span> {
   Collection&lt;String&gt; virheet = uusikatti.<span class="fu">getVirheet</span>();
 
-  request.<span class="fu">setAttribute</span>(<span class="st">&quot;virheet&quot;</span>, virheet);  
+  request.<span class="fu">setAttribute</span>(<span class="st">&quot;virheet&quot;</span>, virheet);
   request.<span class="fu">setAttribute</span>(<span class="st">&quot;kissa&quot;</span>, uusikatti);
   <span class="fu">naytaJSP</span>(<span class="st">&quot;kissalomake.jsp&quot;</span>, request, response);
 }</code></pre>
@@ -291,13 +290,33 @@ uusikatti.<span class="fu">setRotuId</span>(Integer.<span class="fu">parseInt</s
       virheet.<span class="fu">remove</span>(<span class="st">&quot;nimi&quot;</span>);
     }
   }
-  
+
   ...</code></pre>
-<p>Kentissä, jotka viittaavat toisiin tauluihin, voi olla järkevää tehdä tarkistuksia siitä onko viitattu olento olemassa. Tämän voi helposti tehdä tekemällä viitattuun tauluun sopivan hakumetodin, jolla voi hakea tietueita pääavaimen perusteella:</p>
+<section id="numeerisen-datan-vastaanottaminen" class="level3">
+<h3>Numeerisen datan vastaanottaminen</h3>
+<p>Kaikki <code>request</code>-oliolta saatu data on merkkijonomuotoista. Numeroiden vastaanottaminen on siksi astetta hankalampaa.</p>
+<p>Numeromuotoisille kentille voi olla siksi järkevää tehdä erillinen merkkijonoja vastaanottava setteri, joka käyttää normaalia setteriä hyväkseen:</p>
+<pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="dt">void</span> <span class="fu">setPituus</span>(<span class="dt">int</span> uusiPituus) {
+  <span class="kw">this</span>.<span class="fu">pituus</span> = uusiPituus;
+
+  <span class="kw">if</span> (uusiPituus &lt;= <span class="dv">0</span>) {
+    virheet.<span class="fu">put</span>(<span class="st">&quot;pituus&quot;</span>, <span class="st">&quot;Kissalla täytyy olla positiivinen pituus.&quot;</span>);
+  } <span class="kw">else</span> {
+    virheet.<span class="fu">remove</span>(<span class="st">&quot;pituus&quot;</span>);
+  }
+}
+<span class="kw">public</span> <span class="dt">void</span> <span class="fu">setPituus</span>(String uusipituus) {
+  <span class="kw">try</span> {
+    <span class="fu">setPituus</span>(Integer.<span class="fu">parseInt</span>(uusiPituus));
+  } <span class="kw">catch</span>(NumberFormatException e) {
+    virheet.<span class="fu">put</span>(<span class="st">&quot;pituus&quot;</span>, <span class="st">&quot;Kissan pituuden tulee olla kokonaisluku.&quot;</span>);
+  }
+}</code></pre>
+<p>Kentissä, jotka viittaavat toisiin tauluihin, voi olla järkevää tehdä tarkistuksia vielä siitä onko viitattu olento olemassa. Tämän voi helposti tehdä tekemällä viitattuun tauluun sopivan hakumetodin, jolla voi hakea tietueita pääavaimen perusteella:</p>
 <pre class="sourceCode java"><code class="sourceCode java">  <span class="co">//Tarkistetaan, että rotu on olemassa</span>
   <span class="kw">if</span> (Kissarotu.<span class="fu">etsi</span>(uusirotu_id) == <span class="kw">null</span>) {
     <span class="kw">this</span>.<span class="fu">virheet</span>.<span class="fu">put</span>(<span class="st">&quot;rotu_id&quot;</span>, <span class="st">&quot;Kissan rotua ei löytynyt tietokannasta&quot;</span>);
-  } <span class="kw">else</span> { 
+  } <span class="kw">else</span> {
     virheet.<span class="fu">remove</span>(<span class="st">&quot;rotu_id&quot;</span>);
   }</code></pre>
 <p>Mallien välinen viittailu on myös mahdollista rakentaa siten, että oliolle annnetaan setterissä toisen taulun olioita, joista poimitaan id.</p>
@@ -311,19 +330,27 @@ uusikatti.<span class="fu">setRotuId</span>(Integer.<span class="fu">parseInt</s
     <span class="kw">return</span> virheet.<span class="fu">values</span>();
   }</code></pre>
 </section>
+</section>
 <section id="käytettävä-lisäyslomake" class="level2">
 <h2>Käytettävä lisäyslomake</h2>
 <p>Lomakkeen kontrolleri ohjaa aina takaisin lomakesivulle, mikäli lomake on virheellisesti täytetty. Lomakkeessa on tällöin näkyvissä ne tiedot, jotka käyttäjä siihen syötti.</p>
 <p>Tämän takia lomake kannatta toteuttaa siten, että sille annetaan aina jokin olio, jonka tietoja lomakkeen input-tägit näyttävät.</p>
 <pre class="sourceCode java"><code class="sourceCode java">request.<span class="fu">setAttribute</span>(<span class="st">&quot;kissa&quot;</span>, uusikatti);
 <span class="fu">naytaJSP</span>(<span class="st">&quot;kissalomake.jsp&quot;</span>, request, response);</code></pre>
-<pre class="sourceCode jsp"><code class="sourceCode jsp">&lt;input<span class="ot"> type</span>=<span class="dt">&quot;text&quot;</span><span class="ot"> class</span>=<span class="dt">&quot;form-control&quot;</span><span class="ot"> name</span>=<span class="dt">&quot;nimi&quot;</span><span class="ot"> placeholder</span>=<span class="dt">&quot;Kissan nimi&quot;</span><span class="ot"> </span>
+<pre class="sourceCode jsp"><code class="sourceCode jsp">&lt;input<span class="ot"> type</span>=<span class="dt">&quot;text&quot;</span><span class="ot"> class</span>=<span class="dt">&quot;form-control&quot;</span><span class="ot"> name</span>=<span class="dt">&quot;nimi&quot;</span><span class="ot"> placeholder</span>=<span class="dt">&quot;Kissan nimi&quot;</span>
 <span class="ot">value</span>=<span class="dt">&quot;</span>${kissa.nimi}<span class="dt">&quot;</span>&gt;</code></pre>
 <p>Silloin kun käyttäjä ei ole vielä laittanut lomakkeeseen mitään, ei oliota tarvitse välittää ollenkaan.</p>
+<section class="alert alert-info"><h3>
+Lisätietoa
+</h3>
+<p>Jos oliollasi on numerokenttiä, on hyvä välittää niiden <code>value</code>-attribuuttiin suoraan käyttäjältä saatu syöte, jotta käyttäjän mahdollisesti syöttämät kelvottomat numeromerkkijonot näkyvät oikein.</p>
+<p>Tämän voi toteuttaa joko omana kenttänään suoraan malliluokassa tai erikseen kontrollerissa.</p>
+</section>
+
 <p>Jos käyttäjä taas on syöttänyt tietoja, mutta tiedot eivät ole käypiä, näytetään olio, johon tietoja on koetettu syöttää, sekä samalla olion kelpoisuuden tarkistamisesta saadut virheviestit.</p>
 <pre class="sourceCode java"><code class="sourceCode java">Collection&lt;String&gt; virheet = uusikatti.<span class="fu">getVirheet</span>();
 
-request.<span class="fu">setAttribute</span>(<span class="st">&quot;virheet&quot;</span>, virheet);  
+request.<span class="fu">setAttribute</span>(<span class="st">&quot;virheet&quot;</span>, virheet);
 request.<span class="fu">setAttribute</span>(<span class="st">&quot;kissa&quot;</span>, uusikatti);
 <span class="fu">naytaJSP</span>(<span class="st">&quot;kissalomake.jsp&quot;</span>, request, response);</code></pre>
 <section id="syötteiden-sanitointi" class="level3">
@@ -353,7 +380,7 @@ request.<span class="fu">setAttribute</span>(<span class="st">&quot;kissa&quot;<
 <p><strong>Kontrollerissa</strong></p>
 <pre class="sourceCode java"><code class="sourceCode java">  <span class="co">//Lisätään kantaan kissa:</span>
   uusikatti.<span class="fu">lisaaKantaan</span>();
-  
+
   <span class="co">//Asetetaan istuntoon ilmoitus siitä, että kissa on lisätty:</span>
   HttpSession session = request.<span class="fu">getSession</span>();
   session.<span class="fu">setAttribute</span>(<span class="st">&quot;ilmoitus&quot;</span>, <span class="st">&quot;Kissa lisätty onnistuneesti.&quot;</span>);

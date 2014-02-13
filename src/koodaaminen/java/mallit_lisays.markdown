@@ -27,15 +27,8 @@ settereillä sopivat arvot.
 Kissa uusikatti = new Kissa();
 uusikatti.setNimi(request.getParameter("nimi"));
 uusikatti.setVari(request.getParameter("vari"));
-uusikatti.setRotuId(Integer.parseInt(request.getParameter("rotu_id")));
+uusikatti.setRotuId(request.getParameter("rotu_id"));
 ~~~
-
-<comment>
-### Numeerisen datan vastaanottaminen
-
-????
-
-</comment>
 
 ### Olion syöttäminen kantaan
 
@@ -155,8 +148,35 @@ class Kissa {
   ...
 ~~~
 
+### Numeerisen datan vastaanottaminen
+
+Kaikki `request`-oliolta saatu data on merkkijonomuotoista.
+Numeroiden vastaanottaminen on siksi astetta hankalampaa.
+
+Numeromuotoisille kentille voi olla siksi järkevää tehdä erillinen merkkijonoja vastaanottava setteri,
+joka käyttää normaalia setteriä hyväkseen:
+
+~~~java
+public void setPituus(int uusiPituus) {
+  this.pituus = uusiPituus;
+
+  if (uusiPituus <= 0) {
+    virheet.put("pituus", "Kissalla täytyy olla positiivinen pituus.");
+  } else {
+    virheet.remove("pituus");
+  }
+}
+public void setPituus(String uusipituus) {
+  try {
+    setPituus(Integer.parseInt(uusiPituus));
+  } catch(NumberFormatException e) {
+    virheet.put("pituus", "Kissan pituuden tulee olla kokonaisluku.");
+  }
+}
+~~~
+
 Kentissä, jotka viittaavat toisiin tauluihin, voi olla
-järkevää tehdä tarkistuksia siitä onko viitattu olento olemassa.
+järkevää tehdä tarkistuksia vielä siitä onko viitattu olento olemassa.
 Tämän voi helposti tehdä tekemällä viitattuun tauluun sopivan
 hakumetodin, jolla voi hakea tietueita pääavaimen perusteella:
 
@@ -211,6 +231,13 @@ value="${kissa.nimi}">
 
 Silloin kun käyttäjä ei ole vielä laittanut lomakkeeseen mitään, ei oliota
 tarvitse välittää ollenkaan.
+
+<info>
+Jos oliollasi on numerokenttiä, on hyvä välittää niiden `value`-attribuuttiin suoraan käyttäjältä saatu syöte, jotta
+käyttäjän mahdollisesti syöttämät kelvottomat numeromerkkijonot näkyvät oikein.
+
+Tämän voi toteuttaa joko omana kenttänään suoraan malliluokassa tai erikseen kontrollerissa.
+</info>
 
 Jos käyttäjä taas on syöttänyt tietoja, mutta tiedot eivät ole käypiä,
 näytetään olio, johon tietoja on koetettu syöttää, sekä
