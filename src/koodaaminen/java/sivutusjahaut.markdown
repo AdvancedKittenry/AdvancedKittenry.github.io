@@ -49,15 +49,23 @@ ResultSet tulokset = kysely.executeQuery();
 Malliluokkaan kannattaa koodata myös metodi, joka kertoo listauksessa olevien olioiden kokonaismäärän, näin on mahdollista laskea montako sivua listaan tulee:
 
 ~~~java
-public static int lukumaara() {
+public static int lukumaara() throws NamingException, SQLException {
   String sql = "SELECT count(*) as lkm FROM kissat";
+  Connection yhteys = Tietokanta.getYhteys();
   PreparedStatement kysely = yhteys.prepareStatement(sql);
   ResultSet tulokset = kysely.executeQuery();
 
   // Tuloksia on aina yksi, mikäli kissat-taulu on olemassa.
   // Kelataan ensimmäiseen tulokseen:
   tulokset.next(); 
-  return tulokset.getInt("lkm");
+  int lkm = tulokset.getInt("lkm");
+
+  //Suljetaan kaikki resurssit:
+  try { tulokset.close(); } catch (Exception e) {}
+  try { kysely.close(); } catch (Exception e) {}
+  try { yhteys.close(); } catch (Exception e) {}
+
+  return lkm;
 }
 ~~~
 

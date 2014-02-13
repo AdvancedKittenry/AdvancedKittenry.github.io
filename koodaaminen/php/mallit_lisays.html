@@ -185,20 +185,6 @@ code > span.er { color: #ff0000; font-weight: bold; }
 </header>
 <!-- order: 9 -->
 
-
-<div class="wip panel">
-  <div class="panel-body">
-    <h3>
-Work in progress
-</h3>
-    
-Tämän sivun sisältö on vielä työn alla ja saattaa muuttua kurssin edetessä.
-</div>
-</div>
-
-
-
-<p>Tämän sivun Java-versio on valitettavasti tällä hetkellä vielä klooni PHP-versiosta. Samat suunitteluperiaatteet pätevät kuitenkin kummallakin kielellä.</p>
 <section class="alert alert-info"><h3>
 Tiivistelmä:
 </h3>
@@ -212,7 +198,6 @@ Tiivistelmä:
 <li>Sekä lomakkeita, että sivunäkymiä näytettäessä kannattaa varmistaa, etteivät käyttäjän syöttämät HTML-koodinpätkät, lainausmerkit yms. sotke sivujen rakennetta.
 <ul>
 <li>PHP:ssä <a href="http://www.php.net/manual/en/function.htmlspecialchars.php">htmlspecialchars-funktio</a> auttaa: <code>&lt;?php echo htmlspecialchars($muuttuja); ?&gt;</code></li>
-<li>Javassa voi käyttää <a href="http://docs.oracle.com/javaee/5/jstl/1.1/docs/tlddocs/">out-tägiä</a>: <code>&lt;c:out value=&quot;${muuttuja}&quot;/&gt;</code></li>
 </ul></li>
 <li>Jos lomakkeessa käsitellään viiteavaimia, käytä <a href="#selecttag">SELECT-tägiä</a></li>
 <li>Lomake ohjaa lisäyksen onnistuessa selaimen listaussivulle.</li>
@@ -220,8 +205,6 @@ Tiivistelmä:
 <li>Viesti kannattaa välittää <a href="#sessionmessages">istunnossa</a></li>
 </ul>
 </section>
-
-
 
 <section id="tietojen-syöttäminen-malliluokan-olioon" class="level2">
 <h2>Tietojen syöttäminen malliluokan olioon</h2>
@@ -250,8 +233,7 @@ Tiivistelmä:
 <p>Huomaa miten <a href="http://www.postgresql.org/docs/9.2/static/datatype-numeric.html#DATATYPE-SERIAL">SERIAL-tyyppistä</a> pääavainta käytettäessä INSERT-lauseeseen ei laiteta id-avaimelle lainkaan arvoa, jolloin kanta laittaa kenttään seuraavan vapaan arvon. Tämän numeroon noutamista varten on olemassa omat kikkansa:</p>
 <ul>
 <li>PostgreSQL:llä voidaan INSERT-lauseen jälkeen laittaa käsky <code>RETURNING id</code>, jolloin kysely palauttaa kentän <code>id</code> arvon ikään kuin se olisi SELECT-kysely.</li>
-<li>MySQL:llä olemassa PHP:llä PDO:n <a href="http://php.net/manual/en/pdo.lastinsertid.php">lastInsertId-metodi</a>.</li>
-<li>Javalle olemassa <a href="http://www.technicalkeeda.com/details/how-to-get-mysql-auto-increment-key-value-using-java-jdbc">vastaava tekniikka</a>.</li>
+<li>MySQL:llä olemassa PDO:n <a href="http://php.net/manual/en/pdo.lastinsertid.php">lastInsertId-metodi</a>, joka palauttaa juuri luodun serial-kentän arvon.</li>
 </ul>
 </section>
 </section>
@@ -319,7 +301,7 @@ Tiivistelmä:
 <section id="käytettävä-lisäyslomake" class="level2">
 <h2>Käytettävä lisäyslomake</h2>
 <p>Lomakkeen kontrolleri ohjaa aina takaisin lomakesivulle, mikäli lomake on virheellisesti täytetty. Lomakkeessa on tällöin näkyvissä ne tiedot, jotka käyttäjä siihen syötti.</p>
-<p>Tämän takia lomake kannatta toteuttaa siten, että sille annetaan aina jokin olio, jonka tietoja lomakken input-tägit näyttävät.</p>
+<p>Tämän takia lomake kannatta toteuttaa siten, että sille annetaan aina jokin olio, jonka tietoja lomakkeen input-tägit näyttävät.</p>
 <pre class="sourceCode php"><code class="sourceCode php">&lt;input type=&quot;text&quot; class=&quot;form-control&quot; name=&quot;nimi&quot; placeholder=&quot;Kissan nimi&quot; 
 value=&quot;<span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$data</span>-&gt;kissa-&gt;getNimi<span class="ot">();</span> <span class="kw">?&gt;</span>&quot;&gt;</code></pre>
 <p>Silloin kun käyttäjä ei ole vielä laittanut lomakkeeseen mitään, voi siinä näyttää vain tyhjän olion:</p>
@@ -334,10 +316,8 @@ value=&quot;<span class="kw">&lt;?php</span> <span class="fu">echo</span> <span 
 <section id="syötteiden-sanitointi" class="level3">
 <h3>Syötteiden sanitointi</h3>
 <p>Sekä lomakkeita, että sivunäkymiä näytettäessä kannattaa varmistaa, etteivät käyttäjän syöttämät HTML-koodinpätkät, lainausmerkit yms. sotke sivujen rakennetta.</p>
-<ul>
-<li>PHP:ssä <a href="http://www.php.net/manual/en/function.htmlspecialchars.php">htmlspecialchars-funktio</a> auttaa: <code>&lt;?php echo htmlspecialchars($muuttuja); ?&gt;</code></li>
-<li>Javassa voi käyttää <a href="http://docs.oracle.com/javaee/5/jstl/1.1/docs/tlddocs/">out-tägiä</a>: <code>&lt;c:out value=&quot;${muuttuja}&quot;/&gt;</code></li>
-</ul>
+<p>Tähän ongelmaan autttaa parhaiten <a href="http://www.php.net/manual/en/function.htmlspecialchars.php">htmlspecialchars-funktio</a>:</p>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="fu">htmlspecialchars</span><span class="ot">(</span><span class="kw">$muuttuja</span><span class="ot">);</span> <span class="kw">?&gt;</span></code></pre>
 </section>
 <section id="selecttag" class="level3">
 <h3>Viiteavaimet lomakkeissa</h3>

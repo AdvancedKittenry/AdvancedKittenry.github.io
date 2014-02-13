@@ -88,6 +88,12 @@ Menetelmän etuna on, ettei yhteyksien avaamisia tarvitse
 erikseen hallinnoida, vaan varasto avaa niitä 
 lisää sitä mukaa kun tarvetta on. 
 
+Kannattaa huomata, että ylläoleva koodi voi ongelmatapauksissa johtaa sekä
+`NamingException`:iin, että `SQLException`:iin. 
+Suurin osa Javan tietokantakirjastojen toiminnoista
+johtaa ongelmatapauksisa poikkeuksiin, joten niiden hallintaa varten kannattaa
+kehittää sovelluksessa aivan oma koodinsa.
+
 ## Yhteyden sulkeminen
 
 Kun olet suorittanut haluamasi SQL-kyselyn, yhteys pitää sulkea, 

@@ -211,15 +211,23 @@ kysely.<span class="fu">setInt</span>(<span class="dv">2</span>, (sivu<span clas
 
 ResultSet tulokset = kysely.<span class="fu">executeQuery</span>();</code></pre>
 <p>Malliluokkaan kannattaa koodata myös metodi, joka kertoo listauksessa olevien olioiden kokonaismäärän, näin on mahdollista laskea montako sivua listaan tulee:</p>
-<pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="dt">static</span> <span class="dt">int</span> <span class="fu">lukumaara</span>() {
+<pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="dt">static</span> <span class="dt">int</span> <span class="fu">lukumaara</span>() <span class="kw">throws</span> NamingException, SQLException {
   String sql = <span class="st">&quot;SELECT count(*) as lkm FROM kissat&quot;</span>;
+  Connection yhteys = Tietokanta.<span class="fu">getYhteys</span>();
   PreparedStatement kysely = yhteys.<span class="fu">prepareStatement</span>(sql);
   ResultSet tulokset = kysely.<span class="fu">executeQuery</span>();
 
   <span class="co">// Tuloksia on aina yksi, mikäli kissat-taulu on olemassa.</span>
   <span class="co">// Kelataan ensimmäiseen tulokseen:</span>
   tulokset.<span class="fu">next</span>(); 
-  <span class="kw">return</span> tulokset.<span class="fu">getInt</span>(<span class="st">&quot;lkm&quot;</span>);
+  <span class="dt">int</span> lkm = tulokset.<span class="fu">getInt</span>(<span class="st">&quot;lkm&quot;</span>);
+
+  <span class="co">//Suljetaan kaikki resurssit:</span>
+  <span class="kw">try</span> { tulokset.<span class="fu">close</span>(); } <span class="kw">catch</span> (Exception e) {}
+  <span class="kw">try</span> { kysely.<span class="fu">close</span>(); } <span class="kw">catch</span> (Exception e) {}
+  <span class="kw">try</span> { yhteys.<span class="fu">close</span>(); } <span class="kw">catch</span> (Exception e) {}
+
+  <span class="kw">return</span> lkm;
 }</code></pre>
 <section id="sivutus-kontrollerissa-ja-näkymässä" class="level3">
 <h3>Sivutus kontrollerissa ja näkymässä</h3>

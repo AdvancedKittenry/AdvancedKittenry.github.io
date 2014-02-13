@@ -248,6 +248,7 @@ Yllä olevan koodin vaatimat importit
 <p>Kun yhteysvarasto on kerran luotu, saa siltä uusia yhteyksiä suorittamalla getConnection-metodin:</p>
 <pre class="sourceCode java"><code class="sourceCode java">Connection yhteys = yhteysVarasto.<span class="fu">getConnection</span>(); </code></pre>
 <p>Menetelmän etuna on, ettei yhteyksien avaamisia tarvitse erikseen hallinnoida, vaan varasto avaa niitä lisää sitä mukaa kun tarvetta on.</p>
+<p>Kannattaa huomata, että ylläoleva koodi voi ongelmatapauksissa johtaa sekä <code>NamingException</code>:iin, että <code>SQLException</code>:iin. Suurin osa Javan tietokantakirjastojen toiminnoista johtaa ongelmatapauksisa poikkeuksiin, joten niiden hallintaa varten kannattaa kehittää sovelluksessa aivan oma koodinsa.</p>
 </section>
 <section id="yhteyden-sulkeminen" class="level2">
 <h2>Yhteyden sulkeminen</h2>

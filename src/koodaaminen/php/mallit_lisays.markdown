@@ -1,10 +1,6 @@
 % Tietojen syöttäminen kantaan
 <!-- order: 9 -->
 
-<wip />
-
-Tämän sivun Java-versio on valitettavasti tällä hetkellä vielä klooni PHP-versiosta. Samat suunitteluperiaatteet pätevät kuitenkin kummallakin kielellä.
-
 <summary>
 * Malliluokan oliolla kannattaa olla metodi, jolla se osaa syöttää itsensä kantaan (INSERT-lause), sekä metodit, joilla tarkistetaan ovatko syötettävät arvot oikeanlaisia.
 * Lomakkeen kontrolleri ohjaa takaisin esitäytetylle lomakesivulle, mikäli lomake on virheellisesti täytetty.
@@ -13,21 +9,11 @@ Tämän sivun Java-versio on valitettavasti tällä hetkellä vielä klooni PHP-
 * Sekä lomakkeita, että sivunäkymiä näytettäessä kannattaa varmistaa, etteivät käyttäjän syöttämät HTML-koodinpätkät, lainausmerkit yms.
   sotke sivujen rakennetta.
     * PHP:ssä [htmlspecialchars-funktio](http://www.php.net/manual/en/function.htmlspecialchars.php) auttaa: `<?php echo htmlspecialchars($muuttuja); ?>`
-    * Javassa voi käyttää [out-tägiä](http://docs.oracle.com/javaee/5/jstl/1.1/docs/tlddocs/): `<c:out value="${muuttuja}"/>`
 * Jos lomakkeessa käsitellään viiteavaimia, käytä [SELECT-tägiä](#selecttag)
 * Lomake ohjaa lisäyksen onnistuessa selaimen listaussivulle.
   * Onnistumisesta onnistumisviesti
   * Viesti kannattaa välittää [istunnossa](#sessionmessages)
 </summary>
-
-<comment>
-TODO:
-  Kappaleet:
-    Malliluokka
-    Lisääminen
-    Käytettävyydeltään hyvä lomake ja virheet
-    Sessiovirhepaska
-</comment>
 
 ## Tietojen syöttäminen malliluokan olioon
 
@@ -71,8 +57,7 @@ Huomaa miten
 Tämän numeroon noutamista varten on olemassa omat kikkansa:
 
 * PostgreSQL:llä voidaan INSERT-lauseen jälkeen laittaa käsky `RETURNING id`, jolloin kysely palauttaa kentän `id` arvon ikään kuin se olisi SELECT-kysely.
-* MySQL:llä olemassa PHP:llä PDO:n [lastInsertId-metodi](http://php.net/manual/en/pdo.lastinsertid.php).
-* Javalle olemassa [vastaava tekniikka](http://www.technicalkeeda.com/details/how-to-get-mysql-auto-increment-key-value-using-java-jdbc).
+* MySQL:llä olemassa PDO:n [lastInsertId-metodi](http://php.net/manual/en/pdo.lastinsertid.php), joka palauttaa juuri luodun serial-kentän arvon.
 
 [serial]: http://www.postgresql.org/docs/9.2/static/datatype-numeric.html#DATATYPE-SERIAL
 [insert]: http://www.postgresql.org/docs/8.4/static/sql-insert.html
@@ -189,7 +174,7 @@ Lomakkeen kontrolleri ohjaa aina takaisin lomakesivulle, mikäli lomake on virhe
 Lomakkeessa on tällöin näkyvissä ne tiedot, jotka käyttäjä siihen syötti.
 
 Tämän takia lomake kannatta toteuttaa siten, että sille annetaan aina jokin olio, jonka
-tietoja lomakken input-tägit näyttävät. 
+tietoja lomakkeen input-tägit näyttävät. 
 
 ~~~php
 <input type="text" class="form-control" name="nimi" placeholder="Kissan nimi" 
@@ -222,8 +207,11 @@ Sekä lomakkeita, että sivunäkymiä näytettäessä kannattaa varmistaa, ettei
 käyttäjän syöttämät HTML-koodinpätkät, lainausmerkit yms. sotke sivujen
 rakennetta.
 
-* PHP:ssä [htmlspecialchars-funktio](http://www.php.net/manual/en/function.htmlspecialchars.php) auttaa: `<?php echo htmlspecialchars($muuttuja); ?>`
-* Javassa voi käyttää [out-tägiä](http://docs.oracle.com/javaee/5/jstl/1.1/docs/tlddocs/): `<c:out value="${muuttuja}"/>`
+Tähän ongelmaan autttaa parhaiten [htmlspecialchars-funktio](http://www.php.net/manual/en/function.htmlspecialchars.php):
+
+~~~php
+<?php echo htmlspecialchars($muuttuja); ?>
+~~~
 
 ### Viiteavaimet lomakkeissa {#selecttag}
 

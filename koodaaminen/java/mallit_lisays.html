@@ -186,19 +186,6 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <!-- order: 9 -->
 
 
-<div class="wip panel">
-  <div class="panel-body">
-    <h3>
-Work in progress
-</h3>
-    
-Tämän sivun sisältö on vielä työn alla ja saattaa muuttua kurssin edetessä.
-</div>
-</div>
-
-
-
-<p>Tämän sivun Java-versio on valitettavasti tällä hetkellä vielä klooni PHP-versiosta. Samat suunitteluperiaatteet pätevät kuitenkin kummallakin kielellä.</p>
 <section class="alert alert-info"><h3>
 Tiivistelmä:
 </h3>
@@ -211,7 +198,6 @@ Tiivistelmä:
 </ul></li>
 <li>Sekä lomakkeita, että sivunäkymiä näytettäessä kannattaa varmistaa, etteivät käyttäjän syöttämät HTML-koodinpätkät, lainausmerkit yms. sotke sivujen rakennetta.
 <ul>
-<li>PHP:ssä <a href="http://www.php.net/manual/en/function.htmlspecialchars.php">htmlspecialchars-funktio</a> auttaa: <code>&lt;?php echo htmlspecialchars($muuttuja); ?&gt;</code></li>
 <li>Javassa voi käyttää <a href="http://docs.oracle.com/javaee/5/jstl/1.1/docs/tlddocs/">out-tägiä</a>: <code>&lt;c:out value=&quot;${muuttuja}&quot;/&gt;</code></li>
 </ul></li>
 <li>Jos lomakkeessa käsitellään viiteavaimia, käytä <a href="#selecttag">SELECT-tägiä</a></li>
@@ -221,37 +207,42 @@ Tiivistelmä:
 </ul>
 </section>
 
-
-
 <section id="tietojen-syöttäminen-malliluokan-olioon" class="level2">
 <h2>Tietojen syöttäminen malliluokan olioon</h2>
 <p>Paras tapa toteuttaa jonkin tietokohteen olion, esimerkiksi kissan, syöttäminen tietokantaan, on tehdä siitä oliopohjaista: Ensiksi luodaan kissaolio, jonka jälkeen asetetaan sille settereillä sopivat arvot.</p>
 <p><strong>Esimerkki lisäyskontrollerin alusta</strong></p>
-<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>
-<span class="kw">$uusikatti</span> = <span class="kw">new</span> Kissa<span class="ot">();</span>
-<span class="kw">$uusikatti</span>-&gt;setNimi<span class="ot">(</span><span class="kw">$_POST</span><span class="ot">[</span><span class="st">&#39;nimi&#39;</span><span class="ot">]);</span>
-<span class="kw">$uusikatti</span>-&gt;setVari<span class="ot">(</span><span class="kw">$_POST</span><span class="ot">[</span><span class="st">&#39;vari&#39;</span><span class="ot">]);</span>
-<span class="kw">$uusikatti</span>-&gt;setRotuId<span class="ot">(</span><span class="kw">$_POST</span><span class="ot">[</span><span class="st">&#39;rotu_id&#39;</span><span class="ot">]);</span></code></pre>
+<pre class="sourceCode java"><code class="sourceCode java">Kissa uusikatti = <span class="kw">new</span> <span class="fu">Kissa</span>();
+uusikatti.<span class="fu">setNimi</span>(request.<span class="fu">getParameter</span>(<span class="st">&quot;nimi&quot;</span>));
+uusikatti.<span class="fu">setVari</span>(request.<span class="fu">getParameter</span>(<span class="st">&quot;vari&quot;</span>));
+uusikatti.<span class="fu">setRotuId</span>(Integer.<span class="fu">parseInt</span>(request.<span class="fu">getParameter</span>(<span class="st">&quot;rotu_id&quot;</span>)));</code></pre>
 <section id="olion-syöttäminen-kantaan" class="level3">
 <h3>Olion syöttäminen kantaan</h3>
 <p>Kun olio on luotu, kutsutaan varta vasten tätä tarkoitusta varten tehtyä metodia, joka lisää olion kantaan. Malliin kannattaa rakentaa seuraavankaltainen <a href="http://www.postgresql.org/docs/8.4/static/sql-insert.html">INSERT-lausetta</a> kutsuva koodinpätkä:</p>
-<pre class="sourceCode php"><code class="sourceCode php">  <span class="kw">public</span> <span class="kw">function</span> lisaaKantaan<span class="ot">()</span> {
-    <span class="kw">$sql</span> = <span class="st">&quot;INSERT INTO Kissat(nimi, vari, rotu_id) VALUES(?,?,?) RETURNING id&quot;</span><span class="ot">;</span>
-    <span class="kw">$kysely</span> = getTietokantayhteys<span class="ot">()</span>-&gt;prepare<span class="ot">(</span><span class="kw">$sql</span><span class="ot">);</span>
+<pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="dt">void</span> <span class="fu">lisaaKantaan</span>() <span class="kw">throws</span> NamingException, SQLException {
+  String sql = <span class="st">&quot;INSERT INTO Kissat(nimi, vari, rotu_id) VALUES(?,?,?) RETURNING id&quot;</span>;
+  Connection yhteys = Tietokanta.<span class="fu">getYhteys</span>();
+  PreparedStatement kysely = yhteys.<span class="fu">prepareStatement</span>(sql);
+  
+  kysely.<span class="fu">setString</span>(<span class="dv">1</span>, <span class="kw">this</span>.<span class="fu">getNimi</span>());
+  kysely.<span class="fu">setString</span>(<span class="dv">2</span>, <span class="kw">this</span>.<span class="fu">getVari</span>());
+  kysely.<span class="fu">setInt</span>(<span class="dv">3</span>, <span class="kw">this</span>.<span class="fu">getRotuId</span>());
 
-    <span class="kw">$ok</span> = <span class="kw">$kysely</span>-&gt;execute<span class="ot">(</span><span class="fu">array</span><span class="ot">(</span><span class="kw">$this</span>-&gt;getNimi<span class="ot">(),</span> <span class="kw">$this</span>-&gt;getVari<span class="ot">(),</span> <span class="kw">$this</span>-&gt;getRotuId<span class="ot">()));</span>
-    <span class="kw">if</span> <span class="ot">(</span><span class="kw">$ok</span><span class="ot">)</span> {
-      <span class="co">//Haetaan RETURNING-määreen palauttama id.</span>
-      <span class="co">//HUOM! Tämä toimii ainoastaan PostgreSQL-kannalla!</span>
-      <span class="kw">$this</span>-&gt;id = <span class="kw">$kysely</span>-&gt;fetchColumn<span class="ot">();</span>
-    }
-    <span class="kw">return</span> <span class="kw">$ok</span><span class="ot">;</span>
-  }</code></pre>
+  ResultSet ids = kysely.<span class="fu">executeQuery</span>();
+  ids.<span class="fu">next</span>();
+
+  <span class="co">//Haetaan RETURNING-määreen palauttama id.</span>
+  <span class="co">//HUOM! Tämä toimii ainoastaan PostgreSQL-kannalla!</span>
+  <span class="kw">this</span>.<span class="fu">id</span> = ids.<span class="fu">getInt</span>(<span class="dv">1</span>);
+
+  <span class="kw">try</span> { ids.<span class="fu">close</span>(); } <span class="kw">catch</span> (Exception e) {}
+  <span class="kw">try</span> { kysely.<span class="fu">close</span>(); } <span class="kw">catch</span> (Exception e) {}
+  <span class="kw">try</span> { yhteys.<span class="fu">close</span>(); } <span class="kw">catch</span> (Exception e) {}
+
+}</code></pre>
 <p>Huomaa miten <a href="http://www.postgresql.org/docs/9.2/static/datatype-numeric.html#DATATYPE-SERIAL">SERIAL-tyyppistä</a> pääavainta käytettäessä INSERT-lauseeseen ei laiteta id-avaimelle lainkaan arvoa, jolloin kanta laittaa kenttään seuraavan vapaan arvon. Tämän numeroon noutamista varten on olemassa omat kikkansa:</p>
 <ul>
 <li>PostgreSQL:llä voidaan INSERT-lauseen jälkeen laittaa käsky <code>RETURNING id</code>, jolloin kysely palauttaa kentän <code>id</code> arvon ikään kuin se olisi SELECT-kysely.</li>
-<li>MySQL:llä olemassa PHP:llä PDO:n <a href="http://php.net/manual/en/pdo.lastinsertid.php">lastInsertId-metodi</a>.</li>
-<li>Javalle olemassa <a href="http://www.technicalkeeda.com/details/how-to-get-mysql-auto-increment-key-value-using-java-jdbc">vastaava tekniikka</a>.</li>
+<li>MySQL:llä olemassa <a href="http://www.technicalkeeda.com/details/how-to-get-mysql-auto-increment-key-value-using-java-jdbc">oma tekniikkansa</a>.</li>
 </ul>
 </section>
 </section>
@@ -261,24 +252,24 @@ Tiivistelmä:
 <p>Tarvitaan mekanismi, joka tarkistaa ovatko olioon syötetyt tiedot järkeviä. Tiedoista riippuen pitää olio joko syöttää kantaan, tai näyttää käyttäjälle virheilmoituksin varustettu lisäyslomake, jotta käyttäjä voi korjata virheensä.</p>
 <p>Selkeä tapa toteuttaa tämä on lisätä malliluokan rajapintaan kaksi metodia, jotka voi nimetä vaikkapa <code>onkoKelvollinen</code> ja <code>getVirheet</code>. Näistä ensimmäinen kertoo, ovatko olioon asetetut tiedot tiedot oikeat ja jälkimmäinen palauttaa kaikki olion tietoihin liittyvät virheet.</p>
 <p>Virheentarkistusmetodeja voi sitten kontrollerissa käyttää näin:</p>
-<pre class="sourceCode php"><code class="sourceCode php"><span class="co">//Pyydetään Kissa-oliota tarkastamaan syötetyt tiedot.</span>
-<span class="kw">if</span> <span class="ot">(</span><span class="kw">$uusikatti</span>-&gt;onkoKelvollinen<span class="ot">())</span> {
-  <span class="kw">$uusikatti</span>-&gt;lisaaKantaan<span class="ot">();</span>
+<pre class="sourceCode java"><code class="sourceCode java"><span class="co">//Pyydetään Kissa-oliota tarkastamaan syötetyt tiedot.</span>
+<span class="kw">if</span> (uusikatti.<span class="fu">onkoKelvollinen</span>()) {
+  uusikatti.<span class="fu">lisaaKantaan</span>();
   
   <span class="co">//Kissa lisättiin kantaan onnistuneesti, lähetetään käyttäjä eteenpäin</span>
-  <span class="fu">header</span><span class="ot">(</span><span class="st">&#39;Location: kissalista.php&#39;</span><span class="ot">);</span>
+  response.<span class="fu">sendRedirect</span>(<span class="st">&quot;kissalista&quot;</span>);
+
   <span class="co">//Asetetaan istuntoon ilmoitus siitä, että kissa on lisätty.</span>
   <span class="co">//Tästä tekniikasta kerrotaan lisää kohta</span>
-  <span class="kw">$_SESSION</span><span class="ot">[</span><span class="st">&#39;ilmoitus&#39;</span><span class="ot">]</span> = <span class="st">&quot;Kissa lisätty onnistuneesti.&quot;</span><span class="ot">;</span>
+  HttpSession session = request.<span class="fu">getSession</span>();
+  session.<span class="fu">setAttribute</span>(<span class="st">&quot;ilmoitus&quot;</span>, <span class="st">&quot;Kissa lisätty onnistuneesti.&quot;</span>);
 
 } <span class="kw">else</span> {
-  <span class="kw">$virheet</span> = <span class="kw">$uusikatti</span>-&gt;getVirheet<span class="ot">();</span>
+  Collection&lt;String&gt; virheet = uusikatti.<span class="fu">getVirheet</span>();
 
-  <span class="co">//Virheet voidaan nyt välittää näkymälle syötettyjen tietojen kera</span>
-  naytaNakymä<span class="ot">(</span><span class="st">&quot;kissalomake&quot;</span><span class="ot">,</span> <span class="fu">array</span><span class="ot">(</span>
-    <span class="st">&#39;kissa&#39;</span> =&gt; <span class="kw">$uusikatti</span><span class="ot">,</span>
-    <span class="st">&#39;virheet&#39;</span> =&gt; <span class="kw">$virheet</span>
-  <span class="ot">));</span>
+  request.<span class="fu">setAttribute</span>(<span class="st">&quot;virheet&quot;</span>, virheet);  
+  request.<span class="fu">setAttribute</span>(<span class="st">&quot;kissa&quot;</span>, uusikatti);
+  <span class="fu">naytaJSP</span>(<span class="st">&quot;kissalomake.jsp&quot;</span>, request, response);
 }</code></pre>
 <p>Virheentarkistusmetodit voi toteuttaa käytännössä kahdella tavalla riippuen siitä missä tarkistuksen haluaa tehdä:</p>
 <ol type="1">
@@ -288,95 +279,106 @@ Tiivistelmä:
 <p>Ensimmäinen toteutustapa on usein selkeämpi, sillä yhtä kenttää koskevat toiminnot pysyvät yhdessä paikassa, mutta jälkimmäisellä tavalla on joskus mahdollista automatisoida toistuvia tarkistuksia hieman paremmin laittamalla toisteista koodia luuppeihin.</p>
 <p>Alla esimerkki siitä miten virheentarkistuksen voi toteuttaa settereillä, jotka muokkaavat privaattikentäksi määriteltyä virhetaulukkoa.</p>
 <p><strong>Ote kissojen malliluokasta</strong></p>
-<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">class</span> Kissa {
-  <span class="kw">private</span> <span class="kw">$virheet</span> = <span class="fu">array</span><span class="ot">();</span>
+<pre class="sourceCode java"><code class="sourceCode java"><span class="kw">class</span> Kissa {
+  <span class="kw">private</span> Map&lt;String,String&gt; virheet = <span class="kw">new</span> HashMap&lt;String,String&gt;();
 
-  <span class="kw">public</span> <span class="kw">function</span> setNimi<span class="ot">(</span><span class="kw">$uusinimi</span><span class="ot">)</span> {
-    <span class="kw">$this</span>-&gt;nimi = <span class="kw">$uusinimi</span><span class="ot">;</span>
+  <span class="kw">public</span> <span class="dt">void</span> <span class="fu">setNimi</span>(String uusinimi) {
+    <span class="kw">this</span>.<span class="fu">nimi</span> = uusinimi;
 
-    <span class="kw">if</span> <span class="ot">(</span><span class="fu">trim</span><span class="ot">(</span><span class="kw">$this</span>-&gt;nimi<span class="ot">)</span> == <span class="st">&#39;&#39;</span><span class="ot">)</span> {
-      <span class="kw">$this</span>-&gt;virheet<span class="ot">[</span><span class="st">&#39;nimi&#39;</span><span class="ot">]</span> = <span class="st">&quot;Nimi ei saa olla tyhjä.&quot;</span><span class="ot">;</span>
-    } <span class="kw">else</span> { 
-      <span class="fu">unset</span><span class="ot">(</span><span class="kw">$this</span>-&gt;virheet<span class="ot">[</span><span class="st">&#39;nimi&#39;</span><span class="ot">]);</span>
+    <span class="kw">if</span> (uusinimi.<span class="fu">trim</span>().<span class="fu">length</span>() == <span class="dv">0</span>) {
+      virheet.<span class="fu">put</span>(<span class="st">&quot;nimi&quot;</span>, <span class="st">&quot;Nimi ei saa olla tyhjä.&quot;</span>);
+    } <span class="kw">else</span> {
+      virheet.<span class="fu">remove</span>(<span class="st">&quot;nimi&quot;</span>);
     }
   }
   
-  <span class="st">...</span></code></pre>
+  ...</code></pre>
 <p>Kentissä, jotka viittaavat toisiin tauluihin, voi olla järkevää tehdä tarkistuksia siitä onko viitattu olento olemassa. Tämän voi helposti tehdä tekemällä viitattuun tauluun sopivan hakumetodin, jolla voi hakea tietueita pääavaimen perusteella:</p>
-<pre class="sourceCode php"><code class="sourceCode php">  <span class="co">//Tarkistetaan, että rotu on olemassa</span>
-  <span class="kw">if</span> <span class="ot">(</span>Kissarotu::etsi<span class="ot">(</span><span class="kw">$uusirotu_id</span><span class="ot">)</span> == <span class="kw">null</span><span class="ot">)</span> {
-    <span class="kw">$this</span>-&gt;virheet<span class="ot">[</span><span class="st">&#39;rotu_id&#39;</span><span class="ot">]</span> = <span class="st">&quot;Kissan rotua ei löytynyt tietokannasta&quot;</span><span class="ot">;</span>
+<pre class="sourceCode java"><code class="sourceCode java">  <span class="co">//Tarkistetaan, että rotu on olemassa</span>
+  <span class="kw">if</span> (Kissarotu.<span class="fu">etsi</span>(uusirotu_id) == <span class="kw">null</span>) {
+    <span class="kw">this</span>.<span class="fu">virheet</span>.<span class="fu">put</span>(<span class="st">&quot;rotu_id&quot;</span>, <span class="st">&quot;Kissan rotua ei löytynyt tietokannasta&quot;</span>);
   } <span class="kw">else</span> { 
-    <span class="fu">unset</span><span class="ot">(</span><span class="kw">$this</span>-&gt;virheet<span class="ot">[</span><span class="st">&#39;rotu_id&#39;</span><span class="ot">]);</span>
+    virheet.<span class="fu">remove</span>(<span class="st">&quot;rotu_id&quot;</span>);
   }</code></pre>
 <p>Mallien välinen viittailu on myös mahdollista rakentaa siten, että oliolle annnetaan setterissä toisen taulun olioita, joista poimitaan id.</p>
-<p>onkoKelvollinen-metodin toteutukseksi riittää käytetyn virhelistan tyhjyyden tarkistava <a href="http://www.php.net/empty"><code>empty</code></a>:</p>
-<pre class="sourceCode php"><code class="sourceCode php">  <span class="co">/* Palauttaa true, jos Kissaan syötetyt arvot ovat järkeviä. */</span>
-  <span class="kw">public</span> <span class="kw">function</span> onkoKelvollinen<span class="ot">()</span> {
-    <span class="kw">return</span> <span class="fu">empty</span><span class="ot">(</span><span class="kw">$this</span>-&gt;virheet<span class="ot">);</span>
+<p>onkoKelvollinen-metodin toteutukseksi riittää käytetyn virhetaulukon tyhjyyden tarkistava <a href="http://docs.oracle.com/javase/7/docs/api/java/util/HashMap.html#isEmpty()"><code>isEmpty</code></a>:</p>
+<pre class="sourceCode java"><code class="sourceCode java">  <span class="co">/* Palauttaa true, jos Kissaan syötetyt arvot ovat järkeviä. */</span>
+  <span class="kw">public</span> <span class="dt">boolean</span> <span class="fu">onkoKelvollinen</span>() {
+    <span class="kw">return</span> <span class="kw">this</span>.<span class="fu">virheet</span>.<span class="fu">isEmpty</span>();
+  }</code></pre>
+<p>getVirheet taas voi palauttaa virheet-assosiaatiotaulun arvojoukon sellaisenaan:</p>
+<pre class="sourceCode java"><code class="sourceCode java">  <span class="kw">public</span> Collection&lt;String&gt; <span class="fu">getVirheet</span>() {
+    <span class="kw">return</span> virheet.<span class="fu">values</span>();
   }</code></pre>
 </section>
 <section id="käytettävä-lisäyslomake" class="level2">
 <h2>Käytettävä lisäyslomake</h2>
 <p>Lomakkeen kontrolleri ohjaa aina takaisin lomakesivulle, mikäli lomake on virheellisesti täytetty. Lomakkeessa on tällöin näkyvissä ne tiedot, jotka käyttäjä siihen syötti.</p>
-<p>Tämän takia lomake kannatta toteuttaa siten, että sille annetaan aina jokin olio, jonka tietoja lomakken input-tägit näyttävät.</p>
-<pre class="sourceCode php"><code class="sourceCode php">&lt;input type=&quot;text&quot; class=&quot;form-control&quot; name=&quot;nimi&quot; placeholder=&quot;Kissan nimi&quot; 
-value=&quot;<span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$data</span>-&gt;kissa-&gt;getNimi<span class="ot">();</span> <span class="kw">?&gt;</span>&quot;&gt;</code></pre>
-<p>Silloin kun käyttäjä ei ole vielä laittanut lomakkeeseen mitään, voi siinä näyttää vain tyhjän olion:</p>
-<pre class="sourceCode php"><code class="sourceCode php">naytaNakymä<span class="ot">(</span><span class="st">&quot;kissalomake&quot;</span><span class="ot">,</span> <span class="fu">array</span><span class="ot">(</span>
-  <span class="st">&#39;kissa&#39;</span> =&gt; <span class="kw">new</span> Kissa<span class="ot">(),</span>
-<span class="ot">));</span></code></pre>
+<p>Tämän takia lomake kannatta toteuttaa siten, että sille annetaan aina jokin olio, jonka tietoja lomakkeen input-tägit näyttävät.</p>
+<pre class="sourceCode java"><code class="sourceCode java">request.<span class="fu">setAttribute</span>(<span class="st">&quot;kissa&quot;</span>, uusikatti);
+<span class="fu">naytaJSP</span>(<span class="st">&quot;kissalomake.jsp&quot;</span>, request, response);</code></pre>
+<pre class="sourceCode jsp"><code class="sourceCode jsp">&lt;input<span class="ot"> type</span>=<span class="dt">&quot;text&quot;</span><span class="ot"> class</span>=<span class="dt">&quot;form-control&quot;</span><span class="ot"> name</span>=<span class="dt">&quot;nimi&quot;</span><span class="ot"> placeholder</span>=<span class="dt">&quot;Kissan nimi&quot;</span><span class="ot"> </span>
+<span class="ot">value</span>=<span class="dt">&quot;</span>${kissa.nimi}<span class="dt">&quot;</span>&gt;</code></pre>
+<p>Silloin kun käyttäjä ei ole vielä laittanut lomakkeeseen mitään, ei oliota tarvitse välittää ollenkaan.</p>
 <p>Jos käyttäjä taas on syöttänyt tietoja, mutta tiedot eivät ole käypiä, näytetään olio, johon tietoja on koetettu syöttää, sekä samalla olion kelpoisuuden tarkistamisesta saadut virheviestit.</p>
-<pre class="sourceCode php"><code class="sourceCode php">naytaNakymä<span class="ot">(</span><span class="st">&quot;kissalomake&quot;</span><span class="ot">,</span> <span class="fu">array</span><span class="ot">(</span>
-  <span class="st">&#39;kissa&#39;</span> =&gt; <span class="kw">$uusikatti</span><span class="ot">,</span>
-  <span class="st">&#39;virheet&#39;</span> =&gt; <span class="kw">$uusikatti</span>-&gt;getVirheet<span class="ot">()</span>
-<span class="ot">));</span></code></pre>
+<pre class="sourceCode java"><code class="sourceCode java">Collection&lt;String&gt; virheet = uusikatti.<span class="fu">getVirheet</span>();
+
+request.<span class="fu">setAttribute</span>(<span class="st">&quot;virheet&quot;</span>, virheet);  
+request.<span class="fu">setAttribute</span>(<span class="st">&quot;kissa&quot;</span>, uusikatti);
+<span class="fu">naytaJSP</span>(<span class="st">&quot;kissalomake.jsp&quot;</span>, request, response);</code></pre>
 <section id="syötteiden-sanitointi" class="level3">
 <h3>Syötteiden sanitointi</h3>
 <p>Sekä lomakkeita, että sivunäkymiä näytettäessä kannattaa varmistaa, etteivät käyttäjän syöttämät HTML-koodinpätkät, lainausmerkit yms. sotke sivujen rakennetta.</p>
-<ul>
-<li>PHP:ssä <a href="http://www.php.net/manual/en/function.htmlspecialchars.php">htmlspecialchars-funktio</a> auttaa: <code>&lt;?php echo htmlspecialchars($muuttuja); ?&gt;</code></li>
-<li>Javassa voi käyttää <a href="http://docs.oracle.com/javaee/5/jstl/1.1/docs/tlddocs/">out-tägiä</a>: <code>&lt;c:out value=&quot;${muuttuja}&quot;/&gt;</code></li>
-</ul>
+<p>Tähän ongelmaan autttaa parhaiten JSTL-kirjaston <a href="http://docs.oracle.com/javaee/5/jstl/1.1/docs/tlddocs/">out-tägi</a>:</p>
+<pre class="sourceCode jsp"><code class="sourceCode jsp"><span class="kw">&lt;c:out</span><span class="ot"> value</span>=<span class="dt">&quot;</span>${muuttuja}<span class="dt">&quot;</span><span class="kw">/&gt;</span></code></pre>
 </section>
 <section id="selecttag" class="level3">
 <h3>Viiteavaimet lomakkeissa</h3>
 <p>Jos muokattavassa oliossa on viite johonkin toiseen tauluun täytyy käyttäjälle näyttää lomakkeessa jonkinlainen valinta eri vaihtoehtojen välillä. Helpoin tapa on käyttää <a href="http://www.w3schools.com/TAGS/tag_select.asp">select-elementin</a> kautta tehtävää pudotusvalikkoa:</p>
-<pre class="sourceCode php"><code class="sourceCode php">&lt;label&gt;Rotu&lt;/label&gt;
-&lt;select name=&quot;rotu_id&quot;&gt;
-<span class="kw">&lt;?php</span> <span class="kw">foreach</span><span class="ot">(</span>Kissarodut::haeKaikki<span class="ot">()</span> <span class="kw">as</span> <span class="kw">$rotu</span><span class="ot">)</span>: <span class="kw">?&gt;</span>
-  &lt;option value=&quot;<span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$rotu</span>-&gt;getId<span class="ot">();</span> <span class="kw">?&gt;</span>&quot;&gt;<span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$rotu</span>-&gt;getNimi<span class="ot">();</span> <span class="kw">?&gt;</span>&lt;/option&gt;
-<span class="kw">&lt;?php</span> <span class="kw">endforeach</span><span class="ot">;</span> <span class="kw">?&gt;</span>
+<pre class="sourceCode jsp"><code class="sourceCode jsp">&lt;label&gt;Rotu&lt;/label&gt;
+&lt;select<span class="ot"> name</span>=<span class="dt">&quot;rotu_id&quot;</span>&gt;
+<span class="kw">&lt;c:forEach</span><span class="ot"> var</span>=<span class="dt">&quot;rotu&quot;</span><span class="ot"> items</span>=<span class="dt">&quot;</span>${kissarodut}<span class="dt">&quot;</span><span class="kw">&gt;</span>
+  &lt;option<span class="ot"> value</span>=<span class="dt">&quot;</span>${rotu.id}<span class="dt">&quot;</span>&gt;${rotu.nimi}&lt;/option&gt;
+<span class="kw">&lt;/c:forEach&gt;</span>
 &lt;/select&gt;</code></pre>
+<p>Jotta esimerkki toimisi, on näkymälle tietenkin välitettävä kaikki kissarodut:</p>
+<pre class="sourceCode java"><code class="sourceCode java">request.<span class="fu">setAttribute</span>(<span class="st">&quot;kissarodut&quot;</span>, Kissarodut.<span class="fu">haeKaikki</span>());</code></pre>
 <p>Lopputulos näyttää osapuilleen seuraavalta ja on hyvin helppokäyttöinen:</p>
 <p><label>Rotu</label> <select name="rotu_id"> <option value="1">Maatiaiskissa</option> <option value="2">Persialainen</option> <option value="3">Kissabussi</option> <option value="4">Siperiankissa</option> <option value="5">Pyhä birma</option> <option value="6">Elävä lelutiikeri</option> </select></p>
 </section>
 <section id="sessionmessages" class="level3">
 <h3>Viestien näyttäminen lisäyksen jälkeen</h3>
 <p>Lisäyksen onnistuttua lomake ohjaa selaimen listaussivulle. Onnistumisesta näytetään tällöin käyttäjälle viesti.</p>
-<p>Jos käytät <code>Location</code>-otsaketta siirtymiseen sivulta toiselle, tarvitset tavan välittää siirryttävälle sivulle viestejä. Tähän tarkoitukseen istunto on mitä kätevin työkalu:</p>
+<p>Jos käytät <code>sendRedirect</code>-metodia siirtymiseen sivulta toiselle, tarvitset tavan välittää siirryttävälle sivulle viestejä. Tähän tarkoitukseen istunto on mitä kätevin työkalu:</p>
 <p><strong>Kontrollerissa</strong></p>
-<pre class="sourceCode php"><code class="sourceCode php">  <span class="co">//Lisätään kantaan kissa:</span>
-  <span class="kw">$uusikatti</span>-&gt;lisaaKantaan<span class="ot">();</span>
+<pre class="sourceCode java"><code class="sourceCode java">  <span class="co">//Lisätään kantaan kissa:</span>
+  uusikatti.<span class="fu">lisaaKantaan</span>();
   
   <span class="co">//Asetetaan istuntoon ilmoitus siitä, että kissa on lisätty:</span>
-  <span class="kw">$_SESSION</span><span class="ot">[</span><span class="st">&#39;ilmoitus&#39;</span><span class="ot">]</span> = <span class="st">&quot;Kissa lisätty onnistuneesti.&quot;</span><span class="ot">;</span>
+  HttpSession session = request.<span class="fu">getSession</span>();
+  session.<span class="fu">setAttribute</span>(<span class="st">&quot;ilmoitus&quot;</span>, <span class="st">&quot;Kissa lisätty onnistuneesti.&quot;</span>);
 
   <span class="co">//Lähetetään käyttäjä eteenpäin listasivulle:</span>
-  <span class="fu">header</span><span class="ot">(</span><span class="st">&#39;Location: kissalista.php&#39;</span><span class="ot">);</span></code></pre>
-<p>Kun istuntoon on asetettu virhe, näkyy se seuraavalla käyttäjän avaamalla sivulla. Toteutuksen voi tehdä esim. pohjatiedostossa olevalla koodilla:</p>
+  response.<span class="fu">sendRedirect</span>(<span class="st">&quot;kissalista&quot;</span>);</code></pre>
+<p>Istuntoon asetettu virhe näytetään seuraavalla käyttäjän avaamalla sivulla. Toteutuksen voi tehdä esim. omana kirjastofunktionaan</p>
+<pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="dt">void</span> <span class="fu">haeIlmoitus</span>(HttpServletRequest request) {
+  HttpSession session = request.<span class="fu">getSession</span>();
+  String ilmoitus = session.<span class="fu">getAttribute</span>(<span class="st">&quot;ilmoitus&quot;</span>);
+
+  <span class="kw">if</span> (ilmoitus != <span class="kw">null</span>) {
+    <span class="co">// Samalla kun viesti haetaan, se poistetaan istunnosta,</span>
+    <span class="co">// ettei se näkyisi myöhemmin jollain toisella sivulla uudestaan.</span>
+    session.<span class="fu">removeAttribute</span>(<span class="st">&quot;ilmoitus&quot;</span>);
+
+    request.<span class="fu">setAttribute</span>(<span class="st">&quot;ilmoitus&quot;</span>, ilmoitus);
+  }
+}</code></pre>
+<p>Viestin hakemisen jälkeen on tietenkin huolehdittava siitä, ettei viesti jää istuntoon roikkumaan, joten se poistetaan istunnosta heti. Itse virhe taas näytetään pohjatiedostossa olevalla koodilla:</p>
 <p><strong>Näkymien pohjatiedostossa</strong></p>
-<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span> <span class="kw">if</span> <span class="ot">(</span>!<span class="fu">empty</span><span class="ot">(</span><span class="kw">$_SESSION</span><span class="ot">[</span><span class="st">&#39;ilmoitus&#39;</span><span class="ot">]))</span>: <span class="kw">?&gt;</span>
-  &lt;div class=&quot;alert alert-danger&quot;&gt;
-    <span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$_SESSION</span><span class="ot">[</span><span class="st">&#39;ilmoitus&#39;</span><span class="ot">];</span> <span class="kw">?&gt;</span>
-  &lt;/div&gt;
-<span class="kw">&lt;?php</span>
-  <span class="co">// Samalla kun viesti näytetään, se poistetaan istunnosta,</span>
-  <span class="co">// ettei se näkyisi myöhemmin jollain toisella sivulla uudestaan.</span>
-  <span class="fu">unset</span><span class="ot">(</span><span class="kw">$_SESSION</span><span class="ot">[</span><span class="st">&#39;ilmoitus&#39;</span><span class="ot">]);</span> 
-  <span class="kw">endif</span><span class="ot">;</span>
-<span class="kw">?&gt;</span></code></pre>
-<p>Viestin näyttämisen jälkeen on tietenkin huolehdittava siitä, ettei viesti jää istuntoon roikkumaan, joten se poistetaan istunnosta heti näyttämisen jälkeen. Tämänkaltaisen koodin ympärille kannattaa yleensä rakentaa jonkinlainen oma rajapintansa.</p>
+<pre class="sourceCode jsp"><code class="sourceCode jsp"><span class="kw">&lt;c:if</span><span class="ot"> test</span>=<span class="dt">&quot;</span>${ilmoitus != <span class="kw">null</span>}<span class="dt">&quot;</span><span class="kw">&gt;</span>
+  &lt;div<span class="ot"> class</span>=<span class="dt">&quot;alert alert-info&quot;</span>&gt;${ilmoitus}&lt;/div&gt;
+<span class="kw">&lt;/c:if&gt;</span></code></pre>
+<p>Tämänkaltaisen koodin ympärille kannattaa yleensä rakentaa jonkinlainen oma rajapintansa.</p>
 <section class="alert alert-success small"><h3>
 Seuraavaksi:
 </h3>
