@@ -2,8 +2,8 @@
 <!-- order: 5 -->
 
 <summary>
-* Tehdään kirjautumisen vastaanottamista varten oma kontrolleri, joka käyttää aiemmin tehtyä kirjautumisen html-demokoodia näkymänään.
-    * Saatat joutua muuttamaan html-tiedostosi JSP-tiedostoksi.
+* Tehdään kirjautumisen vastaanottamista varten oma kontrolleri, joka käyttää aiemmin tehtyä kirjautumisen HTML-demokoodia näkymänään.
+    * Saatat joutua muuttamaan HTML-tiedostosi JSP-tiedostoksi.
 * Kontrollerin ottaa vastaan lomakkeen tiedot ja lähettää käyttäjän eteenpäin, jos kirjautuminen onnistuu.
 * Jos tunnukset ovat väärät näytetään kirjautumislomake.
     * Käyttäjä näkee samalla virheviestin, joka kertoo mikä meni pieleen.
@@ -48,7 +48,7 @@ protected void processRequest(HttpServletRequest request, HttpServletResponse re
   String salasana = request.getParameter("password");
   String kayttaja = request.getParameter("username");
   
-  /* Muuten tarkistetaan onko parametrina saatu oikeat tunnukset */
+  /* Tarkistetaan onko parametrina saatu oikeat tunnukset */
   if ("svinhufvud".equals(kayttaja) && "kissakartano".equals(salasana)) {
     /* Jos tunnus on oikea, ohjataan käyttäjä HTTP-ohjauksella kissalistaan. */
     response.sendRedirect("kissalista");
@@ -76,11 +76,11 @@ Keskitytään tämän jälkeen tekemään koodista käyttäjäystävällisempi.
 ## Käytettävyys
 
 Ylläolevassa kirjautumiskäsittelijässä on kaksi olennaista käytettävyysongelmaa.
-Ensinnäkin, mikäli käyttäjä syöttää väärän tunnuksen tai salasana tai ei syötä jompaakumpaa ollenkaan, lomake vain palaa kirjautumisruutuun
+Ensinnäkin, mikäli käyttäjä syöttää väärän tunnuksen tai salasanan tai ei syötä jompaakumpaa ollenkaan, lomake vain palaa kirjautumisruutuun
 kertomatta mitä tapahtui. 
-Käyttäjälle jää hiipivä epäilys siitä, ottiko sovellus tunnuksia ollenkaan vastana, kun se ei kerro mitään tekemisistään.
+Käyttäjälle jää hiipivä epäilys siitä, ottiko sovellus tunnuksia ollenkaan vastaan, kun se ei kerro mitään tekemisistään.
 
-Toinen, hieman pienempi, ongelma on, että salasanansa väärin syöttänyt käyttäjä joutuu syöttämään käyttäjätunnuksensa turhaan uudestaan.
+Toinen hieman pienempi ongelma on, että salasanansa väärin syöttänyt käyttäjä joutuu syöttämään käyttäjätunnuksensa turhaan uudestaan.
 
 Korjataan nämä ongelmat!
 
@@ -163,9 +163,10 @@ protected void processRequest(HttpServletRequest request, HttpServletResponse re
   }
 
   //Tarkistetaan että vaaditut kentät on täytetty:
-  if (kayttaja == null && !kayttaja.equals("")) {
+  if (kayttaja == null || !kayttaja.equals("")) {
     asetaVirhe("Kirjautuminen epäonnistui! Et antanut käyttäjätunnusta.", request);
     naytaJSP("login.jsp", request, response);
+    return;
   }
 
   /* Välitetään näkymille tieto siitä, mikä tunnus yritti kirjautumista */
@@ -174,6 +175,7 @@ protected void processRequest(HttpServletRequest request, HttpServletResponse re
   if (salasana == null && !salasana.equals("")) {
     asetaVirhe("Kirjautuminen epäonnistui! Et antanut käyttäjätunnusta.", request);
     naytaJSP("login.jsp", request, response);
+    return;
   }
   
   /* Tarkistetaan onko parametrina saatu oikeat tunnukset */

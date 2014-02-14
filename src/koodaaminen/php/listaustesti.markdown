@@ -223,13 +223,17 @@ ja palauttaa metodin kutsujalle.
 Alla on esimerkki valmiista metodista, joka palauttaa jokaisen käyttäjän.
 
 ~~~inlinephp
-public static function getKayttajat() {
+public static function etsiKaikkiKayttajat() {
   $sql = "SELECT id,tunnus, password FROM users";
   $kysely = getTietokantayhteys()->prepare($sql); $kysely->execute();
     
   $tulokset = array();
   foreach($kysely->fetchAll(PDO::FETCH_OBJ) as $tulos) {
-    $kayttaja = new Kayttaja($tulos->id, $tulos->tunnus, $tulos->salasana); 
+    $kayttaja = new Kayttaja();
+    $kayttaja->setId($tulos->id);
+    $kayttaja->setTunnus($tulos->tunnus);
+    $kayttaja->setSalanana($tulos->salasana);
+
     //$array[] = $muuttuja; lisää muuttujan arrayn perään. 
     //Se vastaa melko suoraan ArrayList:in add-metodia.
     $tulokset[] = $kayttaja;
@@ -273,8 +277,12 @@ Lopulliset sivut tulevat noudattamaan läheisemmin [MVC-arkkitehtuuria][mvc].
 * [Esimerkkejä PHP-tilasta kielen omassa dokumentaatiossa](http://www.php.net/manual/en/language.basic-syntax.phpmode.php)
 * [Include ja require](http://php.net/manual/en/function.include.php)
 
-<next>
-Testisovelluksen tehtyäsi voit tustustua tarkemmin viikon 3 materiaaliin:
+<last>
+Kun listaustestisi toimii moitteetta 
+olet saanut valmiiksi viikon 2 palautuksen. 
+Varmista vielä, että kaikki tiedostot löytyvät repositoriostasi.
+
+Halutessasi voit seuraavaksi tutustua viikon 3 materiaaliin:
 [MVC-arkkitehtuuriin][mvc]
 ja sen jälkeen [kirjautumisen toteuttamiseen](../php/index.html).
-</next>
+</last>

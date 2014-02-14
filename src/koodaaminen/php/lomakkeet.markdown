@@ -2,8 +2,8 @@
 <!-- order: 5 -->
 
 <summary>
-* Tehdään kirjautumisen vastaanottamista varten oma kontrolleri, joka käyttää aiemmin tehtyä kirjautumisen html-demokoodia näkymänään.
-    * Saatat joutua muuttamaan html-tiedostosi JSP-tiedostoksi.
+* Tehdään kirjautumisen vastaanottamista varten oma kontrolleri, joka käyttää aiemmin tehtyä kirjautumisen HTML-demokoodia näkymänään.
+    * Saatat joutua muuttamaan HTML-tiedostosi PHP-tiedostoksi.
 * Kontrollerin ottaa vastaan lomakkeen tiedot ja lähettää käyttäjän eteenpäin, jos kirjautuminen onnistuu.
 * Jos tunnukset ovat väärät näytetään kirjautumislomake.
     * Käyttäjä näkee samalla virheviestin, joka kertoo mikä meni pieleen.
@@ -42,7 +42,8 @@ Lähetetyn lomakkeen parametreja voidaan käsitellä hakemalla ne
 PHP:n [superglobaaleista muuttujista](http://php.net/manual/en/language.variables.superglobals.php)
 `$_GET` ja `$_POST`. Ne ovat PHP:n automaattisesti määrittämiä muuttujia, jotka
 ovat näkyvissä kaikissa funktioissa ja metodeissa automaattisesti.
-Niiden sisältönä on array, johon on laitettu sivun lomakkeelta vastaanottamat
+Niiden sisältönä on Javan HashMappia vastaava assosiaatiotaulu, 
+johon on laitettu sivun lomakkeelta vastaanottamat
 GET- ja POST-parametrit.
 
 Hyvin yksinkertainen kirjautuminen voitaisiin sitä käyttäen toteuttaa suurinpiirtein seuraavasti:
@@ -73,7 +74,7 @@ Koodissa kannattaa huomata kutsu `header('Location: kissalista.php');`.
 [header-funktio](http://php.net/manual/en/function.header.php)
 lähettää käyttäjän selaimelle HTTP-otsakkeen.
 Otsakkeita voi käyttää monenlaisiin tarkoituksiin, mutta yleisimmin käytetään otsaketta "Location", 
-joka lähettää käyttäjän selaimen kaksoispisteen jälkeen kirjoitettuun osoitteesen.
+joka lähettää selaimen uuteen osoitteeseen, joka kirjoitetaan otsakkeessa Location-sanan ja kaksoispisteen jälkeen.
 Tämä on kätevä tapa ohjata käyttäjä jonkin toisen sivun luo.
 
 Voit tehdä siitäkin oman apufunktion aiemmin tekemääsi yleiskäyttöiseen kirjastotiedostoon.
@@ -88,7 +89,7 @@ sillä ne on lähetettävä ennen sivun sisältöä.
 
 Käytännössä tämä vaikuttaa siten, että istunnot 
 ja käyttäjän lähettäminen eteenpäin `Location`-otsakkeella
-eivät toimi kunnolla tai ollenkaan.
+eivät toimi kunnolla.
 
 </alert>
 

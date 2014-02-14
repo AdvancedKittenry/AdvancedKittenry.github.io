@@ -191,16 +191,20 @@ public static List<Kayttaja> getKayttajat() {
   String sql = "SELECT id, tunnus, salasana from kayttajat";
   Connection yhteys = Tietokanta.getYhteys();
   PreparedStatement kysely = yhteys.prepareStatement(sql);
-  ResultSet rs = kysely.executeQuery();
+  ResultSet tulokset = kysely.executeQuery();
 
   ArrayList<Kayttaja> kayttajat = new ArrayList<Kayttaja>();
-  while (rs.next()) {
-    //Kutsutaan sopivat tiedot vastaanottavaa konstruktoria ja palautetaan olio:
-    Kayttaja k = new Kayttaja(rs.getInt("id"), rs.getString("tunnus"), rs.getString("salasana"));
+  while (tulokset.next()) {
+    //Luodaan tuloksia vastaava olio ja palautetaan olio:
+    Kayttaja k = new Kayttaja();
+    k.setId(tulokset.getInt("id"));
+    k.setTunnus(tulokset.getString("tunnus"));
+    k.setSalasana(tulokset.getString("salasana"));
+
     kayttajat.add(k);
   }   
-  //Suljetaan kaikki resurssit:
-  try { rs.close(); } catch (Exception e) {}
+  //Suljetaan kaikki resutuloksetsit:
+  try { tulokset.close(); } catch (Exception e) {}
   try { kysely.close(); } catch (Exception e) {}
   try { yhteys.close(); } catch (Exception e) {}
 
@@ -230,10 +234,14 @@ Tällä viikolla tehtävä listaus on tahallaan melko yksinkertainen, sillä tar
 Lopulliset sivut tulevat noudattamaan läheisemmin [MVC-arkkitehtuuria][mvc].
 </vinkki>
 
-<next>
-Testisovelluksen tehtyäsi voit tustustua tarkemmin viikon 3 materiaaliin:
+<last>
+Kun listaustestisi toimii moitteetta 
+olet saanut valmiiksi viikon 2 palautuksen. 
+Varmista vielä, että kaikki tiedostot löytyvät repositoriostasi.
+
+Halutessasi voit seuraavaksi tutustua viikon 3 materiaaliin:
 [MVC-arkkitehtuuriin][mvc]
 ja sen jälkeen [kirjautumisen toteuttamiseen](../java/index.html).
-</next>
+</last>
 
 [mvc]: {{rootdir}}koodaaminen/arkkitehtuuri/index.html

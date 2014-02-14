@@ -188,14 +188,15 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <p>Edellä toteutetussa kirjautumisessa on se huono puoli, ettei se tallennu mihinkään, sillä <a href="../../web-sovelluksista.html#tilatiedon-hallinta-ja-samanaikaiset-aineistopyynn%C3%B6t">HTTP-protokolla on tilaton</a>, eikä aineistopyyntöjen välillä talleteta informaatiota.</p>
 <p>Apuun ongelmaan tulee PHP:n istuntotuki. Istunnot ovat ikäänkuin pieniä, käyttäjä- ja selainkohtaisia tietokantoja, joihin voi tallettaa olioita siten, että ne säilyvät sivulataukselta toiselle.</p>
 <p>Kirjautumisen tapauksessa haluamme tallentaa tiedon siitä kuka on kirjautunut sisään. Tieto tallennetaan istuntoon siinä vaiheessa, kun käyttäjä kirjautuu sisään ja sitä käytetään aina kun halutaan tarkastella onko käyttäjä kirjautunut sivulle.</p>
-<p>PHP:ssä istunto alustetaan käyttämällä siihen erikseen tarkoitettua funktiota <a href="http://www.php.net/manual/en/function.session-start.php">session_start</a>. Metodi hakee PHP:n istuntotiedostosta käyttäjän istunnon tai mikäli sellaista ei vielä ole olemassa, luo sen. Samalla se alustaa erityisen superglobaalin <code>$_SESSION</code>-muuttujan assosiaatiotaulukoksi, johon voi tämän jälkeen tallentaa tietoa ja tarkastella siellä olevia tietoja siten että ne automaattisesti tallettuvat istuntotiedostoon ja näkyvät seuraavillakin sivulatauksilla.</p>
+<p>PHP:ssä istunto otetaan käyttöön kutsumalla siihen erikseen tarkoitettua funktiota <a href="http://www.php.net/manual/en/function.session-start.php">session_start</a>. Metodi hakee PHP:n istuntotiedostosta käyttäjän istunnon tai mikäli sellaista ei vielä ole olemassa, luo sen. Samalla se alustaa erityisen superglobaalin <code>$_SESSION</code>-muuttujan assosiaatiotaulukoksi, johon voi tämän jälkeen tallentaa tietoa ja tarkastella siellä olevia tietoja siten että ne automaattisesti tallettuvat istuntotiedostoon ja näkyvät seuraavillakin sivulatauksilla.</p>
 <p>Esimerkki kirjautuneen käyttäjän tallentamisesta istuntoon:</p>
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>
   <span class="fu">session_start</span><span class="ot">();</span>
 
-  <span class="kw">if</span> <span class="ot">(</span>voikoKirjautua<span class="ot">(</span><span class="st">&#39;kalle&#39;</span><span class="ot">,</span> <span class="kw">$_POST</span><span class="ot">[</span><span class="st">&#39;salasana&#39;</span><span class="ot">]))</span> {
+  <span class="kw">$kayttaja</span> = etsiKayttajaTunnuksilla<span class="ot">(</span><span class="st">&#39;kalle&#39;</span><span class="ot">,</span> <span class="kw">$_POST</span><span class="ot">[</span><span class="st">&#39;salasana&#39;</span><span class="ot">]));</span>
+  <span class="kw">if</span> <span class="ot">(</span><span class="kw">$kayttaja</span> != <span class="kw">null</span><span class="ot">)</span> {
     <span class="co">//Tallennetaan istuntoon käyttäjäolio</span>
-    <span class="kw">$_SESSION</span><span class="ot">[</span><span class="st">&#39;kirjautunut&#39;</span><span class="ot">]</span> = <span class="kw">new</span> Kayttaja<span class="ot">(</span><span class="st">&quot;Kalle&quot;</span><span class="ot">);</span>
+    <span class="kw">$_SESSION</span><span class="ot">[</span><span class="st">&#39;kirjautunut&#39;</span><span class="ot">]</span> = <span class="kw">$kayttaja</span><span class="ot">;</span>
   }</code></pre>
 <p>Myöhemmin jollain aivan toisella sivulla voidaan tarkistaa onko joku kirjautunut seuraavasti:</p>
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>
@@ -204,7 +205,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
     <span class="kw">$kayttaja</span> = <span class="kw">$_SESSION</span><span class="ot">[</span><span class="st">&#39;kayttaja&#39;</span><span class="ot">];</span>
     <span class="co">//Koodia, jonka vain kirjautunut käyttäjä saa suorittaa</span>
   }</code></pre>
-<p>Käytä istuntoa kirjautumiskontrollerissasi siten, että talletat jokaisen onnistuneen kirjautumisen yhteydessä kirjautuneen käyttäjän tiedot istuntoon. Useimmiten on järkevää tallentaa joko käyttäjätaulun pääavaimen arvo (id tai käyttäjätunnus) tai kerralla kokonainen käyttäjäolio kaikkinen tietoineen. Kummankin tallentaminen istuntoon onnistuu.</p>
+<p>Käytä istuntoa kirjautumiskontrollerissasi siten, että talletat jokaisen onnistuneen kirjautumisen yhteydessä kirjautuneen käyttäjän tiedot istuntoon. Useimmiten on järkevää tallentaa joko käyttäjätaulun pääavaimen arvo (id tai käyttäjätunnus) tai kerralla kokonainen käyttäjäolio kaikkinen tietoineen. Kummankin tallentaminen istuntoon onnistuu samalla tavalla sijoittamalla se <code>$_SESSION</code>-taulukkoon.</p>
 <section class="alert alert-danger"><h3>
 Pidä mielessä!
 </h3>
@@ -233,7 +234,7 @@ Pidä mielessä!
   <span class="fu">session_start</span><span class="ot">();</span>
 
   <span class="co">//Poistetaan istunnosta merkintä kirjautuneesta käyttäjästä -&gt; Kirjaudutaan ulos</span>
-  <span class="fu">unset</span><span class="ot">(</span><span class="kw">$_SESSION</span><span class="ot">[</span><span class="st">&quot;kirjautunutKayttaja&quot;</span><span class="ot">]);</span>
+  <span class="fu">unset</span><span class="ot">(</span><span class="kw">$_SESSION</span><span class="ot">[</span><span class="st">&quot;kirjautunut&quot;</span><span class="ot">]);</span>
 
   <span class="co">//Yleensä kannattaa ulkos kirjautumisen jälkeen ohjata käyttäjä kirjautumissivulle</span>
   <span class="fu">header</span><span class="ot">(</span><span class="st">&#39;Location: kirjautuminen.php&#39;</span><span class="ot">);</span>

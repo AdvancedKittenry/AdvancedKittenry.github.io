@@ -200,9 +200,11 @@ Tiivistelmä:
 <li>PHP:ssä <a href="http://www.php.net/manual/en/function.htmlspecialchars.php">htmlspecialchars-funktio</a> auttaa: <code>&lt;?php echo htmlspecialchars($muuttuja); ?&gt;</code></li>
 </ul></li>
 <li>Jos lomakkeessa käsitellään viiteavaimia, käytä <a href="#selecttag">SELECT-tägiä</a></li>
-<li>Lomake ohjaa lisäyksen onnistuessa selaimen listaussivulle.</li>
-<li>Onnistumisesta onnistumisviesti</li>
+<li>Lomake ohjaa lisäyksen onnistuessa selaimen listaussivulle.
+<ul>
+<li>Tuloksena näytetään listaussivulla onnistumisviesti</li>
 <li>Viesti kannattaa välittää <a href="#sessionmessages">istunnossa</a></li>
+</ul></li>
 </ul>
 </section>
 
@@ -233,7 +235,7 @@ Tiivistelmä:
 <p>Huomaa miten <a href="http://www.postgresql.org/docs/9.2/static/datatype-numeric.html#DATATYPE-SERIAL">SERIAL-tyyppistä</a> pääavainta käytettäessä INSERT-lauseeseen ei laiteta id-avaimelle lainkaan arvoa, jolloin kanta laittaa kenttään seuraavan vapaan arvon. Tämän numeroon noutamista varten on olemassa omat kikkansa:</p>
 <ul>
 <li>PostgreSQL:llä voidaan INSERT-lauseen jälkeen laittaa käsky <code>RETURNING id</code>, jolloin kysely palauttaa kentän <code>id</code> arvon ikään kuin se olisi SELECT-kysely.</li>
-<li>MySQL:llä olemassa PDO:n <a href="http://php.net/manual/en/pdo.lastinsertid.php">lastInsertId-metodi</a>, joka palauttaa juuri luodun serial-kentän arvon.</li>
+<li>Muita kantoja käytettäessä voi kentän arvon hakea PDO:n <a href="http://php.net/manual/en/pdo.lastinsertid.php">lastInsertId-metodilla</a>, joka palauttaa juuri luodun serial-kentän arvon.</li>
 </ul>
 </section>
 </section>
@@ -319,6 +321,7 @@ Tiivistelmä:
   <span class="kw">public</span> <span class="kw">function</span> onkoKelvollinen<span class="ot">()</span> {
     <span class="kw">return</span> <span class="fu">empty</span><span class="ot">(</span><span class="kw">$this</span>-&gt;virheet<span class="ot">);</span>
   }</code></pre>
+<p>getVirheet-metodissa taas voi vain palauttaa virhetaulukon sellaisenaan.</p>
 </section>
 </section>
 <section id="käytettävä-lisäyslomake" class="level2">

@@ -7,7 +7,7 @@ sivuksi muiden joukossa. Tehtävää on ainakin:
 * Sivupohjan ja näkymän käyttöönotto
 * Listattavat asiat kannattaa aina järjestää 
   [`ORDER BY`-käskyllä](http://www.postgresql.org/docs/9.2/static/queries-order.html)
-* Jos listattavia kohteita on paljon, voi olla järkevää toteuttaa joko [haku tai sivutustoiminto](sivutusjahaut.html)
+* Jos listattavia kohteita on paljon, voi olla järkevää toteuttaa joko haku tai sivutustoiminto
 * Sivulla tulee näyttää viesti, jos lista on täysin tyhjä.
 
 ## Listojen läpikäynti
@@ -22,10 +22,10 @@ mukaanlukien erilaisia listoja:
 
 ~~~~java
 /* Kissa-luokka hakee kaikki kissat 
- * tietokannasta getKaikkiKissat-metodilla.
+ * tietokannasta etsiKaikkiKissat-metodilla.
  * Nimen saa kissasta ulos getNimi()-metodilla.
  */
-List<Kissa> katit = Kissa.getKaikkiKissat();
+List<Kissa> katit = Kissa.etsiKaikkiKissat();
 request.setAttribute("kissat", katit);  
 ~~~~
 

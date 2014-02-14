@@ -10,7 +10,7 @@
   }
 
   //Kutsutaan malliluokan staattista metodia
-  $kissat = Kissa::hae($hakusana);
+  $kissat = Kissa::etsiHakusanalla($hakusana);
   
   //Näytetään näkymä lähettäen sille muutamia muuttujia
   naytaNakymä("kissalista", array(

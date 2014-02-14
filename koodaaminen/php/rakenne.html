@@ -212,14 +212,12 @@ users.php (Käyttäjänhallinnan kontrolleri)
 <p>Lisäksi PHP eroaa hieman useimmista muista web-ohjelmointikielistä suoraviivaisessa lähestymisessään URL-osoitteiden ja suoritettavan ohjelmakoodin väliseen riippuvuuteen.</p>
 <p>Perussääntö on hyvin yksinkertainen, jokainen tiedosto näkyy oman URL:insa takana sillä palvelimella, minne tiedostot on sijoitettu.</p>
 <p>Eräänlaisena poikkeuksena toimivat etusivut: Jos syöttää osoitekenttään pelkän hakemiston osoitteen, esim. <code>http://tunnus.users.cs.helsinki.fi</code> on se sama kuin kirjoittaisi <code>http://tunnus.users.cs.helsinki.fi/index.php</code>, kunhan htdocs-kansiossa on <code>index.php</code>-tiedosto.</p>
-<p>On periaatteessa täysin mahdollista tehdä php-sivuja, joissa jokainen ladattava sivu tuotetaan tasan yhdellä php-tiedostolla.</p>
 <p>Tästä johtuen yksinkertaisin tapa toteuttaa yksittäisen toiminnon kontrolleri PHP:llä ei oikeastaan vaadi muuta kuin sopivaan osoitteeseen sijoitetun PHP-tiedoston, joka kutsuu tarvitsemiaan kirjastoja tuottaakseen käyttäjälle halutun vastauksen aineistopyyntöön.</p>
 <section id="spagettikoodi-ja-kontrolleri" class="level2">
 <h2>Spagettikoodi ja kontrolleri</h2>
-<p>Tiiviimmillään ja rumimmillaan tämä näkyy vieläkin ikävän yleisenä <em>spagettikoodina</em>, jossa sovelluksen kaikki kolme osaa: kontrolleri, näkymä ja malli ovat sulassa sovussa ja sekasotkussa samassa tiedostossa. Lopputulos on vähänkään monimutkaisemmissa sovelluksissa sekava ja vaikea muuttaa.</p>
+<p>Tiiviimmillään ja rumimmillaan tämä näkyy vieläkin ikävän yleisenä <em>spagettikoodina</em>, jossa sovelluksen kaikki kolme osaa: kontrolleri, näkymä ja malli ovat sulassa sovussa ja sekasotkussa samassa tiedostossa. Lopputulos on vähänkään monimutkaisemmissa sovelluksissa sekava ja hyvin vaikea ylläpitää.</p>
 <p><strong>spagettikoodi.php</strong></p>
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>
-  <span class="kw">include</span> <span class="st">&#39;tietokantayhteys.php&#39;</span><span class="ot">;</span>
   <span class="kw">$yhteys</span> = <span class="kw">new</span> <span class="kw">PDO</span><span class="ot">(</span><span class="st">&#39;pgsql:&#39;</span><span class="ot">);</span>
   <span class="kw">$nimi</span> = <span class="st">&#39;Matti&#39;</span><span class="ot">;</span>
 <span class="kw">?&gt;</span>&lt;!DOCTYPE html&gt;
@@ -242,7 +240,7 @@ users.php (Käyttäjänhallinnan kontrolleri)
 &lt;/html&gt;</code></pre>
 <p>Tällä kurssilla pyrimme hieman selkeämpään <a href="../../koodaaminen/arkkitehtuuri/index.html">arkkitehtuuriin</a>, jossa mallit ja näkymät määritellään omissa tiedostoissaan.</p>
 <p>Tämä ei kuitenkaan varsinaisesti estä käyttämästä PHP:n suoraviivaista luonnetta siihen, että jätämme varsinaiset kontrollerit paljaaksi koodiksi, joka vain suoraan kutsuu erilaisia kirjastoja ja näyttää lopulta näkymän.</p>
-<p>Esimerkkinä kuvitteellisen kissalistan kontrolleri:</p>
+<p>Esimerkkinä kuvitteellinen kissalistan kontrolleri:</p>
 <p><strong>kissalista.php</strong></p>
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span> 
   <span class="co">//Otetaan käyttöön kirjastotiedosto, joka hakee kasan omatekoisia yleistoimintoja, sekä malliluokka:</span>
@@ -256,7 +254,7 @@ users.php (Käyttäjänhallinnan kontrolleri)
   }
 
   <span class="co">//Kutsutaan malliluokan staattista metodia</span>
-  <span class="kw">$kissat</span> = Kissa::hae<span class="ot">(</span><span class="kw">$hakusana</span><span class="ot">);</span>
+  <span class="kw">$kissat</span> = Kissa::etsiHakusanalla<span class="ot">(</span><span class="kw">$hakusana</span><span class="ot">);</span>
   
   <span class="co">//Näytetään näkymä lähettäen sille muutamia muuttujia</span>
   naytaNakymä<span class="ot">(</span><span class="st">&quot;kissalista&quot;</span><span class="ot">,</span> <span class="fu">array</span><span class="ot">(</span>

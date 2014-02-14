@@ -152,3 +152,11 @@ joka on oletuksena nimeltään web.
 * [Model View Controller Explained](http://tomdalling.com/blog/software-design/model-view-controller-explained/)
 * [A Really Simple Explanation Of MVC](http://www.strongandagile.co.uk/index.php/a-really-simple-explanation-of-mvc/)
 * [Lyhyt PHP-esimerkki ohjelmointiputka.net:issä](http://www.ohjelmointiputka.net/oppaat/opas.php?tunnus=php_14#mvcmalli)
+
+<next>
+Siirry seuraavaksi kielikohtaisiin toteuttamisohjeisiin:
+
+* [PHP-ohjeet]({{rootdir}}koodaaminen/php/rakenne.html)
+* [Java-ohjeet]({{rootdir}}koodaaminen/java/rakenne.html)
+
+</next>

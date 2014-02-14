@@ -189,7 +189,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <ul>
 <li>Sivupohjan ja näkymän käyttöönotto</li>
 <li>Listattavat asiat kannattaa aina järjestää <a href="http://www.postgresql.org/docs/9.2/static/queries-order.html"><code>ORDER BY</code>-käskyllä</a></li>
-<li>Jos listattavia kohteita on paljon, voi olla järkevää toteuttaa joko <a href="sivutusjahaut.html">haku tai sivutustoiminto</a></li>
+<li>Jos listattavia kohteita on paljon, voi olla järkevää toteuttaa joko haku tai sivutustoiminto</li>
 <li>Sivulla tulee näyttää viesti, jos lista on täysin tyhjä.</li>
 </ul>
 <section id="listojen-läpikäynti" class="level2">
@@ -197,10 +197,10 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <p>Aiemmin <a href="nakymat.html">näkymien</a> oheessa käsitellylle request-olion <code>setAttribute</code>-metodille voidaan servletin koodissa antaa käytännössä mitä tahansa olioita mukaanlukien erilaisia listoja:</p>
 <p><strong>Ote kissalistan servletistä</strong></p>
 <pre class="sourceCode java"><code class="sourceCode java"><span class="co">/* Kissa-luokka hakee kaikki kissat </span>
-<span class="co"> * tietokannasta getKaikkiKissat-metodilla.</span>
+<span class="co"> * tietokannasta etsiKaikkiKissat-metodilla.</span>
 <span class="co"> * Nimen saa kissasta ulos getNimi()-metodilla.</span>
 <span class="co"> */</span>
-List&lt;Kissa&gt; katit = Kissa.<span class="fu">getKaikkiKissat</span>();
+List&lt;Kissa&gt; katit = Kissa.<span class="fu">etsiKaikkiKissat</span>();
 request.<span class="fu">setAttribute</span>(<span class="st">&quot;kissat&quot;</span>, katit);  </code></pre>
 <p>Nämä listat ovat suoraan käytettävissä JSP-tiedostoissa. Attribuutiksi määritellyn kissalistan voi näyttää seuraavanlaisella silmukalla:</p>
 <pre class="sourceCode jsp"><code class="sourceCode jsp"><span class="kw">&lt;c:forEach</span><span class="ot"> var</span>=<span class="dt">&quot;kissa&quot;</span><span class="ot"> items</span>=<span class="dt">&quot;</span>${kissat}<span class="dt">&quot;</span><span class="kw">&gt;</span>

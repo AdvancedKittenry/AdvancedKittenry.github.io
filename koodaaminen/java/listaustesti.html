@@ -321,16 +321,20 @@ ResultSet rs = kysely.<span class="fu">executeQuery</span>();</code></pre>
   String sql = <span class="st">&quot;SELECT id, tunnus, salasana from kayttajat&quot;</span>;
   Connection yhteys = Tietokanta.<span class="fu">getYhteys</span>();
   PreparedStatement kysely = yhteys.<span class="fu">prepareStatement</span>(sql);
-  ResultSet rs = kysely.<span class="fu">executeQuery</span>();
+  ResultSet tulokset = kysely.<span class="fu">executeQuery</span>();
 
   ArrayList&lt;Kayttaja&gt; kayttajat = <span class="kw">new</span> ArrayList&lt;Kayttaja&gt;();
-  <span class="kw">while</span> (rs.<span class="fu">next</span>()) {
-    <span class="co">//Kutsutaan sopivat tiedot vastaanottavaa konstruktoria ja palautetaan olio:</span>
-    Kayttaja k = <span class="kw">new</span> <span class="fu">Kayttaja</span>(rs.<span class="fu">getInt</span>(<span class="st">&quot;id&quot;</span>), rs.<span class="fu">getString</span>(<span class="st">&quot;tunnus&quot;</span>), rs.<span class="fu">getString</span>(<span class="st">&quot;salasana&quot;</span>));
+  <span class="kw">while</span> (tulokset.<span class="fu">next</span>()) {
+    <span class="co">//Luodaan tuloksia vastaava olio ja palautetaan olio:</span>
+    Kayttaja k = <span class="kw">new</span> <span class="fu">Kayttaja</span>();
+    k.<span class="fu">setId</span>(tulokset.<span class="fu">getInt</span>(<span class="st">&quot;id&quot;</span>));
+    k.<span class="fu">setTunnus</span>(tulokset.<span class="fu">getString</span>(<span class="st">&quot;tunnus&quot;</span>));
+    k.<span class="fu">setSalasana</span>(tulokset.<span class="fu">getString</span>(<span class="st">&quot;salasana&quot;</span>));
+
     kayttajat.<span class="fu">add</span>(k);
   }   
-  <span class="co">//Suljetaan kaikki resurssit:</span>
-  <span class="kw">try</span> { rs.<span class="fu">close</span>(); } <span class="kw">catch</span> (Exception e) {}
+  <span class="co">//Suljetaan kaikki resutuloksetsit:</span>
+  <span class="kw">try</span> { tulokset.<span class="fu">close</span>(); } <span class="kw">catch</span> (Exception e) {}
   <span class="kw">try</span> { kysely.<span class="fu">close</span>(); } <span class="kw">catch</span> (Exception e) {}
   <span class="kw">try</span> { yhteys.<span class="fu">close</span>(); } <span class="kw">catch</span> (Exception e) {}
 
@@ -351,10 +355,11 @@ Hyvä tietää
 <p>Tällä viikolla tehtävä listaus on tahallaan melko yksinkertainen, sillä tarkoitus on vain testata tietokantaohjelmointia. Lopulliset sivut tulevat noudattamaan läheisemmin <a href="../../koodaaminen/arkkitehtuuri/index.html">MVC-arkkitehtuuria</a>.</p>
 </section>
 
-<section class="alert alert-success small"><h3>
-Seuraavaksi:
+<section class="alert alert-info small"><h3>
+Valmista!
 </h3>
-<p>Testisovelluksen tehtyäsi voit tustustua tarkemmin viikon 3 materiaaliin: <a href="../../koodaaminen/arkkitehtuuri/index.html">MVC-arkkitehtuuriin</a> ja sen jälkeen <a href="../java/index.html">kirjautumisen toteuttamiseen</a>.</p>
+<p>Kun listaustestisi toimii moitteetta olet saanut valmiiksi viikon 2 palautuksen. Varmista vielä, että kaikki tiedostot löytyvät repositoriostasi.</p>
+<p>Halutessasi voit seuraavaksi tutustua viikon 3 materiaaliin: <a href="../../koodaaminen/arkkitehtuuri/index.html">MVC-arkkitehtuuriin</a> ja sen jälkeen <a href="../java/index.html">kirjautumisen toteuttamiseen</a>.</p>
 </section>
 
 

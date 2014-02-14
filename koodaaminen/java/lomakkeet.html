@@ -189,9 +189,9 @@ code > span.er { color: #ff0000; font-weight: bold; }
 Tiivistelmä:
 </h3>
 <ul>
-<li>Tehdään kirjautumisen vastaanottamista varten oma kontrolleri, joka käyttää aiemmin tehtyä kirjautumisen html-demokoodia näkymänään.
+<li>Tehdään kirjautumisen vastaanottamista varten oma kontrolleri, joka käyttää aiemmin tehtyä kirjautumisen HTML-demokoodia näkymänään.
 <ul>
-<li>Saatat joutua muuttamaan html-tiedostosi JSP-tiedostoksi.</li>
+<li>Saatat joutua muuttamaan HTML-tiedostosi JSP-tiedostoksi.</li>
 </ul></li>
 <li>Kontrollerin ottaa vastaan lomakkeen tiedot ja lähettää käyttäjän eteenpäin, jos kirjautuminen onnistuu.</li>
 <li>Jos tunnukset ovat väärät näytetään kirjautumislomake.
@@ -220,7 +220,7 @@ Salasana: <span class="kw">&lt;input</span><span class="ot"> type=</span><span c
   String salasana = request.<span class="fu">getParameter</span>(<span class="st">&quot;password&quot;</span>);
   String kayttaja = request.<span class="fu">getParameter</span>(<span class="st">&quot;username&quot;</span>);
   
-  <span class="co">/* Muuten tarkistetaan onko parametrina saatu oikeat tunnukset */</span>
+  <span class="co">/* Tarkistetaan onko parametrina saatu oikeat tunnukset */</span>
   <span class="kw">if</span> (<span class="st">&quot;svinhufvud&quot;</span>.<span class="fu">equals</span>(kayttaja) &amp;&amp; <span class="st">&quot;kissakartano&quot;</span>.<span class="fu">equals</span>(salasana)) {
     <span class="co">/* Jos tunnus on oikea, ohjataan käyttäjä HTTP-ohjauksella kissalistaan. */</span>
     response.<span class="fu">sendRedirect</span>(<span class="st">&quot;kissalista&quot;</span>);
@@ -236,8 +236,8 @@ Salasana: <span class="kw">&lt;input</span><span class="ot"> type=</span><span c
 </section>
 <section id="käytettävyys" class="level2">
 <h2>Käytettävyys</h2>
-<p>Ylläolevassa kirjautumiskäsittelijässä on kaksi olennaista käytettävyysongelmaa. Ensinnäkin, mikäli käyttäjä syöttää väärän tunnuksen tai salasana tai ei syötä jompaakumpaa ollenkaan, lomake vain palaa kirjautumisruutuun kertomatta mitä tapahtui. Käyttäjälle jää hiipivä epäilys siitä, ottiko sovellus tunnuksia ollenkaan vastana, kun se ei kerro mitään tekemisistään.</p>
-<p>Toinen, hieman pienempi, ongelma on, että salasanansa väärin syöttänyt käyttäjä joutuu syöttämään käyttäjätunnuksensa turhaan uudestaan.</p>
+<p>Ylläolevassa kirjautumiskäsittelijässä on kaksi olennaista käytettävyysongelmaa. Ensinnäkin, mikäli käyttäjä syöttää väärän tunnuksen tai salasanan tai ei syötä jompaakumpaa ollenkaan, lomake vain palaa kirjautumisruutuun kertomatta mitä tapahtui. Käyttäjälle jää hiipivä epäilys siitä, ottiko sovellus tunnuksia ollenkaan vastaan, kun se ei kerro mitään tekemisistään.</p>
+<p>Toinen hieman pienempi ongelma on, että salasanansa väärin syöttänyt käyttäjä joutuu syöttämään käyttäjätunnuksensa turhaan uudestaan.</p>
 <p>Korjataan nämä ongelmat!</p>
 <p>Jälkimmäisen ongelman korjaaminen on yksinkertaista, tarvitsee vain lisätä näkymän näyttämiseen määrite, jossa lähetetään käyttäjän syöttämä käyttäjätunnus näkymälle ja sitten näyttää se näkymässä:</p>
 <div class="row">
@@ -289,9 +289,10 @@ Salasana: <span class="kw">&lt;input</span><span class="ot"> type=</span><span c
   }
 
   <span class="co">//Tarkistetaan että vaaditut kentät on täytetty:</span>
-  <span class="kw">if</span> (kayttaja == <span class="kw">null</span> &amp;&amp; !kayttaja.<span class="fu">equals</span>(<span class="st">&quot;&quot;</span>)) {
+  <span class="kw">if</span> (kayttaja == <span class="kw">null</span> || !kayttaja.<span class="fu">equals</span>(<span class="st">&quot;&quot;</span>)) {
     <span class="fu">asetaVirhe</span>(<span class="st">&quot;Kirjautuminen epäonnistui! Et antanut käyttäjätunnusta.&quot;</span>, request);
     <span class="fu">naytaJSP</span>(<span class="st">&quot;login.jsp&quot;</span>, request, response);
+    <span class="kw">return</span>;
   }
 
   <span class="co">/* Välitetään näkymille tieto siitä, mikä tunnus yritti kirjautumista */</span>
@@ -300,6 +301,7 @@ Salasana: <span class="kw">&lt;input</span><span class="ot"> type=</span><span c
   <span class="kw">if</span> (salasana == <span class="kw">null</span> &amp;&amp; !salasana.<span class="fu">equals</span>(<span class="st">&quot;&quot;</span>)) {
     <span class="fu">asetaVirhe</span>(<span class="st">&quot;Kirjautuminen epäonnistui! Et antanut käyttäjätunnusta.&quot;</span>, request);
     <span class="fu">naytaJSP</span>(<span class="st">&quot;login.jsp&quot;</span>, request, response);
+    <span class="kw">return</span>;
   }
   
   <span class="co">/* Tarkistetaan onko parametrina saatu oikeat tunnukset */</span>

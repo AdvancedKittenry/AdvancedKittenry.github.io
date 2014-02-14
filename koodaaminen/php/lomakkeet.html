@@ -189,9 +189,9 @@ code > span.er { color: #ff0000; font-weight: bold; }
 Tiivistelmä:
 </h3>
 <ul>
-<li>Tehdään kirjautumisen vastaanottamista varten oma kontrolleri, joka käyttää aiemmin tehtyä kirjautumisen html-demokoodia näkymänään.
+<li>Tehdään kirjautumisen vastaanottamista varten oma kontrolleri, joka käyttää aiemmin tehtyä kirjautumisen HTML-demokoodia näkymänään.
 <ul>
-<li>Saatat joutua muuttamaan html-tiedostosi JSP-tiedostoksi.</li>
+<li>Saatat joutua muuttamaan HTML-tiedostosi PHP-tiedostoksi.</li>
 </ul></li>
 <li>Kontrollerin ottaa vastaan lomakkeen tiedot ja lähettää käyttäjän eteenpäin, jos kirjautuminen onnistuu.</li>
 <li>Jos tunnukset ovat väärät näytetään kirjautumislomake.
@@ -214,7 +214,7 @@ Salasana: <span class="kw">&lt;input</span><span class="ot"> type=</span><span c
 <span class="kw">&lt;button</span><span class="ot"> type=</span><span class="st">&quot;submit&quot;</span><span class="kw">&gt;</span>Kirjaudu<span class="kw">&lt;/button&gt;</span>
 <span class="kw">&lt;/form&gt;</span></code></pre>
 <p>HTML-kertauksena: <code>form</code>-elementin <code>action</code>-attribuutti määrittää mihin osoitteeseen lomakkeen tiedot lähetetään, <code>method</code> sensijaan kertoo lähetetäänkö tiedot GET- vai POST-parametreina. Jokaisen <code>input</code>-elementin sisältö lähetetään parametrina, joka tunnistetaan <code>name</code>-attribuutissa annetulla nimellä.</p>
-<p>Lähetetyn lomakkeen parametreja voidaan käsitellä hakemalla ne PHP:n <a href="http://php.net/manual/en/language.variables.superglobals.php">superglobaaleista muuttujista</a> <code>$_GET</code> ja <code>$_POST</code>. Ne ovat PHP:n automaattisesti määrittämiä muuttujia, jotka ovat näkyvissä kaikissa funktioissa ja metodeissa automaattisesti. Niiden sisältönä on array, johon on laitettu sivun lomakkeelta vastaanottamat GET- ja POST-parametrit.</p>
+<p>Lähetetyn lomakkeen parametreja voidaan käsitellä hakemalla ne PHP:n <a href="http://php.net/manual/en/language.variables.superglobals.php">superglobaaleista muuttujista</a> <code>$_GET</code> ja <code>$_POST</code>. Ne ovat PHP:n automaattisesti määrittämiä muuttujia, jotka ovat näkyvissä kaikissa funktioissa ja metodeissa automaattisesti. Niiden sisältönä on Javan HashMappia vastaava assosiaatiotaulu, johon on laitettu sivun lomakkeelta vastaanottamat GET- ja POST-parametrit.</p>
 <p>Hyvin yksinkertainen kirjautuminen voitaisiin sitä käyttäen toteuttaa suurinpiirtein seuraavasti:</p>
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>
   
@@ -235,14 +235,14 @@ Salasana: <span class="kw">&lt;input</span><span class="ot"> type=</span><span c
     <span class="co">/* Väärän tunnuksen syöttänyt saa eteensä kirjautumislomakkeen. */</span>
     naytaNakyma<span class="ot">(</span><span class="st">&quot;login&quot;</span><span class="ot">));</span>
   }</code></pre>
-<p>Koodissa kannattaa huomata kutsu <code>header('Location: kissalista.php');</code>. <a href="http://php.net/manual/en/function.header.php">header-funktio</a> lähettää käyttäjän selaimelle HTTP-otsakkeen. Otsakkeita voi käyttää monenlaisiin tarkoituksiin, mutta yleisimmin käytetään otsaketta “Location”, joka lähettää käyttäjän selaimen kaksoispisteen jälkeen kirjoitettuun osoitteesen. Tämä on kätevä tapa ohjata käyttäjä jonkin toisen sivun luo.</p>
+<p>Koodissa kannattaa huomata kutsu <code>header('Location: kissalista.php');</code>. <a href="http://php.net/manual/en/function.header.php">header-funktio</a> lähettää käyttäjän selaimelle HTTP-otsakkeen. Otsakkeita voi käyttää monenlaisiin tarkoituksiin, mutta yleisimmin käytetään otsaketta “Location”, joka lähettää selaimen uuteen osoitteeseen, joka kirjoitetaan otsakkeessa Location-sanan ja kaksoispisteen jälkeen. Tämä on kätevä tapa ohjata käyttäjä jonkin toisen sivun luo.</p>
 <p>Voit tehdä siitäkin oman apufunktion aiemmin tekemääsi yleiskäyttöiseen kirjastotiedostoon.</p>
 <section class="alert alert-danger"><h3>
 Pidä mielessä!
 </h3>
 
 <p>PHP:llä kannattaa varoa lisäämästä tiedostojensa alkuun välilyöntejä ja rivinvaihtoja ennen &lt;?php-tägiä. PHP tulkitsee nämä merkit sivun sisällöksi, joka pitää lähettää selaimelle. Tämä estää kaikkien HTTP-otsakkeiden lähettämisen, sillä ne on lähetettävä ennen sivun sisältöä.</p>
-<p>Käytännössä tämä vaikuttaa siten, että istunnot ja käyttäjän lähettäminen eteenpäin <code>Location</code>-otsakkeella eivät toimi kunnolla tai ollenkaan.</p>
+<p>Käytännössä tämä vaikuttaa siten, että istunnot ja käyttäjän lähettäminen eteenpäin <code>Location</code>-otsakkeella eivät toimi kunnolla.</p>
 </section>
 
 <p>Toteuta ylläolevan kaltainen tarkastus omaan tiedostoonsa, esim. <code>doLogin.php</code> tai <code>kirjaudu.php</code>. Voit tehdä lomakkeen vastaanottamisen joko niin, että se toimii samassa kontrollerissa lomakkeen näyttämisen kanssa tai tehdä kirjautumislomakkeen vastaanottolle oman kontrollerin.</p>

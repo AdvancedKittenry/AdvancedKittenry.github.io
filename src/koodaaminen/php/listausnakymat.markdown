@@ -7,7 +7,7 @@ sivuksi muiden joukossa. Tehtävää on ainakin:
 * Sivupohjan ja näkymän käyttöönotto
 * Listattavat asiat kannattaa aina järjestää 
   [`ORDER BY`-käskyllä](http://www.postgresql.org/docs/9.2/static/queries-order.html)
-* Jos listattavia kohteita on paljon, voi olla järkevää toteuttaa joko [haku tai sivutustoiminto](sivutusjahaut.html)
+* Jos listattavia kohteita on paljon, voi olla järkevää toteuttaa joko haku tai sivutustoiminto
 * Sivulla tulee näyttää viesti, jos lista on täysin tyhjä.
 
 ## Array, PHP:n lista- ja assosiaatiotaulutietorakenne
@@ -39,12 +39,17 @@ Yleensä erityyppisiä avaimia ei kuitenkaan kannata sekoittaa. Esimerkkejä:
 
 Kontrollerissa luotuja taulukoita voi käyttää 
 näkymässä tiedon näyttämiseen. 
-Oletetaan että kontrolleri on asettanut muuttujaan `$kissat` listan nimiä
+Oletetaan että kontrolleri on asettanut muuttujaan 
+`$kissat` listan kissaluokan olioita
 ja lähettää sen näkymälle:
 
 ~~~php
 <?php
-  $kissat' => array("Matleena", "Iiris", "Inari");
+  /* Kissa-luokka hakee kaikki kissat 
+   * tietokannasta etsiKaikkiKissat-metodilla.
+   * Nimen saa kissasta ulos getNimi()-metodilla.
+   */
+  $kissat' => Kissa::etsiKaikkiKissat();
   naytaNakyma('kissalista.php', array(
     'kissat' => $kissat
   ));
@@ -56,7 +61,7 @@ Nyt jos tämä muuttuja on käytettävissä näkymätiedostossa, voimme näyttä
 <?php foreach($data->kissat as $kissa): ?>
 <div class="kissa">
   Kissan nimi on
-  <?php echo $kissa; ?>
+  <?php echo $kissa->getNimi(); ?>
 </div>
 <?php endforeach; ?>
 ~~~

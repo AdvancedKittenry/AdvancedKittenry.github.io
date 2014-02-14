@@ -214,18 +214,18 @@ Tiivistelmä:
 Lisätietoa
 </h3>
 <p>Ero <code>include</code>:n ja <code>require</code>:n välillä on se, että require ei anna skriptin suorituksen jatkua, mikäli haettua tiedostoa ei löydy.</p>
-<p>Funktioista on olemassa myös versiot <code>include_once</code> ja <code>require_once</code>, jotka varmistavat ettei samaa tiedostoa sisällytetä kahdesti. Käytä näitä versioita sisällyttäessäsi yleiskäyttöistä kirjastokoodia (tiedostot <code>libs</code>-kansiosta).</p>
+<p>Funktioista on olemassa myös versiot <code>include_once</code> ja <code>require_once</code>, jotka varmistavat ettei samaa tiedostoa sisällytetä kahdesti. Käytä näitä versioita sisällyttäessäsi yleiskäyttöistä kirjastokoodia eli malleja ja muita tiedostoja <code>libs</code>-kansiosta.</p>
 </section>
 
 <p>Kokeile includea. Luo projektiisi <code>views</code>-kansio ja kopioi sinne html-demosi kirjautumislomake php-tiedostopäätteellä.</p>
 <p>Luo sitten sivu <code>login.php</code> tai suomeksi <code>kirjautuminen.php</code> projektisi juurikansioon ja laita sen sisällöksi seuraavanlainen koodinpätkä:</p>
-<p><strong>testikasittelija.php</strong></p>
+<p><strong>login.php</strong></p>
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span> 
   <span class="kw">require</span> <span class="st">&#39;views/login.php&#39;</span><span class="ot">;</span></code></pre>
 <p>Kokeile avata tämä sivu selaimella. Jos teet työtä usersilla URL on todennäköisesti <a href="http://tunnuksesi.users.cs.helsinki.fi/login.php">http://tunnuksesi.users.cs.helsinki.fi/login.php</a>.</p>
 <p>Selaimeesi pitäisi tulla sama kirjautumislomake kuin aikaisemminkin. Tämä on vielä melko tylsää, mutta jatketaan tekemällä näkymien tekemisestä helpompaa.</p>
 </section>
-<section id="html-runko-ja-pohjatiedoston-käyttö" class="level2">
+<section id="template" class="level2">
 <h2>HTML-runko ja pohjatiedoston käyttö</h2>
 <p>Käytännössä suurin osa ohjelmaasi tulevista sivuista tulee sisältämään samanlaisen HTML-rungon, johon sisältyvät sivunavigaatio sekä head-tägin sisältämät otsakkeet ja tyylitiedostolinkit.</p>
 <p>Tämän rungon koodia ei turhaan kannata toistaa, vaan se sijoitetaan omaan uudelleenkäytettävään tiedostoonsa.</p>
@@ -299,7 +299,7 @@ Lisätietoa
   <span class="kw">function</span> naytaNakyma<span class="ot">(</span><span class="kw">$sivu</span><span class="ot">,</span> <span class="kw">$data</span> = <span class="fu">array</span><span class="ot">())</span> {
     <span class="kw">$data</span> = <span class="dt">(object)</span><span class="kw">$data</span><span class="ot">;</span>
     <span class="kw">require</span> <span class="st">&#39;views/pohja.php&#39;</span><span class="ot">;</span>
-    <span class="fu">die</span><span class="ot">();</span>
+    <span class="fu">exit</span><span class="ot">();</span>
   }</code></pre>
 <p>Ylimääräinen parametrimme on oletuksena tyhjä array, ja koodin kutsuja voi sijoittaa sinne minkälaisen assosiaatiotaulun haluaa. Funktion ensimmäinen rivi muuntaa array-tietotyypin luokattomaksi olioksi, sillä olioiden kenttien käyttösyntaksi on huomattavasti miellyttävämpi.</p>
 <p>Käyttäminen on yksinkertaista. Voimme esimerkiksi asettaa näkymälle lähetettäväksi malliluokan olion, virheviestin ja hakusanan:</p>
@@ -316,7 +316,7 @@ Lisätietoa
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span> <span class="kw">if</span> <span class="ot">(</span>!<span class="fu">empty</span><span class="ot">(</span><span class="kw">$data</span>-&gt;virheViesti<span class="ot">))</span>: <span class="kw">?&gt;</span>
   &lt;div class=&quot;alert alert-danger&quot;&gt;Virhe! <span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$data</span>-&gt;virheViesti<span class="ot">;</span> <span class="kw">?&gt;</span>&lt;/div&gt;
 <span class="kw">&lt;?php</span> <span class="kw">endif</span><span class="ot">;</span> <span class="kw">?&gt;</span></code></pre>
-<p>Yllä oleva koodi näyttää virheviestin ja siihen liittyvän div-elementin vain jos muuttuja <code>virheViesti</code> on asetettu. Huomaa, että PHP:ssä on HTML:än seassa käyttöä varten <a href="http://php.net/manual/en/control-structures.alternative-syntax.php">kaksi himean erilaista syntaksia if-lauseelle</a>.</p>
+<p>Yllä oleva koodi näyttää virheviestin ja siihen liittyvän div-elementin vain jos muuttuja <code>virheViesti</code> on asetettu. Huomaa, että PHP:ssä on olemassa nimenomaan HTML:än seassa käyttöä varten <a href="http://php.net/manual/en/control-structures.alternative-syntax.php">vaihtoehtoinen syntaksi if-lauseelle</a>.</p>
 <section class="alert alert-info"><h3>
 Lisätietoa
 </h3>

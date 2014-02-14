@@ -13,7 +13,7 @@ Kirjautumisen tapauksessa haluamme tallentaa tiedon siitä kuka on kirjautunut
 sisään. Tieto tallennetaan istuntoon siinä vaiheessa, kun käyttäjä kirjautuu sisään
 ja sitä käytetään aina kun halutaan tarkastella onko käyttäjä kirjautunut sivulle.
 
-PHP:ssä istunto alustetaan käyttämällä siihen erikseen tarkoitettua funktiota
+PHP:ssä istunto otetaan käyttöön kutsumalla siihen erikseen tarkoitettua funktiota
 [session_start](http://www.php.net/manual/en/function.session-start.php). 
 Metodi hakee PHP:n istuntotiedostosta käyttäjän istunnon tai mikäli sellaista ei vielä ole olemassa, luo sen.
 Samalla se alustaa erityisen superglobaalin `$_SESSION`-muuttujan assosiaatiotaulukoksi,
@@ -26,9 +26,10 @@ Esimerkki kirjautuneen käyttäjän tallentamisesta istuntoon:
 <?php
   session_start();
 
-  if (voikoKirjautua('kalle', $_POST['salasana'])) {
+  $kayttaja = etsiKayttajaTunnuksilla('kalle', $_POST['salasana']));
+  if ($kayttaja != null) {
     //Tallennetaan istuntoon käyttäjäolio
-    $_SESSION['kirjautunut'] = new Kayttaja("Kalle");
+    $_SESSION['kirjautunut'] = $kayttaja;
   }
 ~~~
 
@@ -48,7 +49,8 @@ Käytä istuntoa kirjautumiskontrollerissasi siten, että talletat
 jokaisen onnistuneen kirjautumisen yhteydessä kirjautuneen käyttäjän tiedot istuntoon.
 Useimmiten on järkevää tallentaa joko käyttäjätaulun pääavaimen arvo 
 (id tai käyttäjätunnus) tai kerralla kokonainen käyttäjäolio
-kaikkinen tietoineen. Kummankin tallentaminen istuntoon onnistuu.
+kaikkinen tietoineen. Kummankin tallentaminen istuntoon onnistuu
+samalla tavalla sijoittamalla se `$_SESSION`-taulukkoon.
 
 <alert>
 Sivuja tehdessä `session_start`-funktion kutsuminen on yllättävän helppoa unohtaa.
@@ -91,7 +93,7 @@ tiedot kirjautumisesta. Tämän jälkeen käyttäjä ei enää pääse sivuille 
   session_start();
 
   //Poistetaan istunnosta merkintä kirjautuneesta käyttäjästä -> Kirjaudutaan ulos
-  unset($_SESSION["kirjautunutKayttaja"]);
+  unset($_SESSION["kirjautunut"]);
 
   //Yleensä kannattaa ulkos kirjautumisen jälkeen ohjata käyttäjä kirjautumissivulle
   header('Location: kirjautuminen.php');

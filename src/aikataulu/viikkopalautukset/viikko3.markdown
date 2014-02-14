@@ -20,8 +20,8 @@ TODO:
 
 * Sovelluksen logiikkaa on eritelty kontrollereista malleihin ja näkymiin [MVC-mallin mukaisesti][arkkitehtuuri].
 * Sivuille on luotu erillinen sivupohjatiedosto, joka sisältää jokaiselle sivulle tulevat asiat.
-    * Java:lla helpointa käyttää [JSP-tägikirjastoa]({{rootdir}}koodaaminen/java/nakymat.html#template-pohjatiedoston-k%C3%A4ytt%C3%B6)
-    * PHP:lle [oma ohje]({{rootdir}}koodaaminen/php/nakymat.html#template-pohjatiedoston-k%C3%A4ytt%C3%B6), joka perustuu [include-funktion](http://php.net/manual/en/function.include.php) käyttöön
+    * Java:lla helpointa käyttää [JSP-tägikirjastoa]({{rootdir}}koodaaminen/java/nakymat.html#template)
+    * PHP:lle [oma ohje]({{rootdir}}koodaaminen/php/nakymat.html#template), joka perustuu [include-funktion](http://php.net/manual/en/function.include.php) käyttöön
 
 ## Kirjautuminen (2p)
 
@@ -47,11 +47,9 @@ Mikäli sovelluksessa ei ole lainkaan kirjautumistoimintoja, sovi ohjaajasi kans
 Yleensä ottaen kirjautumisdeadline voidaan korvata tekemällä alustava versio jostain lisäys- ja muokkauslomakkeesta.
 
 <ohje>
-Aloita lukemalla [arkkitehtuuriohje][arkkitehtuuri].
-Siirry sitten käyttämäsi kielen toteuttamisohjeisiin:
-
-* [PHP-ohjeet]({{rootdir}}koodaaminen/php/index.html)
-* [Java-ohjeet]({{rootdir}}koodaaminen/java/index.html)
+Aloita lukemalla [arkkitehtuuriohje][arkkitehtuuri]
+ja jatka sitten vihreitä ohjelaatikoita seuraamalla 
+käyttämäsi kielen toteuttamisohjeisiin.
 
 Tehtyäsi kaiken varmista, että kaikki tekemäsi muutokset näkyvät sekä
 GitHub-repositoriossasi että esittelysivullasi users-palvelimella.

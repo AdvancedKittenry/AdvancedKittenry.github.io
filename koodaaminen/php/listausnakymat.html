@@ -189,7 +189,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <ul>
 <li>Sivupohjan ja näkymän käyttöönotto</li>
 <li>Listattavat asiat kannattaa aina järjestää <a href="http://www.postgresql.org/docs/9.2/static/queries-order.html"><code>ORDER BY</code>-käskyllä</a></li>
-<li>Jos listattavia kohteita on paljon, voi olla järkevää toteuttaa joko <a href="sivutusjahaut.html">haku tai sivutustoiminto</a></li>
+<li>Jos listattavia kohteita on paljon, voi olla järkevää toteuttaa joko haku tai sivutustoiminto</li>
 <li>Sivulla tulee näyttää viesti, jos lista on täysin tyhjä.</li>
 </ul>
 <section id="array-phpn-lista--ja-assosiaatiotaulutietorakenne" class="level2">
@@ -213,9 +213,13 @@ code > span.er { color: #ff0000; font-weight: bold; }
 </section>
 <section id="listojen-läpikäynti" class="level2">
 <h2>Listojen läpikäynti</h2>
-<p>Kontrollerissa luotuja taulukoita voi käyttää näkymässä tiedon näyttämiseen. Oletetaan että kontrolleri on asettanut muuttujaan <code>$kissat</code> listan nimiä ja lähettää sen näkymälle:</p>
+<p>Kontrollerissa luotuja taulukoita voi käyttää näkymässä tiedon näyttämiseen. Oletetaan että kontrolleri on asettanut muuttujaan <code>$kissat</code> listan kissaluokan olioita ja lähettää sen näkymälle:</p>
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>
-  <span class="kw">$kissat</span><span class="st">&#39; =&gt; array(&quot;Matleena&quot;, &quot;Iiris&quot;, &quot;Inari&quot;);</span>
+  <span class="co">/* Kissa-luokka hakee kaikki kissat </span>
+<span class="co">   * tietokannasta etsiKaikkiKissat-metodilla.</span>
+<span class="co">   * Nimen saa kissasta ulos getNimi()-metodilla.</span>
+<span class="co">   */</span>
+  <span class="kw">$kissat</span><span class="st">&#39; =&gt; Kissa::etsiKaikkiKissat();</span>
 <span class="st">  naytaNakyma(&#39;</span>kissalista.php<span class="st">&#39;, array(</span>
 <span class="st">    &#39;</span>kissat<span class="st">&#39; =&gt; $kissat</span>
 <span class="st">  ));</span></code></pre>
@@ -223,7 +227,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span> <span class="kw">foreach</span><span class="ot">(</span><span class="kw">$data</span>-&gt;kissat <span class="kw">as</span> <span class="kw">$kissa</span><span class="ot">)</span>: <span class="kw">?&gt;</span>
 &lt;div class=&quot;kissa&quot;&gt;
   Kissan nimi on
-  <span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$kissa</span><span class="ot">;</span> <span class="kw">?&gt;</span>
+  <span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$kissa</span>-&gt;getNimi<span class="ot">();</span> <span class="kw">?&gt;</span>
 &lt;/div&gt;
 <span class="kw">&lt;?php</span> <span class="kw">endforeach</span><span class="ot">;</span> <span class="kw">?&gt;</span></code></pre>
 </section>

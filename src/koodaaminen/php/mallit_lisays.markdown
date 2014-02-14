@@ -11,8 +11,8 @@
     * PHP:ssä [htmlspecialchars-funktio](http://www.php.net/manual/en/function.htmlspecialchars.php) auttaa: `<?php echo htmlspecialchars($muuttuja); ?>`
 * Jos lomakkeessa käsitellään viiteavaimia, käytä [SELECT-tägiä](#selecttag)
 * Lomake ohjaa lisäyksen onnistuessa selaimen listaussivulle.
-  * Onnistumisesta onnistumisviesti
-  * Viesti kannattaa välittää [istunnossa](#sessionmessages)
+    * Tuloksena näytetään listaussivulla onnistumisviesti
+    * Viesti kannattaa välittää [istunnossa](#sessionmessages)
 </summary>
 
 ## Tietojen syöttäminen malliluokan olioon
@@ -57,7 +57,7 @@ Huomaa miten
 Tämän numeroon noutamista varten on olemassa omat kikkansa:
 
 * PostgreSQL:llä voidaan INSERT-lauseen jälkeen laittaa käsky `RETURNING id`, jolloin kysely palauttaa kentän `id` arvon ikään kuin se olisi SELECT-kysely.
-* MySQL:llä olemassa PDO:n [lastInsertId-metodi](http://php.net/manual/en/pdo.lastinsertid.php), joka palauttaa juuri luodun serial-kentän arvon.
+* Muita kantoja käytettäessä voi kentän arvon hakea PDO:n [lastInsertId-metodilla](http://php.net/manual/en/pdo.lastinsertid.php), joka palauttaa juuri luodun serial-kentän arvon.
 
 [serial]: http://www.postgresql.org/docs/9.2/static/datatype-numeric.html#DATATYPE-SERIAL
 [insert]: http://www.postgresql.org/docs/8.4/static/sql-insert.html
@@ -204,6 +204,8 @@ tyhjyyden tarkistava [`empty`](http://www.php.net/empty):
     return empty($this->virheet);
   }
 ~~~
+
+getVirheet-metodissa taas voi vain palauttaa virhetaulukon sellaisenaan.
 
 ## Käytettävä lisäyslomake
 

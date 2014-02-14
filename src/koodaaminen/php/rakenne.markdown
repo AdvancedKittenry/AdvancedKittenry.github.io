@@ -35,9 +35,6 @@ Jos syöttää osoitekenttään pelkän hakemiston osoitteen,
 esim. `http://tunnus.users.cs.helsinki.fi` on se sama kuin kirjoittaisi
 `http://tunnus.users.cs.helsinki.fi/index.php`, kunhan htdocs-kansiossa on `index.php`-tiedosto.
 
-On periaatteessa täysin mahdollista tehdä php-sivuja, joissa
-jokainen ladattava sivu tuotetaan tasan yhdellä php-tiedostolla.
-
 Tästä johtuen yksinkertaisin tapa toteuttaa yksittäisen toiminnon kontrolleri PHP:llä
 ei oikeastaan vaadi muuta kuin sopivaan osoitteeseen sijoitetun PHP-tiedoston,
 joka kutsuu tarvitsemiaan kirjastoja tuottaakseen 
@@ -48,7 +45,7 @@ käyttäjälle halutun vastauksen aineistopyyntöön.
 Tiiviimmillään ja rumimmillaan tämä näkyy vieläkin ikävän yleisenä _spagettikoodina_,
 jossa sovelluksen kaikki kolme osaa: kontrolleri, näkymä ja malli
 ovat sulassa sovussa ja sekasotkussa samassa tiedostossa. 
-Lopputulos on vähänkään monimutkaisemmissa sovelluksissa sekava ja vaikea muuttaa.
+Lopputulos on vähänkään monimutkaisemmissa sovelluksissa sekava ja hyvin vaikea ylläpitää.
 
 **spagettikoodi.php**
 
@@ -61,7 +58,7 @@ Tämä ei kuitenkaan varsinaisesti estä käyttämästä PHP:n suoraviivaista lu
 siihen, että jätämme varsinaiset kontrollerit paljaaksi koodiksi,
 joka vain suoraan kutsuu erilaisia kirjastoja ja näyttää lopulta näkymän.
 
-Esimerkkinä kuvitteellisen kissalistan kontrolleri:
+Esimerkkinä kuvitteellinen kissalistan kontrolleri:
 
 **kissalista.php**
 

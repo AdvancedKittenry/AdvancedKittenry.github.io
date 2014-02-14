@@ -200,9 +200,11 @@ Tiivistelmä:
 <li>Javassa voi käyttää <a href="http://docs.oracle.com/javaee/5/jstl/1.1/docs/tlddocs/">out-tägiä</a>: <code>&lt;c:out value=&quot;${muuttuja}&quot;/&gt;</code></li>
 </ul></li>
 <li>Jos lomakkeessa käsitellään viiteavaimia, käytä <a href="#selecttag">SELECT-tägiä</a></li>
-<li>Lomake ohjaa lisäyksen onnistuessa selaimen listaussivulle.</li>
-<li>Onnistumisesta onnistumisviesti</li>
+<li>Lomake ohjaa lisäyksen onnistuessa selaimen listaussivulle.
+<ul>
+<li>Tuloksena näytetään listaussivulla onnistumisviesti</li>
 <li>Viesti kannattaa välittää <a href="#sessionmessages">istunnossa</a></li>
+</ul></li>
 </ul>
 </section>
 
@@ -241,7 +243,7 @@ uusikatti.<span class="fu">setRotuId</span>(request.<span class="fu">getParamete
 <p>Huomaa miten <a href="http://www.postgresql.org/docs/9.2/static/datatype-numeric.html#DATATYPE-SERIAL">SERIAL-tyyppistä</a> pääavainta käytettäessä INSERT-lauseeseen ei laiteta id-avaimelle lainkaan arvoa, jolloin kanta laittaa kenttään seuraavan vapaan arvon. Tämän numeroon noutamista varten on olemassa omat kikkansa:</p>
 <ul>
 <li>PostgreSQL:llä voidaan INSERT-lauseen jälkeen laittaa käsky <code>RETURNING id</code>, jolloin kysely palauttaa kentän <code>id</code> arvon ikään kuin se olisi SELECT-kysely.</li>
-<li>MySQL:llä olemassa <a href="http://www.technicalkeeda.com/details/how-to-get-mysql-auto-increment-key-value-using-java-jdbc">oma tekniikkansa</a>.</li>
+<li>Muille tietokannoille olemassa <a href="http://www.technicalkeeda.com/details/how-to-get-mysql-auto-increment-key-value-using-java-jdbc">oma tekniikkansa</a>.</li>
 </ul>
 </section>
 </section>
@@ -347,7 +349,7 @@ uusikatti.<span class="fu">setRotuId</span>(request.<span class="fu">getParamete
 Lisätietoa
 </h3>
 <p>Jos oliollasi on numerokenttiä, on hyvä välittää niiden <code>value</code>-attribuuttiin suoraan käyttäjältä saatu syöte, jotta käyttäjän mahdollisesti syöttämät kelvottomat numeromerkkijonot näkyvät sellaisenaan. Näin käyttäjän on helpompi korjata ne.</p>
-<p>Tämän voi toteuttaa joko omana kenttänään suoraan malliluokassa tai erikseen kontrollerissa.</p>
+<p>Numerokentän sisällön välityksen voi toteuttaa joko omana kenttänään suoraan malliluokassa tai erikseen kontrollerissa.</p>
 </section>
 
 <p>Jos käyttäjä taas on syöttänyt tietoja, mutta tiedot eivät ole käypiä, näytetään olio, johon tietoja on koetettu syöttää, sekä samalla olion kelpoisuuden tarkistamisesta saadut virheviestit.</p>

@@ -233,7 +233,7 @@ Tiivistelmä:
   <span class="kw">private</span> <span class="kw">$password</span><span class="ot">;</span>
   
   <span class="co">/* Etsitään kannasta käyttäjätunnuksella ja salasanalla käyttäjäriviä */</span>
-  <span class="kw">public</span> <span class="kw">static</span> <span class="kw">function</span> getKayttajaTunnuksilla<span class="ot">(</span><span class="kw">$kayttaja</span><span class="ot">,</span> <span class="kw">$salasana</span><span class="ot">)</span> {
+  <span class="kw">public</span> <span class="kw">static</span> <span class="kw">function</span> etsiKayttajaTunnuksilla<span class="ot">(</span><span class="kw">$kayttaja</span><span class="ot">,</span> <span class="kw">$salasana</span><span class="ot">)</span> {
     <span class="kw">$sql</span> = <span class="st">&quot;SELECT id,username, password from users where username = ? AND password = ? LIMIT 1&quot;</span><span class="ot">;</span>
     <span class="kw">$kysely</span> = getTietokantayhteys<span class="ot">()</span>-&gt;prepare<span class="ot">(</span><span class="kw">$sql</span><span class="ot">);</span>
     <span class="kw">$kysely</span>-&gt;execute<span class="ot">(</span><span class="fu">array</span><span class="ot">(</span><span class="kw">$kayttaja</span><span class="ot">,</span> <span class="kw">$salasana</span><span class="ot">));</span>
@@ -243,9 +243,9 @@ Tiivistelmä:
       <span class="kw">return</span> <span class="kw">null</span><span class="ot">;</span>
     } <span class="kw">else</span> {
       <span class="kw">$kayttaja</span> = <span class="kw">new</span> Kayttaja<span class="ot">();</span> 
-      <span class="kw">$kayttaja</span>-&gt;id = <span class="kw">$tulos</span>-&gt;id<span class="ot">;</span>
-      <span class="kw">$kayttaja</span>-&gt;username = <span class="kw">$tulos</span>-&gt;username<span class="ot">;</span>
-      <span class="kw">$kayttaja</span>-&gt;password = <span class="kw">$tulos</span>-&gt;password<span class="ot">;</span>
+      <span class="kw">$kayttaja</span>-&gt;setId<span class="ot">(</span><span class="kw">$tulos</span>-&gt;id<span class="ot">);</span>
+      <span class="kw">$kayttaja</span>-&gt;setUsername<span class="ot">(</span><span class="kw">$tulos</span>-&gt;username<span class="ot">);</span>
+      <span class="kw">$kayttaja</span>-&gt;setPassword<span class="ot">(</span><span class="kw">$tulos</span>-&gt;password<span class="ot">);</span>
 
       <span class="kw">return</span> <span class="kw">$kayttaja</span><span class="ot">;</span>
     }

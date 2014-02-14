@@ -234,7 +234,7 @@ tulokset = kysely.<span class="fu">executeQuery</span>();</code></pre>
 <p>Metodi kannattaa toteuttaa sellaisen SQL-kyselyn ympärille, joka hakee kannasta tietoja salasanan ja käyttäjänimen perusteella. Se palauttaa käyttäjäluokan olion, jolloin siitä on järkevää tehdä luokan staattinen metodi.</p>
 <p>Palautettua arvoa voidaan käyttää myös myöhemmin kirjautuneen käyttäjän tallentamiseen istuntoon.</p>
 <p><strong>Ote tiedostosta kissalista/models/Kayttajat.java:</strong></p>
-<pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="dt">static</span> Kayttaja <span class="fu">getKayttajaTunnuksilla</span>(String kayttaja, String salasana) {
+<pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="dt">static</span> Kayttaja <span class="fu">etsiKayttajaTunnuksilla</span>(String kayttaja, String salasana) {
   String sql = <span class="st">&quot;SELECT id,username, password from users where username = ? AND password = ?&quot;</span>;
   Connection yhteys = Tietokanta.<span class="fu">getYhteys</span>();
   PreparedStatement kysely = yhteys.<span class="fu">prepareStatement</span>(sql);
@@ -245,13 +245,18 @@ tulokset = kysely.<span class="fu">executeQuery</span>();</code></pre>
   <span class="co">//Alustetaan muuttuja, joka sisältää löydetyn käyttäjän</span>
   Kayttaja kirjautunut = <span class="kw">null</span>;
 
-  <span class="co">//next-metodia on kutsuttava aina, kun käsitellään vasta kannasta saatuja ResultSet-olioita.</span>
+  <span class="co">//next-metodia on kutsuttava aina, kun käsitellään </span>
+  <span class="co">//vasta kannasta saatuja ResultSet-olioita.</span>
   <span class="co">//ResultSet on oletuksena ensimmäistä edeltävällä -1:llä rivillä.</span>
   <span class="co">//Kun sitä kutsuu ensimmäisen kerran siirtyy se ensimmäiselle riville 0.</span>
   <span class="co">//Samalla metodi myös palauttaa tiedon siitä onko seuraavaa riviä olemassa.</span>
   <span class="kw">if</span> (rs.<span class="fu">next</span>()) { 
-    <span class="co">//Kutsutaan sopivat tiedot vastaanottavaa konstruktoria ja asetetaan palautettava olio:</span>
-    kirjautunut = <span class="kw">new</span> <span class="fu">Kayttaja</span>(rs.<span class="fu">getInt</span>(<span class="st">&quot;id&quot;</span>), rs.<span class="fu">getString</span>(<span class="st">&quot;username&quot;</span>), rs.<span class="fu">getString</span>(<span class="st">&quot;password&quot;</span>));
+    <span class="co">//Kutsutaan sopivat tiedot vastaanottavaa konstruktoria </span>
+    <span class="co">//ja asetetaan palautettava olio:</span>
+    kirjautunut = <span class="kw">new</span> <span class="fu">Kayttaja</span>();
+    kirjautunut.<span class="fu">setId</span>(rs.<span class="fu">getInt</span>(<span class="st">&quot;id&quot;</span>));
+    kirjautunut.<span class="fu">setUsername</span>(rs.<span class="fu">getString</span>(<span class="st">&quot;username&quot;</span>));
+    kirjautunut.<span class="fu">setPassword</span>(rs.<span class="fu">getString</span>(<span class="st">&quot;password&quot;</span>));
   }
 
   <span class="co">//Jos kysely ei tuottanut tuloksia käyttäjä on nyt vielä null.</span>

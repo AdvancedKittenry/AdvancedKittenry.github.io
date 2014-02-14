@@ -85,7 +85,7 @@ Palautettua arvoa voidaan käyttää myös myöhemmin kirjautuneen käyttäjän 
 **Ote tiedostosta kissalista/models/Kayttajat.java:**
 
 ~~~java
-public static Kayttaja getKayttajaTunnuksilla(String kayttaja, String salasana) {
+public static Kayttaja etsiKayttajaTunnuksilla(String kayttaja, String salasana) {
   String sql = "SELECT id,username, password from users where username = ? AND password = ?";
   Connection yhteys = Tietokanta.getYhteys();
   PreparedStatement kysely = yhteys.prepareStatement(sql);
@@ -96,13 +96,18 @@ public static Kayttaja getKayttajaTunnuksilla(String kayttaja, String salasana) 
   //Alustetaan muuttuja, joka sisältää löydetyn käyttäjän
   Kayttaja kirjautunut = null;
 
-  //next-metodia on kutsuttava aina, kun käsitellään vasta kannasta saatuja ResultSet-olioita.
+  //next-metodia on kutsuttava aina, kun käsitellään 
+  //vasta kannasta saatuja ResultSet-olioita.
   //ResultSet on oletuksena ensimmäistä edeltävällä -1:llä rivillä.
   //Kun sitä kutsuu ensimmäisen kerran siirtyy se ensimmäiselle riville 0.
   //Samalla metodi myös palauttaa tiedon siitä onko seuraavaa riviä olemassa.
   if (rs.next()) { 
-    //Kutsutaan sopivat tiedot vastaanottavaa konstruktoria ja asetetaan palautettava olio:
-    kirjautunut = new Kayttaja(rs.getInt("id"), rs.getString("username"), rs.getString("password"));
+    //Kutsutaan sopivat tiedot vastaanottavaa konstruktoria 
+    //ja asetetaan palautettava olio:
+    kirjautunut = new Kayttaja();
+    kirjautunut.setId(rs.getInt("id"));
+    kirjautunut.setUsername(rs.getString("username"));
+    kirjautunut.setPassword(rs.getString("password"));
   }
 
   //Jos kysely ei tuottanut tuloksia käyttäjä on nyt vielä null.

@@ -38,7 +38,7 @@ Huolehdi myös siitä, että koodisi on kommentoitu siellä missä se on epäsel
 
 Viimeisellä viikolla on normaalien koodaustehtävien lisäksi lisäosiona koodikatselmointi,
 josta voi saada kaksi ylimääräistä aikataulupistettä.
-Ohjeet osallistumiseen ovat [omalla sivullaan](../koodikatselmointi.html)!
+Lisätietoja löytyy [koodikatselmointiohjeista](../koodikatselmointi.html).
 
 <ohje>
 Viidennelle viikolle ei ole omia materiaalisivujaan, vaan tarkoitus on jatkaa edellisten viikkojen työtä.

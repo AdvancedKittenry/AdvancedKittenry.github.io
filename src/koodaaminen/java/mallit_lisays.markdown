@@ -11,8 +11,8 @@
     * Javassa voi käyttää [out-tägiä](http://docs.oracle.com/javaee/5/jstl/1.1/docs/tlddocs/): `<c:out value="${muuttuja}"/>`
 * Jos lomakkeessa käsitellään viiteavaimia, käytä [SELECT-tägiä](#selecttag)
 * Lomake ohjaa lisäyksen onnistuessa selaimen listaussivulle.
-  * Onnistumisesta onnistumisviesti
-  * Viesti kannattaa välittää [istunnossa](#sessionmessages)
+    * Tuloksena näytetään listaussivulla onnistumisviesti
+    * Viesti kannattaa välittää [istunnossa](#sessionmessages)
 </summary>
 
 ## Tietojen syöttäminen malliluokan olioon
@@ -65,7 +65,7 @@ Huomaa miten
 Tämän numeroon noutamista varten on olemassa omat kikkansa:
 
 * PostgreSQL:llä voidaan INSERT-lauseen jälkeen laittaa käsky `RETURNING id`, jolloin kysely palauttaa kentän `id` arvon ikään kuin se olisi SELECT-kysely.
-* MySQL:llä olemassa [oma tekniikkansa](http://www.technicalkeeda.com/details/how-to-get-mysql-auto-increment-key-value-using-java-jdbc).
+* Muille tietokannoille olemassa [oma tekniikkansa](http://www.technicalkeeda.com/details/how-to-get-mysql-auto-increment-key-value-using-java-jdbc).
 
 [serial]: http://www.postgresql.org/docs/9.2/static/datatype-numeric.html#DATATYPE-SERIAL
 [insert]: http://www.postgresql.org/docs/8.4/static/sql-insert.html
@@ -239,7 +239,7 @@ Jos oliollasi on numerokenttiä, on hyvä välittää niiden `value`-attribuutti
 käyttäjän mahdollisesti syöttämät kelvottomat numeromerkkijonot näkyvät sellaisenaan. 
 Näin käyttäjän on helpompi korjata ne.
 
-Tämän voi toteuttaa joko omana kenttänään suoraan malliluokassa tai erikseen kontrollerissa.
+Numerokentän sisällön välityksen voi toteuttaa joko omana kenttänään suoraan malliluokassa tai erikseen kontrollerissa.
 </info>
 
 Jos käyttäjä taas on syöttänyt tietoja, mutta tiedot eivät ole käypiä,

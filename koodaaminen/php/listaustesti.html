@@ -305,13 +305,17 @@ Vinkki
 <span class="kw">$tunnus</span> = <span class="kw">$kysely</span>-&gt;fetchColumn<span class="ot">(</span><span class="dv">1</span><span class="ot">);</span></code></pre>
 <p>Näillä metodeilla haetut tiedot voidaan nyt tallentaa olioihin, jotka voidaan tallentaa listaan ja palauttaa metodin kutsujalle.</p>
 <p>Alla on esimerkki valmiista metodista, joka palauttaa jokaisen käyttäjän.</p>
-<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">public</span> <span class="kw">static</span> <span class="kw">function</span> getKayttajat<span class="ot">()</span> {
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">public</span> <span class="kw">static</span> <span class="kw">function</span> etsiKaikkiKayttajat<span class="ot">()</span> {
   <span class="kw">$sql</span> = <span class="st">&quot;SELECT id,tunnus, password FROM users&quot;</span><span class="ot">;</span>
   <span class="kw">$kysely</span> = getTietokantayhteys<span class="ot">()</span>-&gt;prepare<span class="ot">(</span><span class="kw">$sql</span><span class="ot">);</span> <span class="kw">$kysely</span>-&gt;execute<span class="ot">();</span>
     
   <span class="kw">$tulokset</span> = <span class="fu">array</span><span class="ot">();</span>
   <span class="kw">foreach</span><span class="ot">(</span><span class="kw">$kysely</span>-&gt;fetchAll<span class="ot">(</span><span class="kw">PDO</span>::<span class="kw">FETCH_OBJ</span><span class="ot">)</span> <span class="kw">as</span> <span class="kw">$tulos</span><span class="ot">)</span> {
-    <span class="kw">$kayttaja</span> = <span class="kw">new</span> Kayttaja<span class="ot">(</span><span class="kw">$tulos</span>-&gt;id<span class="ot">,</span> <span class="kw">$tulos</span>-&gt;tunnus<span class="ot">,</span> <span class="kw">$tulos</span>-&gt;salasana<span class="ot">);</span> 
+    <span class="kw">$kayttaja</span> = <span class="kw">new</span> Kayttaja<span class="ot">();</span>
+    <span class="kw">$kayttaja</span>-&gt;setId<span class="ot">(</span><span class="kw">$tulos</span>-&gt;id<span class="ot">);</span>
+    <span class="kw">$kayttaja</span>-&gt;setTunnus<span class="ot">(</span><span class="kw">$tulos</span>-&gt;tunnus<span class="ot">);</span>
+    <span class="kw">$kayttaja</span>-&gt;setSalanana<span class="ot">(</span><span class="kw">$tulos</span>-&gt;salasana<span class="ot">);</span>
+
     <span class="co">//$array[] = $muuttuja; lisää muuttujan arrayn perään. </span>
     <span class="co">//Se vastaa melko suoraan ArrayList:in add-metodia.</span>
     <span class="kw">$tulokset</span><span class="ot">[]</span> = <span class="kw">$kayttaja</span><span class="ot">;</span>
@@ -346,10 +350,11 @@ Hyvä tietää
 <li><a href="http://www.php.net/manual/en/language.basic-syntax.phpmode.php">Esimerkkejä PHP-tilasta kielen omassa dokumentaatiossa</a></li>
 <li><a href="http://php.net/manual/en/function.include.php">Include ja require</a></li>
 </ul>
-<section class="alert alert-success small"><h3>
-Seuraavaksi:
+<section class="alert alert-info small"><h3>
+Valmista!
 </h3>
-<p>Testisovelluksen tehtyäsi voit tustustua tarkemmin viikon 3 materiaaliin: <a href="../../koodaaminen/arkkitehtuuri/index.html">MVC-arkkitehtuuriin</a> ja sen jälkeen <a href="../php/index.html">kirjautumisen toteuttamiseen</a>.</p>
+<p>Kun listaustestisi toimii moitteetta olet saanut valmiiksi viikon 2 palautuksen. Varmista vielä, että kaikki tiedostot löytyvät repositoriostasi.</p>
+<p>Halutessasi voit seuraavaksi tutustua viikon 3 materiaaliin: <a href="../../koodaaminen/arkkitehtuuri/index.html">MVC-arkkitehtuuriin</a> ja sen jälkeen <a href="../php/index.html">kirjautumisen toteuttamiseen</a>.</p>
 </section>
 
 

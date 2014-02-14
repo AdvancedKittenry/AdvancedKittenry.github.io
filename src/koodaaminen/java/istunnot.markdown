@@ -13,7 +13,7 @@ Kirjautumisen tapauksessa haluamme tallentaa tiedon siitä kuka on kirjautunut
 sisään. Tieto tallennetaan istuntoon siinä vaiheessa, kun käyttäjä kirjautuu sisään
 ja sitä käytetään aina kun halutaan tarkastella onko käyttäjä kirjautunut sivulle.
 
-Javassa istunto alustetaan käyttämällä HttpServletRequest-olion
+Javassa istunto otetaan käyttöön kutsumalla HttpServletRequest-olion
 [getSession-metodia](http://docs.oracle.com/javaee/6/api/javax/servlet/http/HttpServletRequest.html#getSession(boolean)). 
 Metodi palauttaa käyttäjän istunnon tai mikäli sellaista ei vielä ole olemassa, luo sen.
 Istunto-olioon voi tämän jälkeen tallentaa tietoa ja tarkastella siellä olevia tietoja.
@@ -22,10 +22,11 @@ Esimerkki kirjautuneen käyttäjän tallentamisesta istuntoon:
 
 ~~~java
 HttpSession session = request.getSession();
+Kayttaja kayttaja = etsiKayttajaTunnuksilla("kalle", request.getParameter("salasana")));
 
-if (voikoKirjautua('kalle', request.getParameter("salasana"))) {
+if (kayttaja != null) {
   //Tallennetaan istuntoon käyttäjäolio
-  session.setAttribute("kirjautunut", new Kayttaja("Kalle"));
+  session.setAttribute("kirjautunut", kayttaja);
 }
 ~~~
 
@@ -43,7 +44,7 @@ Käytä istunto-oliota kirjautumisservletissäsi siten, että talletat
 jokaisen onnistuneen kirjautumisen yhteydessä kirjautuneen käyttäjän tiedot istuntoon. 
 Useimmiten on järkevää tallentaa joko käyttäjätaulun pääavaimen arvo 
 (id tai käyttäjätunnus) tai kerralla kokonainen käyttäjäolio
-kaikkinen tietoineen. Kummankin tallentaminen istuntoon onnistuu.
+kaikkinen tietoineen. Kummankin tallentaminen istuntoon onnistuu samalla `setAttribute`-metodilla.
 
 ## Kirjautumisen tarkistaminen
 
@@ -65,7 +66,7 @@ tiedot kirjautumisesta. Tämän jälkeen käyttäjä ei enää pääse sivuille 
 
 ~~~java
 //Kirjaudutaan ulos
-session.removeAttribute("kirjautunutKayttaja");
+session.removeAttribute("kirjautunut");
 ~~~
 
 <last>

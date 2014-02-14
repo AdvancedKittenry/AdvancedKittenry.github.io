@@ -1,5 +1,4 @@
 <?php
-  include 'tietokantayhteys.php';
   $yhteys = new PDO('pgsql:');
   $nimi = 'Matti';
 ?><!DOCTYPE html>

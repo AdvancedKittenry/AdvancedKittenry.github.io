@@ -30,7 +30,7 @@ haettua tiedostoa ei löydy.
 Funktioista on olemassa 
 myös versiot `include_once` ja `require_once`, jotka 
 varmistavat ettei samaa tiedostoa sisällytetä kahdesti.
-Käytä näitä versioita sisällyttäessäsi yleiskäyttöistä kirjastokoodia (tiedostot `libs`-kansiosta).
+Käytä näitä versioita sisällyttäessäsi yleiskäyttöistä kirjastokoodia eli malleja ja muita tiedostoja `libs`-kansiosta.
 </info>
 
 Kokeile includea. Luo projektiisi `views`-kansio
@@ -39,7 +39,7 @@ ja kopioi sinne html-demosi kirjautumislomake php-tiedostopäätteellä.
 Luo sitten sivu `login.php` tai suomeksi `kirjautuminen.php` projektisi juurikansioon ja 
 laita sen sisällöksi seuraavanlainen koodinpätkä:
 
-**testikasittelija.php**
+**login.php**
 
 ~~~php
 <?php 
@@ -53,7 +53,7 @@ Jos teet työtä usersilla URL on todennäköisesti
 Selaimeesi pitäisi tulla sama kirjautumislomake kuin aikaisemminkin. 
 Tämä on vielä melko tylsää, mutta jatketaan tekemällä näkymien tekemisestä helpompaa.
 
-## HTML-runko ja pohjatiedoston käyttö
+## HTML-runko ja pohjatiedoston käyttö {#template}
 
 Käytännössä suurin osa ohjelmaasi tulevista sivuista
 tulee sisältämään samanlaisen HTML-rungon,
@@ -184,7 +184,7 @@ Tämä onnistuu helpoiten laittamalla
   function naytaNakyma($sivu, $data = array()) {
     $data = (object)$data;
     require 'views/pohja.php';
-    die();
+    exit();
   }
 ~~~
 
@@ -236,7 +236,8 @@ Näkymissä voi käyttää myös erilaisia koodirakenteita kuten ehtolausekkeita
 
 Yllä oleva koodi näyttää virheviestin ja siihen liittyvän div-elementin
 vain jos muuttuja `virheViesti` on asetettu. 
-Huomaa, että PHP:ssä on HTML:än seassa käyttöä varten [kaksi himean erilaista syntaksia if-lauseelle](http://php.net/manual/en/control-structures.alternative-syntax.php).
+Huomaa, että PHP:ssä on olemassa nimenomaan HTML:än 
+seassa käyttöä varten [vaihtoehtoinen syntaksi if-lauseelle](http://php.net/manual/en/control-structures.alternative-syntax.php).
 
 <info>
 Funktiot 

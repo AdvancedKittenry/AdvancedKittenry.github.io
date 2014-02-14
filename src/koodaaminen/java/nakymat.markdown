@@ -20,11 +20,12 @@ Yksinkertaisimmillaan JSP-tiedosto näyttää tältä:
 
 ~~~~jsp<include src="esimerkit/rakenne/index.jsp" />~~~~
 
-
-JSP-tiedoston käyttäminen tapahtuu RequestDispatcher-tyyppisen 
-olion metodilla forward, 
+JSP-tiedoston käyttäminen tapahtuu `RequestDispatcher`-tyyppisen 
+olion `forward`-metodilla, 
 jolle annetaan parametrina HttpServletRequest ja HttpServletResponse-oliot. 
 RequestDispatcher-olion saa HttpServletRequest-oliolta antamalla sille sivun, jolle pyyntö ohjataan.
+
+~~~~java<include src="esimerkit/rakenne/RequestDispatcher.java" />~~~~
 
 Luo tässä vaiheessa projektisi luokille oma paketti.
 Esim. kissalistan paketti voisi olla `Kissalista`.
@@ -36,15 +37,13 @@ laita servletin pyynnön käsittelymetodiin
 RequestDispatcher-oliota käyttävää koodia, joka ohjaa luomaasi JSP-tiedostoon
 ja kutsuu metodia forward.
 
-~~~~java<include src="esimerkit/rakenne/RequestDispatcher.java" />~~~~
-
 Viimeistään tässä vaiheessa joutunet lisäämään muutaman importin servlettiisi. 
 Näissä esimerkeissä niitä ei tulla erikseen luettelemaan, mutta esim.
 NetBeans osaa lisätä ne varsin kätevästi tiedoston alkuun, kunhan klikkailee sen antamia virhepalluroita.
 
 ## Muuttujien käyttö
 
-JSP-koodiin on mahdollista sijoittaa muuttujia ja mm. ehtolausekkeita.
+JSP-koodiin on mahdollista sijoittaa servletiltä saatuja muuttujia ja mm. ehtolausekkeita.
 esimerkiksi virheviestin näyttämisen voi toteuttaa seuraavasti:
 
 Asetetaan `processRequest`-metodissa aineistopyyntöä mallintavalle `HttpServletRequest`-oliolle _attribuutti_, joka sisältää viestin.
@@ -63,7 +62,20 @@ protected void processRequest(HttpServletRequest request, HttpServletResponse re
 ~~~~
 
 JSP-sivulla on mahdollista näyttää pyyntöön asetettuja
-attribuutteja suoraan syntaksilla `${attribuutin_nimi}`.
+attribuutteja suoraan syntaksilla `${attribuutin_nimi}`:
+
+~~~jsp
+<div class="alert alert-danger">Virhe! ${virheViesti}</div>
+~~~
+
+<huomio>
+Huomaa, että JSP-sivussa käytetyt attribuutit ovat täysin erillisiä servletin sisältämistä muuttujista ja niiden nimistä.
+Yhteys näiden kahden välille muodostuu ainoastaan `setAttribute`-metodin kutsujen myötä. 
+Selkeyden vuoksi on kuitenkin hyvä idea nimetä sekä normaalit Java-muuttujat että JSP-sivun käyttämät attribuutit samaan tapaan.
+</huomio>
+
+## If-ehtolauseet
+
 Myös erilaisia koodirakenteita kuten ehtolausekkeita
 voi käyttää ottamalla käyttöön _JSTL-tägikirjaston_
 laittamalla tiedoston alkuun taglib-referenssin:
@@ -89,7 +101,7 @@ Tämän jälkeen voimme näyttää virheviestin ehtolausekkeen avulla:
 Yllä oleva koodi näyttää virheviestin ja siihen liittyvän div-elementin
 vain jos attribuutti `virheViesti` on asetettu. 
 
-## Tag-pohjatiedoston käyttö
+## Tag-pohjatiedoston käyttö {#template}
 
 Käytännössä suurin osa ohjelmaasi tulevista sivuista
 tulee sisältämään samanlaisen HTML-rungon,
@@ -137,7 +149,7 @@ jonka sisältönä on sivunavigaatio ja Hello World -toivotus.
 Kun sivupohja on käytössä, jokainen sivu rakentuu kerroksittain kuten tässä kaaviokuvassa:
 ![Sivupohjan, näkymän ja näkymän näyttävän koodin väliset suhteet]({{imgdir}}koodaaminen/template-selitys-java.png)
 
-Kuvassa esiintyvä HTML-koodi vastaa melko tarkkaan sitä minkä Tomacat lähettää selaimelle.
+Kuvassa esiintyvä HTML-koodi vastaa melko tarkkaan sitä minkä Tomcat lähettää selaimelle.
 Huomaa, että `<html>`-tägi, navigaatiot yms. toistuvat elementit tarvitsee kirjoittaa vain sivupohjanana toimivaan pohja.tag-tiedostoon.
 Jos ne vahingossa kirjoittaa myös näkymätiedostoon, tuloksena on rikkinäistä HTML:ää:
 

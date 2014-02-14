@@ -44,23 +44,32 @@ Jokainen Servlet-luokka on sidottu johonkin URL-osoitteeseen,
 johon ohjattu aineistopyyntö aktivoi sen.
 Sitomiset on käyttämässämme Java-ympäristön versiossa
 määritelty XML-pohjaisesti tiedostossa `web/WEB-INF/web.xml`.
-Tiedoston muokkaus on hieman monimutkaista, mutta esimerkiksi
+
 NetBeans osaa muokata tämän tiedoston määrityksiä
 kätevällä käyttöliittymällä ja liittää esimerkiksi uusien Servlettien 
 URL-osoitteet sinne samalla kun Servlettiä luodaan, 
 jolloin käytännössä tiedostoon tarvitsee koskea käsin aika harvoin.
 
-### Sovelluksen etusivun määrittely
-
-Voit myös halutessasi tehdä servletistä sivujesi etusivun
-lisäämällä tiedostoon `web/WEB-INF/web.xml` seuraavanlaista koodia
+Jos tiedostoa kuitenkin haluaa muokata, on sen olennainen sisältö
+`servlet`- ja `servlet-mapping`-tägien kohdalla.
+Näistä ensimmäiset määrittävät yhteyksiä servlet-luokkien
+ja niistä käytettyjen nimien välillä.
+Nimet taas liitetään URL-osoitteisiin `servlet-mapping`-tägien avulla.
+Tällä tavalla yhden serveltin voi sijoittaa esimerkiksi useaan osoitteeseen.
 
 ~~~xml
-<welcome-file-list>
-  <welcome-file>kirjautuminen</welcome-file>
-</welcome-file-list>
+<servlet>
+    <servlet-name>Kissalista</servlet-name>
+    <servlet-class>kissalista.servlet.Kissalista</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>Kissalista</servlet-name>
+    <url-pattern>/osoite</url-pattern>
+</servlet-mapping>
 ~~~
 
+Laittamalla `url-pattern`-tägin sisään pelkän kenoviivan `/`, saa servletin 
+asetettua sovelluksen etusivuksi.
 Oletuksena Tomcat-sovellus käyttää etusivunaan index.jsp-tiedostoa.
 
 ### Servletin toiminta

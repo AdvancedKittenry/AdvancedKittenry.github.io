@@ -82,7 +82,7 @@ class Kayttaja {
   private $password;
   
   /* Etsitään kannasta käyttäjätunnuksella ja salasanalla käyttäjäriviä */
-  public static function getKayttajaTunnuksilla($kayttaja, $salasana) {
+  public static function etsiKayttajaTunnuksilla($kayttaja, $salasana) {
     $sql = "SELECT id,username, password from users where username = ? AND password = ? LIMIT 1";
     $kysely = getTietokantayhteys()->prepare($sql);
     $kysely->execute(array($kayttaja, $salasana));
@@ -92,9 +92,9 @@ class Kayttaja {
       return null;
     } else {
       $kayttaja = new Kayttaja(); 
-      $kayttaja->id = $tulos->id;
-      $kayttaja->username = $tulos->username;
-      $kayttaja->password = $tulos->password;
+      $kayttaja->setId($tulos->id);
+      $kayttaja->setUsername($tulos->username);
+      $kayttaja->setPassword($tulos->password);
 
       return $kayttaja;
     }
