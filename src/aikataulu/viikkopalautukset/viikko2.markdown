@@ -14,10 +14,9 @@ ja tehdään pienimuotoinen testiohjelma sen käyttöön.
 Näitä harjoituksia on yleensä paras tulla tekemään pajaan,
 jolloin ohjaaja voi antaa vinkkejä niiden tekemisessä.
 
-Viikon tehtävät jakautuvat seuraavasti.
-Kunkin otsikon alla olevista asioista saa yhden aikataulupisteen.
+Palautuspäivämäärään mennessä työn on täytettävä seuraavat vaatimukset. Kunkin otsikon alla olevista asioista saa suluissa määritellyt aikataulupisteet.
 
-## Käyttöliittymän suunnittelu (puoli pistettä)
+## Käyttöliittymän suunnittelu ja toteutus (1½p)
 
 Dokumentoi ja suunnittele sovelluksellesi käyttöliittymä
 seuraamalla
@@ -26,10 +25,7 @@ Lopputuloksena pitäisi dokumentaatiossa olla käyttöliittymäkaavio.
 Liitä myös tekemäsi muut suunnitelmat (etenkin yleisnavigaatio)
 repositorioosi, ellet ole näyttänyt niitä ohjaajalle pajassa.
 
-## Käyttöliittymän toteututus HTML:llä (1p)
-
-Siirrytään suunnittelusta käytäntöön
-ja luodaan suunnitelluista sivuista oikean näköiset, mutta
+Suunnitelmien perusteella luodaan sivuista oikean näköiset, mutta
 vielä staattiset HTML-versiot. 
 
 Se minne sivut kannattaa sijoittaa riippuu hieman ohjelmointikielestä.
@@ -42,71 +38,42 @@ Javalla tämä hakemisto sijoitetaan `web`-hakemistoon, PHP:llä se voi olla pro
 Sijoita kaikki tällä viikolla tekemäsi HTML-tiedostot tuohon kansioon.
 Lisää ohjeita HTML-kielen kanssa työskentelyyn löytyy [HTML-oppaasta]({{rootdir}}koodaaminen/html-opas.html).
 
-Toteutettuna pitää olla HTML-versiot seuraavista aiemmin suunnitelluista sivuista (linkit suunnitteluohjeeseen):
+Toteutettuna pitää olla HTML-versiot seuraavista aiemmin suunnitelluista sivuista:
 
-* [Sivujen runko ja navigaatio sekä etusivu]({{rootdir}}suunnittelu/kayttoliittyma.html#etusivu-ja-yleisnäkymä-template)
-* [Listaussivujen]({{rootdir}}suunnittelu/kayttoliittyma.html#listanäkymän-suunnittelu) toteuttaminen
-* [Muokkaus ja tietonäkymien]({{rootdir}}suunnittelu/kayttoliittyma.html#muokkaus--ja-tietonäkymät) toteuttaminen
+* Sivujen runko ja navigaatio 
+* Etusivu
+* Listaussivut
+* Muokkaus ja tietonäkymät
 
-## Tietokannan käytön aloittaminen (1p)
+<ohje>
+Aloita sivulta 
+[käyttöliittymän suunnittelu]({{rootdir}}suunnittelu/kayttoliittyma.html).
+ja seuraa vihreitä ohjelaatikoita.
+</ohje>
+
+## Tietokannan käytön aloittaminen ja dokumentointi (1½p)
 
 Suunnittele ja dokumentoi sovelluksellesi tietokanta
 sekä sanallisella että kooditasolla.
+Pisteistä puolikas piste tulee dokumentaatiosta.
 
 * [Tietokannan pystyttäminen palvelimelle]({{rootdir}}koodaaminen/kannan-alustus.html)
-    * Luodaan SQL-tiedostot, joilla kannan rakenteen saa vedettyä ylös ja alas.
-    * Käytetään luotuja tiedostoja tietokannan pystyttämiseen
-* Otetaan käyttöön [tietokantatestisovellus]({{rootdir}}koodaaminen/testisovellus.html)
+    * Luo SQL-tiedostot, joilla kannan rakenteen saa vedettyä ylös ja alas.
+    * Käytä luotuja tiedostoja tietokannan pystyttämiseen
+* Ota käyttöön [tietokantatestisovellus]({{rootdir}}koodaaminen/testisovellus.html)
     * Sovellus näyttää tietokannan taulut ja niiden sisältöä. Ohjaaja käyttää tätä pysyäkseen paremmin kärryillä tietokannan tilasta.
-    * Tämän tulee olla näkyvillä usersin palvelintilassa.
+    * Testisovelluksen tulee näkyä Users-palvelimella.
 * Tarvitset koodaamiseen tietokantayhteyden muodostavan koodi, joka pitää sijoittaa omaan tiedostoonsa.
-* Tee lopuksi yhteyttä käyttävä kevyt testisivu, joka listaa jonkin tietokantataulun kaikkilta riveiltä jotakin, esimerkiksi jokaisen käyttäjän nimen.
+* Tee yhteyttä käyttävä kevyt testisivu, joka listaa jonkin tietokantataulun kaikkilta riveiltä jotakin, esimerkiksi jokaisen käyttäjän nimen.
     * Käytä tietokannan täyttämiseen `add-test-data.sql`-tiedostoa, niin sivulla on jotain näytettävää.
+* Dokumentaatioon lisätään asiaanliittyvät kaaviot ja kappaleet
+Järjestelmän tietosisältö ja Relaatiotietokantakaavio
 
+<ohje>
 Aloita sivulta 
 [tietokannan suunnittelu]({{rootdir}}suunnittelu/tietokanta.html).
 ja seuraa vihreitä ohjelaatikoita.
-
-## Tietokannan rakenteen dokumentoiminen (puoli pistettä)
-
-Tee lopuksi lista kunkin kaavion tietokohteen
-sisältämistä tietokentistä, niiden tyypeistä ja rooleista sovelluksessa.
-Liitä kenttien kuvaukset taulukkoina dokumentaatioon. 
-Myös yhteydet toisiin kohteisiin täytyy määritellä. 
-Lopputuloksen kuuluu näyttää tämäntapaiselta:
-
-> **Tietokohde: Kissa**
-> 
-> ------------------------------------------------------------------------
-> Attribuutti          Arvojoukko         Kuvailu
-> -------------------- ------------------ -------------------------------
-> Nimi                 Merkkijono,        Kissan nimi
->                      max. 80 merkkiä    
-> 
-> Väri                 Merkkijono,        Kuvaus kissan väristä
->                      max. 30 merkkiä    esim. "valkotäplikäs oranssi"
-> 
-> Viim. ruokkimis-pvm. Päivämäärä         Koska kissa on viimeksi ruokittu?
-> 
-> Lisätiedot           Merkkijono,        Kuvaus kissan ominaisuuksista
->                      max. 255 merkkiä   esim. "Serafiina syö vain kalaa."
-> 
-> -----------------------------------------------------------------------
-> 
-> Kissa, joka asuu kissatädin kartanossa. Jokainen kissa kuuluu tasan yhteen kissarotuun. Jokaisesta kissasta merkitään ylös sitä viimeksi ruokkinut palvelija.
-
-### Relaatiotietokantakaavio
-
-Tee lopuksi suunnittelemastasi tietosisällöstä [dokumentaatio-ohjeen mukainen relaatiotietokantakaavio]({{rootdir}}dokumentaatio-ohje.html#relaatiotietokantakaavio):
-![Kissoihin liittymätön relaatiotietokantakaavio]({{imgdir}}dokumentaatio-ohje/relaatiokaavio.gif)
-
-Muista lisätä kaavioon kaikki olennaiset viiteavaimet sekä
-monesta-moneen suhteiden tilalle välitaulut.
-
-Tallenna tekemäsi kaaviot ja uusi sisältö 
-repositoriosi samaan dokumentaatiotiedostoon missä edellisetkin dokumentaatiot olivat.
-Lisää myös kaavioiden tuottamiseen käyttämäsi lähdetiedostot
-repositoriosi doc-kansioon niin ne pysyvät tallessa muutosten varalta.
+</ohje>
 
 ## Palautus ja esittelysivun päivittäminen
 
@@ -236,7 +203,7 @@ index.jsp
 </tabs>
 
 
-NetBeansia käyttävillä on projektissaa todennäköisesti huomattavasti enemmän tiedostoja.
+NetBeansia käyttävillä on projektissaan todennäköisesti huomattavasti enemmän tiedostoja.
 Se ei haittaa.
 
 <alert>

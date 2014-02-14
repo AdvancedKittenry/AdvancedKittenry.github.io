@@ -10,18 +10,12 @@ ja toteuttaa kirjautuminen.
 Palautuspäivämäärään mennessä työn on täytettävä seuraavat vaatimukset.
 Kunkin otsikon alla olevista asioista saa suluissa määritellyt aikataulupisteet.
 
-<comment>
-TODO:
-* Virheilmoitusmekanismi
-* Käytettävyys
-</comment>
-
 ## MVC-arkkitehtuuri (1p)
 
 * Sovelluksen logiikkaa on eritelty kontrollereista malleihin ja näkymiin [MVC-mallin mukaisesti][arkkitehtuuri].
-* Sivuille on luotu erillinen sivupohjatiedosto, joka sisältää jokaiselle sivulle tulevat asiat.
-    * Java:lla helpointa käyttää [JSP-tägikirjastoa]({{rootdir}}koodaaminen/java/nakymat.html#template)
-    * PHP:lle [oma ohje]({{rootdir}}koodaaminen/php/nakymat.html#template), joka perustuu [include-funktion](http://php.net/manual/en/function.include.php) käyttöön
+* HTML-koodia ei enää tuoteta muualla kuin näkymissä.
+* Tietokannan käsittely keskitetty malliluokkiin.
+* Sivulta toiseen samana toistuva HTML-koodin runko on sijoitettu erilliseen HTML-pohjatiedostoon, niin ettei sitä toisteta turhaan joka näkymässä.
 
 ## Kirjautuminen (2p)
 

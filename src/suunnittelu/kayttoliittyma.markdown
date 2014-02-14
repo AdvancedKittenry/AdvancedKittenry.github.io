@@ -172,8 +172,6 @@ piirtää suunnitelmastasi hybridin, joka tulee toimimaan sekä lisäys- että
 muokkausnäkymän pohjana.
 
 <next>
-Kun olet suunnitellut mielestäsi toimivan käyttöliittymän, 
-suunnittele työllesi [tietokanta ja dokumentoi se](tietokanta.html).
 
-Vaihtoehtoisesti toteuta suunnittelemasi käyttöliittymä [HTML:llä]({{rootdir}}koodaaminen/html-opas.html). Ja syvenny sitten tietokantoihin.
+Toteuta suunnittelemasi käyttöliittymä [HTML:llä]({{rootdir}}koodaaminen/html-opas.html). Ja syvenny sitten tietokantoihin.
 </next>

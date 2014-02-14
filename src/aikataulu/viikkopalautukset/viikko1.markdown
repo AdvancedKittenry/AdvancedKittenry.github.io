@@ -113,7 +113,7 @@ siitä, että siellä on tietokantasovelluksen [päädokumentti]({{rootdir}}doku
 nimellä `dokumentaatio.pdf`. Tuo PDF-tiedosto on se, jonka ohjaajasi lukee, 
 mutta on hyvä pitää lähdetiedostotkin versionhallinnassa.
 
-## Ensimmäinen viikon palautuksen tiedosto
+## Ensimmäinen viikon palautuksen tiedostot
 
 Ensimmäisen viikon palautuksen kansiorakenne näyttää todennäköisimmin seuraavanalaiselta:
 
@@ -132,7 +132,7 @@ Esimerkiksi NetBeansillä tehtyjen Java-töiden HTML-tiedostot tulevat omaan `we
 ## Labtool
 
 Kun olet tehnyt kaiken
-mene osoitteeseen [http://tsoha-labtool.herokuapp.com/](http://tsoha-labtool.herokuapp.com/)
+mene osoitteeseen [http://tsoha-labtool.herokuapp.com/][labtoolreg]
 ja rekisteröi itsesi kurssille. 
 Labtool on laitoksen harjoitustöitä varten kehitetty pisteidenseurantajärjestelmä, 
 johon kaikki tämänkin kurssin palautteet annetaan.

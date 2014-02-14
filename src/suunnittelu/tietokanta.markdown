@@ -3,10 +3,6 @@
 
 <summary>
 * Suunnittele tietokantasi
-* Luo dokumentaatioon asiaanliittyvät kaaviot ja kappaleet: 
-    * [Järjestelmän tietosisältö]({{rootdir}}dokumentaatio-ohje.html#j%C3%A4rjestelm%C3%A4n-tietosis%C3%A4lt%C3%B6)
-    * [Relaatiotietokantakaavio]({{rootdir}}dokumentaatio-ohje.html#relaatiotietokantakaavio)
-* Sijoita uudet kappaleet samaan pdf-tiedostoon kuin aikaisempikin dokumentaatio
 * Tee tietokantasuunnitelmistasi myös SQL-muotoinen versio, jonka voi ajaa tietokantaan.
     * Tiedostot uuteen `sql`-nimiseen hakemistoon.
     * Luo oma tiedosto taulujen luomiselle, testidatan syöttämiselle ja taulujen poistamiselle: `create-tables.sql`, `drop-tables.sql` ja `add-test-data.sql`.
@@ -241,6 +237,6 @@ Jos SQL-taitosi ovat pahasti ruosteessa, etkä saa kantaa pystyyn on usein helpo
 </vinkki>
 
 <next>
-Suunniteltuasi tietokannan rakenteen varmista, että
-[saat sen pystyyn palvelimelle]({{rootdir}}koodaaminen/kannan-alustus.html).
+Suunniteltuasi tietokannan rakenteen 
+[dokumentoi se](tietokanta-dokumentointi.html).
 </next>

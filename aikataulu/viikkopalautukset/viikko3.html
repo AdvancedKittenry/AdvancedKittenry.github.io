@@ -90,6 +90,7 @@
 <li><a href="../../suunnittelu/tietokannan-valinta.html">Tietokannan valinta</a></li>
 <li><a href="../../suunnittelu/kayttoliittyma.html">Käyttöliittymän suunnittelu</a></li>
 <li><a href="../../suunnittelu/tietokanta.html">Tietokannan suunnittelu</a></li>
+<li><a href="../../suunnittelu/tietokanta-dokumentointi.html">Tietokannan dokumentointi</a></li>
 </ul></li>
 <li><a href="../../pystytys/index.html">Users-palvelin ja töiden pystyttäminen</a>
 <ul>
@@ -178,11 +179,9 @@ Deadline:
 <h2>MVC-arkkitehtuuri (1p)</h2>
 <ul>
 <li>Sovelluksen logiikkaa on eritelty kontrollereista malleihin ja näkymiin <a href="../../koodaaminen/arkkitehtuuri/index.html">MVC-mallin mukaisesti</a>.</li>
-<li>Sivuille on luotu erillinen sivupohjatiedosto, joka sisältää jokaiselle sivulle tulevat asiat.
-<ul>
-<li>Java:lla helpointa käyttää <a href="../../koodaaminen/java/nakymat.html#template">JSP-tägikirjastoa</a></li>
-<li>PHP:lle <a href="../../koodaaminen/php/nakymat.html#template">oma ohje</a>, joka perustuu <a href="http://php.net/manual/en/function.include.php">include-funktion</a> käyttöön</li>
-</ul></li>
+<li>HTML-koodia ei enää tuoteta muualla kuin näkymissä.</li>
+<li>Tietokannan käsittely keskitetty malliluokkiin.</li>
+<li>Sivulta toiseen samana toistuva HTML-koodin runko on sijoitettu erilliseen HTML-pohjatiedostoon, niin ettei sitä toisteta turhaan joka näkymässä.</li>
 </ul>
 </section>
 <section id="kirjautuminen-2p" class="level2">

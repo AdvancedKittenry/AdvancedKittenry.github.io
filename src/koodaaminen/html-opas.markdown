@@ -218,3 +218,8 @@ Muita vastaavia tägejä ovat mm. `<br>`, `<hr>`, `<link>`, `<meta>` ja `<img>`.
 * [Learn the Basic HTML Tags!](http://www.htmlgoodies.com/primers/html/article.php/3478151)
 * [Twitter Bootstrap](http://getbootstrap.com/)
 * [HTML Dogin tutoriaalit](http://www.htmldog.com/) (HTML ja CSS) ovat lupsakoita ja perusteellisia. Suositellaan selattavaksi sivuja tehdessä! Tutoriaaleissa tehdään XHTML-sivuja, mutta ne on helppo soveltaa HTML5-sivuiksi (korvaa alun pitkä DOCTYPE lyhyellä HTML5-doctypellä).
+
+<next>
+Kun olet suunnitellut mielestäsi toimivan käyttöliittymän, 
+suunnittele työllesi [tietokanta ja dokumentoi se](tietokanta.html).
+</next>

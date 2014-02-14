@@ -235,7 +235,7 @@ Lopulliset sivut tulevat noudattamaan läheisemmin [MVC-arkkitehtuuria][mvc].
 </vinkki>
 
 <last>
-Kun listaustestisi toimii moitteetta 
+Kun listaustestisi toimii moitteetta, olet suunnitellut ja toteuttanut käyttöliittymän ja dokumentoinut kaiken,
 olet saanut valmiiksi viikon 2 palautuksen. 
 Varmista vielä, että kaikki tiedostot löytyvät repositoriostasi.
 
