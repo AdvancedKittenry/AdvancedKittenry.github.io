@@ -139,6 +139,41 @@ class Kissa {
   
   ...
 ~~~
+### Numeerisen datan vastaanottaminen
+
+Kaikki `$_GET`- ja `$_POST`-taulukoissa oleva data on merkkijonomuotoista.
+Numerokenttiä tarkistaessa pitää tämän takia aina 
+tarkistaa onko syötetty arvo oikeasti luku.
+
+Tähän on muutamakin tapa: PHP:n sisäänrakennettu
+[`is_numeric`-funktio][isnumeric] osaa kertoa
+onko merkkijono jokin luku. 
+
+[isnumeric]: http://fi2.php.net/is_numeric
+
+~~~inlinephp
+public function setPituus($uusipituus) {
+  $this->pituus = $uusiPituus;
+
+  if (!is_numeric($uusipituus) {
+    $this->virheet['pituus'] = "Kissan pituuden tulee olla numero.";
+  } else if ($uusiPituus <= 0) {
+    $this->virheet['pituus'] = "Kissalla täytyy olla positiivinen pituus.";
+  } else {
+    unset($this->virheet['pituus']);
+  }
+}
+~~~
+
+`is_numeric` ei valitettavasti tosin
+kerro onko kyseessä kokonaisluku vai desimaaliluku.
+Kokonaislukuja varten voi käyttää esim. säännöllisiä lausekkeita:
+
+~~~inlinephp
+if (!preg_match('/^\d+$/', $uusipituus) {
+  $this->virheet['pituus'] = "Kissan pituuden tulee olla kokonaisluku.";
+}
+~~~
 
 Kentissä, jotka viittaavat toisiin tauluihin, voi olla 
 järkevää tehdä tarkistuksia siitä onko viitattu olento olemassa.
@@ -157,6 +192,8 @@ hakumetodin, jolla voi hakea tietueita pääavaimen perusteella:
 Mallien välinen viittailu on myös mahdollista
 rakentaa siten, että oliolle annnetaan setterissä toisen taulun 
 olioita, joista poimitaan id.
+
+### Virhemetodien toteutus
 
 onkoKelvollinen-metodin toteutukseksi riittää käytetyn virhelistan
 tyhjyyden tarkistava [`empty`](http://www.php.net/empty):

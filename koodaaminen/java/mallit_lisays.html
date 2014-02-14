@@ -320,7 +320,10 @@ uusikatti.<span class="fu">setRotuId</span>(request.<span class="fu">getParamete
     virheet.<span class="fu">remove</span>(<span class="st">&quot;rotu_id&quot;</span>);
   }</code></pre>
 <p>Mallien välinen viittailu on myös mahdollista rakentaa siten, että oliolle annnetaan setterissä toisen taulun olioita, joista poimitaan id.</p>
-<p>onkoKelvollinen-metodin toteutukseksi riittää käytetyn virhetaulukon tyhjyyden tarkistava <a href="http://docs.oracle.com/javase/7/docs/api/java/util/HashMap.html#isEmpty()"><code>isEmpty</code></a>:</p>
+</section>
+<section id="virhemetodien-toteutus" class="level3">
+<h3>Virhemetodien toteutus</h3>
+<p>onkoKelvollinen-metodin toteutukseksi riittää käytetyn virhetaulukon tyhjyyden tarkistava <a href="http://docs.oracle.com/javase/7/docs/api/java/util/HashMap.html#isEmpty()"><code>isEmpty</code>-metodi</a>:</p>
 <pre class="sourceCode java"><code class="sourceCode java">  <span class="co">/* Palauttaa true, jos Kissaan syötetyt arvot ovat järkeviä. */</span>
   <span class="kw">public</span> <span class="dt">boolean</span> <span class="fu">onkoKelvollinen</span>() {
     <span class="kw">return</span> <span class="kw">this</span>.<span class="fu">virheet</span>.<span class="fu">isEmpty</span>();
@@ -343,7 +346,7 @@ uusikatti.<span class="fu">setRotuId</span>(request.<span class="fu">getParamete
 <section class="alert alert-info"><h3>
 Lisätietoa
 </h3>
-<p>Jos oliollasi on numerokenttiä, on hyvä välittää niiden <code>value</code>-attribuuttiin suoraan käyttäjältä saatu syöte, jotta käyttäjän mahdollisesti syöttämät kelvottomat numeromerkkijonot näkyvät oikein.</p>
+<p>Jos oliollasi on numerokenttiä, on hyvä välittää niiden <code>value</code>-attribuuttiin suoraan käyttäjältä saatu syöte, jotta käyttäjän mahdollisesti syöttämät kelvottomat numeromerkkijonot näkyvät sellaisenaan. Näin käyttäjän on helpompi korjata ne.</p>
 <p>Tämän voi toteuttaa joko omana kenttänään suoraan malliluokassa tai erikseen kontrollerissa.</p>
 </section>
 

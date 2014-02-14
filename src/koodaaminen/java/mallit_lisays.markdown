@@ -193,8 +193,10 @@ Mallien välinen viittailu on myös mahdollista
 rakentaa siten, että oliolle annnetaan setterissä toisen taulun
 olioita, joista poimitaan id.
 
+### Virhemetodien toteutus
+
 onkoKelvollinen-metodin toteutukseksi riittää käytetyn virhetaulukon
-tyhjyyden tarkistava [`isEmpty`](http://docs.oracle.com/javase/7/docs/api/java/util/HashMap.html#isEmpty()):
+tyhjyyden tarkistava [`isEmpty`-metodi](http://docs.oracle.com/javase/7/docs/api/java/util/HashMap.html#isEmpty()):
 
 ~~~java
   /* Palauttaa true, jos Kissaan syötetyt arvot ovat järkeviä. */
@@ -234,7 +236,8 @@ tarvitse välittää ollenkaan.
 
 <info>
 Jos oliollasi on numerokenttiä, on hyvä välittää niiden `value`-attribuuttiin suoraan käyttäjältä saatu syöte, jotta
-käyttäjän mahdollisesti syöttämät kelvottomat numeromerkkijonot näkyvät oikein.
+käyttäjän mahdollisesti syöttämät kelvottomat numeromerkkijonot näkyvät sellaisenaan. 
+Näin käyttäjän on helpompi korjata ne.
 
 Tämän voi toteuttaa joko omana kenttänään suoraan malliluokassa tai erikseen kontrollerissa.
 </info>

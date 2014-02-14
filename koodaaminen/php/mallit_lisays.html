@@ -284,6 +284,25 @@ Tiivistelmä:
   }
   
   <span class="st">...</span></code></pre>
+<section id="numeerisen-datan-vastaanottaminen" class="level3">
+<h3>Numeerisen datan vastaanottaminen</h3>
+<p>Kaikki <code>$_GET</code>- ja <code>$_POST</code>-taulukoissa oleva data on merkkijonomuotoista. Numerokenttiä tarkistaessa pitää tämän takia aina tarkistaa onko syötetty arvo oikeasti luku.</p>
+<p>Tähän on muutamakin tapa: PHP:n sisäänrakennettu <a href="http://fi2.php.net/is_numeric"><code>is_numeric</code>-funktio</a> osaa kertoa onko merkkijono jokin luku.</p>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">public</span> <span class="kw">function</span> setPituus<span class="ot">(</span><span class="kw">$uusipituus</span><span class="ot">)</span> {
+  <span class="kw">$this</span>-&gt;pituus = <span class="kw">$uusiPituus</span><span class="ot">;</span>
+
+  <span class="kw">if</span> <span class="ot">(</span>!<span class="fu">is_numeric</span><span class="ot">(</span><span class="kw">$uusipituus</span><span class="ot">)</span> {
+    <span class="kw">$this</span>-&gt;virheet<span class="ot">[</span><span class="st">&#39;pituus&#39;</span><span class="ot">]</span> = <span class="st">&quot;Kissan pituuden tulee olla numero.&quot;</span><span class="ot">;</span>
+  } <span class="kw">else</span> <span class="kw">if</span> <span class="ot">(</span><span class="kw">$uusiPituus</span> &lt;= <span class="dv">0</span><span class="ot">)</span> {
+    <span class="kw">$this</span>-&gt;virheet<span class="ot">[</span><span class="st">&#39;pituus&#39;</span><span class="ot">]</span> = <span class="st">&quot;Kissalla täytyy olla positiivinen pituus.&quot;</span><span class="ot">;</span>
+  } <span class="kw">else</span> {
+    <span class="fu">unset</span><span class="ot">(</span><span class="kw">$this</span>-&gt;virheet<span class="ot">[</span><span class="st">&#39;pituus&#39;</span><span class="ot">]);</span>
+  }
+}</code></pre>
+<p><code>is_numeric</code> ei valitettavasti tosin kerro onko kyseessä kokonaisluku vai desimaaliluku. Kokonaislukuja varten voi käyttää esim. säännöllisiä lausekkeita:</p>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">if</span> <span class="ot">(</span>!<span class="fu">preg_match</span><span class="ot">(</span><span class="st">&#39;/^\d+$/&#39;</span><span class="ot">,</span> <span class="kw">$uusipituus</span><span class="ot">)</span> {
+  <span class="kw">$this</span>-&gt;virheet<span class="ot">[</span><span class="st">&#39;pituus&#39;</span><span class="ot">]</span> = <span class="st">&quot;Kissan pituuden tulee olla kokonaisluku.&quot;</span><span class="ot">;</span>
+}</code></pre>
 <p>Kentissä, jotka viittaavat toisiin tauluihin, voi olla järkevää tehdä tarkistuksia siitä onko viitattu olento olemassa. Tämän voi helposti tehdä tekemällä viitattuun tauluun sopivan hakumetodin, jolla voi hakea tietueita pääavaimen perusteella:</p>
 <pre class="sourceCode php"><code class="sourceCode php">  <span class="co">//Tarkistetaan, että rotu on olemassa</span>
   <span class="kw">if</span> <span class="ot">(</span>Kissarotu::etsi<span class="ot">(</span><span class="kw">$uusirotu_id</span><span class="ot">)</span> == <span class="kw">null</span><span class="ot">)</span> {
@@ -292,11 +311,15 @@ Tiivistelmä:
     <span class="fu">unset</span><span class="ot">(</span><span class="kw">$this</span>-&gt;virheet<span class="ot">[</span><span class="st">&#39;rotu_id&#39;</span><span class="ot">]);</span>
   }</code></pre>
 <p>Mallien välinen viittailu on myös mahdollista rakentaa siten, että oliolle annnetaan setterissä toisen taulun olioita, joista poimitaan id.</p>
+</section>
+<section id="virhemetodien-toteutus" class="level3">
+<h3>Virhemetodien toteutus</h3>
 <p>onkoKelvollinen-metodin toteutukseksi riittää käytetyn virhelistan tyhjyyden tarkistava <a href="http://www.php.net/empty"><code>empty</code></a>:</p>
 <pre class="sourceCode php"><code class="sourceCode php">  <span class="co">/* Palauttaa true, jos Kissaan syötetyt arvot ovat järkeviä. */</span>
   <span class="kw">public</span> <span class="kw">function</span> onkoKelvollinen<span class="ot">()</span> {
     <span class="kw">return</span> <span class="fu">empty</span><span class="ot">(</span><span class="kw">$this</span>-&gt;virheet<span class="ot">);</span>
   }</code></pre>
+</section>
 </section>
 <section id="käytettävä-lisäyslomake" class="level2">
 <h2>Käytettävä lisäyslomake</h2>
