@@ -76,11 +76,13 @@ Lopullisen siistin version voi huoletta jättää myöhemmäksi,
 sillä yleensä suunnitelmat kuitenkin muuttuvat työn edetessä.
 
 Kun sivukartta on tehty, ota siitä kuva kännykkäkamerallasi
-ja sijoita se repositoriosi doc-kansioon nimellä `sivukartta.jpg` (tiedostopäätteellä ei ole niin väliä).
+ja sijoita se repositoriosi kansioon nimellä `sivukartta.jpg` (tiedostopäätteellä ei ole niin väliä).
+Liitä sivukartta myös dokumentaatiotiedostoosi Käyttöliittymä-nimisen kappaleen alle.
 Voit halutessasi myös skannata sen tai 
 tehdä valmiin version jollain diagrammiohjelmalla. 
 
 Tee samoin muidenkin käyttöliittymäluonnostesi kanssa, ellet ole päässyt näyttämään niitä pajaan.
+Muita luonnoksia ei kuitenkaan tarvitse liittää dokumentaatiotiedostoon.
 
 ## Etusivu ja yleisnäkymä (template)
 
