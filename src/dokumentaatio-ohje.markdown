@@ -146,6 +146,8 @@ Tämän kappaleen tarkoitus on kertoa lyhyesti mistä jotakin toimintoa kannatta
 Järjestelmän yleinen hakemistorakenne esitetään selostamalla yleisellä tasolla lyhyesti mihin tarkoitukseen tarkoitettuja tiedostoja projektin hakemistot sisältävät,
 mihin mahdollisesti käytetyt kirjastot ja apuluokat on sijoitettu ja mitä erilaisia ohjelmakoodikomponentteja projektista löytyy (Esim. html-näkymä, apuluokka, tietokantaluokka, kontrolleri). Mikäli järjestelmällä on erillinen asetuksista vastaava tiedosto, kerrotaan sen sijainti samoin kuin mahdolliset tiedostojen nimeämiseen liittyvät käytännöt.
 
+Tähän kappaleeseen laitetaan myös yleinen kuvaus siitä miten järjestelmä käyttää istuntoa.
+
 ####Esimerkki MVC-mallin mukaisesta php-projektista
 
 > Tietokantasovellusta tehdessä on noudatettu MVC-mallia. Kontrollerit, näkymät ja mallit \
@@ -163,6 +165,9 @@ Jokaisen komponentin osalta esitetään sen nimi ja kuvaus siitä, mitä se teke
 Komponentit voidaan esitellä esim. ryhmiteltyinä html-sivuihin, servletteihin ja apuluokkiin. 
 Lisäksi voi omana osionaan luetella sovelluksessa mahdollisesti käytettävät kuva-, ääni- yms. tiedostot.
 Mikäli sovelluksessa on käytetty jotain kirjastoa, kuten jQuery, tulee eritellä mitkä ovat omia ja mitkä kirjaston komponentteja, käytetyistä kirjastokomponenteista tulee kertoa mihin niitä käyttää.
+
+Jokaisesta kontrollerista kerrotaan lisäksi mitä tietoja ja lomakkeita se vastaanottaa.
+Lisäksi laitetaa kuvaus siitä mitä tietoja kulloinkin haetaan ja talletetaan istuntoon, mikäli tiedosto käyttää istuntoa johonkin.
 
 Käytännössä kyseessä on tiedostotason kuvailu siitä, mitä eri ohjelman osaset kuvailevat. 
 Jokaisesta tiedostosta kerrotaan mihin sitä käytetään ja mitä se tekee.

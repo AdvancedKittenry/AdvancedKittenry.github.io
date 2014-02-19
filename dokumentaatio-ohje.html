@@ -313,6 +313,7 @@ Rekisteröityminen asiakkaaksi:
 <section id="järjestelmän-yleisrakenne" class="level2">
 <h2>6. Järjestelmän yleisrakenne</h2>
 <p>Tämän kappaleen tarkoitus on kertoa lyhyesti mistä jotakin toimintoa kannattaa ohjelmakoodissa etsiä. Järjestelmän yleinen hakemistorakenne esitetään selostamalla yleisellä tasolla lyhyesti mihin tarkoitukseen tarkoitettuja tiedostoja projektin hakemistot sisältävät, mihin mahdollisesti käytetyt kirjastot ja apuluokat on sijoitettu ja mitä erilaisia ohjelmakoodikomponentteja projektista löytyy (Esim. html-näkymä, apuluokka, tietokantaluokka, kontrolleri). Mikäli järjestelmällä on erillinen asetuksista vastaava tiedosto, kerrotaan sen sijainti samoin kuin mahdolliset tiedostojen nimeämiseen liittyvät käytännöt.</p>
+<p>Tähän kappaleeseen laitetaan myös yleinen kuvaus siitä miten järjestelmä käyttää istuntoa.</p>
 <section id="esimerkki-mvc-mallin-mukaisesta-php-projektista" class="level4">
 <h4>Esimerkki MVC-mallin mukaisesta php-projektista</h4>
 <blockquote>
@@ -324,6 +325,7 @@ Rekisteröityminen asiakkaaksi:
 <h2>7. Järjestelmän komponentit</h2>
 <p>Kustakin ohjelman komponentista laaditaan erillinen kuvaus, jossa esitetään komponentin ymmärtämisen kannalta oleelliset asiat. Kuvaus on suunnattu henkilölle, joka mahdollisesti joskus joutuisi ylläpitämään ohjelmistoa.</p>
 <p>Jokaisen komponentin osalta esitetään sen nimi ja kuvaus siitä, mitä se tekee ts. mikä sen tarkoitus on. Komponentit voidaan esitellä esim. ryhmiteltyinä html-sivuihin, servletteihin ja apuluokkiin. Lisäksi voi omana osionaan luetella sovelluksessa mahdollisesti käytettävät kuva-, ääni- yms. tiedostot. Mikäli sovelluksessa on käytetty jotain kirjastoa, kuten jQuery, tulee eritellä mitkä ovat omia ja mitkä kirjaston komponentteja, käytetyistä kirjastokomponenteista tulee kertoa mihin niitä käyttää.</p>
+<p>Jokaisesta kontrollerista kerrotaan lisäksi mitä tietoja ja lomakkeita se vastaanottaa. Lisäksi laitetaa kuvaus siitä mitä tietoja kulloinkin haetaan ja talletetaan istuntoon, mikäli tiedosto käyttää istuntoa johonkin.</p>
 <p>Käytännössä kyseessä on tiedostotason kuvailu siitä, mitä eri ohjelman osaset kuvailevat. Jokaisesta tiedostosta kerrotaan mihin sitä käytetään ja mitä se tekee. Jos ohjelmassa on paljon samantapaisia samaa tarkoitusta ajavia hyvin samankaltaisia tiedostoja, voi niistä kertoa lyhyemminkin yhtenä ryhmänä.</p>
 <section id="esimerkki-3" class="level4">
 <h4>Esimerkki</h4>
