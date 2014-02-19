@@ -23,7 +23,7 @@ Näet sinulle osoitetun katselmointikohteen repositoriolinkin labtoolista
 koodikatselmoinnin käynnistyttyä
 [http://tsoha-labtool.herokuapp.com/mypage](http://tsoha-labtool.herokuapp.com/mypage).
 Sinun tehtävänäsi on lukea läpi toisen opiskelijan harjoitustyö ja antaa
-siitä rakentavaa palautetta. Ohjelmaa kannattaa kokeilla myös suorittaa.
+siitä rakentavaa palautetta. Ohjelmaa kannattaa kokeilla myös esittelysivulla annetuista linkeistä.
 Jos projekti on kuitenkin täysin tyhjä runko, niin ota yhteyttä ohjaajiin,
 niin valitsemme sinulle toisen katselmointikohteen.
 
@@ -31,16 +31,17 @@ niin valitsemme sinulle toisen katselmointikohteen.
   * Ota talteen kellonaika ja päivä, jolloin latasit projektin
 * Pura projekti
 * Lue ensimmäiseksi projektin aihemäärittely
-* Tutustu mahdollisimman kattavasti ohjelmakoodiin sekä testeihin
+* Avaa projektin esittelysivu ja testaa projektia ensin selaimessa
+* Tutustu mahdollisimman kattavasti ohjelmakoodiin
 * Yritä ymmärtää, mitä mikäkin luokka ja metodi tekee
     * Ole sinnikäs: Kaikkea ei aina osaa, eikä tarvitsekaan ymmärtää!
-    * Haastavin osuus lienee luokkien suhde toisiinsa. Käytä hyväksesi toisen piirtämiä luokkakaavioita
+    * Haastavin osuus lienee eri luokkien ja sivujen keskinäiset suhteet. Käytä hyväksesi toisen piirtämiä luokka- ja käyttöliittymäkaavioita
 
 Kun olet tutustunut riittävän tarkasti toisen projektiin, on aika antaa
 toiselle henkilölle palaute. Palautteessa ei tarvitse ottaa kantaa
 ohjelman dokumentointiin, ulkonäköön tai toimivuuteen. Tärkeintä on
-kiinnittää huomiota Ohjelmoinnin Perusteissa, Ohjelmoinnin Jatkokurssilla
-sekä Ohjelmistotekniikan menetelmien kurssilla opittuihin hyviin
+kiinnittää huomiota Ohjelmoinnin Perusteissa, Ohjelmoinnin Jatkokurssilla,
+Ohjelmistotekniikan menetelmissä, sekä Tietokantojen perusteet -kurssilla opittuihin hyviin
 käytänteisiin sekä tällä kurssilla noudatettaviin [Clean code
 -periaatteisiin]({{rootdir}}cleancode.html).
 
@@ -49,9 +50,9 @@ käytänteisiin sekä tällä kurssilla noudatettaviin [Clean code
 Palautteessasi kerro toiselle opiskelijalle, missä on parannettavaa. Mitä
 tarkempi palaute, sen arvokkaampaa se on palautteen saajalle. Osatessasi
 voit antaa vinkkejä siitä, miten asioita voisi tehdä toisin tai onko
-ohjelman rakenteessa parannettavaa. Jos havaitsit selkeitä bugeja tai
+ohjelman tai tietokannan rakenteessa parannettavaa. Jos havaitsit selkeitä bugeja tai
 virheellistä koodia, kerro siitä. Kannattaa kertoa myös, jos jotkin
-ohjelman osat  eivät toimineet tai projekti ei käänny. Tarkoitus ei ole
+ohjelman osat  eivät toimineet. Tarkoitus ei ole
 tehdä labtoolin-tyylisiä hieman pintapuolisia mainintoja, vaan tutkia
 koodia tarkasti ja antaa täsmällisiä parannusehdotuksia. 
 *Muista myös positiivinen palaute!* 
