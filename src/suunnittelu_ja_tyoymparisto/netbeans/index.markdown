@@ -31,7 +31,11 @@ PHP-tukea varten riittää asentaa laajennos nimeltä PHP.
 Saatat joutua ottamaan NetBeansin Update Centereitä käyttöön `Settings`-välilehdeltä käsin ja 
 päivittämään laajennosten listan, että saat oikeat vaihtoehdot näkyviin. 
 
-## Kielikohtaiset ohjeet
+<next>
+
+Asenna vielä käyttämäsi kielen ohjeistus.
 
 * [PHP-ohje](php.html)
 * [Java-ohje](java.html)
+
+</next>

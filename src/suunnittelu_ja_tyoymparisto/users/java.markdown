@@ -128,10 +128,31 @@ tiedoston käyttämällä
 Sivun pitäisi nyt näyttää tervehdys osoitteessa: \
 [http://t-kayttajatunnuksesi.users.cs.helsinki.fi/sovelluksen_nimi/index.jsp](http://t-kayttajatunnuksesi.users.cs.helsinki.fi/sovelluksen_nimi/index.jsp)
 
-Liitä Tomcatin asennuksen jälkeen dokumentaatiosi [Käynnistys- / käyttöohje -kappaleeseen]({{rootdir}}dokumentaatio-ohje.html#käynnistys--käyttöohje) 
-sovelluksesi nettiosoite usersilla (tai muulla palvelimella, mikäli haluat käyttää sellaista).
+
+## Esittelysivu
+
+Saatuasi jotain näkymään siirry [esittelysivuohjeeseen]({{rootdir}}aikataulu/viikkopalautukset/esittelysivu.html)
+ja tee ohjeiden mukainen työn esittelysivu. 
+Tällä viikolla tulee lähinnä linkit työsi repositorioon, 
+dokumentaatoon sekä lyhyt aihekuvaus tai linkki valmiiseen aiheeseen.
+
+Pystytä tämäkin sivu usersille.
+
+## Dokumentointi
+
+Liitä Tomcatin asennuksen ja esittelysivun pystytyksen jälkeen dokumentaatiosi [Käynnistys- / käyttöohje -kappaleeseen]({{rootdir}}dokumentaatio-ohje.html#käynnistys--käyttöohje) 
+sovelluksesi esittelysivun nettiosoite usersilla (tai muulla palvelimella, mikäli haluat käyttää sellaista).
 Kappaleeseen ei tässä vaiheessa (viikolla 2) tarvitse kirjoittaa muuta sisältöä.
 
 ## Linkkejä
 
 * Hieman vanhentunut, mutta kattava alkuperäinen Servlet-opas: [Servlettien käyttö Tietokantasovellusten harjoitustyössä](http://www.cs.helsinki.fi/u/laine/tikas/material/servlet_ohje.html)
+
+<next>
+
+Ota seuravaaksi käyttöön tietokantasi tuki:
+
+* [MySql-ohjeet](mysql.html)
+* [PostgreSQL-ohjeet](postgresql.html)
+
+</next>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <title>Tietokannan dokumentointi</title>
+  <title>Versionhallinnan käyttöönotto</title>
   <style type="text/css">code{white-space: pre;}</style>
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -88,7 +88,7 @@
 </ul></li>
 <li><a href="../suunnittelu_ja_tyoymparisto/ohjelmointikielet.html">Ohjelmointikielen valinta</a></li>
 <li><a href="../suunnittelu_ja_tyoymparisto/tietokannan-valinta.html">Tietokannan valinta</a></li>
-<li><a href="../suunnittelu_ja_tyoymparisto/git.html">Versionhallinnan käyttöönotto</a></li>
+<li class="selected"><a href="../suunnittelu_ja_tyoymparisto/git.html">Versionhallinnan käyttöönotto</a></li>
 <li><a href="../suunnittelu_ja_tyoymparisto/alkudokumentointi.html">Perusasioiden dokumentointi</a></li>
 <li><a href="../suunnittelu_ja_tyoymparisto/users/index.html">Users-palvelin ja töiden pystyttäminen</a>
 <ul>
@@ -106,7 +106,7 @@
 <li><a href="../suunnittelu_ja_tyoymparisto/kayttoliittyma.html">Käyttöliittymän suunnittelu</a></li>
 <li><a href="../suunnittelu_ja_tyoymparisto/kayttoliittyman_toteutus.html">Käyttöliittymädemon toteuttaminen</a></li>
 <li><a href="../suunnittelu_ja_tyoymparisto/tietokanta.html">Tietokannan suunnittelu</a></li>
-<li class="selected"><a href="../suunnittelu_ja_tyoymparisto/tietokanta-dokumentointi.html">Tietokannan dokumentointi</a></li>
+<li><a href="../suunnittelu_ja_tyoymparisto/tietokanta-dokumentointi.html">Tietokannan dokumentointi</a></li>
 </ul></li>
 <li><a href="../koodaaminen/index.html">Ohjelmointiohjeistus</a>
 <ul>
@@ -165,81 +165,20 @@
 </div>
 <div class="col-md-6" id="content">
 <header>
-<h1 class="title">Tietokannan dokumentointi</h1>
+<h1 class="title">Versionhallinnan käyttöönotto</h1>
 </header>
-<!-- order: 13 -->
-<!-- tags: viikko2 -->
+<!-- order: 4 -->
 
-<section class="alert alert-info"><h3>
-Tiivistelmä:
-</h3>
-<ul>
-<li>Luo dokumentaatioon asiaanliittyvät kaaviot ja kappaleet:
-<ul>
-<li><a href="../dokumentaatio-ohje.html#j%C3%A4rjestelm%C3%A4n-tietosis%C3%A4lt%C3%B6">Järjestelmän tietosisältö</a></li>
-<li><a href="../dokumentaatio-ohje.html#relaatiotietokantakaavio">Relaatiotietokantakaavio</a></li>
-</ul></li>
-<li>Sijoita uudet kappaleet samaan pdf-tiedostoon kuin aikaisempikin dokumentaatio</li>
-</ul>
-</section>
-
-<section class="alert alert-danger"><h3>
-Pidä mielessä!
-</h3>
-<p>Laita kaikki uusi dokumentaatio kootusti yhteen <code>dokumentaatio.pdf</code>-tiedostoon <code>docs</code>-kansiossa. Ohjaajasi ei halua arvuutella mistä tiedostosta dokumentaatio löytyy.</p>
-</section>
-
-<p>Tee lista kunkin kaavion tietokohteen sisältämistä tietokentistä, niiden tyypeistä ja rooleista sovelluksessa. Liitä kenttien kuvaukset taulukkoina dokumentaatioon. Myös yhteydet toisiin kohteisiin täytyy määritellä. Lopputuloksen kuuluu näyttää tämäntapaiselta:</p>
-<blockquote>
-<p><strong>Tietokohde: Kissa</strong></p>
-<table class="table table-striped table-bordered">
-<col style="width: 26%" /><col style="width: 25%" /><col style="width: 37%" /><thead>
-<tr class="header">
-<th style="text-align: left;">Attribuutti</th>
-<th style="text-align: left;">Arvojoukko</th>
-<th style="text-align: left;">Kuvailu</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Nimi</td>
-<td style="text-align: left;">Merkkijono, max. 80 merkkiä</td>
-<td style="text-align: left;">Kissan nimi</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Väri</td>
-<td style="text-align: left;">Merkkijono, max. 30 merkkiä</td>
-<td style="text-align: left;">Kuvaus kissan väristä esim. “valkotäplikäs oranssi”</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Viim. ruokkimis-pvm.</td>
-<td style="text-align: left;">Päivämäärä</td>
-<td style="text-align: left;">Koska kissa on viimeksi ruokittu?</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Lisätiedot</td>
-<td style="text-align: left;">Merkkijono, max. 255 merkkiä</td>
-<td style="text-align: left;">Kuvaus kissan ominaisuuksista esim. “Serafiina syö vain kalaa.”</td>
-</tr>
-</tbody>
-</table>
-<p>Kissa, joka asuu kissatädin kartanossa. Jokainen kissa kuuluu tasan yhteen kissarotuun. Jokaisesta kissasta merkitään ylös sitä viimeksi ruokkinut palvelija.</p>
-</blockquote>
-<section id="relaatiotietokantakaavio" class="level3">
-<h3>Relaatiotietokantakaavio</h3>
-<p>Tee lopuksi suunnittelemastasi tietosisällöstä <a href="../dokumentaatio-ohje.html#relaatiotietokantakaavio">dokumentaatio-ohjeen mukainen relaatiotietokantakaavio</a>: <img src="../images/dokumentaatio-ohje/relaatiokaavio.gif" alt="Kissoihin liittymätön relaatiotietokantakaavio" /></p>
-<p>Muista lisätä kaavioon kaikki olennaiset viiteavaimet sekä monesta-moneen suhteiden tilalle välitaulut.</p>
-<p>Tallenna tekemäsi kaaviot ja uusi sisältö repositoriosi samaan dokumentaatiotiedostoon missä edellisetkin dokumentaatiot olivat. Lisää myös kaavioiden tuottamiseen käyttämäsi lähdetiedostot repositoriosi doc-kansioon niin ne pysyvät tallessa muutosten varalta.</p>
+<p>Tietokantasovellus-kurssilla käytetään versionhallintana git:iä ja oletuksena repositoriot sijoitetaan github.com-palveluun. Jos et ole aikaisemmin käyttänyt git:iä niin verestä muistiasi ohjelmoinnin harjoitustyön <a href="https://github.com/javaLabra/Javalabra2013-1/wiki/Git-ohje">git-ohjeella</a>.</p>
+<p>Ohjeita noudattamalla luo itsellesi tietokantasovellusta varten oma repositorio. Tähän repositorioon laitetaan kurssin aikana kaikki työhön liittyvät tiedostot.</p>
 <section class="alert alert-success small"><h3>
 Seuraavaksi:
 </h3>
-<p>Suunniteltuasi ja dokumentoituasi tietokannan rakenteen varmista, että <a href="../koodaaminen/kannan-alustus.html">saat sen pystyyn palvelimelle</a>.</p>
+<p>Nyt kun sinulla on repositorio, voit sijoittaa sinne dokumentaatiota <a href="alkudokumentointi.html">dokumentoi työsi aihe, toteutustekniikat ja keskeisimmät käyttötapaukset</a>.</p>
 </section>
 
 
 
-
-</section>
 </div>
 </div> 
 </div> 

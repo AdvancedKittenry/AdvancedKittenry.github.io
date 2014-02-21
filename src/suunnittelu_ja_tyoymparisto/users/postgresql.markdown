@@ -40,3 +40,10 @@ PHP:n PDO:lle riittää seuraava hyvin yksinkertainen koodi:
 
 </info>
 </comment>
+
+<next>
+
+Pystytä itsellesi vielä sopivat koodaustyökalut.
+Ohjaajien suosituksena on [NetBeansin käyttö](../netbeans/index.html)
+
+</next>

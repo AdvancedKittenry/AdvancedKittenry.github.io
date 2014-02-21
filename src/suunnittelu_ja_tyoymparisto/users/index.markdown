@@ -45,11 +45,11 @@ josta sen voi helposti avata kaksoisklikkaamalla sitä.
 
 * [Omalla koneella tehdyn Java-työn vieminen users-palvelimelle]({{rootdir}}pystytys/java-war-paketit.html)
 * [Users-palvelimen tiivis ohjetiedosto](http://users.cs.helsinki.fi/README.users.cs.helsinki.fi.txt)
-* [PHP-tuen käyttöönotto](php.html)
-* [Java ja Tomcatin käyttöönotto](java.html)
-* [PostgreSQL-tietokannan käyttöönotto](postgresql.html)
-* [MySQL-tietokannan käyttöönotto](mysql.html)
 
 <next>
-Seuraa yllä olevien linkkien ohjetta ottaaksesi valitemasi ohjelmointikielen tuen ja tietokantapalvelimen käyttöösi.
+Seuraa alla listattujen sivujen ohjeita ottaaksesi valitsemasi ohjelmointikielen tuki käyttöösi.
+
+* [PHP-tuen käyttöönotto](php.html)
+* [Java ja Tomcatin käyttöönotto](java.html)
+
 </next>

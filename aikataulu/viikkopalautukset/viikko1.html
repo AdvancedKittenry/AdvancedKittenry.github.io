@@ -88,6 +88,7 @@
 </ul></li>
 <li><a href="../../suunnittelu_ja_tyoymparisto/ohjelmointikielet.html">Ohjelmointikielen valinta</a></li>
 <li><a href="../../suunnittelu_ja_tyoymparisto/tietokannan-valinta.html">Tietokannan valinta</a></li>
+<li><a href="../../suunnittelu_ja_tyoymparisto/git.html">Versionhallinnan käyttöönotto</a></li>
 <li><a href="../../suunnittelu_ja_tyoymparisto/alkudokumentointi.html">Perusasioiden dokumentointi</a></li>
 <li><a href="../../suunnittelu_ja_tyoymparisto/users/index.html">Users-palvelin ja töiden pystyttäminen</a>
 <ul>
@@ -184,6 +185,10 @@ Deadline:
 <li>Tietokanta</li>
 </ul>
 </section>
+<section id="versionhallinnan-pystytys-puoli-pistettä" class="level2">
+<h2>Versionhallinnan pystytys (puoli pistettä)</h2>
+<p>Työtä varten luodaan oma git-repositorionsa, jotta ohjaajat ja mahdolliset koodikatselmoijat voivat nähdä ja antaa kommentteja koodistasi.</p>
+</section>
 <section id="perusasioiden-dokumentointi-1p" class="level2">
 <h2>Perusasioiden dokumentointi (1p)</h2>
 <p>Työstä dokumentoidaan vaaditun dokumentaation ensimmäiset kolme kappaletta:</p>
@@ -194,27 +199,20 @@ Deadline:
 </ul>
 <p>Kaikki dokumentaatio on laitettava yhteen pdf-tiedostoon.</p>
 </section>
-<section id="versionhallinnan-pystytys-puoli-pistettä" class="level2">
-<h2>Versionhallinnan pystytys (puoli pistettä)</h2>
-<p>Tietokantasovellus-kurssilla käytetään versionhallintana git:iä ja oletuksena repositoriot sijoitetaan github.com-palveluun. Jos et ole aikaisemmin käyttänyt git:iä niin verestä muistiasi ohjelmoinnin harjoitustyön <a href="https://github.com/javaLabra/Javalabra2013-1/wiki/Git-ohje">git-ohjeella</a>.</p>
-<p>Ohjeita noudattamalla luo itsellesi tietokantasovellusta varten oma repositorio. Tähän repositorioon laitetaan kurssin aikana kaikki työhön liittyvät tiedostot.</p>
-</section>
 <section id="ympäristöjen-pystytys-ja-työn-esittelysivu-1p" class="level2">
 <h2>Ympäristöjen pystytys ja työn esittelysivu (1p)</h2>
-<p>Repositorion pystyttämisen jälkeen laitetaan työ ja kaikki siihen liittyvät tiedostot vielä laitoksen tietokantasovelluspalvelimelle, users:ille.</p>
-<p>Tätä varten usersille pitää pystyttää oma nettisivutila. Pystyttäminen ja usersiin ohjeet löytyvät kurssisivulta <a href="../../suunnittelu_ja_tyoymparisto/users/index.html">omilta sivuiltaan</a>. Pystytä ohjeiden mukaan käyttämäsi ohjelmointikielen ja tietokannan tuki.</p>
-<p>Varsinkin Javalla koodatessa kannattaa pystyttää projektiansa varten <a href="../../suunnittelu_ja_tyoymparisto/netbeans/java.html">NetBeans-projekti</a>. NetBeans helpottaa tietokantasovellusten koodaamista huomattavasti. NetBeansillä on oma tukensa myös PHP-projekteille, joka osaa mm. <a href="../../suunnittelu_ja_tyoymparisto/netbeans/php.html">automaattisesti pystyttää PHP-projektin usersille</a>.</p>
-<p>Pystytettyäsi usersin nettisivutilan testaa että se toimii siten että saat jotakin näkyviin selaimellasi. Tämän voi tehdä laittamalla usesille vaikkapa lyhyen testitiedoston, joka voi vaikkapa lausua käyttäjälle jonkin tervehdyksen. Tiedoston tarkalla sisällöllä ei ole väliä. Tärkeintä on, että sen saa näkymään selaimella julkisessa internetissä.</p>
-<p>Saatuasi jotain näkymään siirry <a href="esittelysivu.html">esittelysivuohjeeseen</a> ja tee ohjeiden mukainen työn esittelysivu. Tällä viikolla tulee lähinnä linkit työsi repositorioon, dokumentaatoon sekä lyhyt aihekuvaus tai linkki valmiiseen aiheeseen.</p>
-<p>Pystytä tämäkin sivu usersille.</p>
-<p>Laita kaikki tekemäsi tiedostot git-repositorioosi. Repositoriostasi pitäisi löytyä ainakin: testisivu ja esittelyohjeesi sekä NetBeans-projektisi, mikäli käytät sitä.</p>
-<p>Kannattaa järjestää asiat niin, että usersilla näkyvät sivut ovat jotakuinkin identtisiä oman repositorion sisällön kanssa. PHP:tä NetBeansillä koodaaville tämä on automaattista. Javalla helpoin tapa on <a href="../../pystytys/java-war-paketit.html">kopioida projektin war-tiedosto Tomcatin webapps-hakemistoon</a>. Mikäli kopioit töitä PHP:llä käsin, helpointa on pystyttää git-repositoriosi users:ille ja käyttää sitä tiedostojen synkkaamiseen. Luo tällöin repositoriollesi ja työllesi oma alihakemisto <code>htdocs</code>:in alle.</p>
+<p>Repositorion lisäksi työsi ja laitetaan ajettavaksi laitoksen tietokantasovelluspalvelimelle, users:ille.</p>
+<ul>
+<li>Pystytetään käytetyn ohjelmointikielen tuki</li>
+<li>Otetaan käyttöön tietokantapalvelin</li>
+<li>Luodaan työtä varten NetBeans-projekti (vapaaehtoinen)</li>
+<li>Laitetaan työn arvioimisen helpottamiseksi palvelimelle näkyviin työn <a href="esittelysivu.html">esittelysivu</a></li>
+</ul>
 <section class="alert alert-warning"><h3>
 Huomaa!
 </h3>
 <p>Pystytyksestä saa pisteen vain, mikäli saa työnsä esittelysivun näkymään ohjaajankin koneella ja selaimella. Tietokantasovelluksia pitää pystyä alusta saakka testaamaan, jotta ohjaaja pystyy antamaan niistä rakentavaa palauttetta.</p>
 </section>
-
 
 <section class="alert alert-success"><h3>
 Ohje:

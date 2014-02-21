@@ -20,5 +20,5 @@ kuuntelevaan tilaan, sillä usersin sisäiset TCP-portit on varattu tomcatin yht
 Samasta syystä MySQL:n käyttäminen Javalla users-palvelimella on hankalaa, sillä käytössä olevat kirjastot eivät tue suoria socket-yhteyksiä.
 
 <next>
-Kun olet valinnut aiheen ja haluamasi toteutustekniikat [dokumentoi ne työsi käyttötapaukset](alkudokumentointi.html).
+Kun olet valinnut aiheen ja haluamasi toteutustekniikat [pystytä työllesi git-repositorio](git.html).
 </next>

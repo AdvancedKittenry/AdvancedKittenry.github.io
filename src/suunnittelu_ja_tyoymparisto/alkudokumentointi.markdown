@@ -1,5 +1,5 @@
 % Perusasioiden dokumentointi
-<!-- order: 4 -->
+<!-- order: 5 -->
 <!-- tags: viikko1 -->
 
 Avaa mieleisesi tekstinkäsittelyohjelma ja tutustu

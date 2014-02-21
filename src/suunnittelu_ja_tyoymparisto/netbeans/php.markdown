@@ -61,3 +61,16 @@ nbproject/private
 ~~~
 
 Aktivoituasi usersin PHP-tilan voit aloittaa koodaukseen tutustumisen index.php:n parissa.
+
+<last>
+
+Pystytettyäsi työympäristön ja sivut usersille,
+varmista, että olet laittanut kaiken vaaditun dokumentaation
+git-repositorioosi ja
+rekisteröidy 
+[labtooliin](http://tsoha-labtool.herokuapp.com/register).
+
+Tämän jälkeen [viikon 1]({{rootdir}}aikataulu/viikkopalautukset/viikko1.html)
+työsi on valmis!
+
+</last>

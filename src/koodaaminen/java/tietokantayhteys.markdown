@@ -12,7 +12,7 @@ Samoin esitetään lyhyet testiohjelma, jolla yhteyttä voi testata.
     * Yhteyttä mallinnetaan Javan JDBC-kirjaston tarjoamalla Connection-oliolla.
     * Luominen pitää sijoittaa omaan metodiinsa, jota käyttämällä muu voi ohjelmakoodi käyttää tietokantaoliota.
     * Metodi sijoitetaan omaan luokkaansa, joka sijoitetaan omaan tietokantakirjastoille tarkoitettuun pakettiinsa.
-* Jos käytät tietokantayhteyden autentikointiin salasanaa, [älä laita sitä GitHubiin sellaisenaan](../git-ja-salasanat.html#salasanojen-tallentaminen-ja-github).
+* Jos käytät tietokantayhteyden autentikointiin salasanaa, [älä laita sitä GitHubiin sellaisenaan](../git-ja-salasanat.html).
 </summary>
 
 Sekä Javalla että PHP:llä tietokantayhteyksiä edustaa erillinen luokka,

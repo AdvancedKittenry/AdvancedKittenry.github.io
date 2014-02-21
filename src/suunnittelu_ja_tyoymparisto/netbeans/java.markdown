@@ -121,3 +121,16 @@ Näin versionhallintaan ei päästetä NetBeansiin koodia kääntäessä
 generoimia tiedostoja.
 Lisää nyt repositorioosi kaikki uudet tiedostot, joita et juuri ignoroinut.
 Nyt voit avata repositoriosi NetBeansillä uudestaan ja aloittaa koodauksen.
+
+<last>
+
+Pystytettyäsi työympäristön ja sivut usersille,
+varmista, että olet laittanut kaiken vaaditun dokumentaation
+git-repositorioosi ja
+rekisteröidy 
+[labtooliin](http://tsoha-labtool.herokuapp.com/register).
+
+Tämän jälkeen [viikon 1]({{rootdir}}aikataulu/viikkopalautukset/viikko1.html)
+työsi on valmis!
+
+</last>

@@ -46,3 +46,9 @@ toteutettu sisäisesti tietyssä portissa toimivina palvelimen sisäisinä yhtey
 ja omat viritykset ovat ajoittain menneet niiden väliin.
 </alert>
 
+<next>
+
+Pystytä itsellesi vielä sopivat koodaustyökalut.
+Ohjaajien suosituksena on [NetBeansin käyttö](../netbeans/index.html)
+
+</next>
