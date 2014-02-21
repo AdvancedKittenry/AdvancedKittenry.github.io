@@ -7,7 +7,7 @@ joka myös syötetään labtoolin testiosoitteeksi.
 
 Tämän osoitteen on näyttävä internetissä. Paras tapa on 
 sijoittaa se repositorionsa juureen ja varmistaa että 
-repositorio näkyy [users-palvelimella]({{rootdir}}pystytys/index.html).
+repositorio näkyy [users-palvelimella]({{rootdir}}suunnittelu_ja_tyoymparisto/users/index.html).
 
 Suositeltavaa on nimetä esittelysivu nimellä `esittelysivu.html` 
 ja laittaa se oman repositorion juureen.

@@ -1,5 +1,6 @@
 % Lomakkeiden käyttö ja vastaanottaminen
 <!-- order: 5 -->
+<!-- tags: viikko3-java -->
 
 <summary>
 * Tehdään kirjautumisen vastaanottamista varten oma kontrolleri, joka käyttää aiemmin tehtyä kirjautumisen HTML-demokoodia näkymänään.

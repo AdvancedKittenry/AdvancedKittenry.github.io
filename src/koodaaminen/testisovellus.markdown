@@ -1,5 +1,6 @@
 % ConnectionTest-testisovellus
 <!-- order: 2 -->
+<!-- tags: viikko2 -->
 
 Yhteystestiohjelma on pieni tiivis ohjelmapaketti, jolla sekä 
 kurssilainen että ohjaaja pystyvät tarkastelemaan työssä käytetyn tietokannan tilaa

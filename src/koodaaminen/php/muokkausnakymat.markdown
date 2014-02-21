@@ -1,9 +1,8 @@
 % Muokkausnäkymän toteuttaminen
 <!-- order: 10 -->
+<!-- tags: viikko4-php -->
 
 <wip />
-
-Tämän sivun Java-versio on valitettavasti tällä hetkellä vielä klooni PHP-versiosta. Samat suunitteluperiaatteet pätevät kuitenkin kummallakin kielellä.
 
 Yleensä lisäys- ja muokkauslomakkeet kannattaa toteuttaa samalla tai ainakin hyvin samanlaisella koodilla.
 Kumpaankin käytetyt lomakkeet ovat useimmiten lähes samanlaisia, mutta lisäyksestä poiketen

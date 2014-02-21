@@ -1,10 +1,11 @@
 % Tietokantataulujen pystyttäminen
 <!-- order: 1 -->
+<!-- tags: viikko2 -->
 
 <info>
 Näissä ohjeissa oletetaan kannan pystyttäminen 
 users-palvelimelle, jossa on jo
-[otettu tietokantapalvelin käyttöön]({{rootdir}}pystytys/kayttoonotto/index.html).
+[otettu tietokantapalvelin käyttöön]({{rootdir}}suunnittelu_ja_tyoymparisto/users/index.html).
 </info>
 
 Ennen kuin voimme aloittaa kannan käyttämisen, pitää sinne

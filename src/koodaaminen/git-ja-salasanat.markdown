@@ -1,5 +1,6 @@
 % Git-repositoriot ja salasanat
 <!-- order: 3.1 -->
+<!-- tags: viikko2 -->
 
 Yksityiseksi tarkoitettujen salasanojen tallentaminen
 versionhallintaan ei ole ikinä kovin hyvä idea.

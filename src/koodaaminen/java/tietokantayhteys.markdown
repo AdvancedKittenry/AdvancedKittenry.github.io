@@ -1,5 +1,6 @@
 % Tietokantayhteyden pystytys
 <!-- order: 1 -->
+<!-- tags: viikko2-java -->
 
 Seuraavaksi pyrimme luomaan tiedoston, jossa on tarvittava koodi
 tietokantayhteyden luomiseen.
@@ -41,7 +42,7 @@ tietokantayhteyttä kuvaava resurssi.
 
 **web/META-INF/context.xml**
 
-~~~xml<include src="../../suunnittelu/esimerkit/context.xml" />~~~
+~~~xml<include src="../../suunnittelu_ja_tyoymparisto/esimerkit/context.xml" />~~~
 
 Viimeinen attribuuttti, `url` 
 kertoo Tomcatille tietokannan sijainnin ja nimen. 

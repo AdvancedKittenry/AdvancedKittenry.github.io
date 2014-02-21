@@ -1,5 +1,6 @@
 % Tietojen syöttäminen kantaan
 <!-- order: 9 -->
+<!-- tags: viikko4-java -->
 
 <summary>
 * Malliluokan oliolla kannattaa olla metodi, jolla se osaa syöttää itsensä kantaan (INSERT-lause), sekä metodit, joilla tarkistetaan ovatko syötettävät arvot oikeanlaisia.

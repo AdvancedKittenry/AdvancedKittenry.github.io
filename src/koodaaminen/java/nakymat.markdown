@@ -1,6 +1,7 @@
 % Näkymien tekeminen ja JSP
 <!-- order: 4 -->
 <!-- addHeaderNavigation -->
+<!-- tags: viikko3-java -->
 
 <summary>
 

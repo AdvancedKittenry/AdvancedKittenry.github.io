@@ -1,5 +1,6 @@
 % Tietokantayhteyden pystytys
 <!-- order: 1 -->
+<!-- tags: viikko2-php -->
 
 Seuraavaksi pyrimme luomaan tiedoston, jossa on tarvittava koodi
 tietokantayhteyden luomiseen.
@@ -11,7 +12,7 @@ Samoin esitetään lyhyet testiohjelma, jolla yhteyttä voi testata.
     * Yhteyttä mallinnetaan PHP:n PDO-tietokantakirjaston tarjoamalla oliolla.
     * Luominen pitää sijoittaa omaan funktioonsa tai metodiinsa, jota käyttämällä muu ohjelmakoodi voi hakea tietokantaolion.
     * Metodi sijoitetaan omaan tiedostoonsa, joka sijoitetaan omaan tietokantakirjastoille tarkoitettuun hakemistoonsa.
-* Jos käytät tietokantayhteyden autentikointiin salasanaa, [älä laita sitä GitHubiin sellaisenaan](../git-ja-salasanat.html#salasanojen-tallentaminen-ja-github).
+* Jos käytät tietokantayhteyden autentikointiin salasanaa, [älä laita sitä GitHubiin sellaisenaan](../git-ja-salasanat.html).
 </summary>
 
 Sekä Javalla että PHP:llä tietokantayhteyksiä edustaa erillinen luokka,

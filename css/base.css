@@ -247,6 +247,10 @@ header + .wip {
   color: #007020;
 }
 
+.alert > p + button.expandable, .alert > ul + button.expandable {
+  margin-top: 8px;
+}
+
 iframe {
   width: 100%;
   min-height: 300px;

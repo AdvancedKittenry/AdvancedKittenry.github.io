@@ -50,4 +50,18 @@ Aloita menemällä oman kielesi malliluokkaohjeistukseen ja seuraa vihreitä ohj
 * [Java: Listausnäkymien luominen]({{rootdir}}koodaaminen/java/listausnakymat.html)
 
 Tehtyäsi kaiken varmista, että kaikki tekemäsi muutokset näkyvät sekä GitHub-repositoriossasi, että testipalvelimella antamassasi osoitteessa.
+
+
+<expandable title="**Lista tällä viikolla hyödyllisistä ohjesivuista**">
+
+~~~~ {execute=bash}
+echo "* [Java-ohjeet]({{rootdir}}koodaaminen/php/index.html)"
+./list-tagged-files.sh viikko4-java | sed 's/^/    /'
+./list-tagged-files.sh viikko4-java-usefull | sed 's/^/    /'
+echo "* [PHP-ohjeet]({{rootdir}}koodaaminen/java/index.html)"
+./list-tagged-files.sh viikko4-php | sed 's/^/    /'
+./list-tagged-files.sh viikko4-php-usefull | sed 's/^/    /'
+~~~~
+
+</expandable>
 </ohje>

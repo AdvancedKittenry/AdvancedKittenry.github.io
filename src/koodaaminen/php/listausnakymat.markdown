@@ -1,5 +1,6 @@
 % Listaus- ja tietonäkymät
 <!-- order: 8 -->
+<!-- tags: viikko4-php -->
 
 Viikon neljä aluksi otetaan kolmosviikon listaustesti, ja laajennetaan se täysipainoiseksi
 sivuksi muiden joukossa. Tehtävää on ainakin:

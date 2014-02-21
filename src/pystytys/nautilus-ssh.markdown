@@ -1,4 +1,5 @@
 % Tiedostojen etämuokkaus Linuxilla
+<!-- tags: viikko1,viikko2-usefull -->
 
 Gnomea työpöytäympäristönä käyttävissä Linux-jakeluissa, joihin laitoksenkin käyttämä Ubuntu kuuluu, on mahdollista käsitellä users-palvelimella sijaitsevia tiedostoja suoraan etäyhteyden yli.
 Tämä onnistuu avaamalla järjestelmän oletustiedostoselain, Nautilus:

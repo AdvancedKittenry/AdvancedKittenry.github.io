@@ -1,6 +1,7 @@
 % Sovelluksen rakenne ja kontrollerit
 <!-- order: 3 -->
 <!-- addHeaderNavigation -->
+<!-- tags: viikko3-php -->
 
 <summary>
 

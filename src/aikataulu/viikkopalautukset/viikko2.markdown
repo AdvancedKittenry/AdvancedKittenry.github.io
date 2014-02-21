@@ -18,38 +18,16 @@ Palautuspäivämäärään mennessä työn on täytettävä seuraavat vaatimukse
 
 ## Käyttöliittymän suunnittelu ja toteutus (1½p)
 
-Dokumentoi ja suunnittele sovelluksellesi käyttöliittymä
-seuraamalla
-[käyttöliittymän suunnitteluohjetta]({{rootdir}}suunnittelu/kayttoliittyma.html).
-Lopputuloksena pitäisi dokumentaatiossa olla käyttöliittymäkaavio.
-Liitä myös tekemäsi muut suunnitelmat (etenkin yleisnavigaatio)
-repositorioosi, ellet ole näyttänyt niitä ohjaajalle pajassa.
-
-Suunnitelmien perusteella luodaan sivuista oikean näköiset, mutta
-vielä staattiset HTML-versiot. 
-
-Se minne sivut kannattaa sijoittaa riippuu hieman ohjelmointikielestä.
-Javan servlet-tekniikalla ainoastaan `web`-hakemistoon laitetut
-tiedostot näkyvät selaimella. PHP:llä tätä rajoitusta ei ole,
-joskin myöhemmin keskitämme HTML-koodin MVC-mallin mukaisesti omaan hakemistoonsa.
-
-Tässä vaiheessa luo hakemisto `html-demo` ja lähde rakentamaan sinne HTML-versiota työstäsi. 
-Javalla tämä hakemisto sijoitetaan `web`-hakemistoon, PHP:llä se voi olla projektin juuressa.
-Sijoita kaikki tällä viikolla tekemäsi HTML-tiedostot tuohon kansioon.
-Lisää ohjeita HTML-kielen kanssa työskentelyyn löytyy [HTML-oppaasta]({{rootdir}}koodaaminen/html-opas.html).
-
-Toteutettuna pitää olla HTML-versiot seuraavista aiemmin suunnitelluista sivuista:
-
-* Sivujen runko ja navigaatio 
-* Etusivu
-* Listaussivut
-* Muokkaus ja tietonäkymät
-
-<ohje>
-Aloita sivulta 
-[käyttöliittymän suunnittelu]({{rootdir}}suunnittelu/kayttoliittyma.html).
-ja seuraa vihreitä ohjelaatikoita.
-</ohje>
+* Dokumentoi ja suunnittele sovelluksellesi käyttöliittymä
+    * Dokumentaatioon käyttöliittymäkaavio
+    * Liitä myös tekemäsi muut suunnitelmat (etenkin yleisnavigaatio) repositorioosi, ellet ole näyttänyt niitä ohjaajalle pajassa.
+* Suunnitelmien perusteella luodaan sivuista oikean näköiset demoversiot.
+    * Demoversion ei vielä tarvitse käyttää tietokantaa tai sisältää ajettavia ohjelmia
+    * Toteutettuna pitää olla HTML-versiot ainakin seuraavista aiemmin suunnitelluista sivuista:
+        * Sivujen runko ja navigaatio 
+        * Etusivu
+        * Listaussivut
+        * Muokkaus ja tietonäkymät
 
 ## Tietokannan käytön aloittaminen ja dokumentointi (1½p)
 
@@ -57,10 +35,10 @@ Suunnittele ja dokumentoi sovelluksellesi tietokanta
 sekä sanallisella että kooditasolla.
 Pisteistä puolikas piste tulee dokumentaatiosta.
 
-* [Tietokannan pystyttäminen palvelimelle]({{rootdir}}koodaaminen/kannan-alustus.html)
+* Tietokannan pystyttäminen palvelimelle
     * Luo SQL-tiedostot, joilla kannan rakenteen saa vedettyä ylös ja alas.
     * Käytä luotuja tiedostoja tietokannan pystyttämiseen
-* Ota käyttöön [tietokantatestisovellus]({{rootdir}}koodaaminen/testisovellus.html)
+* Ota käyttöön tietokantatestisovellus
     * Sovellus näyttää tietokannan taulut ja niiden sisältöä. Ohjaaja käyttää tätä pysyäkseen paremmin kärryillä tietokannan tilasta.
     * Testisovelluksen tulee näkyä Users-palvelimella.
 * Tarvitset koodaamiseen tietokantayhteyden muodostavan koodi, joka pitää sijoittaa omaan tiedostoonsa.
@@ -71,23 +49,27 @@ Järjestelmän tietosisältö ja Relaatiotietokantakaavio
 
 <ohje>
 Aloita sivulta 
-[tietokannan suunnittelu]({{rootdir}}suunnittelu/tietokanta.html).
+[käyttöliittymän suunnittelu]({{rootdir}}suunnittelu_ja_tyoymparisto/kayttoliittyma.html).
 ja seuraa vihreitä ohjelaatikoita.
+
+Kun ole tehnyt kaiken laita kaikki tekemäsi uudet tiedostot git-repositorioosi.
+(ConnectionTest-sovellusta ei tosin ole tarpeellista laittaa repositorioon).
+Muista myös päivittää kaikki tekeäsi uudet asiat [esittelysivulle](esittelysivu.html).
+
+<expandable title="**Lista tällä viikolla hyödyllisistä ohjesivuista**">
+
+~~~~ {execute=bash}
+./list-tagged-files.sh viikko2
+echo "* Hyödyllisiä sivuja edelliseltä viikolta"
+./list-tagged-files.sh viikko2-usefull | sed -e "s/^/    /"
+~~~~
+
+</expandable>
 </ohje>
 
-## Palautus ja esittelysivun päivittäminen
+## Palautuksen kansiorakenne
 
-Laita lopuksi kaikki tekemäsi uudet tiedostot git-repositorioosi.
-(ConnectionTest-sovellusta ei tosin ole tarpeellista laittaa repositorioon).
-Päivitä [esittelysivullesi](esittelysivu.html)
-linkit omaan sivutilaasi pystyttämääsi
-Connectiontest-sovellukseen,
-HTML-demosivujen etusivulle sekä
-tekemäsi oman tietokantalistaukseen.
-Mallia linkkeihin voi katsoa 
-[valmiin sivun näköisversiosta]({{rootdir}}src/{{curdir}}esittelysivu/esittelysivu-lopullinen.html).
-
-Lopulta palautuksesi kansiorakenteen pitäisi näyttää suurinpiirtein allaolevalta.
+Lopullisen palautuksesi kansiorakenteen pitäisi näyttää suurinpiirtein allaolevalta.
 Varmista, että olet ottanut kaikki tarvittavat tiedostot mukaan,
 ja että ne myös näkyvät selaimella testausosoitteessasi.
 
@@ -202,10 +184,5 @@ index.jsp
 </tab>
 </tabs>
 
-
 NetBeansia käyttävillä on projektissaan todennäköisesti huomattavasti enemmän tiedostoja.
 Se ei haittaa.
-
-<alert>
-Laita kaikki uusi dokumentaatio kootusti yhteen `dokumentaatio.pdf`-tiedostoon `docs`-kansiossa. Ohjaajasi ei halua arvuutella mistä tiedostosta dokumentaatio löytyy.
-</alert>

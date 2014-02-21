@@ -1,5 +1,6 @@
 % Tietokantahaku ja kyselyn parametrit
 <!-- order: 6 -->
+<!-- tags: viikko3-php -->
 
 <summary>
 * Lisätään aiemmin tehtyyn malliluokkaan haeKayttajaTunnuksilla-metodi.

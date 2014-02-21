@@ -1,4 +1,5 @@
 % PHP:n virheilmoitusten katselu
+<!-- tags: viikko1,viikko2-usefull,viikko3-php-usefull,viikko4-php-usefull -->
 
 PHP:n virheilmoitukset kirjautuvat users-koneella tiedostoon 
 `/home/userlogs/käyttäjätunnuksesi.error`.

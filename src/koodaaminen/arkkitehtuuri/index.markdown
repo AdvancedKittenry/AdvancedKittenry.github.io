@@ -1,5 +1,6 @@
 % Arkkitehtuuri ja MVC
 <!-- order: 6 -->
+<!-- tags: viikko3 -->
 
 Tällä kurssilla pyritään kevyeen [MVC-mallin](http://fi.wikipedia.org/wiki/MVC-arkkitehtuuri) mukaiseen 
 koodiarkkitehtuuriin.

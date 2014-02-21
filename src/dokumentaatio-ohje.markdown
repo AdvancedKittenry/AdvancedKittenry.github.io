@@ -1,5 +1,6 @@
 %Dokumentaatio-ohje
 <!-- addHeaderNavigation -->
+<!-- tags: viikko1,viikko2,viikko3,viikko4,viikko5 -->
 
 Kurssilla määritellään, suunnitellaan ja toteutetaan pieni www-alustalle toteutettava tietokantajärjestelmä.  
 Tämä dokumentti antaa suuntaa harjoitustyöltä odotettavasta dokumentaatiosta.  

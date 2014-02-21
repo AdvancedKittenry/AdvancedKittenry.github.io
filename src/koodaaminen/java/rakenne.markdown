@@ -1,6 +1,7 @@
 % Sovelluksen rakenne ja servletit
 <!-- order: 3 -->
 <!-- addHeaderNavigation -->
+<!-- tags: viikko3-java -->
 
 <summary>
 

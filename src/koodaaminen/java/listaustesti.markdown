@@ -1,5 +1,6 @@
 % Listaustesti
 <!-- order: 2 -->
+<!-- tags: viikko2-java -->
 
 <summary>
 * Servlettien käyttämisen alkeet
@@ -238,6 +239,7 @@ Lopulliset sivut tulevat noudattamaan läheisemmin [MVC-arkkitehtuuria][mvc].
 Kun listaustestisi toimii moitteetta, olet suunnitellut ja toteuttanut käyttöliittymän ja dokumentoinut kaiken,
 olet saanut valmiiksi viikon 2 palautuksen. 
 Varmista vielä, että kaikki tiedostot löytyvät repositoriostasi.
+Muista myös päivittää kaikki tekeäsi uudet asiat [esittelysivulle]({{rootdir}}aikataulu/viikkopalautukset/esittelysivu.html).
 
 Halutessasi voit seuraavaksi tutustua viikon 3 materiaaliin:
 [MVC-arkkitehtuuriin][mvc]

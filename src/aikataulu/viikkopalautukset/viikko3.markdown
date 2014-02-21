@@ -47,6 +47,20 @@ käyttämäsi kielen toteuttamisohjeisiin.
 
 Tehtyäsi kaiken varmista, että kaikki tekemäsi muutokset näkyvät sekä
 GitHub-repositoriossasi että esittelysivullasi users-palvelimella.
+
+<expandable title="**Lista tällä viikolla hyödyllisistä ohjesivuista**">
+
+~~~~ {execute=bash}
+./list-tagged-files.sh viikko3
+echo "* [Java-ohjeet]({{rootdir}}koodaaminen/php/index.html)"
+./list-tagged-files.sh viikko3-java | sed 's/^/    /'
+./list-tagged-files.sh viikko3-java-usefull | sed 's/^/    /'
+echo "* [PHP-ohjeet]({{rootdir}}koodaaminen/java/index.html)"
+./list-tagged-files.sh viikko3-php | sed 's/^/    /'
+./list-tagged-files.sh viikko3-php-usefull | sed 's/^/    /'
+~~~~
+
+</expandable>
 </ohje>
 
 [arkkitehtuuri]: {{rootdir}}koodaaminen/arkkitehtuuri/index.html

@@ -1,6 +1,7 @@
 % Näkymien tekeminen
 <!-- order: 4 -->
 <!-- addHeaderNavigation -->
+<!-- tags: viikko3-php -->
 
 <summary>
 * Laita sivusi käyttämään HTML:n tulostukseen näkymätiedostoa `views`-kansiossa.

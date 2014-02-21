@@ -1,5 +1,6 @@
 % PostgreSql-kannan etäkäyttö
 <!-- order: 2 -->
+<!-- tags: viikko1,viikko2-usefull -->
 
 Jos haluat käyttää users-palvelimen PostgreSql-tietokantaa, etkä 
 pystytä ohjelmaasi suoraan users-palvelimelle, joudut
@@ -29,6 +30,6 @@ on pystyssä.
 
 Windowsilla käytetään putty-ohjelmaa, jolle annetaan seuraavan näköiset asetukset:
 
-![users-palvelimen yhteyden luominen]({{myimgdir}}putty-users.png)
+![users-palvelimen yhteyden luominen]({{imgdir}}suunnittelu_ja_tyoymparisto/users/putty.png)
 
-![SSH-tunnelien määritteleminen putty-ohjelmalla]({{myimgdir}}users-tunneli.png)
+![SSH-tunnelien määritteleminen putty-ohjelmalla]({{imgdir}}suunnittelu_ja_tyoymparisto/users/users-tunneli.png)

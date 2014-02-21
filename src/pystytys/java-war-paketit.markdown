@@ -1,4 +1,5 @@
 % Kotikoneella tehdyn Java-työn julkaisu
+<!-- tags: viikko1,viikko2-usefull,viikko3-java-usefull,viikko4-java-usefull -->
 
 Helpoin tapa omalla koneella testatun sovelluksen pystyttämiseen tomcatissa on nk. Web Archive eli WAR-paketti.
 NetBeans osaa luoda WAR-paketin automaattisesti ja sijoittaa sen projektin `dist`-hakemistoon, kun klikkaat sovelluksessa Build-nappia. NetBeans saattaa kysyä haluatko todella tehdä näin, voit vastata dialogiin valitsemalla "Clean and Build".

@@ -1,5 +1,6 @@
 % Sivutus ja hakulomakkeet
 <!-- order: 8.5 -->
+<!-- tags: viikko4-php -->
 
 Jos tietokannassa on paljon kohteita, kannattaa useimmiten
 yhdellä sivulla näyttää vain rajattu osajoukko kaikista kohteista.
