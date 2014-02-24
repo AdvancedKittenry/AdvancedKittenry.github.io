@@ -5,14 +5,10 @@
 Ohessa olevasta listasta löydät tietokantasovelluksen valmiit aihe-ehdotukset
 vaikeusasteineen ja arvosanamaksimeineen. Vaikeusasteet ovat suuntaa-antavia,
 todellinen työn laajuus riippuu myös siitä mitä ohjaajan kanssa sovitaan.
-Vitosen arvosanamaksimiin vaaditaan aiheelta ainakin seuraavat:
 
-* Kirjautumisen toteuttaminen
-* Toteutettavia tietokohteita ainakin kolme
-* Vähintään kahteen tietokohteeseen pitää olla toteutettuna täysi [CRUD-nelikko](http://en.wikipedia.org/wiki/Create,_read,_update_and_delete): kohteen luominen, selailu, muokkaus, ja poisto.
-* Järjestelmässä on ainakin yksi monesta-moneen suhde tietokantataulujen välillä
+<include src="maksimiarvosana.markdown" />
 
-Parityön aiheeksi kelpaa ainoastaan vitosen arvosanamaksimilla varustettu aihe.
+### Oma aihe
 
 Myös omaa aihetta saa ehdottaa tai toteuttaa aihe-ehdotuksesta oman variaationsa.
 Tällaisesta on sovittava aina erikseen ohjaajan kanssa, mutta 
@@ -76,7 +72,7 @@ cd src/suunnittelu_ja_tyoymparisto/aiheet
 
 echo "| Työn nimi | Vaikeustaso | Maksimiarvosana |"
 echo "|-----------|-------------|-----------------|"
-for file in `find -not -name index.markdown -and -iname "*.markdown" -printf "%f\n"`; do
+for file in `find -not -name maksimiarvosana.markdown -and  -not -name index.markdown -and -iname "*.markdown" -printf "%f\n"`; do
   htmlfile=${file%.markdown}.html
   title=`head -n 1 $file | sed -e "s/^ *% *//"`
   maksimiarvosana=`egrep -o "<arvosanamaksim.>.*</arvosanamaksimi>" $file | sed -e "s/<\w\+> *\(.*\) *<\/\w\+>/\1/"`

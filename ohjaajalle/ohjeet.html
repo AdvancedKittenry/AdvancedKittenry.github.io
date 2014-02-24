@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title>Ohjeet tietokantasovelluksen ohjaajalle</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link rel="stylesheet" href="../css/base.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <script src="../javascript/jquery.min.js"></script>
+  <script src="../javascript/bootstrap.js"></script>
+  <script src="../javascript/jquery.treeview.js"></script>
+  <script src="../javascript/jquery.scrollTo.js"></script>
+  <script src="../javascript/jquery.nav.js"></script>
+  <script src="../javascript/navi.js"></script>
+</head>
+<body>
+<div class="titlebar">
+  <div class="container">
+    <div class="row">
+      <h1 class="col-md-6 col-md-offset-3">Advanced Kittenry - Tietokantasovellusohjeet</h1>
+    </div>
+  </div>
+</div>
+<div class="container">
+<div class="row">
+<div class="navcontainer col-md-3">
+<nav>
+<ul>
+<li><a href="../index.html">Tietokantasovellus</a>
+<ul>
+<li><a href="../aikataulu/index.html">Aikataulu</a>
+<ul>
+<li><a href="../aikataulu/viikkopalautukset/index.html">Viikottaiset palautukset</a>
+<ul>
+<li><a href="../aikataulu/viikkopalautukset/esittelysivu.html">Työn esittelysivu</a></li>
+<li><a href="../aikataulu/viikkopalautukset/viikko1.html">Viikko 1</a></li>
+<li><a href="../aikataulu/viikkopalautukset/viikko2.html">Viikko 2</a></li>
+<li><a href="../aikataulu/viikkopalautukset/viikko3.html">Viikko 3</a></li>
+<li><a href="../aikataulu/viikkopalautukset/viikko4.html">Viikko 4</a></li>
+<li><a href="../aikataulu/viikkopalautukset/viikko5.html">Viikko 5</a></li>
+</ul></li>
+<li><a href="../aikataulu/koodikatselmointi.html">Koodikatselmointi</a></li>
+<li><a href="../aikataulu/demo.html">Demotilaisuus</a></li>
+<li><a href="../aikataulu/palautus.html">Työn palautus</a></li>
+</ul></li>
+<li><a href="../suunnittelu_ja_tyoymparisto/index.html">Työn suunnittelu ja työympäristön pystytys</a>
+<ul>
+<li><a href="../suunnittelu_ja_tyoymparisto/aiheet/index.html">Työaiheet</a>
+<ul>
+<li><a href="../suunnittelu_ja_tyoymparisto/aiheet/Drinkkiarkisto.html">Drinkkiarkisto</a></li>
+<li><a href="../suunnittelu_ja_tyoymparisto/aiheet/Elektroninen_keittokirja.html">Elektroninen keittokirja</a></li>
+<li><a href="../suunnittelu_ja_tyoymparisto/aiheet/Graduaiheet.html">Graduaiheet</a></li>
+<li><a href="../suunnittelu_ja_tyoymparisto/aiheet/Hiihtokisojen_tulospalvelu.html">Hiihtokisojen tulospalvelu</a></li>
+<li><a href="../suunnittelu_ja_tyoymparisto/aiheet/Huutokauppa.html">Huutokauppa</a></li>
+<li><a href="../suunnittelu_ja_tyoymparisto/aiheet/Kennelkerho.html">Kennelkerho</a></li>
+<li><a href="../suunnittelu_ja_tyoymparisto/aiheet/Keskustelufoorumi.html">Keskustelufoorumi</a></li>
+<li><a href="../suunnittelu_ja_tyoymparisto/aiheet/Kurssikysely.html">Kurssikysely</a></li>
+<li><a href="../suunnittelu_ja_tyoymparisto/aiheet/Kurssin_kotisivu.html">Kurssin kotisivu</a></li>
+<li><a href="../suunnittelu_ja_tyoymparisto/aiheet/Kurssitarjonta_ja_kurssipaikan_varaus.html">Kurssitarjonta ja kurssipaikan varaus</a></li>
+<li><a href="../suunnittelu_ja_tyoymparisto/aiheet/Laakariaseman_tyovuorolista.html">Lääkäriaseman työvuorolista</a></li>
+<li><a href="../suunnittelu_ja_tyoymparisto/aiheet/Laakarin_kotikaynnit.html">Lääkärin kotikäynnit</a></li>
+<li><a href="../suunnittelu_ja_tyoymparisto/aiheet/Matkojen_markkinointi.html">Matkojen markkinointi</a></li>
+<li><a href="../suunnittelu_ja_tyoymparisto/aiheet/Muistilista.html">Muistilista</a></li>
+<li><a href="../suunnittelu_ja_tyoymparisto/aiheet/Ostoskassi.html">Ostoskassi</a></li>
+<li><a href="../suunnittelu_ja_tyoymparisto/aiheet/Palvelubisnes.html">Palvelubisnes</a></li>
+<li><a href="../suunnittelu_ja_tyoymparisto/aiheet/Parturi-Kampaamo.html">Parturi-Kampaamo</a></li>
+<li><a href="../suunnittelu_ja_tyoymparisto/aiheet/Pizzapalvelu.html">Pizzapalvelu</a></li>
+<li><a href="../suunnittelu_ja_tyoymparisto/aiheet/Pokemon-kanta.html">Pokémon-tietokanta</a></li>
+<li><a href="../suunnittelu_ja_tyoymparisto/aiheet/Projektin_tyoaikaseuranta.html">Projektin työaikaseuranta</a></li>
+<li><a href="../suunnittelu_ja_tyoymparisto/aiheet/Rankkauslista.html">Rankkauslista</a></li>
+<li><a href="../suunnittelu_ja_tyoymparisto/aiheet/Taloyhtion_palvelut.html">Taloyhtiön palvelut</a></li>
+<li><a href="../suunnittelu_ja_tyoymparisto/aiheet/Tavaranvaihto.html">Tavaranvaihto</a></li>
+<li><a href="../suunnittelu_ja_tyoymparisto/aiheet/Tukkuliikkeen_tilaustenksittely.html">Tukkuliikkeen tilaustenkäsittely</a></li>
+<li><a href="../suunnittelu_ja_tyoymparisto/aiheet/Tutkimusaineston_kerays.html">Tutkimusaineiston keräys</a></li>
+<li><a href="../suunnittelu_ja_tyoymparisto/aiheet/Tyoaihekanta.html">Työaihekanta</a></li>
+<li><a href="../suunnittelu_ja_tyoymparisto/aiheet/Opintoneuvonnan_usein_kysytyt_kysymykset.html">Usein kysytyt kysymykset</a></li>
+<li><a href="../suunnittelu_ja_tyoymparisto/aiheet/Vedonlyonti.html">Vedonlyönti</a></li>
+<li><a href="../suunnittelu_ja_tyoymparisto/aiheet/Vuokra-asuntojen_valitys.html">Vuokra-asuntojen välitys</a></li>
+<li><a href="../suunnittelu_ja_tyoymparisto/aiheet/Ystavanvalityspalvelu.html">Ystävänvälityspalvelu</a></li>
+<li><a href="../suunnittelu_ja_tyoymparisto/aiheet/Aanestys.html">Äänestys</a></li>
+</ul></li>
+<li><a href="../suunnittelu_ja_tyoymparisto/ohjelmointikielet.html">Ohjelmointikielen valinta</a></li>
+<li><a href="../suunnittelu_ja_tyoymparisto/tietokannan-valinta.html">Tietokannan valinta</a></li>
+<li><a href="../suunnittelu_ja_tyoymparisto/git.html">Versionhallinnan käyttöönotto</a></li>
+<li><a href="../suunnittelu_ja_tyoymparisto/alkudokumentointi.html">Perusasioiden dokumentointi</a></li>
+<li><a href="../suunnittelu_ja_tyoymparisto/users/index.html">Users-palvelin ja töiden pystyttäminen</a>
+<ul>
+<li><a href="../suunnittelu_ja_tyoymparisto/users/java.html">Java ja Tomcatin käyttöönotto</a></li>
+<li><a href="../suunnittelu_ja_tyoymparisto/users/php.html">PHP-tuen käyttöönotto</a></li>
+<li><a href="../suunnittelu_ja_tyoymparisto/users/mysql.html">MySql-tietokannan käyttöönotto</a></li>
+<li><a href="../suunnittelu_ja_tyoymparisto/users/postgresql.html">PostgreSQL-tietokannan käyttöönotto</a></li>
+</ul></li>
+<li><a href="../suunnittelu_ja_tyoymparisto/netbeans/index.html">NetBeansin käyttöönotto</a>
+<ul>
+<li><a href="../suunnittelu_ja_tyoymparisto/netbeans/java.html">NetBeansin käyttö Javan kanssa</a></li>
+<li><a href="../suunnittelu_ja_tyoymparisto/netbeans/php.html">NetBeansin käyttö PHP:n kanssa</a></li>
+<li><a href="../suunnittelu_ja_tyoymparisto/netbeans/keyring-reset.html">Unlock your keyring? - Avainnippujen nollaus</a></li>
+</ul></li>
+<li><a href="../suunnittelu_ja_tyoymparisto/kayttoliittyma.html">Käyttöliittymän suunnittelu</a></li>
+<li><a href="../suunnittelu_ja_tyoymparisto/kayttoliittyman_toteutus.html">Käyttöliittymädemon toteuttaminen</a></li>
+<li><a href="../suunnittelu_ja_tyoymparisto/tietokanta.html">Tietokannan suunnittelu</a></li>
+<li><a href="../suunnittelu_ja_tyoymparisto/tietokanta-dokumentointi.html">Tietokannan dokumentointi</a></li>
+</ul></li>
+<li><a href="../koodaaminen/index.html">Ohjelmointiohjeistus</a>
+<ul>
+<li><a href="../koodaaminen/kannan-alustus.html">Tietokantataulujen pystyttäminen</a></li>
+<li><a href="../koodaaminen/testisovellus.html">ConnectionTest-testisovellus</a></li>
+<li><a href="../koodaaminen/git-ja-salasanat.html">Git-repositoriot ja salasanat</a></li>
+<li><a href="../koodaaminen/arkkitehtuuri/index.html">Arkkitehtuuri ja MVC</a>
+<ul>
+<li><a href="../koodaaminen/arkkitehtuuri/nyrkkisaannot.html">MVC-mallin nyrkisääntöjä</a></li>
+</ul></li>
+<li><a href="../koodaaminen/java/index.html">Java-ohjeet</a>
+<ul>
+<li><a href="../koodaaminen/java/tietokantayhteys.html">Tietokantayhteyden pystytys</a></li>
+<li><a href="../koodaaminen/java/listaustesti.html">Listaustesti</a></li>
+<li><a href="../koodaaminen/java/rakenne.html">Sovelluksen rakenne ja servletit</a></li>
+<li><a href="../koodaaminen/java/nakymat.html">Näkymien tekeminen ja JSP</a></li>
+<li><a href="../koodaaminen/java/lomakkeet.html">Lomakkeiden käyttö ja vastaanottaminen</a></li>
+<li><a href="../koodaaminen/java/mallit_tiedonhaku.html">Tietokantahaku ja kyselyn parametrit</a></li>
+<li><a href="../koodaaminen/java/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
+<li><a href="../koodaaminen/java/listausnakymat.html">Listaus- ja tietonäkymät</a></li>
+<li><a href="../koodaaminen/java/sivutusjahaut.html">Sivutus ja hakulomakkeet</a></li>
+<li><a href="../koodaaminen/java/mallit_lisays.html">Tietojen syöttäminen kantaan</a></li>
+<li><a href="../koodaaminen/java/muokkausnakymat.html">Muokkausnäkymän toteuttaminen</a></li>
+</ul></li>
+<li><a href="../koodaaminen/php/index.html">PHP-ohjeet</a>
+<ul>
+<li><a href="../koodaaminen/php/tietokantayhteys.html">Tietokantayhteyden pystytys</a></li>
+<li><a href="../koodaaminen/php/listaustesti.html">Listaustesti</a></li>
+<li><a href="../koodaaminen/php/rakenne.html">Sovelluksen rakenne ja kontrollerit</a></li>
+<li><a href="../koodaaminen/php/nakymat.html">Näkymien tekeminen</a></li>
+<li><a href="../koodaaminen/php/lomakkeet.html">Lomakkeiden käyttö ja vastaanottaminen</a></li>
+<li><a href="../koodaaminen/php/mallit_tiedonhaku.html">Tietokantahaku ja kyselyn parametrit</a></li>
+<li><a href="../koodaaminen/php/istunnot.html">Istunnot ja kirjautumisen tallentaminen</a></li>
+<li><a href="../koodaaminen/php/listausnakymat.html">Listaus- ja tietonäkymät</a></li>
+<li><a href="../koodaaminen/php/sivutusjahaut.html">Sivutus ja hakulomakkeet</a></li>
+<li><a href="../koodaaminen/php/mallit_lisays.html">Tietojen syöttäminen kantaan</a></li>
+<li><a href="../koodaaminen/php/muokkausnakymat.html">Muokkausnäkymän toteuttaminen</a></li>
+</ul></li>
+</ul></li>
+<li><a href="../arvosteluperusteet.html">Arvosteluperusteet</a></li>
+<li><a href="../dokumentaatio-ohje.html">Dokumentaatio-ohje</a></li>
+<li><a href="../cleancode.html">Hyvä ohjelmointityyli</a></li>
+<li><a href="../kaytettavyys.html">Käytettävyys</a></li>
+<li><a href="../pystytys/index.html">Sekalaisia ohjeita</a>
+<ul>
+<li><a href="../pystytys/postgres-ssh-tunneli.html">PostgreSql-kannan etäkäyttö</a></li>
+<li><a href="../pystytys/java-war-paketit.html">Kotikoneella tehdyn Java-työn julkaisu</a></li>
+<li><a href="../pystytys/php-virheet.html">PHP:n virheilmoitusten katselu</a></li>
+<li><a href="../pystytys/nautilus-ssh.html">Tiedostojen etämuokkaus Linuxilla</a></li>
+</ul></li>
+<li><a href="../sivukartta.html">Sivukartta</a></li>
+<li><a href="../web-sovelluksista.html">Web-sovelluksien toiminta</a></li>
+</ul></li>
+</ul>
+</nav>
+</div>
+<div class="col-md-6" id="content">
+<header>
+<h1 class="title">Ohjeet tietokantasovelluksen ohjaajalle</h1>
+</header>
+<p>Sivujen sisällöstä osa vapaasti mukailtu <a href="http://www.cs.helsinki.fi/u/laine/tikas/ohjaus.html">vuoden 2006 ohjeesta</a></p>
+<section id="aloitusluento" class="level2">
+<h2>Aloitusluento</h2>
+<p>Kurssi alkaa aloitusluennolla, jossa opiskelijoille kerrotaan kurssin perusasiat ja annetaan mahdollisuus kysyä kysymyksiä. Luennolla käydään läpi käytännössä samat asiat, kuin kurssisivujen <a href="../index.html">etusivulla</a> ja <a href="../arvosteluperusteet.html">arvosteluperusteet-sivulla</a> lukee. Kannattaa itsekin tutustua näihin sivuihin, ja etenkin kurssin aikatauluun:</p>
+</section>
+<section id="työaiheet-ja-sopiva-työn-laajuus" class="level2">
+<h2>Työaiheet ja sopiva työn laajuus</h2>
+<p>Ensimmäisellä viikolla opiskelijoiden tehtävänä on lähinnä valita itselleen aihe ja toteutustekniikat.</p>
+<p>Harjoitustöiden aiheita löytyy kurssisivuilta. Aiheita voi vapaasti muunnella opiskelijan toiveiden ja omien mieltymystesi mukaan.</p>
+<!-- hidden! -->
+
+<section id="arvosanamaksimi" class="level3">
+<h3>Arvosanamaksimi</h3>
+<p>Kullekin aiheelle on määritelty maksimiarvosana, joka kuvaa karkeasti työn laajuutta. Arvosanamaksimiin vaikuttaa neljä kriteeriä, joista jokaisen pitää täyttyä vitosen arvosanamaksimia varten:</p>
+<button type='button' class='btn-link expandable collapsed' data-toggle='collapse' data-target='#expandable_1'>
+Kirjautumisen toteuttaminen
+</button>
+  <div id='expandable_1' class='collapse'><section>
+
+<p>Sovelluksessa pitää olla toteutettuna perinteinen käyttäjien tunnistaminen käyttäätunnuksella ja salasanalla. Käyttäjien tiedot on haettava tietokannasta.</p>
+</section></div>
+<button type='button' class='btn-link expandable collapsed' data-toggle='collapse' data-target='#expandable_2'>
+Toteutettavia tietokohteita ainakin kolme
+</button>
+  <div id='expandable_2' class='collapse'><section>
+
+<p>Sovelluksessa pitää olla ainakin kolme jotakin olennaista tietoa sisältävää tietokantataulua. Taulujen pitää sisältää käyttäjälle suoraan relevanttia tietoa. Tälläisiä kohteita ovat esimerkiksi <a href="../suunnittelu_ja_tyoymparisto/aiheet/Muistilista.html">muistilistan askare</a> tai käyttäjän kirjautumistiedot.</p>
+<p>Tähän määrään ei lasketa tauluja, jotka ovat puhtaita liitostauluja kahden muun taulun välillä.</p>
+</section></div>
+<button type='button' class='btn-link expandable collapsed' data-toggle='collapse' data-target='#expandable_3'>
+Vähintään kahden tietokohteen tietokantataulua pitää pystyä muokkaamaan täysin
+</button>
+  <div id='expandable_3' class='collapse'><section>
+
+<p>Sovelluksen käyttötapauksiin on kuuluttava vähintään kahden kohteen kohdalla ns. <a href="http://en.wikipedia.org/wiki/Create,_read,_update_and_delete">CRUD-nelikko</a> eli kohteen luominen, selailu, muokkaus, ja poisto.</p>
+</section></div>
+<button type='button' class='btn-link expandable collapsed' data-toggle='collapse' data-target='#expandable_4'>
+Ainakin yksi monesta-moneen suhde tietokantataulujen välillä
+</button>
+  <div id='expandable_4' class='collapse'><section>
+
+<p>Sovelluksessa on oltava ainakin kaksi taulua, joiden välillä on <em>monesta moneen -suhde</em>. Tämä tarkoittaa sitä, että kummankin taulun olioon voi jollain tapaa liittyä mielivaltainen lukumäärä toisen taulun olioita. Tälläisiä suhteita voivat olla vaikkapa <a href="../suunnittelu_ja_tyoymparisto/aiheet/Keskustelufoorumi.html">keskustelufoorumin</a> käyttäjien ja keskustelujen välillä oleva “on-kirjoittanut tähän keskuteluun” -suhde tai <a href="../suunnittelu_ja_tyoymparisto/aiheet/Pokemon-kanta.html">Pokémon-tietokannan</a> käyttäjän ja pokémon-lajin välinen omistussuhde.</p>
+</section></div>
+
+
+<p>Parityön aiheeksi kelpaa ainoastaan vitosen arvosanamaksimilla varustettu aihe.</p>
+<p>Opiskelijalle kannattaa painottaa, mikä hänen aihevalintansa maksimiarvosana on, mikäli se ei ole viisi.</p>
+</section>
+<section id="oma-aihe-tai-toteutustekniikka" class="level3">
+<h3>Oma aihe tai toteutustekniikka</h3>
+<p>Jos joku haluaa tehdä työn itse keksimästään aiheesta ja työ täyttää kurssille asetettavat vaatimukset (tietokanta jossa noin 4-7 taulua, yksinkertainen käyttöliittymä, järkevä maksimiarvosana), voit antaa hänen tehdä oman aiheensa. Omasta aiheesta täytyy laatia aihekuvaus laitoksen aiheiden tapaan.</p>
+<p>Jos opiskelija haluaa tehdä työn eri valineillä kuin laitoksella on tarjolla, voit harkintasi mukaan suostua tähän. Lähtökohtana on kuitenkin Javan Servletteihin tai PHP-kieleen perustuva toteutus. Työssä ei kuitenkaan koskaan saa käyttää tietokantaa abstraktoivia kirjastoja, vaan tietokantakyselyt on tehtävä ns. käsin. Yleensä ei myöskään kannata antaa opiskelijan tehdä tekniikalla, josta hänellä ei ole merkittävästi kokemusta. Yleensä tälläiset työt epäonnistuvat.</p>
+<p>Perusedellytys on, että opiskelija pystyy tekemään työnsä ja että pystyt <em>itse testaaman ja tarkistamaan työn</em>. Sinun on syytä todeta, että opiskelija ei saa opastusta muiden välineiden käytössä. Kysy ohjeita toisilta ohjaajilta tai kurssin vastuuhenkilöltä.</p>
+</section>
+<section id="vanhan-työn-jatkaminen" class="level3">
+<h3>Vanhan työn jatkaminen</h3>
+<p>Pääsääntöisesti jokainen opiskelija aloittaa uuden työn työryhmässäsi. Aikaisemman työn jatkamiseen tulee olla todella hyvät perustelut esim. osoitettavissa oleva sairastuminen. Kysy kurssin vastuuhenkilöltä ohjeita tarvittaessa.</p>
+</section>
+</section>
+<section id="työn-ohjaaminen" class="level2">
+<h2>Työn ohjaaminen</h2>
+<p>Työn ohjaus perustuu normaaliin pajaohjaukseen ja kurssisivuilla annettuun aikataulun.</p>
+<p>Puutu ajoissa selvästi ylisuuriksi paisuviin töihin. Jos työ ei etene, tiivistä ohjaustapahtumia ja määritelle pienempiä tavoitteita. Älä päästä opiskelijaa tekemään toteutusta selvästi virheellisen tai puutteellisen tietokantaratkaisun pohjalta. Ratkaisua on vaikea nopeasti muuttaa toimivaksi.</p>
+<section id="pajojen-ulkopuolinen-neuvominen" class="level3">
+<h3>Pajojen ulkopuolinen neuvominen</h3>
+<p>Voit sopia henkilökohtaisen ohjauksen hoidettavaksi myön muulla tavoin kuin viikottaisilla palavereilla.</p>
+<p>Ennalta sovitut henkilökohtaiset ohjaukset voit hoitaa harjoitussalissa, labrassa tai omassa työhuonessasi. Omistaudu silloin vain kyseiselle opiskelijalle. Henkilökohtaisia neuvonpitoja ei saa sopia päivystysajoiksi. Päivystysaikoina sinulta voivat tulla kysymään neuvoa myös muiden ryhmien opiskelijat. Näille annat kuitenkin vain teknisiä neuvoja. On suotavaa että päivystysajat eivät ole samana päivänä kuin henkilökohtainen ohjaus.</p>
+<p>Työaikaasi on laskettu aikaa sähköpostivastauksiin. Kerro siis opiskelijoille sähköpostiosoitteesi ja vastaa opiskelijoiden kysymyksiin. Sähköpostitse ei ole järkevää laatia pitkiä vastauksia. Jos ongelma edellyttää sellaista sovi tapaaminen.</p>
+<p><a href="../arvosteluperusteet.html">Kurssin arvosteluperusteet</a></p>
+</section>
+</section>
+<section id="viikottaiset-arvostelut" class="level2">
+<h2>Viikottaiset arvostelut</h2>
+<!-- order: 1 -->
+
+<p>Kurssilla on käytössä viikottaiset palautukset. Jokainen ajoissa tehty palautus on kolmen pisteen arvoinen. Myöhästynyt ei pisteitä saa ja yli kahdesta myöhästymisestä kurssin suorius keskeytyy.</p>
+<p>Viikottaisten palautusten deadline on aina kunkin viikon sunnuntaina klo 23:00. Tämän jälkeen palautuksia ei enää oteta vastaan ilman hyvää syytä (eli lähinnä sairastapauksissa).</p>
+<p>Palautukset suoritetaan ensimmäisellä viikolla rekisteröitymällä <a href="http://tsoha-labtool.herokuapp.com">Labtool-sivustolle</a> ja siitä eteenpäin git-versionhallinnan ja githubin kautta.</p>
+<p>Jokaisella viikolla sovelluksen kannalta olennaisimmat tiedot ja linkit kootaan <a href="../aikataulu/viikkopalautukset/esittelysivu.html">erillisille työn esittelysivulle</a>, joka myös syötetään labtoolin testiosoitteeksi. Muista pitää esittelysivusi ajan tasalla. Sen päivittämättä jättämisestä voi menettää hyvinkin helposti pisteitä.</p>
+<section id="deadlinet" class="level3">
+<h3>Deadlinet</h3>
+<table class="table table-striped table-bordered">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Tilaisuus</th>
+<th style="text-align: left;">Työaihe</th>
+<th style="text-align: left;">Deadline</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><a href="../aikataulu/viikkopalautukset/viikko1.html">Viikko I</a></td>
+<td style="text-align: left;">Aiheen valinta, suunnittelu, dokumentointi ja työympäristön pystytys</td>
+<td style="text-align: left;"><span class="coursekeyword deadline1">su 19.1 klo 23:00</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><a href="../aikataulu/viikkopalautukset/viikko2.html">Viikko II</a></td>
+<td style="text-align: left;">Sovelluksen suunnittelu, HTML-kieli, tietokantayhteyden muodostaminen</td>
+<td style="text-align: left;"><span class="coursekeyword deadline2">su 26.1 klo 23:00</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><a href="../aikataulu/viikkopalautukset/viikko3.html">Viikko III</a></td>
+<td style="text-align: left;">MVC-malli ja kirjautuminen</td>
+<td style="text-align: left;"><span class="coursekeyword deadline3">su 2.2 klo 23:00</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><a href="../aikataulu/viikkopalautukset/viikko4.html">Viikko IV</a></td>
+<td style="text-align: left;">Muokkaustoiminnot, sovellus etenee</td>
+<td style="text-align: left;"><span class="coursekeyword deadline4">su 9.2 klo 23:00</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><a href="../aikataulu/viikkopalautukset/viikko5.html">Viikko V</a></td>
+<td style="text-align: left;">Sovellus on lähes valmis, <a href="../aikataulu/koodikatselmointi.html">koodikatselmointi</a></td>
+<td style="text-align: left;"><span class="coursekeyword deadline5">su 16.2 klo 23:00</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><a href="../aikataulu/demo.html">Demotilaisuus</a></td>
+<td style="text-align: left;">Esitellään työtä ja sen koodia muille opiskelijoille</td>
+<td style="text-align: left;"><span class="coursekeyword demodeadline">Samaan aikaan ja samassa paikassa kuin pajat: ti 18.2 klo 12 ja ke 19.2 klo 16</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><a href="../aikataulu/palautus.html">Palautus</a></td>
+<td style="text-align: left;">Valmis työ palautetaan ohjaajalle</td>
+<td style="text-align: left;"><span class="coursekeyword palautusdeadline">su 23.2 klo 23:00</span></td>
+</tr>
+</tbody>
+</table>
+<p>Arvostelussa on syytä antaa arvosanaluonteinen palaute myös väliraporteista. Kuitenkin vasta lopputulos määrää lopullisen arvosanan. Työn päätavoite on oppiminen ei oppineisuuden osoittaminen, siten väliraportissa voi olla puutteitakin, kunhan ne sitten korjautuvat lopuksi. Työlle asetettuja vaatimuksia käsitellään aloitusluennolla.</p>
+</section>
+</section>
+<section id="esitelmät-ryhmän-yhteisissä-tilaisuuksissa" class="level2">
+<h2>Esitelmät ryhmän yhteisissä tilaisuuksissa</h2>
+<p>Kaikkien opiskelijoiden on osallistuttava demotilaisuuksiin. Näiden päätarkoitus on, että opiskelijat oppisivat esittelemään tuotettaan julkisesti eri vaiheissa prosessia.</p>
+</section>
+<section id="työn-valmistuminen" class="level2">
+<h2>Työn valmistuminen</h2>
+<p>Jokaisen työn pitää noudattaa kurssilla annettua aikataulua. Aikataulut voivat erityistapauksissa olla kuitenkin myös henkilökohtaisia. Ohjausaika ja yhteisohjaustilaisuudet tietenkin luovat puitteet henkilökohtaisille aikatauluille. Välitavoitteet edistävät valmistumista.</p>
+<p>Lopuksi opiskelijat esittelevät lopputuloksensa muille. Tällöin työn pitäisi olla pitkälti valmis. Valmistumispäivä on aina kiinnitettävä ennakolta.</p>
+<p>Aikataulua ei ole syytä muuttaa kevein perustein. On kuitenkin syytä säätää aikatauluja siten, ettei työn välttämättä pidä olla valmis esimerkiksi samana tai edellisenä päivänä kun opiskelijalla on tentti.</p>
+<p>Anna jatkoaikaa vain hyvästä syystä (sairaana yli viikon, kertausharjoitus, lapsen synnytys tms.). Tekniset ongelmat - koneet pitkään nurin kriitisessä vaiheessa, käyttäjätunnus viivästynyt- ovat hyviä perusteita jatkoajalle. Valmiina palautetun, mutta todella huonon työn voi joko suoraan hylätä tai palauttaa korjattavaksi. Jos työ palautetaan korjattavaksi, niin opiskelijalle tulee antaa tarkat ohjeet ja aikataulu työn loppuun saamiseksi.</p>
+<p>Tavoitteena tulisi olla laadukas ohjelmistotuote. Huonon työn voi hylätä. Toisaalta opiskelijalle pitäisi antaa mahdollisuus parantaa työtään paremman arvosanan saamiseksi. Töissä tulisi lähteä siitä, että määräaikoja noudatetaan. Tämä ei estä sinua sopimasta opiskelijan kanssa henkilökohtaista aikataulua, jossa valmistumispäivä on jokin muu kuin ryhmän virallinen valmistumispäivä. Työn myöhästyminen sovitusta valmistumispäivästä ilman hyvin pätevää syytä johtaa aina arvosanan laskuun.</p>
+<p>Älä käytä liikaa aikaa arvosteluun. Työaikanormiin mahtuu noin 4 tuntia tarkastusaikaa opiskelijaa kohti.</p>
+<p>Jos annat jatkoaikaa tai palautat työn korjattavaksi, niin sinä olet edelleen vastuussa työn ohjaamisesta ja korjaamisesta, vaikka varsinainen työryhmän ohjausaika olisikin jo päättynyt. Ääritapauksissa neuvottele kurssin vastuuhenkilön kanssa. Et voi lykätä opiskelijaa seuraavan ryhmän vetäjän harteille. Jos opiskelija selvästi tippuu annetusta aikataulussa, voit katsoa hänet keskeyttäneeksi.</p>
+<p>Tulosten toimittaminen eteenpäin tulisi tapahtua noin 2 viikon kuluessa ohjausajan päättymisestä. Älä jää odottamaan lisäajan saaneita vaan ilmoita heidän tuloksensa myöhemmin erikseen.</p>
+<p>Arvostelu olisi julkaistava kahden viikon kuluttua ryhmän päättymisestä. Tulosten täytyy olla rekisterissä ehdottomasti viimeistään 1 kuukauden kuluessa (yliopiston ohjesääntö). Yleensäottaen arvostelu on jaettu tasan ryhmäopetustuntien mukaan.</p>
+<section id="arvostelun-selitys-opiskelijalle" class="level3">
+<h3>Arvostelun selitys opiskelijalle</h3>
+<p>Sinun tulee antaa opiskelijalle palautetta hänen työstään. Tätä varten voit sopia ohjaustilaisuuden yhteydessä opiskelijan kanssa henkilökohtaisen palautustilaisuuden ajan. Voit toimittaa palautteen myös sähköpostitse listaamalla työn hyvät ja huonot puolet (muutama avainkohta). Opiskelijan niin halutessa on henkilökohtainen palautetilaisuus järjestettävä. Opiskelijalla on oikeus ottaa omalla kustannuksellaan itselleen kopio arvostellusta työstä. Opiskelijoilla on myös oikeus 2 kuukauden aikana (asetus HY:stä) tulosten julkistamisesta tulla kysymään arvostelun perusteita, joten talleta itselläsi kaikki arvosteluusi tarvitavat tiedot.</p>
+</section>
+<section id="arvostelun-kirjaaminen" class="level3">
+<h3>Arvostelun kirjaaminen</h3>
+<p>Kirjaa arvosana kurki-järjestelmään ja ilmoita arvostelun valmistumisesta kurssin vastuuhenkilölle.</p>
+<p>Jos opiskelijalla on mielestäsi hyvä syy jatkaa kesken jäänyttä työtä seuraavana lukukautena uudessa ryhmässä, niin pistä tähän hyvät perustelut sille.</p>
+</section>
+<section id="sairauden-tai-muun-syyn-johdosta-syntyvät-poikkeukset" class="level3">
+<h3>Sairauden tai muun syyn johdosta syntyvät poikkeukset</h3>
+<p>Poissaolo demotilaisuuksista on esitettävä hyvä syy. Opiskelijan on ilmoitettava henkilökohtaisen ohjauspalaverin peruutuksesta hyvissä ajoin etukäteen. Niiden peruuttamiseen täytyy olla hyvä syy.</p>
+<p>Kun opiskelija saa työnsä valmiiksi, ohjaustilaisuuksien läsnäoloa ei sen jälkeen tietenkään vaadita. demo voidaan silloinkin vaatia.</p>
+</section>
+</section>
+</div>
+</div> 
+</div> 
+<footer>
+  <a href="../sivukartta.html">Sivukartta</a> - 
+  <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">AdvancedKittenry</span> 
+  by
+  <a xmlns:cc="http://creativecommons.org/ns#" href="http://advancedkittenry.github.io/credits.html" property="cc:attributionName" rel="cc:attributionURL">David Consuegra and others</a>
+  is licensed under a 
+  <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.
+  <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">
+    <img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png" />
+  </a>
+</footer>
+</body>
+</html>
