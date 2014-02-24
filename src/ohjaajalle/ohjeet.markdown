@@ -14,7 +14,7 @@ Luennolla käydään läpi käytännössä samat asiat, kuin kurssisivujen
 [etusivulla][etusivu] ja 
 [arvosteluperusteet-sivulla][arvosteluperusteet]
 lukee. Kannattaa itsekin tutustua näihin sivuihin,
-ja etenkin kurssin aikatauluun:
+ja etenkin kurssin [aikatauluun](#aikataulu).
 
 ## Työaiheet ja sopiva työn laajuus
 
@@ -27,7 +27,7 @@ omien mieltymystesi mukaan.
 <include src="../suunnittelu_ja_tyoymparisto/aiheet/maksimiarvosana.markdown" />
 
 Opiskelijalle kannattaa painottaa, 
-mikä hänen aihevalintansa maksimiarvosana on,
+mikä hänen aihevalintansa maksimiarvosana on ja miksi,
 mikäli se ei ole viisi.
 
 ### Oma aihe tai toteutustekniikka
@@ -67,7 +67,7 @@ muuttaa toimivaksi.
 ### Pajojen ulkopuolinen neuvominen
 
 Voit sopia henkilökohtaisen ohjauksen hoidettavaksi myön muulla tavoin kuin
-viikottaisilla palavereilla. 
+viikottaisella pajaohjauksella. 
 
 Ennalta sovitut henkilökohtaiset ohjaukset voit hoitaa harjoitussalissa,
 labrassa tai omassa työhuonessasi. Omistaudu silloin vain kyseiselle
@@ -83,15 +83,15 @@ Sähköpostitse ei ole järkevää laatia pitkiä vastauksia. Jos ongelma
 edellyttää sellaista sovi tapaaminen.
 
 
-## Viikottaiset arvostelut
+## Viikottaiset arvostelut {#aikataulu}
 
 <include src="../aikataulu/viikkopalautukset/index.markdown" />
 
-Kurssin viikottaiset arvostelut tehdään labtooliin ja 
-niissä käytetään alustavana työkaluna checklist-nimikkeellä
+Kurssin viikottaiset arvostelut tehdään [labtooliin](http://tsoha-labtool.herokuapp.com/).
+Arvostelun antamisessa käytetään työkaluna checklist-nimikkeellä
 kulkevia tarkistuslistoja. Järjestelmä antaa opiskelijan
 tekemien asioiden perusteella viikkopisteet ja alustavia palautetekstejä.
-Näitä voi ja kannattaakin hieman kustomoida sen mukaan miltä opiskelijan työ muuten vaikuttaa.
+Pisteitä ja palautteita voi ja kannattaakin hieman kustomoida sen mukaan miltä opiskelijan työ muuten vaikuttaa.
 
 ## Demotilaisuus
 
@@ -174,13 +174,16 @@ Yleensäottaen arvostelu on jaettu tasan ryhmäopetustuntien mukaan.
 ### Arvostelun selitys opiskelijalle
 
 Sinun tulee
-antaa opiskelijalle palautetta hänen työstään. Tätä varten voit sopia
-ohjaustilaisuuden yhteydessä opiskelijan kanssa henkilökohtaisen
-palautustilaisuuden ajan. Voit toimittaa palautteen myös sähköpostitse
-listaamalla työn hyvät ja huonot puolet (muutama avainkohta). Opiskelijan
+antaa opiskelijalle palautetta hänen työstään. 
+Normaalisti tämä tapahtuu labtoolin kautta valitemalla "Loppuarvostelu"-nimisen
+checklistin. Tarkistuslistalle annetaan kätevyyden nimissä samalla viikkopisteet ja mahdolliset koodikatselmointipisteet.
+Tässäkin kannattaa muistaa, että tarkistuslistan antama pisteytys ja palaute on *alustavaa*.
+
+Opiskelijan
 niin halutessa on henkilökohtainen palautetilaisuus järjestettävä.
-Opiskelijalla on oikeus ottaa omalla kustannuksellaan itselleen kopio
-arvostellusta työstä. Opiskelijoilla on myös oikeus 2 kuukauden aikana
+Tätä varten voit sopia
+ohjaustilaisuuden yhteydessä opiskelijan kanssa.
+Opiskelijoilla on myös oikeus 2 kuukauden aikana
 (asetus HY:stä) tulosten julkistamisesta tulla kysymään arvostelun
 perusteita, joten talleta itselläsi kaikki arvosteluusi tarvitavat tiedot.
 
@@ -202,3 +205,7 @@ etukäteen. Niiden peruuttamiseen täytyy olla hyvä syy.
 Kun opiskelija saa työnsä valmiiksi, ohjaustilaisuuksien läsnäoloa ei sen
 jälkeen tietenkään vaadita. demo voidaan silloinkin vaatia.
 
+## Kysymyksiä?
+
+Kysymykset sivujen tai kurssin sisällöstä kannattaa tällä hetkellä lähettää [David Consuegralle](mailto:davicon@gmail.com)
+tai kurssin vastuuhenkilölle.
