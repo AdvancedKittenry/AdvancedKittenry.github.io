@@ -100,7 +100,7 @@ BEGIN {
 
 }
 
-#Commenting is implemented twice: before and after the pandoc exection
+#Commenting is implemented twice: before and after the pandoc execution
 s#<comment>.*?</comment>##sg;
 s#<wip *\/>#<include src="${rootdir}templates/wip.html" />#sg;
 
@@ -129,10 +129,16 @@ for my $coursekeyword (keys %coursekeywords) {
 #Parses include files while leaving title metadata lines beginning with % out
 s{<include +src="([^"]*)" */>} {"\n" . `$0 $basedir/$1` =~ s/^(%[^\n]*)*//rg . "\n";}eg;
 
+#We don't want to run our box blockquote logic twice when including files
+#See about 25 lines below
+s#<\!-- end box -->#<!-- do not end box -->#g;
+s#<\!-- start box -->#<!-- do not start box -->#g;
+
 #Parse tabs and other dynamic expandable content
 s{<tabs nobox=['"]true['"]>\s(.*?)<\/tabs>} {parseTabs($1, 0)."<hr/>" }esg;
 s{<tabs>\s(.*?)<\/tabs>} {parseTabs $1, 1}esg;
 
+#Implement <collapsible> and <expandable> tags
 my $collapsibleCount = 0;
 s{<collapsible title=['"]([^'"]*)['"]>} {
   $collapsibleCount++;
@@ -166,6 +172,10 @@ s{(.*?\n)}{
   $line;
 }eg;
 
+## Fix box logic fix for fix-styles.pl
+s#<\!-- do not end box -->#<!-- end box -->#g;
+s#<\!-- do not start box -->#<!-- start box -->#g;
+
 s{<box>}{<div class='panel panel-default'><div class='panel-body'>}g;
 s{</box>}{</div></div>}g;
 s{<sidebyside>}{<div class="row">}g;
@@ -174,8 +184,6 @@ s{<column>}{<div class="col-md-6">}g;
 s{<column size=["'](\d+)["']>}{<div class="col-md-\1">}g;
 s{</(sidebyside|column)>}{</div>}g;
 
-s#<(glyphicon-[a-z-]*)\s*\/>#<span class="glyphicon \1"></span>#g;
-s#<(glyphicon-[a-z-]*)\s+color=['"](\w+)['"]\/\s*>#<span style="color: \2" class="glyphicon \1"></span>#g;
 s#<(green|blue|yellow|red|orange)>#<span class="\1">#g;
 s#<\/(green|blue|yellow|red|orange)>#<\/span>#g;
 
