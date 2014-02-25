@@ -37,6 +37,6 @@ if ($rootdir eq ".") {
   $rootdir = $rootdir . "/";
   $rootdir =~ s#[^/]+#..#g;
 }
-s#{{rootdir}}#$rootdir#g;
+s#(?<!\\){{rootdir}}#$rootdir#g;
 
 print;

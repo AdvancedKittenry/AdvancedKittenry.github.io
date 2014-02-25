@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title>Tietokannan suunnittelu</title>
   <style type="text/css">code{white-space: pre;}</style>
   <!--[if lt IE 9]>
@@ -231,9 +232,8 @@ Tietokohdekuvausesimerkki
 </button>
   <div id='expandable_2' class='collapse'><section>
 
-<div class='panel panel-default'><div class='panel-body'>
-
-
+<div class="panel panel-default">
+<div class="panel-body">
 <blockquote>
 <p><strong>Tietokohde: Huoneisto</strong></p>
 <table class="table table-striped table-bordered">
@@ -265,9 +265,8 @@ Tietokohdekuvausesimerkki
 <p>Huoneisto, joka on annettu myytäväksi, mutta joka ei vielä ole katalogissa voi olla kuulumatta yhdellekään virkailijalle. Kukin huoneisto voi olla kerralla vain yhden virkailijan hoidettavana. Yhdellä virkailijalla voi kuitenkin olla hoidettavanaan useita huoneistoja. Huoneistoon voidaan liittää myös varustelukuvauksia. Huoneistoa koskevista kuvauksista kulloinkin huomioidaan vain viimeisimpänä lisätty. Yksi varustelukuvaus voi kuvata vain yhtä huoneistoa. Huoneiston varustelukuvaus voi olla huoneistoa hoitavan tai jonkun muun virkailijan kirjoittama.</p>
 </blockquote>
 <p>Katso lisätietoja <a href="../dokumentaatio-ohje.html#järjestelmän-tietosisältö">dokumentaatio-ohjeesta</a>.</p>
-</div></div>
-
-
+</div>
+</div>
 </section></div>
 
 <p>Tässä vaiheessa ei vielä tarvitse miettiä tietokantateknisiä ratkaisuja kuten autogeneroituja id-kenttiä tai viiteavaimia vaan riittää että kirjoitat pelkät kuvaukset taulujen tiedoista ja viittauksista.</p>
@@ -297,17 +296,14 @@ Vinkki: Käytä hakukonetta
 <p><em>Sarjanumerointi</em></p>
 <div class="row">
 <div class="col-md-6">
-
 <p><em>PostgreSQL</em></p>
 <pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">id</span> SERIAL <span class="kw">PRIMARY</span> <span class="kw">KEY</span></code></pre>
 </div>
 <div class="col-md-6">
-
 <p><em>MySQL</em></p>
 <pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">id</span> <span class="dt">INTEGER</span> <span class="kw">PRIMARY</span> <span class="kw">KEY</span> AUTO_INCREMENT</code></pre>
 </div>
 </div>
-
 <p>Molempien kantojen tapauksessa tälläiseen pääavaimeen viitataan seuraavasti:</p>
 <pre class="sourceCode sql"><code class="sourceCode sql">kissa_id <span class="dt">INTEGER</span> <span class="kw">REFERENCES</span> kissa(<span class="kw">id</span>)</code></pre>
 <p>Huomaa, että PostgreSQL:n tapauksessa viittaava tyyppi on aivan erinäköinen kuin siihen viittaava tyyppi. Tämä johtuu siitä, että SERIAL on PostgreSQL:ssä pelkkä lyhennemerkintä lauseelle <code>integer DEFAULT nextval('tablename_colname_seq') NOT NULL</code>, joka samalla luo erillisen sekvenssin, josta tietoja haetaan.</p>

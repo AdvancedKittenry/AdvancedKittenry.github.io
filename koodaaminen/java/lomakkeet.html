@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title>Lomakkeiden käyttö ja vastaanottaminen</title>
   <style type="text/css">code{white-space: pre;}</style>
   <!--[if lt IE 9]>
@@ -251,12 +252,10 @@ Salasana: <span class="kw">&lt;input</span><span class="ot"> type=</span><span c
 <span class="fu">naytaJSP</span>(<span class="st">&quot;login.jsp&quot;</span>, request, response);</code></pre>
 </div>
 <div class="col-md-5">
-
 <p><strong>JSP-tiedosto:</strong></p>
 <pre class="sourceCode jsp"><code class="sourceCode jsp">Käyttäjänimi: &lt;input<span class="ot"> type</span>=<span class="dt">&quot;text&quot;</span><span class="ot"> name</span>=<span class="dt">&quot;username&quot;</span><span class="ot"> value</span>=<span class="dt">&quot;</span>${kayttaja}<span class="dt">&quot;</span><span class="ot"> </span>/&gt;</code></pre>
 </div>
 </div>
-
 <p>Ensimmäinen ongelma eli virheviestien näyttäminen on niin yleinen, että sitä varten kannattaa sijoittaa oma koodinsa template-tagiin, sillä sitä tullaan oikeasti tarvitsemaan <em>lähes jokaisella sivulla</em>. Idea on samanlainen kuin käyttäjäkentän esitäyttämisessä, mutta koodi sijaitsee tag-tiedostossa:</p>
 <div class="row">
 <div class="col-md-7">
@@ -270,14 +269,12 @@ Salasana: <span class="kw">&lt;input</span><span class="ot"> type=</span><span c
 }</code></pre>
 </div>
 <div class="col-md-5">
-
 <p><strong>Tag-tiedosto:</strong></p>
 <pre class="sourceCode jsp"><code class="sourceCode jsp"><span class="kw">&lt;c:if</span><span class="ot"> test</span>=<span class="dt">&quot;</span>${virheViesti != <span class="kw">null</span>}<span class="dt">&quot;</span><span class="kw">&gt;</span>
   &lt;div<span class="ot"> class</span>=<span class="dt">&quot;alert alert-danger&quot;</span>&gt;Virhe! ${virheViesti}&lt;/div&gt;
 <span class="kw">&lt;/c:if&gt;</span></code></pre>
 </div>
 </div>
-
 <p>On hyvä idea tehdä virheviestit myös sille, että joko käyttäjää tai salasanaa ei ole syötetty ollenkaan.</p>
 <p>Lopullinen kontrollerin koodi voi olla vaikkapa tämän näköinen.</p>
 <pre class="sourceCode java"><code class="sourceCode java"><span class="kw">protected</span> <span class="dt">void</span> <span class="fu">processRequest</span>(HttpServletRequest request, HttpServletResponse response) {

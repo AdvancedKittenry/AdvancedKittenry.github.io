@@ -117,14 +117,14 @@ for my $tag (keys %tags) {
 for my $dir (keys %dirs) {
     my $dirval = $dirs{$dir};
 
-    s#{{$dir}}#$dirval#g;
+    s#(?<!\\){{$dir}}#$dirval#g;
 }
 
 for my $coursekeyword (keys %coursekeywords) {
     my $coursekeywordval = $coursekeywords{$coursekeyword};
 
-    s#{{{$coursekeyword}}}#$coursekeywordval#g;
-    s#{{$coursekeyword}}#<span class="coursekeyword $coursekeyword">$coursekeywordval</span>#g;
+    s#(?<!\\){{{$coursekeyword}}}#$coursekeywordval#g;
+    s#(?<!\\){{$coursekeyword}}#<span class="coursekeyword $coursekeyword">$coursekeywordval</span>#g;
 }
 
 #Parses include files while leaving title metadata lines beginning with % out

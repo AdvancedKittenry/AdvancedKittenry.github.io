@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title>Java ja Tomcatin käyttöönotto</title>
   <style type="text/css">code{white-space: pre;}</style>
   <!--[if lt IE 9]>
@@ -195,10 +196,10 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <p>Tomcatin saa otettua käyttöön omille tunnuksilleen kirjautumalla users-palvelimelle ja ajamalla siellä komento <code>wanna-tomcat</code></p>
 <p>Komento luo hakemiston <code>tomcat</code> ja asentaa sinne tarvittavat tiedostot tietokantasovellusten ajamiseen. Se luo myös hakemiston <code>tomcat/webapps</code>, jonne voidaan sijoittaa ajettavia Java-sovelluksia kunkin omaan hakemistoonsa.</p>
 <p><del>Lisäksi asennusskripti luo <code>webapps</code>-hakemistoon valmiiksi testiprojektin nimeltä <code>tsoha</code>.</del></p>
-<hr>
+<hr />
 <p>Asennus ei enää luokaan tsoha-esimerkkiprojektia. Sillä välin kun saamme tehtyä uuden esimerkkiprojektin, voit kopioida vanhan ohjaajan kotihakemistosta näin:</p>
 <pre><code>cp -r /home/consuegr/tomcat/webapps/tsoha ~/tomcat/webapps</code></pre>
-<hr>
+<hr />
 <p>Jotta mitään tietokantasovellusta voidaan ajaa, pitää tomcat ensin käynnistää. Tähän voi käyttää komentoa <code>start-tomcat</code>. Komento käynnistää Tomcat-palvelimen ja kertoo samalla mistä osoitteesta työsi tulee löytymään.</p>
 <p>Osoite on mallia <a href="http://t-käyttäjätunnuksesi.users.cs.helsinki.fi/">http://t-käyttäjätunnuksesi.users.cs.helsinki.fi/</a> Missä aivan ensimmäisenä osana on yliopiston käyttäätunnuksesi, jota edeltää merkkijono “t-”. Laittamalla osoitteen perään jonkin <code>webapps</code> hakemistossa olevan sovelluksen nimen, pääsee käyttämään tätä sovellusta. Esimerkiksi tsoha-sovellusta voi käyttää laittamalla osoitteen perään <code>tsoha/esim.html</code>.</p>
 <p>Tomcatin voi myös sammuttaa komennolla <code>stop-tomcat</code>. Kurssin ajan lienee hyvä pitää Tomcat:ia päällä melko jatkuvasti, että ohjaajasi pystyy testaamaan työtäsi.</p>

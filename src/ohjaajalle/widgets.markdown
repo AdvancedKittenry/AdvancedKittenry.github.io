@@ -120,7 +120,7 @@ class M {
 
 ## Demo of course instance replacements
 
-"{\{deadline1}}" turns to "{{deadline1}}".
+"\{{deadline1}}" turns to "{{deadline1}}".
 
 | Tilaisuus     | Deadline |
 |---------------|--------------------------------|

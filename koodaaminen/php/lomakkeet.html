@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title>Lomakkeiden käyttö ja vastaanottaminen</title>
   <style type="text/css">code{white-space: pre;}</style>
   <!--[if lt IE 9]>
@@ -266,14 +267,12 @@ Pidä mielessä!
 <span class="ot">));</span></code></pre>
 </div>
 <div class="col-md-7">
-
 <p><strong>Näkymä:</strong></p>
 <pre class="sourceCode php"><code class="sourceCode php">Käyttäjänimi:
 &lt;input type=&quot;text&quot; name=&quot;username&quot; 
  value=&quot;<span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$data</span>-&gt;kayttaja<span class="ot">;</span> <span class="kw">?&gt;</span>&quot; /&gt;</code></pre>
 </div>
 </div>
-
 <p>Ensimmäinen ongelma eli virheviestien näyttäminen on niin yleinen, että sitä varten kannattaa sijoittaa oma koodinsa sivupohjatiedostoon, sillä sitä tullaan oikeasti tarvitsemaan <em>lähes jokaisella sivulla</em>. Idea on samanlainen kuin käyttäjäkentän esitäyttämisessä, mutta koodi sijaitsee sivupohjassa:</p>
 <p><strong>Kontrolleri:</strong></p>
 <pre class="sourceCode php"><code class="sourceCode php"><span class="co">/* Tarkistetaan onko parametrina saatu oikeat tunnukset */</span>
