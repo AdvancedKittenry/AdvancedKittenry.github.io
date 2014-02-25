@@ -4,6 +4,7 @@ BEGIN {
     use v5.12;
     use warnings;
     use Encode;
+    use lib 'perllib/';
     use JSON;
     use File::Basename;
     undef $/;

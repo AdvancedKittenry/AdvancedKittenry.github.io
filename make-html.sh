@@ -8,8 +8,8 @@ DIRPREFIX=`dirname $1 | cut -c 5- | sed -e "s/[^\/]\+\/\?/..\//g"`
 LEVEL=$[`dirname $1 | sed -e s/[^\/]*//g | wc -m`-1]
 NAVIGATION=$TMPLDIR/navigation-level-${LEVEL}.html
 
-./filter.pl "$1" |                  \
-./inlinescripting |                 \
+lib/filter.pl "$1" |                  \
+lib/inlinescripting |                 \
 pandoc                              \
     --to html5                      \
     --section-divs                  \
@@ -22,5 +22,5 @@ pandoc                              \
     --include-after     $TMPLDIR/after.html    \
     --include-in-header $TMPLDIR/header.html   \
     --css ${DIRPREFIX}css/base.css             \
-    | ./fix-styles.pl "$TARGET"                \
+    | lib/fix-styles.pl "$TARGET"                \
     > "$TARGET"
