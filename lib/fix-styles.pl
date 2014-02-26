@@ -23,10 +23,6 @@ s#$removethis\s+<\/blockquote>\s+<\!-- end box -->##g;
 s#<\/blockquote>\s+$removethis\s+<\!-- end box -->##g;
 s#<\!-- start box -->\s+<blockquote>\s+$removethis##g;
 
-#Fix img and br tag differences made by different versions of pandoc
-s#<img ((\s*\w+=["'][^"']*["'])*\s*)>#<img \1 \/>#g;
-s#<br>#<br \/>#g;
-
 #Commenting is implemented twice: before and after the pandoc execution
 s#<comment>.*?</comment>##sg;
 s#&lt;inline-php-hack&gt;.*?&lt;/inline-php-hack&gt;\n##sg;
