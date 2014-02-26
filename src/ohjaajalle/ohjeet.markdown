@@ -8,6 +8,11 @@ Kurssisivujen muokkaamista varten on [omat ohjeensa](muokkaaminen.html).
 [arvosteluperusteet]: {{rootdir}}arvosteluperusteet.html
 [codereview]: {{rootdir}}aikataulu/codereview.html
 
+## Ohjaajien välinen yhteydenpito
+
+Jos vain suinkin irkkaat, liity kurssin ohjaajien kanavalle `#tsohaaa` 
+(Tsoha assistants asylum). 
+
 ## Aloitusluento
 
 Kurssi alkaa aloitusluennolla, jossa opiskelijoille kerrotaan 
@@ -94,6 +99,13 @@ Arvostelun antamisessa käytetään työkaluna checklist-nimikkeellä
 kulkevia tarkistuslistoja. Järjestelmä antaa opiskelijan
 tekemien asioiden perusteella viikkopisteet ja alustavia palautetekstejä.
 Pisteitä ja palautteita voi ja kannattaakin hieman kustomoida sen mukaan miltä opiskelijan työ muuten vaikuttaa.
+
+## Koodikatselmointi
+
+Kurssilla on käytössä [koodikatselmointi]({{rootdir}}aikataulu/codereview.html).
+Sen tarkoituksena on antaa opiskelijoille näkökulma muiden opiskelijoiden koodiin.
+Kaikki koodikatselmointiin liittyvä toiminta tapahtuu labtoolissa ja githubissa
+ja se arvostellaan viikkopisteiden tavoin.
 
 ## Demotilaisuus
 
