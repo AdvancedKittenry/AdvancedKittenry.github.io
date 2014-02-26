@@ -179,12 +179,15 @@
 </section>
 <section id="itse-sivujen-muokkaaminen" class="level2">
 <h2>Itse sivujen muokkaaminen</h2>
-<p>Itse sivujen muokkaamiseksi on parasta kloonata repositorio omalle koneelleen. Sivusto on kirjoitettu hieman laajennetulla markdown-syntaksilla <code>src</code>-kansiossa, ja se pitää erikseen kääntää käyttäen pandoc-nimistä dokumenttigeneraattoria ja make-ohjelmaa.</p>
+<p>Itse sivujen muokkaamiseksi on parasta kloonata repositorio omalle koneelleen. Sivusto on kirjoitettu hieman laajennetulla markdown-syntaksilla. Markdown-tiedostot sijaitsevat <code>src</code>-kansiossa, ja se pitää erikseen kääntää käyttäen pandoc-nimistä dokumenttigeneraattoria ja make-ohjelmaa.</p>
+<p>Käytetyn Markdown-kielen perussyntaksia voi tiirailla <a href="http://johnmacfarlane.net/pandoc/README.html">pandoc-dokumenttigeneraattorin sivustolta</a>.</p>
+<section id="työkalujen-asentaminen" class="level3">
+<h3>Työkalujen asentaminen</h3>
 <p>Tarvitset sivujen kääntämiseen koneen, jolle on asennettuna Haskell-kielen kirjastot ja käytettävissä ohjelmat ghc ja cabal. Lisäksi tarvitset järkevät versiot pythonista, perlistä ja make:sta.</p>
 <p>Laitoksen koneilta cabal löytyykin vakiona, ja useimmille linux-distroille sen saa asennettua helposti. Kun cabal on käytössäsi aja seuraavat komennot:</p>
 <pre><code>cabal update
 cabal install pandoc</code></pre>
-<p>Seuraa hämmentävän pitkä ohjelmien käännösputki, jonka jälkeen sivujen pitäisi generoitua komentamalla <code>make</code>.</p>
+<p>Seuraa hämmentävän pitkä ohjelmien käännösputki, jonka jälkeen sivujen pitäisi generoitua komentamalla <code>make</code>. Tällöin make kääntää kaikki <code>src</code>-hakemiston alla olevat markdown-tiedostot automaattisesti.</p>
 <section class="alert alert-info"><h3>
 Lisätietoa
 </h3>
@@ -192,15 +195,45 @@ Lisätietoa
 <p>Tekniikka on ihanaa.</p>
 </section>
 
-<section id="teknisiä-yksityiskohtia" class="level3">
-<h3>Teknisiä yksityiskohtia</h3>
-<p>Itse sivujen lähdekoodit sijaitsevat kansiossa <code>src</code>. Makefile kääntää kaikki kansioissa sijaitsevat markdown-tiedostot automaattisesti.</p>
+</section>
+<section id="kurssideadlinet-ja-muut-tärkeät-muuttujat" class="level3">
+<h3>Kurssideadlinet ja muut tärkeät muuttujat</h3>
 <p>Sivuille on viritelty erinäisillä perl-skripteillä erinäisiä lyhennemerkintöjä ja virityksiä, joista normaalin kurssiylläpidon kannalta ehkä tärkein on kurssin deadlinejen asettaminen. Kaikki kurssin kannalta olennaiset tiedonpalat on keskitetty yhteen tiedostoon <code>course_instances.json</code>, josta ne voi muokata kerralla kuntoon.</p>
 <p>JSON-tiedostossa esiteltyjä tietoja voi käyttää muodossa {{deadline1}}. Linkkejä varten on lisäksi olemassa muutamia tämänhetkistä kansiota koskevia pikamerkintöjä:</p>
-<p>{{curdir}} {{rootdir}} {{imgdir}} {{myimgdir}}</p>
-<p>Muokkausten jälkeen on usein parasta generoida koko sivusto uusiksi:</p>
+<table class="table table-striped table-bordered">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Merkintä</th>
+<th style="text-align: left;">Merkitys</th>
+<th style="text-align: left;">Arvo tässä tiedostossa</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">{{curdir}}</td>
+<td style="text-align: left;">Tämänhetkisen hakemiston nimi</td>
+<td style="text-align: left;">ohjaajalle/</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">{{rootdir}}</td>
+<td style="text-align: left;">Juurikansion polku</td>
+<td style="text-align: left;">../</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">{{imgdir}}</td>
+<td style="text-align: left;">Kuvien hakemiston polku</td>
+<td style="text-align: left;">../images/</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">{{myimgdir}}</td>
+<td style="text-align: left;">Tämänhetkisen sivun kuvahakemisto</td>
+<td style="text-align: left;">../images/ohjaajalle/</td>
+</tr>
+</tbody>
+</table>
+<p>JSON-tiedostoon kohdistuvien muokkausten jälkeen on usein parasta generoida koko sivusto uusiksi:</p>
 <pre><code>make cleanpages &amp;&amp; make</code></pre>
-<p>Samoin kannattaa tehdä mikäli tulee siirtäneeksi jotain tiedostoa, tai muokattua jotakin tiedostoa, jonka sisältöä käytetään muilta sivuilta käsin (etusivu ja kaksi sen alla olevaa aikataulusivua esim. riippuvat toisistaan). Myös uuden sivun lisäämiseen uudelleenkääntäminen on hyvä idea, sillä make ei aina havaitse kunnolla kaikkea, ja sivu saattaa jäädä pois autogeneroidussta navigaatiosta.</p>
+<p>Samoin kannattaa tehdä mikäli tulee siirtäneeksi jotain tiedostoa, tai muokattua jotakin tiedostoa, jonka sisältöä käytetään muilta sivuilta käsin (etusivu ja kaksi sen alla olevaa aikataulusivua esim. riippuvat toisistaan). Myös uuden sivun lisäämiseen jälkeen uudelleenkääntäminen on hyvä idea, sillä make ei aina havaitse kunnolla kaikkea, ja sivu saattaa jäädä pois autogeneroidussta navigaatiosta.</p>
 </section>
 <section id="navigaation-hallinta" class="level3">
 <h3>Navigaation hallinta</h3>
@@ -212,15 +245,34 @@ Lisätietoa
 </section>
 <section id="tägit" class="level3">
 <h3>Tägit</h3>
-<p>Osa sivuista on tägätty siten, että viikottaisissa ohjeissa olevat navigaatilinkkilistat löytävät ne. Tägäämien voi tehdä seuraavasti:</p>
+<p>Osa sivuista on tägätty siten, että viikottaisissa ohjeissa olevat navigaatiolinkkilistat löytävät ne. Tägäämisen voi tehdä seuraavasti:</p>
 <pre><code>&lt;!-- tags: viikko1,viikko2-usefull --&gt;</code></pre>
 </section>
 <section id="widgetit" class="level3">
 <h3>Widgetit</h3>
-<ul>
-<li>widgetit</li>
-</ul>
+<p>Näiden merkintöjen lisäksi sivuilla on muutamia widgettejä, joita käytetään HTML:ää muistuttavilla tägeillä. Näistä hyviä esimerkkejä löytyy <a href="widgets.html">widgets-sivulta</a> ja sen <a href="../src/ohjaajalle//widgets.markdown">lähdekoodista</a></p>
 </section>
+<section id="skriptaus" class="level3">
+<h3>Skriptaus</h3>
+<p>Markdown-koodin seassa on myös mahdollista ajaa erinäköisiä skriptejä kirjoittamalla ne omaan erityiseen koodiblokkiinsa:</p>
+<pre><code>~~~~ {execute=python}
+print &quot;Tittelituure&quot;
+~~~~</code></pre>
+<p>Normaalisti skriptin tulostama koodi laitetaan sellaisenaan markdown-koodin sekaan. Se on myös mahdollista tulkita plaintextina tai koodiblokkina laittamalla aaltosulkujen sisään type-attribuutti.</p>
+<pre><code>~~~~ {.html execute=bash type=block}
+# Extract-tag.pl ottaa HTML-sivusta vain tietyn tägin sisällön. 
+# Sitä käytetään HTML-koodiesimerkkien lyhentämiseen.
+./extract-tag.pl body src/ohjaajalle/html-esimerkit/tabit.html
+~~~~</code></pre>
+</section>
+</section>
+<section id="arkkitehtuurista" class="level2">
+<h2>Arkkitehtuurista</h2>
+<p>Sivujen generoinnnista ja muusta magiasta vastaava koodi on valitettavasti aika sekavaa ja koodattu turhan monella ohjelmointikielellä.</p>
+<p>Pääasiallisesti dokumenttigeneraatiosta huolehtii shell-skripti <code>make-html.sh</code>, joka ajaa unix-putkessa muutaman tägit toteuttavan skriptin, pandocin päälle rakennetun skriptituen (<code>lib/inlinescripting</code>), pandocin, ja lopulta erinäköisiä pieniä korjauksia tekevän perl-skriptin <code>lib/fix-styles.pl</code>.</p>
+<p>Ennen HTML:n generointia ajetaan navigaatiopuusta huolehtiva <code>make-navigation.sh</code>, joka tekee erillisen navigaatiopohjatiedoston kaikille kansiorakenteen tasoille. (Sivusto käyttää ainoastaan relatiivisia linkkejä ollakseen toimiva myös kovalevylle kloonattuna).</p>
+<p>Navigaationgeneroinnista vastaa ennenkaikkea python-skripti <code>make-indexes.py</code>, joka osaa luetella sivuston sivut navigaatiotagien mukaisessa järjestyksessä. Samaa skriptiä käytetään myös muutamalla sivulla erinäköisten alinavigaatioiden tuottamiseen.</p>
+<p>Kts. esim. <a href="../src/koodaaminen/index.markdown">ohjelmointiohjeistuksen pääsivun lähdekoodi</a></p>
 </section>
 </div>
 </div> 

@@ -113,7 +113,7 @@ class M {
 <expandable title="Contents of index.markdown">
 
 <box>
-<include src="index.markdown" />
+<include src="../index.markdown" />
 </box>
 
 </expandable>

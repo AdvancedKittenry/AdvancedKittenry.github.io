@@ -22,9 +22,14 @@ irc-kanavalta `#tsohaaa` IRCNetissä.
 
 Itse sivujen muokkaamiseksi on parasta kloonata
 repositorio omalle koneelleen. 
-Sivusto on kirjoitettu hieman laajennetulla markdown-syntaksilla
-`src`-kansiossa, ja se pitää erikseen kääntää käyttäen
+Sivusto on kirjoitettu hieman laajennetulla markdown-syntaksilla.
+Markdown-tiedostot sijaitsevat `src`-kansiossa, ja se pitää erikseen kääntää käyttäen
 pandoc-nimistä dokumenttigeneraattoria ja make-ohjelmaa.
+
+Käytetyn Markdown-kielen perussyntaksia voi tiirailla 
+[pandoc-dokumenttigeneraattorin sivustolta](http://johnmacfarlane.net/pandoc/README.html).
+
+### Työkalujen asentaminen
 
 Tarvitset sivujen kääntämiseen
 koneen, jolle on asennettuna Haskell-kielen kirjastot
@@ -42,6 +47,7 @@ cabal install pandoc
 
 Seuraa hämmentävän pitkä ohjelmien käännösputki, jonka jälkeen 
 sivujen pitäisi generoitua komentamalla `make`.
+Tällöin make kääntää kaikki `src`-hakemiston alla olevat markdown-tiedostot automaattisesti.
 
 <info>
 Jos sinulla on aikaisempi versio pandocista, saattaa ohjelma
@@ -53,10 +59,7 @@ kokonaan ja kaiken asentaminen uudestaan saa kaiken toimimaan.
 Tekniikka on ihanaa.
 </info>
 
-### Teknisiä yksityiskohtia
-
-Itse sivujen lähdekoodit sijaitsevat kansiossa `src`. Makefile
-kääntää kaikki kansioissa sijaitsevat markdown-tiedostot automaattisesti.
+### Kurssideadlinet ja muut tärkeät muuttujat
 
 Sivuille on viritelty erinäisillä perl-skripteillä erinäisiä
 lyhennemerkintöjä ja virityksiä, joista normaalin kurssiylläpidon
@@ -68,19 +71,22 @@ JSON-tiedostossa esiteltyjä tietoja voi käyttää muodossa \{{deadline1}}.
 Linkkejä varten on lisäksi olemassa muutamia tämänhetkistä kansiota
 koskevia pikamerkintöjä:
 
-\{{curdir}}
-\{{rootdir}}
-\{{imgdir}}
-\{{myimgdir}}
+Merkintä       Merkitys                           Arvo tässä tiedostossa
+-------------- ---------------------------------- ----------------------
+\{{curdir}}    Tämänhetkisen hakemiston nimi      {{curdir}}
+\{{rootdir}}   Juurikansion polku                 {{rootdir}}
+\{{imgdir}}    Kuvien hakemiston polku            {{imgdir}}
+\{{myimgdir}}  Tämänhetkisen sivun kuvahakemisto  {{myimgdir}}
 
-Muokkausten jälkeen on usein parasta generoida koko sivusto uusiksi:
+JSON-tiedostoon kohdistuvien
+muokkausten jälkeen on usein parasta generoida koko sivusto uusiksi:
 
 ~~~
 make cleanpages && make
 ~~~
 
 Samoin kannattaa tehdä mikäli tulee siirtäneeksi jotain tiedostoa,
-tai muokattua jotakin tiedostoa, jonka sisältöä käytetään muilta sivuilta käsin (etusivu ja kaksi sen alla olevaa aikataulusivua esim. riippuvat toisistaan). Myös uuden sivun lisäämiseen uudelleenkääntäminen on hyvä idea,
+tai muokattua jotakin tiedostoa, jonka sisältöä käytetään muilta sivuilta käsin (etusivu ja kaksi sen alla olevaa aikataulusivua esim. riippuvat toisistaan). Myös uuden sivun lisäämiseen jälkeen uudelleenkääntäminen on hyvä idea,
 sillä make ei aina havaitse kunnolla kaikkea, ja sivu saattaa
 jäädä pois autogeneroidussta navigaatiosta.
 
@@ -107,8 +113,8 @@ Jos jonkin sivun haluaa piilottaa navigaatiosta, riittää laittaa sen alkuun:
 ### Tägit
 
 Osa sivuista on tägätty siten, että viikottaisissa
-ohjeissa olevat navigaatilinkkilistat löytävät ne.
-Tägäämien voi tehdä seuraavasti:
+ohjeissa olevat navigaatiolinkkilistat löytävät ne.
+Tägäämisen voi tehdä seuraavasti:
 
 ~~~
 <!-- tags: viikko1,viikko2-usefull -->
@@ -116,4 +122,52 @@ Tägäämien voi tehdä seuraavasti:
 
 ### Widgetit
 
-* widgetit
+Näiden merkintöjen lisäksi sivuilla on muutamia widgettejä, joita käytetään HTML:ää muistuttavilla tägeillä.
+Näistä hyviä esimerkkejä löytyy 
+[widgets-sivulta](widgets.html)
+ja sen [lähdekoodista]({{rootdir}}src/{{curdir}}/widgets.markdown)
+
+### Skriptaus
+
+Markdown-koodin seassa on myös mahdollista ajaa erinäköisiä skriptejä
+kirjoittamalla ne omaan erityiseen koodiblokkiinsa:
+
+~~~~~~~~
+~~~~ {execute=python}
+print "Tittelituure"
+~~~~
+~~~~~~~~
+
+Normaalisti skriptin tulostama koodi laitetaan sellaisenaan markdown-koodin sekaan. Se on myös mahdollista tulkita plaintextina 
+tai koodiblokkina laittamalla aaltosulkujen sisään type-attribuutti.
+
+~~~~~~~~
+~~~~ {.html execute=bash type=block}
+# Extract-tag.pl ottaa HTML-sivusta vain tietyn tägin sisällön. 
+# Sitä käytetään HTML-koodiesimerkkien lyhentämiseen.
+./extract-tag.pl body src/{{curdir}}html-esimerkit/tabit.html
+~~~~
+~~~~~~~~
+
+## Arkkitehtuurista
+
+Sivujen generoinnnista ja muusta magiasta
+vastaava koodi on valitettavasti aika sekavaa ja koodattu turhan monella ohjelmointikielellä.
+
+Pääasiallisesti dokumenttigeneraatiosta huolehtii shell-skripti `make-html.sh`,
+joka ajaa unix-putkessa muutaman tägit toteuttavan skriptin, pandocin päälle
+rakennetun skriptituen (`lib/inlinescripting`), pandocin, ja lopulta erinäköisiä pieniä korjauksia tekevän perl-skriptin `lib/fix-styles.pl`.
+
+Ennen HTML:n generointia ajetaan navigaatiopuusta
+huolehtiva `make-navigation.sh`, joka tekee erillisen 
+navigaatiopohjatiedoston kaikille kansiorakenteen tasoille.
+(Sivusto käyttää ainoastaan relatiivisia linkkejä ollakseen toimiva myös kovalevylle kloonattuna).
+
+Navigaationgeneroinnista vastaa ennenkaikkea python-skripti
+`make-indexes.py`, joka osaa luetella sivuston
+sivut navigaatiotagien mukaisessa järjestyksessä.
+Samaa skriptiä käytetään myös muutamalla sivulla erinäköisten
+alinavigaatioiden tuottamiseen. 
+
+Kts. esim. 
+[ohjelmointiohjeistuksen pääsivun lähdekoodi]({{rootdir}}src/koodaaminen/index.markdown)
