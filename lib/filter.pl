@@ -37,8 +37,6 @@ BEGIN {
         vaikeustaso => "Vaikeustaso: ",
     );
 
-    my %counts;
-
     our $basedir = dirname($ARGV[0]);
     my $curdir = $basedir =~ s#^src/?##r;
     if (length($curdir) > 0) {
@@ -191,9 +189,6 @@ s{<sidebyside>}{<div class="row">}g;
 s{<column>}{<div class="col-md-6">}g;
 s{<column size=["'](\d+)["']>}{<div class="col-md-\1">}g;
 s{</(sidebyside|column)>}{</div>}g;
-
-s#<(green|blue|yellow|red|orange)>#<span class="\1">#g;
-s#<\/(green|blue|yellow|red|orange)>#<\/span>#g;
 
 #A hack to enable syntax hilighting of inline php code
 s#(~~~+)inlinephp\n#\1php\n<inline-php-hack><?php </inline-php-hack>\n#g;

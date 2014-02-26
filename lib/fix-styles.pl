@@ -25,6 +25,8 @@ s#<\!-- start box -->\s+<blockquote>\s+$removethis##g;
 
 #Commenting is implemented twice: before and after the pandoc execution
 s#<comment>.*?</comment>##sg;
+
+#Clear extra lines caused by the inline PHP parsing hack
 s#&lt;inline-php-hack&gt;.*?&lt;/inline-php-hack&gt;\n##sg;
 
 # We only do the rootdir substitution after we know better
