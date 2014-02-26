@@ -69,7 +69,7 @@ Linkkejä varten on lisäksi olemassa muutamia tämänhetkistä kansiota
 koskevia pikamerkintöjä:
 
 \{{curdir}}
-\{<!-- -->{rootdir}}
+\{{rootdir}}
 \{{imgdir}}
 \{{myimgdir}}
 

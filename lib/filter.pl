@@ -116,9 +116,16 @@ for my $tag (keys %tags) {
 
 for my $dir (keys %dirs) {
     my $dirval = $dirs{$dir};
-
+    
+    # Make dir variables work unless escaped with \
     s#(?<!\\){{$dir}}#$dirval#g;
 }
+
+# Rootdir is handled later on. 
+# If it is for some reason escaped with a slash,
+# we need to double the escaping because the slash
+# goes through pandoc which clears escapes on its own.
+s#(\\{{rootdir}})#\\$1#g;
 
 for my $coursekeyword (keys %coursekeywords) {
     my $coursekeywordval = $coursekeywords{$coursekeyword};

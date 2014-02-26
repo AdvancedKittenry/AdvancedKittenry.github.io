@@ -1,6 +1,10 @@
 #!/usr/bin/perl 
 
-use File::Basename;
+BEGIN {
+    use v5.12;
+    use warnings;
+    use File::Basename;
+}
 
 my $path = $ARGV[0];
 
@@ -37,6 +41,9 @@ if ($rootdir eq ".") {
   $rootdir = $rootdir . "/";
   $rootdir =~ s#[^/]+#..#g;
 }
+
+# Make rootdir into rootdir if it does not have a slash in front of it
 s#(?<!\\){{rootdir}}#$rootdir#g;
+s#\\{{rootdir}}#{{rootdir}}#g;
 
 print;

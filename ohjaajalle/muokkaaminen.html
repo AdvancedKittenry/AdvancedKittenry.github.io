@@ -196,8 +196,8 @@ Lisätietoa
 <h3>Teknisiä yksityiskohtia</h3>
 <p>Itse sivujen lähdekoodit sijaitsevat kansiossa <code>src</code>. Makefile kääntää kaikki kansioissa sijaitsevat markdown-tiedostot automaattisesti.</p>
 <p>Sivuille on viritelty erinäisillä perl-skripteillä erinäisiä lyhennemerkintöjä ja virityksiä, joista normaalin kurssiylläpidon kannalta ehkä tärkein on kurssin deadlinejen asettaminen. Kaikki kurssin kannalta olennaiset tiedonpalat on keskitetty yhteen tiedostoon <code>course_instances.json</code>, josta ne voi muokata kerralla kuntoon.</p>
-<p>JSON-tiedostossa esiteltyjä tietoja voi käyttää muodossa {{deadline1}}. Linkkejä varten on lisäksi olemassa muutamia tämänhetkistä kansiota koskevia pikamerkintöjä</p>
-<p>{{curdir}} {<!-- -->{rootdir}} {{imgdir}} {{myimgdir}}</p>
+<p>JSON-tiedostossa esiteltyjä tietoja voi käyttää muodossa {{deadline1}}. Linkkejä varten on lisäksi olemassa muutamia tämänhetkistä kansiota koskevia pikamerkintöjä:</p>
+<p>{{curdir}} {{rootdir}} {{imgdir}} {{myimgdir}}</p>
 <p>Muokkausten jälkeen on usein parasta generoida koko sivusto uusiksi:</p>
 <pre><code>make cleanpages &amp;&amp; make</code></pre>
 <p>Samoin kannattaa tehdä mikäli tulee siirtäneeksi jotain tiedostoa, tai muokattua jotakin tiedostoa, jonka sisältöä käytetään muilta sivuilta käsin (etusivu ja kaksi sen alla olevaa aikataulusivua esim. riippuvat toisistaan). Myös uuden sivun lisäämiseen uudelleenkääntäminen on hyvä idea, sillä make ei aina havaitse kunnolla kaikkea, ja sivu saattaa jäädä pois autogeneroidussta navigaatiosta.</p>
