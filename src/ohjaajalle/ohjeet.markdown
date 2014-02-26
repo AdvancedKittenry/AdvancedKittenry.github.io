@@ -2,6 +2,7 @@
 <!-- hidden! -->
 
 Sivujen sisällöstä osa vapaasti mukailtu [vuoden 2006 ohjeesta](http://www.cs.helsinki.fi/u/laine/tikas/ohjaus.html).
+Kurssisivujen muokkaamista varten on [omat ohjeensa](muokkaaminen.html).
 
 [etusivu]: {{rootdir}}index.html
 [arvosteluperusteet]: {{rootdir}}arvosteluperusteet.html
