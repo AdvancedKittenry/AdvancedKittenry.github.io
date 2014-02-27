@@ -93,10 +93,10 @@ class M {
 }
 ~~~~
 
-~~~~ {execute="ls /proc/self" type="code"}
+~~~~ {execute="seq 10" type="code"}
 ~~~~
 
-~~~~ {execute="ls /proc/self" type="plain"}
+~~~~ {execute="seq 10" type="plain"}
 ~~~~
 
 </expandable>
