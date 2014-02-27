@@ -29,6 +29,9 @@ s#<comment>.*?</comment>##sg;
 #Clear extra lines caused by the inline PHP parsing hack
 s#&lt;inline-php-hack&gt;.*?&lt;/inline-php-hack&gt;\n##sg;
 
+#Random hack
+s#<\/section>[ \n]*<\/section>#<\/section>\n<\/section>#sg;
+
 # We only do the rootdir substitution after we know better
 # that is, after any including is done.
 # This is to take into account possible includes in other directories
