@@ -6,7 +6,7 @@ Kurssisivujen muokkaamista varten on [omat ohjeensa](muokkaaminen.html).
 
 [etusivu]: {{rootdir}}index.html
 [arvosteluperusteet]: {{rootdir}}arvosteluperusteet.html
-[codereview]: {{rootdir}}aikataulu/codereview.html
+[codereview]: {{rootdir}}aikataulu/koodikatselmointi.html
 
 ## Ohjaajien välinen yhteydenpito
 

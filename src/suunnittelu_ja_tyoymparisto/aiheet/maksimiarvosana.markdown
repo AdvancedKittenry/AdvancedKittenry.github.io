@@ -2,7 +2,7 @@
 
 ### Arvosanamaksimi
 
-Kullekin aiheelle on määritelty maksimiarvosana, joka kuvaa karkeasti työn laajuutta.
+Kaikille aiheille määritetään maksimiarvosana, joka kuvaa karkeasti työn laajuutta.
 Arvosanamaksimiin vaikuttaa neljä kriteeriä, joista jokaisen
 pitää täyttyä vitosen arvosanamaksimia varten:
 

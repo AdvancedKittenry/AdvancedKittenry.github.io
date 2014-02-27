@@ -2,18 +2,34 @@
 <!-- order: 1 -->
 <!-- tags: viikko1 -->
 
-Ohessa olevasta listasta löydät tietokantasovelluksen valmiit aihe-ehdotukset
-vaikeusasteineen ja arvosanamaksimeineen. Vaikeusasteet ovat suuntaa-antavia,
-todellinen työn laajuus riippuu myös siitä mitä ohjaajan kanssa sovitaan.
+Ensiksi kurssilla on tietenkin valittava aihe. 
+Voit keksiä joko oman, tai valita valmiista aiheista.
 
 <include src="maksimiarvosana.markdown" />
 
 ### Oma aihe
 
-Myös omaa aihetta saa ehdottaa tai toteuttaa aihe-ehdotuksesta oman variaationsa.
-Tällaisesta on sovittava aina erikseen ohjaajan kanssa, mutta 
-kunhan laajuus on sopiva, omalle aiheelle ei ole yleensä mitään estettä.
+Jos haluat tehdä työn itse keksimästäsi aiheesta ja työ täyttää kurssille
+asetettavat vaatimukset (tietokanta jossa noin 4-7 taulua, yksinkertainen
+käyttöliittymä, järkevä maksimiarvosana), voit toteuttaa työn omalla aiheellasi.
+Omasta aiheesta täytyy laatia aihekuvaus valmiiden aiheiden tapaan.
+Voit myös toteuttaa valmiista aihe-ehdotuksesta oman variaatiosi.
+
+Hyviä aiheideoita voit saada vaikkapa omista harrasteista ja kiinnostuksen kohteista.
+Kurssilla on vuosien saatossa toteutettu mm. kaikennäköisiä roolipelitietokantoja,
+lintutietokanta, bussinbongaustietokanta, käärmelainaamo ja haalarimerkkigalleria.
+
+Omasta aiheesta on sovittava ohjaajan kanssa, että varmistetaan aiheen sopiva laajuus, mutta 
+kunhan laajuus on sopiva, saa tsohan tehdä käytännössä mistä itse parhaaksi katsoo.
 Ota oma aiheesi esille mielellään jo heti aloitusluennon jälkeen.
+
+### Valmiit aiheet
+
+Jos et keksi omaa aihetta voit myös valita jonkin valmiin aiheen.
+
+Ohessa olevasta listasta löydät tietokantasovelluksen valmiit aihe-ehdotukset
+vaikeusasteineen ja arvosanamaksimeineen. Vaikeusasteet ovat suuntaa-antavia,
+todellinen työn laajuus riippuu myös siitä mitä ohjaajan kanssa sovitaan.
 
 <next>
 Kun olet valinnut aiheesi, valitse [ohjelmointikieli](../ohjelmointikielet.html), jota haluat käyttää.
