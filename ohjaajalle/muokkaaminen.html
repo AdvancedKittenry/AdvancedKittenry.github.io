@@ -179,20 +179,43 @@
 </section>
 <section id="itse-sivujen-muokkaaminen" class="level2">
 <h2>Itse sivujen muokkaaminen</h2>
-<p>Itse sivujen muokkaamiseksi on parasta kloonata repositorio omalle koneelleen. Sivusto on kirjoitettu hieman laajennetulla markdown-syntaksilla. Markdown-tiedostot sijaitsevat <code>src</code>-kansiossa, ja se pitää erikseen kääntää käyttäen pandoc-nimistä dokumenttigeneraattoria ja make-ohjelmaa.</p>
-<p>Käytetyn Markdown-kielen perussyntaksia voi tiirailla <a href="http://johnmacfarlane.net/pandoc/README.html">pandoc-dokumenttigeneraattorin sivustolta</a>.</p>
+<p>Itse sivujen muokkaamiseksi on parasta kloonata repositorio omalle koneelleen. Sivusto on kirjoitettu hieman laajennetulla markdown-syntaksilla. Markdown-tiedostot sijaitsevat <code>src</code>-kansiossa, ja se pitää erikseen kääntää käyttäen Pandoc-nimistä dokumenttigeneraattoria ja make-ohjelmaa.</p>
+<p>Käytetyn Markdown-kielen perussyntaksia voi tiirailla <a href="http://johnmacfarlane.net/pandoc/README.html">Pandoc-dokumenttigeneraattorin sivustolta</a>.</p>
 <section id="työkalujen-asentaminen" class="level3">
 <h3>Työkalujen asentaminen</h3>
 <p>Tarvitset sivujen kääntämiseen koneen, jolle on asennettuna Haskell-kielen kirjastot ja käytettävissä ohjelmat ghc ja cabal. Lisäksi tarvitset järkevät versiot pythonista, perlistä ja make:sta.</p>
-<p>Laitoksen koneilta cabal löytyykin vakiona, ja useimmille linux-distroille sen saa asennettua helposti. Kun cabal on käytössäsi aja seuraavat komennot:</p>
+<p>Laitoksen koneilta nämä kaikki löytyvät vakiona, ja useimmille linux-distroille ne saa asennettua helposti.</p>
+<p>Kun peruskirjatot ovat käytössä, pitää vielä asentaa dokumenttigeneraattori Pandoc. Sinulla on tähän kaksi vaihtoehtoa:</p>
+<ul>
+<li>Voit asentaa Pandocin cabal-ohjelmalla, joka kääntää sen sinulle. Tähän menee n. vartti.</li>
+<li>Voit ladata kaksi valmiiksikäännettyä Pandoc-binääriä ja laittaa ne sopiviin hakemistoihin.</li>
+</ul>
+<section id="cabal-asennus" class="level4">
+<h4>Cabal-asennus</h4>
+<p>Kun cabal on käytössäsi aja seuraavat komennot:</p>
 <pre><code>cabal update
 cabal install pandoc</code></pre>
-<p>Seuraa hämmentävän pitkä ohjelmien käännösputki, jonka jälkeen sivujen pitäisi generoitua komentamalla <code>make</code>. Tällöin make kääntää kaikki <code>src</code>-hakemiston alla olevat markdown-tiedostot automaattisesti.</p>
+<p>Seuraa n. puolikkaan vartin pituinen ohjelmien käännösputki.</p>
+</section>
+<section id="binääriasennus" class="level4">
+<h4>Binääriasennus</h4>
+<p>Voit halutessasi myös kokeilla itse melkillä ja omalla koneella kääntämiäni <a href="http://www.cs.helsinki.fi/u/consuegr/pandoc/">binäärejä</a>. Säästät kääntämisen vaivan. 64-bittinen versio toimii esim. melkinpaadella eronomaisesti. (Melkki on jostain syystä kapinallinen. Viimeksi koettaessani make ei toiminut melkillä kovin hyvin.) Joudut lisäksi lataamaan ja sijoittamaan repositoriosi <code>lib</code>-kansioon <code>inlinescripting</code>-tiedoston, jota skriptituki toimisi kunnolla, sillä muuten make yrittää kääntää sen puolestasi ja tämä ei toimi ilman Pandocin lähdekoodeja.</p>
+<p>Lopuksi varmista, että Pandoc löytyy PATH-muuttujastasi. Sen voi tehdä esim. laittamalla .bashrc:hen seuraavan rivin:</p>
+<pre><code>export PATH=&quot;$HOME/.cabal/bin:$PATH&quot;</code></pre>
+</section>
+<section id="lopputoimet" class="level4">
+<h4>Lopputoimet</h4>
+<p>Pandocin asentamisen jälkeen sivujen pitäisi generoitua komentamalla <code>make</code>. Tällöin make kääntää kaikki <code>src</code>-hakemiston alla olevat markdown-tiedostot automaattisesti.</p>
+<p>Kannattaa varmistaa, että ohjelmat tuottavat suurinpiirtein samannäköistä jälkeä kuin mitä gitissä on ajamalla ensin kokeeksi:</p>
+<pre><code>make cleanpages
+make
+git diff</code></pre>
 <section class="alert alert-info"><h3>
 Lisätietoa
 </h3>
-<p>Jos sinulla on aikaisempi versio pandocista, saattaa ohjelma tuottaa hieman erilaista HTML:ää. Yleensä on hyvä idea päivittää ohjelma. Tämä voi tosin olla joskus hyvin hankalaa, ja joskus vasta kotihakemistossa olevien kansioiden .ghc ja .cabal poistaminen kokonaan ja kaiken asentaminen uudestaan saa kaiken toimimaan.</p>
+<p>Jos sinulla on aikaisempi versio Pandocista, saattaa ohjelma tuottaa hieman erilaista HTML:ää. Yleensä on hyvä idea päivittää ohjelma. Tämä voi tosin olla joskus hyvin hankalaa, ja joskus vasta kotihakemistossa olevien kansioiden .ghc ja .cabal poistaminen kokonaan ja kaiken asentaminen uudestaan saa kaiken toimimaan.</p>
 <p>Tekniikka on ihanaa.</p>
+</section>
 </section>
 </section>
 <section id="kurssideadlinet-ja-muut-tärkeät-muuttujat" class="level3">
@@ -268,7 +291,7 @@ print &quot;Tittelituure&quot;
 <section id="arkkitehtuurista" class="level2">
 <h2>Arkkitehtuurista</h2>
 <p>Sivujen generoinnnista ja muusta magiasta vastaava koodi on valitettavasti aika sekavaa ja koodattu turhan monella ohjelmointikielellä.</p>
-<p>Pääasiallisesti dokumenttigeneraatiosta huolehtii shell-skripti <code>make-html.sh</code>, joka ajaa unix-putkessa muutaman tägit toteuttavan skriptin, pandocin päälle rakennetun skriptituen (<code>lib/inlinescripting</code>), pandocin, ja lopulta erinäköisiä pieniä korjauksia tekevän perl-skriptin <code>lib/fix-styles.pl</code>.</p>
+<p>Pääasiallisesti dokumenttigeneraatiosta huolehtii shell-skripti <code>make-html.sh</code>, joka ajaa unix-putkessa muutaman tägit toteuttavan skriptin, Pandocin päälle rakennetun skriptituen (<code>lib/inlinescripting</code>), Pandocin, ja lopulta erinäköisiä pieniä korjauksia tekevän perl-skriptin <code>lib/fix-styles.pl</code>.</p>
 <p>Ennen HTML:n generointia ajetaan navigaatiopuusta huolehtiva <code>make-navigation.sh</code>, joka tekee erillisen navigaatiopohjatiedoston kaikille kansiorakenteen tasoille. (Sivusto käyttää ainoastaan relatiivisia linkkejä ollakseen toimiva myös kovalevylle kloonattuna).</p>
 <p>Navigaationgeneroinnista vastaa ennenkaikkea python-skripti <code>make-indexes.py</code>, joka osaa luetella sivuston sivut navigaatiotagien mukaisessa järjestyksessä. Samaa skriptiä käytetään myös muutamalla sivulla erinäköisten alinavigaatioiden tuottamiseen.</p>
 <p>Kts. esim. <a href="../src/koodaaminen/index.markdown">ohjelmointiohjeistuksen pääsivun lähdekoodi</a></p>

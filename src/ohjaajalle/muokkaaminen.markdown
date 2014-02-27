@@ -24,10 +24,10 @@ Itse sivujen muokkaamiseksi on parasta kloonata
 repositorio omalle koneelleen. 
 Sivusto on kirjoitettu hieman laajennetulla markdown-syntaksilla.
 Markdown-tiedostot sijaitsevat `src`-kansiossa, ja se pitää erikseen kääntää käyttäen
-pandoc-nimistä dokumenttigeneraattoria ja make-ohjelmaa.
+Pandoc-nimistä dokumenttigeneraattoria ja make-ohjelmaa.
 
 Käytetyn Markdown-kielen perussyntaksia voi tiirailla 
-[pandoc-dokumenttigeneraattorin sivustolta](http://johnmacfarlane.net/pandoc/README.html).
+[Pandoc-dokumenttigeneraattorin sivustolta](http://johnmacfarlane.net/pandoc/README.html).
 
 ### Työkalujen asentaminen
 
@@ -36,8 +36,17 @@ koneen, jolle on asennettuna Haskell-kielen kirjastot
 ja käytettävissä ohjelmat ghc ja cabal. 
 Lisäksi tarvitset järkevät versiot pythonista, perlistä ja make:sta.
 
-Laitoksen koneilta cabal löytyykin vakiona, ja useimmille 
-linux-distroille sen saa asennettua helposti.
+Laitoksen koneilta nämä kaikki löytyvät vakiona, ja useimmille 
+linux-distroille ne saa asennettua helposti.
+
+Kun peruskirjatot ovat käytössä, pitää vielä asentaa dokumenttigeneraattori Pandoc.
+Sinulla on tähän kaksi vaihtoehtoa:
+
+* Voit asentaa Pandocin cabal-ohjelmalla, joka kääntää sen sinulle. Tähän menee n. vartti.
+* Voit ladata kaksi valmiiksikäännettyä Pandoc-binääriä ja laittaa ne sopiviin hakemistoihin.
+
+#### Cabal-asennus
+
 Kun cabal on käytössäsi aja seuraavat komennot:
 
 ~~~
@@ -45,12 +54,42 @@ cabal update
 cabal install pandoc
 ~~~
 
-Seuraa hämmentävän pitkä ohjelmien käännösputki, jonka jälkeen 
+Seuraa n. puolikkaan vartin pituinen ohjelmien käännösputki.
+
+#### Binääriasennus
+
+Voit halutessasi myös kokeilla itse melkillä ja omalla koneella kääntämiäni
+[binäärejä](http://www.cs.helsinki.fi/u/consuegr/pandoc/).
+Säästät kääntämisen vaivan. 64-bittinen versio toimii esim. melkinpaadella eronomaisesti. 
+(Melkki on jostain syystä kapinallinen. Viimeksi koettaessani make ei toiminut melkillä kovin hyvin.)
+Joudut lisäksi lataamaan ja sijoittamaan repositoriosi `lib`-kansioon `inlinescripting`-tiedoston, 
+jota skriptituki toimisi kunnolla, sillä muuten make yrittää kääntää sen puolestasi ja 
+tämä ei toimi ilman Pandocin lähdekoodeja.
+
+Lopuksi varmista, että Pandoc löytyy PATH-muuttujastasi. 
+Sen voi tehdä esim. laittamalla .bashrc:hen seuraavan rivin: 
+
+~~~
+export PATH="$HOME/.cabal/bin:$PATH"
+~~~
+
+#### Lopputoimet
+
+Pandocin asentamisen jälkeen 
 sivujen pitäisi generoitua komentamalla `make`.
 Tällöin make kääntää kaikki `src`-hakemiston alla olevat markdown-tiedostot automaattisesti.
 
+Kannattaa varmistaa, että ohjelmat tuottavat suurinpiirtein samannäköistä jälkeä kuin 
+mitä gitissä on ajamalla ensin kokeeksi:
+
+~~~
+make cleanpages
+make
+git diff
+~~~
+
 <info>
-Jos sinulla on aikaisempi versio pandocista, saattaa ohjelma
+Jos sinulla on aikaisempi versio Pandocista, saattaa ohjelma
 tuottaa hieman erilaista HTML:ää. Yleensä on hyvä idea päivittää
 ohjelma. Tämä voi tosin olla joskus hyvin hankalaa, ja joskus 
 vasta kotihakemistossa olevien kansioiden .ghc ja .cabal poistaminen 
@@ -155,8 +194,8 @@ Sivujen generoinnnista ja muusta magiasta
 vastaava koodi on valitettavasti aika sekavaa ja koodattu turhan monella ohjelmointikielellä.
 
 Pääasiallisesti dokumenttigeneraatiosta huolehtii shell-skripti `make-html.sh`,
-joka ajaa unix-putkessa muutaman tägit toteuttavan skriptin, pandocin päälle
-rakennetun skriptituen (`lib/inlinescripting`), pandocin, ja lopulta erinäköisiä pieniä korjauksia tekevän perl-skriptin `lib/fix-styles.pl`.
+joka ajaa unix-putkessa muutaman tägit toteuttavan skriptin, Pandocin päälle
+rakennetun skriptituen (`lib/inlinescripting`), Pandocin, ja lopulta erinäköisiä pieniä korjauksia tekevän perl-skriptin `lib/fix-styles.pl`.
 
 Ennen HTML:n generointia ajetaan navigaatiopuusta
 huolehtiva `make-navigation.sh`, joka tekee erillisen 
