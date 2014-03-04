@@ -199,7 +199,7 @@ cabal install pandoc</code></pre>
 </section>
 <section id="binääriasennus" class="level4">
 <h4>Binääriasennus</h4>
-<p>Voit halutessasi myös kokeilla itse melkillä ja omalla koneella kääntämiäni <a href="http://www.cs.helsinki.fi/u/consuegr/pandoc/">binäärejä</a>. Säästät kääntämisen vaivan. 64-bittinen versio toimii esim. melkinpaadella eronomaisesti. (Melkki on jostain syystä kapinallinen. Viimeksi koettaessani make ei toiminut melkillä kovin hyvin.) Joudut lisäksi lataamaan ja sijoittamaan repositoriosi <code>lib</code>-kansioon <code>inlinescripting</code>-tiedoston, jota skriptituki toimisi kunnolla, sillä muuten make yrittää kääntää sen puolestasi ja tämä ei toimi ilman Pandocin lähdekoodeja.</p>
+<p>Voit halutessasi myös kokeilla itse melkillä ja omalla koneella kääntämiäni <a href="http://www.cs.helsinki.fi/u/consuegr/pandoc/">binäärejä</a>. Säästät kääntämisen vaivan. 64-bittinen versio toimii esim. melkinpaadella eronomaisesti. (Melkki on jostain syystä kapinallinen. Viimeksi koettaessani make ei toiminut melkillä kovin hyvin.) Joudut lisäksi lataamaan ja sijoittamaan repositoriosi <code>lib</code>-kansioon <code>generatedoc</code>-tiedoston, jotta skriptituki toimisi kunnolla, sillä muuten make yrittää kääntää sen puolestasi ja tämä ei toimi ilman Pandocin lähdekoodeja.</p>
 <p>Lopuksi varmista, että Pandoc löytyy PATH-muuttujastasi. Sen voi tehdä esim. laittamalla .bashrc:hen seuraavan rivin:</p>
 <pre><code>export PATH=&quot;$HOME/.cabal/bin:$PATH&quot;</code></pre>
 </section>

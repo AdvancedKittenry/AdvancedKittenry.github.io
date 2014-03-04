@@ -62,8 +62,8 @@ Voit halutessasi myös kokeilla itse melkillä ja omalla koneella kääntämiän
 [binäärejä](http://www.cs.helsinki.fi/u/consuegr/pandoc/).
 Säästät kääntämisen vaivan. 64-bittinen versio toimii esim. melkinpaadella eronomaisesti. 
 (Melkki on jostain syystä kapinallinen. Viimeksi koettaessani make ei toiminut melkillä kovin hyvin.)
-Joudut lisäksi lataamaan ja sijoittamaan repositoriosi `lib`-kansioon `inlinescripting`-tiedoston, 
-jota skriptituki toimisi kunnolla, sillä muuten make yrittää kääntää sen puolestasi ja 
+Joudut lisäksi lataamaan ja sijoittamaan repositoriosi `lib`-kansioon `generatedoc`-tiedoston, 
+jotta skriptituki toimisi kunnolla, sillä muuten make yrittää kääntää sen puolestasi ja 
 tämä ei toimi ilman Pandocin lähdekoodeja.
 
 Lopuksi varmista, että Pandoc löytyy PATH-muuttujastasi. 
