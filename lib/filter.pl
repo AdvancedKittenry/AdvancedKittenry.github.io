@@ -157,6 +157,8 @@ s{<expandable title=['"]([^'"]*)['"]>} {
   "<button type='button' class='btn-link expandable collapsed' data-toggle='collapse' data-target='#expandable_$expandableCount'>$1</button>
   <div id='expandable_$expandableCount' class='collapse'><section>$startbox";
   }esg;
+s{<box>}{<div class='panel panel-default'><div class='panel-body'>\n}g;
+s{</box>}{\n</div></div>}g;
 s{<box type=['"]([^'"]*)['"]>}{<div class='panel panel-\1'><div class='panel-body'>\n}g;
 s#<\/(collapsible|expandable)>#$endbox</section></div>#g;
 
@@ -182,8 +184,6 @@ s{(.*?\n)}{
 s#<\!-- do not end box -->#<!-- end box -->#g;
 s#<\!-- do not start box -->#<!-- start box -->#g;
 
-s{<box>}{<div class='panel panel-default'><div class='panel-body'>\n}g;
-s{</box>}{\n</div></div>}g;
 s{<sidebyside>}{<div class="row">}g;
 
 s{<column>}{<div class="col-md-6">}g;

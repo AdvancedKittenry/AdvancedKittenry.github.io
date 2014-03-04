@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html$if(lang)$ lang="$lang$"$endif$>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+$for(author-meta)$
+  <meta name="author" content="$author-meta$">
+$endfor$
+$if(date-meta)$
+  <meta name="dcterms.date" content="$date-meta$">
+$endif$
+  <title>$if(title-prefix)$$title-prefix$ - $endif$$pagetitle$</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+$if(quotes)$
+  <style type="text/css">q { quotes: "“" "”" "‘" "’"; }</style>
+$endif$
+$if(highlighting-css)$
+  <style type="text/css">
+$highlighting-css$
+  </style>
+$endif$
+$for(css)$
+  <link rel="stylesheet" href="$css$">
+$endfor$
+$if(math)$
+  $math$
+$endif$
+$for(header-includes)$
+  $header-includes$
+$endfor$
+  <link rel="stylesheet" href="{{rootdir}}css/base.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <script src="{{rootdir}}javascript/jquery.min.js"></script>
+  <script src="{{rootdir}}javascript/bootstrap.js"></script>
+  <script src="{{rootdir}}javascript/jquery.treeview.js"></script>
+  <script src="{{rootdir}}javascript/jquery.scrollTo.js"></script>
+  <script src="{{rootdir}}javascript/jquery.nav.js"></script>
+  <script src="{{rootdir}}javascript/navi.js"></script>
+</head>
+<body>
+<div class="titlebar">
+  <div class="container">
+    <div class="row">
+      <h1 class="col-md-6 col-md-offset-3">Advanced Kittenry - Tietokantasovellusohjeet</h1>
+    </div>
+  </div>
+</div>
+<div class="container">
+<div class="row">
+<div class="navcontainer col-md-3">
+$navigation$
+</div>
+<div class="col-md-6" id="content">
+$for(include-before)$
+$include-before$
+$endfor$
+$if(title)$
+<header>
+<h1 class="title">$title$</h1>
+$if(subtitle)$
+<h1 class="subtitle">$subtitle$</h1>
+$endif$
+$for(author)$
+<h2 class="author">$author$</h2>
+$endfor$
+$if(date)$
+<h3 class="date">$date$</h3>
+$endif$
+</header>
+$endif$
+$if(toc)$
+<nav id="$idprefix$TOC">
+$toc$
+</nav>
+$endif$
+$body$
+$for(include-after)$
+$include-after$
+$endfor$
+</div>
+</div> 
+</div> 
+<footer>
+  <a href="{{rootdir}}sivukartta.html">Sivukartta</a> - 
+  <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">AdvancedKittenry</span> 
+  by
+  <a xmlns:cc="http://creativecommons.org/ns#" href="http://advancedkittenry.github.io/credits.html" property="cc:attributionName" rel="cc:attributionURL">David Consuegra and others</a>
+  is licensed under a 
+  <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.
+  <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">
+    <img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png" />
+  </a>
+</footer>
+</body>
+</html>

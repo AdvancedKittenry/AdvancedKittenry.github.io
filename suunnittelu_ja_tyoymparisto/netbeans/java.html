@@ -186,7 +186,8 @@
 <p>Tässä vaiheessa NetBeans haluaa tietää mihin Tomcat on asennettuna, joten sinun pitää ladat se. Tomcat 6 löytyy sivuilta <a href="http://tomcat.apache.org/download-60.cgi">http://tomcat.apache.org/download-60.cgi</a> löytyvän Binary Distributions-kohdan “Core” alta. Sekä zip että tar.gz-pakkaus käy hyvin.</p>
 <p>Kun olet ladannut tomcatin, luo ensiksi palvelinta varten oma kansio “palvelimet”, jonka jälkeen ladattu tomcat-paketti puretaan kansioon. Nyt sinulla on kansiossa ~/palvelimet/apache-tomcat-xxx asennettuna tomcatin xxx-versio. Oletamme tästä eteenpäin, että versio on 6.0.32. Muuta vielä palvelimen käynnistys- ja sammutusskriptit siten, että niitä voidaan käyttää. Käynnistysskriptit löytyvät bin-kansiosta, ja ovat .sh-päätteisiä (.bat-päätteisiä Windows-ympäristöissä).</p>
 <pre><code>~$ cd palvelimet/apache-tomcat-6.0.32/bin
-~/palvelimet/apache-tomcat-6.0.32/bin$ chmod 700 *.sh</code></pre>
+~/palvelimet/apache-tomcat-6.0.32/bin$ chmod 700 *.sh
+</code></pre>
 <p>Hienoa! Nyt Tomcatin pitäisi olla käyttövalmis. Lisätään se NetBeansiin! Tomcat-asetuksissa voit asettaa “manager”-roolin käyttäjätunnukseksi ja salasanaksi esimerkiksi “manager”.</p>
 <p>NetBeans saattaa tässä vaiheessa pyytää sinulta Gnomen avainnipun salasanaa, jos et saa avainnippua toimimaan, katso kolmas ohjelaatikko.</p>
 <figure>

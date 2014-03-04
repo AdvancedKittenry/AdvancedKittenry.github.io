@@ -1,24 +1,47 @@
 -- includes.hs
 import Text.Pandoc
 import Text.Pandoc.Options
+import Text.Pandoc.Shared ( err )
+import Text.Highlighting.Kate ( languages, Style, tango, pygments,
+         espresso, zenburn, kate, haddock, monochrome )
 import System.Process
 --import Data.Set
 import GHC.IOBase ( ioException, IOException(..), IOErrorType(..) )
 import qualified Control.Exception as C
 import System.IO
 import System.IO.Error
+import System.Environment ( getArgs )
 import System.Exit  ( ExitCode(..) )
 import Control.Concurrent
 import Control.Monad
+import qualified Text.Pandoc.UTF8 as UTF8
 
-tmpl = unlines [
-  "$if(titleblock)$$titleblock$",
-  "$endif$$for(header-includes)$$header-includes$",
-  "$endfor$$for(include-before)$$include-before$",
-  "$endfor$$if(toc)$$toc$",
-  "$endif$$body$$for(include-after)$",
-  "$include-after$$endfor$"
-  ]
+
+main :: IO ()
+main = do
+         args <- liftM (map UTF8.decodeArg) getArgs
+         unless (length args == 1) $ err 2 "Usage: generatedoc navigationfile"
+
+         let navFile = head args
+         nav <- UTF8.readFile navFile
+
+         src <- getContents
+         let odoc = readMarkdown def{
+                          readerStandalone = True
+                        , readerSmart = True
+                        } src
+         doc <- bottomUpM doInclude odoc
+         tmpl <- UTF8.readFile "lib/template.html5"
+
+         putStrLn $ writeHtmlString def {
+                       writerStandalone  = True
+                     , writerVariables  = [("navigation", nav)]
+                     , writerTemplate    = tmpl
+                     , writerSectionDivs = True
+                     , writerHtml5       = True
+                     , writerHighlight        = True
+                     , writerHighlightStyle   = pygments
+                    } doc
 
 doInclude :: [Block] -> IO [Block]
 doInclude (cb@(CodeBlock (id, classes, namevals) contents):xs) =
@@ -47,15 +70,6 @@ doInclude (cb@(CodeBlock (id, classes, namevals) contents):xs) =
 doInclude (x:xs) =do rst <- doInclude xs
                      return (x:rst)
 doInclude [] = return []
-
-main :: IO ()
-main = getContents >>= bottomUpM doInclude . readMarkdown def{
-                          readerStandalone = True
-                        } 
-                   >>= putStrLn . writeMarkdown def {
-                          writerStandalone = True
-                        , writerTemplate = tmpl
-                        }
 
 readProcess 
     :: String                   -- ^ command to run

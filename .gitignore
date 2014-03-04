@@ -1,6 +1,6 @@
 *.swp
 *.swo
-inlinescripting
-inlinescripting.hi
-inlinescripting.o
+generatedoc
+generatedoc.hi
+generatedoc.o
 src/templates/navigation*
