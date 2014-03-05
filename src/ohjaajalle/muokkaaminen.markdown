@@ -20,8 +20,6 @@ irc-kanavalta `#tsohaaa` IRCNetissä.
 
 ## Itse sivujen muokkaaminen
 
-Itse sivujen muokkaamiseksi on parasta kloonata
-repositorio omalle koneelleen. 
 Sivusto on kirjoitettu hieman laajennetulla markdown-syntaksilla.
 Markdown-tiedostot sijaitsevat `src`-kansiossa, ja se pitää erikseen kääntää käyttäen
 Pandoc-nimistä dokumenttigeneraattoria ja make-ohjelmaa.
@@ -29,7 +27,17 @@ Pandoc-nimistä dokumenttigeneraattoria ja make-ohjelmaa.
 Käytetyn Markdown-kielen perussyntaksia voi tiirailla 
 [Pandoc-dokumenttigeneraattorin sivustolta](http://johnmacfarlane.net/pandoc/README.html).
 
-### Työkalujen asentaminen
+Sivujen muokkaamiseksi on parasta kloonata
+repositorio omalle koneelleen. 
+Tätä ja tarvittavien ohjelmien asentamista varten
+on olemassa oma skriptinsä: [install.sh]({{rootdir}}install.sh}).
+Skriptin ajamainen on nopein oikotie onneen.
+
+Ohjelmien asentamiseen on olemassa myös manuaaliset ohjeet.
+
+<expandable title="Avaa manuaaliset ohjeet tästä">
+
+# Työkalujen asentaminen
 
 Tarvitset sivujen kääntämiseen
 koneen, jolle on asennettuna Haskell-kielen kirjastot
@@ -40,7 +48,7 @@ Laitoksen koneilta nämä kaikki löytyvät vakiona, ja useimmille
 linux-distroille ne saa asennettua helposti.
 
 Kun peruskirjatot ovat käytössä, pitää vielä asentaa dokumenttigeneraattori Pandoc.
-Sinulla on tähän kaksi vaihtoehtoa:
+Sinulla on tähän vaihtoehtoa:
 
 * Voit asentaa Pandocin cabal-ohjelmalla, joka kääntää sen sinulle. Tähän menee n. vartti.
 * Voit ladata kaksi valmiiksikäännettyä Pandoc-binääriä ja laittaa ne sopiviin hakemistoihin.
@@ -73,7 +81,9 @@ Sen voi tehdä esim. laittamalla .bashrc:hen seuraavan rivin:
 export PATH="$HOME/.cabal/bin:$PATH"
 ~~~
 
-#### Lopputoimet
+</expandable>
+
+### Asennuksen jälkeen
 
 Pandocin asentamisen jälkeen 
 sivujen pitäisi generoitua komentamalla `make`.
