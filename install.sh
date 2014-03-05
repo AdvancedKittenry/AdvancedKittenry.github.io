@@ -18,13 +18,15 @@ else
     cabal update
     cabal install pandoc
     if hash pandoc 2>/dev/null; then
+      echo "Pandoc seems to work"
+    else
       echo "Apparently you don't have pandoc in your PATH. Do you wish to include the cabal binary directory ~/.cabal/bin in your path?"
       echo "This would add the line 'export PATH=\"\$HOME/.cabal/bin:\$PATH\"' to your .bashrc file.";
       echo "Please enter 1 or 2:";
       select yn in "Yes" "No"; do
         case $yn in
           Yes ) echo "export PATH=\"\$HOME/.cabal/bin:\$PATH\"" >> $HOME/.bashrc; export PATH="$HOME/.cabal/bin:$PATH"; break;;
-          No ) echo "Please run install.sh again when you have put pandoc in your path" exit;;
+          No ) echo "Please run install.sh again when you have put pandoc in your path."; exit;;
         esac
       done
     fi
