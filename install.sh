@@ -1,4 +1,10 @@
 #!/bin/bash
+
+if [ ! "$BASH_VERSION" ] ; then
+    echo "Please do not use sh to run this script ($0), just execute it directly" 1>&2
+    exit 1
+fi
+
 echo "Checking dependencies..."
 
 hash git 2>/dev/null || { echo >&2 "I require git but it's not installed. Please install git."; exit 1; }
