@@ -1,13 +1,13 @@
 #!/bin/bash
 echo "Checking dependencies..."
 
-hash git 2>/dev/null || { echo >&2 "I require git but it's not installed.  Please install git."; exit 1; }
+hash git 2>/dev/null || { echo >&2 "I require git but it's not installed. Please install git."; exit 1; }
 echo "Git found..."
-hash ghc 2>/dev/null || { echo >&2 "I require ghc but it's not installed.  Please install ghc."; exit 1; }
+hash ghc 2>/dev/null || { echo >&2 "I require ghc but it's not installed. Please install ghc."; echo "On ubuntu you can try the command sudo apt-get install haskell-platform"; exit 1; }
 echo "GHC found..."
-hash python 2>/dev/null || { echo >&2 "I require python but it's not installed.  Please install python."; exit 1; }
+hash python 2>/dev/null || { echo >&2 "I require python but it's not installed. Please install python."; exit 1; }
 echo "Python found..."
-hash perl 2>/dev/null || { echo >&2 "I require perl but it's not installed.  Please install perl."; exit 1; }
+hash perl 2>/dev/null || { echo >&2 "I require perl but it's not installed. Please install perl."; exit 1; }
 echo "Perl found..."
 
 if hash pandoc 2>/dev/null; then
@@ -31,7 +31,7 @@ else
       done
     fi
   else
-    echo >&2 "I require cabal but it's not installed.  Please install cabal."; exit 1;
+    echo >&2 "I require cabal but it's not installed.  Please install cabal."; echo "On ubuntu you can try the command sudo apt-get install haskell-platform"; exit 1;
   fi
 fi
 
