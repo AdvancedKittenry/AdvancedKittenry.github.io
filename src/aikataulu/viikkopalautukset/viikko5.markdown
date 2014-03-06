@@ -21,6 +21,8 @@ järkeviä virheilmoituksia käyttäjälle.
 Koodisi noudattaa [hyvää ohjelmointityyliä]({{rootdir}}cleancode.html) ja on selkeää lukea. 
 Sovelluksen toiminnot on järjestetty järkevästi eri
 tiedostoihin [MVC-arkkitehtuurin mukaisesti]({{rootdir}}koodaaminen/arkkitehtuuri/index.html).
+Huolehdi myös siitä, että koodisi on hyvin kommentoitua ja että etenkin epäselvät kohdat
+ja sovelluksen yleiseen arkkitehtuuriin liittyvät valinnat on dokumentoitu hyvin.
 
 ## Dokumentaatio (1p)
 

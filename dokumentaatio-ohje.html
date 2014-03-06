@@ -191,27 +191,17 @@
 <li>Edellyttääkö ohjelmisto jonkun tietyn tietokannan käyttöä vai voiko sitä vaihtaa helposti. Useimmat työt toimivat vain yhdellä kannalla.</li>
 </ul>
 </section>
-<section id="yleiskuva-järjestelmästä" class="level2">
-<h2>2. Yleiskuva järjestelmästä</h2>
-<section id="käyttötapauskaavio-tai-sidosryhmäkaavio" class="level3">
-<h3>Käyttötapauskaavio tai sidosryhmäkaavio</h3>
-<p>Molemmat kaaviot näyttävät järjestelmän sidosryhmät ja miten ne liittyvät järjestelmään. Tällä kurssilla kehitettävissä järjestelmissä sidosryhminä ovat enimmäkseen järjestelmän käyttäjäryhmät. Muita mahdollisia sidosryhmiä olisi esimerkiksi toiset järjestelmät. Harjoitustyössä käyttäjäryhmien tulisi osaltaan näkyä kyseisille ryhmille suunnattuina toiminnallisuuksia.</p>
+<section id="käyttötapaukset" class="level2">
+<h2>2. Käyttötapaukset</h2>
+<section id="käyttötapauskaavio" class="level3">
+<h3>Käyttötapauskaavio</h3>
+<p>Käyttötapauskaavio näyttää järjestelmän sidosryhmät ja miten ne liittyvät järjestelmään. Tällä kurssilla kehitettävissä järjestelmissä sidosryhminä ovat enimmäkseen järjestelmän käyttäjäryhmät. Muita mahdollisia sidosryhmiä olisi esimerkiksi toiset järjestelmät. Harjoitustyössä käyttäjäryhmien tulisi osaltaan näkyä kyseisille ryhmille suunnattuina toiminnallisuuksia.</p>
 <p>Käyttötapauskaaviossa käyttötapaukset kuvataan järjestelmän sisällä ja sidosryhmien yhteydet järjestelmään esitetään yhteyksinä käyttötapauksiin. Kaavion kuvaa järjestelmästä voisi kuvailla esimerkiksi “Tällaisia asioita järjestelmässä voi tehdä, ja nämä ryhmät tekevät näitä asioita”.</p>
-<p>Sidosryhmäkaaviossa sidosryhmien yhteys järjestelmään kuvataan nuolina sidosryhmästä kohti palveluntarjoajaa. Kunkin sidosryhmän karkean tason käyttötapaukset ilmaistaan yhteyden tyyppinä.</p>
-<p>Kaavioiden lisäksi käyttäjäryhmät sekä tärkeimmät käyttötapaukset kuvaillaan erikseen myös tekstinä. Kurssin tavoitteisiin riittää, että toinen kaavioista on mukana.</p>
-<p><strong>Esimerkit</strong></p>
-<section id="käyttötapauskaavio" class="level4">
-<h4>Käyttötapauskaavio</h4>
+<p>Kaavion lisäksi käyttäjäryhmät sekä tärkeimmät käyttötapaukset kuvaillaan erikseen myös tekstinä.</p>
+<p><strong>Esimerkki</strong></p>
 <figure>
 <img src="images/dokumentaatio-ohje/usecase_diagram.png" alt="Käyttötapauskaavio" /><figcaption>Käyttötapauskaavio</figcaption>
 </figure>
-</section>
-<section id="sidosryhmäkaavio" class="level4">
-<h4>Sidosryhmäkaavio</h4>
-<figure>
-<img src="images/dokumentaatio-ohje/sidos3.gif" alt="Sidosryhmäkaavio" /><figcaption>Sidosryhmäkaavio</figcaption>
-</figure>
-</section>
 </section>
 <section id="käyttäjäryhmät" class="level3">
 <h3>Käyttäjäryhmät</h3>
@@ -233,11 +223,11 @@ Työntekijä
 Johto
   Johdolla tarkoitetaan työntekijöitä, joiden tehtävänä on tehtävien anto ja asioista päättäminen.</code></pre>
 </section>
-</section>
-<section id="käyttötapaukset" class="level2">
-<h2>3. Käyttötapaukset</h2>
-<p>Käyttötapauksella tarkoitetaan järjestelmän avulla hoidettavaa tavoitteellista tehtäväkokonaisuutta. Esimerkiksi tilauksen kirjaus, tilauksen peruutus ja laskun tulostus ovat tehtäväkokonaisuuksia, joita on luonnollista mallintaa käyttötapauksina. Kustakin käyttötapauksesta kuvataan sen sisältö: mitä käyttötapauksessa tehdään. Raporttien kohdalta kerrotaan, mitä tietoja raporttiin sisältyy.</p>
+<section id="käyttötapauskuvaukset" class="level3">
+<h3>Käyttötapauskuvaukset</h3>
+<p>Käyttötapauksella tarkoitetaan järjestelmän avulla hoidettavaa tavoitteellista tehtäväkokonaisuutta. Esimerkiksi tilauksen kirjaus, tilauksen peruutus ja laskun tulostus ovat tehtäväkokonaisuuksia, joita on luonnollista mallintaa käyttötapauksina. Tärkeimmistä käyttötapauksesta kuvataan sen sisältö: mitä käyttötapauksessa tehdään. Raporttien kohdalta kerrotaan, mitä tietoja raporttiin sisältyy.</p>
 <p>Käyttötapausten avulla määritellään, mitä järjestelmällä tehdään. Voit luonnostella käyttötapauksia esimerkkitapausten avulla. Esimerkkitapauksessa toiminnan kohde on kiinnitetty. Esimerkiksi ‘ilmoittautuminen Informaatiojärjestelmät kurssin harjoitusryhmään 3’ on esimerkkitapaus käyttötapauksesta ‘luentokurssille ilmoittautuminen’. Voit esittää esimerkkitapauksia myös dokumentissa havainnollistaaksesi käyttötapauksia. Käyttötapaukset kannattaa esittää käyttäjittäin ryhmiteltynä tärkeysjärjestyksessä.</p>
+<p>Sisällöltään ilmeisimpiä käyttötapauksia kuten kirjautumista ja rekisteröimistä ei tarvitse kuvailla, riittää että ne luettelee.</p>
 <section id="esimerkki" class="level4">
 <h4>Esimerkki</h4>
 <pre><code>Jokamiehen käyttötapaukset
@@ -251,15 +241,8 @@ Asuntotilanteen yleiskuvan selvittäminen:
   kyselyn suoritushetkellä on tarjolla vuokralle ja kuinka monta näitä on tarjolla. 
   Esimerkki: Millaisia asuntoja on tarjolla Kruunuhaassa?
 
-Rekisteröityminen asiakkaaksi:
-  Rekisteröitymisessä käyttäjä ilmoittautuu yrityksen asiakkaaksi päästen näin 
-  yrityksen muiden asiakaspalveluiden käyttäjäksi ja asiakastiedotteiden saajaksi.
-
-  Jokamiehestä tulee asiakas. Hän antaa henkilötietonsa ja saa asiakastunnuksen, 
-  joka on avain asiakkaille tarkoitettuihin palveluihin. 
-
-  Prototyypissä asiakastunnus aktivoituu heti. 
-  Aktivoinnin voisi kytkeä myös esimerkiksi jäsenmaksun maksamiseen.</code></pre>
+Muita käyttötapauksia: rekisteröityminen, kirjautuminen</code></pre>
+</section>
 </section>
 </section>
 <section id="järjestelmän-tietosisältö" class="level2">
@@ -302,50 +285,38 @@ Rekisteröityminen asiakkaaksi:
 </tr>
 </tbody>
 </table>
-<p>Huoneisto, joka on annettu myytäväksi, mutta joka ei vielä ole katalogissa voi olla kuulumatta yhdellekään virkailijalle. Kukin huoneisto voi olla kerralla vain yhden virkailijan hoidettavana. Yhdellä virkailijalla voi kuitenkin olla hoidettavanaan useita huoneistoja. Huoneistoon voidaan liittää myös varustelukuvauksia. Huoneistoa koskevista kuvauksista kulloinkin huomioidaan vain viimeisimpänä lisätty. Yksi varustelukuvaus voi kuvata vain yhtä huoneistoa. Huoneiston varustelukuvaus voi olla huoneistoa hoitavan tai jonkun muun virkailijan kirjoittama.</p>
+<p>Huoneisto, joka on annettu myytäväksi, mutta joka ei vielä ole katalogissa voi olla kuulumatta yhdellekään virkailijalle. Kukin huoneisto voi olla kerralla vain yhden virkailijan hoidettavana, mutta virkailijalla voi kuitenkin olla hoidettavanaan useita huoneistoja. Huoneistoon voidaan liittää myös varustelukuvauksia. Yksi varustelukuvaus voi kuvata vain yhtä huoneistoa.</p>
 </blockquote>
-<p>Jos haluat varmistua siitä, että tietosisältömallisi ja käyttötapauksesi sopivat yhteen ja mallit ovat kattavia voit laatia riippuvuusmatriisin kuvaamaan tietokohteiden käsittelyä käyttötapauksissa. Riippuvuusmatriisin sarakkeina ovat kohdetyypit ja yhteydet. Riveinä ovat käyttötapaukset. Kuhunkin sarakkeeseen merkitään, mitä käyttötapauksessa tehdään ko. luokan kohteille (C=create, R=read, D=delete, U=update). Jokaisen käyttötapauksen täytyy käsitellä jotain kohdetta. Tietokohteelle täytyy mahdollistaa riittävät käsittelyoperaatiot käyttötapausten kautta.</p>
 </section>
 </section>
 <section id="relaatiotietokantakaavio" class="level2">
 <h2>5. Relaatiotietokantakaavio</h2>
-<p>Relaatiotietokantakaavio on teknisempi dokumentti, jossa tiedon säilömiseen käytettävän tietokannan rakenne esitetään kaaviokuvana ja SQL:n create table lauseina. Kaavioon täytyy sisältyä taulujen välisten viiteyhteyksien ja avainten määritykset. Jos relaatiokaaviossa on attribuutteja, jotka eivät esiinny käsitemallissa tai jonkin käsitemallin attribuutti on karsittu tai sen muotoa on muutettu on tästä erikseen mainittava. Yleissääntönä on, että relaatiotietokantakaavion tulee olla yhteensopiva käsitemallin kanssa.</p>
-<p>Create table -lauseet voi antaa liitteenä, jolloin niitä ei tarvitse kirjoittaa dokumentin sekaan.</p>
-<p>Alla on esimerkki kaaviokuvasta. Nuolten tulisi lähteä vierasavainten kohdalta, pk = primary key, fk = foreign key.<br />Huomaa kuitenkin taulun varuste vieras pariavain (huoneisto,laatimisaika) on kuvattu yhdellä nuolella.</p>
+<p>Relaatiotietokantakaavio on teknisempi dokumentti, jossa tiedon säilömiseen käytettävän tietokannan rakenne esitetään kaaviokuvana. Kaavioon täytyy sisältyä taulujen välisten viiteyhteyksien ja avainten määritykset. Jos relaatiokaaviossa on attribuutteja, jotka eivät esiinny käsitemallissa tai jonkin käsitemallin attribuutti on karsittu tai sen muotoa on muutettu on tästä erikseen mainittava. Yleissääntönä on, että relaatiotietokantakaavion tulee olla yhteensopiva käsitemallin kanssa.</p>
+<p>Alla on esimerkki kaaviokuvasta. Nuolten tulisi lähteä vierasavainten kohdalta, pk = primary key, fk = foreign key.<br />Huomaa kuitenkin kuinka taulun <em>varuste</em> vieras pariavain (huoneisto,laatimisaika) on kuvattu yhdellä nuolella.</p>
 <p><img src="images/dokumentaatio-ohje/relaatiokaavio.gif" alt="Relaatiotietokantakaavio" /> Muunnossäännöt käsitemallista relaatiomalliin löytyvät Tietokantojen perusteet kurssin materiaalista.</p>
 </section>
 <section id="järjestelmän-yleisrakenne" class="level2">
 <h2>6. Järjestelmän yleisrakenne</h2>
 <p>Tämän kappaleen tarkoitus on kertoa lyhyesti mistä jotakin toimintoa kannattaa ohjelmakoodissa etsiä. Järjestelmän yleinen hakemistorakenne esitetään selostamalla yleisellä tasolla lyhyesti mihin tarkoitukseen tarkoitettuja tiedostoja projektin hakemistot sisältävät, mihin mahdollisesti käytetyt kirjastot ja apuluokat on sijoitettu ja mitä erilaisia ohjelmakoodikomponentteja projektista löytyy (Esim. html-näkymä, apuluokka, tietokantaluokka, kontrolleri). Mikäli järjestelmällä on erillinen asetuksista vastaava tiedosto, kerrotaan sen sijainti samoin kuin mahdolliset tiedostojen nimeämiseen liittyvät käytännöt.</p>
-<p>Tähän kappaleeseen laitetaan myös yleinen kuvaus siitä miten järjestelmä käyttää istuntoa.</p>
+<p>Tähän kappaleeseen laitetaan myös yleinen kuvaus siitä miten järjestelmä käyttää istuntoa ja mikäli järjestelmän osana on käytetty javascriptiä, pitää senkin toiminnan yleisperiaatteet dokumentoida tähän.</p>
 <section id="esimerkki-mvc-mallin-mukaisesta-php-projektista" class="level4">
 <h4>Esimerkki MVC-mallin mukaisesta php-projektista</h4>
 <blockquote>
 <p>Tietokantasovellusta tehdessä on noudatettu MVC-mallia. Kontrollerit, näkymät ja mallit<br />sijaitsevat hakemistoissa controllers, views- ja models. Käytetyt apukirjastot on sijoitettu<br />hakemistoon lib ja asetukset ovat tiedostossa settings.php.<br /><br />Ylläpidon sivuista vastaavissa tiedostoissa on kaikissa admin-etuliite. Kaikki tiedostonimet on<br />kirjoitettu pienellä.</p>
 </blockquote>
-</section>
-</section>
-<section id="järjestelmän-komponentit" class="level2">
-<h2>7. Järjestelmän komponentit</h2>
-<p>Kustakin ohjelman komponentista laaditaan erillinen kuvaus, jossa esitetään komponentin ymmärtämisen kannalta oleelliset asiat. Kuvaus on suunnattu henkilölle, joka mahdollisesti joskus joutuisi ylläpitämään ohjelmistoa.</p>
-<p>Jokaisen komponentin osalta esitetään sen nimi ja kuvaus siitä, mitä se tekee ts. mikä sen tarkoitus on. Komponentit voidaan esitellä esim. ryhmiteltyinä html-sivuihin, servletteihin ja apuluokkiin. Lisäksi voi omana osionaan luetella sovelluksessa mahdollisesti käytettävät kuva-, ääni- yms. tiedostot. Mikäli sovelluksessa on käytetty jotain kirjastoa, kuten jQuery, tulee eritellä mitkä ovat omia ja mitkä kirjaston komponentteja, käytetyistä kirjastokomponenteista tulee kertoa mihin niitä käyttää.</p>
-<p>Jokaisesta kontrollerista kerrotaan lisäksi mitä tietoja ja lomakkeita se vastaanottaa. Lisäksi laitetaa kuvaus siitä mitä tietoja kulloinkin haetaan ja talletetaan istuntoon, mikäli tiedosto käyttää istuntoa johonkin.</p>
-<p>Käytännössä kyseessä on tiedostotason kuvailu siitä, mitä eri ohjelman osaset kuvailevat. Jokaisesta tiedostosta kerrotaan mihin sitä käytetään ja mitä se tekee. Jos ohjelmassa on paljon samantapaisia samaa tarkoitusta ajavia hyvin samankaltaisia tiedostoja, voi niistä kertoa lyhyemminkin yhtenä ryhmänä.</p>
-<section id="esimerkki-3" class="level4">
-<h4>Esimerkki</h4>
-<blockquote>
-<p>index.php<br /> Sovelluksen etusivu. Sisältää kentät sisäänkirjautumista varten, linkin rekisteröitymissivulle ja lyhyen,<br /> mutta kuvailevan kertomuksen järjestelmästä ja sen viimeaikaisesta kehityksestä. Viimeaikaisesta kehityksestä<br /> kertovan kentän sisältö täytetään uutissyötteestä dynaamisesti. Sivu tarjoaa myös pikahakukentän, jonka sisältö<br /> lähetetään asuntohaku.php:n käsiteltäväksi.<br /><br />asuntohaku.php<br /> Tarjoaa hakulomakkeen asuntojen hakua varten ja luettelon hakutuloksista. Hakulomake mahdollistaa hakujen<br /> tekemisen avainsanan, paikkakunnan ja hintahaarukan perusteella.<br /><br />resources/dbConnection.php<br /> Tiedosto, jonka avulla tietokantayhteyden saa avatuksi helposti.<br /> Tietokantaa tarvitsevat komponentit käynnistävät tämän tarpeen mukaan.<br /><br />resources/dbSearchFunctions.php<br /> Tarjoaa kokoelman funktioita, jotka tekevät tietokantaan kyselyitä ja palauttavat kyselyiden tuloksia eri muodoissa.<br /> Tämän kokoelman funktiot keskittyvät erilaisiin asuntotietoihin liittyviin hakuihin ja eivät muuta mitään tietokannassa.<br /><br />…<br /><br />resources/header.html<br /> Jokaisen generoitavan sivun alkuun liitettävä otsaketiedosto, jossa html-sivun yleiset määrittelyt.<br /> Asettaa sivujen otsikoksi “KatonAlle Oy” ja kertoo merkistökoodauksen olevan UTF-8.<br /><br />resources/footer.html<br /> Jokaisen generoitavan sivun loppuun liitettävä tiedosto. Liittää sivun pohjalle sivun ylläpitäjän sähköpostiosoitteen ja lopettaa sivun.<br /><br />resources/lib/jokuKirjasto/*<br /> Käyttämäni kirjaston jokuKirjasto komponentit löytyvät täältä. Seuraavaksi yksilöin sen komponenttien joukosta ne,<br /> joita olen käyttänyt.<br /><br />resources/lib/jokuKirjasto/lomakkeentarkastuskomponentti.js<br /> Olen käyttänyt tätä komponenttia web-lomakkeiden sähköpostikenttien muodon tarkastukseen.<br /><br />…</p>
-</blockquote>
 <p>Tämän lisäksi ohjelmakoodin tulee olla dokumentoitua (kommentit / javadoc / phpdoc tms.) ja käyttää havainnollisia nimiä muuttujille ja funktioille/metodeille. Ohjelmiston tulee olla jaettuna komponentteihin järkevästi, siten että turhalta toistolta vältytään. Komponentteihin liittyvät yleistiedot on hyvä kirjoittaa myös ohjelmakoodin alkuun yleiskommentiksi, jolloin ne voi vain kerätä ohjelmakoodista dokumenttiin. Ohjelmakoodit sijoitetaan dokumentin liitteiksi.</p>
 </section>
 </section>
-<section id="käyttöliittymä" class="level2">
-<h2>8. Käyttöliittymä</h2>
+<section id="kayttoliittymakomponentit" class="level2">
+<h2>7. Käyttöliittymä ja järjestelmän komponentit</h2>
 <p>Käyttöliittymän näkymien välisiä yhteyksiä on luontevaa esittää kaavioina. Seuraavassa kuvassa on esimerkki tällaisesta kaaviosta.<br /><img src="images/dokumentaatio-ohje/sivurakenne.jpg" alt="Sivurakennekaavio" /></p>
-<p>Käyttötapausten ja käyttöliittymäkomponenttien välisiä yhteyksiä voi kuvailla tekstimuodossa. Tätä vaatimusta lieventää, jos sivut on nimetty kuvaavasti ja käyttötapauksille tarkoitetut polut rakenteessa ovat intuitiiviset. Sivukohtaisen julkisuusmäärittelyn dokumentoiminen ei ole välttämätöntä, jos esim. asianmukaisen siirtymän kohdalla kertoo, että tästä pääsee eteenpäin vain tunnistettu käyttäjä. Mikäli sivustolla on navigaatiopalkki, jonka johdosta kirjautunut käyttäjä pääsee mistä vain mihin vain, kannattaa tämä mainita sanallisesti kaavion yhteydessä ja merkitä kaavioon vain sellaiset yhteydet, jotka olisivat olemassa ilman navigaatiopalkkiakin.</p>
+<p>Laita jokaisen näkymää kuvaavan suorakulmion nimen alle myös merkintä siitä mikä/mitkä kontrolleritiedosto(t)/servlet(it-luokka pääasiallissti huolehtii sen näyttämisestä. Jos sivuilla on sivusiirtymiä, jotka eivät näytä sivuja, mutta esim. muokkaavat kantaa ja ohjaavat jollekin muulle sivulle, piirrä ne kaavioon pyöreinä tekstipalloina. Pyri siihen, että jokainen sivuston kontrolleri olisi kuvassa edustettuna.</p>
+<p>Jos jonkin sivun käyttötarkoitus ei ole sen nimestä aivan ilmeinen, kirjoita siitä lyhyt kuvaus kaavion alle.</p>
+<p>Sivukohtaisen julkisuusmäärittelyn voi dokumentoida ryhmittelemällä sivuja, kuten esimerkissä, tai voi esim. asianmukaisen siirtymän kohdalla kertoa, että tästä pääsee eteenpäin vain tunnistettu käyttäjä.</p>
+<p>Mikäli sivustolla on navigaatiopalkki, jonka johdosta kirjautunut käyttäjä pääsee mistä vain mihin vain, kannattaa tämä mainita sanallisesti kaavion yhteydessä ja merkitä kaavioon vain sellaiset yhteydet, jotka olisivat olemassa ilman navigaatiopalkkiakin.</p>
 </section>
 <section id="asennustiedot" class="level2">
-<h2>9. Asennustiedot</h2>
+<h2>8. Asennustiedot</h2>
 <p>Lyhyehkö ohje, jonka tarkoituksena on toisaalta kertoa, miten sovellus on nyt asennettu ja toisaalta miten sen saisi asennettua uuteen ympäristöön. Uudella ympäristöllä tarkitetaan tässä jotakin usersin kaltaista palvelinta, jonka nettisivutila ja tietokanta on jo pystytetty, mutta varsinaista sovellusta ei ole kopioitu vielä palvelimelle, eikä tietokantayhteyden asetuksia säädetty oikeiksi.</p>
 <p>Users-palvelimella tämä vastaa tilannetta, jossa kaikki wanna-alkuiset komennot ajettu, mutta nettisovelluskansioissa ei ole vielä mitään.</p>
 <p>Asennusohjeesta tulisi ainakin käydä ilmi, minne käytettävän tietokannan asetukset (käytettävä tietokanta, käyttäjätunnus, salasana) tulee ohjelmistoa asentaessa määritellä.</p>
@@ -355,27 +326,25 @@ Rekisteröityminen asiakkaaksi:
 </blockquote>
 </section>
 <section id="käynnistys--käyttöohje" class="level2">
-<h2>10. Käynnistys- / käyttöohje</h2>
+<h2>9. Käynnistys- / käyttöohje</h2>
 <p>Tyypillisesti tässä riittää kertoa missä osoitteessa harjoitustyö on asennettuna ja millä voi kirjautua sisään.</p>
-<p>Perusoletuksena on, että järjestelmän käyttäjä osaa käsitellä WWW-sivuja selaimella. Tähän liittyviä ohjeita ei siten tarvitse antaa. WWW-sovelluksen tulisi olla helppokäyttöinen ja intuitiivinen. Sivujen pitäisi itsessään sisältää riittävästi sivun käyttöön tarvittavaa informaatiota. Jos sivut ovat tällaisia, riittää antaa ohjelman käynnistykseen tarvittava URL. Jos käyttöön liittyy joitain yleisiä toimintajärjestykseen liittyviä asioita, ne voidaan kertoa tässä yhteydessä.<br />Näiden tietojen tulisi löytyä myös tuotettavan järjestelmän sivuilta.</p>
-<p>Muista kertoa ohjaajalle mahdolliset testaustunnukset ja salasanat.</p>
+<p>Perusoletuksena on, että järjestelmän käyttäjä osaa käsitellä WWW-sivuja selaimella. Tähän liittyviä ohjeita ei siten tarvitse antaa. WWW-sovelluksen tulisi olla helppokäyttöinen ja intuitiivinen. Sivujen pitäisi itsessään sisältää riittävästi sivun käyttöön tarvittavaa informaatiota. Jos sivut ovat tällaisia, riittää antaa ohjelman käynnistykseen tarvittava URL sekä mahdolliset kirjautumiseen tarvittavat tunnukset. Jos käyttöön liittyy joitain yleisiä toimintajärjestykseen liittyviä asioita, ne voidaan kertoa tässä yhteydessä.<br />Näiden tietojen tulisi löytyä myös tuotettavan järjestelmän sivuilta.</p>
+<p>Muista kertoa ohjaajalle kaikki testauksen vaatimat käyttäjätunnukset ja salasanat.</p>
 </section>
 <section id="testaus-tunnetut-bugit-ja-puutteet-jatkokehitysideat" class="level2">
-<h2>11. Testaus, tunnetut bugit ja puutteet &amp; jatkokehitysideat</h2>
+<h2>10. Testaus, tunnetut bugit ja puutteet &amp; jatkokehitysideat</h2>
 <p>Miten olet testannut ohjelmaa? Kuinka laajasti testaus on toteutettu?</p>
 <p>Mitä puutteita tai bugeja ohjelmassa on? Mitä lisäominaisuuksia ohjelmaan voisi lisätä?</p>
 </section>
 <section id="omat-kokemukset" class="level2">
-<h2>12. Omat kokemukset</h2>
+<h2>11. Omat kokemukset</h2>
 <p>Mikä oli tietokantasovelluksen teossa helppoa? Mikä vaikeaa? Mitä opit? Muu vapaa sana.</p>
 </section>
 <section id="liitteet" class="level2">
-<h2>13. Liitteet</h2>
+<h2>12. Liitteet</h2>
 <p>Dokumentin liitteinä annetaan:</p>
 <ul>
 <li>Tietokannan määrittelevät create table lauseet, erillisenä SQL-tiedostona projektin git-repositoriossa.</li>
-<li>Tehtäväkuvaus, jos valmis aihe.</li>
-<li>Linkki kuvaukseen liiteluettelossa riittää.</li>
 </ul>
 </section>
 </div>
