@@ -19,7 +19,7 @@ Palautuspäivämäärään mennessä työn on täytettävä seuraavat vaatimukse
 ## Käyttöliittymän suunnittelu ja toteutus (1½p)
 
 * Dokumentoi ja suunnittele sovelluksellesi käyttöliittymä
-    * Dokumentaatioon käyttöliittymäkaavio
+    * Dokumentaatioon alustava käyttöliittymäkaavio
     * Liitä myös tekemäsi muut suunnitelmat (etenkin yleisnavigaatio) repositorioosi, ellet ole näyttänyt niitä ohjaajalle pajassa.
 * Suunnitelmien perusteella luodaan sivuista oikean näköiset demoversiot.
     * Demoversion ei vielä tarvitse käyttää tietokantaa tai sisältää ajettavia ohjelmia

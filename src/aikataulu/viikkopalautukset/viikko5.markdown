@@ -32,7 +32,7 @@ Keskeneräisiä osia ei ole pakko vielä dokumentoida.
 Uutta kirjoitettava siis ainakin:
 
 * [Järjestelmän yleisrakenne]({{rootdir}}dokumentaatio-ohje.html#järjestelmän-yleisrakenne).
-* [Järjestelmän komponentit]({{rootdir}}dokumentaatio-ohje.html#järjestelmän-komponentit).
+* [Käyttöliittymä ja järjestelmän komponentit]({{rootdir}}dokumentaatio-ohje.html#kayttoliittymakomponentit).
 
 Huolehdi myös siitä, että koodisi on kommentoitu siellä missä se on epäselvempää.
 

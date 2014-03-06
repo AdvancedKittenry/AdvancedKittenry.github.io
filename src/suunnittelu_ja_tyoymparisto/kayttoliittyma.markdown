@@ -51,7 +51,7 @@ tietoja eli vaikkapa muokkaamaan yksittäisen kissan kuvausta.
 
 Nämä mielessä pitäen lähde rakentamaan eri sivuista
 ja toiminnoista karkeaa sivukarttaa, joka on dokumentaation
-[käyttöliittymäkaavion]({{rootdir}}dokumentaatio-ohje.html#k%C3%A4ytt%C3%B6liittym%C3%A4) karkea luonnos. 
+[käyttöliittymäkaavion]({{rootdir}}dokumentaatio-ohje.html#kayttoliittymakomponentit) karkea luonnos ilman toteutusyksityiskohtia.
 Suunnitelmaan kannattaa hahmotella mitä sivuja sovelluksessa on, 
 mille sivuille niiltä pääsee ja mitkä sivuista olisi luonnollista sijoittaa
 sovelluksen _päävalikkoon_, eli niihin linkkeihin, jotka ovat jokaisella sivulla näkyvissä.
