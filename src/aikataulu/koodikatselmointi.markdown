@@ -1,5 +1,6 @@
 % Koodikatselmointi
 <!-- order: 9 -->
+<!-- tags: viikko3,viikko5 -->
 
 Koodikatselmointi on osa harjoitustyötä. Katselmointi suoritetaan kerran
 kurssiviikolla 5. Katselmoinnista voi saada maksimissaan 2 lisäpistettä,
@@ -8,7 +9,10 @@ maksimipistemäärä on siis edelleen 60.
 
 ### Katselmoinnin ajankohta
 
-* Koodikatselmoinnin DL on viikolla 5: {{codereviewdeadline}} 
+Koodikatselmointeja on tällä kurssilla kaksi:
+
+* 1. Koodikatselmoinnin DL on viikolla 3: {{codereviewdeadline1}} 
+* 2. Koodikatselmoinnin DL on viikolla 5: {{codereviewdeadline2}} 
 
 Tämän katselmoinnin perimmäinen tarkoitus on oppia hahmottamaan toisen
 henkilön kirjoittamaa koodia ja kokonaista ohjelmointiprojektia. Toisten

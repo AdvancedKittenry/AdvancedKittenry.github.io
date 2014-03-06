@@ -40,6 +40,12 @@ Mallia voi katsoa
 Mikäli sovelluksessa ei ole lainkaan kirjautumistoimintoja, sovi ohjaajasi kanssa jokin toinen tavoite viikolle 3.
 Yleensä ottaen kirjautumisdeadline voidaan korvata tekemällä alustava versio jostain lisäys- ja muokkauslomakkeesta.
 
+## Koodikatselmointi (0-2p)
+
+Kolmannella viikolla on normaalien koodaustehtävien lisäksi lisäosiona koodikatselmointi,
+josta voi saada kaksi ylimääräistä aikataulupistettä.
+Lisätietoja löytyy [koodikatselmointiohjeista](../koodikatselmointi.html).
+
 <ohje>
 Aloita lukemalla [arkkitehtuuriohje][arkkitehtuuri]
 ja jatka sitten vihreitä ohjelaatikoita seuraamalla 
