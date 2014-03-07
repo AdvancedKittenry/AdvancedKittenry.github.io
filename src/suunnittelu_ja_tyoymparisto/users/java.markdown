@@ -66,7 +66,7 @@ Tätä varten tarvitset samassa hakemistossa olevan `build.xml`-tiedoston, jonka
 Toinen ja useimmiten kätevämpi vaihoehto on käyttää [NetBeansiä ja asentaa tomcat omalle koneelleen](../netbeans/java.html). 
 Tässä vaihtoehdossa on se hyvä puoli, että alkuosan koodin kirjoittamisen
 voi tehdä kokonaan omalla tietokoneellaan, mutta tietokannan käyttöä varten
-tarvitsee aina [muodostaa etäyhteys]({{rootdir}}pystytys/postgres-ssh-tunneli.html),
+tarvitsee aina [muodostaa etäyhteys]({{rootdir}}suunnittelu_ja_tyoymparisto/users/postgres-ssh-tunneli.html),
 ellet asenna tietokantapalvelinta koneellesi itse.
 NetBeansin käytössä on myös se hyvä puoli, että sen tarjoama
 tuki nettipuolen Javalle on erinomainen ja auttaa monien koodausongelmien kanssa.

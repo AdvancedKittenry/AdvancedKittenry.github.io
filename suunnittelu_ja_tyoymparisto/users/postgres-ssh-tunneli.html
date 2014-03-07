@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>Kurssin kotisivu</title>
+  <title>PostgreSql-kannan etäkäyttö</title>
   <style type="text/css">code{white-space: pre;}</style>
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -63,7 +63,7 @@
 <li><a href="../../suunnittelu_ja_tyoymparisto/aiheet/Kennelkerho.html">Kennelkerho</a></li>
 <li><a href="../../suunnittelu_ja_tyoymparisto/aiheet/Keskustelufoorumi.html">Keskustelufoorumi</a></li>
 <li><a href="../../suunnittelu_ja_tyoymparisto/aiheet/Kurssikysely.html">Kurssikysely</a></li>
-<li class="selected"><a href="../../suunnittelu_ja_tyoymparisto/aiheet/Kurssin_kotisivu.html">Kurssin kotisivu</a></li>
+<li><a href="../../suunnittelu_ja_tyoymparisto/aiheet/Kurssin_kotisivu.html">Kurssin kotisivu</a></li>
 <li><a href="../../suunnittelu_ja_tyoymparisto/aiheet/Kurssitarjonta_ja_kurssipaikan_varaus.html">Kurssitarjonta ja kurssipaikan varaus</a></li>
 <li><a href="../../suunnittelu_ja_tyoymparisto/aiheet/Laakariaseman_tyovuorolista.html">Lääkäriaseman työvuorolista</a></li>
 <li><a href="../../suunnittelu_ja_tyoymparisto/aiheet/Laakarin_kotikaynnit.html">Lääkärin kotikäynnit</a></li>
@@ -97,7 +97,7 @@
 <li><a href="../../suunnittelu_ja_tyoymparisto/users/php.html">PHP-tuen käyttöönotto</a></li>
 <li><a href="../../suunnittelu_ja_tyoymparisto/users/mysql.html">MySql-tietokannan käyttöönotto</a></li>
 <li><a href="../../suunnittelu_ja_tyoymparisto/users/postgresql.html">PostgreSQL-tietokannan käyttöönotto</a></li>
-<li><a href="../../suunnittelu_ja_tyoymparisto/users/postgres-ssh-tunneli.html">PostgreSql-kannan etäkäyttö</a></li>
+<li class="selected"><a href="../../suunnittelu_ja_tyoymparisto/users/postgres-ssh-tunneli.html">PostgreSql-kannan etäkäyttö</a></li>
 </ul></li>
 <li><a href="../../suunnittelu_ja_tyoymparisto/netbeans/index.html">NetBeansin käyttöönotto</a>
 <ul>
@@ -166,33 +166,32 @@
 </div>
 <div class="col-md-6" id="content">
 <header>
-<h1 class="title">Kurssin kotisivu</h1>
+<h1 class="title">PostgreSql-kannan etäkäyttö</h1>
 </header>
-<section class="alert alert-info small"><h3>
-Arvosanamaksimi:
+<!-- order: 2 -->
+<!-- tags: viikko1,viikko2-usefull -->
+
+<p>Jos haluat käyttää users-palvelimen PostgreSql-tietokantaa, etkä pystytä ohjelmaasi suoraan users-palvelimelle, joudut tekemään palvelimen palomuuriin reiän tietokantayhtettä varten. Tähän nk. ssh-tunneli on paras ja tietoturvallisin vaihtoehto.</p>
+<p>Seuraava komento pystyttää SSH-tunnelin users-palvelimelle välittäen kaiken liikenteen tietokantapalvelimen portissa 5432 omalle koneellesi:</p>
+<pre class="ssh"><code>ssh -L 5432:localhost:5432 tunnus@users.cs.helsinki.fi</code></pre>
+<p>Komento kirjautuu usersille normaalisti, mutta ohjaa samalla taustalla kaiken liikenteen oman koneesi ja users-palvelimen porttien 5432 välillä. Näin näyttää siltä, kuin omalla koneellasi pyörisi PostgreSql-palvelin portissa 5432.</p>
+<p>Jätä tämä komento pyörimään taustalle reitittämään tietokantayhteyksiä. Tietokantayhteys pelaa normaalisti niin kauan, kuin tämä ssh-yhteys on pystyssä.</p>
+<section class="alert alert-danger"><h3>
+Pidä mielessä!
 </h3>
-4 tai 5
-</section>
-<section class="alert alert-info small"><h3>
-Vaikeustaso:
-</h3>
-Keskitasoa/Haastava
+<p>Jos tietokantayhteytesi eivät yhtäkkiä toimikaan, kannattaa tarkistaa, että ssh-tunneli on pystyssä.</p>
 </section>
 
-
-<p><strong>IS97HL17</strong></p>
-<p>Tktl:n useilla kurseilla on kotisivuja, joilla kerrotaan kurssiin liittyviä asioita. Kotisivun organisointi on varsin pulmallinen asia. Jos kotisivulla on paljon tavaraa, sivun lukijan voi olla vaikea havaita, mitä muutoksia sivulle on tullut. Tilanteen helpottamiseksi voitaisiin rakentaa järjestelmä, jonka avulla sivun sisältö voidaan näyttää eri muodoissa. Uudet asiat saisi selville tutkimalla asioita niiden kirjausajan perusteella (esim. tällä viikolla tulleet tai muuttuneet tekstit). Toinen vaihtoehto olisi tutkia asioita normaalisti asiaryhmittäin. Sivulle pitäisi oletusarvoisesti sisältyä ylimmän tason asiaryhmäjakoon perustuva indeksi. Asiaryhmään sisälle voidaan määritellä ainakin yksi taso alaryhmiä. Sekä asiaryhmien järjestys sivulla että alaryhmien järjestys asiaryhmään sisällä täytyy pystyä määrittelemään. Varsinainen sivuille tuleva materiaali liitetään asiaryhmiin tai alaryhmiin. Näihin kuhunkin voi liittää otsakkeen, johdannon ja 0-n materiaalielementtiä. Materiaalielementit esitetään halutussa järjestyksessä. Elementtiin voidaan liittää attribuutteja, jolla kontrolloidaan tekstin muotoilua (sisennykset, tyhjät rivit).Materiaalielementin varsinainen sisältö voi olla kuva, tietokantaan kirjattu lyhyt teksti tai linkki erilliseen tiedostoon.</p>
-<p>Opettajalla voi olla monia kursseja ja hän voi liittää näiden sivuille samaa materiaalia. Materiaali pitäisi tällöin taltioida vain kertaalleen.</p>
-<p>Esimerkkinä voi käyttää entisen <a href="http://www.cs.helsinki.fi/~laine/info/k99/">Informaatiojärjestelmät -kurssin kotisivua</a>.</p>
-<p>Toimintoja:</p>
-<ul>
-<li>Mitä uutta?</li>
-<li>Asiaryhmiin perustuva sivu</li>
-<li>Komponentin lisäys sivulle</li>
-<li>Komponentin muokkaus, poisto ja järjestyksessä siirto</li>
-<li>Aiheryhmään lisäys, poisto, muutos</li>
-<li>Kurssien ja vastuuhenkilöiden luominen, poistaminen ja kirjautuminen (valinnainen)</li>
-</ul>
+<section id="windows-ja-putty" class="level2">
+<h2>Windows ja Putty</h2>
+<p>Windowsilla käytetään putty-ohjelmaa, jolle annetaan seuraavan näköiset asetukset:</p>
+<figure>
+<img src="../../images/suunnittelu_ja_tyoymparisto/users/putty.png" alt="users-palvelimen yhteyden luominen" /><figcaption>users-palvelimen yhteyden luominen</figcaption>
+</figure>
+<figure>
+<img src="../../images/suunnittelu_ja_tyoymparisto/users/users-tunneli.png" alt="SSH-tunnelien määritteleminen putty-ohjelmalla" /><figcaption>SSH-tunnelien määritteleminen putty-ohjelmalla</figcaption>
+</figure>
+</section>
 </div>
 </div> 
 </div> 

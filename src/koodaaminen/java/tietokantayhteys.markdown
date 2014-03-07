@@ -117,7 +117,7 @@ anna ottaa useampia yhteyksiä jolloin sovellus kaatuu.
 
 Jos haluat testata kantaa omalta koneeltasi käsin 
 joudut
-[muodostamaan ssh-tunnelin users-palvelimeen]({{rootdir}}pystytys/postgres-ssh-tunneli.html).
+[muodostamaan ssh-tunnelin users-palvelimeen]({{rootdir}}suunnittelu_ja_tyoymparisto/users/postgres-ssh-tunneli.html).
 Et saa kantaan yhteyttä ilman sitä (ellet asenna omaa palvelinta).
 
 Tämän lisäksi

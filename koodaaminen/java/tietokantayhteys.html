@@ -116,6 +116,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li><a href="../../suunnittelu_ja_tyoymparisto/users/php.html">PHP-tuen käyttöönotto</a></li>
 <li><a href="../../suunnittelu_ja_tyoymparisto/users/mysql.html">MySql-tietokannan käyttöönotto</a></li>
 <li><a href="../../suunnittelu_ja_tyoymparisto/users/postgresql.html">PostgreSQL-tietokannan käyttöönotto</a></li>
+<li><a href="../../suunnittelu_ja_tyoymparisto/users/postgres-ssh-tunneli.html">PostgreSql-kannan etäkäyttö</a></li>
 </ul></li>
 <li><a href="../../suunnittelu_ja_tyoymparisto/netbeans/index.html">NetBeansin käyttöönotto</a>
 <ul>
@@ -174,7 +175,6 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li><a href="../../kaytettavyys.html">Käytettävyys</a></li>
 <li><a href="../../pystytys/index.html">Sekalaisia ohjeita</a>
 <ul>
-<li><a href="../../pystytys/postgres-ssh-tunneli.html">PostgreSql-kannan etäkäyttö</a></li>
 <li><a href="../../pystytys/nautilus-ssh.html">Tiedostojen etämuokkaus Linuxilla</a></li>
 </ul></li>
 <li><a href="../../sivukartta.html">Sivukartta</a></li>
@@ -268,7 +268,7 @@ Pidä mielessä!
 </section>
 <section id="kannan-etäkäyttö-netbeansin-kanssa" class="level2">
 <h2>Kannan etäkäyttö NetBeansin kanssa</h2>
-<p>Jos haluat testata kantaa omalta koneeltasi käsin joudut <a href="../../pystytys/postgres-ssh-tunneli.html">muodostamaan ssh-tunnelin users-palvelimeen</a>. Et saa kantaan yhteyttä ilman sitä (ellet asenna omaa palvelinta).</p>
+<p>Jos haluat testata kantaa omalta koneeltasi käsin joudut <a href="../../suunnittelu_ja_tyoymparisto/users/postgres-ssh-tunneli.html">muodostamaan ssh-tunnelin users-palvelimeen</a>. Et saa kantaan yhteyttä ilman sitä (ellet asenna omaa palvelinta).</p>
 <p>Tämän lisäksi joudut lisäämään projektiisi PostgreSQL-kannan ajurikirjaston. NetBeansia käyttäessäsi tämä hoituu samasta kohtaa, kuin JSTL-kirjaston lisääminen: avaa valikosta <code>File-&gt;Project Properties</code>, paina <em>Libraries</em>-kategoriassa nappia <em>Add Library</em> ja lisää listasta projektiin kirjasto nimeltä <code>PostgreSQL JDBC Driver</code>.</p>
 <figure>
 <img src="../../images/koodaaminen/java/postgres-ajuri.png" alt="PostgreSQL-ajurin asennus" /><figcaption>PostgreSQL-ajurin asennus</figcaption>
