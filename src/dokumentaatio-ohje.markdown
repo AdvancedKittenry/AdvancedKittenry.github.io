@@ -24,7 +24,7 @@ ja mitä tekniikoita siinä käytetään.
   - Edellyttääkö ohjelmisto jonkun tietyn tietokannan käyttöä vai voiko sitä vaihtaa helposti. Useimmat työt toimivat vain yhdellä kannalla.
 
 
-##2. Käyttötapaukset
+##2. Yleiskuva järjestelmästä
 
 ###Käyttötapauskaavio
 Käyttötapauskaavio näyttää järjestelmän sidosryhmät ja miten ne liittyvät järjestelmään.
@@ -96,7 +96,7 @@ Muita käyttötapauksia: rekisteröityminen, kirjautuminen
 ~~~
 
 
-##4. Järjestelmän tietosisältö
+##3. Järjestelmän tietosisältö
 
 Järjestelmän tietosisältö kuvataan käsitekaavion avulla. Käsitekaavio on järjestelmään säilöttävälle tiedolle käsitetason malli, jonka perusteella johdetaan toteutustason relaatiotietokantakaavio.
 
@@ -112,7 +112,7 @@ Myös yhteydet täytyy määritellä. Alla on esimerkkinä yhden tietokohteen m�
 
 <include src="examples/tietokohdekuvaus.markdown" />
 
-##5. Relaatiotietokantakaavio
+##4. Relaatiotietokantakaavio
 
 Relaatiotietokantakaavio on teknisempi dokumentti, jossa tiedon säilömiseen käytettävän tietokannan rakenne esitetään kaaviokuvana. Kaavioon täytyy sisältyä taulujen välisten viiteyhteyksien ja avainten määritykset. 
 Jos relaatiokaaviossa on attribuutteja, jotka eivät esiinny käsitemallissa tai jonkin käsitemallin attribuutti on karsittu tai sen muotoa on muutettu on tästä erikseen mainittava. 
@@ -124,7 +124,7 @@ Huomaa kuitenkin kuinka taulun *varuste* vieras pariavain (huoneisto,laatimisaik
 ![Relaatiotietokantakaavio]({{imgdir}}dokumentaatio-ohje/relaatiokaavio.gif)
 Muunnossäännöt käsitemallista relaatiomalliin löytyvät Tietokantojen perusteet kurssin materiaalista.
 
-##6. Järjestelmän yleisrakenne
+##5. Järjestelmän yleisrakenne
 
 Tämän kappaleen tarkoitus on kertoa lyhyesti mistä jotakin toimintoa kannattaa ohjelmakoodissa etsiä.
 Järjestelmän yleinen hakemistorakenne esitetään selostamalla yleisellä tasolla lyhyesti mihin tarkoitukseen tarkoitettuja tiedostoja projektin hakemistot sisältävät,
@@ -147,7 +147,7 @@ Ohjelmiston tulee olla jaettuna komponentteihin järkevästi, siten että turhal
 Komponentteihin liittyvät yleistiedot on hyvä kirjoittaa myös ohjelmakoodin alkuun yleiskommentiksi, jolloin ne voi vain kerätä ohjelmakoodista dokumenttiin. 
 Ohjelmakoodit sijoitetaan dokumentin liitteiksi.
 
-##7. Käyttöliittymä ja järjestelmän komponentit {#kayttoliittymakomponentit}
+##6. Käyttöliittymä ja järjestelmän komponentit {#kayttoliittymakomponentit}
 
 Käyttöliittymän näkymien välisiä yhteyksiä on luontevaa esittää kaavioina. 
 Seuraavassa kuvassa on esimerkki tällaisesta kaaviosta.  
@@ -167,7 +167,7 @@ Mikäli sivustolla on navigaatiopalkki, jonka johdosta kirjautunut käyttäjä
 pääsee mistä vain mihin vain, kannattaa tämä mainita sanallisesti kaavion yhteydessä ja merkitä kaavioon vain sellaiset yhteydet,
 jotka olisivat olemassa ilman navigaatiopalkkiakin.
 
-##8. Asennustiedot
+##7. Asennustiedot
 
 Lyhyehkö ohje, jonka tarkoituksena on toisaalta kertoa, miten sovellus on nyt asennettu ja toisaalta miten sen saisi asennettua uuteen ympäristöön.
 Uudella ympäristöllä tarkitetaan tässä jotakin usersin kaltaista palvelinta, jonka nettisivutila ja tietokanta on jo pystytetty,
@@ -184,7 +184,7 @@ Asennusohjeesta tulisi ainakin käydä ilmi, minne käytettävän tietokannan as
 > Aseta sen jälkeen tietokannan yhteystiedot oikeaksi tiedostoon
 > `libs/config.php`. Voit kopioida asetustiedoston mallin tiedostosta `libs/config.php.dist`
 
-##9. Käynnistys- / käyttöohje
+##8. Käynnistys- / käyttöohje
 
 Tyypillisesti tässä riittää kertoa missä osoitteessa harjoitustyö on asennettuna ja 
 millä voi kirjautua sisään.
@@ -199,17 +199,17 @@ Näiden tietojen tulisi löytyä myös tuotettavan järjestelmän sivuilta.
 
 Muista kertoa ohjaajalle kaikki testauksen vaatimat käyttäjätunnukset ja salasanat.
 
-##10. Testaus, tunnetut bugit ja puutteet & jatkokehitysideat
+##9. Testaus, tunnetut bugit ja puutteet & jatkokehitysideat
 
 Miten olet testannut ohjelmaa? Kuinka laajasti testaus on toteutettu?
 
 Mitä puutteita tai bugeja ohjelmassa on? Mitä lisäominaisuuksia ohjelmaan voisi lisätä?
 
-##11. Omat kokemukset
+##10. Omat kokemukset
 
 Mikä oli tietokantasovelluksen teossa helppoa? Mikä vaikeaa? Mitä opit? Muu vapaa sana.
 
-##12. Liitteet
+##11. Liitteet
 Dokumentin liitteinä annetaan:
 
 * Tietokannan määrittelevät create table lauseet, erillisenä SQL-tiedostona projektin git-repositoriossa.

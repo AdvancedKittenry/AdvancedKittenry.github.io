@@ -131,6 +131,7 @@
 <li><a href="koodaaminen/java/sivutusjahaut.html">Sivutus ja hakulomakkeet</a></li>
 <li><a href="koodaaminen/java/mallit_lisays.html">Tietojen syöttäminen kantaan</a></li>
 <li><a href="koodaaminen/java/muokkausnakymat.html">Muokkausnäkymän toteuttaminen</a></li>
+<li><a href="koodaaminen/java/java-war-paketit.html">Kotikoneella tehdyn Java-työn julkaisu</a></li>
 </ul></li>
 <li><a href="koodaaminen/php/index.html">PHP-ohjeet</a>
 <ul>
@@ -145,6 +146,7 @@
 <li><a href="koodaaminen/php/sivutusjahaut.html">Sivutus ja hakulomakkeet</a></li>
 <li><a href="koodaaminen/php/mallit_lisays.html">Tietojen syöttäminen kantaan</a></li>
 <li><a href="koodaaminen/php/muokkausnakymat.html">Muokkausnäkymän toteuttaminen</a></li>
+<li><a href="koodaaminen/php/php-virheet.html">PHP:n virheilmoitusten katselu</a></li>
 </ul></li>
 </ul></li>
 <li><a href="arvosteluperusteet.html">Arvosteluperusteet</a></li>
@@ -154,8 +156,6 @@
 <li><a href="pystytys/index.html">Sekalaisia ohjeita</a>
 <ul>
 <li><a href="pystytys/postgres-ssh-tunneli.html">PostgreSql-kannan etäkäyttö</a></li>
-<li><a href="pystytys/java-war-paketit.html">Kotikoneella tehdyn Java-työn julkaisu</a></li>
-<li><a href="pystytys/php-virheet.html">PHP:n virheilmoitusten katselu</a></li>
 <li><a href="pystytys/nautilus-ssh.html">Tiedostojen etämuokkaus Linuxilla</a></li>
 </ul></li>
 <li><a href="sivukartta.html">Sivukartta</a></li>
@@ -191,8 +191,8 @@
 <li>Edellyttääkö ohjelmisto jonkun tietyn tietokannan käyttöä vai voiko sitä vaihtaa helposti. Useimmat työt toimivat vain yhdellä kannalla.</li>
 </ul>
 </section>
-<section id="käyttötapaukset" class="level2">
-<h2>2. Käyttötapaukset</h2>
+<section id="yleiskuva-järjestelmästä" class="level2">
+<h2>2. Yleiskuva järjestelmästä</h2>
 <section id="käyttötapauskaavio" class="level3">
 <h3>Käyttötapauskaavio</h3>
 <p>Käyttötapauskaavio näyttää järjestelmän sidosryhmät ja miten ne liittyvät järjestelmään. Tällä kurssilla kehitettävissä järjestelmissä sidosryhminä ovat enimmäkseen järjestelmän käyttäjäryhmät. Muita mahdollisia sidosryhmiä olisi esimerkiksi toiset järjestelmät. Harjoitustyössä käyttäjäryhmien tulisi osaltaan näkyä kyseisille ryhmille suunnattuina toiminnallisuuksia.</p>
@@ -246,7 +246,7 @@ Muita käyttötapauksia: rekisteröityminen, kirjautuminen</code></pre>
 </section>
 </section>
 <section id="järjestelmän-tietosisältö" class="level2">
-<h2>4. Järjestelmän tietosisältö</h2>
+<h2>3. Järjestelmän tietosisältö</h2>
 <p>Järjestelmän tietosisältö kuvataan käsitekaavion avulla. Käsitekaavio on järjestelmään säilöttävälle tiedolle käsitetason malli, jonka perusteella johdetaan toteutustason relaatiotietokantakaavio.</p>
 <section id="esimerkki-1" class="level4">
 <h4>Esimerkki</h4>
@@ -290,13 +290,13 @@ Muita käyttötapauksia: rekisteröityminen, kirjautuminen</code></pre>
 </section>
 </section>
 <section id="relaatiotietokantakaavio" class="level2">
-<h2>5. Relaatiotietokantakaavio</h2>
+<h2>4. Relaatiotietokantakaavio</h2>
 <p>Relaatiotietokantakaavio on teknisempi dokumentti, jossa tiedon säilömiseen käytettävän tietokannan rakenne esitetään kaaviokuvana. Kaavioon täytyy sisältyä taulujen välisten viiteyhteyksien ja avainten määritykset. Jos relaatiokaaviossa on attribuutteja, jotka eivät esiinny käsitemallissa tai jonkin käsitemallin attribuutti on karsittu tai sen muotoa on muutettu on tästä erikseen mainittava. Yleissääntönä on, että relaatiotietokantakaavion tulee olla yhteensopiva käsitemallin kanssa.</p>
 <p>Alla on esimerkki kaaviokuvasta. Nuolten tulisi lähteä vierasavainten kohdalta, pk = primary key, fk = foreign key.<br />Huomaa kuitenkin kuinka taulun <em>varuste</em> vieras pariavain (huoneisto,laatimisaika) on kuvattu yhdellä nuolella.</p>
 <p><img src="images/dokumentaatio-ohje/relaatiokaavio.gif" alt="Relaatiotietokantakaavio" /> Muunnossäännöt käsitemallista relaatiomalliin löytyvät Tietokantojen perusteet kurssin materiaalista.</p>
 </section>
 <section id="järjestelmän-yleisrakenne" class="level2">
-<h2>6. Järjestelmän yleisrakenne</h2>
+<h2>5. Järjestelmän yleisrakenne</h2>
 <p>Tämän kappaleen tarkoitus on kertoa lyhyesti mistä jotakin toimintoa kannattaa ohjelmakoodissa etsiä. Järjestelmän yleinen hakemistorakenne esitetään selostamalla yleisellä tasolla lyhyesti mihin tarkoitukseen tarkoitettuja tiedostoja projektin hakemistot sisältävät, mihin mahdollisesti käytetyt kirjastot ja apuluokat on sijoitettu ja mitä erilaisia ohjelmakoodikomponentteja projektista löytyy (Esim. html-näkymä, apuluokka, tietokantaluokka, kontrolleri). Mikäli järjestelmällä on erillinen asetuksista vastaava tiedosto, kerrotaan sen sijainti samoin kuin mahdolliset tiedostojen nimeämiseen liittyvät käytännöt.</p>
 <p>Tähän kappaleeseen laitetaan myös yleinen kuvaus siitä miten järjestelmä käyttää istuntoa ja mikäli järjestelmän osana on käytetty javascriptiä, pitää senkin toiminnan yleisperiaatteet dokumentoida tähän.</p>
 <section id="esimerkki-mvc-mallin-mukaisesta-php-projektista" class="level4">
@@ -308,7 +308,7 @@ Muita käyttötapauksia: rekisteröityminen, kirjautuminen</code></pre>
 </section>
 </section>
 <section id="kayttoliittymakomponentit" class="level2">
-<h2>7. Käyttöliittymä ja järjestelmän komponentit</h2>
+<h2>6. Käyttöliittymä ja järjestelmän komponentit</h2>
 <p>Käyttöliittymän näkymien välisiä yhteyksiä on luontevaa esittää kaavioina. Seuraavassa kuvassa on esimerkki tällaisesta kaaviosta.<br /><img src="images/dokumentaatio-ohje/sivurakenne.jpg" alt="Sivurakennekaavio" /></p>
 <p>Laita jokaisen näkymää kuvaavan suorakulmion nimen alle myös merkintä siitä mikä/mitkä kontrolleritiedosto(t)/servlet(it-luokka pääasiallissti huolehtii sen näyttämisestä. Jos sivuilla on sivusiirtymiä, jotka eivät näytä sivuja, mutta esim. muokkaavat kantaa ja ohjaavat jollekin muulle sivulle, piirrä ne kaavioon pyöreinä tekstipalloina. Pyri siihen, että jokainen sivuston kontrolleri olisi kuvassa edustettuna.</p>
 <p>Jos jonkin sivun käyttötarkoitus ei ole sen nimestä aivan ilmeinen, kirjoita siitä lyhyt kuvaus kaavion alle.</p>
@@ -316,7 +316,7 @@ Muita käyttötapauksia: rekisteröityminen, kirjautuminen</code></pre>
 <p>Mikäli sivustolla on navigaatiopalkki, jonka johdosta kirjautunut käyttäjä pääsee mistä vain mihin vain, kannattaa tämä mainita sanallisesti kaavion yhteydessä ja merkitä kaavioon vain sellaiset yhteydet, jotka olisivat olemassa ilman navigaatiopalkkiakin.</p>
 </section>
 <section id="asennustiedot" class="level2">
-<h2>8. Asennustiedot</h2>
+<h2>7. Asennustiedot</h2>
 <p>Lyhyehkö ohje, jonka tarkoituksena on toisaalta kertoa, miten sovellus on nyt asennettu ja toisaalta miten sen saisi asennettua uuteen ympäristöön. Uudella ympäristöllä tarkitetaan tässä jotakin usersin kaltaista palvelinta, jonka nettisivutila ja tietokanta on jo pystytetty, mutta varsinaista sovellusta ei ole kopioitu vielä palvelimelle, eikä tietokantayhteyden asetuksia säädetty oikeiksi.</p>
 <p>Users-palvelimella tämä vastaa tilannetta, jossa kaikki wanna-alkuiset komennot ajettu, mutta nettisovelluskansioissa ei ole vielä mitään.</p>
 <p>Asennusohjeesta tulisi ainakin käydä ilmi, minne käytettävän tietokannan asetukset (käytettävä tietokanta, käyttäjätunnus, salasana) tulee ohjelmistoa asentaessa määritellä.</p>
@@ -326,22 +326,22 @@ Muita käyttötapauksia: rekisteröityminen, kirjautuminen</code></pre>
 </blockquote>
 </section>
 <section id="käynnistys--käyttöohje" class="level2">
-<h2>9. Käynnistys- / käyttöohje</h2>
+<h2>8. Käynnistys- / käyttöohje</h2>
 <p>Tyypillisesti tässä riittää kertoa missä osoitteessa harjoitustyö on asennettuna ja millä voi kirjautua sisään.</p>
 <p>Perusoletuksena on, että järjestelmän käyttäjä osaa käsitellä WWW-sivuja selaimella. Tähän liittyviä ohjeita ei siten tarvitse antaa. WWW-sovelluksen tulisi olla helppokäyttöinen ja intuitiivinen. Sivujen pitäisi itsessään sisältää riittävästi sivun käyttöön tarvittavaa informaatiota. Jos sivut ovat tällaisia, riittää antaa ohjelman käynnistykseen tarvittava URL sekä mahdolliset kirjautumiseen tarvittavat tunnukset. Jos käyttöön liittyy joitain yleisiä toimintajärjestykseen liittyviä asioita, ne voidaan kertoa tässä yhteydessä.<br />Näiden tietojen tulisi löytyä myös tuotettavan järjestelmän sivuilta.</p>
 <p>Muista kertoa ohjaajalle kaikki testauksen vaatimat käyttäjätunnukset ja salasanat.</p>
 </section>
 <section id="testaus-tunnetut-bugit-ja-puutteet-jatkokehitysideat" class="level2">
-<h2>10. Testaus, tunnetut bugit ja puutteet &amp; jatkokehitysideat</h2>
+<h2>9. Testaus, tunnetut bugit ja puutteet &amp; jatkokehitysideat</h2>
 <p>Miten olet testannut ohjelmaa? Kuinka laajasti testaus on toteutettu?</p>
 <p>Mitä puutteita tai bugeja ohjelmassa on? Mitä lisäominaisuuksia ohjelmaan voisi lisätä?</p>
 </section>
 <section id="omat-kokemukset" class="level2">
-<h2>11. Omat kokemukset</h2>
+<h2>10. Omat kokemukset</h2>
 <p>Mikä oli tietokantasovelluksen teossa helppoa? Mikä vaikeaa? Mitä opit? Muu vapaa sana.</p>
 </section>
 <section id="liitteet" class="level2">
-<h2>12. Liitteet</h2>
+<h2>11. Liitteet</h2>
 <p>Dokumentin liitteinä annetaan:</p>
 <ul>
 <li>Tietokannan määrittelevät create table lauseet, erillisenä SQL-tiedostona projektin git-repositoriossa.</li>

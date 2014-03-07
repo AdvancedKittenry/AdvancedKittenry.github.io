@@ -4,30 +4,11 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>Muokkausnäkymän toteuttaminen</title>
+  <title>Kotikoneella tehdyn Java-työn julkaisu</title>
   <style type="text/css">code{white-space: pre;}</style>
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
-  <style type="text/css">
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; }
-code > span.dt { color: #902000; }
-code > span.dv { color: #40a070; }
-code > span.bn { color: #40a070; }
-code > span.fl { color: #40a070; }
-code > span.ch { color: #4070a0; }
-code > span.st { color: #4070a0; }
-code > span.co { color: #60a0b0; font-style: italic; }
-code > span.ot { color: #007020; }
-code > span.al { color: #ff0000; font-weight: bold; }
-code > span.fu { color: #06287e; }
-code > span.er { color: #ff0000; font-weight: bold; }
-  </style>
   <link rel="stylesheet" href="../../css/base.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!--[if lt IE 9]>
@@ -149,8 +130,8 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li><a href="../../koodaaminen/java/listausnakymat.html">Listaus- ja tietonäkymät</a></li>
 <li><a href="../../koodaaminen/java/sivutusjahaut.html">Sivutus ja hakulomakkeet</a></li>
 <li><a href="../../koodaaminen/java/mallit_lisays.html">Tietojen syöttäminen kantaan</a></li>
-<li class="selected"><a href="../../koodaaminen/java/muokkausnakymat.html">Muokkausnäkymän toteuttaminen</a></li>
-<li><a href="../../koodaaminen/java/java-war-paketit.html">Kotikoneella tehdyn Java-työn julkaisu</a></li>
+<li><a href="../../koodaaminen/java/muokkausnakymat.html">Muokkausnäkymän toteuttaminen</a></li>
+<li class="selected"><a href="../../koodaaminen/java/java-war-paketit.html">Kotikoneella tehdyn Java-työn julkaisu</a></li>
 </ul></li>
 <li><a href="../../koodaaminen/php/index.html">PHP-ohjeet</a>
 <ul>
@@ -185,47 +166,23 @@ code > span.er { color: #ff0000; font-weight: bold; }
 </div>
 <div class="col-md-6" id="content">
 <header>
-<h1 class="title">Muokkausnäkymän toteuttaminen</h1>
+<h1 class="title">Kotikoneella tehdyn Java-työn julkaisu</h1>
 </header>
-<!-- order: 10 -->
-<!-- tags: viikko4-java -->
+<!-- tags: viikko1,viikko2-usefull,viikko3-java-usefull,viikko4-java-usefull -->
 
-
-<div class="wip panel">
-<div class="panel-body">
-<h3>
-Work in progress
-</h3>
-<p>
-Tämän sivun sisältö on vielä työn alla ja saattaa muuttua kurssin edetessä.
-</p>
-</div>
-</div>
-
-
-
-<p>Yleensä lisäys- ja muokkauslomakkeet kannattaa toteuttaa samalla tai ainakin hyvin samanlaisella koodilla. Kumpaankin käytetyt lomakkeet ovat useimmiten lähes samanlaisia, mutta lisäyksestä poiketen lomake on esitäytetty muokattavan olion tietojen mukaan.</p>
-<p>Tämä toteutetaan siten, että sivun kontrolleri ottaa muokattavan tietokohteen pääavaimen arvon GET-parametrina ja pyytää mallilta oikeaa riviä vastaavaan olion, joka sitten näytetään näkymässä. Periaate on siis samanlainen, kuin <a href="listausnakymat.html#tietosivut">tietosivujen toteuttamisesta</a></p>
-<p>Erona lisäykseen on tietenkin myös suoritettava SQL-koodi, jolle pitää muutettavien tietojen lisäksi kertoa <code>WHERE</code>-ehdossa muutettavan rivin pääavaimen arvo.</p>
-<p>Päivityksen toteutukseessa on järkevää käyttää samaa tietojen kelpoisuuden tarkistamismekanismia, kuin lisäämisen kanssa.</p>
-<pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">UPDATE</span> kissat <span class="kw">SET</span> nimi = ?, vari = ?, karvaisuus = ? <span class="kw">WHERE</span> <span class="kw">id</span> = ?</code></pre>
-<p>Tämä pääavain pitää myös välittää lomakkeesta jotenkin päivitystä suorittavalle kontrollerille. Helpoin tapa on käyttää käyttäjälle näkymätöntä input-kenttää, jonka tyypiksi merkitään <code>&quot;hidden&quot;</code>:</p>
-<pre class="sourceCode php"><code class="sourceCode php">&lt;input type=&quot;hidden&quot; name=&quot;id&quot; value=&quot;${kissa.id}&quot;&gt;</code></pre>
-<section id="poistotoiminnot" class="level2">
-<h2>Poistotoiminnot</h2>
-<p>Poisto toimii käytännössä samoin, kuin muokkaus, lomakkeen näyttäminen vain jätetään välistä ja suoritetaan suoraan poistokäsky kontrollerille välitetyn pääavaimen arvon perusteella. Usein poiston aktivointiin kannattaa käyttää lomakkeisiin upotettuja poistonappeja ja POST-metodia. Kannattaa myös varmistaa, että kulloisella käyttäjällä on oikeus tehdä poisto!</p>
-<p>Malliluokan puolelle tarvitaan myös metodi(t), jolla voi poistaa rivejä. Toteutustapoja on kaksi:</p>
-<ul>
-<li>Instanssimetodi poistaa yhden olion kannasta.</li>
-<li>Staattisella metodilla voi poistaa useitakin olioita.</li>
-</ul>
-<p>SQL-syntaksi:</p>
-<pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">DELETE</span> <span class="kw">FROM</span> kissat <span class="kw">WHERE</span> <span class="kw">id</span> = ?</code></pre>
-<section class="alert alert-info small"><h3>
-Valmista!
-</h3>
-<p>Kun olet tehnyt täyden setin sivuja yhtä tietokohdetta varten, ja kirjoittanut dokumentaatioosi työsi <a href="../../dokumentaatio-ohje.html#asennustiedot">asennus- ja käyttöohjeen</a>, viikon 4 työsi on valmis.</p>
+<p>Helpoin tapa omalla koneella testatun sovelluksen pystyttämiseen tomcatissa on nk. Web Archive eli WAR-paketti. NetBeans osaa luoda WAR-paketin automaattisesti ja sijoittaa sen projektin <code>dist</code>-hakemistoon, kun klikkaat sovelluksessa Build-nappia. NetBeans saattaa kysyä haluatko todella tehdä näin, voit vastata dialogiin valitsemalla “Clean and Build”.</p>
+<p>Sijoita WAR-paketti users-palvelimelle <code>~/tomcat/webapps/</code>-kansioon. Tähän voit käyttää <a href="../../pystytys/nautilus-ssh.html">Nautilusta</a> tai komentorivillä <a href="http://linux.fi/wiki/Scp">scp-komentoa</a> Windowsilla <a href="http://winscp.net/eng/index.php">WinSCP</a> hoitaa homman.</p>
+<p>Käynnistä Tomcat, jos se ei jo ole käynnissä. Usersin Tomcat on oletuksena konfiguroitu huomaamaan paketit automaattisesti ja hoitamaan niiden purkamisen ja asentamisen itsestään. Nyt mikäli käyttäjätunnuksesi on <code>tunnus</code> ja pakettisi tiedostonimi on <code>paketti.war</code>, sovelluksesi pitäisi olla käytettävissä osoitteessa <code>http://t-tunnus.users.cs.helsinki.fi/paketti</code>.</p>
+<section id="tietokanta-asetusten-säätäminen" class="level2">
+<h2>Tietokanta-asetusten säätäminen</h2>
+<p>Mikäli sinun pitää säätää sovelluksen tietokanta-asetuksia, joudut kikkailemaan hieman lisää. Puretun sovelluksen tietokanta löytyvät sen META-INF-hakemistosta <code>context.xml</code>-tiedostosta.</p>
+<p>Tomcat on kuitenkin sinua juonikkaampi ja kopioi tästä tiedostosta oman kopionsa, joten tiedoston muokkaaminen ei vaikuta mihinkään. Saadaksesi oikeat asetukset säädettyä sinun tulee mennä hakemistoon <code>tomcat/conf/Catalina/localhost</code> ja avata sovelluksesi nimellä varustettu XML-tiedosto, esim. <code>kissalista.xml</code>.</p>
+<p>Tätä tiedostoa muokkaamalla saat tietokanta-asetukset kuntoon. Tämän voi tehdä esimerkiksi nanolla tai <a href="../../pystytys/nautilus-ssh.html">etänä geditillä</a>.</p>
+<p>Muokkausten jälkeen sinun pitää vielä käynnistää tomcat-uudestaan komennoilla <code>stop-tomcat</code> ja <code>start-tomcat</code>, jotta muutokset näkyvät sivuilla.</p>
 </section>
+<section id="lisätietoja" class="level2">
+<h2>Lisätietoja</h2>
+<p>Aiheesta voi lukea teknisempiä lisätietoja <a href="http://tomcat.apache.org/tomcat-6.0-doc/deployer-howto.html">Tomcatin ohjesivuilta</a></p>
 </section>
 </div>
 </div> 

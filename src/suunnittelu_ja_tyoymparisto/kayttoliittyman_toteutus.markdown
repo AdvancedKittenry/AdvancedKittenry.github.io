@@ -53,7 +53,7 @@ Mikäli loit tiedostosi NetBeansillä näyttää se suurinpiirtein tältä:
 ~~~~
 
 Mikäli tämännäköinen koodi ei ole tuttua, kannattaa lukea taustatietoja
-esim. [w3schoolsin sivuilta](http://w3schools.com/html/html_intro.asp).
+esim. [w3schoolsin sivuilta](http://www.w3schools.com/html/html_intro.asp).
 Myös [tietokone työvälineenä -kurssin](https://blogs.helsinki.fi/tyovaline-2013/tehtavat/)
 [materiaaleista](https://docs.google.com/document/d/1GhmkqP86f1q4tYIP6EsxXAnM6Ntlc0SiUcitWC3RcoE/pub) voi olla apua.
 

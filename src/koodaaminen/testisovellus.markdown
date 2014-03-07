@@ -52,7 +52,7 @@ Testisovelluksen Java-versio on helpointa asentaa war-pakettina.
 
 Voit ladata paketin [githubista][javaConnectionTest]. 
 Paketti on valitettavasti aika iso, sillä siihen on sisällytetty kaikki tarvittavat tietokanta-ajurit.
-Noudata paketin ladattuasi [asennusohjeita täältä]({{rootdir}}pystytys/java-war-paketit.html).
+Noudata paketin ladattuasi [asennusohjeita täältä]({{rootdir}}koodaaminen/java/java-war-paketit.html).
 
 Kun paketti on asennettu usersille sinun pitää vielä säätää
 XML-tiedostosta tietokannan yhteystiedot oikeiksi.

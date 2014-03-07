@@ -43,7 +43,7 @@ josta sen voi helposti avata kaksoisklikkaamalla sitä.
 
 ## Linkkejä
 
-* [Omalla koneella tehdyn Java-työn vieminen users-palvelimelle]({{rootdir}}pystytys/java-war-paketit.html)
+* [Omalla koneella tehdyn Java-työn vieminen users-palvelimelle]({{rootdir}}koodaaminen/java/java-war-paketit.html)
 * [Users-palvelimen tiivis ohjetiedosto](http://users.cs.helsinki.fi/README.users.cs.helsinki.fi.txt)
 
 <next>

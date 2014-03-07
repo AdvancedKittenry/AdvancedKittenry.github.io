@@ -101,7 +101,7 @@ johon on mahdollista [konfiguroida sovelluksen käyttämä tietokanta]({{rootdir
 
 Mikäli käytät NetBeansiä lokaaliin koodailuun, 
 joudut aika-ajoin kuitenkin pystyttämään työsi users-palvelimelle testattavaksi.
-Tämä on onneksi melko yksinkertainen toimenpide ja siihen on [oma ohjeensa]({{rootdir}}pystytys/java-war-paketit.html).
+Tämä on onneksi melko yksinkertainen toimenpide ja siihen on [oma ohjeensa]({{rootdir}}koodaaminen/java/java-war-paketit.html).
 
 ## Testitiedoston tekeminen
 

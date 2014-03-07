@@ -31,7 +31,7 @@ Esimerkiksi _http://laine.users.cs.helsinki.fi/lahja/lahjax.php_ osoittaa php-ti
 
 ## Virheilmoitukset
 
-<include src="../../pystytys/php-virheet.markdown" />
+<include src="../../koodaaminen/php/php-virheet.markdown" />
 
 ## Testitiedoston tekeminen
 

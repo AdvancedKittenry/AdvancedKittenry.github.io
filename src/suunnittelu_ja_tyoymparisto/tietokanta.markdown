@@ -227,7 +227,7 @@ jolloin kenttään pitää varata riittävästi tilaa hash- eli
 
 * [MySql:n dokumentaatio](http://dev.mysql.com/doc/refman/5.1/en/index.html)
 * [PostgreSql:n dokumentaatio](http://www.postgresql.org/docs/8.4/interactive/index.html)
-* [W3Schoolsin SQL-intro](http://w3schools.com/sql/default.asp)
+* [W3Schoolsin SQL-intro](http://www.w3schools.com/sql/default.asp)
 * Laineen tietokantojen perusteet -kurssin SQL materiaaleja
     * [Osa 1](http://www.cs.helsinki.fi/u/laine/tikape/moniste/osa1.pdf)
     * [Osa 2](http://www.cs.helsinki.fi/u/laine/tikape/moniste/osa2.pdf)

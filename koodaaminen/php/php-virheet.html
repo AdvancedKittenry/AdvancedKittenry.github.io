@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>Muokkausnäkymän toteuttaminen</title>
+  <title>PHP:n virheilmoitusten katselu</title>
   <style type="text/css">code{white-space: pre;}</style>
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -149,7 +149,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li><a href="../../koodaaminen/java/listausnakymat.html">Listaus- ja tietonäkymät</a></li>
 <li><a href="../../koodaaminen/java/sivutusjahaut.html">Sivutus ja hakulomakkeet</a></li>
 <li><a href="../../koodaaminen/java/mallit_lisays.html">Tietojen syöttäminen kantaan</a></li>
-<li class="selected"><a href="../../koodaaminen/java/muokkausnakymat.html">Muokkausnäkymän toteuttaminen</a></li>
+<li><a href="../../koodaaminen/java/muokkausnakymat.html">Muokkausnäkymän toteuttaminen</a></li>
 <li><a href="../../koodaaminen/java/java-war-paketit.html">Kotikoneella tehdyn Java-työn julkaisu</a></li>
 </ul></li>
 <li><a href="../../koodaaminen/php/index.html">PHP-ohjeet</a>
@@ -165,7 +165,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li><a href="../../koodaaminen/php/sivutusjahaut.html">Sivutus ja hakulomakkeet</a></li>
 <li><a href="../../koodaaminen/php/mallit_lisays.html">Tietojen syöttäminen kantaan</a></li>
 <li><a href="../../koodaaminen/php/muokkausnakymat.html">Muokkausnäkymän toteuttaminen</a></li>
-<li><a href="../../koodaaminen/php/php-virheet.html">PHP:n virheilmoitusten katselu</a></li>
+<li class="selected"><a href="../../koodaaminen/php/php-virheet.html">PHP:n virheilmoitusten katselu</a></li>
 </ul></li>
 </ul></li>
 <li><a href="../../arvosteluperusteet.html">Arvosteluperusteet</a></li>
@@ -185,48 +185,16 @@ code > span.er { color: #ff0000; font-weight: bold; }
 </div>
 <div class="col-md-6" id="content">
 <header>
-<h1 class="title">Muokkausnäkymän toteuttaminen</h1>
+<h1 class="title">PHP:n virheilmoitusten katselu</h1>
 </header>
-<!-- order: 10 -->
-<!-- tags: viikko4-java -->
+<!-- tags: viikko1,viikko2-usefull,viikko3-php-usefull,viikko4-php-usefull -->
 
-
-<div class="wip panel">
-<div class="panel-body">
-<h3>
-Work in progress
-</h3>
-<p>
-Tämän sivun sisältö on vielä työn alla ja saattaa muuttua kurssin edetessä.
-</p>
-</div>
-</div>
-
-
-
-<p>Yleensä lisäys- ja muokkauslomakkeet kannattaa toteuttaa samalla tai ainakin hyvin samanlaisella koodilla. Kumpaankin käytetyt lomakkeet ovat useimmiten lähes samanlaisia, mutta lisäyksestä poiketen lomake on esitäytetty muokattavan olion tietojen mukaan.</p>
-<p>Tämä toteutetaan siten, että sivun kontrolleri ottaa muokattavan tietokohteen pääavaimen arvon GET-parametrina ja pyytää mallilta oikeaa riviä vastaavaan olion, joka sitten näytetään näkymässä. Periaate on siis samanlainen, kuin <a href="listausnakymat.html#tietosivut">tietosivujen toteuttamisesta</a></p>
-<p>Erona lisäykseen on tietenkin myös suoritettava SQL-koodi, jolle pitää muutettavien tietojen lisäksi kertoa <code>WHERE</code>-ehdossa muutettavan rivin pääavaimen arvo.</p>
-<p>Päivityksen toteutukseessa on järkevää käyttää samaa tietojen kelpoisuuden tarkistamismekanismia, kuin lisäämisen kanssa.</p>
-<pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">UPDATE</span> kissat <span class="kw">SET</span> nimi = ?, vari = ?, karvaisuus = ? <span class="kw">WHERE</span> <span class="kw">id</span> = ?</code></pre>
-<p>Tämä pääavain pitää myös välittää lomakkeesta jotenkin päivitystä suorittavalle kontrollerille. Helpoin tapa on käyttää käyttäjälle näkymätöntä input-kenttää, jonka tyypiksi merkitään <code>&quot;hidden&quot;</code>:</p>
-<pre class="sourceCode php"><code class="sourceCode php">&lt;input type=&quot;hidden&quot; name=&quot;id&quot; value=&quot;${kissa.id}&quot;&gt;</code></pre>
-<section id="poistotoiminnot" class="level2">
-<h2>Poistotoiminnot</h2>
-<p>Poisto toimii käytännössä samoin, kuin muokkaus, lomakkeen näyttäminen vain jätetään välistä ja suoritetaan suoraan poistokäsky kontrollerille välitetyn pääavaimen arvon perusteella. Usein poiston aktivointiin kannattaa käyttää lomakkeisiin upotettuja poistonappeja ja POST-metodia. Kannattaa myös varmistaa, että kulloisella käyttäjällä on oikeus tehdä poisto!</p>
-<p>Malliluokan puolelle tarvitaan myös metodi(t), jolla voi poistaa rivejä. Toteutustapoja on kaksi:</p>
-<ul>
-<li>Instanssimetodi poistaa yhden olion kannasta.</li>
-<li>Staattisella metodilla voi poistaa useitakin olioita.</li>
-</ul>
-<p>SQL-syntaksi:</p>
-<pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">DELETE</span> <span class="kw">FROM</span> kissat <span class="kw">WHERE</span> <span class="kw">id</span> = ?</code></pre>
-<section class="alert alert-info small"><h3>
-Valmista!
-</h3>
-<p>Kun olet tehnyt täyden setin sivuja yhtä tietokohdetta varten, ja kirjoittanut dokumentaatioosi työsi <a href="../../dokumentaatio-ohje.html#asennustiedot">asennus- ja käyttöohjeen</a>, viikon 4 työsi on valmis.</p>
-</section>
-</section>
+<p>PHP:n virheilmoitukset kirjautuvat users-koneella tiedostoon <code>/home/userlogs/käyttäjätunnuksesi.error</code>. Uusimmat virheet löytyvät tiedoston lopusta. Kätevä tapa seurata PHP:n tuottamia virheviestejä on ajaa usersilla komento:</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">tail</span> -f /home/userlogs/<span class="ot">$USER</span>.error</code></pre>
+<p>Komento näyttää viimeiset kymmenen virheviestiä ja jää komentoriville seuraamaan virheviestejä näyttäen aina viimeisimmät. Kommenon pystyy sulkemaan painamalla Ctrl+C:tä.</p>
+<p>Virheloki saattaa ajoittain täyttyä seuraavanlaisista virheviesteistä:</p>
+<pre><code>[Mon Sep 09 16:58:56 2013] [error] [client 128.214.137.101] File does not exist: /home/consuegr/htdocs/favicon.ico</code></pre>
+<p>Virheistä pääsee halutessaan eroon laittamalla sovellukselleen <a href="http://fi.wikipedia.org/wiki/Favicon">favicon.ico:n</a>.</p>
 </div>
 </div> 
 </div> 

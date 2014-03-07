@@ -48,7 +48,7 @@ TODO:
 Kannattaa järjestää asiat niin, että usersilla näkyvät sivut 
 ovat jotakuinkin identtisiä oman repositorion sisällön kanssa.
 PHP:tä NetBeansillä koodaaville tämä on automaattista.
-Javalla helpoin tapa on [kopioida projektin war-tiedosto Tomcatin webapps-hakemistoon]({{rootdir}}pystytys/java-war-paketit.html).
+Javalla helpoin tapa on [kopioida projektin war-tiedosto Tomcatin webapps-hakemistoon]({{rootdir}}koodaaminen/java/java-war-paketit.html).
 Mikäli kopioit töitä PHP:llä käsin, helpointa on pystyttää git-repositoriosi users:ille ja käyttää sitä tiedostojen synkkaamiseen.
 Luo tällöin repositoriollesi ja työllesi oma alihakemisto `htdocs`:in alle.
 

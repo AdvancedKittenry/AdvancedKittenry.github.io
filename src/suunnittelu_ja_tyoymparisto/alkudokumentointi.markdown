@@ -3,10 +3,9 @@
 <!-- tags: viikko1 -->
 
 Avaa mieleisesi tekstinkäsittelyohjelma ja tutustu
-[dokumentaatio-ohjeen]({{rootdir}}dokumentaatio-ohje.html) avulla miten tuotetaan dokumentaation kolme ensimmäistä lukua 
+[dokumentaatio-ohjeen]({{rootdir}}dokumentaatio-ohje.html) avulla miten tuotetaan dokumentaation kaksi ensimmäistä lukua 
 [Johdanto]({{rootdir}}dokumentaatio-ohje.html#johdanto),
-[Yleiskuva järjestelmästä ]({{rootdir}}dokumentaatio-ohje.html#yleiskuva-j%C3%A4rjestelm%C3%A4st%C3%A4) ja 
-[Käyttötapaukset]({{rootdir}}dokumentaatio-ohje.html#k%C3%A4ytt%C3%B6tapaukset).
+[Yleiskuva järjestelmästä ]({{rootdir}}dokumentaatio-ohje.html#yleiskuva-j%C3%A4rjestelm%C3%A4st%C3%A4) 
 
 Kirjoita johdantoon kuvaus valitsemastasi aiheesta ja ohjelmointikielestä, sekä mahdollisista muista tekniikoista ja kirjastoista mitä aiot käyttää työssäsi. 
 
