@@ -1,4 +1,5 @@
-% Tiedostojen etämuokkaus Linuxilla
+## Tiedostojen muokkaus SSH:n yli Linuxilla
+<!-- order: 8 -->
 <!-- tags: viikko1,viikko2-usefull -->
 
 Gnomea työpöytäympäristönä käyttävissä Linux-jakeluissa, joihin laitoksenkin käyttämä Ubuntu kuuluu, on mahdollista käsitellä users-palvelimella sijaitsevia tiedostoja suoraan etäyhteyden yli.

@@ -52,7 +52,7 @@ ja sijoita sinne jotain seuraavantapaista:
 
 Tiedoston voi luoda esimerkiksi komentorivillä käyttämällä `nano`-tekstieditoria. Voit myös siirtää palvelimelle muualla tekemäsi
 tiedoston käyttämällä
-[nautilusta]({{rootdir}}pystytys/nautilus-ssh.html) tai
+[nautilusta](../etamuokkaus.html) tai
 [winSCP:tä](http://winscp.net/eng/index.php).
 
 Sivun pitäisi näyttää tervehdys osoitteessa:

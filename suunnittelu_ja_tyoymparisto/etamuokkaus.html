@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>Sekalaisia ohjeita</title>
+  <title></title>
   <style type="text/css">code{white-space: pre;}</style>
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -99,6 +99,7 @@
 <li><a href="../suunnittelu_ja_tyoymparisto/users/postgresql.html">PostgreSQL-tietokannan käyttöönotto</a></li>
 <li><a href="../suunnittelu_ja_tyoymparisto/users/postgres-ssh-tunneli.html">PostgreSql-kannan etäkäyttö</a></li>
 </ul></li>
+<li class="selected"><a href="../suunnittelu_ja_tyoymparisto/etamuokkaus.html">Etamuokkaus</a></li>
 <li><a href="../suunnittelu_ja_tyoymparisto/netbeans/index.html">NetBeansin käyttöönotto</a>
 <ul>
 <li><a href="../suunnittelu_ja_tyoymparisto/netbeans/java.html">NetBeansin käyttö Javan kanssa</a></li>
@@ -154,10 +155,6 @@
 <li><a href="../dokumentaatio-ohje.html">Dokumentaatio-ohje</a></li>
 <li><a href="../cleancode.html">Hyvä ohjelmointityyli</a></li>
 <li><a href="../kaytettavyys.html">Käytettävyys</a></li>
-<li class="selected"><a href="../pystytys/index.html">Sekalaisia ohjeita</a>
-<ul>
-<li><a href="../pystytys/nautilus-ssh.html">Tiedostojen etämuokkaus Linuxilla</a></li>
-</ul></li>
 <li><a href="../sivukartta.html">Sivukartta</a></li>
 <li><a href="../web-sovelluksista.html">Web-sovelluksien toiminta</a></li>
 </ul></li>
@@ -165,23 +162,24 @@
 </nav>
 </div>
 <div class="col-md-6" id="content">
-<header>
-<h1 class="title">Sekalaisia ohjeita</h1>
-</header>
-<div class="wip panel">
-<div class="panel-body">
-<h3>
-Work in progress
-</h3>
-<p>
-Tämän sivun sisältö on vielä työn alla ja saattaa muuttua kurssin edetessä.
-</p>
-</div>
-</div>
+<section id="tiedostojen-muokkaus-sshn-yli-linuxilla" class="level2">
+<h2>Tiedostojen muokkaus SSH:n yli Linuxilla</h2>
+<!-- order: 8 -->
+<!-- tags: viikko1,viikko2-usefull -->
 
-
-
-<p>Tähän sivuryppääseen on kerätty ohjeita, jotka tullaan kohtapuoliin siirtämään muualle sivustolla</p>
+<p>Gnomea työpöytäympäristönä käyttävissä Linux-jakeluissa, joihin laitoksenkin käyttämä Ubuntu kuuluu, on mahdollista käsitellä users-palvelimella sijaitsevia tiedostoja suoraan etäyhteyden yli. Tämä onnistuu avaamalla järjestelmän oletustiedostoselain, Nautilus: <img src="../images/suunnittelu_ja_tyoymparisto/nautilus-ssh/tsoha1crop.png" alt="Avaa nautilus" /></p>
+<p>Nautiluksen File-valikosta löytyy valinta Connect to server. <img src="../images/suunnittelu_ja_tyoymparisto/nautilus-ssh/tsoha2crop.png" alt="File-valikosta löytyy Connect to server" /></p>
+<p>Valitse yhteystyypiksi SSH ja täytä loput tiedot kuvan mukaisesti. Laita tunnuksen tilalle Folder ja User name -valinnoissa oma käyttäjätunnuksesi. <img src="../images/suunnittelu_ja_tyoymparisto/nautilus-ssh/tsoha4crop.png" alt="Loput tiedot täytetään näin" /></p>
+<p>Mikäli syötit tiedot oikein, pitäisi näytöllesi avautua users-palvelimen kotikansio. Voit tästä navigoida esim. PHP-tiedostoja muokkaamaan kansioon htdocs. Tiedostoja voi nyt avata, muokata, kopioida ja siirrellä kuten normaalisti.</p>
+<figure>
+<img src="../images/suunnittelu_ja_tyoymparisto/nautilus-ssh/tsoha5crop.png" alt="Avautuu uusi hakemistonäkymä" /><figcaption>Avautuu uusi hakemistonäkymä</figcaption>
+</figure>
+<p>Kätevä konsti on lisätä nyt avattu kansio nautiluksen bookmarkkeihin, niin siihen pääsee hyvin nopeasti käsiksi jatkossakin.</p>
+<p>Hyvä kevyt editori tiedostojen muokkaamiseen on useimmissa Ubuntuissakin vakiona tuleva Gedit.</p>
+<figure>
+<img src="../images/suunnittelu_ja_tyoymparisto/nautilus-ssh/tsoha6crop.png" alt="Gedit" /><figcaption>Gedit</figcaption>
+</figure>
+</section>
 </div>
 </div> 
 </div> 

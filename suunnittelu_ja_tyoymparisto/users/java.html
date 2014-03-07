@@ -118,6 +118,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li><a href="../../suunnittelu_ja_tyoymparisto/users/postgresql.html">PostgreSQL-tietokannan käyttöönotto</a></li>
 <li><a href="../../suunnittelu_ja_tyoymparisto/users/postgres-ssh-tunneli.html">PostgreSql-kannan etäkäyttö</a></li>
 </ul></li>
+<li><a href="../../suunnittelu_ja_tyoymparisto/etamuokkaus.html">Etamuokkaus</a></li>
 <li><a href="../../suunnittelu_ja_tyoymparisto/netbeans/index.html">NetBeansin käyttöönotto</a>
 <ul>
 <li><a href="../../suunnittelu_ja_tyoymparisto/netbeans/java.html">NetBeansin käyttö Javan kanssa</a></li>
@@ -173,10 +174,6 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li><a href="../../dokumentaatio-ohje.html">Dokumentaatio-ohje</a></li>
 <li><a href="../../cleancode.html">Hyvä ohjelmointityyli</a></li>
 <li><a href="../../kaytettavyys.html">Käytettävyys</a></li>
-<li><a href="../../pystytys/index.html">Sekalaisia ohjeita</a>
-<ul>
-<li><a href="../../pystytys/nautilus-ssh.html">Tiedostojen etämuokkaus Linuxilla</a></li>
-</ul></li>
 <li><a href="../../sivukartta.html">Sivukartta</a></li>
 <li><a href="../../web-sovelluksista.html">Web-sovelluksien toiminta</a></li>
 </ul></li>
@@ -208,7 +205,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <section id="sovelluksien-pystyttäminen-ja-koodaus" class="level2">
 <h2>Sovelluksien pystyttäminen ja koodaus</h2>
 <p>Kun olet saanut testisovelluksen toimimaan, sinulla on kaksi vaihtoehtoa sovelluskehitykseen.</p>
-<p>Voit lähteä rakentamaan sovellusta suoraan users-palvelimelle. Tällöin tsoha-sovelluksen rakenteesta voi ottaa mallia. Ratkaisu on siitä hyvä, että kaikki pyörii silloin samalla koneella, mutta joudut <a href="../../pystytys/nautilus-ssh.html">muokkaamaan tiedostoja etänä</a> ja kääntämään työtäsi käsin. Työn kääntäminen tsoha-projektissa tapahtuu menemällä komentorivillä hakemistoon <code>src</code> ja ajamalla ohjelma <code>ant</code>. Ant kääntää työn puolestasi ja asentaa luokat oikeisiin paikkoihin. Tätä varten tarvitset samassa hakemistossa olevan <code>build.xml</code>-tiedoston, jonka voi kopioida tsoha-projektin <code>src</code>-hakemistosta.</p>
+<p>Voit lähteä rakentamaan sovellusta suoraan users-palvelimelle. Tällöin tsoha-sovelluksen rakenteesta voi ottaa mallia. Ratkaisu on siitä hyvä, että kaikki pyörii silloin samalla koneella, mutta joudut <a href="../etamuokkaus.html">muokkaamaan tiedostoja etänä</a> ja kääntämään työtäsi käsin ant-ohjelmalla. Työn kääntäminen tsoha-projektissa tapahtuu menemällä komentorivillä hakemistoon <code>src</code> ja ajamalla ohjelma <code>ant</code>. Ant kääntää työn puolestasi ja asentaa luokat oikeisiin paikkoihin. Tätä varten tarvitset samassa hakemistossa olevan <code>build.xml</code>-tiedoston, jonka voi kopioida tsoha-projektin <code>src</code>-hakemistosta.</p>
 <p>Toinen ja useimmiten kätevämpi vaihoehto on käyttää <a href="../netbeans/java.html">NetBeansiä ja asentaa tomcat omalle koneelleen</a>. Tässä vaihtoehdossa on se hyvä puoli, että alkuosan koodin kirjoittamisen voi tehdä kokonaan omalla tietokoneellaan, mutta tietokannan käyttöä varten tarvitsee aina <a href="../../suunnittelu_ja_tyoymparisto/users/postgres-ssh-tunneli.html">muodostaa etäyhteys</a>, ellet asenna tietokantapalvelinta koneellesi itse. NetBeansin käytössä on myös se hyvä puoli, että sen tarjoama tuki nettipuolen Javalle on erinomainen ja auttaa monien koodausongelmien kanssa.</p>
 <section id="sovelluksien-kansiorakenteesta" class="level3">
 <h3>Sovelluksien kansiorakenteesta</h3>
@@ -235,7 +232,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
   &lt;h1&gt;Terve maailma&lt;/h1&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
-<p>Tiedoston voi luoda esimerkiksi komentorivillä käyttämällä <code>nano</code>-tekstieditoria. Voit myös siirtää palvelimelle muualla tekemäsi tiedoston käyttämällä <a href="../../pystytys/nautilus-ssh.html">nautilusta</a> tai <a href="http://winscp.net/eng/index.php">winSCP:tä</a>.</p>
+<p>Tiedoston voi luoda esimerkiksi komentorivillä käyttämällä <code>nano</code>-tekstieditoria. Voit myös siirtää palvelimelle muualla tekemäsi tiedoston käyttämällä <a href="../etamuokkaus.hml">nautilusta</a> tai <a href="http://winscp.net/eng/index.php">winSCP:tä</a>.</p>
 <p>Sivun pitäisi nyt näyttää tervehdys osoitteessa:<br /><a href="http://t-kayttajatunnuksesi.users.cs.helsinki.fi/sovelluksen_nimi/index.jsp">http://t-kayttajatunnuksesi.users.cs.helsinki.fi/sovelluksen_nimi/index.jsp</a></p>
 </section>
 <section id="esittelysivu" class="level2">

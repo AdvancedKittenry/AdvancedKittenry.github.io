@@ -13,7 +13,7 @@ töitänsä myös omalla koneellaan, mutta
 PHP:tä käytettäessä on käytännössä helpompi konfiguroida 
 esim. NetBeans lähettämään tai tallentamaan tiedostot suoraan users-palvelimelle.
 Tästä on [NetBeansille ohje](../netbeans/php.html) tai vaihtoehtoisesti voi käyttää
-myös vaikkapa [Nautilusta ja Gedit:iä tiedostojen etämuokkaamiseen]({{rootdir}}pystytys/nautilus-ssh.html)
+myös vaikkapa [Nautilusta ja Gedit:iä tiedostojen etämuokkaamiseen](../etamuokkaus.html)
 
 ## Yhteyden ottaminen users-palvelimeen
 

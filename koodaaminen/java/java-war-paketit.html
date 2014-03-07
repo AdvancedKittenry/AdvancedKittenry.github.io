@@ -99,6 +99,7 @@
 <li><a href="../../suunnittelu_ja_tyoymparisto/users/postgresql.html">PostgreSQL-tietokannan käyttöönotto</a></li>
 <li><a href="../../suunnittelu_ja_tyoymparisto/users/postgres-ssh-tunneli.html">PostgreSql-kannan etäkäyttö</a></li>
 </ul></li>
+<li><a href="../../suunnittelu_ja_tyoymparisto/etamuokkaus.html">Etamuokkaus</a></li>
 <li><a href="../../suunnittelu_ja_tyoymparisto/netbeans/index.html">NetBeansin käyttöönotto</a>
 <ul>
 <li><a href="../../suunnittelu_ja_tyoymparisto/netbeans/java.html">NetBeansin käyttö Javan kanssa</a></li>
@@ -154,10 +155,6 @@
 <li><a href="../../dokumentaatio-ohje.html">Dokumentaatio-ohje</a></li>
 <li><a href="../../cleancode.html">Hyvä ohjelmointityyli</a></li>
 <li><a href="../../kaytettavyys.html">Käytettävyys</a></li>
-<li><a href="../../pystytys/index.html">Sekalaisia ohjeita</a>
-<ul>
-<li><a href="../../pystytys/nautilus-ssh.html">Tiedostojen etämuokkaus Linuxilla</a></li>
-</ul></li>
 <li><a href="../../sivukartta.html">Sivukartta</a></li>
 <li><a href="../../web-sovelluksista.html">Web-sovelluksien toiminta</a></li>
 </ul></li>
@@ -171,13 +168,13 @@
 <!-- tags: viikko1,viikko2-usefull,viikko3-java-usefull,viikko4-java-usefull -->
 
 <p>Helpoin tapa omalla koneella testatun sovelluksen pystyttämiseen tomcatissa on nk. Web Archive eli WAR-paketti. NetBeans osaa luoda WAR-paketin automaattisesti ja sijoittaa sen projektin <code>dist</code>-hakemistoon, kun klikkaat sovelluksessa Build-nappia. NetBeans saattaa kysyä haluatko todella tehdä näin, voit vastata dialogiin valitsemalla “Clean and Build”.</p>
-<p>Sijoita WAR-paketti users-palvelimelle <code>~/tomcat/webapps/</code>-kansioon. Tähän voit käyttää <a href="../../pystytys/nautilus-ssh.html">Nautilusta</a> tai komentorivillä <a href="http://linux.fi/wiki/Scp">scp-komentoa</a> Windowsilla <a href="http://winscp.net/eng/index.php">WinSCP</a> hoitaa homman.</p>
+<p>Sijoita WAR-paketti users-palvelimelle <code>~/tomcat/webapps/</code>-kansioon. Tähän voit käyttää <a href="../../suunnittelu_ja_tyoymparisto/nautilus-ssh.html">Nautilusta</a> tai komentorivillä <a href="http://linux.fi/wiki/Scp">scp-komentoa</a> Windowsilla <a href="http://winscp.net/eng/index.php">WinSCP</a> hoitaa homman.</p>
 <p>Käynnistä Tomcat, jos se ei jo ole käynnissä. Usersin Tomcat on oletuksena konfiguroitu huomaamaan paketit automaattisesti ja hoitamaan niiden purkamisen ja asentamisen itsestään. Nyt mikäli käyttäjätunnuksesi on <code>tunnus</code> ja pakettisi tiedostonimi on <code>paketti.war</code>, sovelluksesi pitäisi olla käytettävissä osoitteessa <code>http://t-tunnus.users.cs.helsinki.fi/paketti</code>.</p>
 <section id="tietokanta-asetusten-säätäminen" class="level2">
 <h2>Tietokanta-asetusten säätäminen</h2>
 <p>Mikäli sinun pitää säätää sovelluksen tietokanta-asetuksia, joudut kikkailemaan hieman lisää. Puretun sovelluksen tietokanta löytyvät sen META-INF-hakemistosta <code>context.xml</code>-tiedostosta.</p>
 <p>Tomcat on kuitenkin sinua juonikkaampi ja kopioi tästä tiedostosta oman kopionsa, joten tiedoston muokkaaminen ei vaikuta mihinkään. Saadaksesi oikeat asetukset säädettyä sinun tulee mennä hakemistoon <code>tomcat/conf/Catalina/localhost</code> ja avata sovelluksesi nimellä varustettu XML-tiedosto, esim. <code>kissalista.xml</code>.</p>
-<p>Tätä tiedostoa muokkaamalla saat tietokanta-asetukset kuntoon. Tämän voi tehdä esimerkiksi nanolla tai <a href="../../pystytys/nautilus-ssh.html">etänä geditillä</a>.</p>
+<p>Tätä tiedostoa muokkaamalla saat tietokanta-asetukset kuntoon. Tämän voi tehdä esimerkiksi nanolla tai <a href="../../suunnittelu_ja_tyoymparisto/nautilus-ssh.html">etänä geditillä</a>.</p>
 <p>Muokkausten jälkeen sinun pitää vielä käynnistää tomcat-uudestaan komennoilla <code>stop-tomcat</code> ja <code>start-tomcat</code>, jotta muutokset näkyvät sivuilla.</p>
 </section>
 <section id="lisätietoja" class="level2">

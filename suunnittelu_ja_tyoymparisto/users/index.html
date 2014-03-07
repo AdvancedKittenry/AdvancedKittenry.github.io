@@ -118,6 +118,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li><a href="../../suunnittelu_ja_tyoymparisto/users/postgresql.html">PostgreSQL-tietokannan käyttöönotto</a></li>
 <li><a href="../../suunnittelu_ja_tyoymparisto/users/postgres-ssh-tunneli.html">PostgreSql-kannan etäkäyttö</a></li>
 </ul></li>
+<li><a href="../../suunnittelu_ja_tyoymparisto/etamuokkaus.html">Etamuokkaus</a></li>
 <li><a href="../../suunnittelu_ja_tyoymparisto/netbeans/index.html">NetBeansin käyttöönotto</a>
 <ul>
 <li><a href="../../suunnittelu_ja_tyoymparisto/netbeans/java.html">NetBeansin käyttö Javan kanssa</a></li>
@@ -173,10 +174,6 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li><a href="../../dokumentaatio-ohje.html">Dokumentaatio-ohje</a></li>
 <li><a href="../../cleancode.html">Hyvä ohjelmointityyli</a></li>
 <li><a href="../../kaytettavyys.html">Käytettävyys</a></li>
-<li><a href="../../pystytys/index.html">Sekalaisia ohjeita</a>
-<ul>
-<li><a href="../../pystytys/nautilus-ssh.html">Tiedostojen etämuokkaus Linuxilla</a></li>
-</ul></li>
 <li><a href="../../sivukartta.html">Sivukartta</a></li>
 <li><a href="../../web-sovelluksista.html">Web-sovelluksien toiminta</a></li>
 </ul></li>
@@ -191,7 +188,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <!-- tags: viikko1 -->
 
 <p>Lähes kaikki tietokantasovellukset tullaan pystyttämään laitoksen users-palvelimelle, jolla on mahdollista pyörittää Javalla ja PHP:llä toteutettuja tietokantasovelluksia käyttäen PostgreSQL- ja MySQL-tietokantapalvelimia.</p>
-<p>Tällä kurssilla käytämme users-palvelinta ennenkaikkea töiden saamiseen julkisen internetin puolelle ajettavaksi. Javaa käyttävät pystyvät melko helposti ajamaan <a href="../netbeans/java.html">NetBeansin ja Tomcatin avulla</a> töitänsä myös omalla koneellaan, mutta PHP:tä käytettäessä on käytännössä helpompi konfiguroida esim. NetBeans lähettämään tai tallentamaan tiedostot suoraan users-palvelimelle. Tästä on <a href="../netbeans/php.html">NetBeansille ohje</a> tai vaihtoehtoisesti voi käyttää myös vaikkapa <a href="../../pystytys/nautilus-ssh.html">Nautilusta ja Gedit:iä tiedostojen etämuokkaamiseen</a></p>
+<p>Tällä kurssilla käytämme users-palvelinta ennenkaikkea töiden saamiseen julkisen internetin puolelle ajettavaksi. Javaa käyttävät pystyvät melko helposti ajamaan <a href="../netbeans/java.html">NetBeansin ja Tomcatin avulla</a> töitänsä myös omalla koneellaan, mutta PHP:tä käytettäessä on käytännössä helpompi konfiguroida esim. NetBeans lähettämään tai tallentamaan tiedostot suoraan users-palvelimelle. Tästä on <a href="../netbeans/php.html">NetBeansille ohje</a> tai vaihtoehtoisesti voi käyttää myös vaikkapa <a href="../etamuokkaus.html">Nautilusta ja Gedit:iä tiedostojen etämuokkaamiseen</a></p>
 <section id="yhteyden-ottaminen-users-palvelimeen" class="level2">
 <h2>Yhteyden ottaminen users-palvelimeen</h2>
 <p>Ensiksi sinun pitää kirjautua laitoksen tietokantasovelluspalvelimelle SSH:llä. Käytä Windowsissa <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html">Puttyä</a> ja muissa käyttäjärjestelmissä komentoriviä ja ssh-ohjelmaa.</p>

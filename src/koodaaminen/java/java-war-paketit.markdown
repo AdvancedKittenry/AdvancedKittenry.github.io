@@ -5,7 +5,7 @@ Helpoin tapa omalla koneella testatun sovelluksen pystyttämiseen tomcatissa on 
 NetBeans osaa luoda WAR-paketin automaattisesti ja sijoittaa sen projektin `dist`-hakemistoon, kun klikkaat sovelluksessa Build-nappia. NetBeans saattaa kysyä haluatko todella tehdä näin, voit vastata dialogiin valitsemalla "Clean and Build".
 
 Sijoita WAR-paketti users-palvelimelle `~/tomcat/webapps/`-kansioon.
-Tähän voit käyttää [Nautilusta]({{rootdir}}pystytys/nautilus-ssh.html)
+Tähän voit käyttää [Nautilusta]({{rootdir}}suunnittelu_ja_tyoymparisto/nautilus-ssh.html)
 tai komentorivillä [scp-komentoa](http://linux.fi/wiki/Scp) 
 Windowsilla [WinSCP](http://winscp.net/eng/index.php) hoitaa homman.
 
@@ -31,7 +31,7 @@ ja avata sovelluksesi nimellä varustettu XML-tiedosto,
 esim. `kissalista.xml`. 
 
 Tätä tiedostoa muokkaamalla saat tietokanta-asetukset kuntoon.
-Tämän voi tehdä esimerkiksi nanolla tai [etänä geditillä]({{rootdir}}pystytys/nautilus-ssh.html).
+Tämän voi tehdä esimerkiksi nanolla tai [etänä geditillä]({{rootdir}}suunnittelu_ja_tyoymparisto/nautilus-ssh.html).
 
 Muokkausten jälkeen sinun pitää vielä käynnistää tomcat-uudestaan
 komennoilla `stop-tomcat` ja `start-tomcat`, jotta muutokset

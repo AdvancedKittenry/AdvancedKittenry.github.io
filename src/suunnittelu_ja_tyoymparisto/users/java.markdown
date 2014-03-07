@@ -58,7 +58,8 @@ sinulla on kaksi vaihtoehtoa sovelluskehitykseen.
 Voit lähteä rakentamaan sovellusta suoraan users-palvelimelle.
 Tällöin tsoha-sovelluksen rakenteesta voi ottaa mallia.
 Ratkaisu on siitä hyvä, että kaikki pyörii silloin samalla koneella,
-mutta joudut [muokkaamaan tiedostoja etänä]({{rootdir}}pystytys/nautilus-ssh.html) ja kääntämään työtäsi käsin.
+mutta joudut [muokkaamaan tiedostoja etänä](../etamuokkaus.html) 
+ja kääntämään työtäsi käsin ant-ohjelmalla.
 Työn kääntäminen tsoha-projektissa tapahtuu menemällä komentorivillä hakemistoon `src`
 ja ajamalla ohjelma `ant`. Ant kääntää työn puolestasi ja asentaa luokat oikeisiin paikkoihin.
 Tätä varten tarvitset samassa hakemistossa olevan `build.xml`-tiedoston, jonka voi kopioida tsoha-projektin `src`-hakemistosta.
@@ -122,7 +123,7 @@ tiedosto index.jsp. Sen sisällöksi riittää seuraavantapainen koodi:
 
 Tiedoston voi luoda esimerkiksi komentorivillä käyttämällä `nano`-tekstieditoria. Voit myös siirtää palvelimelle muualla tekemäsi
 tiedoston käyttämällä
-[nautilusta]({{rootdir}}pystytys/nautilus-ssh.html) tai
+[nautilusta](../etamuokkaus.hml) tai
 [winSCP:tä](http://winscp.net/eng/index.php).
 
 Sivun pitäisi nyt näyttää tervehdys osoitteessa: \
