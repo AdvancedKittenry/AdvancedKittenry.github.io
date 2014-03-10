@@ -4,30 +4,11 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>Sovelluksen rakenne ja servletit</title>
+  <title>Henkilögalleria</title>
   <style type="text/css">code{white-space: pre;}</style>
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
-  <style type="text/css">
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; }
-code > span.dt { color: #902000; }
-code > span.dv { color: #40a070; }
-code > span.bn { color: #40a070; }
-code > span.fl { color: #40a070; }
-code > span.ch { color: #4070a0; }
-code > span.st { color: #4070a0; }
-code > span.co { color: #60a0b0; font-style: italic; }
-code > span.ot { color: #007020; }
-code > span.al { color: #ff0000; font-weight: bold; }
-code > span.fu { color: #06287e; }
-code > span.er { color: #ff0000; font-weight: bold; }
-  </style>
   <link rel="stylesheet" href="../../css/base.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!--[if lt IE 9]>
@@ -77,7 +58,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li><a href="../../suunnittelu_ja_tyoymparisto/aiheet/Drinkkiarkisto.html">Drinkkiarkisto</a></li>
 <li><a href="../../suunnittelu_ja_tyoymparisto/aiheet/Elektroninen_keittokirja.html">Elektroninen keittokirja</a></li>
 <li><a href="../../suunnittelu_ja_tyoymparisto/aiheet/Graduaiheet.html">Graduaiheet</a></li>
-<li><a href="../../suunnittelu_ja_tyoymparisto/aiheet/Henkilogalleria.html">Henkilögalleria</a></li>
+<li class="selected"><a href="../../suunnittelu_ja_tyoymparisto/aiheet/Henkilogalleria.html">Henkilögalleria</a></li>
 <li><a href="../../suunnittelu_ja_tyoymparisto/aiheet/Hiihtokisojen_tulospalvelu.html">Hiihtokisojen tulospalvelu</a></li>
 <li><a href="../../suunnittelu_ja_tyoymparisto/aiheet/Huutokauppa.html">Huutokauppa</a></li>
 <li><a href="../../suunnittelu_ja_tyoymparisto/aiheet/Kennelkerho.html">Kennelkerho</a></li>
@@ -144,7 +125,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <ul>
 <li><a href="../../koodaaminen/java/tietokantayhteys.html">Tietokantayhteyden pystytys</a></li>
 <li><a href="../../koodaaminen/java/listaustesti.html">Listaustesti</a></li>
-<li class="selected"><a href="../../koodaaminen/java/rakenne.html">Sovelluksen rakenne ja servletit</a></li>
+<li><a href="../../koodaaminen/java/rakenne.html">Sovelluksen rakenne ja servletit</a></li>
 <li><a href="../../koodaaminen/java/nakymat.html">Näkymien tekeminen ja JSP</a></li>
 <li><a href="../../koodaaminen/java/lomakkeet.html">Lomakkeiden käyttö ja vastaanottaminen</a></li>
 <li><a href="../../koodaaminen/java/mallit_tiedonhaku.html">Tietokantahaku ja kyselyn parametrit</a></li>
@@ -183,100 +164,25 @@ code > span.er { color: #ff0000; font-weight: bold; }
 </div>
 <div class="col-md-6" id="content">
 <header>
-<h1 class="title">Sovelluksen rakenne ja servletit</h1>
+<h1 class="title">Henkilögalleria</h1>
 </header>
-<!-- order: 3 -->
-<script>addSectionLinks = true; </script>
-<!-- tags: viikko3-java -->
-
-<section class="alert alert-info"><h3>
-Tiivistelmä:
+<section class="alert alert-info small"><h3>
+Arvosanamaksimi:
 </h3>
-
-<ul>
-<li>Tee koodia varten oma pakettisi. Esim. <code>Kissalista</code>.</li>
-<li>Sijoita kaikki mallit omaan pakettiinsa. Esim. <code>Kissalista.Models</code>.</li>
-<li>Sijoita servlet-luokkasi omaan pakettiinsa. Esim. <code>Kissalista.Servlets</code>. Jatkossa samaan pakettiin tulevat kaikki muutkin servletit.</li>
-</ul>
-<p>Lopullisen projektin pitäisi noudatella tämäntapaista kansiorakennetta</p>
-<pre><code>src/
-  Paketti/
-    Models/
-      User.java
-    Servlets/
-      UserServlet.java
-web/
-  user.jsp
-</code></pre>
+5
 </section>
-
-<p>Tietokantasovellukset Javalla kannattaa jakaa <a href="../../koodaaminen/arkkitehtuuri/index.html">arkkitehtuuriohjeen</a> mukaisesti malleihin, kontrollereihin ja näkymiin. Keskitymme ensiksi malleihin ja kontrollereihin ja jatkamme sitten näkymiin <a href="nakymat.html">seuraavalla sivulla</a>.</p>
-<section id="mallit" class="level2">
-<h2>Mallit</h2>
-<p>Sijoita projektin mallit omaan pakettiinsa samaan tapaan kuin servletit. Kolmannen viikon töihin tarvitset käytännössä vain yhden malliluokan, joka kuvaa käyttäjää. Jos teit toisella viikolla listauksesi käyttäjälistauksena, sinulla on jo sellainen valmiina.</p>
-<p>Sijoita malliisi kentät tietokantataulun kenttiä varten ja luo kentille getterit ja setterit sekä halutessasi konstruktori, joka ottaa kenttien arvot vastaan.</p>
-<p>Työn edetessä teemme luokkiin metodeja, jotka osaavat hakea olioihin sisältöä tietokannasta, sekä metodit, joilla tietoa päivitetään takaisin kantaan.</p>
-</section>
-<section id="servletit" class="level2">
-<h2>Servletit</h2>
-<p>Servletit ovat Java EE:ssä eli Javan nettipuolessa käytettäviä luokkia, jotka edustavat jonkin nettisivun tai toiminnon <em>kontrollereita</em>. Servletit ja kontrollerit ovat Javan näkökulmasta useimmiten käytännössä sama asia.</p>
-<p>Jokainen Servlet-luokka on sidottu johonkin URL-osoitteeseen, johon ohjattu aineistopyyntö aktivoi sen. Sitomiset on käyttämässämme Java-ympäristön versiossa määritelty XML-pohjaisesti tiedostossa <code>web/WEB-INF/web.xml</code>.</p>
-<p>NetBeans osaa muokata tämän tiedoston määrityksiä kätevällä käyttöliittymällä ja liittää esimerkiksi uusien Servlettien URL-osoitteet sinne samalla kun Servlettiä luodaan, jolloin käytännössä tiedostoon tarvitsee koskea käsin aika harvoin.</p>
-<p>Jos tiedostoa kuitenkin haluaa muokata, on sen olennainen sisältö <code>servlet</code>- ja <code>servlet-mapping</code>-tägien kohdalla. Näistä ensimmäiset määrittävät yhteyksiä servlet-luokkien ja niistä käytettyjen nimien välillä. Nimet taas liitetään URL-osoitteisiin <code>servlet-mapping</code>-tägien avulla. Tällä tavalla yhden serveltin voi sijoittaa esimerkiksi useaan osoitteeseen.</p>
-<pre class="sourceCode xml"><code class="sourceCode xml"><span class="kw">&lt;servlet&gt;</span>
-    <span class="kw">&lt;servlet-name&gt;</span>Kissalista<span class="kw">&lt;/servlet-name&gt;</span>
-    <span class="kw">&lt;servlet-class&gt;</span>kissalista.servlet.Kissalista<span class="kw">&lt;/servlet-class&gt;</span>
-<span class="kw">&lt;/servlet&gt;</span>
-<span class="kw">&lt;servlet-mapping&gt;</span>
-    <span class="kw">&lt;servlet-name&gt;</span>Kissalista<span class="kw">&lt;/servlet-name&gt;</span>
-    <span class="kw">&lt;url-pattern&gt;</span>/osoite<span class="kw">&lt;/url-pattern&gt;</span>
-<span class="kw">&lt;/servlet-mapping&gt;</span></code></pre>
-<p>Laittamalla <code>url-pattern</code>-tägin sisään pelkän kenoviivan <code>/</code>, saa servletin asetettua sovelluksen etusivuksi. Oletuksena Tomcat-sovellus käyttää etusivunaan index.jsp-tiedostoa.</p>
-<section id="servletin-toiminta" class="level3">
-<h3>Servletin toiminta</h3>
-<p>Servletin toiminnan ytimessä ovat <code>doGet</code>- ja <code>doPost</code>-metodit, jotka ottavat vastaan servletin osoitteeeseen <a href="../../web-sovelluksista.html#get-ja-post">GET- ja POST-metodeilla</a> tehtyjä aineistopyyntöjä. NetBeansin vakiopohja Servlet-luokille luo nämä metodit automaattisesti ja laittaa ne molemmat kutsumaan samaa <code>processRequest</code>-metodia. Metodilla on parametreina HttpServletRequest-olio, joka sisältää pyynnön tiedot, ja HttpServletResponse-olio, johon voidaan lisätä vastaus.</p>
-<p><strong>Esimerkki Netbeansillä tuotetusta Servlet-luokasta. Älä käytä tätä koodia suoraan!</strong></p>
-<pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="kw">class</span> TestiServlet <span class="kw">extends</span> HttpServlet {
-
-  <span class="co">/**</span>
-<span class="co">   * Processes requests for both HTTP</span>
-<span class="er">   * &lt;code&gt;GET&lt;/code&gt; and &lt;code&gt;POST&lt;/code&gt; methods.</span>
-<span class="co">   *</span>
-<span class="co">   * </span><span class="kw">@param request </span><span class="co">servlet request</span>
-<span class="co">   * </span><span class="kw">@param response </span><span class="co">servlet response</span>
-<span class="co">   * </span><span class="kw">@throws ServletException </span><span class="co">if a servlet-specific error occurs</span>
-<span class="co">   * </span><span class="kw">@throws IOException </span><span class="co">if an I/O error occurs</span>
-<span class="co">   */</span>
-  <span class="kw">protected</span> <span class="dt">void</span> <span class="fu">processRequest</span>(HttpServletRequest request, HttpServletResponse response)
-      <span class="kw">throws</span> ServletException, IOException {
-    response.<span class="fu">setContentType</span>(<span class="st">&quot;text/html;charset=UTF-8&quot;</span>);
-    PrintWriter out = response.<span class="fu">getWriter</span>(); 
-    <span class="kw">try</span> {
-      <span class="co">/* TODO output your page here. You may use following sample code. */</span>
-      out.<span class="fu">println</span>(<span class="st">&quot;&lt;html&gt;&quot;</span>); 
-      out.<span class="fu">println</span>(<span class="st">&quot;&lt;head&gt;&lt;title&gt;Servlet TestiServlet&lt;/title&gt;&lt;/head&gt;&quot;</span>);
-      out.<span class="fu">println</span>(<span class="st">&quot;&lt;body&gt;&quot;</span>);
-      out.<span class="fu">println</span>(<span class="st">&quot;&lt;h1&gt;Servlet TestiServlet at &quot;</span> + 
-        request.<span class="fu">getContextPath</span>() + <span class="st">&quot;&lt;/h1&gt;&quot;</span>);
-      out.<span class="fu">println</span>(<span class="st">&quot;&lt;/body&gt;&quot;</span>);
-      out.<span class="fu">println</span>(<span class="st">&quot;&lt;/html&gt;&quot;</span>);
-    } <span class="kw">finally</span> {            
-      out.<span class="fu">close</span>();
-    }
-  }
-  
-  <span class="co">/* NetBeansin piilottamat doGet- ja doPost-metodit, jotka kutsuvat processRequest-metodia. */</span>
-
-}</code></pre>
-<p>Valmiin pohjan sisältämä vastauksen tuottava koodi sisältää suoraan kontrolleriin upotettua HTML-koodia. Tälläistä koodia ei kannata käyttää, vaan kannattaa tuottaa HTML-sivut erillisillä näkymätiedostoilla.</p>
-<p>Näistä kerrotaan enemmän seuraavalla sivuilla.</p>
-<section class="alert alert-success small"><h3>
-Seuraavaksi:
+<section class="alert alert-info small"><h3>
+Vaikeustaso:
 </h3>
-<p>Seuraavaksi tutustumme tarkemmin <a href="nakymat.html">näkymien toteuttamiseen</a>.</p>
+Keskitasoa
 </section>
-</section>
-</section>
+
+
+<p>Yliopiston 375 vuosijuhlintaan liittyen on kaavailtu henkilögalleria, jonne yliopiston piirissä toimivat henkilöt voisivat laittaa itseensä ja toimintaansa liittyvää esittelymateriaalia. Ajatuksena on, että tarjolla on käyttöliittymä, jonka kautta henkilöt voivat toimittaa tietojaan ohjelmassa julkaistavaksi. Tietoja kerätään lomakkeella, johon järjestelmän hoitaja voi määritellä kysymykset. Kyselylomakkeen muotoa ei ole kiinnitetty. Se voi olla näytettävän esittelysivun kaltainen ja muuttua tehtävien valintojen perusteella. Lomakkeen ei kuitenkaan tarvitse olla sellainen. Tietojen syöttäjän pitäisi kuitenkin saada näkyville tuotettu esittelysivu ennen sen julkaisemista. Esittelysivun tietoja pitää pystyä muuttamaan. Järjestelmän hoitajalla tulee olla mahdollisuus muokata lomakkeella esitettäviä kysymyksiä ja lisätä sekä poistaa niitä. Kysymyksiä pitää voida muokata. Henkilöitä voidaan luokitella erilaisten tagien avulla. Henkilöön voi liittyä useita tageja. Tagit voivat vaikuttaa henkilön esittelysivun ulkoasuun esimerkiksi väreihin.</p>
+<p>Gallerian tiedot näytetään vakioidussa muodossa (css:llä säädettävissä). Lähtökohtana on kuvavalikko, jonka sisältö määräytyy valittujen tagien perusteella. Kuvavalikosta pääsee henkilön esittelysivulle. Prototyypissä esittelysivut tuotetaan dynaamisesti. Järjestelmän hoitajalla on oma katselusivu, jonka kautta hän voi tarkastella paitsi esittelysivuja myös niihin liittyvää metatietoa kuten laatimisaikaa tai muutostietoja. Järjestelmän hoitaja antaa esittelysivulle julkaisuluvan.</p>
+<p>Toteutus: MySQL tai PostgreSQL tietokanta , php</p>
+<p>Yhdyshenkilö: Harri Laine</p>
+<p>Kaavailuja galleriasta löytyy osoitteesta: <a href="http://www.cs.helsinki.fi/u/laine/tsoha/375_kasvoa_sparraus.pdf">http://www.cs.helsinki.fi/u/laine/tsoha/375_kasvoa_sparraus.pdf</a></p>
 </div>
 </div> 
 </div> 
