@@ -1,4 +1,4 @@
-## Tiedostojen muokkaus SSH:n yli Linuxilla
+% Tiedostojen etämuokkaus Linuxilla
 <!-- order: 8 -->
 <!-- tags: viikko1,viikko2-usefull -->
 
