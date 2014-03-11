@@ -78,6 +78,8 @@ ja ajaessa avautua iloinen selainikkuna:
 Mikäli et jostain syystä saa projektia toimimaan,
 ota viipymättä yhteyttä ohjaajasi.
 
+## Työn lisääminen versionhallintaan
+
 Saatuasi projektin kerran toimimaan on aika lisätä se git-repositorioon.
 Tämä tapahtuu suoraviivaisesti siirtämällä sen tiedostot 
 repositorion juurikansioon.
@@ -121,6 +123,13 @@ Näin versionhallintaan ei päästetä NetBeansiin koodia kääntäessä
 generoimia tiedostoja.
 Lisää nyt repositorioosi kaikki uudet tiedostot, joita et juuri ignoroinut.
 Nyt voit avata repositoriosi NetBeansillä uudestaan ja aloittaa koodauksen.
+
+## Työn julkaiseminen usersille
+
+Palutusta varte nsinun pitää vielä siirtää kotikoneella pyörivästä työstäsi versio
+users-palvelimelle. 
+Tämän voi tehdä kätevästi luomalla sovelluksesta julkaisua varte nwar-paketti ja siirtämällä sen usrsille.
+Tähän on ohje [omalla sivullaan]({{rootdir}}koodaaminen/java/java-war-paketit.html).
 
 <last>
 
