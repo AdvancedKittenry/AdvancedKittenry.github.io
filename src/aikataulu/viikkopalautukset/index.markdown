@@ -17,17 +17,19 @@ Jokaisella viikolla sovelluksen kannalta olennaisimmat tiedot ja linkit kootaan
 Muista pitää esittelysivusi ajan tasalla. 
 Sen päivittämättä jättämisestä voi menettää hyvinkin helposti pisteitä.
 
+Työn tekeminen kannattaa aloittaa lukemalla [ensimmäisen viikon ohjeistus][viikko1].
+
 ### Deadlinet
 
-| Tilaisuus              | Työaihe                                                                | Deadline |
-|------------------------|------------------------------------------------------------------------|-----------------------|
-| [Viikko I][viikko1]    | Aiheen valinta, suunnittelu, dokumentointi ja työympäristön pystytys   | {{deadline1}}         |
-| [Viikko II][viikko2]   | Sovelluksen suunnittelu, HTML-kieli, tietokantayhteyden muodostaminen  | {{deadline2}}         |
-| [Viikko III][viikko3]  | MVC-malli ja kirjautuminen                                             | {{deadline3}}         |
-| [Viikko IV][viikko4]   | Muokkaustoiminnot, sovellus etenee                                     | {{deadline4}}         |
-| [Viikko V][viikko5]    | Sovellus on lähes valmis, [koodikatselmointi][codereview]              | {{deadline5}}         |
-| [Demotilaisuus][demo]  | Esitellään työtä ja sen koodia muille opiskelijoille                   | {{demodeadline}}      |
-| [Palautus][palautus]   | Valmis työ palautetaan ohjaajalle                                      | {{palautusdeadline}}  |
+| Tilaisuus            | Työaihe                                                                | Deadline             | Ohjeistus               |
+|----------------------|------------------------------------------------------------------------|----------------------|-------------------------|
+| [Viikko I][viikko1]  | Aiheen valinta, suunnittelu, dokumentointi ja työympäristön pystytys   | {{deadline1}}        | [Ohjeistus\ ⇨][viikko1] |
+| [Viikko II][viikko2] | Sovelluksen suunnittelu, HTML-kieli, tietokantayhteyden muodostaminen  | {{deadline2}}        | [Ohjeistus\ ⇨][viikko2] |
+| [Viikko III][viikko3]| MVC-malli ja kirjautuminen, koodikatselmointi                          | {{deadline3}}        | [Ohjeistus\ ⇨][viikko3] |
+| [Viikko IV][viikko4] | Muokkaustoiminnot, sovellus etenee                                     | {{deadline4}}        | [Ohjeistus\ ⇨][viikko4] |
+| [Viikko V][viikko5]  | Sovellus on lähes valmis, koodikatselmointi                            | {{deadline5}}        | [Ohjeistus\ ⇨][viikko5] |
+| [Demo][demo]         | Esitellään työtä ja sen koodia muille opiskelijoille                   | {{demodeadline}}     | [Ohjeistus\ ⇨][demo]    |
+| [Palautus][palautus] | Valmis työ palautetaan ohjaajalle                                      | {{palautusdeadline}} | [Ohjeistus\ ⇨][palautus] |
 
 [viikko1]: {{rootdir}}aikataulu/viikkopalautukset/viikko1.html
 [viikko2]: {{rootdir}}aikataulu/viikkopalautukset/viikko2.html
