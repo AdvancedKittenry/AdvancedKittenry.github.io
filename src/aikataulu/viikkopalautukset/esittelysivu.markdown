@@ -44,4 +44,10 @@ Muista pitää esittelysivusi ajan tasalla.
 Sen päivittämättä jättämisestä voi menettää hyvinkin helposti pisteitä.
 </alert>
 
+<info>
+Voit vaihtoehtoisesti tehdä esittelysivusi myös markdown-kielellä ja 
+laittaa se github-repositoriosi readme-tiedostoksi nimellä `README.md`.
+Esittelysivun tarkka toteutustapa ei ole olennainen, kunhan siinä olevat linkit toimivat.
+</info>
+
 [labtool]: http://tsoha-labtool.herokuapp.com/
