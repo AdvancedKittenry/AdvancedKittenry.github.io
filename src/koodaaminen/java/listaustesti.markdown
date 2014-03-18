@@ -114,7 +114,7 @@ omassa luokassaan. Näitä luokkia kutsutaan malleiksi.
 [kolmosviikon materiaalista]({{rootdir}}koodaaminen/arkkitehtuuri/index.html))
 
 Poikkeuksena tietokantataulujen ja malliluokkien vastaavuuteen
-ovat tosin välitaulut, joille ei välttämättä aina tarvitse tehdä omaa tietokantatauluaan.
+ovat tosin välitaulut, joille ei välttämättä aina tarvitse tehdä omaa malliluokkaansa.
 
 Tässä materiaalissa rakennamme mallit niin, että kunkin malliluokan
 oliot vastaavat mallin kuvaaman tietokantataulun rivejä
