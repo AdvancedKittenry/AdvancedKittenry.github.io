@@ -96,9 +96,14 @@ edellyttää sellaista sovi tapaaminen.
 
 Kurssin viikottaiset arvostelut tehdään [labtooliin](http://tsoha-labtool.herokuapp.com/).
 Arvostelun antamisessa käytetään työkaluna checklist-nimikkeellä
-kulkevia tarkistuslistoja. Järjestelmä antaa opiskelijan
+kulkevia tarkistuslistoja. Checklist antaa opiskelijan
 tekemien asioiden perusteella viikkopisteet ja alustavia palautetekstejä.
-Pisteitä ja palautteita voi ja kannattaakin hieman kustomoida sen mukaan miltä opiskelijan työ muuten vaikuttaa.
+
+Checklistin antamaa palauttetta ja pisteytystä voi sitten käyttää oikean palautteen pohjana.
+Lopullinen palautteenanto tapahtuu aina *Give or edit new feedback* -napin takana olevalla lomakkeella.
+
+Järjestelmät ovat tahallaan hieman erilliset, sillä
+pisteitä ja palautteita voi ja kannattaakin hieman kustomoida sen mukaan miltä opiskelijan työ muuten vaikuttaa.
 
 ## Koodikatselmointi
 
