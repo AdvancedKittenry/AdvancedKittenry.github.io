@@ -23,10 +23,9 @@ nähdä ja antaa kommentteja koodistasi.
 
 ## Perusasioiden dokumentointi (1p)
 
-Työstä dokumentoidaan vaaditun dokumentaation ensimmäiset kolme kappaletta:
+Työstä dokumentoidaan vaaditun dokumentaation ensimmäiset kaksi kappaletta:
 
 * Johdanto
-* Yleiskuva järjestelmästä
 * Käyttötapaukset
 
 Kaikki dokumentaatio on laitettava yhteen pdf-tiedostoon.
