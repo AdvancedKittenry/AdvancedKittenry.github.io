@@ -44,6 +44,11 @@ Yleensä ottaen kirjautumisdeadline voidaan korvata tekemällä alustava versio 
 
 Kolmannella viikolla on normaalien koodaustehtävien lisäksi lisäosiona koodikatselmointi,
 josta voi saada kaksi ylimääräistä aikataulupistettä.
+Koodikatselmoinnin deadline on 
+{{codereviewdeadline1}}.
+eli hieman viikkopalautuksen jälkeen, 
+jotta katselmoinnin saa tehtyä valmiimmalle koodille paremmalla ajalla. 
+
 Lisätietoja löytyy [koodikatselmointiohjeista](../koodikatselmointi.html).
 
 <ohje>

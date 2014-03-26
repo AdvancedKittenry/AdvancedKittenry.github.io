@@ -40,6 +40,11 @@ Huolehdi myös siitä, että koodisi on kommentoitu siellä missä se on epäsel
 
 Viimeisellä viikolla on normaalien koodaustehtävien lisäksi lisäosiona koodikatselmointi,
 josta voi saada kaksi ylimääräistä aikataulupistettä.
+Koodikatselmoinnin deadline on 
+{{codereviewdeadline2}}.
+eli hieman viikkopalautuksen jälkeen, 
+jotta katselmoinnin saa tehtyä valmiimmalle koodille paremmalla ajalla. 
+
 Lisätietoja löytyy [koodikatselmointiohjeista](../koodikatselmointi.html).
 
 <ohje>
