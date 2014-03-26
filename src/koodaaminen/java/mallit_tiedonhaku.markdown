@@ -4,7 +4,7 @@
 
 <summary>
 * Lisätään aiemmin tehtyyn malliluokkaan haeKayttajaTunnuksilla-metodi.
-* Käytetyn SQL-koodin pitää olla turvallista niin, ettei se tarjoa mahdollisuuksia SQL-injektioille. Tähän käytetään PDO:n *prepared statements* -tukia.
+* Käytetyn SQL-koodin pitää olla turvallista niin, ettei se tarjoa mahdollisuuksia SQL-injektioille. Tähän käytetään Javan tietokantakirjaston *prepared statements* -tukia.
 </summary>
 
 Jotta sovellukseen voi kirjautua muillakin kuin yhdellä tunnuksella,

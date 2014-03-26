@@ -2,16 +2,13 @@
 <!-- order: 1 -->
 <!-- tags: viikko2-java -->
 
-Seuraavaksi pyrimme luomaan tiedoston, jossa on tarvittava koodi
-tietokantayhteyden luomiseen.
-Samoin esitetään lyhyet testiohjelma, jolla yhteyttä voi testata. 
-
 <summary>
 * Varmista että aikaisemmin kirjoittamasi SQL-lauseet toimivat siten tietokantataulusi ovat nyt pystyssä kannassa.
 * Jotta tietokantaa pystyy käyttämään, pitää siihen ottaa yhteys
     * Yhteyttä mallinnetaan Javan JDBC-kirjaston tarjoamalla Connection-oliolla.
     * Luominen pitää sijoittaa omaan metodiinsa, jota käyttämällä muu voi ohjelmakoodi käyttää tietokantaoliota.
     * Metodi sijoitetaan omaan luokkaansa, joka sijoitetaan omaan tietokantakirjastoille tarkoitettuun pakettiinsa.
+* Toteuta ensiksi mahdollisimman yksinkertainen testiohjelma, joka hakee tietokannasta tietoa
 * Jos käytät tietokantayhteyden autentikointiin salasanaa, [älä laita sitä GitHubiin sellaisenaan](../git-ja-salasanat.html).
 </summary>
 
@@ -22,18 +19,22 @@ jonka perusteella yhteys muodostetaan.
 
 Alla on esimerkkikoodia tietokantayhteyden muodostamisesta 
 tilanteessa, jossa työ pyörii users-palvelimella.
+Koodin tarkoituksena on toteuttaa mahdollisimman yksinkertainen
+ohjelma, joka ottaa yhteyden tietokantaan ja suorittaa siellä
+SQL-muotoisen SELECT-lauseen, jonka tulos näytetään käyttäjälle.
 
-Tee itsellesi ohjeita noudattaen tiedosto, johon sijoitat 
+Tee itsellesi ohjeita noudattaen luokka, johon sijoitat 
 tietokannan muodostamisen. 
-Laita tämä tiedosto omaan pakettiinsa ja/tai kansioonsa.
+Laita tämä luokka omaan pakettiinsa ja/tai kansioonsa.
 Hyviä nimiä paketille voivat olla esim. "Tietokanta" tai "Models".
 Sovelluksesta tulee huomattavasti selkeämpi, jos kaikki tietokantaa käsittelevä
 koodi on sijoitettu yhteen paikkaan.
 
-## Tietokantayhteys: JDBC ja context.xml
+## Tietokantayhteys: Java Database Connectivity (JDBC) ja context.xml
 
 Javalla tietokantayhteyksien avaamiseen
-käytetään DataSource-tyyppistä tietokantayhteysvarastoa,
+käytetään Java Database Connectivity -kirjaston eli JDBC:n tarjoamaa 
+DataSource-tyyppistä tietokantayhteysvarastoa,
 joka huolehtii koko sovelluksen yhteyksien ylläpidosta 
 ja kierrättämisestä eri aineistopyyntöjen välillä.
 
@@ -53,6 +54,9 @@ Joudut syöttämään tiedostoon
 tietokantatunnustesi salasanan, että saat koodin toimimaan.
 Salasanoja ei kannata laittaa repositorioon sellaisenaan.
 Käytä sen sijaan [nk. dist-tiedostoja](../git-ja-salasanat.html)
+
+Salasanojen laittaminen julkiseen git-repositorioon on yleisesti ottaen tietoturvan
+kannalta paha tapa, joten sitä kannattaa välttää aina kun mahdollista.
 </alert>
 
 Kun resurssi on määritelty, voidaan Javan kirjastoilla hakea
@@ -136,6 +140,9 @@ Jos koodaat suoraan Users-palvelimella, sinun ei tarvitse tehdä tietokanta-ajur
 
 ## Yhteyden testaaminen
 
+Kun yhteys on muodostettu, sitä voi käyttää SQL-kyselyjen suorittamiseen.
+Tehdään tätä varten lyhyt testiohjelma.
+
 Javalla yhteyden testaamista varten pitää luoda
 oma Servlet-luokka.
 NetBeans sisältää niitä varten varsin toimivan
@@ -153,12 +160,15 @@ protected void processRequest(HttpServletRequest request, HttpServletResponse re
   response.setContentType("text/plain;charset=UTF-8");
 
   try {
-    String sql = "SELECT 1+1 as two";
-    kysely = yhteys.prepareStatement(sql);
+    //Alustetaan muuttuja jossa on Select-kysely, joka palauttaa lukuarvon:
+    String sqlkysely = "SELECT 1+1 as two";
+
+    kysely = yhteys.prepareStatement(sqlkysely);
     tulokset = kysely.executeQuery();
     if(tulokset.next()) {
-      int kakkonen = tulokset.getInt("two");
-      out.println("Tulos: "+kakkonen"); 
+      //Tuloksen arvoksi pitäisi tulla numero kaksi.
+      int tulos = tulokset.getInt("two");
+      out.println("Tulos: "+tulos"); 
     } else {
       out.println("Virhe!"); 
     }
@@ -172,7 +182,7 @@ protected void processRequest(HttpServletRequest request, HttpServletResponse re
 
 Koodin pitäisi lähettää selaimelle teksti "Tulos: 2".
 
-Jos et käytä NetBeansia, voit katsoa kontrolleriesimerkkejä
+Jos et käytä NetBeansia, voit katsoa koodiesimerkkejä
 [listauksen toteuttamisohjeista](listaustesti.html).
 
 Kun olet saanut saanut yhteyden toimimaan ja palauttamaan kannasta tietoa,

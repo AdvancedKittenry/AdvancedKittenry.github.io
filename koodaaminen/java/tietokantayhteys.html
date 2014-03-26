@@ -188,7 +188,6 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <!-- order: 1 -->
 <!-- tags: viikko2-java -->
 
-<p>Seuraavaksi pyrimme luomaan tiedoston, jossa on tarvittava koodi tietokantayhteyden luomiseen. Samoin esitetään lyhyet testiohjelma, jolla yhteyttä voi testata.</p>
 <section class="alert alert-info"><h3>
 Tiivistelmä:
 </h3>
@@ -200,16 +199,17 @@ Tiivistelmä:
 <li>Luominen pitää sijoittaa omaan metodiinsa, jota käyttämällä muu voi ohjelmakoodi käyttää tietokantaoliota.</li>
 <li>Metodi sijoitetaan omaan luokkaansa, joka sijoitetaan omaan tietokantakirjastoille tarkoitettuun pakettiinsa.</li>
 </ul></li>
+<li>Toteuta ensiksi mahdollisimman yksinkertainen testiohjelma, joka hakee tietokannasta tietoa</li>
 <li>Jos käytät tietokantayhteyden autentikointiin salasanaa, <a href="../git-ja-salasanat.html">älä laita sitä GitHubiin sellaisenaan</a>.</li>
 </ul>
 </section>
 
 <p>Sekä Javalla että PHP:llä tietokantayhteyksiä edustaa erillinen luokka, jonka olio muodostetaan kutsumalla sopivaa metodia/konstruktoria. Kummallekin annetaan merkkijonona tietokantayhteyttä kuvaava osoite, jonka perusteella yhteys muodostetaan.</p>
-<p>Alla on esimerkkikoodia tietokantayhteyden muodostamisesta tilanteessa, jossa työ pyörii users-palvelimella.</p>
-<p>Tee itsellesi ohjeita noudattaen tiedosto, johon sijoitat tietokannan muodostamisen. Laita tämä tiedosto omaan pakettiinsa ja/tai kansioonsa. Hyviä nimiä paketille voivat olla esim. “Tietokanta” tai “Models”. Sovelluksesta tulee huomattavasti selkeämpi, jos kaikki tietokantaa käsittelevä koodi on sijoitettu yhteen paikkaan.</p>
-<section id="tietokantayhteys-jdbc-ja-context.xml" class="level2">
-<h2>Tietokantayhteys: JDBC ja context.xml</h2>
-<p>Javalla tietokantayhteyksien avaamiseen käytetään DataSource-tyyppistä tietokantayhteysvarastoa, joka huolehtii koko sovelluksen yhteyksien ylläpidosta ja kierrättämisestä eri aineistopyyntöjen välillä.</p>
+<p>Alla on esimerkkikoodia tietokantayhteyden muodostamisesta tilanteessa, jossa työ pyörii users-palvelimella. Koodin tarkoituksena on toteuttaa mahdollisimman yksinkertainen ohjelma, joka ottaa yhteyden tietokantaan ja suorittaa siellä SQL-muotoisen SELECT-lauseen, jonka tulos näytetään käyttäjälle.</p>
+<p>Tee itsellesi ohjeita noudattaen luokka, johon sijoitat tietokannan muodostamisen. Laita tämä luokka omaan pakettiinsa ja/tai kansioonsa. Hyviä nimiä paketille voivat olla esim. “Tietokanta” tai “Models”. Sovelluksesta tulee huomattavasti selkeämpi, jos kaikki tietokantaa käsittelevä koodi on sijoitettu yhteen paikkaan.</p>
+<section id="tietokantayhteys-java-database-connectivity-jdbc-ja-context.xml" class="level2">
+<h2>Tietokantayhteys: Java Database Connectivity (JDBC) ja context.xml</h2>
+<p>Javalla tietokantayhteyksien avaamiseen käytetään Java Database Connectivity -kirjaston eli JDBC:n tarjoamaa DataSource-tyyppistä tietokantayhteysvarastoa, joka huolehtii koko sovelluksen yhteyksien ylläpidosta ja kierrättämisestä eri aineistopyyntöjen välillä.</p>
 <p>Ensiksi pitää kuitenkin määritellä Java-koodin rinnalle context.xml-tiedostoon tietokantayhteyttä kuvaava resurssi.</p>
 <p><strong>web/META-INF/context.xml</strong></p>
 <pre class="sourceCode xml"><code class="sourceCode xml"><span class="kw">&lt;?xml</span> version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;<span class="kw">?&gt;</span>
@@ -227,6 +227,7 @@ Tiivistelmä:
 Pidä mielessä!
 </h3>
 <p>Joudut syöttämään tiedostoon tietokantatunnustesi salasanan, että saat koodin toimimaan. Salasanoja ei kannata laittaa repositorioon sellaisenaan. Käytä sen sijaan <a href="../git-ja-salasanat.html">nk. dist-tiedostoja</a></p>
+<p>Salasanojen laittaminen julkiseen git-repositorioon on yleisesti ottaen tietoturvan kannalta paha tapa, joten sitä kannattaa välttää aina kun mahdollista.</p>
 </section>
 
 <p>Kun resurssi on määritelty, voidaan Javan kirjastoilla hakea se:</p>
@@ -276,6 +277,7 @@ Pidä mielessä!
 </section>
 <section id="yhteyden-testaaminen" class="level2">
 <h2>Yhteyden testaaminen</h2>
+<p>Kun yhteys on muodostettu, sitä voi käyttää SQL-kyselyjen suorittamiseen. Tehdään tätä varten lyhyt testiohjelma.</p>
 <p>Javalla yhteyden testaamista varten pitää luoda oma Servlet-luokka. NetBeans sisältää niitä varten varsin toimivan mallirungon, josta riittää vaihtaa <code>processRequest</code>-metodin sisältö:</p>
 <pre class="sourceCode java"><code class="sourceCode java"><span class="co">//HttpServlet-luokan perivään servlettiin menevä metodi:</span>
 <span class="kw">protected</span> <span class="dt">void</span> <span class="fu">processRequest</span>(HttpServletRequest request, HttpServletResponse response)
@@ -287,12 +289,15 @@ Pidä mielessä!
   response.<span class="fu">setContentType</span>(<span class="st">&quot;text/plain;charset=UTF-8&quot;</span>);
 
   <span class="kw">try</span> {
-    String sql = <span class="st">&quot;SELECT 1+1 as two&quot;</span>;
-    kysely = yhteys.<span class="fu">prepareStatement</span>(sql);
+    <span class="co">//Alustetaan muuttuja jossa on Select-kysely, joka palauttaa lukuarvon:</span>
+    String sqlkysely = <span class="st">&quot;SELECT 1+1 as two&quot;</span>;
+
+    kysely = yhteys.<span class="fu">prepareStatement</span>(sqlkysely);
     tulokset = kysely.<span class="fu">executeQuery</span>();
     <span class="kw">if</span>(tulokset.<span class="fu">next</span>()) {
-      <span class="dt">int</span> kakkonen = tulokset.<span class="fu">getInt</span>(<span class="st">&quot;two&quot;</span>);
-      out.<span class="fu">println</span>(<span class="st">&quot;Tulos: &quot;</span>+kakkonen<span class="st">&quot;); </span>
+      <span class="co">//Tuloksen arvoksi pitäisi tulla numero kaksi.</span>
+      <span class="dt">int</span> tulos = tulokset.<span class="fu">getInt</span>(<span class="st">&quot;two&quot;</span>);
+      out.<span class="fu">println</span>(<span class="st">&quot;Tulos: &quot;</span>+tulos<span class="st">&quot;); </span>
     } <span class="kw">else</span> {
       out.<span class="fu">println</span>(<span class="st">&quot;Virhe!&quot;</span>); 
     }
@@ -303,7 +308,7 @@ Pidä mielessä!
   tulokset.<span class="fu">close</span>(); kysely.<span class="fu">close</span>();
 }</code></pre>
 <p>Koodin pitäisi lähettää selaimelle teksti “Tulos: 2”.</p>
-<p>Jos et käytä NetBeansia, voit katsoa kontrolleriesimerkkejä <a href="listaustesti.html">listauksen toteuttamisohjeista</a>.</p>
+<p>Jos et käytä NetBeansia, voit katsoa koodiesimerkkejä <a href="listaustesti.html">listauksen toteuttamisohjeista</a>.</p>
 <p>Kun olet saanut saanut yhteyden toimimaan ja palauttamaan kannasta tietoa, laita se omaan luokkaansa, jossa on metodi, joka palauttaa yhteyden. Voit sijoittaa luokkaan muitakin toistuvia tietokantaan liittyviä koodinpätkiä, kuten vaikkapa yhteyden sulkemisen toteuttavan metodin.</p>
 <section class="alert alert-success small"><h3>
 Seuraavaksi:

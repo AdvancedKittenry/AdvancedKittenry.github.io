@@ -202,7 +202,7 @@ Tiivistelmä:
 </ul>
 </section>
 
-<p>Varmista ensin, että sinulla on omassa tiedossaan luokka tai funktio, jolla saat <a href="../php/tietokantayhteys.html">yhteyden tietokantaan</a>. Nyt käytämme tietokantayhteyttä luokaksemme hyvin yksinkertaisen sivun, jolla listataan jonkun taulun sisältöä. Teemme tämän kahdessa vaiheessa: Ensin luomme yksinkertaisen sivun, joka näyttää listan asioista sitten luomme koodin, joka hakee tuon listan tietokannasta.</p>
+<p>Varmista ensin, että sinulla on omassa tiedostossaan luokka tai funktio, jolla saat <a href="../php/tietokantayhteys.html">yhteyden tietokantaan</a>. Nyt käytämme tietokantayhteyttä luokaksemme hyvin yksinkertaisen sivun, jolla listataan jonkun taulun sisältöä. Teemme tämän kahdessa vaiheessa: Ensin luomme yksinkertaisen sivun, joka näyttää listan asioista sitten luomme koodin, joka hakee tuon listan tietokannasta.</p>
 <section id="asioiden-listaaminen-ja-html" class="level2">
 <h2>Asioiden listaaminen ja HTML</h2>
 <p>Jotta saamme näkyviin listan asioita, meidän pitää käyttää HTML:ää. Tämä on PHP:llä onneksi hyvin helppoa.</p>
@@ -230,11 +230,22 @@ Tiivistelmä:
 &lt;/html&gt;</code></pre>
 <p>Ohjeisen koodin pitäisi tuottaa selaimelle lista, jossa on asiat-listaan lisätyt neljä asiaa. Testaa tätä selaimessa nyt.</p>
 <p>Tätä nimenomaista HTML-koodin seassa koodausta varten PHP:ssä on olemassa myös hieman <a href="http://php.net/manual/en/control-structures.alternative-syntax.php">erilaiset versiot useimmista kielen rakenteista</a>:</p>
+<div class="row">
+<div class="col-md-6">
+<p><strong>Normaali foreach</strong></p>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span> <span class="kw">foreach</span><span class="ot">(</span><span class="kw">$lista</span> <span class="kw">as</span> <span class="kw">$asia</span><span class="ot">)</span> { <span class="kw">?&gt;</span>
+  &lt;li&gt;<span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$asia</span><span class="ot">;</span> <span class="kw">?&gt;</span>&lt;/li&gt;
+<span class="kw">&lt;?php</span> } <span class="kw">?&gt;</span></code></pre>
+</div>
+<div class="col-md-6">
+<p><strong>HTML:n sekaan sopivampi foreach</strong></p>
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span> <span class="kw">foreach</span><span class="ot">(</span><span class="kw">$lista</span> <span class="kw">as</span> <span class="kw">$asia</span><span class="ot">)</span>: <span class="kw">?&gt;</span>
   &lt;li&gt;<span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$asia</span><span class="ot">;</span> <span class="kw">?&gt;</span>&lt;/li&gt;
 <span class="kw">&lt;?php</span> <span class="kw">endforeach</span><span class="ot">;</span> <span class="kw">?&gt;</span></code></pre>
-<p>Huomaa kaksoispiste for-luupin jälkeen ja puolipiste endforeach-sanan jälkeen.</p>
-<p>HTML-koodin seassa nämä tavat ilmaista luuppeja ja muita kontrollirakenteita tekevät koodin tulkitsemisesta usein helpompaa, sillä lopetussanasta näkee heti minkä rakenteen se lopettaa.</p>
+</div>
+</div>
+<p>Huomaa kaksoispiste foreach-luupin jälkeen ja puolipiste endforeach-sanan jälkeen.</p>
+<p>Oikealla puolella esitetty tapa kirjoittaa luuppeja ja muita kontrollirakenteita tekevät varsinkin pidempien HTML-koodin pätkien tulkitsemisesta usein helpompaa, sillä lopetussanasta näkee heti minkä rakenteen se lopettaa.</p>
 <p>Jos haluat tutustua näkymäkoodin kirjoittamiseen tarkemmin, voit tutustua <a href="../php/rakenne.html">kolmosviikon ohjeisiin</a>.</p>
 </section>
 <section id="tietokannan-käyttö-ja-mallit" class="level2">
@@ -251,7 +262,7 @@ Tiivistelmä:
   
   <span class="kw">private</span> <span class="kw">$id</span><span class="ot">;</span>
   <span class="kw">private</span> <span class="kw">$tunnus</span><span class="ot">;</span>
-  <span class="kw">private</span> <span class="kw">$password</span><span class="ot">;</span>
+  <span class="kw">private</span> <span class="kw">$salasana</span><span class="ot">;</span>
 
   <span class="kw">public</span> <span class="kw">function</span> <span class="fu">__construct</span><span class="ot">(</span><span class="kw">$id</span><span class="ot">,</span> <span class="kw">$tunnus</span><span class="ot">,</span> <span class="kw">$salasana</span><span class="ot">)</span> {
     <span class="kw">$this</span>-&gt;id = <span class="kw">$id</span><span class="ot">;</span>
@@ -259,7 +270,7 @@ Tiivistelmä:
     <span class="kw">$this</span>-&gt;salasana = <span class="kw">$salasana</span><span class="ot">;</span>
   }
 
-  <span class="co">/* Tähän gettereitä ja settereitä */</span>
+  <span class="co">/* Kirjoita tähän gettereitä ja settereitä */</span>
 }</code></pre>
 <p>Tälläinen omaan tiedostoonsa kirjoitettu kirjastoluokka, haetaan käyttöön <a href="http://php.net/manual/en/function.include.php">include tai require-funktiolla</a>.</p>
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>

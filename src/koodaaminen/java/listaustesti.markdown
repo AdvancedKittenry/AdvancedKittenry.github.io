@@ -141,7 +141,7 @@ public class Kayttaja {
     this.salasana = salasana;
   }
 
-  /* Tähän gettereitä ja settereitä */
+  /* Kirjoita tähän gettereitä ja settereitä */
 }
 ~~~
 

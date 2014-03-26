@@ -2,12 +2,18 @@
 <!-- order: 2 -->
 <!-- tags: viikko2 -->
 
-Yhteystestiohjelma on pieni tiivis ohjelmapaketti, jolla sekä 
+Yhteystestiohjelma *ConnectionTest* on pieni tiivis ohjelmapaketti, jolla sekä 
 kurssilainen että ohjaaja pystyvät tarkastelemaan työssä käytetyn tietokannan tilaa
 ja testaamaan tietokantayhteyttä.
 
 Sovellus osaa myös ilmoittaa alkeellisella tasolla toimiiko yhteys 
 ja mikä meni pieleen, jos yhteys ei toimi.
+
+ConnectionTest ei ole varsinaisesti osa tietokantasovellustasi,
+vaan sen tarkoitus on toimia työkaluna tietokannan kanssa
+säätämiseen. 
+Joillekin suora tietokantakomentorivin käyttö
+voi olla nopeampaa, joskaan ohjaajasi ei tätä tapaa sinun kantaasi pysty käyttämään.
 
 <alert>
 Ladatessasi testisovelluksen tulet ajaneeksi omilla tunnuksillasi 
@@ -26,7 +32,7 @@ Toisinsanoen: Käyttö omalla vastuulla. Bugiraportteja otetaan mieluusti vastaa
 Ohjelman lähdekoodia voi tutkia myös [githubissa][connectionTest],
 joskaan koodi ei ole aivan kaikista selkeintä mahdollista,
 johtuen yrityksistä pitää sovellus mahdollisimman tiiviinä.
-Ei siis välttämättä kannata ottaa sovelluksen arkkitehtuurista oppia omaan työhön.
+Ei siis välttämättä kannata ottaa testisovelluksen arkkitehtuurista oppia omaan työhön.
 
 ## PHP-testisovellus
 

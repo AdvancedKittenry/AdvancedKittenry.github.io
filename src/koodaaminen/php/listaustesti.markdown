@@ -10,7 +10,7 @@
     * Luokka sisältää tarvittavat taulun käsittelyyn metodit.
 </summary>
 
-Varmista ensin, että sinulla on omassa tiedossaan luokka tai funktio, jolla saat [yhteyden tietokantaan](../php/tietokantayhteys.html).
+Varmista ensin, että sinulla on omassa tiedostossaan luokka tai funktio, jolla saat [yhteyden tietokantaan](../php/tietokantayhteys.html).
 Nyt käytämme tietokantayhteyttä luokaksemme hyvin yksinkertaisen sivun, jolla listataan jonkun taulun sisältöä.
 Teemme tämän kahdessa vaiheessa: 
 Ensin luomme yksinkertaisen sivun, joka näyttää listan asioista
@@ -68,17 +68,35 @@ Tätä nimenomaista HTML-koodin seassa koodausta varten PHP:ssä on
 olemassa myös hieman 
 [erilaiset versiot useimmista kielen rakenteista](http://php.net/manual/en/control-structures.alternative-syntax.php):
 
+<sidebyside>
+<column>
+**Normaali foreach**
+
+~~~php
+<?php foreach($lista as $asia) { ?>
+  <li><?php echo $asia; ?></li>
+<?php } ?>
+~~~
+</column>
+<column>
+
+**HTML:n sekaan sopivampi foreach**
+
 ~~~php
 <?php foreach($lista as $asia): ?>
   <li><?php echo $asia; ?></li>
 <?php endforeach; ?>
 ~~~
 
-Huomaa kaksoispiste for-luupin jälkeen ja puolipiste endforeach-sanan jälkeen.
+</column>
+</sidebyside>
 
-HTML-koodin seassa nämä tavat ilmaista luuppeja ja muita kontrollirakenteita
-tekevät koodin tulkitsemisesta usein helpompaa, sillä lopetussanasta näkee 
-heti minkä rakenteen se lopettaa.
+Huomaa kaksoispiste foreach-luupin jälkeen ja puolipiste endforeach-sanan jälkeen.
+
+Oikealla puolella esitetty tapa kirjoittaa luuppeja ja muita
+kontrollirakenteita tekevät varsinkin pidempien HTML-koodin pätkien
+tulkitsemisesta usein helpompaa, sillä lopetussanasta näkee heti minkä
+rakenteen se lopettaa.
 
 Jos haluat tutustua näkymäkoodin kirjoittamiseen tarkemmin, voit tutustua 
 [kolmosviikon ohjeisiin](../php/rakenne.html).
@@ -116,7 +134,7 @@ class Kayttaja {
   
   private $id;
   private $tunnus;
-  private $password;
+  private $salasana;
 
   public function __construct($id, $tunnus, $salasana) {
     $this->id = $id;
@@ -124,7 +142,7 @@ class Kayttaja {
     $this->salasana = $salasana;
   }
 
-  /* Tähän gettereitä ja settereitä */
+  /* Kirjoita tähän gettereitä ja settereitä */
 }
 ~~~
 

@@ -13,13 +13,21 @@ luoda tarvittava salasanan sisältävä tiedosto kahdesti:
 ensiksi normaalina tiedostona, jossa on salasana, mutta jota ei laiteta versionhallintaan
 ja sitten salasanattomana .dist-tiedostopäätteellisenä versiona, joka laitetaan versionhallintaan.
 
-Esimerkiksi Javalla koodatessa voidaan tiedosto `web/META-INF/context.xml` 
-sijoittaa `.gitignore`-tiedostoon siten, ettei se mene versionhallintaan
-ja sensijaan tehdä tiedostosta kopio, `web/META-INF/context.xml.dist`,
-joka on muuten samanlainen kuin alkuperäinen `context.xml`, mutta ei sisällä salasanaa,
-eikä ole mainittu `.gitignore` tiedossa. 
+Esimerkiksi Javalla koodatessa tiedostoon `web/META-INF/context.xml` 
+joutuu useimmiten sijoittamaan tietokannan salasanan.
+Laittamalla `.gitignore`-tiedostoon rivi 
+`web/META-INF/context.xml` voit pyytää git:iä 
+olemaan lisäämättä tätä tiedostoa
+versionhallintaan.
 
-Näin repositorion kloonannut pystyy kopioimaan tiedoston paikalleen ja 
+Jotta versionhallintaa tarkasteleville jäisi kuitenkin
+jotain käsitystä puuttuvan tiedoston sisällöstä
+tehdään tiedostosta dist-tiedostopäätteellä varustettu
+kopio, `web/META-INF/context.xml.dist`,
+joka on muuten samanlainen kuin alkuperäinen `context.xml`, mutta ei sisällä salasanaa.
+Tätä kopiota ei tietenkään mainita `.gitignore`-tiedostossa. 
+
+Näin repositorion kloonannut pystyy itse kopioimaan tiedoston paikalleen ja 
 laittamaan siihen tarvittavan salasanan käsin.
 
 <alert>

@@ -188,7 +188,6 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <!-- order: 1 -->
 <!-- tags: viikko2-php -->
 
-<p>Seuraavaksi pyrimme luomaan tiedoston, jossa on tarvittava koodi tietokantayhteyden luomiseen. Samoin esitetään lyhyet testiohjelma, jolla yhteyttä voi testata.</p>
 <section class="alert alert-info"><h3>
 Tiivistelmä:
 </h3>
@@ -200,15 +199,17 @@ Tiivistelmä:
 <li>Luominen pitää sijoittaa omaan funktioonsa tai metodiinsa, jota käyttämällä muu ohjelmakoodi voi hakea tietokantaolion.</li>
 <li>Metodi sijoitetaan omaan tiedostoonsa, joka sijoitetaan omaan tietokantakirjastoille tarkoitettuun hakemistoonsa.</li>
 </ul></li>
+<li>Toteuta ensiksi mahdollisimman yksinkertainen testiohjelma, joka hakee tietokannasta tietoa</li>
 <li>Jos käytät tietokantayhteyden autentikointiin salasanaa, <a href="../git-ja-salasanat.html">älä laita sitä GitHubiin sellaisenaan</a>.</li>
 </ul>
 </section>
 
 <p>Sekä Javalla että PHP:llä tietokantayhteyksiä edustaa erillinen luokka, jonka olio muodostetaan kutsumalla sopivaa metodia/konstruktoria. Kummallekin annetaan merkkijonona tietokantayhteyttä kuvaava osoite, jonka perusteella yhteys muodostetaan.</p>
-<p>Alla on esimerkkikoodia tietokantayhteyden muodostamisesta tilanteessa, jossa työ pyörii users-palvelimella.</p>
+<p>Alla on esimerkkikoodia tietokantayhteyden muodostamisesta tilanteessa, jossa työ pyörii users-palvelimella. Koodin tarkoituksena on toteuttaa mahdollisimman yksinkertainen ohjelma, joka ottaa yhteyden tietokantaan ja suorittaa siellä SQL-muotoisen SELECT-lauseen, jonka tulos näytetään käyttäjälle.</p>
 <p>Tee itsellesi ohjeita noudattaen tiedosto, johon sijoitat tietokannan muodostamisen. Laita tämä tiedosto omaan kansioonsa. Hyviä nimiä hakemistolle voivat olla esim. “tietokanta” tai “models”. Sovelluksesta tulee huomattavasti selkeämpi, jos kaikki tietokantaa käsittelevä koodi on sijoitettu yhteen paikkaan.</p>
-<section id="tietokantayhteys-ja-pdo" class="level2">
-<h2>Tietokantayhteys ja PDO</h2>
+<section id="tietokantayhteys-ja-php-data-objects-php" class="level2">
+<h2>Tietokantayhteys ja PHP Data Objects (PHP)</h2>
+<p>PHP:ssä käytössä oleva tietokantakirjasto on nimeltään PHP Data Objects eli PDO. Otamme tämän kirjaston nyt testiluontoisesti käyttöön.</p>
 <p>Sijoita allaolevat koodit ensiksi omaan testausta varten tekemääsi tiedostoon, esim. <code>yhteystesti.php</code>.</p>
 <p>Yhteyden avaaminen onnistuu seuraavalla tavalla.</p>
 <p><strong>yhteystesti.php</strong></p>
@@ -218,32 +219,60 @@ Tiivistelmä:
 <span class="kw">$salasana</span>= <span class="st">&quot;psql-salasana&quot;</span><span class="ot">;</span>
 
 <span class="co">//Yhteysolion luominen</span>
-<span class="kw">$yhteys</span> = <span class="kw">new</span> <span class="kw">PDO</span><span class="ot">(</span><span class="st">&quot;pgsql:host=localhost;port=5432;dbname=</span><span class="kw">$tunnus</span><span class="st">&quot;</span><span class="ot">,</span> <span class="kw">$tunnus</span><span class="ot">,</span> <span class="kw">$salasana</span><span class="ot">);</span>
-
-<span class="co">//Seuravaa komento pyytää PDO:ta tuottamaan poikkeuksen aina kun jossain on virhe.</span>
-<span class="co">//Kannattaa käyttää, oletuksena luokka ei raportoi virhetiloja juuri mitenkään!</span>
-<span class="kw">$yhteys</span>-&gt;setAttribute<span class="ot">(</span><span class="kw">PDO</span>::<span class="kw">ATTR_ERRMODE</span><span class="ot">,</span><span class="kw">PDO</span>::<span class="kw">ERRMODE_EXCEPTION</span><span class="ot">);</span></code></pre>
-<p>Koodatessa PostgreSQL:llä users-palvelimella voidaan käyttää myös lyhyempää yhteysosoitetta, johon ei laiteta salasanaa:</p>
-<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>
-<span class="kw">$yhteys</span> = <span class="kw">new</span> <span class="kw">PDO</span><span class="ot">(</span><span class="st">&quot;pgsql:&quot;</span><span class="ot">);</span>
-<span class="kw">$yhteys</span>-&gt;setAttribute<span class="ot">(</span><span class="kw">PDO</span>::<span class="kw">ATTR_ERRMODE</span><span class="ot">,</span><span class="kw">PDO</span>::<span class="kw">ERRMODE_EXCEPTION</span><span class="ot">);</span></code></pre>
+<span class="kw">$yhteys</span> = <span class="kw">new</span> <span class="kw">PDO</span><span class="ot">(</span><span class="st">&quot;pgsql:host=localhost;port=5432;dbname=</span><span class="kw">$tunnus</span><span class="st">&quot;</span><span class="ot">,</span> <span class="kw">$tunnus</span><span class="ot">,</span> <span class="kw">$salasana</span><span class="ot">);</span></code></pre>
+<p>Jos käytät PostgreSQL:ää users-palvelimella, voit käyttää myös lyhyempää yhteysosoitetta, johon ei laiteta salasanaa:</p>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">$yhteys</span> = <span class="kw">new</span> <span class="kw">PDO</span><span class="ot">(</span><span class="st">&quot;pgsql:&quot;</span><span class="ot">);</span></code></pre>
+<p>Seuravaa komento pyytää PDO:ta tuottamaan poikkeuksen aina kun jossain on virhe. Sitä kannattaa käyttää aina, oletuksena PDO ei nimittäin raportoi virhetiloja juuri mitenkään!</p>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">$yhteys</span>-&gt;setAttribute<span class="ot">(</span><span class="kw">PDO</span>::<span class="kw">ATTR_ERRMODE</span><span class="ot">,</span><span class="kw">PDO</span>::<span class="kw">ERRMODE_EXCEPTION</span><span class="ot">);</span></code></pre>
 <section class="alert alert-danger"><h3>
 Pidä mielessä!
 </h3>
-<p>Jos käytät koodista sitä versiota, joka tarvitsee salasanan, älä laita sitä repositorioosi suoraan. Käytä sen sijaan <a href="../git-ja-salasanat.html">dist-tiedostoja</a></p>
+<p>Jos käytät koodista ensimäistä versiota, joka tarvitsee salasanan, älä laita sitä repositorioosi suoraan. Käytä sen sijaan <a href="../git-ja-salasanat.html">dist-tiedostoja</a>.</p>
+<p>Salasanojen laittaminen julkiseen git-repositorioon on yleisesti ottaen tietoturvan kannalta paha tapa, joten sitä kannattaa välttää aina kun mahdollista.</p>
+</section>
+
+<section id="phpn-omituinen-oliosyntaksi" class="level3">
+<h3>PHP:n omituinen oliosyntaksi</h3>
+<p>PHP:n oliosyntaksi on valitettavasti sekavampi kuin Javan käyttämä. Metodien kutsumiseen käytetään syntaksia <code>$olio-&gt;metodi();</code>, olion atribuutteja käytetään samaan tapaan <code>$olio-&gt;attribuutti</code>.</p>
+<p>Sensijaan jos metodi, attribuutti, tai <em>vakio</em> on staattinen käytetään kahta kaksoispistettä ja atribuutin tapauksessa vielä dollaria:</p>
+<table class="table table-striped table-bordered">
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Staattinen metodi</td>
+<td style="text-align: left;"><code>LuokanNimi::staattinenMetodi()</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Staattinen attribuutti</td>
+<td style="text-align: left;"><code>LuokanNimi::$attribuutti</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Staattinen vakio</td>
+<td style="text-align: left;"><code>LuokanNimi::VAKION_NIMI</code></td>
+</tr>
+</tbody>
+</table>
+</section>
 </section>
 </section>
 <section id="yhteyden-testaaminen" class="level2">
 <h2>Yhteyden testaaminen</h2>
+<p>Kun yhteys on muodostettu, sitä voi käyttää SQL-kyselyjen suorittamiseen. Tehdään tätä varten lyhyt testiohjelma.</p>
 <p>Tietokannan nopeaan testaamisen voi käyttää seuraavanlaista koodia, jonka voi sijoittaa suoraan yllä esitetyn yhteyden muodotamisen perään:</p>
 <p><strong>yhteystesti.php</strong></p>
-<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">$sql</span> = <span class="st">&quot;select 1+1 as two&quot;</span><span class="ot">;</span>
-<span class="kw">$kysely</span> = <span class="kw">$yhteys</span>-&gt;prepare<span class="ot">(</span><span class="kw">$sql</span><span class="ot">);</span>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="co">//Alustetaan muuttuja jossa on Select-kysely, joka palauttaa lukuarvon:</span>
+<span class="kw">$sqlkysely</span> = <span class="st">&quot;SELECT 1+1 as two&quot;</span><span class="ot">;</span>
+
+<span class="co">//Pyydetään PDO-yhteysoliota käsittelemään SQL-muotoinen kysely.</span>
+<span class="co">//Huom! PHP:ssä käytetään syntaksia $olio-&gt;metodi(); metodien kutsumiseen.</span>
+<span class="kw">$kysely</span> = <span class="kw">$yhteys</span>-&gt;prepare<span class="ot">(</span><span class="kw">$sqlkysely</span><span class="ot">);</span>
 
 
 <span class="kw">if</span> <span class="ot">(</span><span class="kw">$kysely</span>-&gt;execute<span class="ot">())</span> {
-  <span class="kw">$kakkonen</span> = <span class="kw">$kysely</span>-&gt;fetchColumn<span class="ot">();</span>
-  <span class="fu">var_dump</span><span class="ot">(</span><span class="kw">$kakkonen</span><span class="ot">);</span>
+  <span class="co">//Tulos-muuttujan arvoksi pitäisi tulla numero kaksi.</span>
+  <span class="kw">$tulos</span> = <span class="kw">$kysely</span>-&gt;fetchColumn<span class="ot">();</span>
+
+  <span class="co">//var_dump tulostaa muuttujan tyypin ja arvon käyttäjälle:</span>
+  <span class="fu">var_dump</span><span class="ot">(</span><span class="kw">$tulos</span><span class="ot">);</span>
 }</code></pre>
 <p>Koodin pitäisi tulostaa seuraava teksti debug-koodaukseen tarkoitettua <a href="http://php.net/manual/en/function.var-dump.php">var_dump</a>-funktiota käyttäen:</p>
 <pre><code>int(2)</code></pre>
@@ -252,10 +281,14 @@ Pidä mielessä!
 <p>Voit tehdä yhteydelle halutessasi luokan, johon voi sijoittaa muitakin toistuvia tietokantaan liittyviä koodinpätkiä. Jos et halua tehdä luokkaa, voit PHP:llä käyttää myös lyhyttä funktiota, jossa on funktion sisäinen <a href="http://php.net/manual/en/language.variables.scope.php#language.variables.scope.static">staattinen muuttuja</a>:</p>
 <p><strong>libs/tietokantayhteys.php</strong></p>
 <pre class="sourceCode php"><code class="sourceCode php">&lt;<span class="ot">?</span>php
-<span class="kw">function</span> getTietokantayhteys<span class="ot">()</span> {
-  <span class="kw">static</span> <span class="kw">$yhteys</span> = <span class="kw">null</span><span class="ot">;</span> <span class="co">//Muuttuja, jonka sisältö säilyy getTietokantayhteys-kutsujen välillä.</span>
 
-  <span class="kw">if</span> <span class="ot">(</span><span class="kw">$yhteys</span> === <span class="kw">null</span><span class="ot">)</span> { 
+<span class="co">/** Funktio joka palauttaa yhteyden tietokantaan PDO-oliona. */</span>
+<span class="kw">function</span> getTietokantayhteys<span class="ot">()</span> {
+  <span class="co">//Muuttuja, jonka sisältö säilyy getTietokantayhteys-kutsujen välillä.</span>
+  <span class="kw">static</span> <span class="kw">$yhteys</span> = <span class="kw">null</span><span class="ot">;</span> 
+  
+  <span class="co">//Jos $yhteys on null, pitää se muodostaa.</span>
+  <span class="kw">if</span> <span class="ot">(</span><span class="kw">$yhteys</span> == <span class="kw">null</span><span class="ot">)</span> { 
     <span class="co">//Tämä koodi suoritetaan vain kerran, sillä seuraavilla </span>
     <span class="co">//funktion suorituskerroilla $yhteys-muuttujassa on sisältöä.</span>
     <span class="kw">$yhteys</span> = <span class="kw">new</span> <span class="kw">PDO</span><span class="ot">(</span><span class="st">&#39;pgsql:&#39;</span><span class="ot">);</span>
