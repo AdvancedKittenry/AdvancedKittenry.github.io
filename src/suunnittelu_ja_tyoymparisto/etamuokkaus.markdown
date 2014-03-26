@@ -6,13 +6,18 @@ Gnomea työpöytäympäristönä käyttävissä Linux-jakeluissa, joihin laitoks
 Tämä onnistuu avaamalla järjestelmän oletustiedostoselain, Nautilus:
 ![Avaa nautilus]({{myimgdir}}nautilus-ssh/tsoha1crop.png)
 
-Nautiluksen File-valikosta löytyy valinta Connect to server.
-![File-valikosta löytyy Connect to server]({{myimgdir}}nautilus-ssh/tsoha2crop.png)
+Paina näppäinyhdistelmää `Ctrl+L`. 
+Selaimen osoitepalkkiin pitäisi avautua vapaa `Location`-tekstikenttä.
+Kirjoita tähän kenttään seurava osoite siten, että korvaat molemmat sanat 
+`tktlkayttajatunnus` omalla cs-tunnuksellasi.
 
-Valitse yhteystyypiksi SSH ja täytä loput tiedot kuvan mukaisesti. Laita tunnuksen tilalle Folder ja User name -valinnoissa oma käyttäjätunnuksesi.
-![Loput tiedot täytetään näin]({{myimgdir}}nautilus-ssh/tsoha4crop.png)
+~~~
+sftp://tktlkayttajatunnus@users.cs.helsinki.fi/home/tktlkayttajatunnus
+~~~
 
-Mikäli syötit tiedot oikein, pitäisi näytöllesi avautua users-palvelimen kotikansio.
+Paina seuraavaksi enteriä. Nautiluksen pitäisi kysyä salasanaa. Syötä cs-tunnuksesi salasana.
+
+Mikäli syötit osoitteen ja salasanan oikein, pitäisi näytöllesi avautua users-palvelimella oleva kotikansiosi.
 Voit tästä navigoida esim. PHP-tiedostoja muokkaamaan kansioon htdocs.
 Tiedostoja voi nyt avata, muokata, kopioida ja siirrellä kuten normaalisti.
 
