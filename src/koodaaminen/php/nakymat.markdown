@@ -148,7 +148,7 @@ sillä mallin näyttämisen jälkeen emme käytännössä koskaan halua suoritta
 Tästä on hyötyä tapauksissa, jossa haluamme kutsua funktiota ennen kuin sivun koodi on suoritettu loppuun.
 Esimerkiksi silloin kun tapahtui jokin virhe ja haluamme näyttää virheviestin.
 
-Tätä funktiota käyttäen riittää kirjoittaa tavalliselle sivulle:
+Tätä funktiota käyttäen riittää kirjoittaa yksinkertainen kontrolleritiedosto:
 
 ~~~php
 <?php

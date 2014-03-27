@@ -68,6 +68,11 @@ Esimerkkinä kuvitteellinen kissalistan kontrolleri:
 Jotta yllä oleva esimerkki toimisi, on luotava sen tueksi malliluokat,
 näkymät ja muutama yleiskäyttöinen luokka ja funktio. 
 
+Kontrollereista voi myös halutessaan tehdä kokonaisia luokkia,
+joissa on metodeja erilaisille sivuille ja toiminnoille.
+Tästä on usein paljon hyötyä selkeyden muodossa 
+siinä vaiheessa kun projekti on laajentunut hieman.
+
 ## Mallit
 
 Sijoita projektin mallit omaan kansioonsa kirjastokansiosi alle,

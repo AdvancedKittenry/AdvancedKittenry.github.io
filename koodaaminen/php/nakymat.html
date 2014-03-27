@@ -284,7 +284,7 @@ Lisätietoa
     <span class="fu">exit</span><span class="ot">();</span>
   }</code></pre>
 <p>Kutsumme näkymän näyttämisen jälkeen PHP:n suorituksen lopettavaa <a href="http://www.php.net/manual/en/function.exit.php">exit-funktiota</a>, sillä mallin näyttämisen jälkeen emme käytännössä koskaan halua suorittaa sivun koodia loppuun. Tästä on hyötyä tapauksissa, jossa haluamme kutsua funktiota ennen kuin sivun koodi on suoritettu loppuun. Esimerkiksi silloin kun tapahtui jokin virhe ja haluamme näyttää virheviestin.</p>
-<p>Tätä funktiota käyttäen riittää kirjoittaa tavalliselle sivulle:</p>
+<p>Tätä funktiota käyttäen riittää kirjoittaa yksinkertainen kontrolleritiedosto:</p>
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>
   <span class="kw">require_once</span> <span class="st">&#39;libs/common.php&#39;</span><span class="ot">;</span>
 

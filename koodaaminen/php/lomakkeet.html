@@ -211,7 +211,7 @@ Tiivistelmä:
 <section id="lomakkeiden-vastaanottaminen" class="level2">
 <h2>Lomakkeiden vastaanottaminen</h2>
 <p>Oletetaan, että kirjautumisnäkymässä on suurinpiirtein allaolevan tapainen lomake.</p>
-<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;form</span><span class="ot"> action=</span><span class="st">&quot;login&quot;</span><span class="ot"> method=</span><span class="st">&quot;POST&quot;</span><span class="kw">&gt;</span>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;form</span><span class="ot"> action=</span><span class="st">&quot;login.php&quot;</span><span class="ot"> method=</span><span class="st">&quot;POST&quot;</span><span class="kw">&gt;</span>
 Käyttäjänimi: <span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;text&quot;</span><span class="ot"> name=</span><span class="st">&quot;username&quot;</span> <span class="kw">/&gt;</span>
 Salasana: <span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;password&quot;</span><span class="ot"> name=</span><span class="st">&quot;password&quot;</span> <span class="kw">/&gt;</span>
 <span class="kw">&lt;button</span><span class="ot"> type=</span><span class="st">&quot;submit&quot;</span><span class="kw">&gt;</span>Kirjaudu<span class="kw">&lt;/button&gt;</span>
@@ -223,7 +223,7 @@ Salasana: <span class="kw">&lt;input</span><span class="ot"> type=</span><span c
   
   <span class="kw">if</span> <span class="ot">(</span><span class="fu">empty</span><span class="ot">(</span><span class="kw">$_POST</span><span class="ot">[</span><span class="st">&quot;username&quot;</span><span class="ot">])</span> || <span class="fu">empty</span><span class="ot">(</span><span class="kw">$_POST</span><span class="ot">[</span><span class="st">&quot;password&quot;</span><span class="ot">])</span> {
      <span class="co">/* Käytetään omassa kirjastotiedostossa määriteltyä näkymännäyttöfunktioita */</span>
-    naytaNakymä<span class="ot">(</span><span class="st">&quot;login&quot;</span><span class="ot">);</span>
+    naytaNakyma<span class="ot">(</span><span class="st">&quot;login&quot;</span><span class="ot">);</span>
     <span class="fu">exit</span><span class="ot">();</span> <span class="co">// Lopetetaan suoritus tähän. Kutsun voi sijoittaa myös naytaNakyma-funktioon, niin sitä ei tarvitse toistaa joka paikassa</span>
   }
 
@@ -260,7 +260,7 @@ Pidä mielessä!
 <div class="row">
 <div class="col-md-5">
 <p><strong>Kontrolleri:</strong></p>
-<pre class="sourceCode php"><code class="sourceCode php">naytaNakymä<span class="ot">(</span><span class="st">&quot;login&quot;</span><span class="ot">,</span> <span class="fu">array</span><span class="ot">(</span>
+<pre class="sourceCode php"><code class="sourceCode php">naytaNakyma<span class="ot">(</span><span class="st">&quot;login&quot;</span><span class="ot">,</span> <span class="fu">array</span><span class="ot">(</span>
   <span class="st">&#39;kayttaja&#39;</span> =&gt; <span class="kw">$kayttaja</span><span class="ot">,</span>
 <span class="ot">));</span></code></pre>
 </div>
@@ -297,14 +297,14 @@ Pidä mielessä!
   
   <span class="co">//Tarkistetaan että vaaditut kentät on täytetty:</span>
   <span class="kw">if</span> <span class="ot">(</span><span class="fu">empty</span><span class="ot">(</span><span class="kw">$_POST</span><span class="ot">[</span><span class="st">&quot;username&quot;</span><span class="ot">]))</span> {
-    naytaNakymä<span class="ot">(</span><span class="st">&quot;login&quot;</span><span class="ot">,</span> <span class="fu">array</span><span class="ot">(</span>
+    naytaNakyma<span class="ot">(</span><span class="st">&quot;login&quot;</span><span class="ot">,</span> <span class="fu">array</span><span class="ot">(</span>
       <span class="st">&#39;virhe&#39;</span> =&gt; <span class="st">&quot;Kirjautuminen epäonnistui! Et antanut käyttäjätunnusta.&quot;</span><span class="ot">,</span>
     <span class="ot">));</span>
   }
   <span class="kw">$kayttaja</span> = <span class="kw">$_POST</span><span class="ot">[</span><span class="st">&quot;username&quot;</span><span class="ot">];</span>
 
   <span class="kw">if</span> <span class="ot">(</span><span class="fu">empty</span><span class="ot">(</span><span class="kw">$_POST</span><span class="ot">[</span><span class="st">&quot;password&quot;</span><span class="ot">]))</span> {
-    naytaNakymä<span class="ot">(</span><span class="st">&quot;login&quot;</span><span class="ot">,</span> <span class="fu">array</span><span class="ot">(</span>
+    naytaNakyma<span class="ot">(</span><span class="st">&quot;login&quot;</span><span class="ot">,</span> <span class="fu">array</span><span class="ot">(</span>
       <span class="st">&#39;kayttaja&#39;</span> =&gt; <span class="kw">$kayttaja</span><span class="ot">,</span>
       <span class="st">&#39;virhe&#39;</span> =&gt; <span class="st">&quot;Kirjautuminen epäonnistui! Et antanut salasanaa.&quot;</span><span class="ot">,</span>
     <span class="ot">));</span>

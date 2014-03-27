@@ -26,7 +26,7 @@ Laitetaan seuraavaksi tämä sivu ottamaan kirjautumislomake vastaan.
 Oletetaan, että kirjautumisnäkymässä on suurinpiirtein allaolevan tapainen lomake.
 
 ~~~html
-<form action="login" method="POST">
+<form action="login.php" method="POST">
 Käyttäjänimi: <input type="text" name="username" />
 Salasana: <input type="password" name="password" />
 <button type="submit">Kirjaudu</button>
@@ -54,7 +54,7 @@ Hyvin yksinkertainen kirjautuminen voitaisiin sitä käyttäen toteuttaa suurinp
   
   if (empty($_POST["username"]) || empty($_POST["password"]) {
      /* Käytetään omassa kirjastotiedostossa määriteltyä näkymännäyttöfunktioita */
-    naytaNakymä("login");
+    naytaNakyma("login");
     exit(); // Lopetetaan suoritus tähän. Kutsun voi sijoittaa myös naytaNakyma-funktioon, niin sitä ei tarvitse toistaa joka paikassa
   }
 
@@ -121,7 +121,7 @@ näkymässä:
 **Kontrolleri:**
 
 ~~~inlinephp
-naytaNakymä("login", array(
+naytaNakyma("login", array(
   'kayttaja' => $kayttaja,
 ));
 ~~~
@@ -183,14 +183,14 @@ Lopullinen kontrollerin koodi voi olla vaikkapa tämän näköinen.
   
   //Tarkistetaan että vaaditut kentät on täytetty:
   if (empty($_POST["username"])) {
-    naytaNakymä("login", array(
+    naytaNakyma("login", array(
       'virhe' => "Kirjautuminen epäonnistui! Et antanut käyttäjätunnusta.",
     ));
   }
   $kayttaja = $_POST["username"];
 
   if (empty($_POST["password"])) {
-    naytaNakymä("login", array(
+    naytaNakyma("login", array(
       'kayttaja' => $kayttaja,
       'virhe' => "Kirjautuminen epäonnistui! Et antanut salasanaa.",
     ));

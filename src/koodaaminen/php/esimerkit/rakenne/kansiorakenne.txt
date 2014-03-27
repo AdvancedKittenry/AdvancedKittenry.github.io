@@ -3,6 +3,6 @@ views/
 libs/
   models/
     user.php
-  utilities.php (Yleiskäyttöisiä funktioita)
+  common.php (Yleiskäyttöisiä funktioita)
 users.php (Käyttäjänhallinnan kontrolleri)
 ~~~
