@@ -81,7 +81,7 @@ ympärillä pyörivä HTML-koodi ja laitetaan itse sisällön paikalle require-k
      * joka haetaan sopivasta näkymätiedostosta.
      * Oikean näkymän tiedostonimi on tallennettu muuttujaan $sivu.
      */
-    require 'views/'.$sivu; 
+    require 'views/'.$sivu.'.php'; 
   ?>
 ...html-koodia...
 </html>

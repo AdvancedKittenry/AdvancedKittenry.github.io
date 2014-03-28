@@ -58,9 +58,12 @@ sovelluksen _päävalikkoon_, eli niihin linkkeihin, jotka ovat jokaisella sivul
 
 <vinkki>
 Suunnittelemiseen kannattaa käyttää _paperia ja kynää_, _valkotaulua_
-tai jotain muuta välinettä, jolla luonnosteleminen on nopeaa.
+tai jotain muuta välinettä, jolla luonnosteleminen on nimenomaan sinulle nopeaa.
+
 Suunnitteluvaiheessa kaikenlaiset kaavio-ohjelmistot yleensä vain hidastavat ajattelua, 
 ellei niiden käytössä ole erityisen rutinoitunut. 
+Toisaalta jos jonkin työkalun tai kielen (esim. Photoshop tai HTML)
+kanssa on jo kokenut ja nopea, saa suunnitelmia toki työstää niilläkin.
 </vinkki>
 
 Kissalistan tapauksessa alustava suunnitelma voisi näyttää vaikkapa tältä:

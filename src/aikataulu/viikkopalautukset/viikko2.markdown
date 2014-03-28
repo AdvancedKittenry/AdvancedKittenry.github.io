@@ -20,7 +20,6 @@ Palautuspäivämäärään mennessä työn on täytettävä seuraavat vaatimukse
 
 * Dokumentoi ja suunnittele sovelluksellesi käyttöliittymä
     * Dokumentaatioon alustava käyttöliittymäkaavio
-    * Liitä myös tekemäsi muut suunnitelmat (etenkin yleisnavigaatio) repositorioosi, ellet ole näyttänyt niitä ohjaajalle pajassa.
 * Suunnitelmien perusteella luodaan sivuista oikean näköiset demoversiot.
     * Demoversion ei vielä tarvitse käyttää tietokantaa tai sisältää ajettavia ohjelmia
     * Toteutettuna pitää olla HTML-versiot ainakin seuraavista aiemmin suunnitelluista sivuista:
@@ -28,6 +27,7 @@ Palautuspäivämäärään mennessä työn on täytettävä seuraavat vaatimukse
         * Etusivu
         * Listaussivut
         * Muokkaus ja tietonäkymät
+    * Demoversiot saa halutessaan toteuttaa suoraan [MVC-mallin]({{rootdir}}koodaaminen/arkkitehtuuri/index.html) mukaisina näkyminä, mutta tätä ei tällä viikolla vielä vaadita.
 
 ## Tietokannan käytön aloittaminen ja dokumentointi (1½p)
 
@@ -38,12 +38,13 @@ Pisteistä puolikas piste tulee dokumentaatiosta.
 * Tietokannan pystyttäminen palvelimelle
     * Luo SQL-tiedostot, joilla kannan rakenteen saa vedettyä ylös ja alas.
     * Käytä luotuja tiedostoja tietokannan pystyttämiseen
-* Ota käyttöön tietokantatestisovellus
+* Ota käyttöön [*ConnectionTest-testisovellus*]({{rootdir}}koodaaminen/testisovellus.html)
     * Sovellus näyttää tietokannan taulut ja niiden sisältöä. Ohjaaja käyttää tätä pysyäkseen paremmin kärryillä tietokannan tilasta.
     * Testisovelluksen tulee näkyä Users-palvelimella.
 * Tarvitset koodaamiseen tietokantayhteyden muodostavan koodi, joka pitää sijoittaa omaan tiedostoonsa.
 * Tee yhteyttä käyttävä kevyt testisivu, joka listaa jonkin tietokantataulun kaikkilta riveiltä jotakin, esimerkiksi jokaisen käyttäjän nimen.
     * Käytä tietokannan täyttämiseen `add-test-data.sql`-tiedostoa, niin sivulla on jotain näytettävää.
+    * Testisivuksi kelpaa myös valmiiseen sovellukseen tuleva näkymä, joka listaa tietokannasta jotakin.
 * Dokumentaatioon lisätään asiaanliittyvät kaaviot ja kappaleet
 Järjestelmän tietosisältö ja Relaatiotietokantakaavio
 
@@ -60,6 +61,9 @@ Muista myös päivittää kaikki tekeäsi uudet asiat [esittelysivulle](esittely
 
 ~~~~ {execute=bash}
 ./list-tagged-files.sh viikko2
+echo "* Kielikohtaiset ohjeet"
+./list-tagged-files.sh viikko2-php  | sed -e "s/^\*/    * PHP: /"
+./list-tagged-files.sh viikko2-java | sed -e "s/^\*/    * Java: /"
 echo "* Hyödyllisiä sivuja edelliseltä viikolta"
 ./list-tagged-files.sh viikko2-usefull | sed -e "s/^/    /"
 ~~~~
