@@ -168,6 +168,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li><a href="../../koodaaminen/php/sivutusjahaut.html">Sivutus ja hakulomakkeet</a></li>
 <li><a href="../../koodaaminen/php/mallit_lisays.html">Tietojen syöttäminen kantaan</a></li>
 <li><a href="../../koodaaminen/php/muokkausnakymat.html">Muokkausnäkymän toteuttaminen</a></li>
+<li><a href="../../koodaaminen/php/syntaksiopas.html">Lyhyt PHP-opas Java-koodarille</a></li>
 <li><a href="../../koodaaminen/php/php-virheet.html">PHP:n virheilmoitusten katselu</a></li>
 </ul></li>
 </ul></li>
@@ -197,22 +198,12 @@ code > span.er { color: #ff0000; font-weight: bold; }
 </ul>
 <section id="array-phpn-lista--ja-assosiaatiotaulutietorakenne" class="level2">
 <h2>Array, PHP:n lista- ja assosiaatiotaulutietorakenne</h2>
-<p>PHP:ssä listojen ja erilaisten assosiaatiotaulujen virkaa hoitaa yleiskäyttöinen <a href="http://php.net/manual/en/language.types.array.php">array</a>-tietotyyppi. Arraytä käytetään hieman kuin javan taulukoita, mutta avaimena voi käyttää sekä kokonaislukuja, että merkkijonoja. Yleensä erityyppisiä avaimia ei kuitenkaan kannata sekoittaa. Esimerkkejä:</p>
+<p>PHP:ssä listojen ja erilaisten assosiaatiotaulujen virkaa hoitaa yleiskäyttöinen <a href="http://php.net/manual/en/language.types.array.php">array</a>-tietotyyppi. Arraytä käytetään hieman kuin javan taulukoita, mutta avaimena voi käyttää sekä kokonaislukuja, että merkkijonoja. Esimerkki:</p>
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span> 
   <span class="kw">$a</span> = <span class="fu">array</span><span class="ot">();</span>
   <span class="kw">$a</span><span class="ot">[</span><span class="dv">0</span><span class="ot">]</span> = <span class="st">&quot;arvo&quot;</span><span class="ot">;</span>
-  <span class="kw">$a</span><span class="ot">[</span><span class="dv">1</span><span class="ot">]</span> = <span class="st">&quot;toinen arvo&quot;</span><span class="ot">;</span>
-
-  <span class="co">//Taulukkoja voi myös alustaa luodessa. Oletuksena indeksointi alkaa nollasta.</span>
-  <span class="kw">$m</span> = <span class="fu">array</span><span class="ot">(</span><span class="dv">1</span><span class="ot">,</span><span class="dv">2</span><span class="ot">,</span><span class="dv">3</span><span class="ot">,</span><span class="dv">4</span><span class="ot">);</span>
-  <span class="kw">$m</span><span class="ot">[</span><span class="dv">0</span><span class="ot">]</span> == <span class="dv">1</span><span class="ot">;</span> <span class="co">//tosi</span>
-
-  <span class="co">//Taulukon perään voi lisätä arvoja jättämällä avaimen pois.</span>
-  <span class="kw">$m</span><span class="ot">[]</span> = <span class="dv">5</span><span class="ot">;</span> <span class="co">//Sama kuin sanoisi: $m[4] = 5;</span>
-
-  <span class="co">//Alustaessa voi myös antaa avaimia.</span>
-  <span class="kw">$kissa</span> = <span class="fu">array</span><span class="ot">(</span><span class="st">&quot;nimi&quot;</span> =&gt; <span class="st">&quot;Kasper&quot;</span><span class="ot">,</span> <span class="st">&quot;rotu&quot;</span> =&gt; <span class="st">&quot;Siamilainen&quot;</span><span class="ot">);</span>
-  <span class="fu">echo</span> <span class="kw">$kissa</span><span class="ot">[</span><span class="st">&quot;nimi&quot;</span><span class="ot">];</span> <span class="co">//Tulostaa nimen Kasper.</span></code></pre>
+  <span class="kw">$a</span><span class="ot">[</span><span class="dv">1</span><span class="ot">]</span> = <span class="st">&quot;toinen arvo&quot;</span><span class="ot">;</span></code></pre>
+<p>Array-tietotyypistä voi lukea lisää <a href="syntaksiopas.html#array">lyhyestä PHP-syntaksioppaasta</a>.</p>
 </section>
 <section id="listojen-läpikäynti" class="level2">
 <h2>Listojen läpikäynti</h2>

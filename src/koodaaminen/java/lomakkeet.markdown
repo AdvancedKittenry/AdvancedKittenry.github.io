@@ -158,13 +158,13 @@ protected void processRequest(HttpServletRequest request, HttpServletResponse re
   
   /* Jos kummatkin parametrit ovat null, käyttäjä ei ole edes yrittänyt vielä kirjautua. 
    * Näytetään pelkkä lomake */
-  if (kayttaja == null || !kayttaja.equals("")) {
+  if (kayttaja == null || salasana == null) {
     naytaJSP("login.jsp", request, response);
     return;
   }
 
   //Tarkistetaan että vaaditut kentät on täytetty:
-  if (kayttaja == null || !kayttaja.equals("")) {
+  if (kayttaja == null || kayttaja.equals("")) {
     asetaVirhe("Kirjautuminen epäonnistui! Et antanut käyttäjätunnusta.", request);
     naytaJSP("login.jsp", request, response);
     return;
@@ -173,8 +173,8 @@ protected void processRequest(HttpServletRequest request, HttpServletResponse re
   /* Välitetään näkymille tieto siitä, mikä tunnus yritti kirjautumista */
   request.setAttribute("kayttaja", kayttaja);  
 
-  if (salasana == null && !salasana.equals("")) {
-    asetaVirhe("Kirjautuminen epäonnistui! Et antanut käyttäjätunnusta.", request);
+  if (salasana == null || salasana.equals("")) {
+    asetaVirhe("Kirjautuminen epäonnistui! Et antanut salasanaa.", request);
     naytaJSP("login.jsp", request, response);
     return;
   }

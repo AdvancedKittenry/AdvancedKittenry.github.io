@@ -141,6 +141,9 @@ Voit tutustua myös Sami Saadan tekemiin esimerkkisovelluksiin
 Bonuksena samasta aiheesta on olemassa myös hyvin tiivis 
 [Ruby-toteutus](https://github.com/tsoha-syksy2012/ostoslista-esimerkki/tree/ruby_sinatra_sequel) Sinatra-kehyksellä tehtynä.
 
+
+PHP:n syntaksista voi myös lukea lisää [lyhyestä PHP-syntaksioppaasta](syntaksiopas.html).
+
 Linkkejä: 
 
 * [Javan EE dokumentaatio](http://docs.oracle.com/javaee/)

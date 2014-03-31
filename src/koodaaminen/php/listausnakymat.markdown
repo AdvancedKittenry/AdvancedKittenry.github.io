@@ -15,26 +15,16 @@ sivuksi muiden joukossa. Tehtävää on ainakin:
 
 PHP:ssä listojen ja erilaisten assosiaatiotaulujen virkaa hoitaa yleiskäyttöinen
 [array](http://php.net/manual/en/language.types.array.php)-tietotyyppi.
-Arraytä käytetään hieman kuin javan taulukoita, mutta avaimena voi käyttää sekä kokonaislukuja, että merkkijonoja.
-Yleensä erityyppisiä avaimia ei kuitenkaan kannata sekoittaa. Esimerkkejä:
+Arraytä käytetään hieman kuin javan taulukoita, mutta avaimena voi käyttää sekä kokonaislukuja, että merkkijonoja. Esimerkki:
 
 ~~~php
 <?php 
   $a = array();
   $a[0] = "arvo";
   $a[1] = "toinen arvo";
-
-  //Taulukkoja voi myös alustaa luodessa. Oletuksena indeksointi alkaa nollasta.
-  $m = array(1,2,3,4);
-  $m[0] == 1; //tosi
-
-  //Taulukon perään voi lisätä arvoja jättämällä avaimen pois.
-  $m[] = 5; //Sama kuin sanoisi: $m[4] = 5;
-
-  //Alustaessa voi myös antaa avaimia.
-  $kissa = array("nimi" => "Kasper", "rotu" => "Siamilainen");
-  echo $kissa["nimi"]; //Tulostaa nimen Kasper.
 ~~~
+
+Array-tietotyypistä voi lukea lisää [lyhyestä PHP-syntaksioppaasta](syntaksiopas.html#array).
 
 ## Listojen läpikäynti
 
