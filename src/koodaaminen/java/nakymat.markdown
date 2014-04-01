@@ -184,7 +184,32 @@ NetBeansistä löydät tägitiedoston uusien tiedostojen valikosta
 
 ![Tagitiedoston luonti]({{myimgdir}}tagi.png)
 
-## Koodin sijoittamineen uudelleenkäytettävään luokkaan
+## Tyhjien rivien trimmaaminen
+
+JSP-koodiin upotetuilla tägeillä on ikävä tapa jättää valmis
+HTML-koodi täyteen tyhjiä rivejä. 
+Tämä on ongelmallista etenkin HTML:n dokumenttien alun osalta,
+sillä standardin mukaisen HTML-koodin ensimmäisen rivin pitäisi sisältää `<!DOCTYPE>`-tägi,
+jotta selaimet näyttäisivät sivun standardin mukaisesti oikein.
+
+Tähän on onneksi JSP:ssä valmiina ratkaisu. 
+JSP-tiedoston ensimmäisellä rivillä olevalle `<%@page>`-tägille pitää vain lisätä attribuutti
+`trimDirectiveWhitespaces`:
+
+~~~jsp
+<%@page contentType="text/html" pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
+~~~
+
+Sama temppu on tehtävä myös tag-tiedoston ensimmäisellä rivillä olevalle `<%@tag>`-tägille:
+
+~~~jsp
+<%@tag description="Generic template for Kissalista pages" pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
+~~~
+
+Attribuutin laittamisen seurauksena kaikki ylimääräiset tulostumattomat merkit (nk. whitespace) jätetään
+valmiista HTML-koodista pois, jolloin tuloksena on standardinmukaista HTML:ää.
+
+## Toistuva koodi kannattaa laittaa omaan luokkaansa
 
 Siinä vaiheessa kun servlet-luokkia alkaa tulla projektiin
 useampia alkavat tietyt toiminnot toistua luokasta toiseen.

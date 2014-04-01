@@ -1,4 +1,4 @@
-<%@tag description="Generic template for Kissalista pages" pageEncoding="UTF-8"%>
+<%@tag description="Generic template for Kissalista pages" pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@attribute name="pageTitle"%>
 <!DOCTYPE html>

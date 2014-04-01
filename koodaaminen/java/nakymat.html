@@ -203,7 +203,7 @@ Tiivistelmä:
 
 <p>Javassa näkyminä käytetään JSP-päätteisiä tiedostoja, jotka koostuvat pääasiassa HTML-koodista, jonka seassa on nettijavaa varten toteutetulla <a href="http://docs.oracle.com/javaee/5/tutorial/doc/bnahq.html">Unified Expression Language -kielellä</a> koodattuja käskyjä.</p>
 <p>Yksinkertaisimmillaan JSP-tiedosto näyttää tältä:</p>
-<pre class="sourceCode jsp"><code class="sourceCode jsp">&lt;%@page<span class="ot"> contentType</span>=<span class="st">&quot;text/html&quot;</span><span class="ot"> pageEncoding</span>=<span class="st">&quot;UTF-8&quot;</span>%&gt;
+<pre class="sourceCode jsp"><code class="sourceCode jsp">&lt;%@page<span class="ot"> contentType</span>=<span class="st">&quot;text/html&quot;</span><span class="ot"> pageEncoding</span>=<span class="st">&quot;UTF-8&quot;</span><span class="ot"> trimDirectiveWhitespaces</span>=<span class="st">&quot;true&quot;</span><span class="ot"> </span>%&gt;
 &lt;<span class="ot">!DOCTYPE html</span>&gt;
 &lt;html&gt;
   &lt;head&gt;
@@ -270,14 +270,14 @@ Huomaa!
 <p>Myös omia tägispesifisiä muuttujia voi määritellä. Rivi <code>&lt;%@attribute name=&quot;pageTitle&quot;%&gt;</code> määrittelee muuttujan pageTitle, jota voi käyttää normaaliin tapaan tagin koodissa kirjoittamalla <code>${pageTitle}</code>.</p>
 <p>Muuttujan sisällön määrittää tägin käyttäjä. Alla olevassa esimerkissä tiedostossa <code>web/WEB-INF/tags/pohja.tag</code> määritellylle tägille annetaan muuttuja <code>pageTitle</code> ja sisältönä yksi h1-elementti.</p>
 <p><strong>helloworld.jsp</strong></p>
-<pre class="sourceCode jsp"><code class="sourceCode jsp">&lt;%@page<span class="ot"> contentType</span>=<span class="st">&quot;text/html&quot;</span><span class="ot"> pageEncoding</span>=<span class="st">&quot;UTF-8&quot;</span>%&gt;
+<pre class="sourceCode jsp"><code class="sourceCode jsp">&lt;%@page<span class="ot"> contentType</span>=<span class="st">&quot;text/html&quot;</span><span class="ot"> pageEncoding</span>=<span class="st">&quot;UTF-8&quot;</span><span class="ot"> trimDirectiveWhitespaces</span>=<span class="st">&quot;true&quot;</span><span class="ot"> </span>%&gt;
 &lt;%@ taglib<span class="ot"> prefix</span>=<span class="st">&quot;t&quot;</span><span class="ot"> tagdir</span>=<span class="st">&quot;/WEB-INF/tags&quot;</span><span class="ot"> </span>%&gt;
 <span class="kw">&lt;t:pohja</span><span class="ot"> pageTitle</span>=<span class="dt">&quot;Kissalista!&quot;</span><span class="kw">&gt;</span>
     &lt;h1&gt;Hello World!&lt;/h1&gt;
 <span class="kw">&lt;/t:pohja&gt;</span></code></pre>
 <p>Tägitiedosto sijoittaa annetut tiedot sen mukaan mitä tägitiedostossa käsketään. Esimerkiksi kissalistan pohjatägitiedosto sijoittaa tägin sisällön navigaatioelementin viereen käyttäen Bootstrap-kirjastoa:</p>
 <p><strong>pohja.tag</strong></p>
-<pre class="sourceCode jsp"><code class="sourceCode jsp">&lt;%@tag<span class="ot"> description</span>=<span class="st">&quot;Generic template for Kissalista pages&quot;</span><span class="ot"> pageEncoding</span>=<span class="st">&quot;UTF-8&quot;</span>%&gt;
+<pre class="sourceCode jsp"><code class="sourceCode jsp">&lt;%@tag<span class="ot"> description</span>=<span class="st">&quot;Generic template for Kissalista pages&quot;</span><span class="ot"> pageEncoding</span>=<span class="st">&quot;UTF-8&quot;</span><span class="ot"> trimDirectiveWhitespaces</span>=<span class="st">&quot;true&quot;</span><span class="ot"> </span>%&gt;
 &lt;%@ taglib<span class="ot"> prefix</span>=<span class="st">&quot;c&quot;</span><span class="ot"> uri</span>=<span class="st">&quot;http://java.sun.com/jsp/jstl/core&quot;</span><span class="ot"> </span>%&gt;
 &lt;%@attribute<span class="ot"> name</span>=<span class="st">&quot;pageTitle&quot;</span>%&gt;
 &lt;<span class="ot">!DOCTYPE html</span>&gt;
@@ -337,8 +337,17 @@ Huomaa!
 <img src="../../images/koodaaminen/java/tagi.png" alt="Tagitiedoston luonti" /><figcaption>Tagitiedoston luonti</figcaption>
 </figure>
 </section>
-<section id="koodin-sijoittamineen-uudelleenkäytettävään-luokkaan" class="level2">
-<h2>Koodin sijoittamineen uudelleenkäytettävään luokkaan</h2>
+<section id="tyhjien-rivien-trimmaaminen" class="level2">
+<h2>Tyhjien rivien trimmaaminen</h2>
+<p>JSP-koodiin upotetuilla tägeillä on ikävä tapa jättää valmis HTML-koodi täyteen tyhjiä rivejä. Tämä on ongelmallista etenkin HTML:n dokumenttien alun osalta, sillä standardin mukaisen HTML-koodin ensimmäisen rivin pitäisi sisältää <code>&lt;!DOCTYPE&gt;</code>-tägi, jotta selaimet näyttäisivät sivun standardin mukaisesti oikein.</p>
+<p>Tähän on onneksi JSP:ssä valmiina ratkaisu. JSP-tiedoston ensimmäisellä rivillä olevalle <code>&lt;%@page&gt;</code>-tägille pitää vain lisätä attribuutti <code>trimDirectiveWhitespaces</code>:</p>
+<pre class="sourceCode jsp"><code class="sourceCode jsp">&lt;%@page<span class="ot"> contentType</span>=<span class="st">&quot;text/html&quot;</span><span class="ot"> pageEncoding</span>=<span class="st">&quot;UTF-8&quot;</span><span class="ot"> trimDirectiveWhitespaces</span>=<span class="st">&quot;true&quot;</span><span class="ot"> </span>%&gt;</code></pre>
+<p>Sama temppu on tehtävä myös tag-tiedoston ensimmäisellä rivillä olevalle <code>&lt;%@tag&gt;</code>-tägille:</p>
+<pre class="sourceCode jsp"><code class="sourceCode jsp">&lt;%@tag<span class="ot"> description</span>=<span class="st">&quot;Generic template for Kissalista pages&quot;</span><span class="ot"> pageEncoding</span>=<span class="st">&quot;UTF-8&quot;</span><span class="ot"> trimDirectiveWhitespaces</span>=<span class="st">&quot;true&quot;</span><span class="ot"> </span>%&gt;</code></pre>
+<p>Attribuutin laittamisen seurauksena kaikki ylimääräiset tulostumattomat merkit (nk. whitespace) jätetään valmiista HTML-koodista pois, jolloin tuloksena on standardinmukaista HTML:ää.</p>
+</section>
+<section id="toistuva-koodi-kannattaa-laittaa-omaan-luokkaansa" class="level2">
+<h2>Toistuva koodi kannattaa laittaa omaan luokkaansa</h2>
 <p>Siinä vaiheessa kun servlet-luokkia alkaa tulla projektiin useampia alkavat tietyt toiminnot toistua luokasta toiseen. Hyvänä esimerkkinä JSP-sivun näyttämiseen tarvittu koodinpätkä, virheilmoitusten lähettäminen näkymälle näkyviin, ja kirjautumisen tarkistaminen.</p>
 <p>Tee itsellesi uusi luokka, ja lähde rakentamaan siihen yleisiä toiminnallisuuksia omina metodeinaan. Laita siihen ensimmäiseksi metodi, jolla saat näytettyä JSP-sivun. Kehittele myös tapa näyttää sivupohjassasi sovelluksen virheitä ja tee metodi joka aktivoi tuon tavan. Useimmiten tähän kannattaa käyttää <code>setAttribute</code>-metodia ja jotain sovittua attribuuttia, jonka arvo näytetään virheviestinä.</p>
 <p>Voit halutessasi myös laittaa uuden luokkasi perimään HttpServletin ja periyttää kaikki muut servlettisi siitä. Näin luokkasi metodit ovat kaikissa projektisi servlet-luokissa suoraan käytettävissä.</p>
