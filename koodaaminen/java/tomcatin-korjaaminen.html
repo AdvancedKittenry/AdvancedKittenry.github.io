@@ -4,11 +4,30 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>Pokémon-tietokanta</title>
+  <title>Tomcatin ongelmien ratkominen</title>
   <style type="text/css">code{white-space: pre;}</style>
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
   <link rel="stylesheet" href="../../css/base.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!--[if lt IE 9]>
@@ -74,7 +93,7 @@
 <li><a href="../../suunnittelu_ja_tyoymparisto/aiheet/Palvelubisnes.html">Palvelubisnes</a></li>
 <li><a href="../../suunnittelu_ja_tyoymparisto/aiheet/Parturi-Kampaamo.html">Parturi-Kampaamo</a></li>
 <li><a href="../../suunnittelu_ja_tyoymparisto/aiheet/Pizzapalvelu.html">Pizzapalvelu</a></li>
-<li class="selected"><a href="../../suunnittelu_ja_tyoymparisto/aiheet/Pokemon-kanta.html">Pokémon-tietokanta</a></li>
+<li><a href="../../suunnittelu_ja_tyoymparisto/aiheet/Pokemon-kanta.html">Pokémon-tietokanta</a></li>
 <li><a href="../../suunnittelu_ja_tyoymparisto/aiheet/Projektin_tyoaikaseuranta.html">Projektin työaikaseuranta</a></li>
 <li><a href="../../suunnittelu_ja_tyoymparisto/aiheet/Rankkauslista.html">Rankkauslista</a></li>
 <li><a href="../../suunnittelu_ja_tyoymparisto/aiheet/Taloyhtion_palvelut.html">Taloyhtiön palvelut</a></li>
@@ -135,7 +154,7 @@
 <li><a href="../../koodaaminen/java/mallit_lisays.html">Tietojen syöttäminen kantaan</a></li>
 <li><a href="../../koodaaminen/java/muokkausnakymat.html">Muokkausnäkymän toteuttaminen</a></li>
 <li><a href="../../koodaaminen/java/java-war-paketit.html">Kotikoneella tehdyn Java-työn julkaisu</a></li>
-<li><a href="../../koodaaminen/java/tomcatin-korjaaminen.html">Tomcatin ongelmien ratkominen</a></li>
+<li class="selected"><a href="../../koodaaminen/java/tomcatin-korjaaminen.html">Tomcatin ongelmien ratkominen</a></li>
 </ul></li>
 <li><a href="../../koodaaminen/php/index.html">PHP-ohjeet</a>
 <ul>
@@ -166,34 +185,48 @@
 </div>
 <div class="col-md-6" id="content">
 <header>
-<h1 class="title">Pokémon-tietokanta</h1>
+<h1 class="title">Tomcatin ongelmien ratkominen</h1>
 </header>
-<section class="alert alert-info small"><h3>
-Arvosanamaksimi:
-</h3>
-5
-</section>
-<section class="alert alert-info small"><h3>
-Vaikeustaso:
-</h3>
-Haastava
-</section>
+<!-- tags: viikko1,viikko2-usefull,viikko3-java-usefull -->
 
-
-<p><a href="http://fi.wikipedia.org/wiki/Pok%C3%A9mon">Pokémon-pelisarjan</a> hahmoja harrastuksenaan kouluttavalla herra Osterilla on usein ongelmana kaiken pelin sisältämän tiedon muistiin paneminen ja parhaimman pokémonin valitseminen koulutettavaksi.</p>
-<p>Hän on löytänyt suuren määrän tietoa pokémoneista <a href="http://bulbapedia.bulbagarden.net/">bulbapedia-sivustolta</a>, mutta hänen mielestään sivusto on hieman sekava, joten hän tilaa tietojenkäsittelytieteen opiskelijalta oman järjestelmänsä pokémoniensa kehityksen seuraamiseksi.</p>
-<p>Järjestelmän tarkoituksena on tarjota käyttäjälle kattava lista olemassa olevista pokémoneista, niiden ominaisuuksista, kasvattajalle tärkeistä <a href="http://bulbapedia.bulbagarden.net/wiki/Effort_values">EV-arvoista</a> yms. hyödyllisistä ominaisuuksista. Ylläpitäjän ominaisuudessa herra Oster pystyy syöttämään näitä tietoja kantaan.</p>
-<p>Lisäksi kuka tahansa muukin tietokannan internetistä löytänyt pystyy rekisteröitymään ja kirjautumaan järjestelmään, jolloin hän pääsee pitämään kirjaa omista pokemoneistaan ja näiden ominaisuuksista.</p>
-<p>Toimintoja:</p>
-<ul>
-<li>Pokemonien tietojen lisääminen, muokkaus ja poisto</li>
-<li>Pokemonien hakeminen eri hakukriteereillä</li>
-<li>Käyttäjän rekisteröityminen</li>
-<li>Ylläpitäjän ja käyttäjän kirjautuminen</li>
-<li>Pokemonin lisääminen omiin pokemoneihin</li>
-<li>Omien pokemonien tietojen muuttaminen</li>
-</ul>
-<p>Aiheen voi ottaa myös pienillä muokkauksilla käyttöön, jonkin laajuudeltaan vastaavan pelin tapahtumien tai olioiden tietojen tallentamiseen.</p>
+<p>Tälle sivulle on koottu muutamia hyväksi havaittuja havaintoja Tomcatin ja context.xml-tiedoston kanssa tulleiden ongelmien korjaamisesta.</p>
+<section id="mistä-virhettä-kannattaa-lähteä-selvittämään" class="level2">
+<h2>Mistä virhettä kannattaa lähteä selvittämään?</h2>
+<p>NetBeansillä koodatessa kannattaa katsoa tarkkaan ohjelmaa ajettaessa tulevia lokitietoja. Usersille siirrytyllä Tomcat-sovelluksella nämä eivät tosin näy suoraan missään, mutta löytyvät silti kotihakemiston alla kansiosta <code>tomcat/logs</code>. Viimeisimmät lokit ovat aina tiedostossa <code>tomcat/logs/catalina.out</code>.</p>
+<p>Tiedoston sisältöä tutkimalla saa lähes aina selville ongelman syyn. Hyvin usein syynä on väärinmuodostettu <code>context.xml</code>-tiedosto.</p>
+</section>
+<section id="väärinmuodostettu-context.xml" class="level2">
+<h2>Väärinmuodostettu context.xml</h2>
+<p>Useimmiten Tomcatin kanssa vastaantuleva ongelma on <code>context.xml</code>, johon on pujahtanut epäkäypää XML:ää. Alla hyvä esimerkki:</p>
+<pre class="sourceCode xml"><code class="sourceCode xml"><span class="kw">&lt;?xml</span> version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;<span class="kw">?&gt;</span>
+<span class="kw">&lt;Context</span><span class="ot"> antiJARLocking=</span><span class="st">&quot;true&quot;</span><span class="ot"> path=</span><span class="st">&quot;/Kissalista-java&quot;</span> <span class="kw">/&gt;</span>
+    <span class="kw">&lt;Resource</span><span class="ot"> name=</span><span class="st">&quot;jdbc/tietokanta&quot;</span><span class="ot"> auth=</span><span class="st">&quot;Container&quot;</span>
+<span class="ot">        type=</span><span class="st">&quot;javax.sql.DataSource&quot;</span><span class="ot"> removeAbandoned=</span><span class="st">&quot;true&quot;</span>
+<span class="ot">        removeAbandonedTimeout=</span><span class="st">&quot;30&quot;</span><span class="ot"> maxActive=</span><span class="st">&quot;100&quot;</span>
+<span class="ot">        maxIdle=</span><span class="st">&quot;30&quot;</span><span class="ot"> maxWait=</span><span class="st">&quot;10000&quot;</span><span class="ot"> username=</span><span class="st">&quot;tunnus&quot;</span>
+<span class="ot">        password=</span><span class="st">&quot;salasana&quot;</span>
+<span class="ot">        driverClassName=</span><span class="st">&quot;org.postgresql.Driver&quot;</span>
+<span class="ot">        url=</span><span class="st">&quot;jdbc:postgresql://localhost/tunnus&quot;</span> <span class="kw">/&gt;</span>
+<span class="er">&lt;</span>/Context&gt;</code></pre>
+<p>Koodi näyttää päällisin puolin oikealta, mutta rivillä kaksi on virhe: <code>context</code>-tägin lopussa on tägin loppua symboloiva kauttaviiva, vaikka tägin pitäisi loppua vasta viimeisellä rivillä olevaan lopetustägiin.</p>
+<p>Seurauksena on toteutusympäristöstä riippuen erilaisia virheitä. Esimerkiksi NetBeansillä ajettaessa seuraavanlainen tulee virhe:</p>
+<pre><code>[Fatal Error] :3:6: The markup in the document following the root element must be well-formed.
+/home/tunnus/tsoha/Kissalista-java/nbproject/build-impl.xml:1038: 
+Deployment error:
+Tomcat configuration file /home/tunnus/tsoha/Kissalista-java/web/META-INF/context.xml seems to be broken. Please make sure it is parseable and valid.
+See the server log for details.</code></pre>
+<section id="context.xmln-korjaaminen-usersin-tomcatilla" class="level3">
+<h3>Context.xml:n korjaaminen usersin Tomcatilla</h3>
+<p>Jos virheellisen XML-tiedoston sisältävän sovelluksen pystyttää <a href="java-war-paketit.html">WAR-tiedostona</a> usersille, tulee sovelluksen tilalle vain 404 -sivu virheellä “The requested resource (/Kissalista-java/) is not available.”</p>
+<p>Tomcatin lokeihin ilmaantuu tästä seuraavanlainen virhe:</p>
+<pre><code>1.4.2014 15:10:19 org.apache.catalina.startup.HostConfig deployWAR
+SEVERE: Error deploying web application archive Kissalista-java.war
+org.xml.sax.SAXParseException: The markup in the document following the root element must be well-formed.</code></pre>
+<p>Kinkkiseksi ongelman tekee se, että kun tähän virheeseen on kerran törmätty, ei Tomcat enää suostu purkamaan samalla nimellä olevaa WAR-pakettia, eikä edes näytä myöhemmin palvelimelle laitetuista paketeista uusia virheitä lokeissa ellei Tomcat-palvelinta käynnistetä uudelleen!</p>
+<p>Ongelma on kuitenkin onneksi melko helppo korjata. Ensiksi kannattaa sammuttaa Tomcat komennolla <code>stop-tomcat</code>. Poista tämän jälkeen kansiosta <code>tomcat/conf/Catalina/localhost</code> omaa projektiasi vastaava XML-tiedosto sekä kansiosta <code>tomcat/webapps</code> Tomcatin purkama projektikansio. Käynnistä sitten Tomcat uusiksi komennolla <code>start-tomcat</code>.</p>
+<p>Sovelluksen pitäisi tämään jälkeen toimia normaalisti. Joissain tilanteissa eteen tulee kuitenkin virhe <code>Service Temporarily Unavailable</code>. Tästä ei kannata huolestua. Virhe johtuu pitkälti siitä, että usesin välityspalvelin on hieman hidas ja sen pitäisi mennä ohi ajan myötä. Jos näin ei kuitenkaan muutaman minuutin sisällä käy, pysäytä ja käynnistä Tomcat uudelleen.</p>
+</section>
+</section>
 </div>
 </div> 
 </div> 

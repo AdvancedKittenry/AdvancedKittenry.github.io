@@ -154,6 +154,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li><a href="../../koodaaminen/java/mallit_lisays.html">Tietojen syöttäminen kantaan</a></li>
 <li><a href="../../koodaaminen/java/muokkausnakymat.html">Muokkausnäkymän toteuttaminen</a></li>
 <li><a href="../../koodaaminen/java/java-war-paketit.html">Kotikoneella tehdyn Java-työn julkaisu</a></li>
+<li><a href="../../koodaaminen/java/tomcatin-korjaaminen.html">Tomcatin ongelmien ratkominen</a></li>
 </ul></li>
 <li><a href="../../koodaaminen/php/index.html">PHP-ohjeet</a>
 <ul>
@@ -311,6 +312,11 @@ Pidä mielessä!
 <p>Koodin pitäisi lähettää selaimelle teksti “Tulos: 2”.</p>
 <p>Jos et käytä NetBeansia, voit katsoa koodiesimerkkejä <a href="listaustesti.html">listauksen toteuttamisohjeista</a>.</p>
 <p>Kun olet saanut saanut yhteyden toimimaan ja palauttamaan kannasta tietoa, laita se omaan luokkaansa, jossa on metodi, joka palauttaa yhteyden. Voit sijoittaa luokkaan muitakin toistuvia tietokantaan liittyviä koodinpätkiä, kuten vaikkapa yhteyden sulkemisen toteuttavan metodin.</p>
+<p>Jos käytät NetBeansiä, testaa yhteyskoodiasi sekä laitoksen users-palvelimella, että omassa NetBeans-ympäristössäsi.</p>
+</section>
+<section id="sovellukseni-ei-suostu-näkymään-users-palvelimella.-mitä-teen" class="level2">
+<h2>Sovellukseni ei suostu näkymään users-palvelimella. Mitä teen?</h2>
+<p>Tarkita, että Tomcat on käynnissä ja purkanut sovelluksesi kansioon <code>tomcat/webapps</code>. Jos näin on, voi kyse olla viallisesta <code>context.xml</code>-tiedostosta. Tämän korjaamiseen on oma ohjeensa <a href="tomcatin-korjaaminen.html">täällä</a>.</p>
 <section class="alert alert-success small"><h3>
 Seuraavaksi:
 </h3>

@@ -135,6 +135,7 @@
 <li><a href="../../koodaaminen/java/mallit_lisays.html">Tietojen syöttäminen kantaan</a></li>
 <li><a href="../../koodaaminen/java/muokkausnakymat.html">Muokkausnäkymän toteuttaminen</a></li>
 <li class="selected"><a href="../../koodaaminen/java/java-war-paketit.html">Kotikoneella tehdyn Java-työn julkaisu</a></li>
+<li><a href="../../koodaaminen/java/tomcatin-korjaaminen.html">Tomcatin ongelmien ratkominen</a></li>
 </ul></li>
 <li><a href="../../koodaaminen/php/index.html">PHP-ohjeet</a>
 <ul>
@@ -178,6 +179,10 @@
 <p>Tomcat on kuitenkin sinua juonikkaampi ja kopioi tästä tiedostosta oman kopionsa, joten tiedoston muokkaaminen ei vaikuta mihinkään. Saadaksesi oikeat asetukset säädettyä sinun tulee mennä hakemistoon <code>tomcat/conf/Catalina/localhost</code> ja avata sovelluksesi nimellä varustettu XML-tiedosto, esim. <code>kissalista.xml</code>.</p>
 <p>Tätä tiedostoa muokkaamalla saat tietokanta-asetukset kuntoon. Tämän voi tehdä esimerkiksi nanolla tai <a href="../../suunnittelu_ja_tyoymparisto/nautilus-ssh.html">etänä geditillä</a>.</p>
 <p>Muokkausten jälkeen sinun pitää vielä käynnistää tomcat-uudestaan komennoilla <code>stop-tomcat</code> ja <code>start-tomcat</code>, jotta muutokset näkyvät sivuilla.</p>
+</section>
+<section id="sovellukseni-ei-suostu-näkymään.-mitä-teen" class="level2">
+<h2>Sovellukseni ei suostu näkymään. Mitä teen?</h2>
+<p>Tarkita, että Tomcat on käynnissä ja purkanut sovelluksesi kansioon <code>tomcat/webapps</code>. Jos näin on, voi kyse olla viallisesta <code>context.xml</code>-tiedostosta. Tämän korjaamiseen on oma ohjeensa <a href="tomcatin-korjaaminen.html">täällä</a>.</p>
 </section>
 <section id="lisätietoja" class="level2">
 <h2>Lisätietoja</h2>

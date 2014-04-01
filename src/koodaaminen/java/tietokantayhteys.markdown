@@ -191,6 +191,16 @@ Voit sijoittaa luokkaan
 muitakin toistuvia tietokantaan liittyviä koodinpätkiä, 
 kuten vaikkapa yhteyden sulkemisen toteuttavan metodin.
 
+Jos käytät NetBeansiä, testaa yhteyskoodiasi sekä laitoksen users-palvelimella, että omassa NetBeans-ympäristössäsi.
+
+## Sovellukseni ei suostu näkymään users-palvelimella. Mitä teen?
+
+Tarkita, että Tomcat on käynnissä ja purkanut 
+sovelluksesi kansioon `tomcat/webapps`. Jos
+näin on, voi kyse olla viallisesta
+`context.xml`-tiedostosta.
+Tämän korjaamiseen on oma ohjeensa [täällä](tomcatin-korjaaminen.html).
+
 <next>
 Kun olet saanut tietokantaan toimivan yhteyden ja laittanut sen omaan tiedostoonsa, 
 voit jatkaa tietokantaohjelmointia

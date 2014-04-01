@@ -37,6 +37,14 @@ Muokkausten jälkeen sinun pitää vielä käynnistää tomcat-uudestaan
 komennoilla `stop-tomcat` ja `start-tomcat`, jotta muutokset
 näkyvät sivuilla.
 
+## Sovellukseni ei suostu näkymään. Mitä teen?
+
+Tarkita, että Tomcat on käynnissä ja purkanut 
+sovelluksesi kansioon `tomcat/webapps`. Jos
+näin on, voi kyse olla viallisesta
+`context.xml`-tiedostosta.
+Tämän korjaamiseen on oma ohjeensa [täällä](tomcatin-korjaaminen.html).
+
 ## Lisätietoja
 
 Aiheesta voi lukea teknisempiä lisätietoja [Tomcatin ohjesivuilta](http://tomcat.apache.org/tomcat-6.0-doc/deployer-howto.html)
