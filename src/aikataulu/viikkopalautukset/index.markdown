@@ -28,7 +28,7 @@ Työn tekeminen kannattaa aloittaa lukemalla [ensimmäisen viikon ohjeistus][vii
 | [Viikko III][viikko3]| MVC-malli ja kirjautuminen, koodikatselmointi                          | {{deadline3}}        | [Ohjeistus\ ⇨][viikko3] |
 | [Viikko IV][viikko4] | Muokkaustoiminnot, sovellus etenee                                     | {{deadline4}}        | [Ohjeistus\ ⇨][viikko4] |
 | [Viikko V][viikko5]  | Sovellus on lähes valmis, koodikatselmointi                            | {{deadline5}}        | [Ohjeistus\ ⇨][viikko5] |
-| [Demo][demo]         | Esitellään työtä ja sen koodia muille opiskelijoille                   | {{demodeadline}}     | [Ohjeistus\ ⇨][demo]    |
+| [Demoviikko][demo]   | Esitellään työtä ja sen koodia muille opiskelijoille                   | {{demodeadline}}     | [Ohjeistus\ ⇨][demo]    |
 | [Palautus][palautus] | Valmis työ palautetaan ohjaajalle                                      | {{palautusdeadline}} | [Ohjeistus\ ⇨][palautus] |
 
 [viikko1]: {{rootdir}}aikataulu/viikkopalautukset/viikko1.html
