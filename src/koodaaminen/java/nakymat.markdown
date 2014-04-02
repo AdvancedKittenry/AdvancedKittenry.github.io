@@ -222,7 +222,7 @@ Kehittele myös tapa näyttää sivupohjassasi sovelluksen virheitä
 ja tee metodi joka aktivoi tuon tavan. 
 Useimmiten tähän kannattaa käyttää `setAttribute`-metodia ja jotain sovittua attribuuttia, jonka arvo näytetään virheviestinä.
 
-Voit halutessasi myös laittaa uuden luokkasi perimään HttpServletin ja periyttää kaikki muut servlettisi siitä.
+Voit laittaa uuden luokkasi perimään HttpServletin ja periyttää kaikki muut servlettisi siitä.
 Näin luokkasi metodit ovat kaikissa projektisi servlet-luokissa suoraan käytettävissä.
 
 ## Linkkejä

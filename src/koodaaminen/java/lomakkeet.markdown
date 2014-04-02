@@ -37,7 +37,7 @@ mihin osoitteeseen lomakkeen tiedot lähetetään,
 Jokaisen `input`-elementin sisältö lähetetään parametrina, 
 joka tunnistetaan `name`-attribuutissa annetulla nimellä.
 
-Lähetetyn lomakkeen parametreja voidaan käsitellä hakemalla ne 
+Lähetetyn lomakkeen parametreja voidaan käsitellä servletin puolella hakemalla ne muuttujiin
 HttpServletRequest-olion
 [getParameter-metodilla](http://docs.oracle.com/javaee/6/api/javax/servlet/ServletRequest.html#getParameter(java.lang.String)).
 
@@ -66,11 +66,16 @@ Koodissa kannattaa huomata kutsu `response.sendRedirect("kissalista");`.
 [sendRedirect-metodi](http://docs.oracle.com/javaee/6/api/javax/servlet/http/HttpServletResponse.html#sendRedirect(java.lang.String))
 lähettää käyttäjän selaimen parametrina annettuun osoitteesen.
 Tämä on kätevä tapa ohjata käyttäjä jonkin toisen servletin luo.
-Voit halutessasi tehdä siitäkin metodin aiemmin tekemääsi servlet-yläluokkaan.
+Voit halutessasi tehdä siitäkin metodin aiemmin tekemääsi yleiskäyttöiseen luokkaan.
 
 Testaa ylläolevan tapaista koodia omassa sovelluksessasi.
 Voit tehdä lomakkeen vastaanottamisen joko niin, että se toimii samassa servletissä lomakkeen näyttämisen kanssa tai tehdä
 kirjautumislomakkeen vastaanottolle oman servletin. 
+
+<vinkki>
+Sijoita kaikki servlet-luokkasi omaan servlet-pakettiinsa.
+Näin sovelluksestasi on huomattavasti helpompi löytää oikeat luokat.
+</vinkki>
 
 Keskitytään tämän jälkeen tekemään koodista käyttäjäystävällisempi.
 

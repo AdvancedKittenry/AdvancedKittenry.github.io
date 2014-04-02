@@ -210,7 +210,7 @@ Kayttaja kayttaja = <span class="fu">etsiKayttajaTunnuksilla</span>(<span class=
 <p>Käytä istunto-oliota kirjautumisservletissäsi siten, että talletat jokaisen onnistuneen kirjautumisen yhteydessä kirjautuneen käyttäjän tiedot istuntoon. Useimmiten on järkevää tallentaa joko käyttäjätaulun pääavaimen arvo (id tai käyttäjätunnus) tai kerralla kokonainen käyttäjäolio kaikkinen tietoineen. Kummankin tallentaminen istuntoon onnistuu samalla <code>setAttribute</code>-metodilla.</p>
 <section id="kirjautumisen-tarkistaminen" class="level2">
 <h2>Kirjautumisen tarkistaminen</h2>
-<p>Lisää yleiskäyttöiseen servlet-yläluokkaasi metodi, joka palauttaa arvon <code>true</code>, mikäli käyttäjä on kirjautunut ja istunnossa on tallennettuna käyttäjän kirjautumistiedot. Metodi voi halutessasi myös ohjata käyttäjän kirjautumissivulle mikäli näin ei ole. Näin kirjautumista vaativat sivut voivat kätevästi tarkistaa onko käyttäjä oikeasti kirjautunut.</p>
+<p>Lisää yleiskäyttöisen koodin luokkaasi metodi, joka palauttaa arvon <code>true</code>, mikäli käyttäjä on kirjautunut ja istunnossa on tallennettuna käyttäjän kirjautumistiedot. Metodi voi halutessasi myös ohjata käyttäjän kirjautumissivulle mikäli näin ei ole. Näin kirjautumista vaativat sivut voivat kätevästi tarkistaa onko käyttäjä oikeasti kirjautunut.</p>
 <p>Jos sovelluksessasi on monia erilaisia käyttöoikeustasoja tms., voit tehdä vastaavan metodin myös käyttöoikeuden tarkistamiseen.</p>
 <p>Käytä tekemääsi metodia estääksesi käyttäjää pääsemästä kirjautumista vaativille sivuille ilman kirjautumista.</p>
 </section>

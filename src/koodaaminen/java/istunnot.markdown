@@ -49,7 +49,7 @@ kaikkinen tietoineen. Kummankin tallentaminen istuntoon onnistuu samalla `setAtt
 
 ## Kirjautumisen tarkistaminen
 
-Lisää yleiskäyttöiseen servlet-yläluokkaasi metodi, 
+Lisää yleiskäyttöisen koodin luokkaasi metodi, 
 joka palauttaa arvon `true`, mikäli käyttäjä on kirjautunut ja istunnossa on tallennettuna käyttäjän kirjautumistiedot.
 Metodi voi halutessasi myös ohjata käyttäjän kirjautumissivulle mikäli näin ei ole.
 Näin kirjautumista vaativat sivut voivat kätevästi tarkistaa onko käyttäjä oikeasti kirjautunut.

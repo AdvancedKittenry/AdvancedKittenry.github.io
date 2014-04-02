@@ -73,6 +73,11 @@ Laittamalla `url-pattern`-tägin sisään pelkän kenoviivan `/`, saa servletin
 asetettua sovelluksen etusivuksi.
 Oletuksena Tomcat-sovellus käyttää etusivunaan index.jsp-tiedostoa.
 
+<vinkki>
+Sekä servlet-, että malliluokat kannattaa sijoittaa omiin paketteihinsa.
+Näin sovelluksesi rakenteesta tulee huomattavasti selkeämpi.
+</vinkki>
+
 ### Servletin toiminta
 
 Servletin toiminnan ytimessä ovat `doGet`- ja `doPost`-metodit,

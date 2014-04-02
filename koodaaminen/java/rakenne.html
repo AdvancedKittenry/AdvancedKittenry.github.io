@@ -234,6 +234,12 @@ web/
     <span class="kw">&lt;url-pattern&gt;</span>/osoite<span class="kw">&lt;/url-pattern&gt;</span>
 <span class="kw">&lt;/servlet-mapping&gt;</span></code></pre>
 <p>Laittamalla <code>url-pattern</code>-tägin sisään pelkän kenoviivan <code>/</code>, saa servletin asetettua sovelluksen etusivuksi. Oletuksena Tomcat-sovellus käyttää etusivunaan index.jsp-tiedostoa.</p>
+<section class="alert alert-warning"><h3>
+Vinkki
+</h3>
+<p>Sekä servlet-, että malliluokat kannattaa sijoittaa omiin paketteihinsa. Näin sovelluksesi rakenteesta tulee huomattavasti selkeämpi.</p>
+</section>
+
 <section id="servletin-toiminta" class="level3">
 <h3>Servletin toiminta</h3>
 <p>Servletin toiminnan ytimessä ovat <code>doGet</code>- ja <code>doPost</code>-metodit, jotka ottavat vastaan servletin osoitteeeseen <a href="../../web-sovelluksista.html#get-ja-post">GET- ja POST-metodeilla</a> tehtyjä aineistopyyntöjä. NetBeansin vakiopohja Servlet-luokille luo nämä metodit automaattisesti ja laittaa ne molemmat kutsumaan samaa <code>processRequest</code>-metodia. Metodilla on parametreina HttpServletRequest-olio, joka sisältää pyynnön tiedot, ja HttpServletResponse-olio, johon voidaan lisätä vastaus.</p>

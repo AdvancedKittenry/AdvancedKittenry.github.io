@@ -218,7 +218,7 @@ Salasana: <span class="kw">&lt;input</span><span class="ot"> type=</span><span c
 <span class="kw">&lt;button</span><span class="ot"> type=</span><span class="st">&quot;submit&quot;</span><span class="kw">&gt;</span>Kirjaudu<span class="kw">&lt;/button&gt;</span>
 <span class="kw">&lt;/form&gt;</span></code></pre>
 <p>HTML-kertauksena: <code>form</code>-elementin <code>action</code>-attribuutti määrittää mihin osoitteeseen lomakkeen tiedot lähetetään, <code>method</code> sensijaan kertoo lähetetäänkö tiedot GET- vai POST-parametreina. Jokaisen <code>input</code>-elementin sisältö lähetetään parametrina, joka tunnistetaan <code>name</code>-attribuutissa annetulla nimellä.</p>
-<p>Lähetetyn lomakkeen parametreja voidaan käsitellä hakemalla ne HttpServletRequest-olion <a href="http://docs.oracle.com/javaee/6/api/javax/servlet/ServletRequest.html#getParameter(java.lang.String)">getParameter-metodilla</a>.</p>
+<p>Lähetetyn lomakkeen parametreja voidaan käsitellä servletin puolella hakemalla ne muuttujiin HttpServletRequest-olion <a href="http://docs.oracle.com/javaee/6/api/javax/servlet/ServletRequest.html#getParameter(java.lang.String)">getParameter-metodilla</a>.</p>
 <p>Hyvin yksinkertainen kirjautuminen voitaisiin sitä käyttäen toteuttaa suurinpiirtein seuraavasti:</p>
 <pre class="sourceCode java"><code class="sourceCode java"><span class="kw">protected</span> <span class="dt">void</span> <span class="fu">processRequest</span>(HttpServletRequest request, HttpServletResponse response) {
   
@@ -235,8 +235,14 @@ Salasana: <span class="kw">&lt;input</span><span class="ot"> type=</span><span c
     <span class="fu">naytaJSP</span>(<span class="st">&quot;login.jsp&quot;</span>, request, response);
   }
 }</code></pre>
-<p>Koodissa kannattaa huomata kutsu <code>response.sendRedirect(&quot;kissalista&quot;);</code>. <code>HttpServletResponse</code>-olion <a href="http://docs.oracle.com/javaee/6/api/javax/servlet/http/HttpServletResponse.html#sendRedirect(java.lang.String)">sendRedirect-metodi</a> lähettää käyttäjän selaimen parametrina annettuun osoitteesen. Tämä on kätevä tapa ohjata käyttäjä jonkin toisen servletin luo. Voit halutessasi tehdä siitäkin metodin aiemmin tekemääsi servlet-yläluokkaan.</p>
+<p>Koodissa kannattaa huomata kutsu <code>response.sendRedirect(&quot;kissalista&quot;);</code>. <code>HttpServletResponse</code>-olion <a href="http://docs.oracle.com/javaee/6/api/javax/servlet/http/HttpServletResponse.html#sendRedirect(java.lang.String)">sendRedirect-metodi</a> lähettää käyttäjän selaimen parametrina annettuun osoitteesen. Tämä on kätevä tapa ohjata käyttäjä jonkin toisen servletin luo. Voit halutessasi tehdä siitäkin metodin aiemmin tekemääsi yleiskäyttöiseen luokkaan.</p>
 <p>Testaa ylläolevan tapaista koodia omassa sovelluksessasi. Voit tehdä lomakkeen vastaanottamisen joko niin, että se toimii samassa servletissä lomakkeen näyttämisen kanssa tai tehdä kirjautumislomakkeen vastaanottolle oman servletin.</p>
+<section class="alert alert-warning"><h3>
+Vinkki
+</h3>
+<p>Sijoita kaikki servlet-luokkasi omaan servlet-pakettiinsa. Näin sovelluksestasi on huomattavasti helpompi löytää oikeat luokat.</p>
+</section>
+
 <p>Keskitytään tämän jälkeen tekemään koodista käyttäjäystävällisempi.</p>
 </section>
 <section id="käytettävyys" class="level2">
