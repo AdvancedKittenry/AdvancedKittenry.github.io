@@ -203,7 +203,7 @@ Tiivistelmä:
 </section>
 
 <p>Javassa näkyminä käytetään JSP-päätteisiä tiedostoja, jotka koostuvat pääasiassa HTML-koodista, jonka seassa on nettijavaa varten toteutetulla <a href="http://docs.oracle.com/javaee/5/tutorial/doc/bnahq.html">Unified Expression Language -kielellä</a> koodattuja käskyjä.</p>
-<p>Yksinkertaisimmillaan JSP-tiedosto näyttää tältä:</p>
+<p>Yksinkertaisimmillaan JSP-tiedostona tehty näkymä näyttää tältä:</p>
 <pre class="sourceCode jsp"><code class="sourceCode jsp">&lt;%@page<span class="ot"> contentType</span>=<span class="st">&quot;text/html&quot;</span><span class="ot"> pageEncoding</span>=<span class="st">&quot;UTF-8&quot;</span><span class="ot"> trimDirectiveWhitespaces</span>=<span class="st">&quot;true&quot;</span><span class="ot"> </span>%&gt;
 &lt;<span class="ot">!DOCTYPE html</span>&gt;
 &lt;html&gt;
@@ -215,7 +215,9 @@ Tiivistelmä:
     &lt;h1&gt;Hello World!&lt;/h1&gt;
   &lt;/body&gt;
 &lt;/html&gt;</code></pre>
-<p>JSP-tiedoston käyttäminen tapahtuu <code>RequestDispatcher</code>-tyyppisen olion <code>forward</code>-metodilla, jolle annetaan parametrina HttpServletRequest ja HttpServletResponse-oliot. RequestDispatcher-olion saa HttpServletRequest-oliolta antamalla sille sivun, jolle pyyntö ohjataan.</p>
+<section id="jsp-tiedoston-käyttäminen-servlet-luokassa" class="level2">
+<h2>JSP-tiedoston käyttäminen servlet-luokassa</h2>
+<p>JSP-tiedoston näyttäminen tapahtuu aina servlet-luokan koodista käsin käyttämällä <code>RequestDispatcher</code>-tyyppisen olion <code>forward</code>-metodia, jolle annetaan parametrina HttpServletRequest ja HttpServletResponse-oliot. RequestDispatcher-olion saa HttpServletRequest-oliolta antamalla sille sivun, jolle pyyntö ohjataan.</p>
 <pre class="sourceCode java"><code class="sourceCode java"><span class="kw">protected</span> <span class="dt">void</span> <span class="fu">processRequest</span>(HttpServletRequest request, HttpServletResponse response) {
   response.<span class="fu">setContentType</span>(<span class="st">&quot;text/html;charset=UTF-8&quot;</span>);
   
@@ -224,9 +226,15 @@ Tiivistelmä:
   <span class="co">/* Pyydetään dispatcher-oliota näyttämään JSP-sivunsa */</span>
   dispatcher.<span class="fu">forward</span>(request, response);
 }</code></pre>
+<p>Nyt mikäli ylläoleva servletti on <code>web.xml</code>-tiedostossa määritelty näkymään osoitteessa <code>/lista</code> niin näkyy tässä osoitteessa käytännössä sama sivu kuin osoitteessa <code>/lista.jsp</code>.</p>
+<p>Nämä kaksi osoitetta ovat kuitenkin täysin eri asia. Ero näkyy etenkin siinä vaiheessa, kun JSP-sivulla näytetään servletissä määriteltyjä muuttujia tai esimerkiksi kun sivut haluaa näyttää vain kirjautuneille käyttäjille. Näitä pelkkä JSP-sivu ei osaa tehdä. Käyttäjä kannattaa ohjata aina servletin takana oleville sivuille.</p>
+<section id="ota-käyttöön-oma-jsp-näkymä" class="level3">
+<h3>Ota käyttöön oma JSP-näkymä</h3>
 <p>Luo tässä vaiheessa projektisi luokille oma paketti. Esim. kissalistan paketti voisi olla <code>Kissalista</code>. Tee pakettiisi alipaketit servlettejä ja malleja varten. Esimerkiksi <code>Kissalista.Servlets</code> ja <code>Kissalista.Models</code>.</p>
 <p>Luo sitten itsellesi JSP-tiedosto ja servlet-luokka ja laita servletin pyynnön käsittelymetodiin RequestDispatcher-oliota käyttävää koodia, joka ohjaa luomaasi JSP-tiedostoon ja kutsuu metodia forward.</p>
 <p>Viimeistään tässä vaiheessa joutunet lisäämään muutaman importin servlettiisi. Näissä esimerkeissä niitä ei tulla erikseen luettelemaan, mutta esim. NetBeans osaa lisätä ne varsin kätevästi tiedoston alkuun, kunhan klikkailee sen antamia virhepalluroita.</p>
+</section>
+</section>
 <section id="muuttujien-käyttö" class="level2">
 <h2>Muuttujien käyttö</h2>
 <p>JSP-koodiin on mahdollista sijoittaa servletiltä saatuja muuttujia ja mm. ehtolausekkeita. esimerkiksi virheviestin näyttämisen voi toteuttaa seuraavasti:</p>
@@ -337,6 +345,14 @@ Huomaa!
 <figure>
 <img src="../../images/koodaaminen/java/tagi.png" alt="Tagitiedoston luonti" /><figcaption>Tagitiedoston luonti</figcaption>
 </figure>
+<section id="tyylitiedostojen-linkitys" class="level3">
+<h3>Tyylitiedostojen linkitys</h3>
+<p>Tag-tiedostoon kannattaa laittaa linkit kaikkiin sovelluksen käyttämiin tyylitiedostoihin. Linkityksessä kannattaa käyttää <a href="../..//suunnittelu_ja_tyoymparisto/kayttoliittyman_toteutus.html#linkitys">relatiivisia osoitteita</a>, jolloin sovellus toimii riippumatta siitä mihin osoitteeseen se pystytetään.</p>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;link</span><span class="ot"> href=</span><span class="st">&quot;css/main.css&quot;</span><span class="ot"> rel=</span><span class="st">&quot;stylesheet&quot;</span><span class="kw">&gt;</span></code></pre>
+<p>Mikäli sovelluksesi osoitteiden hakemistorakenne on kuitenkin monitasoinen, joudut käyttämään erityistä osoitemuuttujaa, joka osoittaa aina sovelluksesi juuren osoitteseen:</p>
+<pre class="sourceCode jsp"><code class="sourceCode jsp">&lt;link<span class="ot"> href</span>=<span class="dt">&quot;</span>${pageContext.request.contextPath}<span class="dt">/css/main.css&quot;</span><span class="ot"> rel</span>=<span class="dt">&quot;stylesheet&quot;</span>&gt;</code></pre>
+<p>Tietokantasovelluksen kokoisissa nettisovelluksissa ylläolevan tapaisen funktion kirjoittaminen on kuitenkin harvoin tarpeellista, sillä relatiiviset osoitteet riittävät yleensä hyvin.</p>
+</section>
 </section>
 <section id="tyhjien-rivien-trimmaaminen" class="level2">
 <h2>Tyhjien rivien trimmaaminen</h2>

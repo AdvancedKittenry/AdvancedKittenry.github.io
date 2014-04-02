@@ -35,7 +35,7 @@ Poista kummassakin tapauksessa NetBeansin alkuun lisäämä Template-kommentti.
 Ota kommentin luominen pois päältä valitsemalla valikosta `Tools->Templates`.
 Avaa listassa kohdan _Licenses_ alla oleva tiedosto `Default License` ja tyhjennä sen sisältö.
 
-## HTML, CSS ja Bootstrap
+## HTML-koodin rakenne
 
 Mikäli loit tiedostosi NetBeansillä näyttää se suurinpiirtein tältä:
 
@@ -56,6 +56,54 @@ Mikäli tämännäköinen koodi ei ole tuttua, kannattaa lukea taustatietoja
 esim. [w3schoolsin sivuilta](http://www.w3schools.com/html/html_intro.asp).
 Myös [tietokone työvälineenä -kurssin](https://blogs.helsinki.fi/tyovaline-2013/tehtavat/)
 [materiaaleista](https://docs.google.com/document/d/1GhmkqP86f1q4tYIP6EsxXAnM6Ntlc0SiUcitWC3RcoE/pub) voi olla apua.
+
+### Tiedostojen välinen linkitys {#linkitys}
+
+HTML:ssä muodostetaan linkki toiselle HTML-sivulle käyttämällä a-tagia seuraavasti:
+
+~~~html
+<a href="toisen_sivun_osoite.html">Tekstiä, joka linkittää toiselle sivulle.</a>
+~~~
+
+Mahdollisia tapoja viitata toisiin sivuihin on kolme: 
+
+* *Absoluuttinen osoite*
+* *Osoite suhteessa palvelimeen* 
+* *relatiivinen osoite*
+
+Esimerkki: Jos linkittävä sivu sijaitsee osoitteessa `http://advancedkittenry.github.io/aikataulu/koodikatselmointi.html` 
+voi se linkittää sivulle `http://advancedkittenry.github.io/aikataulu/index.html` 
+näillä kolmella tapaa seuraavasti:
+
+~~~html
+<a href="http://advancedkittenry.github.io/aikataulu/index.html">Absoluuttinen osoite</a>
+<a href="/aikataulu/index.html">Osoite palvelimen suhteen</a>
+<a href="index.html">Relatiivinen osoite</a>
+~~~
+
+Absoluuttisella osoitteella
+toteutettu linkki osoittaa aina samaan paikkaan riippumatta siitä missä linkittävä sivu sijaitsee.
+Tämä ei kuitenkaan aina ole hyvä ajatus, jos haluaa tehdä sivustostaan helposti siirrettävän.
+Tämän vuoksi osoitteita voi antaa myös relatiivisina, suhteessa joko palvelimen juureen tai linkittävän sivun sijaintiin palvelimella.
+Selain osaa täydentää aina osoitteen alusta puuttuvat osan vastaavalla osalla linkittävän sivun osoitetta.
+
+Relatiivisilla linkeillä voi linkittää voi myös toisissa hakemistoissa oleviin sivuihin, esim. näin:
+
+~~~html
+<a href="viikkopalautukset/viikko1.html">Relatiivinen osoite alihakemistoon</a>
+~~~
+
+Nykysivun hakemiston *ylähakemistoon* voi linkittää käyttämällä hakemistona kahta pistettä:
+
+~~~html
+<a href="../index.html">Relatiivinen osoite ylähakemistoon</a>
+<a href="/index.html">Sama osoite palvelimen juuresta asti ilmaistuna</a>
+~~~
+
+Yleensäottaen tietokantasovelluksessa kannattaa käyttää relatiivisia osoitteita, sillä 
+silloin sovellus toimii vaikka se siirrettäisiin eri palvelimelle eri nimiseen hakemistoon.
+
+### CSS, sivujen tyylittely ja Boostrap
 
 Tehdään sivusta vähän nätimpi CSS:llä. Lataa twitterin mainio [Bootstrap-kirjasto](http://getbootstrap.com/)
 ja pura paketin sisältä dist kansion sisältö projektisi juureen tai Javalla `web`-kansioon.
@@ -105,7 +153,7 @@ katso miten CSS muuttaa sivun ulkoasua hieman.
 ~~~
 
 <alert>
-Yllä oleva määritelmä hakee CSS-tiedostot luomasi `html-demo`-kansion _yläkansiossa_ olevasta `css`-kansiosta. (Kaksi pistettä tarkoittaa hakemistopoluissa aina ylähakemistoa.)
+Yllä oleva määritelmä hakee CSS-tiedostot luomasi `html-demo`-kansion _yläkansiossa_ olevasta `css`-kansiosta.
 
 Mikäli sivusi eivät näytä oikein tyylitellyiltä johtuu se todennäköisesti siitä, 
 että CSS-tiedostoja haetaan väärästä paikasta.

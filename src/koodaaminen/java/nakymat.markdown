@@ -17,16 +17,31 @@ nettijavaa varten toteutetulla
 [Unified Expression Language -kielellä](http://docs.oracle.com/javaee/5/tutorial/doc/bnahq.html) 
 koodattuja käskyjä.
 
-Yksinkertaisimmillaan JSP-tiedosto näyttää tältä:
+Yksinkertaisimmillaan JSP-tiedostona tehty näkymä näyttää tältä:
 
 ~~~~jsp<include src="esimerkit/rakenne/index.jsp" />~~~~
 
-JSP-tiedoston käyttäminen tapahtuu `RequestDispatcher`-tyyppisen 
-olion `forward`-metodilla, 
+## JSP-tiedoston käyttäminen servlet-luokassa
+
+JSP-tiedoston näyttäminen tapahtuu aina servlet-luokan koodista käsin 
+käyttämällä `RequestDispatcher`-tyyppisen 
+olion `forward`-metodia, 
 jolle annetaan parametrina HttpServletRequest ja HttpServletResponse-oliot. 
 RequestDispatcher-olion saa HttpServletRequest-oliolta antamalla sille sivun, jolle pyyntö ohjataan.
 
 ~~~~java<include src="esimerkit/rakenne/RequestDispatcher.java" />~~~~
+
+Nyt mikäli ylläoleva servletti on `web.xml`-tiedostossa 
+määritelty näkymään osoitteessa `/lista` niin näkyy tässä
+osoitteessa käytännössä sama sivu kuin osoitteessa `/lista.jsp`.
+
+Nämä kaksi osoitetta ovat kuitenkin täysin eri asia. Ero näkyy etenkin siinä vaiheessa,
+kun JSP-sivulla näytetään servletissä määriteltyjä muuttujia tai 
+esimerkiksi kun sivut haluaa näyttää vain kirjautuneille käyttäjille.
+Näitä pelkkä JSP-sivu ei osaa tehdä.
+Käyttäjä kannattaa ohjata aina servletin takana oleville sivuille.
+
+### Ota käyttöön oma JSP-näkymä
 
 Luo tässä vaiheessa projektisi luokille oma paketti.
 Esim. kissalistan paketti voisi olla `Kissalista`.
@@ -183,6 +198,26 @@ NetBeansistä löydät tägitiedoston uusien tiedostojen valikosta
 `Web`-kohdan alta nimellä `Tag File`. Voit käyttää seuraavia asetuksia:
 
 ![Tagitiedoston luonti]({{myimgdir}}tagi.png)
+
+### Tyylitiedostojen linkitys
+
+Tag-tiedostoon kannattaa laittaa linkit kaikkiin sovelluksen käyttämiin tyylitiedostoihin.
+Linkityksessä kannattaa käyttää [relatiivisia osoitteita]({{rootdir}}/suunnittelu_ja_tyoymparisto/kayttoliittyman_toteutus.html#linkitys),
+jolloin sovellus toimii riippumatta siitä mihin osoitteeseen se pystytetään.
+
+~~~html
+<link href="css/main.css" rel="stylesheet">
+~~~
+
+Mikäli sovelluksesi osoitteiden hakemistorakenne on kuitenkin monitasoinen,
+joudut käyttämään erityistä osoitemuuttujaa, joka osoittaa aina sovelluksesi
+juuren osoitteseen:
+
+~~~jsp
+<link href="${pageContext.request.contextPath}/css/main.css" rel="stylesheet">
+~~~
+
+Tietokantasovelluksen kokoisissa nettisovelluksissa ylläolevan tapaisen funktion kirjoittaminen on kuitenkin harvoin tarpeellista, sillä relatiiviset osoitteet riittävät yleensä hyvin.
 
 ## Tyhjien rivien trimmaaminen
 

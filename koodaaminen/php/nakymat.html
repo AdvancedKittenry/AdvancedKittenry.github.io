@@ -291,7 +291,15 @@ Lisätietoa
   <span class="kw">require_once</span> <span class="st">&#39;libs/common.php&#39;</span><span class="ot">;</span>
 
   naytaNakyma<span class="ot">(</span><span class="st">&#39;login.php&#39;</span><span class="ot">);</span></code></pre>
-<p>Seuraavaksi selvitämme miten voimme välittää näkymällemme tietoa.</p>
+<section id="tyylitiedostojen-linkitys" class="level3">
+<h3>Tyylitiedostojen linkitys</h3>
+<p>Sivupohjatiedostoon kannattaa laittaa linkit kaikkiin sovelluksen käyttämiin tyylitiedostoihin. Linkityksessä kannattaa käyttää <a href="../..//suunnittelu_ja_tyoymparisto/kayttoliittyman_toteutus.html#linkitys">relatiivisia osoitteita</a>, jolloin sovellus toimii riippumatta siitä mihin osoitteeseen se pystytetään.</p>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;link</span><span class="ot"> href=</span><span class="st">&quot;css/main.css&quot;</span><span class="ot"> rel=</span><span class="st">&quot;stylesheet&quot;</span><span class="kw">&gt;</span></code></pre>
+<p>Mikäli sovelluksesi osoitteiden hakemistorakenne on kuitenkin monitasoinen, joudut määrittämään osoitteet palvelimen juuren suhteen. Tällöin on järkevää laittaa sovelluksen juuren osoite yhteen paikkaan, josta sen saa vaikkapa funktiokutsulla helposti käyttöön.</p>
+<pre class="sourceCode php"><code class="sourceCode php">&lt;link href=&quot;<span class="kw">&lt;?php</span> <span class="fu">echo</span> sovelluksenJuuriosoite<span class="ot">();</span>  <span class="kw">?&gt;</span>/css/main.css&quot; rel=&quot;stylesheet&quot;&gt;</code></pre>
+<p>Ylläoleva funktio pitää tietenkin määritellä jonnekin erikseen. Se kannattaa sijoittaa yleiskäyttöisten funktioiden kanssa samaan tiedostoon ja dokumentoida dokumentaatioon.</p>
+<p>Tietokantasovelluksen kokoisissa nettisovelluksissa ylläolevan tapaisen funktion kirjoittaminen on kuitenkin harvoin tarpeellista, sillä relatiiviset osoitteet riittävät yleensä hyvin.</p>
+</section>
 <section id="muuttujien-käyttö" class="level3">
 <h3>Muuttujien käyttö</h3>
 <p>Useimmat sovelluksemme näkymistä ovat hieman elävämpiä kuin yksinkertainen kirjautumislomake, ja muuttuvat sen mukaan mitä tietokannasta löytyy.</p>

@@ -157,7 +157,28 @@ Tätä funktiota käyttäen riittää kirjoittaa yksinkertainen kontrolleritiedo
   naytaNakyma('login.php');
 ~~~
 
-Seuraavaksi selvitämme miten voimme välittää näkymällemme tietoa.
+### Tyylitiedostojen linkitys
+
+Sivupohjatiedostoon kannattaa laittaa linkit kaikkiin sovelluksen käyttämiin tyylitiedostoihin.
+Linkityksessä kannattaa käyttää [relatiivisia osoitteita]({{rootdir}}/suunnittelu_ja_tyoymparisto/kayttoliittyman_toteutus.html#linkitys),
+jolloin sovellus toimii riippumatta siitä mihin osoitteeseen se pystytetään.
+
+~~~html
+<link href="css/main.css" rel="stylesheet">
+~~~
+
+Mikäli sovelluksesi osoitteiden hakemistorakenne on kuitenkin monitasoinen,
+joudut määrittämään osoitteet palvelimen juuren suhteen.
+Tällöin on järkevää laittaa sovelluksen juuren osoite yhteen paikkaan,
+josta sen saa vaikkapa funktiokutsulla helposti käyttöön.
+
+~~~php
+<link href="<?php echo sovelluksenJuuriosoite();  ?>/css/main.css" rel="stylesheet">
+~~~
+
+Ylläoleva funktio pitää tietenkin määritellä jonnekin erikseen. Se kannattaa sijoittaa yleiskäyttöisten funktioiden kanssa samaan tiedostoon ja dokumentoida dokumentaatioon.
+
+Tietokantasovelluksen kokoisissa nettisovelluksissa ylläolevan tapaisen funktion kirjoittaminen on kuitenkin harvoin tarpeellista, sillä relatiiviset osoitteet riittävät yleensä hyvin.
 
 ### Muuttujien käyttö
 

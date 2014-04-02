@@ -16,7 +16,7 @@ Käsittelemme seuraavaksi lomakkeita ja kirjautumisen toteuttamista.
 Aloita tekemällä kontrolleri, joka näyttää
 html-demoon tekemäsi kirjautumislomakkeen
 näkymänään. 
-Voit laittaa sivun esim. osoitteeseen `/kirjautuminen.php`
+Voit laittaa kontrollerin näkymään esim. osoitteeseen `/kirjautuminen.php`
 tai `/login.php`. 
 
 Laitetaan seuraavaksi tämä sivu ottamaan kirjautumislomake vastaan.

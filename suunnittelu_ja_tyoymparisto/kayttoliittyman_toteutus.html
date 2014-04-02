@@ -214,8 +214,8 @@ code > span.er { color: #ff0000; font-weight: bold; }
 </ul>
 <p>Poista kummassakin tapauksessa NetBeansin alkuun lisäämä Template-kommentti. Ota kommentin luominen pois päältä valitsemalla valikosta <code>Tools-&gt;Templates</code>. Avaa listassa kohdan <em>Licenses</em> alla oleva tiedosto <code>Default License</code> ja tyhjennä sen sisältö.</p>
 </section>
-<section id="html-css-ja-bootstrap" class="level2">
-<h2>HTML, CSS ja Bootstrap</h2>
+<section id="html-koodin-rakenne" class="level2">
+<h2>HTML-koodin rakenne</h2>
 <p>Mikäli loit tiedostosi NetBeansillä näyttää se suurinpiirtein tältä:</p>
 <pre class="sourceCode HTML"><code class="sourceCode html"><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span>
 <span class="kw">&lt;html&gt;</span>
@@ -228,6 +228,30 @@ code > span.er { color: #ff0000; font-weight: bold; }
     <span class="kw">&lt;/body&gt;</span>
 <span class="kw">&lt;/html&gt;</span></code></pre>
 <p>Mikäli tämännäköinen koodi ei ole tuttua, kannattaa lukea taustatietoja esim. <a href="http://www.w3schools.com/html/html_intro.asp">w3schoolsin sivuilta</a>. Myös <a href="https://blogs.helsinki.fi/tyovaline-2013/tehtavat/">tietokone työvälineenä -kurssin</a> <a href="https://docs.google.com/document/d/1GhmkqP86f1q4tYIP6EsxXAnM6Ntlc0SiUcitWC3RcoE/pub">materiaaleista</a> voi olla apua.</p>
+<section id="linkitys" class="level3">
+<h3>Tiedostojen välinen linkitys</h3>
+<p>HTML:ssä muodostetaan linkki toiselle HTML-sivulle käyttämällä a-tagia seuraavasti:</p>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;a</span><span class="ot"> href=</span><span class="st">&quot;toisen_sivun_osoite.html&quot;</span><span class="kw">&gt;</span>Tekstiä, joka linkittää toiselle sivulle.<span class="kw">&lt;/a&gt;</span></code></pre>
+<p>Mahdollisia tapoja viitata toisiin sivuihin on kolme:</p>
+<ul>
+<li><em>Absoluuttinen osoite</em></li>
+<li><em>Osoite suhteessa palvelimeen</em></li>
+<li><em>relatiivinen osoite</em></li>
+</ul>
+<p>Esimerkki: Jos linkittävä sivu sijaitsee osoitteessa <code>http://advancedkittenry.github.io/aikataulu/koodikatselmointi.html</code> voi se linkittää sivulle <code>http://advancedkittenry.github.io/aikataulu/index.html</code> näillä kolmella tapaa seuraavasti:</p>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;a</span><span class="ot"> href=</span><span class="st">&quot;http://advancedkittenry.github.io/aikataulu/index.html&quot;</span><span class="kw">&gt;</span>Absoluuttinen osoite<span class="kw">&lt;/a&gt;</span>
+<span class="kw">&lt;a</span><span class="ot"> href=</span><span class="st">&quot;/aikataulu/index.html&quot;</span><span class="kw">&gt;</span>Osoite palvelimen suhteen<span class="kw">&lt;/a&gt;</span>
+<span class="kw">&lt;a</span><span class="ot"> href=</span><span class="st">&quot;index.html&quot;</span><span class="kw">&gt;</span>Relatiivinen osoite<span class="kw">&lt;/a&gt;</span></code></pre>
+<p>Absoluuttisella osoitteella toteutettu linkki osoittaa aina samaan paikkaan riippumatta siitä missä linkittävä sivu sijaitsee. Tämä ei kuitenkaan aina ole hyvä ajatus, jos haluaa tehdä sivustostaan helposti siirrettävän. Tämän vuoksi osoitteita voi antaa myös relatiivisina, suhteessa joko palvelimen juureen tai linkittävän sivun sijaintiin palvelimella. Selain osaa täydentää aina osoitteen alusta puuttuvat osan vastaavalla osalla linkittävän sivun osoitetta.</p>
+<p>Relatiivisilla linkeillä voi linkittää voi myös toisissa hakemistoissa oleviin sivuihin, esim. näin:</p>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;a</span><span class="ot"> href=</span><span class="st">&quot;viikkopalautukset/viikko1.html&quot;</span><span class="kw">&gt;</span>Relatiivinen osoite alihakemistoon<span class="kw">&lt;/a&gt;</span></code></pre>
+<p>Nykysivun hakemiston <em>ylähakemistoon</em> voi linkittää käyttämällä hakemistona kahta pistettä:</p>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;a</span><span class="ot"> href=</span><span class="st">&quot;../index.html&quot;</span><span class="kw">&gt;</span>Relatiivinen osoite ylähakemistoon<span class="kw">&lt;/a&gt;</span>
+<span class="kw">&lt;a</span><span class="ot"> href=</span><span class="st">&quot;/index.html&quot;</span><span class="kw">&gt;</span>Sama osoite palvelimen juuresta asti ilmaistuna<span class="kw">&lt;/a&gt;</span></code></pre>
+<p>Yleensäottaen tietokantasovelluksessa kannattaa käyttää relatiivisia osoitteita, sillä silloin sovellus toimii vaikka se siirrettäisiin eri palvelimelle eri nimiseen hakemistoon.</p>
+</section>
+<section id="css-sivujen-tyylittely-ja-boostrap" class="level3">
+<h3>CSS, sivujen tyylittely ja Boostrap</h3>
 <p>Tehdään sivusta vähän nätimpi CSS:llä. Lataa twitterin mainio <a href="http://getbootstrap.com/">Bootstrap-kirjasto</a> ja pura paketin sisältä dist kansion sisältö projektisi juureen tai Javalla <code>web</code>-kansioon. Tarkoituksena on, että bootstrapin <code>css</code>, <code>fonts</code> ja <code>js</code>-kansiot sijoittuvat seuraavasti:</p>
 <ul class='nav nav-tabs nav-justified'><li class='active'>
 <a href='#tab_1_0' data-toggle='tab'>Bootstrap PHP-projektissa</a>
@@ -267,10 +291,10 @@ web/
 <section class="alert alert-danger"><h3>
 Pidä mielessä!
 </h3>
-<p>Yllä oleva määritelmä hakee CSS-tiedostot luomasi <code>html-demo</code>-kansion <em>yläkansiossa</em> olevasta <code>css</code>-kansiosta. (Kaksi pistettä tarkoittaa hakemistopoluissa aina ylähakemistoa.)</p>
+<p>Yllä oleva määritelmä hakee CSS-tiedostot luomasi <code>html-demo</code>-kansion <em>yläkansiossa</em> olevasta <code>css</code>-kansiosta.</p>
 <p>Mikäli sivusi eivät näytä oikein tyylitellyiltä johtuu se todennäköisesti siitä, että CSS-tiedostoja haetaan väärästä paikasta. Tarkista että linkit osoittavat sinne, missä tiedostot oikeasti ovat.</p>
 </section>
-
+</section>
 <section id="bootstrap-esimerkkejä" class="level3">
 <h3>Bootstrap-esimerkkejä</h3>
 <p>Nyt voimme käyttää Bootstrapin kirjastoja erilaisten käyttöliittymäkomponenttien luomiseen. Alla esimerkkejä. Lisää Bootstrap-esimerkkejä voi katsoa Bootstrapin sivujen <a href="http://getbootstrap.com/css/">CSS</a>- ja <a href="http://getbootstrap.com/components/">Components</a>-osioista.</p>
