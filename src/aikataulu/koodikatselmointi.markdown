@@ -2,8 +2,9 @@
 <!-- order: 9 -->
 <!-- tags: viikko3,viikko5 -->
 
-Koodikatselmointi on osa harjoitustyötä. Katselmointi suoritetaan kerran
-kurssiviikolla 5. Katselmoinnista voi saada maksimissaan 2 lisäpistettä,
+Koodikatselmointi on osa harjoitustyötä. Katselmointeja on kurssilla kaksi
+ja ne suoritetaan 
+kurssiviikoilla 3 ja 5. Katselmoinneista voi saada maksimissaan 2 lisäpistettä,
 joilla voi korvata puutteita kurssin muilla osa-alueilla. Kurssin
 maksimipistemäärä on siis edelleen 60.
 
