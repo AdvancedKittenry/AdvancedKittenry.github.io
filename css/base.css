@@ -28,6 +28,14 @@ header p {
     color: #777;
 }
 
+@media (min-width: 992px) {
+  body {
+    background: url(../images/kittens-one-with-blue-bow.jpg) no-repeat 97% 97%; /* default, Android, Sf < 6 */
+    background-position: -webkit-calc(100% - 10px) -webkit-calc(100% - 10px); /* Sf 6 */
+    background-position: right 30px bottom 60px; /* Cr 25+, FF 13+, IE 9+, Op 10.5+ */
+  }
+}
+
 .navcontainer {
     padding-top: 18px;
 }
