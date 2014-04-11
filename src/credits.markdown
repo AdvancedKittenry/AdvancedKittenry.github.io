@@ -15,4 +15,4 @@ Keskeneräisillä sivuilla käytetty
 on muokattu [Roy Higsonin](http://www.fotopedia.com/users/roytheboy) ottamasta kuvasta.
 
 Sivun alalaidassa käytetty [kissagrafiikka](http://antiqueclipart.com/image.php/two-kittens-one-with-blue-bow.html)
-ladattu [antiqueclipart.com-sivustolta](http://antiqueclipart.com/].
+ladattu [antiqueclipart.com-sivustolta](http://antiqueclipart.com/).

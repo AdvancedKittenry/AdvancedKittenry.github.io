@@ -33,6 +33,7 @@ $for(header-includes)$
   $header-includes$
 $endfor$
   <link rel="stylesheet" href="{{rootdir}}css/base.css">
+  <link rel="icon" href="{{rootdir}}images/kissa.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!--[if lt IE 9]>
   <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
