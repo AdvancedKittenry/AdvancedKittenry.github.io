@@ -29,7 +29,7 @@ ja mitä tekniikoita siinä käytetään.
 ###Käyttötapauskaavio
 Käyttötapauskaavio näyttää järjestelmän sidosryhmät ja miten ne liittyvät järjestelmään.
 Tällä kurssilla kehitettävissä järjestelmissä sidosryhminä ovat enimmäkseen järjestelmän käyttäjäryhmät. 
-Muita mahdollisia sidosryhmiä olisi esimerkiksi toiset järjestelmät. 
+Muita mahdollisia sidosryhmiä olisivat esimerkiksi toiset järjestelmät. 
 Harjoitustyössä käyttäjäryhmien tulisi osaltaan näkyä kyseisille ryhmille suunnattuina toiminnallisuuksia.
 
 Käyttötapauskaaviossa käyttötapaukset kuvataan järjestelmän sisällä ja sidosryhmien yhteydet järjestelmään esitetään yhteyksinä käyttötapauksiin. 
@@ -145,7 +145,6 @@ ja mikäli järjestelmän osana on käytetty javascriptiä, pitää senkin toimi
 Tämän lisäksi ohjelmakoodin tulee olla dokumentoitua (kommentit / javadoc / phpdoc tms.) ja käyttää havainnollisia nimiä muuttujille ja funktioille/metodeille. 
 Ohjelmiston tulee olla jaettuna komponentteihin järkevästi, siten että turhalta toistolta vältytään.
 Komponentteihin liittyvät yleistiedot on hyvä kirjoittaa myös ohjelmakoodin alkuun yleiskommentiksi, jolloin ne voi vain kerätä ohjelmakoodista dokumenttiin. 
-Ohjelmakoodit sijoitetaan dokumentin liitteiksi.
 
 ##6. Käyttöliittymä ja järjestelmän komponentit {#kayttoliittymakomponentit}
 
@@ -209,7 +208,7 @@ Mitä puutteita tai bugeja ohjelmassa on? Mitä lisäominaisuuksia ohjelmaan voi
 
 Mikä oli tietokantasovelluksen teossa helppoa? Mikä vaikeaa? Mitä opit? Muu vapaa sana.
 
-##11. Liitteet
-Dokumentin liitteinä annetaan:
+##11. Muu dokumentaatio
+Dokumentin liitteinä annetaan tietokannan määrittelevät create table lauseet, erillisenä SQL-tiedostona projektin git-repositoriossa.
 
-* Tietokannan määrittelevät create table lauseet, erillisenä SQL-tiedostona projektin git-repositoriossa.
+SQL-tiedostoja ei erikseen varsinaisessa dokumentatiossa tarvitse mainita, riittää että ne löytyvät repositoriostasi.
