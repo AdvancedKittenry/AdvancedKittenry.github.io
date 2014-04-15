@@ -50,6 +50,18 @@ ottaa käyttöön JSTL-tägikirjasto laittamalla JSP-sivun alkuun:
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 ~~~~
 
+### Käyttäjän syöttämien merkkijonojen näyttäminen
+
+Sivunäkymiä näytettäessä kannattaa varmistaa, etteivät
+käyttäjän syöttämät HTML-koodinpätkät, lainausmerkit yms. sotke sivujen
+rakennetta.
+
+Tähän ongelmaan autttaa parhaiten JSTL-kirjaston [out-tägi](http://docs.oracle.com/javaee/5/jstl/1.1/docs/tlddocs/):
+
+~~~jsp
+<c:out value="${kissa.nimi}"/>
+~~~
+
 ## Muut tietosivut {#tietosivut}
 
 Listauksesta halutaan päästä usein katselemaan tarkemmin jonkin asian tietoja, siten että nämä yksityiskohtaisemmat tiedot

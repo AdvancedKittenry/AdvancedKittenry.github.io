@@ -57,6 +57,18 @@ Nyt jos tämä muuttuja on käytettävissä näkymätiedostossa, voimme näyttä
 <?php endforeach; ?>
 ~~~
 
+### Käyttäjän syöttämien merkkijonojen näyttäminen
+
+Sivunäkymiä näytettäessä kannattaa varmistaa, etteivät
+käyttäjän syöttämät HTML-koodinpätkät, lainausmerkit yms. sotke sivujen
+rakennetta.
+
+Tähän ongelmaan autttaa parhaiten [htmlspecialchars-funktio](http://www.php.net/manual/en/function.htmlspecialchars.php):
+
+~~~php
+<?php echo htmlspecialchars($muuttuja); ?>
+~~~
+
 ## Muut tietosivut {#tietosivut}
 
 Listauksesta halutaan päästä usein katselemaan tarkemmin jonkin asian tietoja, siten että nämä yksityiskohtaisemmat tiedot

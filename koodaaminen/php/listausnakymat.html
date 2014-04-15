@@ -226,6 +226,12 @@ code > span.er { color: #ff0000; font-weight: bold; }
   <span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$kissa</span>-&gt;getNimi<span class="ot">();</span> <span class="kw">?&gt;</span>
 &lt;/div&gt;
 <span class="kw">&lt;?php</span> <span class="kw">endforeach</span><span class="ot">;</span> <span class="kw">?&gt;</span></code></pre>
+<section id="käyttäjän-syöttämien-merkkijonojen-näyttäminen" class="level3">
+<h3>Käyttäjän syöttämien merkkijonojen näyttäminen</h3>
+<p>Sivunäkymiä näytettäessä kannattaa varmistaa, etteivät käyttäjän syöttämät HTML-koodinpätkät, lainausmerkit yms. sotke sivujen rakennetta.</p>
+<p>Tähän ongelmaan autttaa parhaiten <a href="http://www.php.net/manual/en/function.htmlspecialchars.php">htmlspecialchars-funktio</a>:</p>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="fu">htmlspecialchars</span><span class="ot">(</span><span class="kw">$muuttuja</span><span class="ot">);</span> <span class="kw">?&gt;</span></code></pre>
+</section>
 </section>
 <section id="tietosivut" class="level2">
 <h2>Muut tietosivut</h2>

@@ -215,6 +215,12 @@ request.<span class="fu">setAttribute</span>(<span class="st">&quot;kissat&quot;
 <p>Yllä oleva komento <code>${kissa.nimi}</code> kutsuu käsiteltävän Kissa-olion <code>getNimi</code>-metodia, ja tulostaa sen palauttaman arvon.</p>
 <p>Kannattaa huomata, että listojenkin läpikäyntiä varten pitää ottaa käyttöön JSTL-tägikirjasto laittamalla JSP-sivun alkuun:</p>
 <pre class="sourceCode jsp"><code class="sourceCode jsp">&lt;%@ taglib<span class="ot"> prefix</span>=<span class="st">&quot;c&quot;</span><span class="ot"> uri</span>=<span class="st">&quot;http://java.sun.com/jsp/jstl/core&quot;</span><span class="ot"> </span>%&gt;</code></pre>
+<section id="käyttäjän-syöttämien-merkkijonojen-näyttäminen" class="level3">
+<h3>Käyttäjän syöttämien merkkijonojen näyttäminen</h3>
+<p>Sivunäkymiä näytettäessä kannattaa varmistaa, etteivät käyttäjän syöttämät HTML-koodinpätkät, lainausmerkit yms. sotke sivujen rakennetta.</p>
+<p>Tähän ongelmaan autttaa parhaiten JSTL-kirjaston <a href="http://docs.oracle.com/javaee/5/jstl/1.1/docs/tlddocs/">out-tägi</a>:</p>
+<pre class="sourceCode jsp"><code class="sourceCode jsp"><span class="kw">&lt;c:out</span><span class="ot"> value</span>=<span class="dt">&quot;</span>${kissa.nimi}<span class="dt">&quot;</span><span class="kw">/&gt;</span></code></pre>
+</section>
 </section>
 <section id="tietosivut" class="level2">
 <h2>Muut tietosivut</h2>
