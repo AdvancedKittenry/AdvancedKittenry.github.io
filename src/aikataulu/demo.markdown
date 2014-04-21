@@ -6,6 +6,8 @@
 Demotilaisuus on kurssin viimeinen ohjattu tilaisuus, 
 jonka tarkoituksena on esitellä tehtyjä töitä muille opiskelijoille.
 
+Demotilaisuus on **pakollinen**, jos et ehdi demoon, ilmoitathan siitä ensi tilassa ohjaajallesi.
+
 Aikaa esitykseen on 15 minuuttia per työ, 
 jonka aikana käydäään läpi mitä sovellus tekee,
 miltä sen käyttämien näyttää ja 

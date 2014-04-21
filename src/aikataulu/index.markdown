@@ -16,9 +16,9 @@ ja kaikissa pajoissa saa käydä kysymässä neuvoa.
 
 Opiskelijoille
 yhteisiä tilaisuuksia ovat aloitustilaisuus {{aloitusluentopvm}} ja
-lopussa oleva demo-tilaisuus, jossa opiskelijat esittelevät työnsä muille
+lopussa oleva pakollinen demo-tilaisuus, jossa opiskelijat esittelevät työnsä muille
 ohjausryhmän jäsenille. 
-Kurssiin kuuluu lisäksi erillinen [koodikatselmointi]({{rootdir}}aikataulu/koodikatselmointi.html).
+Kurssiin kuuluu lisäksi erillinen vapaaehtoinen [koodikatselmointi]({{rootdir}}aikataulu/koodikatselmointi.html).
 
 ### Paja-ajat
 
