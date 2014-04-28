@@ -38,7 +38,7 @@ Sivun kertomisen ja järjestämisen saa aikaan
 int montako = 10;
 int sivu = 2;
 
-String sql = "SELECT * FROM kissat LIMIT ? OFFSET ? ORDER by nimi";
+String sql = "SELECT * FROM kissat ORDER by nimi LIMIT ? OFFSET ?";
 PreparedStatement kysely = yhteys.prepareStatement(sql);
 
 kysely.setInt(1, montako);
@@ -46,6 +46,11 @@ kysely.setInt(2, (sivu-1)*montako);
 
 ResultSet tulokset = kysely.executeQuery();
 ~~~
+
+`ORDER BY`-käskyyn voi myös laittaa useita sarakkeita, minkä lisäksi
+jokaisen annetun sarakkeen perään voi laittaa myös toisen avainsanoista
+`ASC` ja `DESC` määrittämään se halutaanko tulokset nousevassa (ascending)
+vai laskevassa (descending) järjestyksessä.
 
 Malliluokkaan kannattaa koodata myös metodi, joka kertoo listauksessa olevien olioiden kokonaismäärän, näin on mahdollista laskea montako sivua listaan tulee:
 
@@ -97,7 +102,7 @@ int sivuja = Math.ceil((double)kissaLkm/montakokissaasivulla);
 Itse sivunavigaatio voi koostua aivan tavallisista linkeistä:
 
 ~~~jsp
-<c:if test="${sivu > 0}">
+<c:if test="${sivu > 1}">
 <a href="kissalista.php?sivu=${sivu - 1}; ?>">Edellinen sivu</a>
 </c:if>
 <c:if test="${sivu < sivuja}">

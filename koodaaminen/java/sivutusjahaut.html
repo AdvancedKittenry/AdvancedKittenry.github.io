@@ -209,13 +209,14 @@ ResultSet tulokset = kysely.<span class="fu">executeQuery</span>();</code></pre>
 <pre class="sourceCode java"><code class="sourceCode java"><span class="dt">int</span> montako = <span class="dv">10</span>;
 <span class="dt">int</span> sivu = <span class="dv">2</span>;
 
-String sql = <span class="st">&quot;SELECT * FROM kissat LIMIT ? OFFSET ? ORDER by nimi&quot;</span>;
+String sql = <span class="st">&quot;SELECT * FROM kissat ORDER by nimi LIMIT ? OFFSET ?&quot;</span>;
 PreparedStatement kysely = yhteys.<span class="fu">prepareStatement</span>(sql);
 
 kysely.<span class="fu">setInt</span>(<span class="dv">1</span>, montako);
 kysely.<span class="fu">setInt</span>(<span class="dv">2</span>, (sivu<span class="dv">-1</span>)*montako);
 
 ResultSet tulokset = kysely.<span class="fu">executeQuery</span>();</code></pre>
+<p><code>ORDER BY</code>-käskyyn voi myös laittaa useita sarakkeita, minkä lisäksi jokaisen annetun sarakkeen perään voi laittaa myös toisen avainsanoista <code>ASC</code> ja <code>DESC</code> määrittämään se halutaanko tulokset nousevassa (ascending) vai laskevassa (descending) järjestyksessä.</p>
 <p>Malliluokkaan kannattaa koodata myös metodi, joka kertoo listauksessa olevien olioiden kokonaismäärän, näin on mahdollista laskea montako sivua listaan tulee:</p>
 <pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="dt">static</span> <span class="dt">int</span> <span class="fu">lukumaara</span>() <span class="kw">throws</span> NamingException, SQLException {
   String sql = <span class="st">&quot;SELECT count(*) as lkm FROM kissat&quot;</span>;
@@ -254,7 +255,7 @@ List&lt;Kissa&gt; kissat = Kissa.<span class="fu">getKissatSivulla</span>(sivu, 
 <span class="dt">int</span> kissaLkm = Kissa.<span class="fu">lukumaara</span>();
 <span class="dt">int</span> sivuja = Math.<span class="fu">ceil</span>((<span class="dt">double</span>)kissaLkm/montakokissaasivulla);</code></pre>
 <p>Itse sivunavigaatio voi koostua aivan tavallisista linkeistä:</p>
-<pre class="sourceCode jsp"><code class="sourceCode jsp"><span class="kw">&lt;c:if</span><span class="ot"> test</span>=<span class="dt">&quot;</span>${sivu &gt; <span class="dv">0</span>}<span class="dt">&quot;</span><span class="kw">&gt;</span>
+<pre class="sourceCode jsp"><code class="sourceCode jsp"><span class="kw">&lt;c:if</span><span class="ot"> test</span>=<span class="dt">&quot;</span>${sivu &gt; <span class="dv">1</span>}<span class="dt">&quot;</span><span class="kw">&gt;</span>
 &lt;a<span class="ot"> href</span>=<span class="dt">&quot;kissalista.php?sivu=</span>${sivu - <span class="dv">1</span>}<span class="dt">; ?&gt;&quot;</span>&gt;Edellinen sivu&lt;/a&gt;
 <span class="kw">&lt;/c:if&gt;</span>
 <span class="kw">&lt;c:if</span><span class="ot"> test</span>=<span class="dt">&quot;</span>${sivu &lt; sivuja}<span class="dt">&quot;</span><span class="kw">&gt;</span>

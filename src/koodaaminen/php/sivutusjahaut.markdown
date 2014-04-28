@@ -35,10 +35,15 @@ Sivun kertomisen ja järjestämisen saa aikaan
 $montako = 10;
 $sivu = 2;
 
-$sql = "SELECT * FROM kissat LIMIT ? OFFSET ? ORDER by nimi";
+$sql = "SELECT * FROM kissat ORDER by nimi LIMIT ? OFFSET ?";
 $kysely = getTietokantayhteys()->prepare($sql);
 $kysely->execute(array($montako, ($sivu-1)*$montako));
 ~~~
+
+`ORDER BY`-käskyyn voi myös laittaa useita sarakkeita, minkä lisäksi
+jokaisen annetun sarakkeen perään voi laittaa myös toisen avainsanoista
+`ASC` ja `DESC` määrittämään se halutaanko tulokset nousevassa (ascending)
+vai laskevassa (descending) järjestyksessä.
 
 Malliluokkaan kannattaa koodata myös metodi, joka kertoo listauksessa olevien olioiden kokonaismäärän, näin on mahdollista laskea montako sivua listaan tulee:
 
@@ -79,7 +84,7 @@ ja käyttää sitä määrittämään millä sivulla ollaan:
 Itse sivunavigaatio voi koostua aivan tavallisista linkeistä:
 
 ~~~php
-<?php if ($data->sivu > 0): ?>
+<?php if ($data->sivu > 1): ?>
 <a href="kissalista.php?sivu=<?php echo $data->sivu - 1; ?>">Edellinen sivu</a>
 <?php endif; ?>
 <?php if ($data->sivu < $data->sivuja): ?>

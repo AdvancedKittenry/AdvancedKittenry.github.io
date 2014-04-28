@@ -206,9 +206,10 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">$montako</span> = <span class="dv">10</span><span class="ot">;</span>
 <span class="kw">$sivu</span> = <span class="dv">2</span><span class="ot">;</span>
 
-<span class="kw">$sql</span> = <span class="st">&quot;SELECT * FROM kissat LIMIT ? OFFSET ? ORDER by nimi&quot;</span><span class="ot">;</span>
+<span class="kw">$sql</span> = <span class="st">&quot;SELECT * FROM kissat ORDER by nimi LIMIT ? OFFSET ?&quot;</span><span class="ot">;</span>
 <span class="kw">$kysely</span> = getTietokantayhteys<span class="ot">()</span>-&gt;prepare<span class="ot">(</span><span class="kw">$sql</span><span class="ot">);</span>
 <span class="kw">$kysely</span>-&gt;execute<span class="ot">(</span><span class="fu">array</span><span class="ot">(</span><span class="kw">$montako</span><span class="ot">,</span> <span class="ot">(</span><span class="kw">$sivu</span><span class="dv">-1</span><span class="ot">)</span>*<span class="kw">$montako</span><span class="ot">));</span></code></pre>
+<p><code>ORDER BY</code>-käskyyn voi myös laittaa useita sarakkeita, minkä lisäksi jokaisen annetun sarakkeen perään voi laittaa myös toisen avainsanoista <code>ASC</code> ja <code>DESC</code> määrittämään se halutaanko tulokset nousevassa (ascending) vai laskevassa (descending) järjestyksessä.</p>
 <p>Malliluokkaan kannattaa koodata myös metodi, joka kertoo listauksessa olevien olioiden kokonaismäärän, näin on mahdollista laskea montako sivua listaan tulee:</p>
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">public</span> <span class="kw">static</span> <span class="kw">function</span> lukumaara<span class="ot">()</span> {
   <span class="kw">$sql</span> = <span class="st">&quot;SELECT count(*) FROM kissat&quot;</span><span class="ot">;</span>
@@ -236,7 +237,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
   <span class="kw">$kissaLkm</span> = Kissa::lukumaara<span class="ot">();</span>
   <span class="kw">$sivuja</span> = <span class="fu">ceil</span><span class="ot">(</span><span class="kw">$kissaLkm</span>/<span class="kw">$montakokissaasivulla</span><span class="ot">);</span></code></pre>
 <p>Itse sivunavigaatio voi koostua aivan tavallisista linkeistä:</p>
-<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span> <span class="kw">if</span> <span class="ot">(</span><span class="kw">$data</span>-&gt;sivu &gt; <span class="dv">0</span><span class="ot">)</span>: <span class="kw">?&gt;</span>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span> <span class="kw">if</span> <span class="ot">(</span><span class="kw">$data</span>-&gt;sivu &gt; <span class="dv">1</span><span class="ot">)</span>: <span class="kw">?&gt;</span>
 &lt;a href=&quot;kissalista.php?sivu=<span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$data</span>-&gt;sivu - <span class="dv">1</span><span class="ot">;</span> <span class="kw">?&gt;</span>&quot;&gt;Edellinen sivu&lt;/a&gt;
 <span class="kw">&lt;?php</span> <span class="kw">endif</span><span class="ot">;</span> <span class="kw">?&gt;</span>
 <span class="kw">&lt;?php</span> <span class="kw">if</span> <span class="ot">(</span><span class="kw">$data</span>-&gt;sivu &lt; <span class="kw">$data</span>-&gt;sivuja<span class="ot">)</span>: <span class="kw">?&gt;</span>
