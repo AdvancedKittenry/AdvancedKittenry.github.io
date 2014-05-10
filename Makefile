@@ -23,7 +23,7 @@ ${HTML}: %.html : src/%.markdown $@ ${DEPS}
 	./make-html.sh src/$*.markdown
 
 clean: cleanpages
-	rm -f generatedoc generatedoc.o generatedoc.hi
+	rm -f lib/generatedoc lib/generatedoc.o lib/generatedoc.hi
 
 cleanpages:
 	rm -f ${HTML} src/templates/navigation-level-*.html 
