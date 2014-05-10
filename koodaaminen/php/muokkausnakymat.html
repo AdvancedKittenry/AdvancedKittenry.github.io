@@ -202,9 +202,6 @@ Tämän sivun sisältö on vielä työn alla ja saattaa muuttua kurssin edetess�
 </p>
 </div>
 </div>
-
-
-
 <p>Yleensä lisäys- ja muokkauslomakkeet kannattaa toteuttaa samalla tai ainakin hyvin samanlaisella koodilla. Kumpaankin käytetyt lomakkeet ovat useimmiten lähes samanlaisia, mutta lisäyksestä poiketen lomake on esitäytetty muokattavan olion tietojen mukaan.</p>
 <p>Tämä toteutetaan siten, että sivun kontrolleri ottaa muokattavan tietokohteen pääavaimen arvon GET-parametrina ja pyytää mallilta oikeaa riviä vastaavaan olion, joka sitten näytetään näkymässä. Periaate on siis samanlainen, kuin <a href="listausnakymat.html#tietosivut">tietosivujen toteuttamisesta</a></p>
 <p>Erona lisäykseen on tietenkin myös suoritettava SQL-koodi, jolle pitää muutettavien tietojen lisäksi kertoa <code>WHERE</code>-ehdossa muutettavan rivin pääavaimen arvo.</p>

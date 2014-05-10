@@ -25,6 +25,7 @@ Kurssiin kuuluu lisäksi erillinen vapaaehtoinen [koodikatselmointi]({{rootdir}}
 {{paja-ajat-intro}}
 
 ~~~~ {execute=python}
+# -*- coding: utf8 -*-
 ajat={{{paja-ajat-data}}}
 
 if (len(ajat) == 0):

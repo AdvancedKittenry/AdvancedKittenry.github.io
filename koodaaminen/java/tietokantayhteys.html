@@ -242,7 +242,9 @@ DataSource yhteysVarasto = (DataSource) cxt.<span class="fu">lookup</span>(<span
 <button type='button' class='btn-link expandable collapsed' data-toggle='collapse' data-target='#expandable_1'>
 Yllä olevan koodin vaatimat importit
 </button>
-  <div id='expandable_1' class='collapse'><section>
+  
+<div id="expandable_1" class="collapse">
+<section>
 
 <pre class="sourceCode java"><code class="sourceCode java"><span class="kw">import java.sql.Connection;</span>
 <span class="kw">import java.sql.SQLException;</span>
@@ -250,8 +252,8 @@ Yllä olevan koodin vaatimat importit
 <span class="kw">import javax.naming.InitialContext;</span>
 <span class="kw">import javax.naming.NamingException;</span>
 <span class="kw">import javax.sql.DataSource;</span></code></pre>
-</section></div>
-
+</section>
+</div>
 <p>Kun yhteysvarasto on kerran luotu, saa siltä uusia yhteyksiä suorittamalla getConnection-metodin:</p>
 <pre class="sourceCode java"><code class="sourceCode java">Connection yhteys = yhteysVarasto.<span class="fu">getConnection</span>(); </code></pre>
 <p>Menetelmän etuna on, ettei yhteyksien avaamisia tarvitse erikseen hallinnoida, vaan varasto avaa niitä lisää sitä mukaa kun tarvetta on.</p>

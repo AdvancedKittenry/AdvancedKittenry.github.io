@@ -215,13 +215,15 @@ Tässäkin voi olla vielä järkevää käyttää paperia tai valkotaulua, mutta
 <button type='button' class='btn-link expandable collapsed' data-toggle='collapse' data-target='#expandable_1'>
 Siistimpi käsitekaavioversio (avaa tästä)
 </button>
-  <div id='expandable_1' class='collapse'><section>
+  
+<div id="expandable_1" class="collapse">
+<section>
 
 <figure>
 <img src="../images/dokumentaatio-ohje/information_diagram.png" alt="Esimerkki käsitekaaviosta" /><figcaption>Esimerkki käsitekaaviosta</figcaption>
 </figure>
-</section></div>
-
+</section>
+</div>
 <p>Kaikki tähän alustavaan käsitekaavioon tulevat asiat eivät välttämättä ole relevantteja ohjelman toteutuksen kannalta. Esimerkiksi palveluskunta ei kokonaisuutena näyttele mitään roolia ohjelman toiminnassa, vaan pääosassa ovat sen jäsenet. Lopullisessa kissalistan toteutuksessa ei tämän takia ole palveluskunta-taulua. Hyvänä valintakriteerinä on se, sisältävätkö tietokohteen instanssit omia kenttiään, edes vaikkapa nimen, vai ovatko ne vain täysin osasistaan koostuvia kokoelma.</p>
 </section>
 <section id="taulujen-ja-niiden-kenttien-määrittely" class="level2">
@@ -231,14 +233,21 @@ Siistimpi käsitekaavioversio (avaa tästä)
 <button type='button' class='btn-link expandable collapsed' data-toggle='collapse' data-target='#expandable_2'>
 Tietokohdekuvausesimerkki
 </button>
-  <div id='expandable_2' class='collapse'><section>
+  
+<div id="expandable_2" class="collapse">
+<section>
 
 <div class="panel panel-default">
 <div class="panel-body">
 <blockquote>
 <p><strong>Tietokohde: Huoneisto</strong></p>
 <table class="table table-striped table-bordered">
-<col style="width: 17%" /><col style="width: 23%" /><col style="width: 40%" /><thead>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 23%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
 <tr class="header">
 <th style="text-align: left;">Attribuutti</th>
 <th style="text-align: left;">Arvojoukko</th>
@@ -268,8 +277,8 @@ Tietokohdekuvausesimerkki
 <p>Katso lisätietoja <a href="../dokumentaatio-ohje.html#järjestelmän-tietosisältö">dokumentaatio-ohjeesta</a>.</p>
 </div>
 </div>
-</section></div>
-
+</section>
+</div>
 <p>Tässä vaiheessa ei vielä tarvitse miettiä tietokantateknisiä ratkaisuja kuten autogeneroituja id-kenttiä tai viiteavaimia vaan riittää että kirjoitat pelkät kuvaukset taulujen tiedoista ja viittauksista.</p>
 </section>
 <section id="sql-alustustiedostojen-luonti." class="level2">

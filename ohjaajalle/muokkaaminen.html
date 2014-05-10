@@ -187,7 +187,9 @@
 <button type='button' class='btn-link expandable collapsed' data-toggle='collapse' data-target='#expandable_1'>
 Avaa manuaaliset ohjeet tästä
 </button>
-  <div id='expandable_1' class='collapse'><section>
+  
+<div id="expandable_1" class="collapse">
+<section>
 
 <h1>Työkalujen asentaminen</h1>
 <p>Tarvitset sivujen kääntämiseen koneen, jolle on asennettuna Haskell-kielen kirjastot ja käytettävissä ohjelmat ghc ja cabal. Lisäksi tarvitset järkevät versiot pythonista, perlistä ja make:sta.</p>
@@ -206,8 +208,8 @@ cabal install pandoc</code></pre>
 <p>Voit halutessasi myös kokeilla itse melkillä ja omalla koneella kääntämiäni <a href="http://www.cs.helsinki.fi/u/consuegr/pandoc/">binäärejä</a>. Säästät kääntämisen vaivan. 64-bittinen versio toimii esim. melkinpaadella eronomaisesti. (Melkki on jostain syystä kapinallinen. Viimeksi koettaessani make ei toiminut melkillä kovin hyvin.) Joudut lisäksi lataamaan ja sijoittamaan repositoriosi <code>lib</code>-kansioon <code>generatedoc</code>-tiedoston, jotta skriptituki toimisi kunnolla, sillä muuten make yrittää kääntää sen puolestasi ja tämä ei toimi ilman Pandocin lähdekoodeja.</p>
 <p>Lopuksi varmista, että Pandoc löytyy PATH-muuttujastasi. Sen voi tehdä esim. laittamalla .bashrc:hen seuraavan rivin:</p>
 <pre><code>export PATH=&quot;$HOME/.cabal/bin:$PATH&quot;</code></pre>
-</section></div>
-
+</section>
+</div>
 <section id="asennuksen-jälkeen" class="level3">
 <h3>Asennuksen jälkeen</h3>
 <p>Pandocin asentamisen jälkeen sivujen pitäisi generoitua komentamalla <code>make</code>. Tällöin make kääntää kaikki <code>src</code>-hakemiston alla olevat markdown-tiedostot automaattisesti.</p>
