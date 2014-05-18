@@ -61,9 +61,6 @@ BEGIN {
     $json_text = decode_json(encode('UTF-8', $json_text)) || die "Cannot decode couse instance data!";
     our %coursekeywords = %{${$json_text}{'default'}};
 
-    our $startbox = "\n<!-- start box -->\nREMOVETHIS\n\n";
-    our $endbox   = "\n<!-- end box -->";
-    
     my $tabBoxCount = 0;
     sub parseTabs {
       $tabBoxCount++;
@@ -77,7 +74,7 @@ BEGIN {
 
       while ($data =~ /<tab\s+title=['"]([^'"]*)['"]\s*>(.*?)<\/tab>\s*/sg) {
         my $id = "tab_$tabBoxCount"."_$tab";
-        my $content = "$startbox$2$endbox";
+        my $content = "$2";
 
         push @tabs, "<li$tabclass><a href='#$id' data-toggle='tab'>$1</a></li>";
         push @contents, "<section class='tab-pane$contentclass' id='$id' >$content</section>";
@@ -135,11 +132,6 @@ for my $coursekeyword (keys %coursekeywords) {
 #Parses include files while leaving title metadata lines beginning with % out
 s{<include +src="([^"]*)" */>} {"\n" . `$0 $basedir/$1` =~ s/^(%[^\n]*)*//rg . "\n";}eg;
 
-#We don't want to run our box blockquote logic twice when including files
-#See about 25 lines below
-s#<\!-- end box -->#<!-- do not end box -->#g;
-s#<\!-- start box -->#<!-- do not start box -->#g;
-
 #Parse tabs and other dynamic expandable content
 s{<tabs nobox=['"]true['"]>\s(.*?)<\/tabs>} {parseTabs($1, 0)."<hr/>" }esg;
 s{<tabs>\s(.*?)<\/tabs>} {parseTabs $1, 1}esg;
@@ -149,40 +141,18 @@ my $collapsibleCount = 0;
 s{<collapsible title=['"]([^'"]*)['"]>} {
   $collapsibleCount++;
   "<button type='button' class='btn-link expandable' data-toggle='collapse' data-target='#collapsible_$collapsibleCount'>$1</button>
-  <div id='collapsible_$collapsibleCount' class='collapse in'><section>$startbox";
+  <div id='collapsible_$collapsibleCount' class='collapse in'><section>";
   }esg;
 my $expandableCount = 0;
 s{<expandable title=['"]([^'"]*)['"]>} {
   $expandableCount++;
   "<button type='button' class='btn-link expandable collapsed' data-toggle='collapse' data-target='#expandable_$expandableCount'>$1</button>
-  <div id='expandable_$expandableCount' class='collapse'><section>$startbox";
+  <div id='expandable_$expandableCount' class='collapse'><section>";
   }esg;
 s{<box>}{<div class='panel panel-default'><div class='panel-body'>\n}g;
 s{</box>}{\n</div></div>}g;
 s{<box type=['"]([^'"]*)['"]>}{<div class='panel panel-\1'><div class='panel-body'>\n}g;
-s#<\/(collapsible|expandable)>#$endbox</section></div>#g;
-
-# Now we put the contents of all boxes into blockquotes.
-# If we don't do this, Pandoc will screw up it's section tags.
-my $boxlevel = 0;
-s{(.*?\n)}{
-  $line = $1;
-  $line2 = $1;
-  if ($1 =~ /^\<\!-- end box -->/) {
-    $boxlevel--;
-    my $indent = "> "x$boxlevel;
-    $line = "\n$indent\nREMOVETHIS\n$indent\n$indent$line";
-  }
-  $line = ("> "x$boxlevel). $line; 
-  if ($1 =~ /^\<\!-- start box -->/) {
-    $boxlevel++;
-  }
-  $line;
-}eg;
-
-## Fix box logic fix for fix-styles.pl
-s#<\!-- do not end box -->#<!-- end box -->#g;
-s#<\!-- do not start box -->#<!-- start box -->#g;
+s#<\/(collapsible|expandable)>#</section></div>#g;
 
 s{<sidebyside>}{<div class="row">}g;
 
