@@ -3,7 +3,7 @@
 
 Kurssi alkaa **pakollisella** aloitusluennolla {{aloitusluentopvm}}.
 
-Alotusluennon kalvot löytyvät [googlen pilvestä](https://docs.google.com/presentation/d/1vKy0Kf6uFCz_2Gp0jTAyjCRrVl_yHBMg15IFzKRgr1k/pub?start=false&loop=false&delayms=3000), 
+Alotusluennon kalvot löytyvät [googlen pilvestä](https://docs.google.com/presentation/d/1InGSgij8dJ5CxYH2U8M1TAzxP8CdSf0HOU0L_bwG0Bg/edit#slide=id.p), 
 lisäksi kannattaa tutustua [web-sovelluksien erityispiirteisiin]({{rootdir}}web-sovelluksista.html).
 
 Aloitusluennon jälkeen kannattaa tutustua 
