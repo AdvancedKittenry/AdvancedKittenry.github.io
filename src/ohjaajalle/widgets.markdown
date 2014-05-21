@@ -45,7 +45,7 @@ asdadad `asdadsad` asdadad
 
 ## Tabs
 
-<tabs nobox="true">
+<tabs>
 <tab title="Directories">
 curdir is "{{curdir}}"\
 rootdir is "{{rootdir}}"\

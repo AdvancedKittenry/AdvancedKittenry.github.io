@@ -41,4 +41,6 @@ if ($rootdir eq ".") {
 s#(?<!\\){{rootdir}}#$rootdir#g;
 s#\\{{rootdir}}#{{rootdir}}#g;
 
+s#<!-- addHeaderNavigation -->#<script>addSectionLinks = true; </script>#sg;
+
 print;

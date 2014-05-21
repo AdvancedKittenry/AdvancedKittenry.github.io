@@ -133,7 +133,6 @@ for my $coursekeyword (keys %coursekeywords) {
 s{<include +src="([^"]*)" */>} {"\n" . `$0 $basedir/$1` =~ s/^(%[^\n]*)*//rg . "\n";}eg;
 
 #Parse tabs and other dynamic expandable content
-s{<tabs nobox=['"]true['"]>\s(.*?)<\/tabs>} {parseTabs($1, 0)."<hr/>" }esg;
 s{<tabs>\s(.*?)<\/tabs>} {parseTabs $1, 1}esg;
 
 #Implement <collapsible> and <expandable> tags
@@ -162,6 +161,3 @@ s{</(sidebyside|column)>}{</div>}g;
 
 #A hack to enable syntax hilighting of inline php code
 s#(~~~+)inlinephp\n#\1php\n<inline-php-hack><?php </inline-php-hack>\n#g;
-
-#Removes comment tags
-s#<!-- addHeaderNavigation -->#<script>addSectionLinks = true; </script>#sg;
