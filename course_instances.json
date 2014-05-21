@@ -11,8 +11,7 @@
     "codereviewdeadline2": "ti 10.6 klo 23:00",
     "demodeadline": "ma 16.6 klo 10-12. Paikka tarkentuu myöhemmin",
     "palautusdeadline": "su 22.6 klo 23:00",
-    "paja-ajat-intro":"Paja-aika ja -paikka tarkentuvat myöhemmin. \
-Myös henkilökohtaisia tapaamisia on tarvittaessa mahdollista sopia ohjaajan kanssa.",
+    "paja-ajat-intro":"Henkilökohtaisia tapaamisia on tarvittaessa mahdollista sopia ohjaajan kanssa irkin välityksellä tai sähköpostilla.",
     "paja-ajat-data":"[ \
       ('ke klo 14-16', 'Lauri Suomalainen','B221') \
       ]"
