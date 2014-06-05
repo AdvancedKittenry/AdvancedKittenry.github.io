@@ -2,24 +2,108 @@
 <!-- order: 10 -->
 <!-- tags: viikko4-php -->
 
-<wip />
+Useimmissa tapauksissa lisäys- ja muokkauslomakkeet kannattaa toteuttaa
+samalla tai ainakin hyvin samanlaisella koodilla. Kumpaankin voi käyttää
+käytännössä samanlaista lomaketta. Erona lisäykseen on lähinnä se, että
+muokkauslomake kannattaa esitäyttää muokattavan olion tietojen mukaan. 
 
-Yleensä lisäys- ja muokkauslomakkeet kannattaa toteuttaa samalla tai ainakin hyvin samanlaisella koodilla.
-Kumpaankin käytetyt lomakkeet ovat useimmiten lähes samanlaisia, mutta lisäyksestä poiketen
-lomake on esitäytetty muokattavan olion tietojen mukaan. 
+## Mallin ja muokkauskontrollerin toteuttaminen
 
-Tämä toteutetaan siten, että sivun kontrolleri ottaa muokattavan tietokohteen pääavaimen arvon GET-parametrina ja 
-pyytää mallilta oikeaa riviä vastaavaan olion, joka sitten näytetään näkymässä.
-Periaate on siis samanlainen, kuin 
-[tietosivujen toteuttamisesta](listausnakymat.html#tietosivut)
-
-Erona lisäykseen on tietenkin myös suoritettava SQL-koodi, jolle pitää muutettavien tietojen lisäksi kertoa `WHERE`-ehdossa muutettavan rivin pääavaimen arvo.
-
-Päivityksen toteutukseessa on järkevää käyttää samaa tietojen kelpoisuuden tarkistamismekanismia, kuin lisäämisen kanssa.
+Tietokannan puolella muokkaamiseen käytetään `UPDATE`-lausetta,
+jolle pitää muutettavien tietojen lisäksi kertoa 
+mitä muutetaan `WHERE`-ehdossa.
+Paras tapa kertoa tämä on antaa muutettavan rivin pääavaimen arvo.
 
 ~~~sql
 UPDATE kissat SET nimi = ?, vari = ?, karvaisuus = ? WHERE id = ?
 ~~~
+
+Update-lauseen ajavan koodin voi sijoittaa omaan metodiinsa samaan
+tapaan kuin lisäysmetodi. 
+Koodia kutsutaan kontrollerista rakentamalla olio, jolla on
+oikea pääavaimen arvo sekä käyttäjän lomakkeella syöttämät
+muokatut tiedot.
+
+Olion luomisen voi toteuttaa kahdella eri tavalla,
+yksinkertaisin tapa on rakentaa olio käsin:
+
+**Yksinkertaisen muokkauskontrollerin alku**
+
+~~~php
+<?php
+$id = (int)$_POST['id'];
+
+$katti = new Kissa();
+$katti->setId($id);
+$katti->setNimi($_POST['nimi']);
+$katti->setVari($_POST['vari']);
+$katti->setKarvaisuus($_POST['karvaisuus']);
+$katti->tallennaMuokkaukset();
+~~~
+
+Tämä tapa on nopeampi, sillä kannasta ei tarvitse hakea mitään.
+Usein kuitenkin on parempi pyytää 
+mallia hakemaan tietokannasta kyseinen rivi oliona, jolta voi sitten kutsua
+settereitä.
+
+~~~inlinephp
+$katti = Kissa::etsi($id);
+~~~
+
+Tätä tapaa käytetään usein siihen, että varmistutaan
+muokattavan rivin olemassaolosta.
+Joskus halutaan myös muokata olioita, jota aivan kuka tahansa ei saa 
+muokata. Rivi voi esimerkiksi olla juuri tietyn henkilön muistiinpano,
+kissa tai muu vastaava tietue, johon kellään muulla ei ole asiaa.
+
+Tässä tapauksessa joudut aina hakemaan tietokannasta
+kyseessä olevan rivin tiedot ja tarkistamaan että sen oikeus- tai omistajatiedot
+antavat kirjautuneen käyttäjän muokata kyseistä riviä.
+
+**Muokkauskontrolleri olemassaolo- ja käyttöoikeustarkistuksin**
+
+~~~inlinephp
+<?php
+$id = (int)$_POST['id'];
+$katti = Kissa::etsi($id);
+$kirjautunutKayttaja = $_SESSION["kirjautunut"];
+
+if ($katti == null) {
+  // Näytetään käyttäjälle ilmoitus kadonneesta kissasta...
+} else if (!$katti->saakoMuokata($kirjautunutKayttaja)) {
+  // Näytetään käyttäjälle ilmoitus oikeuksien puutteesta...
+} else { 
+  //Kissaa on mahdollista muokata
+  $katti->setNimi($_POST['nimi']);
+  $katti->setVari($_POST['vari']);
+  $katti->setKarvaisuus($_POST['karvaisuus']);
+
+  //Tähän tulee vielä tallennuskoodia
+}
+~~~
+
+Tämän lisäksi päivityksen toteutuksessa on järkevää käyttää samaa tietojen kelpoisuuden tarkistamismekanismia, kuin lisäämisen kanssa.
+Tarvittaessa kannattaa myös koodata malliluokkaan
+metodi, joka tarkistaa saako tietty käyttäjä muokata oliota.
+
+~~~inlinephp
+if ($katti->onkoKelvollinen()) {
+  $katti->tallennaMuokkaukset();
+  //Näytetään käyttäjälle onnistumisviesti
+} else {
+  //Näytetään virheellinen lomake
+}
+~~~
+
+## Näkymän toteuttaminen
+
+Muokkausnäkymät toteutetaan siten, että muokkausnäkymäsivun kontrolleri ottaa muokattavan tietokohteen pääavaimen arvon GET-parametrina ja 
+pyytää mallilta oikeaa riviä vastaavaan olion, joka sitten näytetään näkymässä.
+
+Periaate on siis samanlainen, kuin 
+[tietosivujen toteuttamisesta](listausnakymat.html#tietosivut),
+mutta sen sijaan että näytettäisiin staattista tietoa, näytetään
+lomake oikeilla tiedoilla.
 
 Tämä pääavain pitää myös välittää lomakkeesta jotenkin päivitystä suorittavalle kontrollerille. 
 Helpoin tapa on käyttää käyttäjälle näkymätöntä input-kenttää, jonka tyypiksi merkitään `"hidden"`:
@@ -37,10 +121,11 @@ Kannattaa myös varmistaa, että kulloisella käyttäjällä on oikeus tehdä po
 Malliluokan puolelle tarvitaan myös metodi(t), jolla voi poistaa rivejä.
 Toteutustapoja on kaksi:
 
-  * Instanssimetodi poistaa yhden olion kannasta.
-  * Staattisella metodilla voi poistaa useitakin olioita.
+* Instanssimetodi poistaa yhden olion kannasta.
+* Staattinen metodi, jolla annetaan parametrina poistettavan olion pääavaimen arvo
+    * Staattisella metodilla voi poistaa useitakin olioita.
  
-SQL-syntaksi:
+SQL-syntaksi ja logiikka ovat varsin samanlaiset kuin muokkauksessa:
 
 ~~~sql
 DELETE FROM kissat WHERE id = ?

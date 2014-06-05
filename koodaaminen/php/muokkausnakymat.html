@@ -191,33 +191,72 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <!-- order: 10 -->
 <!-- tags: viikko4-php -->
 
-
-<div class="wip panel">
-<div class="panel-body">
-<h3>
-Work in progress
-</h3>
-<p>
-Tämän sivun sisältö on vielä työn alla ja saattaa muuttua kurssin edetessä.
-</p>
-</div>
-</div>
-<p>Yleensä lisäys- ja muokkauslomakkeet kannattaa toteuttaa samalla tai ainakin hyvin samanlaisella koodilla. Kumpaankin käytetyt lomakkeet ovat useimmiten lähes samanlaisia, mutta lisäyksestä poiketen lomake on esitäytetty muokattavan olion tietojen mukaan.</p>
-<p>Tämä toteutetaan siten, että sivun kontrolleri ottaa muokattavan tietokohteen pääavaimen arvon GET-parametrina ja pyytää mallilta oikeaa riviä vastaavaan olion, joka sitten näytetään näkymässä. Periaate on siis samanlainen, kuin <a href="listausnakymat.html#tietosivut">tietosivujen toteuttamisesta</a></p>
-<p>Erona lisäykseen on tietenkin myös suoritettava SQL-koodi, jolle pitää muutettavien tietojen lisäksi kertoa <code>WHERE</code>-ehdossa muutettavan rivin pääavaimen arvo.</p>
-<p>Päivityksen toteutukseessa on järkevää käyttää samaa tietojen kelpoisuuden tarkistamismekanismia, kuin lisäämisen kanssa.</p>
+<p>Useimmissa tapauksissa lisäys- ja muokkauslomakkeet kannattaa toteuttaa samalla tai ainakin hyvin samanlaisella koodilla. Kumpaankin voi käyttää käytännössä samanlaista lomaketta. Erona lisäykseen on lähinnä se, että muokkauslomake kannattaa esitäyttää muokattavan olion tietojen mukaan.</p>
+<section id="mallin-ja-muokkauskontrollerin-toteuttaminen" class="level2">
+<h2>Mallin ja muokkauskontrollerin toteuttaminen</h2>
+<p>Tietokannan puolella muokkaamiseen käytetään <code>UPDATE</code>-lausetta, jolle pitää muutettavien tietojen lisäksi kertoa mitä muutetaan <code>WHERE</code>-ehdossa. Paras tapa kertoa tämä on antaa muutettavan rivin pääavaimen arvo.</p>
 <pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">UPDATE</span> kissat <span class="kw">SET</span> nimi = ?, vari = ?, karvaisuus = ? <span class="kw">WHERE</span> <span class="kw">id</span> = ?</code></pre>
+<p>Update-lauseen ajavan koodin voi sijoittaa omaan metodiinsa samaan tapaan kuin lisäysmetodi. Koodia kutsutaan kontrollerista rakentamalla olio, jolla on oikea pääavaimen arvo sekä käyttäjän lomakkeella syöttämät muokatut tiedot.</p>
+<p>Olion luomisen voi toteuttaa kahdella eri tavalla, yksinkertaisin tapa on rakentaa olio käsin:</p>
+<p><strong>Yksinkertaisen muokkauskontrollerin alku</strong></p>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>
+<span class="kw">$id</span> = <span class="dt">(int)</span><span class="kw">$_POST</span><span class="ot">[</span><span class="st">&#39;id&#39;</span><span class="ot">];</span>
+
+<span class="kw">$katti</span> = <span class="kw">new</span> Kissa<span class="ot">();</span>
+<span class="kw">$katti</span>-&gt;setId<span class="ot">(</span><span class="kw">$id</span><span class="ot">);</span>
+<span class="kw">$katti</span>-&gt;setNimi<span class="ot">(</span><span class="kw">$_POST</span><span class="ot">[</span><span class="st">&#39;nimi&#39;</span><span class="ot">]);</span>
+<span class="kw">$katti</span>-&gt;setVari<span class="ot">(</span><span class="kw">$_POST</span><span class="ot">[</span><span class="st">&#39;vari&#39;</span><span class="ot">]);</span>
+<span class="kw">$katti</span>-&gt;setKarvaisuus<span class="ot">(</span><span class="kw">$_POST</span><span class="ot">[</span><span class="st">&#39;karvaisuus&#39;</span><span class="ot">]);</span>
+<span class="kw">$katti</span>-&gt;tallennaMuokkaukset<span class="ot">();</span></code></pre>
+<p>Tämä tapa on nopeampi, sillä kannasta ei tarvitse hakea mitään. Usein kuitenkin on parempi pyytää mallia hakemaan tietokannasta kyseinen rivi oliona, jolta voi sitten kutsua settereitä.</p>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">$katti</span> = Kissa::etsi<span class="ot">(</span><span class="kw">$id</span><span class="ot">);</span></code></pre>
+<p>Tätä tapaa käytetään usein siihen, että varmistutaan muokattavan rivin olemassaolosta. Joskus halutaan myös muokata olioita, jota aivan kuka tahansa ei saa muokata. Rivi voi esimerkiksi olla juuri tietyn henkilön muistiinpano, kissa tai muu vastaava tietue, johon kellään muulla ei ole asiaa.</p>
+<p>Tässä tapauksessa joudut aina hakemaan tietokannasta kyseessä olevan rivin tiedot ja tarkistamaan että sen oikeus- tai omistajatiedot antavat kirjautuneen käyttäjän muokata kyseistä riviä.</p>
+<p><strong>Muokkauskontrolleri olemassaolo- ja käyttöoikeustarkistuksin</strong></p>
+<pre class="sourceCode php"><code class="sourceCode php">&lt;<span class="ot">?</span>php
+<span class="kw">$id</span> = <span class="dt">(int)</span><span class="kw">$_POST</span><span class="ot">[</span><span class="st">&#39;id&#39;</span><span class="ot">];</span>
+<span class="kw">$katti</span> = Kissa::etsi<span class="ot">(</span><span class="kw">$id</span><span class="ot">);</span>
+<span class="kw">$kirjautunutKayttaja</span> = <span class="kw">$_SESSION</span><span class="ot">[</span><span class="st">&quot;kirjautunut&quot;</span><span class="ot">];</span>
+
+<span class="kw">if</span> <span class="ot">(</span><span class="kw">$katti</span> == <span class="kw">null</span><span class="ot">)</span> {
+  <span class="co">// Näytetään käyttäjälle ilmoitus kadonneesta kissasta...</span>
+} <span class="kw">else</span> <span class="kw">if</span> <span class="ot">(</span>!<span class="kw">$katti</span>-&gt;saakoMuokata<span class="ot">(</span><span class="kw">$kirjautunutKayttaja</span><span class="ot">))</span> {
+  <span class="co">// Näytetään käyttäjälle ilmoitus oikeuksien puutteesta...</span>
+} <span class="kw">else</span> { 
+  <span class="co">//Kissaa on mahdollista muokata</span>
+  <span class="kw">$katti</span>-&gt;setNimi<span class="ot">(</span><span class="kw">$_POST</span><span class="ot">[</span><span class="st">&#39;nimi&#39;</span><span class="ot">]);</span>
+  <span class="kw">$katti</span>-&gt;setVari<span class="ot">(</span><span class="kw">$_POST</span><span class="ot">[</span><span class="st">&#39;vari&#39;</span><span class="ot">]);</span>
+  <span class="kw">$katti</span>-&gt;setKarvaisuus<span class="ot">(</span><span class="kw">$_POST</span><span class="ot">[</span><span class="st">&#39;karvaisuus&#39;</span><span class="ot">]);</span>
+
+  <span class="co">//Tähän tulee vielä tallennuskoodia</span>
+}</code></pre>
+<p>Tämän lisäksi päivityksen toteutuksessa on järkevää käyttää samaa tietojen kelpoisuuden tarkistamismekanismia, kuin lisäämisen kanssa. Tarvittaessa kannattaa myös koodata malliluokkaan metodi, joka tarkistaa saako tietty käyttäjä muokata oliota.</p>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">if</span> <span class="ot">(</span><span class="kw">$katti</span>-&gt;onkoKelvollinen<span class="ot">())</span> {
+  <span class="kw">$katti</span>-&gt;tallennaMuokkaukset<span class="ot">();</span>
+  <span class="co">//Näytetään käyttäjälle onnistumisviesti</span>
+} <span class="kw">else</span> {
+  <span class="co">//Näytetään virheellinen lomake</span>
+}</code></pre>
+</section>
+<section id="näkymän-toteuttaminen" class="level2">
+<h2>Näkymän toteuttaminen</h2>
+<p>Muokkausnäkymät toteutetaan siten, että muokkausnäkymäsivun kontrolleri ottaa muokattavan tietokohteen pääavaimen arvon GET-parametrina ja pyytää mallilta oikeaa riviä vastaavaan olion, joka sitten näytetään näkymässä.</p>
+<p>Periaate on siis samanlainen, kuin <a href="listausnakymat.html#tietosivut">tietosivujen toteuttamisesta</a>, mutta sen sijaan että näytettäisiin staattista tietoa, näytetään lomake oikeilla tiedoilla.</p>
 <p>Tämä pääavain pitää myös välittää lomakkeesta jotenkin päivitystä suorittavalle kontrollerille. Helpoin tapa on käyttää käyttäjälle näkymätöntä input-kenttää, jonka tyypiksi merkitään <code>&quot;hidden&quot;</code>:</p>
 <pre class="sourceCode php"><code class="sourceCode php">&lt;input type=&quot;hidden&quot; name=&quot;id&quot; value=&quot;<span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$data</span>-&gt;kissa-&gt;getId<span class="ot">();</span> <span class="kw">?&gt;</span>&quot;&gt;</code></pre>
+</section>
 <section id="poistotoiminnot" class="level2">
 <h2>Poistotoiminnot</h2>
 <p>Poisto toimii käytännössä samoin, kuin muokkaus, lomakkeen näyttäminen vain jätetään välistä ja suoritetaan suoraan poistokäsky kontrollerille välitetyn pääavaimen arvon perusteella. Usein poiston aktivointiin kannattaa käyttää lomakkeisiin upotettuja poistonappeja ja POST-metodia. Kannattaa myös varmistaa, että kulloisella käyttäjällä on oikeus tehdä poisto!</p>
 <p>Malliluokan puolelle tarvitaan myös metodi(t), jolla voi poistaa rivejä. Toteutustapoja on kaksi:</p>
 <ul>
 <li>Instanssimetodi poistaa yhden olion kannasta.</li>
+<li>Staattinen metodi, jolla annetaan parametrina poistettavan olion pääavaimen arvo
+<ul>
 <li>Staattisella metodilla voi poistaa useitakin olioita.</li>
+</ul></li>
 </ul>
-<p>SQL-syntaksi:</p>
+<p>SQL-syntaksi ja logiikka ovat varsin samanlaiset kuin muokkauksessa:</p>
 <pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">DELETE</span> <span class="kw">FROM</span> kissat <span class="kw">WHERE</span> <span class="kw">id</span> = ?</code></pre>
 <section class="alert alert-info small"><h3>
 Valmista!
