@@ -243,7 +243,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <p>Muokkausnäkymät toteutetaan siten, että muokkausnäkymäsivun kontrolleri ottaa muokattavan tietokohteen pääavaimen arvon GET-parametrina ja pyytää mallilta oikeaa riviä vastaavaan olion, joka sitten näytetään näkymässä.</p>
 <p>Periaate on siis samanlainen, kuin <a href="listausnakymat.html#tietosivut">tietosivujen toteuttamisesta</a>, mutta sen sijaan että näytettäisiin staattista tietoa, näytetään lomake oikeilla tiedoilla.</p>
 <p>Tämä pääavain pitää myös välittää lomakkeesta jotenkin päivitystä suorittavalle kontrollerille. Helpoin tapa on käyttää käyttäjälle näkymätöntä input-kenttää, jonka tyypiksi merkitään <code>&quot;hidden&quot;</code>:</p>
-<pre class="sourceCode php"><code class="sourceCode php">&lt;input type=&quot;hidden&quot; name=&quot;id&quot; value=&quot;<span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$data</span>-&gt;kissa-&gt;getId<span class="ot">();</span> <span class="kw">?&gt;</span>&quot;&gt;</code></pre>
+<pre class="sourceCode php"><code class="sourceCode php">&lt;input type=<span class="st">&quot;hidden&quot;</span> name=<span class="st">&quot;id&quot;</span> value=<span class="st">&quot;&lt;?php echo </span><span class="kw">$data</span><span class="st">-&gt;kissa-&gt;getId(); ?&gt;&quot;</span>&gt;</code></pre>
 </section>
 <section id="poistotoiminnot" class="level2">
 <h2>Poistotoiminnot</h2>

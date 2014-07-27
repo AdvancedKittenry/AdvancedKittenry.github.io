@@ -214,11 +214,11 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <p>Testataksesi htdocs-nettisivutilaasi luo sinne tiedosto index.php ja sijoita sinne jotain seuraavantapaista:</p>
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span> 
   <span class="kw">$tervehdys</span> = <span class="st">&quot;Moi maailma!&quot;</span><span class="ot">;</span> 
-<span class="kw">?&gt;</span>&lt;!DOCTYPE HTML&gt;
+<span class="kw">?&gt;</span>&lt;!<span class="kw">DOCTYPE</span> <span class="kw">HTML</span>&gt;
 &lt;html&gt;
-&lt;head&gt;&lt;title&gt;<span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$tervehdys</span><span class="ot">;</span> <span class="kw">?&gt;</span>&lt;/title&gt;&lt;/head&gt;
+&lt;head&gt;&lt;title&gt;&lt;<span class="ot">?</span>php <span class="fu">echo</span> <span class="kw">$tervehdys</span><span class="ot">;</span> <span class="kw">?&gt;</span>&lt;/title&gt;&lt;/head&gt;
 &lt;body&gt;
-  &lt;h1&gt;<span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$tervehdys</span><span class="ot">;</span> <span class="kw">?&gt;</span>&lt;/h1&gt;
+  &lt;h1&gt;&lt;<span class="ot">?</span>php <span class="fu">echo</span> <span class="kw">$tervehdys</span><span class="ot">;</span> <span class="kw">?&gt;</span>&lt;/h1&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
 <p>Tiedoston voi luoda esimerkiksi komentorivillä käyttämällä <code>nano</code>-tekstieditoria. Voit myös siirtää palvelimelle muualla tekemäsi tiedoston käyttämällä <a href="../etamuokkaus.html">nautilusta</a> tai <a href="http://winscp.net/eng/index.php">winSCP:tä</a>.</p>

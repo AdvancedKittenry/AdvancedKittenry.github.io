@@ -352,8 +352,8 @@ ResultSet rs = kysely.<span class="fu">executeQuery</span>();</code></pre>
 <p>Malliluokan koodia käyttäen listaesimerkin alku voi näyttää esimerkiksi seuraavalta:</p>
 <pre class="sourceCode java"><code class="sourceCode java">List&lt;Kayttaja&gt; kayttajat = Kayttaja.<span class="fu">getKayttajat</span>();</code></pre>
 <p>Ja koska kyseessä ovat oliot, pitää niitä listatessa tulostaa jokin merkkijono eikä itse oliota:</p>
-<pre class="sourceCode php"><code class="sourceCode php">for (Kayttaja kayttaja : kayttajat) {
-  out.println(&quot;&lt;li&gt;&quot;+kayttaja.getUsername()+&quot;&lt;/li&gt;&quot;);
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">for</span> <span class="ot">(</span>Kayttaja kayttaja : kayttajat<span class="ot">)</span> {
+  out.println<span class="ot">(</span><span class="st">&quot;&lt;li&gt;&quot;</span>+kayttaja.getUsername<span class="ot">()</span>+<span class="st">&quot;&lt;/li&gt;&quot;</span><span class="ot">);</span>
 }</code></pre>
 <section class="alert alert-warning"><h3>
 Hyvä tietää

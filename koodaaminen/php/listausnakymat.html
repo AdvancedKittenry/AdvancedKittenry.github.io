@@ -221,11 +221,11 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <span class="st">  ));</span></code></pre>
 <p>Nyt jos tämä muuttuja on käytettävissä näkymätiedostossa, voimme näyttää nimet näin:</p>
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span> <span class="kw">foreach</span><span class="ot">(</span><span class="kw">$data</span>-&gt;kissat <span class="kw">as</span> <span class="kw">$kissa</span><span class="ot">)</span>: <span class="kw">?&gt;</span>
-&lt;div class=&quot;kissa&quot;&gt;
+&lt;div <span class="kw">class</span>=<span class="st">&quot;kissa&quot;</span>&gt;
   Kissan nimi on
-  <span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$kissa</span>-&gt;getNimi<span class="ot">();</span> <span class="kw">?&gt;</span>
+  &lt;<span class="ot">?</span>php <span class="fu">echo</span> <span class="kw">$kissa</span>-&gt;getNimi<span class="ot">();</span> <span class="kw">?&gt;</span>
 &lt;/div&gt;
-<span class="kw">&lt;?php</span> <span class="kw">endforeach</span><span class="ot">;</span> <span class="kw">?&gt;</span></code></pre>
+&lt;<span class="ot">?</span>php <span class="kw">endforeach</span><span class="ot">;</span> <span class="kw">?&gt;</span></code></pre>
 <section id="käyttäjän-syöttämien-merkkijonojen-näyttäminen" class="level3">
 <h3>Käyttäjän syöttämien merkkijonojen näyttäminen</h3>
 <p>Sivunäkymiä näytettäessä kannattaa varmistaa, etteivät käyttäjän syöttämät HTML-koodinpätkät, lainausmerkit yms. sotke sivujen rakennetta.</p>
@@ -238,7 +238,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <p>Listauksesta halutaan päästä usein katselemaan tarkemmin jonkin asian tietoja, siten että nämä yksityiskohtaisemmat tiedot ovat omalla sivullaan.</p>
 <p>Nämä sivut toteutetaan omana kontrolleri/näkymä-parinaan, jotka ottavat GET-parametrina vastaan tiedon siitä mitä asiaa tarkkaanottaen halutaan sivulla näytettävän. Parametrissa välitetään tietokohteen pääavaimen arvo, eli yleensä jonkinsorttinen id-numero</p>
 <p>Alla esimerkki linkistä tietosivulle. Usein linkit tietosivuille sijoitetaan listauksessa siihen, missä listatun asian nimi näkyy:</p>
-<pre class="sourceCode php"><code class="sourceCode php">&lt;a href=&quot;Kissa?id=<span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$kissa</span>-&gt;getId<span class="ot">()</span> <span class="kw">?&gt;</span>&quot;&gt;<span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$kissa</span>-&gt;getNimi<span class="ot">()</span> <span class="kw">?&gt;</span>&lt;/a&gt;</code></pre>
+<pre class="sourceCode php"><code class="sourceCode php">&lt;a href=<span class="st">&quot;Kissa?id=&lt;?php echo </span><span class="kw">$kissa</span><span class="st">-&gt;getId() ?&gt;&quot;</span>&gt;&lt;<span class="ot">?</span>php <span class="fu">echo</span> <span class="kw">$kissa</span>-&gt;getNimi<span class="ot">()</span> <span class="kw">?&gt;</span>&lt;/a&gt;</code></pre>
 <p>Parametri otetaan vastaan <code>$_GET</code>-taulukosta. Koska haluamme id-numeron, kannattaa parametrina saatu merkkijono erikseen tyyppimuuntaa sellaiseksi:</p>
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">$id</span> = <span class="dt">(int)</span><span class="kw">$_GET</span><span class="ot">[</span><span class="st">&#39;id&#39;</span><span class="ot">];</span></code></pre>
 <p>Kun id-numero on parsittu pyydetään malliluokkaa etsimään numeroa vastaava rivi kannasta ja palauttamaan se oliona.</p>

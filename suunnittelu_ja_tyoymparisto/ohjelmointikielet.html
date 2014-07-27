@@ -301,13 +301,13 @@ luku = nemi;</code></pre>
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>
   <span class="fu">header</span><span class="ot">(</span><span class="st">&quot;Content-type: text/html;charset=UTF-8&quot;</span><span class="ot">);</span>
   <span class="kw">$pagetitle</span> =  <span class="st">&quot;Hello World!&quot;</span><span class="ot">;</span>
-<span class="kw">?&gt;</span>&lt;!DOCTYPE HTML&gt;
+<span class="kw">?&gt;</span>&lt;!<span class="kw">DOCTYPE</span> <span class="kw">HTML</span>&gt;
 &lt;html&gt;
   &lt;head&gt;
-    &lt;title&gt;<span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$pagetitle</span><span class="ot">;</span> <span class="kw">?&gt;</span>&lt;/title&gt;
+    &lt;title&gt;&lt;<span class="ot">?</span>php <span class="fu">echo</span> <span class="kw">$pagetitle</span><span class="ot">;</span> <span class="kw">?&gt;</span>&lt;/title&gt;
   &lt;/head&gt;
   &lt;body&gt;
-    &lt;h1&gt;<span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$pagetitle</span><span class="ot">;</span> <span class="kw">?&gt;</span>&lt;/h1&gt;
+    &lt;h1&gt;&lt;<span class="ot">?</span>php <span class="fu">echo</span> <span class="kw">$pagetitle</span><span class="ot">;</span> <span class="kw">?&gt;</span>&lt;/h1&gt;
   &lt;/body&gt;
 &lt;/html&gt;</code></pre>
 <p>Yllä oleva sivu toimii sellaisenaan, kun osoittaa selaimensa osoitteeseen, jossa helloworld.php-tiedosto sijaitsee. Esim. <code>sivusto.fi/php-sovelluksen/osoite/helloworld.php</code>. Javalla vastaavan tekeminen on hieman monimutkaisempaa ja vaatii Servlet-luokan ja template-tiedoston:</p>

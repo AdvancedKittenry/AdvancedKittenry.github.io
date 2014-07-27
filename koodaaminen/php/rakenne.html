@@ -227,12 +227,12 @@ users.php (Käyttäjänhallinnan kontrolleri)
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>
   <span class="kw">$yhteys</span> = <span class="kw">new</span> <span class="kw">PDO</span><span class="ot">(</span><span class="st">&#39;pgsql:&#39;</span><span class="ot">);</span>
   <span class="kw">$nimi</span> = <span class="st">&#39;Matti&#39;</span><span class="ot">;</span>
-<span class="kw">?&gt;</span>&lt;!DOCTYPE html&gt;
+<span class="kw">?&gt;</span>&lt;!<span class="kw">DOCTYPE</span> html&gt;
 &lt;html&gt;
-  &lt;head&gt;&lt;title&gt;PHP Page&lt;/title&gt;&lt;/head&gt;
+  &lt;head&gt;&lt;title&gt;<span class="kw">PHP</span> Page&lt;/title&gt;&lt;/head&gt;
   &lt;body&gt;
-    &lt;h1&gt;Hello <span class="kw">&lt;?php</span> <span class="kw">$nimi</span><span class="ot">;</span> <span class="kw">?&gt;</span>&lt;/h1&gt;
-    <span class="kw">&lt;?php</span> 
+    &lt;h1&gt;Hello &lt;<span class="ot">?</span>php <span class="kw">$nimi</span><span class="ot">;</span> <span class="kw">?&gt;</span>&lt;/h1&gt;
+    &lt;<span class="ot">?</span>php 
 
       <span class="kw">$sql</span> = <span class="st">&quot;SELECT id, nimi, osoite FROM kayttajat WHERE ika &gt;= ? and sukunimi = ?&quot;</span><span class="ot">;</span>
       <span class="kw">$kysely</span> = <span class="kw">$yhteys</span>-&gt;prepare<span class="ot">(</span><span class="kw">$sql</span><span class="ot">);</span>

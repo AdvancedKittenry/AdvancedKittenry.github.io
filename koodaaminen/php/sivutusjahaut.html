@@ -238,14 +238,14 @@ code > span.er { color: #ff0000; font-weight: bold; }
   <span class="kw">$sivuja</span> = <span class="fu">ceil</span><span class="ot">(</span><span class="kw">$kissaLkm</span>/<span class="kw">$montakokissaasivulla</span><span class="ot">);</span></code></pre>
 <p>Itse sivunavigaatio voi koostua aivan tavallisista linkeistä:</p>
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span> <span class="kw">if</span> <span class="ot">(</span><span class="kw">$data</span>-&gt;sivu &gt; <span class="dv">1</span><span class="ot">)</span>: <span class="kw">?&gt;</span>
-&lt;a href=&quot;kissalista.php?sivu=<span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$data</span>-&gt;sivu - <span class="dv">1</span><span class="ot">;</span> <span class="kw">?&gt;</span>&quot;&gt;Edellinen sivu&lt;/a&gt;
-<span class="kw">&lt;?php</span> <span class="kw">endif</span><span class="ot">;</span> <span class="kw">?&gt;</span>
+&lt;a href=<span class="st">&quot;kissalista.php?sivu=&lt;?php echo </span><span class="kw">$data</span><span class="st">-&gt;sivu - 1; ?&gt;&quot;</span>&gt;Edellinen sivu&lt;/a&gt;
+&lt;<span class="ot">?</span>php <span class="kw">endif</span><span class="ot">;</span> <span class="kw">?&gt;</span>
 <span class="kw">&lt;?php</span> <span class="kw">if</span> <span class="ot">(</span><span class="kw">$data</span>-&gt;sivu &lt; <span class="kw">$data</span>-&gt;sivuja<span class="ot">)</span>: <span class="kw">?&gt;</span>
-&lt;a href=&quot;kissalista.php?sivu=<span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$data</span>-&gt;sivu + <span class="dv">1</span><span class="ot">;</span> <span class="kw">?&gt;</span>&quot;&gt;Seuraava sivu&lt;/a&gt;
-<span class="kw">&lt;?php</span> <span class="kw">endif</span><span class="ot">;</span> <span class="kw">?&gt;</span></code></pre>
+&lt;a href=<span class="st">&quot;kissalista.php?sivu=&lt;?php echo </span><span class="kw">$data</span><span class="st">-&gt;sivu + 1; ?&gt;&quot;</span>&gt;Seuraava sivu&lt;/a&gt;
+&lt;<span class="ot">?</span>php <span class="kw">endif</span><span class="ot">;</span> <span class="kw">?&gt;</span></code></pre>
 <p>On myös hyödyllistä kertoa käyttäjälle monennellako sivulla ollaan ja paljonko kissoja on:</p>
-<pre class="sourceCode php"><code class="sourceCode php">Yhteensä <span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$kissaLkm</span><span class="ot">;</span> <span class="kw">?&gt;</span> kissaa. 
-Olet sivulla <span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$data</span>-&gt;sivu<span class="ot">;</span> <span class="kw">?&gt;</span>/<span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$data</span>-&gt;sivuja<span class="ot">;</span> <span class="kw">?&gt;</span>.</code></pre>
+<pre class="sourceCode php"><code class="sourceCode php">Yhteensä &lt;<span class="ot">?</span>php <span class="fu">echo</span> <span class="kw">$kissaLkm</span><span class="ot">;</span> <span class="kw">?&gt;</span> kissaa. 
+Olet sivulla &lt;<span class="ot">?</span>php <span class="fu">echo</span> <span class="kw">$data</span>-&gt;sivu<span class="ot">;</span> <span class="kw">?&gt;</span>/&lt;<span class="ot">?</span>php <span class="fu">echo</span> <span class="kw">$data</span>-&gt;sivuja<span class="ot">;</span> <span class="kw">?&gt;</span>.</code></pre>
 </section>
 </section>
 <section id="hakulomakkeet" class="level2">

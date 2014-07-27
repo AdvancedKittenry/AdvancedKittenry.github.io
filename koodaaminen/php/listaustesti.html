@@ -219,15 +219,15 @@ Tiivistelmä:
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>
 <span class="co">//Lista asioista array-tietotyyppiin laitettuna:</span>
 <span class="kw">$lista</span> = <span class="fu">array</span><span class="ot">(</span><span class="st">&quot;Kirahvi&quot;</span><span class="ot">,</span> <span class="st">&quot;Trumpetti&quot;</span><span class="ot">,</span> <span class="st">&quot;Jeesus&quot;</span><span class="ot">,</span> <span class="st">&quot;Parta&quot;</span><span class="ot">);</span>
-<span class="kw">?&gt;</span>&lt;!DOCTYPE HTML&gt;
+<span class="kw">?&gt;</span>&lt;!<span class="kw">DOCTYPE</span> <span class="kw">HTML</span>&gt;
 &lt;html&gt;
   &lt;head&gt;&lt;title&gt;Otsikko&lt;/title&gt;&lt;/head&gt;
   &lt;body&gt;
     &lt;h1&gt;Listaelementtitesti&lt;/h1&gt;
     &lt;ul&gt;
-    <span class="kw">&lt;?php</span> <span class="kw">foreach</span><span class="ot">(</span><span class="kw">$lista</span> <span class="kw">as</span> <span class="kw">$asia</span><span class="ot">)</span> { <span class="kw">?&gt;</span>
-      &lt;li&gt;<span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$asia</span><span class="ot">;</span> <span class="kw">?&gt;</span>&lt;/li&gt;
-    <span class="kw">&lt;?php</span> } <span class="kw">?&gt;</span>
+    &lt;<span class="ot">?</span>php <span class="kw">foreach</span><span class="ot">(</span><span class="kw">$lista</span> <span class="kw">as</span> <span class="kw">$asia</span><span class="ot">)</span> { <span class="kw">?&gt;</span>
+      &lt;li&gt;&lt;<span class="ot">?</span>php <span class="fu">echo</span> <span class="kw">$asia</span><span class="ot">;</span> <span class="kw">?&gt;</span>&lt;/li&gt;
+    &lt;<span class="ot">?</span>php } <span class="kw">?&gt;</span>
     &lt;/ul&gt;
   &lt;/body&gt;
 &lt;/html&gt;</code></pre>
@@ -237,14 +237,14 @@ Tiivistelmä:
 <div class="col-md-6">
 <p><strong>Normaali foreach</strong></p>
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span> <span class="kw">foreach</span><span class="ot">(</span><span class="kw">$lista</span> <span class="kw">as</span> <span class="kw">$asia</span><span class="ot">)</span> { <span class="kw">?&gt;</span>
-  &lt;li&gt;<span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$asia</span><span class="ot">;</span> <span class="kw">?&gt;</span>&lt;/li&gt;
-<span class="kw">&lt;?php</span> } <span class="kw">?&gt;</span></code></pre>
+  &lt;li&gt;&lt;<span class="ot">?</span>php <span class="fu">echo</span> <span class="kw">$asia</span><span class="ot">;</span> <span class="kw">?&gt;</span>&lt;/li&gt;
+&lt;<span class="ot">?</span>php } <span class="kw">?&gt;</span></code></pre>
 </div>
 <div class="col-md-6">
 <p><strong>HTML:n sekaan sopivampi foreach</strong></p>
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span> <span class="kw">foreach</span><span class="ot">(</span><span class="kw">$lista</span> <span class="kw">as</span> <span class="kw">$asia</span><span class="ot">)</span>: <span class="kw">?&gt;</span>
-  &lt;li&gt;<span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$asia</span><span class="ot">;</span> <span class="kw">?&gt;</span>&lt;/li&gt;
-<span class="kw">&lt;?php</span> <span class="kw">endforeach</span><span class="ot">;</span> <span class="kw">?&gt;</span></code></pre>
+  &lt;li&gt;&lt;<span class="ot">?</span>php <span class="fu">echo</span> <span class="kw">$asia</span><span class="ot">;</span> <span class="kw">?&gt;</span>&lt;/li&gt;
+&lt;<span class="ot">?</span>php <span class="kw">endforeach</span><span class="ot">;</span> <span class="kw">?&gt;</span></code></pre>
 </div>
 </div>
 <p>Huomaa kaksoispiste foreach-luupin jälkeen ja puolipiste endforeach-sanan jälkeen.</p>
@@ -349,8 +349,8 @@ Vinkki
 
 <span class="co">//Lista asioista array-tietotyyppiin laitettuna:</span>
 <span class="kw">$lista</span> = Kayttaja::getKayttajat<span class="ot">();</span>
-<span class="kw">?&gt;</span>&lt;!DOCTYPE HTML&gt;
-...</code></pre>
+<span class="kw">?&gt;</span>&lt;!<span class="kw">DOCTYPE</span> <span class="kw">HTML</span>&gt;
+<span class="st">...</span></code></pre>
 <p>Ja koska kyseessä ovat oliot, pitää niitä listatessa tulostaa jokin merkkijono eikä itse oliota:</p>
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$asia</span>-&gt;getUsername<span class="ot">();</span> <span class="kw">?&gt;</span></code></pre>
 <section class="alert alert-warning"><h3>

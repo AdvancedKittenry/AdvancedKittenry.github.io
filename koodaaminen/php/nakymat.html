@@ -204,15 +204,15 @@ Tiivistelmä:
 <section id="näkymätiedostot" class="level2">
 <h2>Näkymätiedostot</h2>
 <p>PHP:ssä näkyminä käytetään tiedostoja, jotka koostuvat pääasiassa HTML-koodista, jonka seassa on <?php ?>-tägien välissä lyhyitä PHP-koodinpätkiä. Yksinkertaisimmillaan PHP-näkymätiedosto näyttää tältä:</p>
-<pre class="sourceCode php"><code class="sourceCode php">&lt;!DOCTYPE html&gt;
+<pre class="sourceCode php"><code class="sourceCode php">&lt;!<span class="kw">DOCTYPE</span> html&gt;
 &lt;html&gt;
   &lt;head&gt;
-    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;
-    &lt;title&gt;PHP Page&lt;/title&gt;
+    &lt;meta http-equiv=<span class="st">&quot;Content-Type&quot;</span> content=<span class="st">&quot;text/html; charset=UTF-8&quot;</span>&gt;
+    &lt;title&gt;<span class="kw">PHP</span> Page&lt;/title&gt;
   &lt;/head&gt;
   &lt;body&gt;
     &lt;h1&gt;Hello World!&lt;/h1&gt;
-    <span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="st">&quot;Some content here&quot;</span><span class="ot">;</span> <span class="kw">?&gt;</span>
+    &lt;<span class="ot">?</span>php <span class="fu">echo</span> <span class="st">&quot;Some content here&quot;</span><span class="ot">;</span> <span class="kw">?&gt;</span>
   &lt;/body&gt;
 &lt;/html&gt;</code></pre>
 <p>Helpoin tapa käyttää näkymiä on käyttää <a href="http://php.net/manual/en/function.include.php">include- ja require-funktiota</a> Nämä funktiot sisällyttävät parametrina annetun tiedostonimen php-koodin nykyisen tiedoston suoritukseen siihen kohtaan, jossa include-suoritetaan. Tällöin sisällytetyssä tiedostossa näkyvät samat muuttujat, kuin sen sisällyttäneessä tiedostossa.</p>
@@ -237,17 +237,17 @@ Lisätietoa
 <p>Tämän rungon koodia ei turhaan kannata toistaa, vaan se sijoitetaan omaan uudelleenkäytettävään tiedostoonsa.</p>
 <p>PHP:llä tälläisille uudelleenkäytettävät HTML-pohjille ei ole mitään yleisesti käytettyä standarditoteutusta. Yleensä ne toteutetaan jonkinlaisella näkymäluokalla.</p>
 <p>Eräs suhteellisen yksinkertainen tapa on toteuttaa pohja siten että sijoitetaan pohjatiedostoon kaikki sivujen sisällön ympärillä pyörivä HTML-koodi ja laitetaan itse sisällön paikalle require-kutsu:</p>
-<pre class="sourceCode php"><code class="sourceCode php">&lt;!DOCTYPE HTML&gt;
+<pre class="sourceCode php"><code class="sourceCode php">&lt;!<span class="kw">DOCTYPE</span> <span class="kw">HTML</span>&gt;
 &lt;html&gt;
-...html-koodia...
-  <span class="kw">&lt;?php</span> 
+<span class="st">...</span>html-koodia<span class="st">...</span>
+  &lt;<span class="ot">?</span>php 
     <span class="co">/* HTML-rungon keskellä on sivun sisältö, </span>
 <span class="co">     * joka haetaan sopivasta näkymätiedostosta.</span>
 <span class="co">     * Oikean näkymän tiedostonimi on tallennettu muuttujaan $sivu.</span>
 <span class="co">     */</span>
     <span class="kw">require</span> <span class="st">&#39;views/&#39;</span>.<span class="kw">$sivu</span>.<span class="st">&#39;.php&#39;</span><span class="ot">;</span> 
   <span class="kw">?&gt;</span>
-...html-koodia...
+<span class="st">...</span>html-koodia<span class="st">...</span>
 &lt;/html&gt;</code></pre>
 <p>Nyt pohjan ja näkymätiedoston yhdessä käyttämiseen riittää, että tallennetaan näkymätiedoston nimi näkymää käyttävässä sivussa muuttujaan <code>$sivu</code> ja sisällytetään pohjatiedosto <code>require</code>-funktiolla.</p>
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>
@@ -297,7 +297,7 @@ Lisätietoa
 <p>Sivupohjatiedostoon kannattaa laittaa linkit kaikkiin sovelluksen käyttämiin tyylitiedostoihin. Linkityksessä kannattaa käyttää <a href="../..//suunnittelu_ja_tyoymparisto/kayttoliittyman_toteutus.html#linkitys">relatiivisia osoitteita</a>, jolloin sovellus toimii riippumatta siitä mihin osoitteeseen se pystytetään.</p>
 <pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;link</span><span class="ot"> href=</span><span class="st">&quot;css/main.css&quot;</span><span class="ot"> rel=</span><span class="st">&quot;stylesheet&quot;</span><span class="kw">&gt;</span></code></pre>
 <p>Mikäli sovelluksesi osoitteiden hakemistorakenne on kuitenkin monitasoinen, joudut määrittämään osoitteet palvelimen juuren suhteen. Tällöin on järkevää laittaa sovelluksen juuren osoite yhteen paikkaan, josta sen saa vaikkapa funktiokutsulla helposti käyttöön.</p>
-<pre class="sourceCode php"><code class="sourceCode php">&lt;link href=&quot;<span class="kw">&lt;?php</span> <span class="fu">echo</span> sovelluksenJuuriosoite<span class="ot">();</span>  <span class="kw">?&gt;</span>/css/main.css&quot; rel=&quot;stylesheet&quot;&gt;</code></pre>
+<pre class="sourceCode php"><code class="sourceCode php">&lt;<span class="fu">link</span> href=<span class="st">&quot;&lt;?php echo sovelluksenJuuriosoite();  ?&gt;/css/main.css&quot;</span> rel=<span class="st">&quot;stylesheet&quot;</span>&gt;</code></pre>
 <p>Ylläoleva funktio pitää tietenkin määritellä jonnekin erikseen. Se kannattaa sijoittaa yleiskäyttöisten funktioiden kanssa samaan tiedostoon ja dokumentoida dokumentaatioon.</p>
 <p>Tietokantasovelluksen kokoisissa nettisovelluksissa ylläolevan tapaisen funktion kirjoittaminen on kuitenkin harvoin tarpeellista, sillä relatiiviset osoitteet riittävät yleensä hyvin.</p>
 </section>
@@ -325,11 +325,11 @@ Lisätietoa
   <span class="ot">));</span>
 }</code></pre>
 <p>Jolloin näkymässä voimme kirjoittaa HTML-koodin sekaan:</p>
-<pre class="sourceCode php"><code class="sourceCode php">&lt;div class=&quot;alert alert-danger&quot;&gt;<span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$data</span>-&gt;virhe<span class="ot">;</span> <span class="kw">?&gt;</span>&lt;/div&gt;</code></pre>
+<pre class="sourceCode php"><code class="sourceCode php">&lt;div <span class="kw">class</span>=<span class="st">&quot;alert alert-danger&quot;</span>&gt;&lt;<span class="ot">?</span>php <span class="fu">echo</span> <span class="kw">$data</span>-&gt;virhe<span class="ot">;</span> <span class="kw">?&gt;</span>&lt;/div&gt;</code></pre>
 <p>Näkymissä voi käyttää myös erilaisia koodirakenteita kuten ehtolausekkeita:</p>
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span> <span class="kw">if</span> <span class="ot">(</span>!<span class="fu">empty</span><span class="ot">(</span><span class="kw">$data</span>-&gt;virheViesti<span class="ot">))</span>: <span class="kw">?&gt;</span>
-  &lt;div class=&quot;alert alert-danger&quot;&gt;Virhe! <span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$data</span>-&gt;virheViesti<span class="ot">;</span> <span class="kw">?&gt;</span>&lt;/div&gt;
-<span class="kw">&lt;?php</span> <span class="kw">endif</span><span class="ot">;</span> <span class="kw">?&gt;</span></code></pre>
+  &lt;div <span class="kw">class</span>=<span class="st">&quot;alert alert-danger&quot;</span>&gt;Virhe! &lt;<span class="ot">?</span>php <span class="fu">echo</span> <span class="kw">$data</span>-&gt;virheViesti<span class="ot">;</span> <span class="kw">?&gt;</span>&lt;/div&gt;
+&lt;<span class="ot">?</span>php <span class="kw">endif</span><span class="ot">;</span> <span class="kw">?&gt;</span></code></pre>
 <p>Yllä oleva koodi näyttää virheviestin ja siihen liittyvän div-elementin vain jos muuttuja <code>virheViesti</code> on asetettu. Huomaa, että PHP:ssä on olemassa nimenomaan HTML:än seassa käyttöä varten <a href="http://php.net/manual/en/control-structures.alternative-syntax.php">vaihtoehtoinen syntaksi if-lauseelle</a>.</p>
 <section class="alert alert-info"><h3>
 Lisätietoa

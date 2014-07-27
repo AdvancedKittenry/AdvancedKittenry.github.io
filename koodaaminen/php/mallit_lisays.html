@@ -334,8 +334,8 @@ Tiivistelmä:
 <h2>Käytettävä lisäyslomake</h2>
 <p>Lomakkeen kontrolleri ohjaa aina takaisin lomakesivulle, mikäli lomake on virheellisesti täytetty. Lomakkeessa on tällöin näkyvissä ne tiedot, jotka käyttäjä siihen syötti.</p>
 <p>Tämän takia lomake kannatta toteuttaa siten, että sille annetaan aina jokin olio, jonka tietoja lomakkeen input-tägit näyttävät.</p>
-<pre class="sourceCode php"><code class="sourceCode php">&lt;input type=&quot;text&quot; class=&quot;form-control&quot; name=&quot;nimi&quot; placeholder=&quot;Kissan nimi&quot; 
-value=&quot;<span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$data</span>-&gt;kissa-&gt;getNimi<span class="ot">();</span> <span class="kw">?&gt;</span>&quot;&gt;</code></pre>
+<pre class="sourceCode php"><code class="sourceCode php">&lt;input type=<span class="st">&quot;text&quot;</span> <span class="kw">class</span>=<span class="st">&quot;form-control&quot;</span> name=<span class="st">&quot;nimi&quot;</span> placeholder=<span class="st">&quot;Kissan nimi&quot;</span> 
+value=<span class="st">&quot;&lt;?php echo </span><span class="kw">$data</span><span class="st">-&gt;kissa-&gt;getNimi(); ?&gt;&quot;</span>&gt;</code></pre>
 <p>Silloin kun käyttäjä ei ole vielä laittanut lomakkeeseen mitään, voi siinä näyttää vain tyhjän olion:</p>
 <pre class="sourceCode php"><code class="sourceCode php">naytaNakymä<span class="ot">(</span><span class="st">&quot;kissalomake&quot;</span><span class="ot">,</span> <span class="fu">array</span><span class="ot">(</span>
   <span class="st">&#39;kissa&#39;</span> =&gt; <span class="kw">new</span> Kissa<span class="ot">(),</span>
@@ -355,10 +355,10 @@ value=&quot;<span class="kw">&lt;?php</span> <span class="fu">echo</span> <span 
 <h3>Viiteavaimet lomakkeissa</h3>
 <p>Jos muokattavassa oliossa on viite johonkin toiseen tauluun täytyy käyttäjälle näyttää lomakkeessa jonkinlainen valinta eri vaihtoehtojen välillä. Helpoin tapa on käyttää <a href="http://www.w3schools.com/TAGS/tag_select.asp">select-elementin</a> kautta tehtävää pudotusvalikkoa:</p>
 <pre class="sourceCode php"><code class="sourceCode php">&lt;label&gt;Rotu&lt;/label&gt;
-&lt;select name=&quot;rotu_id&quot;&gt;
-<span class="kw">&lt;?php</span> <span class="kw">foreach</span><span class="ot">(</span>Kissarodut::haeKaikki<span class="ot">()</span> <span class="kw">as</span> <span class="kw">$rotu</span><span class="ot">)</span>: <span class="kw">?&gt;</span>
-  &lt;option value=&quot;<span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$rotu</span>-&gt;getId<span class="ot">();</span> <span class="kw">?&gt;</span>&quot;&gt;<span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$rotu</span>-&gt;getNimi<span class="ot">();</span> <span class="kw">?&gt;</span>&lt;/option&gt;
-<span class="kw">&lt;?php</span> <span class="kw">endforeach</span><span class="ot">;</span> <span class="kw">?&gt;</span>
+&lt;select name=<span class="st">&quot;rotu_id&quot;</span>&gt;
+&lt;<span class="ot">?</span>php <span class="kw">foreach</span><span class="ot">(</span>Kissarodut::haeKaikki<span class="ot">()</span> <span class="kw">as</span> <span class="kw">$rotu</span><span class="ot">):</span> <span class="kw">?&gt;</span>
+  &lt;option value=<span class="st">&quot;&lt;?php echo </span><span class="kw">$rotu</span><span class="st">-&gt;getId(); ?&gt;&quot;</span>&gt;&lt;<span class="ot">?</span>php <span class="fu">echo</span> <span class="kw">$rotu</span>-&gt;getNimi<span class="ot">();</span> <span class="kw">?&gt;</span>&lt;/option&gt;
+&lt;<span class="ot">?</span>php <span class="kw">endforeach</span><span class="ot">;</span> <span class="kw">?&gt;</span>
 &lt;/select&gt;</code></pre>
 <p>Lopputulos näyttää osapuilleen seuraavalta ja on hyvin helppokäyttöinen:</p>
 <p><label>Rotu</label> <select name="rotu_id"> <option value="1">Maatiaiskissa</option> <option value="2">Persialainen</option> <option value="3">Kissabussi</option> <option value="4">Siperiankissa</option> <option value="5">Pyhä birma</option> <option value="6">Elävä lelutiikeri</option> </select></p>
@@ -379,10 +379,10 @@ value=&quot;<span class="kw">&lt;?php</span> <span class="fu">echo</span> <span 
 <p>Kun istuntoon on asetettu virhe, näkyy se seuraavalla käyttäjän avaamalla sivulla. Toteutuksen voi tehdä esim. pohjatiedostossa olevalla koodilla:</p>
 <p><strong>Näkymien pohjatiedostossa</strong></p>
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span> <span class="kw">if</span> <span class="ot">(</span>!<span class="fu">empty</span><span class="ot">(</span><span class="kw">$_SESSION</span><span class="ot">[</span><span class="st">&#39;ilmoitus&#39;</span><span class="ot">]))</span>: <span class="kw">?&gt;</span>
-  &lt;div class=&quot;alert alert-danger&quot;&gt;
-    <span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$_SESSION</span><span class="ot">[</span><span class="st">&#39;ilmoitus&#39;</span><span class="ot">];</span> <span class="kw">?&gt;</span>
+  &lt;div <span class="kw">class</span>=<span class="st">&quot;alert alert-danger&quot;</span>&gt;
+    &lt;<span class="ot">?</span>php <span class="fu">echo</span> <span class="kw">$_SESSION</span><span class="ot">[</span><span class="st">&#39;ilmoitus&#39;</span><span class="ot">];</span> <span class="kw">?&gt;</span>
   &lt;/div&gt;
-<span class="kw">&lt;?php</span>
+&lt;<span class="ot">?</span>php
   <span class="co">// Samalla kun viesti näytetään, se poistetaan istunnosta,</span>
   <span class="co">// ettei se näkyisi myöhemmin jollain toisella sivulla uudestaan.</span>
   <span class="fu">unset</span><span class="ot">(</span><span class="kw">$_SESSION</span><span class="ot">[</span><span class="st">&#39;ilmoitus&#39;</span><span class="ot">]);</span> 

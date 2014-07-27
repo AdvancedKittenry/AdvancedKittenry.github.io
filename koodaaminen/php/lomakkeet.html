@@ -269,9 +269,9 @@ Pidä mielessä!
 </div>
 <div class="col-md-7">
 <p><strong>Näkymä:</strong></p>
-<pre class="sourceCode php"><code class="sourceCode php">Käyttäjänimi:
-&lt;input type=&quot;text&quot; name=&quot;username&quot; 
- value=&quot;<span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$data</span>-&gt;kayttaja<span class="ot">;</span> <span class="kw">?&gt;</span>&quot; /&gt;</code></pre>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">K</span>äyttäjänimi:
+&lt;input type=<span class="st">&quot;text&quot;</span> name=<span class="st">&quot;username&quot;</span> 
+ value=<span class="st">&quot;&lt;?php echo </span><span class="kw">$data</span><span class="st">-&gt;kayttaja; ?&gt;&quot;</span> /&gt;</code></pre>
 </div>
 </div>
 <p>Ensimmäinen ongelma eli virheviestien näyttäminen on niin yleinen, että sitä varten kannattaa sijoittaa oma koodinsa sivupohjatiedostoon, sillä sitä tullaan oikeasti tarvitsemaan <em>lähes jokaisella sivulla</em>. Idea on samanlainen kuin käyttäjäkentän esitäyttämisessä, mutta koodi sijaitsee sivupohjassa:</p>
@@ -292,8 +292,8 @@ Pidä mielessä!
 }</code></pre>
 <p><strong>Sivupohja:</strong></p>
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span> <span class="kw">if</span> <span class="ot">(</span>!<span class="fu">empty</span><span class="ot">(</span><span class="kw">$data</span>-&gt;virhe<span class="ot">))</span>: <span class="kw">?&gt;</span>
-  &lt;div class=&quot;alert alert-danger&quot;&gt;<span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$data</span>-&gt;virhe<span class="ot">;</span> <span class="kw">?&gt;</span>&lt;/div&gt;
-<span class="kw">&lt;?php</span> <span class="kw">endif</span><span class="ot">;</span> <span class="kw">?&gt;</span></code></pre>
+  &lt;div <span class="kw">class</span>=<span class="st">&quot;alert alert-danger&quot;</span>&gt;&lt;<span class="ot">?</span>php <span class="fu">echo</span> <span class="kw">$data</span>-&gt;virhe<span class="ot">;</span> <span class="kw">?&gt;</span>&lt;/div&gt;
+&lt;<span class="ot">?</span>php <span class="kw">endif</span><span class="ot">;</span> <span class="kw">?&gt;</span></code></pre>
 <p>On hyvä idea tehdä virheviestit myös sille, että joko käyttäjää tai salasanaa ei ole syötetty ollenkaan.</p>
 <p>Lopullinen kontrollerin koodi voi olla vaikkapa tämän näköinen.</p>
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>
