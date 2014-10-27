@@ -1,22 +1,5 @@
 {
   "default": {
-    "instancename": "Syksy 2014, periodi II",
-    "aloitusluentopvm": "ma 27.10 klo 16-18 luokassa D122",
-    "instructoremail": "kumikumi@cs.helsinki.fi",
-    "deadline1": "su 2.11. klo 23:00",
-    "deadline2": "su 9.11. klo 23:00",
-    "deadline3": "su 16.11. klo 23:00",
-    "deadline4": "su 23.11. klo 23:00",
-    "deadline5": "su 30.11. klo 23:00",
-    "demodeadline": "Aika ja paikka päätetään myöhemmin",
-    "palautusdeadline": "su 14.12. klo 23:00",
-    "paja-ajat-intro":"Pajat pidetään luokassa B221. \
-    Myös henkilökohtaisia tapaamisia on mahdollista sopia ohjaajan kanssa.",
-    "paja-ajat-data":"[ \
-      ('?? klo ??-??', 'Mikko Kumara','B221') \
-      ]"
-  },
-  "2014-summer-II": {
     "instancename": "Loppukesä 2014",
     "aloitusluentopvm": "ma 28.7. klo 10-12 luokassa B221",
     "deadline1": "su 3.8. klo 23:00",
