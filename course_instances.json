@@ -13,7 +13,8 @@
     "palautusdeadline": "su 14.12. klo 23:00",
     "paja-ajat-intro":"Henkilökohtaisia tapaamisia on tarvittaessa mahdollista sopia ohjaajan kanssa irkin välityksellä tai sähköpostilla.",
     "paja-ajat-data":"[ \
-      ('?? klo ??-??', 'Mikko Kumara','B221') \
+      ('Ti klo 16-18', 'Mikko Kumara','BK107'), \
+      ('Pe klo 14-16', 'Mikko Kumara','BK107') \
       ]"
   },
   "2014-summer-II": {
