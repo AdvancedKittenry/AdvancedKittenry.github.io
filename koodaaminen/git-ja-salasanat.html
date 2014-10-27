@@ -171,13 +171,13 @@
 </header>
 <!-- order: 3.1 -->
 <!-- tags: viikko2 -->
-
 <p>Yksityiseksi tarkoitettujen salasanojen tallentaminen versionhallintaan ei ole ikinä kovin hyvä idea. Salasanoja sisältäviä tiedostoja ei useimmiten kuitenkaan kannata jättää versionhallinnasta poiskaan, sillä useimmiten niihin sisältyy muutakin oleellista informaatiota projektista.</p>
 <p>Yksinkertainen ja hyvin yleisesti käytetty tapa hoitaa ongelma, on luoda tarvittava salasanan sisältävä tiedosto kahdesti: ensiksi normaalina tiedostona, jossa on salasana, mutta jota ei laiteta versionhallintaan ja sitten salasanattomana .dist-tiedostopäätteellisenä versiona, joka laitetaan versionhallintaan.</p>
 <p>Esimerkiksi Javalla koodatessa tiedostoon <code>web/META-INF/context.xml</code> joutuu useimmiten sijoittamaan tietokannan salasanan. Laittamalla <code>.gitignore</code>-tiedostoon rivi <code>web/META-INF/context.xml</code> voit pyytää git:iä olemaan lisäämättä tätä tiedostoa versionhallintaan.</p>
 <p>Jotta versionhallintaa tarkasteleville jäisi kuitenkin jotain käsitystä puuttuvan tiedoston sisällöstä tehdään tiedostosta dist-tiedostopäätteellä varustettu kopio, <code>web/META-INF/context.xml.dist</code>, joka on muuten samanlainen kuin alkuperäinen <code>context.xml</code>, mutta ei sisällä salasanaa. Tätä kopiota ei tietenkään mainita <code>.gitignore</code>-tiedostossa.</p>
 <p>Näin repositorion kloonannut pystyy itse kopioimaan tiedoston paikalleen ja laittamaan siihen tarvittavan salasanan käsin.</p>
-<section class="alert alert-danger"><h3>
+<section class="alert alert-danger">
+<h3>
 Pidä mielessä!
 </h3>
 <p>Kun käytät <code>.dist</code>-päätteisiä tiedostoja, laita dokumentaation asennusohjeisiin maininta niiden sijainnista ja siitä mitä niihin pitää sijoittaa ohjelman käyttämiseksi.</p>

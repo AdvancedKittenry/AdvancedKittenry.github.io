@@ -191,8 +191,8 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <!-- order: 4 -->
 <script>addSectionLinks = true; </script>
 <!-- tags: viikko3-php -->
-
-<section class="alert alert-info"><h3>
+<section class="alert alert-info">
+<h3>
 Tiivistelmä:
 </h3>
 <ul>
@@ -200,7 +200,6 @@ Tiivistelmä:
 <li>Tee toinen näkymätiedosto, ja laita sivujesi yhteinen HTML-runko siihen. Tee luokka, jolla voit käyttää runkoa ja näkymää yhdessä.</li>
 </ul>
 </section>
-
 <section id="näkymätiedostot" class="level2">
 <h2>Näkymätiedostot</h2>
 <p>PHP:ssä näkyminä käytetään tiedostoja, jotka koostuvat pääasiassa HTML-koodista, jonka seassa on <?php ?>-tägien välissä lyhyitä PHP-koodinpätkiä. Yksinkertaisimmillaan PHP-näkymätiedosto näyttää tältä:</p>
@@ -216,19 +215,19 @@ Tiivistelmä:
   &lt;/body&gt;
 &lt;/html&gt;</code></pre>
 <p>Helpoin tapa käyttää näkymiä on käyttää <a href="http://php.net/manual/en/function.include.php">include- ja require-funktiota</a> Nämä funktiot sisällyttävät parametrina annetun tiedostonimen php-koodin nykyisen tiedoston suoritukseen siihen kohtaan, jossa include-suoritetaan. Tällöin sisällytetyssä tiedostossa näkyvät samat muuttujat, kuin sen sisällyttäneessä tiedostossa.</p>
-<section class="alert alert-info"><h3>
+<section class="alert alert-info">
+<h3>
 Lisätietoa
 </h3>
 <p>Ero <code>include</code>:n ja <code>require</code>:n välillä on se, että require ei anna skriptin suorituksen jatkua, mikäli haettua tiedostoa ei löydy.</p>
 <p>Funktioista on olemassa myös versiot <code>include_once</code> ja <code>require_once</code>, jotka varmistavat ettei samaa tiedostoa sisällytetä kahdesti. Käytä näitä versioita sisällyttäessäsi yleiskäyttöistä kirjastokoodia eli malleja ja muita tiedostoja <code>libs</code>-kansiosta.</p>
 </section>
-
 <p>Kokeile includea. Luo projektiisi <code>views</code>-kansio ja kopioi sinne html-demosi kirjautumislomake php-tiedostopäätteellä.</p>
 <p>Luo sitten sivu <code>login.php</code> tai suomeksi <code>kirjautuminen.php</code> projektisi juurikansioon ja laita sen sisällöksi seuraavanlainen koodinpätkä:</p>
 <p><strong>login.php</strong></p>
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span> 
   <span class="kw">require</span> <span class="st">&#39;views/login.php&#39;</span><span class="ot">;</span></code></pre>
-<p>Kokeile avata tämä sivu selaimella. Jos teet työtä usersilla URL on todennäköisesti <a href="http://tunnuksesi.users.cs.helsinki.fi/login.php">http://tunnuksesi.users.cs.helsinki.fi/login.php</a>.</p>
+<p>Kokeile avata tämä sivu selaimella. Jos teet työtä usersilla URL on todennäköisesti <a href="http://tunnuksesi.users.cs.helsinki.fi/login.php" class="uri">http://tunnuksesi.users.cs.helsinki.fi/login.php</a>.</p>
 <p>Selaimeesi pitäisi tulla sama kirjautumislomake kuin aikaisemminkin. Tämä on vielä melko tylsää, mutta jatketaan tekemällä näkymien tekemisestä helpompaa.</p>
 </section>
 <section id="template" class="level2">
@@ -331,7 +330,8 @@ Lisätietoa
   &lt;div <span class="kw">class</span>=<span class="st">&quot;alert alert-danger&quot;</span>&gt;Virhe! &lt;<span class="ot">?</span>php <span class="fu">echo</span> <span class="kw">$data</span>-&gt;virheViesti<span class="ot">;</span> <span class="kw">?&gt;</span>&lt;/div&gt;
 &lt;<span class="ot">?</span>php <span class="kw">endif</span><span class="ot">;</span> <span class="kw">?&gt;</span></code></pre>
 <p>Yllä oleva koodi näyttää virheviestin ja siihen liittyvän div-elementin vain jos muuttuja <code>virheViesti</code> on asetettu. Huomaa, että PHP:ssä on olemassa nimenomaan HTML:än seassa käyttöä varten <a href="http://php.net/manual/en/control-structures.alternative-syntax.php">vaihtoehtoinen syntaksi if-lauseelle</a>.</p>
-<section class="alert alert-info"><h3>
+<section class="alert alert-info">
+<h3>
 Lisätietoa
 </h3>
 <p>Funktiot <a href="http://php.net/manual/en/function.empty.php">empty</a> ja <a href="http://www.php.net/manual/en/function.isset.php">isset</a> ovat PHP:ssä parivaljakko, jolla yleisimmin tarkistetaan, onko jollekin muuttujalle asetettu arvo.</p>
@@ -342,8 +342,8 @@ Lisätietoa
     <span class="co">//Käyttäjä on syöttänyt lomakkeella ohjelmalle salasanan</span>
   }</code></pre>
 </section>
-
-<section class="alert alert-success small"><h3>
+<section class="alert alert-success small">
+<h3>
 Seuraavaksi:
 </h3>
 <p>Seuraavaksi otamme käyttäjämallin ja tekemämme näkymäarkkitehtuurin käyttöön <a href="lomakkeet.html">yksinkertaisen kirjautumisen</a> toteuttamiseen.</p>

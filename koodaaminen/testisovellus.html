@@ -171,22 +171,21 @@
 </header>
 <!-- order: 2 -->
 <!-- tags: viikko2 -->
-
 <p>Yhteystestiohjelma <em>ConnectionTest</em> on pieni tiivis ohjelmapaketti, jolla sekä kurssilainen että ohjaaja pystyvät tarkastelemaan työssä käytetyn tietokannan tilaa ja testaamaan tietokantayhteyttä.</p>
 <p>Sovellus osaa myös ilmoittaa alkeellisella tasolla toimiiko yhteys ja mikä meni pieleen, jos yhteys ei toimi.</p>
 <p>ConnectionTest ei ole varsinaisesti osa tietokantasovellustasi, vaan sen tarkoitus on toimia työkaluna tietokannan kanssa säätämiseen. Joillekin suora tietokantakomentorivin käyttö voi olla nopeampaa, joskaan ohjaajasi ei tätä tapaa sinun kantaasi pysty käyttämään.</p>
-<section class="alert alert-danger"><h3>
+<section class="alert alert-danger">
+<h3>
 Pidä mielessä!
 </h3>
 <p>Ladatessasi testisovelluksen tulet ajaneeksi omilla tunnuksillasi vierasta koodia. Varmista aina että lataat koodia luotettavasti lähteestä.</p>
 <p>ConnectionTest-ohjelma on kurssin ohjaajien ylläpitämä ja tarkoitettu täysin harmittomaksi työkaluksi. Kurssin ohjaajat eivät kuitenkaan ota mitään vastuuta siitä, että ohjelman käytön jälkeen leivänpaahtimesi syö kissasi tai mistään muistakaan ohjelman mahdollisesti tuottamista ikävyyksistä. Ohjelmaa kuitenkin pyritään kehittämään, mikäli siitä löytyy bugeja.</p>
 <p>Toisinsanoen: Käyttö omalla vastuulla. Bugiraportteja otetaan mieluusti vastaan.</p>
 </section>
-
 <p>Ohjelman lähdekoodia voi tutkia myös <a href="https://github.com/AdvancedKittenry/connectionTest">githubissa</a>, joskaan koodi ei ole aivan kaikista selkeintä mahdollista, johtuen yrityksistä pitää sovellus mahdollisimman tiiviinä. Ei siis välttämättä kannata ottaa testisovelluksen arkkitehtuurista oppia omaan työhön.</p>
 <section id="php-testisovellus" class="level2">
 <h2>PHP-testisovellus</h2>
-<p>PHP:llä toimiva testisovellus on helppokäyttöisyyden nimissä mahdutettu yhteen tiedostoon ja sen voi ladata osoitteesta <a href="https://raw.github.com/AdvancedKittenry/connectionTest/master/php/connectiontest.php">https://raw.github.com/AdvancedKittenry/connectionTest/master/php/connectiontest.php</a></p>
+<p>PHP:llä toimiva testisovellus on helppokäyttöisyyden nimissä mahdutettu yhteen tiedostoon ja sen voi ladata osoitteesta <a href="https://raw.github.com/AdvancedKittenry/connectionTest/master/php/connectiontest.php" class="uri">https://raw.github.com/AdvancedKittenry/connectionTest/master/php/connectiontest.php</a></p>
 <p>Eräs tapa asentaa sovellus on kirjautua usersille ja syöttää komentoriville</p>
 <pre><code>cd ~/htdocs
 wget https://raw.github.com/AdvancedKittenry/connectionTest/master/php/connectiontest.php
@@ -200,8 +199,9 @@ wget https://raw.github.com/AdvancedKittenry/connectionTest/master/php/connectio
 <p>Kun paketti on asennettu usersille sinun pitää vielä säätää XML-tiedostosta tietokannan yhteystiedot oikeiksi. Tomcat tekee tiedostosta oman kopionsa oletuksena polkuun <code>tomcat/conf/Catalina/localhost/ConnectionTest.xml</code>.</p>
 <p>Avaa tämä XML-tiedosto jollain ohjelmalla (esim. nano) ja korjaa siinä olevat tietokantatunnukset omiksesi. Korjausta vaativia kohtia on kolme ja niissä lukee isolla FIXME. Viimeinen kohta, <code>url=&quot;jdbc:postgresql://localhost/FIXME_dbname&quot;</code> kertoo Tomcatille tietokannan sijainnin ja nimen. Users-palvelimella tietokannan nimi on aina oma käyttäjätunnuksesi.</p>
 <p>Muista käynnistää tomcat uudelleen asetusten säätämisen jälkeen.</p>
-<p>Sovelluksen pitäisi asennuksen jälkeen pyöriä osoitteessa <a href="http://t-kayttajatunnuksesi.users.cs.helsinki.fi/ConnectionTest/">http://t-kayttajatunnuksesi.users.cs.helsinki.fi/ConnectionTest/</a></p>
-<section class="alert alert-success small"><h3>
+<p>Sovelluksen pitäisi asennuksen jälkeen pyöriä osoitteessa <a href="http://t-kayttajatunnuksesi.users.cs.helsinki.fi/ConnectionTest/" class="uri">http://t-kayttajatunnuksesi.users.cs.helsinki.fi/ConnectionTest/</a></p>
+<section class="alert alert-success small">
+<h3>
 Seuraavaksi:
 </h3>
 <p>Kun olet saanut testisovelluksen näyttämään kannasta tietoja, on aika koodata itse ensimmäinen tietokantalistaus.</p>

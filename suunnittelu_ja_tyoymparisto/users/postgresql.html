@@ -171,7 +171,6 @@
 </header>
 <!-- tags: viikko1 -->
 <!-- order: 2 -->
-
 <p>PostgreSQL-kannan saat käyttöösi koneessa users.cs.helsinki.fi skriptillä <code>wanna-postgres</code>. Ohjelma luo käyttäjätunnuksen ja arpoo salasanan ja kannan käyttöön tarvittavat porttinumerot ja hoitaa muut ympäristöasetukset. Kun tunnus on luotu voi kantaa käsitellä käyttäen komentotulkkia <code>psql</code>. Tulkki ei kysy salasanaa, vaan siirtyy suoraan tietokantakomentoriville.</p>
 <p>Testaa tulkkia luomalla kantaan muutama testitaulu. Tulkkia käyttäessä kannattaa varoa, ettei jätä lainausmerkkejä auki:</p>
 <pre><code>consuegr=&gt; select * from test where t1 = &#39;asdasd;
@@ -184,10 +183,10 @@ consuegr-&gt; ;
  (0 rows)
 </code></pre>
 <p>Huomaa kuinka käyttäjänimen jälkeen tuleva merkki vaihtuu sen mukaan mitä merkkiä tietokantatulkki odottaa seuraavaksi.</p>
-<section class="alert alert-success small"><h3>
+<section class="alert alert-success small">
+<h3>
 Seuraavaksi:
 </h3>
-
 <p>Pystytä itsellesi vielä sopivat koodaustyökalut. Ohjaajien suosituksena on <a href="../netbeans/index.html">NetBeansin käyttö</a></p>
 </section>
 </div>

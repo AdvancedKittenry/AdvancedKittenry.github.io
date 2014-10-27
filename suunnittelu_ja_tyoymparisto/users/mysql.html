@@ -190,13 +190,13 @@ code > span.er { color: #ff0000; font-weight: bold; }
 </header>
 <!-- tags: viikko1 -->
 <!-- order: 2 -->
-
 <p>MySql-kannan saat käyttöösi koneessa users.cs.helsinki.fi skriptillä <code>wanna-mysql</code>. Ohjelma kysyy sinulta uuden tietokannan pääkäyttäjän salasanaa. Pistä se johonkin ylös, sillä sitä ei tallenneta mihinkään siltä varalta että unohdat sen! Ohjelma myös käynnistää tietokannan. Voit kirjautua sen komentotulkkiin komennolla</p>
 <pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">mysql</span> -u root -p</code></pre>
 <p>Usersin MySql-tietokannat eivät ole julkisia, vaan ne ajetaan käyttäjäkohtaisina prosesseina palvelimella. Tietokannan käynnistyksestä ja sammuttamisesta huolehdit sinä. Voit manuaalisesti käynnistää ja sammuttaa tietokantaasi komennoilla <code>start-mysql</code> ja <code>stop-mysql</code>. Sammuttaminen kysyy sinulta pääkäyttäjän salasanan.</p>
 <p>Tätä tietokantaa ei pysty etäkäyttämään kovin helposti palvelimen ulkopuolelta, joten sitä on parasta käyttää ainoastaan, jos saat myös lokaaliin koodausympäristöösi MySql-tietokannan asennettua tai jos käytät esimerkiksi NetBeansia siirtääksesi PHP-sovelluksesi automaattisesti Users-palvelimelle.</p>
 <p>MySql:ään pätevät samat lainausmerkkejä koskevat huomiot kuin PostgreSQL:ään ylempänä.</p>
-<section class="alert alert-info"><h3>
+<section class="alert alert-info">
+<h3>
 Lisätietoa
 </h3>
 <p>Voit testata mysql-tietokantayhteyttä seuraavanlaisella lyhyellä PHP-tiedostolla:</p>
@@ -206,18 +206,17 @@ Lisätietoa
 <span class="kw">?&gt;</span>
 <span class="kw">OK</span></code></pre>
 </section>
-
-<section class="alert alert-danger"><h3>
+<section class="alert alert-danger">
+<h3>
 Pidä mielessä!
 </h3>
 <p>Älä aja mysql-palvelintasi tilassa, jossa se kuuntelee TCP-yhteyksiä. Normikäytöllä tähän ei päästäkään, mutta, jos jostain syystä harkitset haksoroivasi sen toimimaan niin, älä tee näin.</p>
 <p>Syy tähän on siinä, että usersin käyttäjäkohtaiset htdocs ja tomcat-kansiot on toteutettu sisäisesti tietyssä portissa toimivina palvelimen sisäisinä yhteyksinä ja omat viritykset ovat ajoittain menneet niiden väliin.</p>
 </section>
-
-<section class="alert alert-success small"><h3>
+<section class="alert alert-success small">
+<h3>
 Seuraavaksi:
 </h3>
-
 <p>Pystytä itsellesi vielä sopivat koodaustyökalut. Ohjaajien suosituksena on <a href="../netbeans/index.html">NetBeansin käyttö</a></p>
 </section>
 </div>

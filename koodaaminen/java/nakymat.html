@@ -191,18 +191,16 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <!-- order: 4 -->
 <script>addSectionLinks = true; </script>
 <!-- tags: viikko3-java -->
-
-<section class="alert alert-info"><h3>
+<section class="alert alert-info">
+<h3>
 Tiivistelmä:
 </h3>
-
 <ul>
 <li>Laita servlettisi käyttämään HTML:n tulostukseen JSP-tiedostoa.</li>
 <li>Tee JSP-tägitiedosto, ja laita JSP-sivusi HTML-runko siihen. Ota tägitiedostosi käyttöön servlettisi JSP-tiedosssa.</li>
 <li>Tee sovelluksesi servleteille yläluokka, johon voi sijoittaa yleiskäyttöisiä toimintoja.</li>
 </ul>
 </section>
-
 <p>Javassa näkyminä käytetään JSP-päätteisiä tiedostoja, jotka koostuvat pääasiassa HTML-koodista, jonka seassa on nettijavaa varten toteutetulla <a href="http://docs.oracle.com/javaee/5/tutorial/doc/bnahq.html">Unified Expression Language -kielellä</a> koodattuja käskyjä.</p>
 <p>Yksinkertaisimmillaan JSP-tiedostona tehty näkymä näyttää tältä:</p>
 <pre class="sourceCode jsp"><code class="sourceCode jsp">&lt;%@page<span class="ot"> contentType</span>=<span class="st">&quot;text/html&quot;</span><span class="ot"> pageEncoding</span>=<span class="st">&quot;UTF-8&quot;</span><span class="ot"> trimDirectiveWhitespaces</span>=<span class="st">&quot;true&quot;</span><span class="ot"> </span>%&gt;
@@ -252,7 +250,8 @@ Tiivistelmä:
 }</code></pre>
 <p>JSP-sivulla on mahdollista näyttää pyyntöön asetettuja attribuutteja suoraan syntaksilla <code>${attribuutin_nimi}</code>:</p>
 <pre class="sourceCode jsp"><code class="sourceCode jsp">&lt;div<span class="ot"> class</span>=<span class="dt">&quot;alert alert-danger&quot;</span>&gt;Virhe! ${virheViesti}&lt;/div&gt;</code></pre>
-<section class="alert alert-warning"><h3>
+<section class="alert alert-warning">
+<h3>
 Huomaa!
 </h3>
 <p>Huomaa, että JSP-sivussa käytetyt attribuutit ovat täysin erillisiä servletin sisältämistä muuttujista ja niiden nimistä. Yhteys näiden kahden välille muodostuu ainoastaan <code>setAttribute</code>-metodin kutsujen myötä. Selkeyden vuoksi on kuitenkin hyvä idea nimetä sekä normaalit Java-muuttujat että JSP-sivun käyttämät attribuutit samaan tapaan.</p>
@@ -375,7 +374,8 @@ Huomaa!
 <ul>
 <li><a href="http://www.sitepoint.com/java-standard-tag-library/">Introduction to the Java Standard Tag Library</a></li>
 </ul>
-<section class="alert alert-success small"><h3>
+<section class="alert alert-success small">
+<h3>
 Seuraavaksi:
 </h3>
 <p>Seuraavaksi otamme käyttäjämallin, JSP-sivut ja servletit käyttöön <a href="lomakkeet.html">yksinkertaisen kirjautumisen</a> toteuttamiseen.</p>

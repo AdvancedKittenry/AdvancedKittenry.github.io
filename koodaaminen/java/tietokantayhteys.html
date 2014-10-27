@@ -190,8 +190,8 @@ code > span.er { color: #ff0000; font-weight: bold; }
 </header>
 <!-- order: 1 -->
 <!-- tags: viikko2-java -->
-
-<section class="alert alert-info"><h3>
+<section class="alert alert-info">
+<h3>
 Tiivistelmä:
 </h3>
 <ul>
@@ -206,7 +206,6 @@ Tiivistelmä:
 <li>Jos käytät tietokantayhteyden autentikointiin salasanaa, <a href="../git-ja-salasanat.html">älä laita sitä GitHubiin sellaisenaan</a>.</li>
 </ul>
 </section>
-
 <p>Sekä Javalla että PHP:llä tietokantayhteyksiä edustaa erillinen luokka, jonka olio muodostetaan kutsumalla sopivaa metodia/konstruktoria. Kummallekin annetaan merkkijonona tietokantayhteyttä kuvaava osoite, jonka perusteella yhteys muodostetaan.</p>
 <p>Alla on esimerkkikoodia tietokantayhteyden muodostamisesta tilanteessa, jossa työ pyörii users-palvelimella. Koodin tarkoituksena on toteuttaa mahdollisimman yksinkertainen ohjelma, joka ottaa yhteyden tietokantaan ja suorittaa siellä SQL-muotoisen SELECT-lauseen, jonka tulos näytetään käyttäjälle.</p>
 <p>Tee itsellesi ohjeita noudattaen luokka, johon sijoitat tietokannan muodostamisen. Laita tämä luokka omaan pakettiinsa ja/tai kansioonsa. Hyviä nimiä paketille voivat olla esim. “Tietokanta” tai “Models”. Sovelluksesta tulee huomattavasti selkeämpi, jos kaikki tietokantaa käsittelevä koodi on sijoitettu yhteen paikkaan.</p>
@@ -226,23 +225,22 @@ Tiivistelmä:
 <span class="ot">        url=</span><span class="st">&quot;jdbc:postgresql://localhost/tietokannan_nimi&quot;</span> <span class="kw">/&gt;</span>
 <span class="kw">&lt;/Context&gt;</span></code></pre>
 <p>Viimeinen attribuuttti, <code>url</code> kertoo Tomcatille tietokannan sijainnin ja nimen. Users-palvelimella tietokannan nimi on aina oma käyttäjätunnuksesi.</p>
-<section class="alert alert-danger"><h3>
+<section class="alert alert-danger">
+<h3>
 Pidä mielessä!
 </h3>
 <p>Joudut syöttämään tiedostoon tietokantatunnustesi salasanan, että saat koodin toimimaan. Salasanoja ei kannata laittaa repositorioon sellaisenaan. Käytä sen sijaan <a href="../git-ja-salasanat.html">nk. dist-tiedostoja</a></p>
 <p>Salasanojen laittaminen julkiseen git-repositorioon on yleisesti ottaen tietoturvan kannalta paha tapa, joten sitä kannattaa välttää aina kun mahdollista.</p>
 </section>
-
 <p>Kun resurssi on määritelty, voidaan Javan kirjastoilla hakea se:</p>
 <p><strong>Yhteysvaraston pystytyskoodi, sijoitetaan omaan luokkansa, esim. Kissalista.Tietokanta.Yhteys</strong></p>
 <pre class="sourceCode java"><code class="sourceCode java"><span class="co">//Haetaan context-xml-tiedostosta tietokannan yhteystiedot</span>
 <span class="co">//HUOM! Tämä esimerkki ei toimi sellaisenaan ilman Tomcat-palvelinta!</span>
 InitialContext cxt = <span class="kw">new</span> InitialContext();
 DataSource yhteysVarasto = (DataSource) cxt.<span class="fu">lookup</span>(<span class="st">&quot;java:/comp/env/jdbc/tietokanta&quot;</span>);</code></pre>
-<button type='button' class='btn-link expandable collapsed' data-toggle='collapse' data-target='#expandable_1'>
+<button type="button" class="btn-link expandable collapsed" data-toggle="collapse" data-target="#expandable_1">
 Yllä olevan koodin vaatimat importit
 </button>
-  
 <div id="expandable_1" class="collapse">
 <section>
 <pre class="sourceCode java"><code class="sourceCode java"><span class="kw">import java.sql.Connection;</span>
@@ -263,7 +261,8 @@ Yllä olevan koodin vaatimat importit
 <p>Kun olet suorittanut haluamasi SQL-kyselyn, yhteys pitää sulkea, jolloin se palaa takaisiin varastoon käytettäväksi:</p>
 <pre class="sourceCode java"><code class="sourceCode java"><span class="kw">try</span> { yhteys.<span class="fu">close</span>(); } <span class="kw">catch</span> (Exception e) {  }</code></pre>
 <p>Itse varasto-oliota ei tarvitse erikseen sulkea, sillä Tomcat huolehtii sen hallinnoinnista.</p>
-<section class="alert alert-danger"><h3>
+<section class="alert alert-danger">
+<h3>
 Pidä mielessä!
 </h3>
 <p>Jos yhteyttä ei suljeta aina käytön jälkeen, kasautuu avoimia yhteyksiä varatoon niin kauan kunnes tietokanta ei enää anna ottaa useampia yhteyksiä jolloin sovellus kaatuu.</p>
@@ -319,7 +318,8 @@ Pidä mielessä!
 <section id="sovellukseni-ei-suostu-näkymään-users-palvelimella.-mitä-teen" class="level2">
 <h2>Sovellukseni ei suostu näkymään users-palvelimella. Mitä teen?</h2>
 <p>Tarkita, että Tomcat on käynnissä ja purkanut sovelluksesi kansioon <code>tomcat/webapps</code>. Jos näin on, voi kyse olla viallisesta <code>context.xml</code>-tiedostosta. Tämän korjaamiseen on oma ohjeensa <a href="tomcatin-korjaaminen.html">täällä</a>.</p>
-<section class="alert alert-success small"><h3>
+<section class="alert alert-success small">
+<h3>
 Seuraavaksi:
 </h3>
 <p>Kun olet saanut tietokantaan toimivan yhteyden ja laittanut sen omaan tiedostoonsa, voit jatkaa tietokantaohjelmointia tekemällä <a href="listaustesti.html">yksinkertaisen listauksen</a>.</p>

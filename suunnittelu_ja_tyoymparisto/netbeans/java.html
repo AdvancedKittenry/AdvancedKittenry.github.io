@@ -170,7 +170,6 @@
 <h1 class="title">NetBeansin käyttö Javan kanssa</h1>
 </header>
 <!-- tags: viikko1,viikko2-usefull -->
-
 <p>Näissä ohjeissa oletetaan, että olet jo <a href="index.html#web-tuen-asentaminen">asentanut NetBeansiin kielesi web-tuen</a>.</p>
 <p>Luo NetBeansiin uusi projekti Kategoriasta Java Web. Valitse Web Application.</p>
 <figure>
@@ -184,7 +183,7 @@
 <figure>
 <img src="../../images/suunnittelu_ja_tyoymparisto/netbeans/java3-addserver.png" />
 </figure>
-<p>Tässä vaiheessa NetBeans haluaa tietää mihin Tomcat on asennettuna, joten sinun pitää ladat se. Tomcat 6 löytyy sivuilta <a href="http://tomcat.apache.org/download-60.cgi">http://tomcat.apache.org/download-60.cgi</a> löytyvän Binary Distributions-kohdan “Core” alta. Sekä zip että tar.gz-pakkaus käy hyvin.</p>
+<p>Tässä vaiheessa NetBeans haluaa tietää mihin Tomcat on asennettuna, joten sinun pitää ladat se. Tomcat 6 löytyy sivuilta <a href="http://tomcat.apache.org/download-60.cgi" class="uri">http://tomcat.apache.org/download-60.cgi</a> löytyvän Binary Distributions-kohdan “Core” alta. Sekä zip että tar.gz-pakkaus käy hyvin.</p>
 <p>Kun olet ladannut tomcatin, luo ensiksi palvelinta varten oma kansio “palvelimet”, jonka jälkeen ladattu tomcat-paketti puretaan kansioon. Nyt sinulla on kansiossa ~/palvelimet/apache-tomcat-xxx asennettuna tomcatin xxx-versio. Oletamme tästä eteenpäin, että versio on 6.0.32. Muuta vielä palvelimen käynnistys- ja sammutusskriptit siten, että niitä voidaan käyttää. Käynnistysskriptit löytyvät bin-kansiosta, ja ovat .sh-päätteisiä (.bat-päätteisiä Windows-ympäristöissä).</p>
 <pre><code>~$ cd palvelimet/apache-tomcat-6.0.32/bin
 ~/palvelimet/apache-tomcat-6.0.32/bin$ chmod 700 *.sh
@@ -243,10 +242,10 @@ nbproject/private</code></pre>
 <section id="työn-julkaiseminen-usersille" class="level2">
 <h2>Työn julkaiseminen usersille</h2>
 <p>Palutusta varte nsinun pitää vielä siirtää kotikoneella pyörivästä työstäsi versio users-palvelimelle. Tämän voi tehdä kätevästi luomalla sovelluksesta julkaisua varte nwar-paketti ja siirtämällä sen usrsille. Tähän on ohje <a href="../../koodaaminen/java/java-war-paketit.html">omalla sivullaan</a>.</p>
-<section class="alert alert-info small"><h3>
+<section class="alert alert-info small">
+<h3>
 Valmista!
 </h3>
-
 <p>Pystytettyäsi työympäristön ja sivut usersille, varmista, että olet laittanut kaiken vaaditun dokumentaation git-repositorioosi ja rekisteröidy <a href="http://tsoha-labtool.herokuapp.com/register">labtooliin</a>.</p>
 <p>Tämän jälkeen <a href="../../aikataulu/viikkopalautukset/viikko1.html">viikon 1</a> työsi on valmis!</p>
 </section>

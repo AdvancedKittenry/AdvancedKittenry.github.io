@@ -190,7 +190,6 @@ code > span.er { color: #ff0000; font-weight: bold; }
 </header>
 <!-- order: 7 -->
 <!-- tags: viikko3-php -->
-
 <p>Edellä toteutetussa kirjautumisessa on se huono puoli, ettei se tallennu mihinkään, sillä <a href="../../web-sovelluksista.html#tilatiedon-hallinta-ja-samanaikaiset-aineistopyynn%C3%B6t">HTTP-protokolla on tilaton</a>, eikä aineistopyyntöjen välillä talleteta informaatiota.</p>
 <p>Apuun ongelmaan tulee PHP:n istuntotuki. Istunnot ovat ikäänkuin pieniä, käyttäjä- ja selainkohtaisia tietokantoja, joihin voi tallettaa olioita siten, että ne säilyvät sivulataukselta toiselle.</p>
 <p>Kirjautumisen tapauksessa haluamme tallentaa tiedon siitä kuka on kirjautunut sisään. Tieto tallennetaan istuntoon siinä vaiheessa, kun käyttäjä kirjautuu sisään ja sitä käytetään aina kun halutaan tarkastella onko käyttäjä kirjautunut sivulle.</p>
@@ -212,20 +211,19 @@ code > span.er { color: #ff0000; font-weight: bold; }
     <span class="co">//Koodia, jonka vain kirjautunut käyttäjä saa suorittaa</span>
   }</code></pre>
 <p>Käytä istuntoa kirjautumiskontrollerissasi siten, että talletat jokaisen onnistuneen kirjautumisen yhteydessä kirjautuneen käyttäjän tiedot istuntoon. Useimmiten on järkevää tallentaa joko käyttäjätaulun pääavaimen arvo (id tai käyttäjätunnus) tai kerralla kokonainen käyttäjäolio kaikkinen tietoineen. Kummankin tallentaminen istuntoon onnistuu samalla tavalla sijoittamalla se <code>$_SESSION</code>-taulukkoon.</p>
-<section class="alert alert-danger"><h3>
+<section class="alert alert-danger">
+<h3>
 Pidä mielessä!
 </h3>
 <p>Sivuja tehdessä <code>session_start</code>-funktion kutsuminen on yllättävän helppoa unohtaa. Tällöin <code>$_SESSION</code>-muuttuja ei toimi erityisenä istuntomuuttujana, vaan on aivan normaali muuttuja ja lisäksi oletuksena tietenkin tyhjä.</p>
 <p>Helpoin tapa estää tämä moka on kutsua <code>session_start</code>-funktiota samassa tiedostossa, johon olet määritellyt yleiskäyttöisiä funktioitasi. Mieluiten niin, että tiedoston ensimmäinen rivi php-tägien jälkeen on <code>session_start();</code>, jotta kaikki varmasti toimii.</p>
 </section>
-
-<section class="alert alert-danger"><h3>
+<section class="alert alert-danger">
+<h3>
 Pidä mielessä!
 </h3>
-
 <p>Myöskään istunnot eivät toimi kunnolla, mikäli PHP on ehtinyt lähettää selaimelle jotain sisältöä. Kannattaa siis varoa ylimääräisiä välilyöntejä ennen &lt;?php-tägiä tämänkin takia.</p>
 </section>
-
 <section id="kirjautumisen-tarkistaminen" class="level2">
 <h2>Kirjautumisen tarkistaminen</h2>
 <p>Lisää yleiskäyttöiseen kirjastotiedostoosi funktio, joka palauttaa arvon <code>true</code>, mikäli käyttäjä on kirjautunut ja istunnossa on tallennettuna käyttäjän kirjautumistiedot. Funktio voi halutessasi myös ohjata käyttäjän kirjautumissivulle mikäli näin ei ole. Näin kirjautumista vaativat sivut voivat kätevästi tarkistaa onko käyttäjä oikeasti kirjautunut.</p>
@@ -245,10 +243,10 @@ Pidä mielessä!
   <span class="co">//Yleensä kannattaa ulkos kirjautumisen jälkeen ohjata käyttäjä kirjautumissivulle</span>
   <span class="fu">header</span><span class="ot">(</span><span class="st">&#39;Location: kirjautuminen.php&#39;</span><span class="ot">);</span>
 <span class="kw">?&gt;</span></code></pre>
-<section class="alert alert-info small"><h3>
+<section class="alert alert-info small">
+<h3>
 Valmista!
 </h3>
-
 <p>Kun olet toteuttanut kaikki näissä ohjeissa mainitut asiat, olet saanut valmiiksi viikon 3 palautuksen. Varmista vielä, että kaikki tiedostot löytyvät repositoriostasi.</p>
 <p>Jos haluat jatkaa seuraavan viikon asiaa, voit siirtyä lukemaan <a href="listausnakymat.html">listauksen ja tietosivujen toteuttamisesta</a>.</p>
 </section>

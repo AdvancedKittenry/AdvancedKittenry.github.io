@@ -170,7 +170,6 @@
 <h1 class="title">Kurssisivujen muokkaaminen</h1>
 </header>
 <!-- hidden! -->
-
 <p>Nämä kurssisivut sijaitsevat githubin palvelimella ns. <a href="https://github.com/AdvancedKittenry/">organisaation github-tilillä</a>. Samalla tilillä on myös kurssin labtoolin lähdekoodi, sekä muutaman testiohjelman repositoriot.</p>
 <section id="githubin-ryhmään-pääseminen" class="level2">
 <h2>Githubin ryhmään pääseminen</h2>
@@ -184,13 +183,11 @@
 <p>Käytetyn Markdown-kielen perussyntaksia voi tiirailla <a href="http://johnmacfarlane.net/pandoc/README.html">Pandoc-dokumenttigeneraattorin sivustolta</a>.</p>
 <p>Sivujen muokkaamiseksi on parasta kloonata repositorio omalle koneelleen. Tätä ja tarvittavien ohjelmien asentamista varten on olemassa oma skriptinsä: <a href="../install.sh}">install.sh</a>. Skriptin ajamainen on nopein oikotie onneen.</p>
 <p>Ohjelmien asentamiseen on olemassa myös manuaaliset ohjeet.</p>
-<button type='button' class='btn-link expandable collapsed' data-toggle='collapse' data-target='#expandable_1'>
+<button type="button" class="btn-link expandable collapsed" data-toggle="collapse" data-target="#expandable_1">
 Avaa manuaaliset ohjeet tästä
 </button>
-  
 <div id="expandable_1" class="collapse">
 <section>
-
 <h1>Työkalujen asentaminen</h1>
 <p>Tarvitset sivujen kääntämiseen koneen, jolle on asennettuna Haskell-kielen kirjastot ja käytettävissä ohjelmat ghc ja cabal. Lisäksi tarvitset järkevät versiot pythonista, perlistä ja make:sta.</p>
 <p>Laitoksen koneilta nämä kaikki löytyvät vakiona, ja useimmille linux-distroille ne saa asennettua helposti.</p>
@@ -217,7 +214,8 @@ cabal install pandoc</code></pre>
 <pre><code>make cleanpages
 make
 git diff</code></pre>
-<section class="alert alert-info"><h3>
+<section class="alert alert-info">
+<h3>
 Lisätietoa
 </h3>
 <p>Jos sinulla on aikaisempi versio Pandocista, saattaa ohjelma tuottaa hieman erilaista HTML:ää. Yleensä on hyvä idea päivittää ohjelma. Tämä voi tosin olla joskus hyvin hankalaa, ja joskus vasta kotihakemistossa olevien kansioiden .ghc ja .cabal poistaminen kokonaan ja kaiken asentaminen uudestaan saa kaiken toimimaan.</p>

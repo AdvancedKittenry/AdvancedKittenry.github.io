@@ -1,5 +1,22 @@
 {
   "default": {
+    "instancename": "Syksy 2014, periodi II",
+    "aloitusluentopvm": "ma 27.10 klo 16-18 luokassa D122",
+    "deadline1": "su 2.11. klo 23:00",
+    "deadline2": "su 9.11. klo 23:00",
+    "deadline3": "su 16.11. klo 23:00",
+    "deadline4": "su 23.11. klo 23:00",
+    "deadline5": "su 30.11. klo 23:00",
+    "codereviewdeadline1": "ti 18.11. klo 23:00",
+    "codereviewdeadline2": "ti 2.12. klo 23:00",
+    "demodeadline": "Aika ja paikka päätetään myöhemmin",
+    "palautusdeadline": "su 14.12. klo 23:00",
+    "paja-ajat-intro":"Henkilökohtaisia tapaamisia on tarvittaessa mahdollista sopia ohjaajan kanssa irkin välityksellä tai sähköpostilla.",
+    "paja-ajat-data":"[ \
+      ('?? klo ??-??', 'Mikko Kumara','B221') \
+      ]"
+  },
+  "2014-summer-II": {
     "instancename": "Loppukesä 2014",
     "aloitusluentopvm": "ma 28.7. klo 10-12 luokassa B221",
     "deadline1": "su 3.8. klo 23:00",

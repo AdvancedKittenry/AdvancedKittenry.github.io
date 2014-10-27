@@ -190,8 +190,8 @@ code > span.er { color: #ff0000; font-weight: bold; }
 </header>
 <!-- order: 1 -->
 <!-- tags: viikko2-php -->
-
-<section class="alert alert-info"><h3>
+<section class="alert alert-info">
+<h3>
 Tiivistelmä:
 </h3>
 <ul>
@@ -206,7 +206,6 @@ Tiivistelmä:
 <li>Jos käytät tietokantayhteyden autentikointiin salasanaa, <a href="../git-ja-salasanat.html">älä laita sitä GitHubiin sellaisenaan</a>.</li>
 </ul>
 </section>
-
 <p>Sekä Javalla että PHP:llä tietokantayhteyksiä edustaa erillinen luokka, jonka olio muodostetaan kutsumalla sopivaa metodia/konstruktoria. Kummallekin annetaan merkkijonona tietokantayhteyttä kuvaava osoite, jonka perusteella yhteys muodostetaan.</p>
 <p>Alla on esimerkkikoodia tietokantayhteyden muodostamisesta tilanteessa, jossa työ pyörii users-palvelimella. Koodin tarkoituksena on toteuttaa mahdollisimman yksinkertainen ohjelma, joka ottaa yhteyden tietokantaan ja suorittaa siellä SQL-muotoisen SELECT-lauseen, jonka tulos näytetään käyttäjälle.</p>
 <p>Tee itsellesi ohjeita noudattaen tiedosto, johon sijoitat tietokannan muodostamisen. Laita tämä tiedosto omaan kansioonsa. Hyviä nimiä hakemistolle voivat olla esim. “tietokanta” tai “models”. Sovelluksesta tulee huomattavasti selkeämpi, jos kaikki tietokantaa käsittelevä koodi on sijoitettu yhteen paikkaan.</p>
@@ -227,13 +226,13 @@ Tiivistelmä:
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">$yhteys</span> = <span class="kw">new</span> <span class="kw">PDO</span><span class="ot">(</span><span class="st">&quot;pgsql:&quot;</span><span class="ot">);</span></code></pre>
 <p>Seuravaa komento pyytää PDO:ta tuottamaan poikkeuksen aina kun jossain on virhe. Sitä kannattaa käyttää aina, oletuksena PDO ei nimittäin raportoi virhetiloja juuri mitenkään!</p>
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">$yhteys</span>-&gt;setAttribute<span class="ot">(</span><span class="kw">PDO</span>::<span class="kw">ATTR_ERRMODE</span><span class="ot">,</span><span class="kw">PDO</span>::<span class="kw">ERRMODE_EXCEPTION</span><span class="ot">);</span></code></pre>
-<section class="alert alert-danger"><h3>
+<section class="alert alert-danger">
+<h3>
 Pidä mielessä!
 </h3>
 <p>Jos käytät koodista ensimäistä versiota, joka tarvitsee salasanan, älä laita sitä repositorioosi suoraan. Käytä sen sijaan <a href="../git-ja-salasanat.html">dist-tiedostoja</a>.</p>
 <p>Salasanojen laittaminen julkiseen git-repositorioon on yleisesti ottaen tietoturvan kannalta paha tapa, joten sitä kannattaa välttää aina kun mahdollista.</p>
 </section>
-
 <section id="phpn-omituinen-oliosyntaksi" class="level3">
 <h3>PHP:n omituinen oliosyntaksi</h3>
 <p>PHP:n oliosyntaksi on valitettavasti sekavampi kuin Javan käyttämä. Metodien kutsumiseen käytetään syntaksia <code>$olio-&gt;metodi();</code>, olion atribuutteja käytetään samaan tapaan <code>$olio-&gt;attribuutti</code>.</p>
@@ -307,7 +306,8 @@ Pidä mielessä!
   <span class="kw">$kysely</span>-&gt;execute<span class="ot">();</span>
   
   <span class="fu">echo</span> <span class="kw">$kysely</span>-&gt;fetchColumn<span class="ot">();</span></code></pre>
-<section class="alert alert-success small"><h3>
+<section class="alert alert-success small">
+<h3>
 Seuraavaksi:
 </h3>
 <p>Kun olet saanut tietokantaan toimivan yhteyden ja laittanut sen omaan tiedostoonsa, voit jatkaa tietokantaohjelmointia tekemällä <a href="listaustesti.html">yksinkertaisen listauksen</a>.</p>

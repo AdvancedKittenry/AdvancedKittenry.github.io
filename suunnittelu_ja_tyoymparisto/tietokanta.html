@@ -190,8 +190,8 @@ code > span.er { color: #ff0000; font-weight: bold; }
 </header>
 <!-- order: 12 -->
 <!-- tags: viikko2 -->
-
-<section class="alert alert-info"><h3>
+<section class="alert alert-info">
+<h3>
 Tiivistelmä:
 </h3>
 <ul>
@@ -204,7 +204,6 @@ Tiivistelmä:
 <li>Jos et ole pitkään aikaan käyttänyt SQL-kieltä, kannattaa lukea alla oleva <a href="#lyhyt-sql-opas">SQL-opas</a>.</li>
 </ul>
 </section>
-
 <section id="alustava-suunnittelu" class="level2">
 <h2>Alustava suunnittelu</h2>
 <p>Tee sovelluksellesi alustava käsitekaavio erittelemällä tekemiltäsi sivuilta ja aihekuvauksesta kaikki tietokohteet sekä niiden väliset riippuvuudet yhdellä kaaviolla:</p>
@@ -212,10 +211,9 @@ Tiivistelmä:
 <img src="../images/suunnittelu_ja_tyoymparisto/kasitekaavio.jpg" alt="Esimerkki alustavasta käsitekaaviosta" /><figcaption>Esimerkki alustavasta käsitekaaviosta</figcaption>
 </figure>
 Tässäkin voi olla vielä järkevää käyttää paperia tai valkotaulua, mutta jos suunnitelma on päässäsi jo selkeä, voit käyttää suoraan kaavio-ohjelmistoa, jolloin jälki on siistimpää.
-<button type='button' class='btn-link expandable collapsed' data-toggle='collapse' data-target='#expandable_1'>
+<button type="button" class="btn-link expandable collapsed" data-toggle="collapse" data-target="#expandable_1">
 Siistimpi käsitekaavioversio (avaa tästä)
 </button>
-  
 <div id="expandable_1" class="collapse">
 <section>
 <img src="../images/dokumentaatio-ohje/information_diagram.png" alt="Esimerkki käsitekaaviosta" />
@@ -227,10 +225,9 @@ Siistimpi käsitekaavioversio (avaa tästä)
 <h2>Taulujen ja niiden kenttien määrittely</h2>
 <p>Ota nyt jokainen tietokohde, ja määrittele mitä kenttiä siinä pitää olla, jotta kaikki sovelluksen tarvitsemat tiedot saadaan tallennettua.</p>
 <p>Kirjoita kentät ja niiden kuvaukset dokumentaatio-ohjeistuksen mukaisesti. Alta voi katsoa esimerkkiä.</p>
-<button type='button' class='btn-link expandable collapsed' data-toggle='collapse' data-target='#expandable_2'>
+<button type="button" class="btn-link expandable collapsed" data-toggle="collapse" data-target="#expandable_2">
 Tietokohdekuvausesimerkki
 </button>
-  
 <div id="expandable_2" class="collapse">
 <section>
 <div class="panel panel-default">
@@ -288,13 +285,12 @@ Tietokohdekuvausesimerkki
 <h2>Lyhyt SQL-opas</h2>
 <p>Jos et ole vähään aikaan ollut SQL-kielen kanssa tekemisissä voit kerrata tästä. Kannattaa lukea etenkin kohdat avainten ja viiteavainten käytöstä, sekä <a href="#monesta-moneen--suhde">monesta moneen -suhteen toteuttamisohje</a>.</p>
 <p>Taulujen luomisen syntaksiin voi hakea muistutusta <a href="http://www.w3schools.com/sql/sql_create_table.asp">W3Schoolsin sivuilta</a></p>
-<section class="alert alert-warning"><h3>
+<section class="alert alert-warning">
+<h3>
 Vinkki: Käytä hakukonetta
 </h3>
-
 <p>Usein on huomattavasti helpompaa etsiä hakukoneella jotain tiettyä tietokannan ominaisuutta hakusanoilla tyyliin <code>autogenerate id mysql</code> tai <code>data types postgres</code> kuin koettaa etsiä niitä käsin tietokannan sivuilta.</p>
 </section>
-
 <section id="pääavaimet-ja-viittausavaimet" class="level3">
 <h3>Pääavaimet ja viittausavaimet</h3>
 <p>Käytännössä jokaisella tietokantasi taululla on erinäinen määrä <em>avaimia</em>. Näistä tärkein on <em>pääavain</em>, joka yksilöi taulunsa rivit, ja johon muut taulut voivat viitata <em>viiteavaimilla</em>.</p>
@@ -403,7 +399,8 @@ Vinkki: Käytä hakukonetta
 <li><a href="http://www.postgresql.org/docs/7.4/static/datatype.html">PostgreSQL:n tietotyypit</a></li>
 <li><a href="http://dev.mysql.com/doc/refman/5.1/en/data-type-overview.html">MySQL:n tietotyypit</a></li>
 </ul>
-<section class="alert alert-warning"><h3>
+<section class="alert alert-warning">
+<h3>
 Vinkki
 </h3>
 <p>Merkkijonokenttien kanssa kannattaa muistaa tehdä kentistä riittävän pitkiä sisältämälleen datalle. Esim. sähköpostit ovat helposti 30 merkkiä pitkiä ja nimetkin voivat yhdysnimien yms. myötä yltää yli kahteenkymmeneen merkkiin.</p>
@@ -424,13 +421,14 @@ Vinkki
 <li><a href="http://www.cs.helsinki.fi/u/laine/tikape/moniste/osa3.pdf">Osa 3</a></li>
 </ul></li>
 </ul>
-<section class="alert alert-warning"><h3>
+<section class="alert alert-warning">
+<h3>
 Vinkki
 </h3>
 <p>Jos SQL-taitosi ovat pahasti ruosteessa, etkä saa kantaa pystyyn on usein helpointa tulla pajaan kysymään SQL-vinkkejä.</p>
 </section>
-
-<section class="alert alert-success small"><h3>
+<section class="alert alert-success small">
+<h3>
 Seuraavaksi:
 </h3>
 <p>Suunniteltuasi tietokannan rakenteen <a href="tietokanta-dokumentointi.html">dokumentoi se</a>.</p>

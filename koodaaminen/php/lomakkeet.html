@@ -190,8 +190,8 @@ code > span.er { color: #ff0000; font-weight: bold; }
 </header>
 <!-- order: 5 -->
 <!-- tags: viikko3-php -->
-
-<section class="alert alert-info"><h3>
+<section class="alert alert-info">
+<h3>
 Tiivistelmä:
 </h3>
 <ul>
@@ -207,7 +207,6 @@ Tiivistelmä:
 </ul></li>
 </ul>
 </section>
-
 <p>Käsittelemme seuraavaksi lomakkeita ja kirjautumisen toteuttamista.</p>
 <p>Aloita tekemällä kontrolleri, joka näyttää html-demoon tekemäsi kirjautumislomakkeen näkymänään. Voit laittaa kontrollerin näkymään esim. osoitteeseen <code>/kirjautuminen.php</code> tai <code>/login.php</code>.</p>
 <p>Laitetaan seuraavaksi tämä sivu ottamaan kirjautumislomake vastaan.</p>
@@ -243,14 +242,13 @@ Salasana: <span class="kw">&lt;input</span><span class="ot"> type=</span><span c
   }</code></pre>
 <p>Koodissa kannattaa huomata kutsu <code>header('Location: kissalista.php');</code>. <a href="http://php.net/manual/en/function.header.php">header-funktio</a> lähettää käyttäjän selaimelle HTTP-otsakkeen. Otsakkeita voi käyttää monenlaisiin tarkoituksiin, mutta yleisimmin käytetään otsaketta “Location”, joka lähettää selaimen uuteen osoitteeseen, joka kirjoitetaan otsakkeessa Location-sanan ja kaksoispisteen jälkeen. Tämä on kätevä tapa ohjata käyttäjä jonkin toisen sivun luo.</p>
 <p>Voit tehdä siitäkin oman apufunktion aiemmin tekemääsi yleiskäyttöiseen kirjastotiedostoon.</p>
-<section class="alert alert-danger"><h3>
+<section class="alert alert-danger">
+<h3>
 Pidä mielessä!
 </h3>
-
 <p>PHP:llä kannattaa varoa lisäämästä tiedostojensa alkuun välilyöntejä ja rivinvaihtoja ennen &lt;?php-tägiä. PHP tulkitsee nämä merkit sivun sisällöksi, joka pitää lähettää selaimelle. Tämä estää kaikkien HTTP-otsakkeiden lähettämisen, sillä ne on lähetettävä ennen sivun sisältöä.</p>
 <p>Käytännössä tämä vaikuttaa siten, että istunnot ja käyttäjän lähettäminen eteenpäin <code>Location</code>-otsakkeella eivät toimi kunnolla.</p>
 </section>
-
 <p>Toteuta ylläolevan kaltainen tarkastus omaan tiedostoonsa, esim. <code>doLogin.php</code> tai <code>kirjaudu.php</code>. Voit tehdä lomakkeen vastaanottamisen joko niin, että se toimii samassa kontrollerissa lomakkeen näyttämisen kanssa tai tehdä kirjautumislomakkeen vastaanottolle oman kontrollerin.</p>
 <p>Keskitytään tämän jälkeen tekemään koodista käyttäjäystävällisempi.</p>
 </section>
@@ -329,13 +327,14 @@ Pidä mielessä!
     <span class="ot">));</span>
   }</code></pre>
 <p>Myös koodin alussa oleva muuttujien olemassaolon varmistamisesta huolehtiva koodi on hyvä kandidaatti yleiskäyttöisen funktion sisällöksi, sillä tuontapainen koodi toistuu lomakkeiden käsittelyssä hyvin usein.</p>
-<section class="alert alert-danger"><h3>
+<section class="alert alert-danger">
+<h3>
 Pidä mielessä!
 </h3>
 <p>Muista aina testata koodiasi erilaisilla syötteillä niin varmistat ettei se kaadu missään tilanteessa.</p>
 </section>
-
-<section class="alert alert-success small"><h3>
+<section class="alert alert-success small">
+<h3>
 Seuraavaksi:
 </h3>
 <p>Toteuta ylläolevan kaltaiset käytettävyysparannukset myös omaan kirjautumiskontrolleriisi.</p>

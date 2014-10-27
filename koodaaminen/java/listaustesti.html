@@ -190,8 +190,8 @@ code > span.er { color: #ff0000; font-weight: bold; }
 </header>
 <!-- order: 2 -->
 <!-- tags: viikko2-java -->
-
-<section class="alert alert-info"><h3>
+<section class="alert alert-info">
+<h3>
 Tiivistelmä:
 </h3>
 <ul>
@@ -209,7 +209,6 @@ Tiivistelmä:
 </ul></li>
 </ul>
 </section>
-
 <p>Varmista ensin, että sinulla on luokka tai funktio, jolla saat <a href="../java/tietokantayhteys.html">yhteyden tietokantaan</a>. Nyt käytämme tietokantayhteyttä luodaksemme hyvin yksinkertaisen sivun, jolla listataan jonkun taulun sisältöä. Teemme tämän kahdessa vaiheessa: Ensin luomme yksinkertaisen servletin, joka lähettää selaimelle yksinkertaista HTML:ää, sitten laitamme tämän servletin näyttämään listan. Lopulta luomme koodin, joka hakee tuon listan tietokannasta.</p>
 <p>Tässä vaiheessa ymmärtämistä saattaa helpottaa <a href="../arkkitehtuuri/index.html">MVC-mallin rakenteen tunteminen</a>.</p>
 <section id="servletit" class="level2">
@@ -355,13 +354,14 @@ ResultSet rs = kysely.<span class="fu">executeQuery</span>();</code></pre>
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">for</span> <span class="ot">(</span>Kayttaja kayttaja : kayttajat<span class="ot">)</span> {
   out.println<span class="ot">(</span><span class="st">&quot;&lt;li&gt;&quot;</span>+kayttaja.getUsername<span class="ot">()</span>+<span class="st">&quot;&lt;/li&gt;&quot;</span><span class="ot">);</span>
 }</code></pre>
-<section class="alert alert-warning"><h3>
+<section class="alert alert-warning">
+<h3>
 Hyvä tietää
 </h3>
 <p>Tällä viikolla tehtävä listaus on tahallaan melko yksinkertainen, sillä tarkoitus on vain testata tietokantaohjelmointia. Lopulliset sivut tulevat noudattamaan läheisemmin <a href="../../koodaaminen/arkkitehtuuri/index.html">MVC-arkkitehtuuria</a>.</p>
 </section>
-
-<section class="alert alert-info small"><h3>
+<section class="alert alert-info small">
+<h3>
 Valmista!
 </h3>
 <p>Kun listaustestisi toimii moitteetta, olet suunnitellut ja toteuttanut käyttöliittymän ja dokumentoinut kaiken, olet saanut valmiiksi viikon 2 palautuksen. Varmista vielä, että kaikki tiedostot löytyvät repositoriostasi. Muista myös päivittää kaikki tekeäsi uudet asiat <a href="../../aikataulu/viikkopalautukset/esittelysivu.html">esittelysivulle</a>.</p>

@@ -190,7 +190,6 @@ code > span.er { color: #ff0000; font-weight: bold; }
 </header>
 <!-- tags: viikko1 -->
 <!-- order: 1 -->
-
 <p>PHP sivut sijoitetaan users-koneen käyttäjän htdocs hakemistoon tai sen alihakemistoon. Hakemiston htdocs saa luotua komentoskriptillä ajamalla komentotulkissa komento <code>wanna-htdocs</code>.</p>
 <p>PHP sivut ajetaan käyttäjän oikeuksin, eikä niille tarvita mitään erityisiä luku- tai suoritusoikeuksia. Kuitenkin, jos php-sivuilla on viittauksia kuviin tai muihin tähän hakemistoon tai sen alihakemistoihin sijoitettuihin resursseihin kuten tyylitiedostoihin tai javascript koodiin, on näille annettava laaja lukuoikeus ja hakemistoille läpikulkuoikeus. Myös staattisille tavallisille html-sivuille on annettava maailmalle lukuoikeus. Seuraava komento varmistaa riittävät oikeudet sekä koodihakemistoille, että niissä oleville tiedostoille:</p>
 <pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">chmod</span> -R a+X <span class="ot">$HOME</span> <span class="ot">$HOME</span>/htdocs</code></pre>
@@ -201,7 +200,6 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <section id="virheilmoitukset" class="level2">
 <h2>Virheilmoitukset</h2>
 <!-- tags: viikko1,viikko2-usefull,viikko3-php-usefull,viikko4-php-usefull -->
-
 <p>PHP:n virheilmoitukset kirjautuvat users-koneella tiedostoon <code>/home/userlogs/käyttäjätunnuksesi.error</code>. Uusimmat virheet löytyvät tiedoston lopusta. Kätevä tapa seurata PHP:n tuottamia virheviestejä on ajaa usersilla komento:</p>
 <pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">tail</span> -f /home/userlogs/<span class="ot">$USER</span>.error</code></pre>
 <p>Komento näyttää viimeiset kymmenen virheviestiä ja jää komentoriville seuraamaan virheviestejä näyttäen aina viimeisimmät. Kommenon pystyy sulkemaan painamalla Ctrl+C:tä.</p>
@@ -222,7 +220,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
 <p>Tiedoston voi luoda esimerkiksi komentorivillä käyttämällä <code>nano</code>-tekstieditoria. Voit myös siirtää palvelimelle muualla tekemäsi tiedoston käyttämällä <a href="../etamuokkaus.html">nautilusta</a> tai <a href="http://winscp.net/eng/index.php">winSCP:tä</a>.</p>
-<p>Sivun pitäisi näyttää tervehdys osoitteessa: <a href="http://kayttajatunnuksesi.users.cs.helsinki.fi/index.php">http://kayttajatunnuksesi.users.cs.helsinki.fi/index.php</a></p>
+<p>Sivun pitäisi näyttää tervehdys osoitteessa: <a href="http://kayttajatunnuksesi.users.cs.helsinki.fi/index.php" class="uri">http://kayttajatunnuksesi.users.cs.helsinki.fi/index.php</a></p>
 </section>
 <section id="esittelysivu" class="level2">
 <h2>Esittelysivu</h2>
@@ -232,10 +230,10 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <section id="dokumentointi" class="level2">
 <h2>Dokumentointi</h2>
 <p>Liitä PHP-tuen ja esittelysivun pystytyksen jälkeen dokumentaatiosi <a href="../../dokumentaatio-ohje.html#käynnistys--käyttöohje">Käynnistys- / käyttöohje -kappaleeseen</a> sovelluksesi esittelysivun nettiosoite usersilla (tai muulla palvelimella, mikäli haluat käyttää sellaista). Kappaleeseen ei tässä vaiheessa (viikolla 2) tarvitse kirjoittaa muuta sisältöä.</p>
-<section class="alert alert-success small"><h3>
+<section class="alert alert-success small">
+<h3>
 Seuraavaksi:
 </h3>
-
 <p>Ota seuravaaksi käyttöön tietokantasi tuki:</p>
 <ul>
 <li><a href="mysql.html">MySql-ohjeet</a></li>

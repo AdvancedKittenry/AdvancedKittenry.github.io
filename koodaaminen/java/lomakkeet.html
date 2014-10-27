@@ -190,8 +190,8 @@ code > span.er { color: #ff0000; font-weight: bold; }
 </header>
 <!-- order: 5 -->
 <!-- tags: viikko3-java -->
-
-<section class="alert alert-info"><h3>
+<section class="alert alert-info">
+<h3>
 Tiivistelmä:
 </h3>
 <ul>
@@ -207,7 +207,6 @@ Tiivistelmä:
 </ul></li>
 </ul>
 </section>
-
 <p>Seuraavaksi tee servletti, joka näyttää html-demoon tekemäsi kirjautumislomakkeen JSP-tekniikalla. Voit laittaa servlettisi esim. osoitteeseen <code>/kirjautuminen</code> tai <code>/login</code>.</p>
 <p>Laitetaan seuraavaksi tämä servlet-luokka ottamaan kirjautuminen myös vastaan.</p>
 <section id="lomakkeiden-vastaanottaminen" class="level2">
@@ -238,12 +237,12 @@ Salasana: <span class="kw">&lt;input</span><span class="ot"> type=</span><span c
 }</code></pre>
 <p>Koodissa kannattaa huomata kutsu <code>response.sendRedirect(&quot;kissalista&quot;);</code>. <code>HttpServletResponse</code>-olion <a href="http://docs.oracle.com/javaee/6/api/javax/servlet/http/HttpServletResponse.html#sendRedirect(java.lang.String)">sendRedirect-metodi</a> lähettää käyttäjän selaimen parametrina annettuun osoitteesen. Tämä on kätevä tapa ohjata käyttäjä jonkin toisen servletin luo. Voit halutessasi tehdä siitäkin metodin aiemmin tekemääsi yleiskäyttöiseen luokkaan.</p>
 <p>Testaa ylläolevan tapaista koodia omassa sovelluksessasi. Voit tehdä lomakkeen vastaanottamisen joko niin, että se toimii samassa servletissä lomakkeen näyttämisen kanssa tai tehdä kirjautumislomakkeen vastaanottolle oman servletin.</p>
-<section class="alert alert-warning"><h3>
+<section class="alert alert-warning">
+<h3>
 Vinkki
 </h3>
 <p>Sijoita kaikki servlet-luokkasi omaan servlet-pakettiinsa. Näin sovelluksestasi on huomattavasti helpompi löytää oikeat luokat.</p>
 </section>
-
 <p>Keskitytään tämän jälkeen tekemään koodista käyttäjäystävällisempi.</p>
 </section>
 <section id="käytettävyys" class="level2">
@@ -325,7 +324,8 @@ Vinkki
   }
 }</code></pre>
 <p>Myös koodin alussa oleva muuttujien olemassaolon varmistamisesta huolehtiva koodi on hyvä kandidaatti yleiskäyttöisen funktion sisällöksi, sillä tuontapainen koodi toistuu lomakkeiden käsittelyssä hyvin usein.</p>
-<section class="alert alert-danger"><h3>
+<section class="alert alert-danger">
+<h3>
 Pidä mielessä!
 </h3>
 <p>Muista aina testata koodiasi erilaisilla syötteillä niin varmistat ettei se kaadu missään tilanteessa.</p>
@@ -336,7 +336,8 @@ Pidä mielessä!
 <h2>Salasanan tarkistaminen ja tallettaminen turvallisesti</h2>
 <p>Salasanankentän voi toteuttaa joko paljaana salasanan sisältävänä tekstikenttänä tai käyttää salasanojen hashausta jossa salasanan sijasta tietokantaan tallennetaan siitä kryptograafisella tiivistefunktiolla muodostettu tiiviste.</p>
 <p>Menetelmä on huomattavasti turvallisempi tapa säilyttää salasanoja, sillä silloin niitä ei ole mahdollista lukea kannasta suoraan. Aiheesta voi lukea lisää mm. <a href="https://crackstation.net/hashing-security.htm">tältä sivulta</a>.</p>
-<section class="alert alert-success small"><h3>
+<section class="alert alert-success small">
+<h3>
 Seuraavaksi:
 </h3>
 <p>Toteuta ylläolevan kaltaiset käytettävyysparannukset myös omaan kirjautumisservlettiisi.</p>

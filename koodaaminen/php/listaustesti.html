@@ -190,8 +190,8 @@ code > span.er { color: #ff0000; font-weight: bold; }
 </header>
 <!-- order: 2 -->
 <!-- tags: viikko2-php -->
-
-<section class="alert alert-info"><h3>
+<section class="alert alert-info">
+<h3>
 Tiivistelmä:
 </h3>
 <ul>
@@ -204,7 +204,6 @@ Tiivistelmä:
 </ul></li>
 </ul>
 </section>
-
 <p>Varmista ensin, että sinulla on omassa tiedostossaan luokka tai funktio, jolla saat <a href="../php/tietokantayhteys.html">yhteyden tietokantaan</a>. Nyt käytämme tietokantayhteyttä luokaksemme hyvin yksinkertaisen sivun, jolla listataan jonkun taulun sisältöä. Teemme tämän kahdessa vaiheessa: Ensin luomme yksinkertaisen sivun, joka näyttää listan asioista sitten luomme koodin, joka hakee tuon listan tietokannasta.</p>
 <section id="asioiden-listaaminen-ja-html" class="level2">
 <h2>Asioiden listaaminen ja HTML</h2>
@@ -280,7 +279,8 @@ Tiivistelmä:
   <span class="kw">require</span> <span class="st">&#39;kirjastot/kayttaja.php&#39;</span><span class="ot">;</span></code></pre>
 <p>Include ja require ovat hieman samanlaisia kuin Javan import, mutta ovat teknisesti lähemänä C-kielen includea. Molemmat lähinnä ikäänkuin upottavat kysytyn tiedoston siihen kohtaan koodia, missä niitä kutsutaan.</p>
 <p>Kirjastoja hakiessa kannattaa käyttää once-päätteisiä versioita, jotka eivät koskaan hae samaa tiedostoa kahdesti. PHP:ssä saman tiedoston voi hakea kahdesti, mutta jos tiedostossa on luokkamäärittely kaatuu suoritus siihen, että toisella kerralla jo olemassa olevaa luokkaa yritettään luoda uusiksi.</p>
-<section class="alert alert-warning"><h3>
+<section class="alert alert-warning">
+<h3>
 Vinkki
 </h3>
 <p>Näitä luokkia sisältäviä kirjastoina toimivia php-tiedostoja ei tarvitse päättää <code>?&gt;</code>-lopputägiin. Lopputägin laittaminen on itseasiassa huono idea, sillä niiden jälkeen saattaa tällöin eksyä rivinvaihtoja ja välilyöntejä, jotka PHP lähettää empimättä selaimelle. Tällä on ikävä tapa sotkea istuntojen ja sivujen välisten ohjausten ym. HTTP-otsakkeita käyttävien toimintojen toimintaa.</p>
@@ -353,7 +353,8 @@ Vinkki
 <span class="st">...</span></code></pre>
 <p>Ja koska kyseessä ovat oliot, pitää niitä listatessa tulostaa jokin merkkijono eikä itse oliota:</p>
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span> <span class="fu">echo</span> <span class="kw">$asia</span>-&gt;getUsername<span class="ot">();</span> <span class="kw">?&gt;</span></code></pre>
-<section class="alert alert-warning"><h3>
+<section class="alert alert-warning">
+<h3>
 Hyvä tietää
 </h3>
 <p>Tällä viikolla tehtävä listaus on tahallaan melko yksinkertainen, sillä tarkoitus on vain testata tietokantaohjelmointia. Lopulliset sivut tulevat noudattamaan läheisemmin <a href="../../koodaaminen/arkkitehtuuri/index.html">MVC-arkkitehtuuria</a>.</p>
@@ -366,7 +367,8 @@ Hyvä tietää
 <li><a href="http://www.php.net/manual/en/language.basic-syntax.phpmode.php">Esimerkkejä PHP-tilasta kielen omassa dokumentaatiossa</a></li>
 <li><a href="http://php.net/manual/en/function.include.php">Include ja require</a></li>
 </ul>
-<section class="alert alert-info small"><h3>
+<section class="alert alert-info small">
+<h3>
 Valmista!
 </h3>
 <p>Kun listaustestisi toimii moitteetta, olet suunnitellut ja toteuttanut käyttöliittymän ja dokumentoinut kaiken, olet saanut valmiiksi viikon 2 palautuksen. Varmista vielä, että kaikki tiedostot löytyvät repositoriostasi. Muista myös päivittää kaikki tekeäsi uudet asiat <a href="../../aikataulu/viikkopalautukset/esittelysivu.html">esittelysivulle</a>.</p>

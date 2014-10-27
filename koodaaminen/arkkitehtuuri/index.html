@@ -190,18 +190,15 @@ code > span.er { color: #ff0000; font-weight: bold; }
 </header>
 <!-- order: 6 -->
 <!-- tags: viikko3 -->
-
 <p>Tällä kurssilla pyritään kevyeen <a href="http://fi.wikipedia.org/wiki/MVC-arkkitehtuuri">MVC-mallin</a> mukaiseen koodiarkkitehtuuriin. Monille käsite on hieman hämärä, siispä avaamme sitä tällä sivulla tarkemmin.</p>
 <p>Käytännössä MVC-arkkitehtuuri tarkoittaa sitä, että koodi jaetaan kolmeen osaan: <em>näkymiin</em>, <em>kontrollereihin</em> ja <em>malleihin</em> (engl. views, controllers ja models). Mallit käyttävät tietokantaa ja abstrahoivat sen ohjelmointirajapinnaksi, jota muu koodi käyttää. Näkymät hoitavat kaiken HTML:ään liittyvän koodin ja kontrollerit ottavat vastaan käyttäjän antamat aineistopyynnöt, hakevat ja päivittävät tietoa malleja käyttäen ja välittävät tiedot näkymälle, joka näyttää sivun.</p>
 <figure>
 <img src="../../images/mvc.png" alt="MVC-mallin vastuunjako" /><figcaption>MVC-mallin vastuunjako</figcaption>
 </figure>
-<section class="alert alert-info"><h3>
+<section class="alert alert-info">
+<h3>
 Nyrkkisääntöjä
 </h3>
-
-
-
 <ul>
 <li>Malli vastaa tiedon käsittelemisestä ja abstrahoinnista ja <strong>ainoastaan</strong> siitä. Mallissa ei <strong>ikinä käsitellä HTML:ää</strong> tai käyttäjän lähettämiä pyyntöjä ja parametrejä, nämä ovat näkymän ja kontrollerin tehtäviä.</li>
 <li>Kaikki HTML-koodi sijoitetaan <em>näkymiin</em></li>
@@ -209,7 +206,6 @@ Nyrkkisääntöjä
 <li>SQL-kyselyjä ei ikinä tehdä kontrollereiden tai näkymien puolella.</li>
 </ul>
 </section>
-
 <section id="mallit" class="level2">
 <h2>Mallit</h2>
 <p>Mallit sisältävät kaikki sovelluksen tietokannassa olevan tiedon ja käsittelyyn liittyvät toiminnnot. Kaikki tietokantaa käsittelevä koodi kuuluu siis malleihin.</p>
@@ -418,17 +414,18 @@ Nyrkkisääntöjä
 <p>Kontrolleri vastaanottaa käyttäjältä tulevat aineistopyynnöt, käyttää mallia tiedon hakemiseen ja muuttamiseen, ja lopuksi yleensä siirtää suorituksen jollekin näkymälle. Yleensä kontrolleri välittää samalla näkymälle jotain tietoa näytettäväksi, esimerkiksi listan mallin palauttamia olioita tai virheviestin.</p>
 <p>Kontrollerissa sensijaan <strong>ei</strong> koskaan käsitellä tietokantaa suoraan, tai lähetetä selaimelle HTML:ää tai muuta sisältöä. Nämä ovat mallien ja näkymien tehtäviä.</p>
 <p>Ohessa esimerkkejä kontrollereista PHP:llä ja Javalla</p>
-<ul class='nav nav-tabs nav-justified'><li class='active'>
+<ul class="nav nav-tabs nav-justified">
+<li class="active">
 <a href='#tab_1_0' data-toggle='tab'>Kontrolleri PHP:llä</a>
 </li>
 <li>
 <a href='#tab_1_1' data-toggle='tab'>Kontrolleri Javalla</a>
-</li></ul>
+</li>
+</ul>
 <div class="panel panel-default">
 <div class="panel-body">
 <div class="tab-content">
-<section class='tab-pane active' id='tab_1_0' >
-
+<section class="tab-pane active" id="tab_1_0">
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span> 
   <span class="co">//Otetaan käyttöön kirjastotiedosto, joka hakee kasan omatekoisia yleistoimintoja, sekä malliluokka:</span>
   <span class="kw">require_once</span> <span class="st">&#39;src/common.php&#39;</span><span class="ot">;</span>
@@ -449,8 +446,7 @@ Nyrkkisääntöjä
     <span class="st">&#39;kissat&#39;</span> =&gt; <span class="kw">$kissat</span>
   <span class="ot">));</span></code></pre>
 </section>
-<section class='tab-pane' id='tab_1_1' >
-
+<section class="tab-pane" id="tab_1_1">
 <pre class="sourceCode java"><code class="sourceCode java"><span class="kw">package Kissalista.Servlets;</span>
 
 <span class="kw">import java.io.IOException;</span>
@@ -537,17 +533,18 @@ Nyrkkisääntöjä
 <section id="koodin-sijoittelu-tiedostojärjestelmään" class="level2">
 <h2>Koodin sijoittelu tiedostojärjestelmään</h2>
 <p>Eri osioiden koodit sijoitetaan käytetystä kielestä riippuen eri paikkaan. Ohjaajien toiveet sijoittelusta ovat alla:</p>
-<ul class='nav nav-tabs nav-justified'><li class='active'>
+<ul class="nav nav-tabs nav-justified">
+<li class="active">
 <a href='#tab_2_0' data-toggle='tab'>PHP-esimerkkisijoittelu</a>
 </li>
 <li>
 <a href='#tab_2_1' data-toggle='tab'>Java-esimerkkisijoittelu</a>
-</li></ul>
+</li>
+</ul>
 <div class="panel panel-default">
 <div class="panel-body">
 <div class="tab-content">
-<section class='tab-pane active' id='tab_2_0' >
-
+<section class="tab-pane active" id="tab_2_0">
 <p>PHP:tä käytettäessä sijoita kaikki mallit ja näkymät omaan kansioonsa. Kontrollerit taas sijoitetaan projektin juureen. Näkymät sijoitetaan kansioon <code>views</code>.</p>
 <p>Useimmiten on tarpeen luoda vielä oma kansionsa yleiskäyttöisille kirjastotiedostoille, jotka eivät varsinaisesti ole malleja. Yleiskäyttöisen koodin kansion voi nimetä kuvaavasti esim. <code>libs</code>. Luo malleille oma <code>models</code>-kansio yleiskäyttöisen koodin alle.</p>
 <p>Kansioiden nimet voi halutessaan suomentaa.</p>
@@ -561,8 +558,7 @@ users.php (Käyttäjänhallinnan kontrolleri)
 ~~~
 </code></pre>
 </section>
-<section class='tab-pane' id='tab_2_1' >
-
+<section class="tab-pane" id="tab_2_1">
 <p>Javaa käytettäessä sijoita mallit ja kontrollerit omiin paketteihinsa projektin yhteisen paketin alle src-kansioon.</p>
 <p>Kontrollerit ovat Javan tapauksessa aina HttpServlet-luokan aliluokkia eli servlettejä, joten niiden paketin voi nimetä myös esim. <code>servletit</code>.</p>
 <p>Näkymät - eli yleensä jsp-tiedostot - menevät omaan kansioonsa joka on oletuksena nimeltään web.</p>
@@ -596,7 +592,8 @@ web/
 <li><a href="http://www.strongandagile.co.uk/index.php/a-really-simple-explanation-of-mvc/">A Really Simple Explanation Of MVC</a></li>
 <li><a href="http://www.ohjelmointiputka.net/oppaat/opas.php?tunnus=php_14#mvcmalli">Lyhyt PHP-esimerkki ohjelmointiputka.net:issä</a></li>
 </ul>
-<section class="alert alert-success small"><h3>
+<section class="alert alert-success small">
+<h3>
 Seuraavaksi:
 </h3>
 <p>Siirry seuraavaksi kielikohtaisiin toteuttamisohjeisiin:</p>

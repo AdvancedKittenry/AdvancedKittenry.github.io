@@ -191,11 +191,10 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <!-- order: 3 -->
 <script>addSectionLinks = true; </script>
 <!-- tags: viikko3-java -->
-
-<section class="alert alert-info"><h3>
+<section class="alert alert-info">
+<h3>
 Tiivistelmä:
 </h3>
-
 <ul>
 <li>Tee koodia varten oma pakettisi. Esim. <code>Kissalista</code>.</li>
 <li>Sijoita kaikki mallit omaan pakettiinsa. Esim. <code>Kissalista.Models</code>.</li>
@@ -212,7 +211,6 @@ web/
   user.jsp
 </code></pre>
 </section>
-
 <p>Tietokantasovellukset Javalla kannattaa jakaa <a href="../../koodaaminen/arkkitehtuuri/index.html">arkkitehtuuriohjeen</a> mukaisesti malleihin, kontrollereihin ja näkymiin. Keskitymme ensiksi malleihin ja kontrollereihin ja jatkamme sitten näkymiin <a href="nakymat.html">seuraavalla sivulla</a>.</p>
 <section id="mallit" class="level2">
 <h2>Mallit</h2>
@@ -235,12 +233,12 @@ web/
     <span class="kw">&lt;url-pattern&gt;</span>/osoite<span class="kw">&lt;/url-pattern&gt;</span>
 <span class="kw">&lt;/servlet-mapping&gt;</span></code></pre>
 <p>Laittamalla <code>url-pattern</code>-tägin sisään pelkän kenoviivan <code>/</code>, saa servletin asetettua sovelluksen etusivuksi. Oletuksena Tomcat-sovellus käyttää etusivunaan index.jsp-tiedostoa.</p>
-<section class="alert alert-warning"><h3>
+<section class="alert alert-warning">
+<h3>
 Vinkki
 </h3>
 <p>Sekä servlet-, että malliluokat kannattaa sijoittaa omiin paketteihinsa. Näin sovelluksesi rakenteesta tulee huomattavasti selkeämpi.</p>
 </section>
-
 <section id="servletin-toiminta" class="level3">
 <h3>Servletin toiminta</h3>
 <p>Servletin toiminnan ytimessä ovat <code>doGet</code>- ja <code>doPost</code>-metodit, jotka ottavat vastaan servletin osoitteeeseen <a href="../../web-sovelluksista.html#get-ja-post">GET- ja POST-metodeilla</a> tehtyjä aineistopyyntöjä. NetBeansin vakiopohja Servlet-luokille luo nämä metodit automaattisesti ja laittaa ne molemmat kutsumaan samaa <code>processRequest</code>-metodia. Metodilla on parametreina HttpServletRequest-olio, joka sisältää pyynnön tiedot, ja HttpServletResponse-olio, johon voidaan lisätä vastaus.</p>
@@ -279,7 +277,8 @@ Vinkki
 }</code></pre>
 <p>Valmiin pohjan sisältämä vastauksen tuottava koodi sisältää suoraan kontrolleriin upotettua HTML-koodia. Tälläistä koodia ei kannata käyttää, vaan kannattaa tuottaa HTML-sivut erillisillä näkymätiedostoilla.</p>
 <p>Näistä kerrotaan enemmän seuraavalla sivuilla.</p>
-<section class="alert alert-success small"><h3>
+<section class="alert alert-success small">
+<h3>
 Seuraavaksi:
 </h3>
 <p>Seuraavaksi tutustumme tarkemmin <a href="nakymat.html">näkymien toteuttamiseen</a>.</p>

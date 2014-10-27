@@ -190,8 +190,8 @@ code > span.er { color: #ff0000; font-weight: bold; }
 </header>
 <!-- order: 9 -->
 <!-- tags: viikko4-java -->
-
-<section class="alert alert-info"><h3>
+<section class="alert alert-info">
+<h3>
 Tiivistelmä:
 </h3>
 <ul>
@@ -213,7 +213,6 @@ Tiivistelmä:
 </ul></li>
 </ul>
 </section>
-
 <section id="tietojen-syöttäminen-malliluokan-olioon" class="level2">
 <h2>Tietojen syöttäminen malliluokan olioon</h2>
 <p>Paras tapa toteuttaa jonkin tietokohteen olion, esimerkiksi kissan, syöttäminen tietokantaan, on tehdä siitä oliopohjaista: Ensiksi luodaan kissaolio, jonka jälkeen asetetaan sille settereillä sopivat arvot.</p>
@@ -351,13 +350,13 @@ uusikatti.<span class="fu">setRotuId</span>(request.<span class="fu">getParamete
 <pre class="sourceCode jsp"><code class="sourceCode jsp">&lt;input<span class="ot"> type</span>=<span class="dt">&quot;text&quot;</span><span class="ot"> class</span>=<span class="dt">&quot;form-control&quot;</span><span class="ot"> name</span>=<span class="dt">&quot;nimi&quot;</span><span class="ot"> placeholder</span>=<span class="dt">&quot;Kissan nimi&quot;</span>
 <span class="ot">value</span>=<span class="dt">&quot;</span>${kissa.nimi}<span class="dt">&quot;</span>&gt;</code></pre>
 <p>Silloin kun käyttäjä ei ole vielä laittanut lomakkeeseen mitään, ei oliota tarvitse välittää ollenkaan.</p>
-<section class="alert alert-info"><h3>
+<section class="alert alert-info">
+<h3>
 Lisätietoa
 </h3>
 <p>Jos oliollasi on numerokenttiä, on hyvä välittää niiden <code>value</code>-attribuuttiin suoraan käyttäjältä saatu syöte, jotta käyttäjän mahdollisesti syöttämät kelvottomat numeromerkkijonot näkyvät sellaisenaan. Näin käyttäjän on helpompi korjata ne.</p>
 <p>Numerokentän sisällön välityksen voi toteuttaa joko omana kenttänään suoraan malliluokassa tai erikseen kontrollerissa.</p>
 </section>
-
 <p>Jos käyttäjä taas on syöttänyt tietoja, mutta tiedot eivät ole käypiä, näytetään olio, johon tietoja on koetettu syöttää, sekä samalla olion kelpoisuuden tarkistamisesta saadut virheviestit.</p>
 <pre class="sourceCode java"><code class="sourceCode java">Collection&lt;String&gt; virheet = uusikatti.<span class="fu">getVirheet</span>();
 
@@ -417,7 +416,8 @@ request.<span class="fu">setAttribute</span>(<span class="st">&quot;kissa&quot;<
   &lt;div<span class="ot"> class</span>=<span class="dt">&quot;alert alert-info&quot;</span>&gt;${ilmoitus}&lt;/div&gt;
 <span class="kw">&lt;/c:if&gt;</span></code></pre>
 <p>Tämänkaltaisen koodin ympärille kannattaa yleensä rakentaa jonkinlainen oma rajapintansa.</p>
-<section class="alert alert-success small"><h3>
+<section class="alert alert-success small">
+<h3>
 Seuraavaksi:
 </h3>
 <p>Kun lisäys on toteutettu, sen pohjalta voidaan toteuttaa myös <a href="muokkausnakymat.html">muokkauslomake</a>.</p>

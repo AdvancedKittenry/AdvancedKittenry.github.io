@@ -171,13 +171,12 @@
 </header>
 <!-- order: 1 -->
 <!-- tags: viikko2 -->
-
-<section class="alert alert-info"><h3>
+<section class="alert alert-info">
+<h3>
 Lisätietoa
 </h3>
 <p>Näissä ohjeissa oletetaan kannan pystyttäminen users-palvelimelle, jossa on jo <a href="../suunnittelu_ja_tyoymparisto/users/index.html">otettu tietokantapalvelin käyttöön</a>.</p>
 </section>
-
 <p>Ennen kuin voimme aloittaa kannan käyttämisen, pitää sinne pystyttää tarvittavat tietokantataulut ja testidataa. Tämän jälkeen voimme testata saammeko kantaan yhteyden <a href="testisovellus.html">testisovelluksella</a>.</p>
 <section id="tietokannan-alustustiedostojen-ajaminen" class="level2">
 <h2>Tietokannan alustustiedostojen ajaminen</h2>
@@ -188,13 +187,14 @@ Lisätietoa
 <p>Mikäli haluaa resetoida koko tietokantansa voi ajaa seuraavan komennon:</p>
 <pre><code>cat sql/drop-tables.sql sql/create-tables.sql sql/add-test-data.sql | psql</code></pre>
 <p>Komento syöttää <code>cat</code>:in jälkeen annettujen tiedostojen sisällön yksitellen psql-tietokantakomentotulkille. Näin kanta saadaan ajettua ensin alas, jonka jälkeen luodaan taulut ja lisätään testidata.</p>
-<section class="alert alert-danger"><h3>
+<section class="alert alert-danger">
+<h3>
 Pidä mielessä!
 </h3>
 <p>Viiteavaimien takia joudut yleensä kirjoittamaan pudotuskäskyt päinvastaisessa järjestyksessä luontilauseisiin nähden. Muuten viite-eheystarkistukset eivät välttämättä anna ajaa tietokantatauluja alas.</p>
 </section>
-
-<section class="alert alert-success small"><h3>
+<section class="alert alert-success small">
+<h3>
 Seuraavaksi:
 </h3>
 <p>Saatuasi tietokannan pyörimään asenna sen testaamiseksi <a href="testisovellus.html">ConnectionTest-testisovelluksen</a> ja aloittaa sitten tietokantakoodisi tekeminen.</p>

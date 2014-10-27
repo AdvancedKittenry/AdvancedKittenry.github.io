@@ -189,7 +189,6 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <h1 class="title">PHP:n virheilmoitusten katselu</h1>
 </header>
 <!-- tags: viikko1,viikko2-usefull,viikko3-php-usefull,viikko4-php-usefull -->
-
 <p>PHP:n virheilmoitukset kirjautuvat users-koneella tiedostoon <code>/home/userlogs/käyttäjätunnuksesi.error</code>. Uusimmat virheet löytyvät tiedoston lopusta. Kätevä tapa seurata PHP:n tuottamia virheviestejä on ajaa usersilla komento:</p>
 <pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">tail</span> -f /home/userlogs/<span class="ot">$USER</span>.error</code></pre>
 <p>Komento näyttää viimeiset kymmenen virheviestiä ja jää komentoriville seuraamaan virheviestejä näyttäen aina viimeisimmät. Kommenon pystyy sulkemaan painamalla Ctrl+C:tä.</p>

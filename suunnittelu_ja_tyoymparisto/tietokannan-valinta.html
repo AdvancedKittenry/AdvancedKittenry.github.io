@@ -171,14 +171,14 @@
 </header>
 <!-- order: 3 -->
 <!-- tags: viikko1 -->
-
 <p>Laitoksen palvelimilla on käytössä kolme tietokantapalvelinta: Oracle, <a href="http://www.mysql.com/">MySQL</a> ja <a href="http://www.postgresql.org/">PostgreSQL</a>.</p>
 <p>Näistä Oracle on jo varsin vanhentunut, eikä sitä ole tietokantasovelluksessa käytetty aikoihin. Sensijaan MySQL ja PostgreSQL ovat täysin tuettuja. Tämän kurssin näkökulmasta niillä ei ole juurikaan eroa. MySQL on hieman yleisempi työmaailmassa, PostgreSQL taas on hieman edistyneempi joiltakin ominaisuuksiltaan.</p>
 <p>Mikäli sinulla ei ole ennestään syytä valita jompaakumpaa, suositeltavaa on valita PostgreSQL, sillä se on huomattavasti nätimmin tuettu laitoksen palvelimilla, sillä tarvitse erikseen käynnnistää ja sammuttaa siellä ja siihen saa myös etäyhteyden melko helposti, mikä on etenkin Javalla koodatessa kätevää.</p>
 <p>MySql-tietokantaa ei pysty etäkäyttämään laitoksen tietokantasovelluspalvelimen ulkopuolelta. Sitä on parasta käyttää ainoastaan, jos saat myös lokaaliin koodausympäristöösi MySql-tietokannan asennettua tai jos käytät esimerkiksi NetBeansia siirtääksesi PHP-sovelluksesi automaattisesti laitoksen palvelimelle, joka kerta kun testaat sitä.</p>
 <p>Syy tähän on siinä, että kannan saa käynnistää users:illa vain unix-socketteja kuuntelevaan tilaan, sillä usersin sisäiset TCP-portit on varattu tomcatin yhteyksille.</p>
 <p>Samasta syystä MySQL:n käyttäminen Javalla users-palvelimella on hankalaa, sillä käytössä olevat kirjastot eivät tue suoria socket-yhteyksiä.</p>
-<section class="alert alert-success small"><h3>
+<section class="alert alert-success small">
+<h3>
 Seuraavaksi:
 </h3>
 <p>Kun olet valinnut aiheen ja haluamasi toteutustekniikat <a href="git.html">pystytä työllesi git-repositorio</a>.</p>

@@ -190,7 +190,6 @@ code > span.er { color: #ff0000; font-weight: bold; }
 </header>
 <!-- tags: viikko1 -->
 <!-- order: 1 -->
-
 <p>Javalla tehdyt tietokantasovellukset asennetaan laitoksen users-palvelimella Tomcat-ohjelmiston alle. Ohjelmisto osaa pyörittää allaan useita Javalla tehtyjä <em>sovelluksia</em>, jotka ovat käytännössä toisistaan erillään pyöriviä ohjelmistopaketteja.</p>
 <section id="tomcatin-käyttöönotto" class="level2">
 <h2>Tomcatin käyttöönotto</h2>
@@ -202,7 +201,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <pre><code>cp -r /home/consuegr/tomcat/webapps/tsoha ~/tomcat/webapps</code></pre>
 <hr />
 <p>Jotta mitään tietokantasovellusta voidaan ajaa, pitää tomcat ensin käynnistää. Tähän voi käyttää komentoa <code>start-tomcat</code>. Komento käynnistää Tomcat-palvelimen ja kertoo samalla mistä osoitteesta työsi tulee löytymään.</p>
-<p>Osoite on mallia <a href="http://t-käyttäjätunnuksesi.users.cs.helsinki.fi/">http://t-käyttäjätunnuksesi.users.cs.helsinki.fi/</a> Missä aivan ensimmäisenä osana on yliopiston käyttäätunnuksesi, jota edeltää merkkijono “t-”. Laittamalla osoitteen perään jonkin <code>webapps</code> hakemistossa olevan sovelluksen nimen, pääsee käyttämään tätä sovellusta. Esimerkiksi tsoha-sovellusta voi käyttää laittamalla osoitteen perään <code>tsoha/esim.html</code>.</p>
+<p>Osoite on mallia <a href="http://t-käyttäjätunnuksesi.users.cs.helsinki.fi/" class="uri">http://t-käyttäjätunnuksesi.users.cs.helsinki.fi/</a> Missä aivan ensimmäisenä osana on yliopiston käyttäätunnuksesi, jota edeltää merkkijono “t-”. Laittamalla osoitteen perään jonkin <code>webapps</code> hakemistossa olevan sovelluksen nimen, pääsee käyttämään tätä sovellusta. Esimerkiksi tsoha-sovellusta voi käyttää laittamalla osoitteen perään <code>tsoha/esim.html</code>.</p>
 <p>Tomcatin voi myös sammuttaa komennolla <code>stop-tomcat</code>. Kurssin ajan lienee hyvä pitää Tomcat:ia päällä melko jatkuvasti, että ohjaajasi pystyy testaamaan työtäsi.</p>
 <p>Mikäli työsi ei näy internetissä on siihen useimmiten syynä se, ettei Tomcat ole päällä.</p>
 </section>
@@ -237,7 +236,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
 <p>Tiedoston voi luoda esimerkiksi komentorivillä käyttämällä <code>nano</code>-tekstieditoria. Voit myös siirtää palvelimelle muualla tekemäsi tiedoston käyttämällä <a href="../etamuokkaus.hml">nautilusta</a> tai <a href="http://winscp.net/eng/index.php">winSCP:tä</a>.</p>
-<p>Sivun pitäisi nyt näyttää tervehdys osoitteessa:<br /><a href="http://t-kayttajatunnuksesi.users.cs.helsinki.fi/sovelluksen_nimi/index.jsp">http://t-kayttajatunnuksesi.users.cs.helsinki.fi/sovelluksen_nimi/index.jsp</a></p>
+<p>Sivun pitäisi nyt näyttää tervehdys osoitteessa:<br /><a href="http://t-kayttajatunnuksesi.users.cs.helsinki.fi/sovelluksen_nimi/index.jsp" class="uri">http://t-kayttajatunnuksesi.users.cs.helsinki.fi/sovelluksen_nimi/index.jsp</a></p>
 </section>
 <section id="esittelysivu" class="level2">
 <h2>Esittelysivu</h2>
@@ -253,10 +252,10 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <ul>
 <li>Hieman vanhentunut, mutta kattava alkuperäinen Servlet-opas: <a href="http://www.cs.helsinki.fi/u/laine/tikas/material/servlet_ohje.html">Servlettien käyttö Tietokantasovellusten harjoitustyössä</a></li>
 </ul>
-<section class="alert alert-success small"><h3>
+<section class="alert alert-success small">
+<h3>
 Seuraavaksi:
 </h3>
-
 <p>Ota seuravaaksi käyttöön tietokantasi tuki:</p>
 <ul>
 <li><a href="mysql.html">MySql-ohjeet</a></li>
