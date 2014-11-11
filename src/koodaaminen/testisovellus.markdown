@@ -73,10 +73,27 @@ Tee muutoksia vain näihin kohtiin.
 Jos teet projektia Users-palvelimella ja käytät Postgresql-tietokantaa, 
 täytä kohdat seuraavasti: "username" on yliopiston käyttäjätunnuksesi, 
 ja kohdassa "password"-kysytyn salasanan löydät Users-palvelimen 
-kotihakemistostasi tiedostosta nimeltä .psql_password. 
+kotihakemistostasi tiedostosta nimeltä `.psql_password`. 
 Viimeinen kohta, `url="jdbc:postgresql://localhost/FIXME_dbname"` 
 kertoo Tomcatille tietokannan sijainnin ja nimen. 
 Users-palvelimella tietokannan nimi on aina oma käyttäjätunnuksesi.
+
+Esimerkiksi tunnuksella kumikumi ja tietokannan salasanalla abc123 
+näyttää xml-tiedoston sisältö seuraavalta:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<Context antiJARLocking="true" path="/ConnectionTest">
+    <Resource name="jdbc/tietokanta" auth="Container"
+        type="javax.sql.DataSource" removeAbandoned="true"
+        removeAbandonedTimeout="30" maxActive="100"
+        maxIdle="30" maxWait="10000" username="kumikumi"
+        password="abc123"
+        driverClassName="org.postgresql.Driver"
+        url="jdbc:postgresql://localhost/kumikumi" />
+</Context>
+
+```
 
 Muista käynnistää tomcat uudelleen asetusten säätämisen jälkeen.
 

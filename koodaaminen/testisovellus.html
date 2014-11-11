@@ -9,6 +9,25 @@
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
   <link rel="stylesheet" href="../css/base.css">
   <link rel="icon" href="../images/kissa.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -198,7 +217,18 @@ wget https://raw.github.com/AdvancedKittenry/connectionTest/master/php/connectio
 <p>Voit ladata paketin <a href="https://raw.github.com/AdvancedKittenry/connectionTest/master/java/dist/ConnectionTest.war">githubista</a>. Paketti on valitettavasti aika iso, sillä siihen on sisällytetty kaikki tarvittavat tietokanta-ajurit. Noudata paketin ladattuasi <a href="../koodaaminen/java/java-war-paketit.html">asennusohjeita täältä</a>.</p>
 <p>Kun paketti on asennettu usersille sinun pitää vielä säätää XML-tiedostosta tietokannan yhteystiedot oikeiksi. Tomcat tekee tiedostosta oman kopionsa oletuksena polkuun <code>tomcat/conf/Catalina/localhost/ConnectionTest.xml</code>.</p>
 <p>Avaa tämä XML-tiedosto jollain ohjelmalla (esim. nano) ja korjaa siinä olevat tietokantatunnukset omiksesi. Korjausta vaativia kohtia on kolme ja niissä lukee isolla FIXME. Tee muutoksia vain näihin kohtiin.</p>
-<p>Jos teet projektia Users-palvelimella ja käytät Postgresql-tietokantaa, täytä kohdat seuraavasti: “username” on yliopiston käyttäjätunnuksesi, ja kohdassa “password”-kysytyn salasanan löydät Users-palvelimen kotihakemistostasi tiedostosta nimeltä .psql_password. Viimeinen kohta, <code>url=&quot;jdbc:postgresql://localhost/FIXME_dbname&quot;</code> kertoo Tomcatille tietokannan sijainnin ja nimen. Users-palvelimella tietokannan nimi on aina oma käyttäjätunnuksesi.</p>
+<p>Jos teet projektia Users-palvelimella ja käytät Postgresql-tietokantaa, täytä kohdat seuraavasti: “username” on yliopiston käyttäjätunnuksesi, ja kohdassa “password”-kysytyn salasanan löydät Users-palvelimen kotihakemistostasi tiedostosta nimeltä <code>.psql_password</code>. Viimeinen kohta, <code>url=&quot;jdbc:postgresql://localhost/FIXME_dbname&quot;</code> kertoo Tomcatille tietokannan sijainnin ja nimen. Users-palvelimella tietokannan nimi on aina oma käyttäjätunnuksesi.</p>
+<p>Esimerkiksi tunnuksella kumikumi ja tietokannan salasanalla abc123 näyttää xml-tiedoston sisältö seuraavalta:</p>
+<pre class="sourceCode xml"><code class="sourceCode xml"><span class="kw">&lt;?xml</span> version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;<span class="kw">?&gt;</span>
+<span class="kw">&lt;Context</span><span class="ot"> antiJARLocking=</span><span class="st">&quot;true&quot;</span><span class="ot"> path=</span><span class="st">&quot;/ConnectionTest&quot;</span><span class="kw">&gt;</span>
+    <span class="kw">&lt;Resource</span><span class="ot"> name=</span><span class="st">&quot;jdbc/tietokanta&quot;</span><span class="ot"> auth=</span><span class="st">&quot;Container&quot;</span>
+<span class="ot">        type=</span><span class="st">&quot;javax.sql.DataSource&quot;</span><span class="ot"> removeAbandoned=</span><span class="st">&quot;true&quot;</span>
+<span class="ot">        removeAbandonedTimeout=</span><span class="st">&quot;30&quot;</span><span class="ot"> maxActive=</span><span class="st">&quot;100&quot;</span>
+<span class="ot">        maxIdle=</span><span class="st">&quot;30&quot;</span><span class="ot"> maxWait=</span><span class="st">&quot;10000&quot;</span><span class="ot"> username=</span><span class="st">&quot;kumikumi&quot;</span>
+<span class="ot">        password=</span><span class="st">&quot;abc123&quot;</span>
+<span class="ot">        driverClassName=</span><span class="st">&quot;org.postgresql.Driver&quot;</span>
+<span class="ot">        url=</span><span class="st">&quot;jdbc:postgresql://localhost/kumikumi&quot;</span> <span class="kw">/&gt;</span>
+<span class="kw">&lt;/Context&gt;</span></code></pre>
 <p>Muista käynnistää tomcat uudelleen asetusten säätämisen jälkeen.</p>
 <p>Sovelluksen pitäisi asennuksen jälkeen pyöriä osoitteessa <a href="http://t-kayttajatunnuksesi.users.cs.helsinki.fi/ConnectionTest/" class="uri">http://t-kayttajatunnuksesi.users.cs.helsinki.fi/ConnectionTest/</a></p>
 <section class="alert alert-success small">
