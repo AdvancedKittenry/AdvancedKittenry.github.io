@@ -67,7 +67,13 @@ Tomcat tekee tiedostosta oman kopionsa oletuksena polkuun
 
 Avaa tämä XML-tiedosto jollain ohjelmalla (esim. nano) ja korjaa
 siinä olevat tietokantatunnukset omiksesi.
-Korjausta vaativia kohtia on kolme ja niissä lukee isolla FIXME.
+Korjausta vaativia kohtia on kolme ja niissä lukee isolla FIXME. 
+Tee muutoksia vain näihin kohtiin. 
+
+Jos teet projektia Users-palvelimella ja käytät Postgresql-tietokantaa, 
+täytä kohdat seuraavasti: "username" on yliopiston käyttäjätunnuksesi, 
+ja kohdassa "password"-kysytyn salasanan löydät Users-palvelimen 
+kotihakemistostasi tiedostosta nimeltä .psql_password. 
 Viimeinen kohta, `url="jdbc:postgresql://localhost/FIXME_dbname"` 
 kertoo Tomcatille tietokannan sijainnin ja nimen. 
 Users-palvelimella tietokannan nimi on aina oma käyttäjätunnuksesi.
